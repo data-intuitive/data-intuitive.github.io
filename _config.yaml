@@ -1,6 +1,7 @@
 title:            Data Intuitive
 description:      "Data where applicable, Intuition where needed"
-url:        	    ''  # /Notepad
+url:		          ''
+baseurl:          'http://www.data-intuitive.com'
 permalink:        pretty
 markdown:         redcarpet
 highlighter:      pygments
