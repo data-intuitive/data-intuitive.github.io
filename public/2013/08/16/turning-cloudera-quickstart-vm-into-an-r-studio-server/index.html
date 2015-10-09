@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<!--
+====================================================
+    __  ____  ______________  _______ ___    __ 
+   / / / /  |/  / ____/   \ \/ / ___//   |  / / 
+  / /_/ / /|_/ / /_  / /| |\  /\__ \/ /| | / /  
+ / __  / /  / / __/ / ___ |/ /___/ / ___ |/ /___
+/_/ /_/_/  /_/_/   /_/  |_/_//____/_/  |_/_____/
+                                                     
+====================================================
+Author: Hossain Mohammad Faysal
+Profile: https://www.facebook.com/hmfaysal
+Version: 1.0
+Description: Awesome dude, awesome life
+====================================================
+-->
+<head>
+<meta charset="utf-8">
+<title>TURNING CLOUDERA QUICKSTART VM INTO AN R STUDIO SERVER &vert; DATA INTUITIVE</title>
+<meta name="description" content="Data where applicable, Intuition where needed">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/logo_white.png">
+<meta name="twitter:title" content="Turning Cloudera Quickstart VM into an R Studio Server">
+<meta name="twitter:description" content="Data where applicable, Intuition where needed">
+<meta name="twitter:creator" content="@tverbeiren">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Turning Cloudera Quickstart VM into an R Studio Server">
+<meta property="og:description" content="Data where applicable, Intuition where needed">
+<meta property="og:url" content="/2013/08/16/turning-cloudera-quickstart-vm-into-an-r-studio-server/">
+<meta property="og:site_name" content="Data Intuitive">
+<meta property="og:image" content="/images/graan-2-small.png">
+
+
+
+
+
+<link rel="canonical" href="/2013/08/16/turning-cloudera-quickstart-vm-into-an-r-studio-server/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Data Intuitive Feed">
+<link rel="author" href="https://plus.google.com/u/0/108837720006806497269?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/assets/css/vendor/nprogress.css">
+    <link rel="stylesheet" href="/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/post.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="notepad-post-container-simple" class="notepad-post-container-simple" role="main">
+            <header class="notepad-post-header-simple">
+                <div class="notepad-post-menu-header-simple">
+
+                    <a class="notepad-blog-logo" href="">
+                        <img src="/images/logo_white.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="notepad-blog-menu">      
+    <div class="notepad-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="notepad-menu">
+        <li class="notepad-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/">Home</a>
+                 </li>
+
+            <li>
+                    <a href="/categories">Categories</a>
+                 </li>
+
+            <li>
+                    <a href="/about">About</a>
+                 </li>
+            
+           <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="notepad-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="notepad-post-meta-simple">
+                            <h1>Turning Cloudera Quickstart VM into an R Studio Server</h1>
+                            <p>by <strong>Toni Verbeiren</strong> &#8212;  <strong><time datetime="2013-08-16T14:48:26+02:00">16 Aug 2013</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="notepad-post-content post tag-simple">
+            <div><p>Downloading the image (in my case for VirtualBox) is easy enough. Make sure that the VM has a connection to the internet.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo yum -y install R
+sudo yum -y install wget
+</code></pre></div>
+<p>From the <a href="http://www.rstudio.com/ide/download/server">R Studio Server website</a>:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">wget http://download2.rstudio.org/rstudio-server-0.97.551-x86_64.rpm
+sudo yum install --nogpgcheck rstudio-server-0.97.551-x86_64.rpm
+</code></pre></div>
+<p>Ready! Make sure to connect using a local user (if necessary, create one).</p>
+
+<p>There&#39;s one caveat though. R version 3.0.1 is installed and most packages for working with Hadoop are not yet ported to version 3.</p>
+
+<p>A quick workaround is the following:</p>
+
+<p>Within R:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">install.packages(c(&#39;Rcpp&#39;,&#39;RJSONIO&#39;,&#39;bitops&#39;,&#39;digest&#39;,&#39;functional&#39;,&#39;stringr&#39;,&#39;plyr&#39;,&#39;reshape2&#39;,&#39;rJava&#39;))
+</code></pre></div>
+<p>From the console:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">wget https://github.com/RevolutionAnalytics/rmr2/raw/master/build/rmr2_2.2.2.tar.gz
+
+
+
+
+wget https://github.com/RevolutionAnalytics/rhdfs/raw/master/build/rhdfs_1.0.6.tar.gz
+
+
+
+
+wget https://github.com/RevolutionAnalytics/rhbase/raw/master/build/rhbase_1.2.0.tar.gz
+</code></pre></div>
+<p>From the console:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo R CMD INSTALL r*.tar.gz
+</code></pre></div>
+<p>This should do the trick!</p>
+
+            </div>
+        </article>
+        <div class="cf"></div>
+
+        <div class="cf"></div>
+        
+            <div class="notepad-author-info">
+                <div class="row">
+                    <section class="notepad-post-author small-12 columns">
+                        
+                            <img src="/images/toni1.png" class="notepad-post-author-avatar" alt="Toni Verbeiren's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Toni Verbeiren</h1>
+                        
+                        
+                            <p><a href="mailto:" class="author-website"></a></p>
+                        
+                        
+                            <p></p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <div class="cf"></div>
+
+    <footer class="notepad-site-footer">
+    <div class="copyright">
+         <section>All content copyright <a href="/about">Toni Verbeiren</a> &copy; 2015 &bull; All rights reserved.</section>
+         <section>Proudly published with <a class="icon-ghost" href="https://jekyllrb.com/">Jekyll</a></section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/tverbeiren">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/0/108837720006806497269">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        
+        <a href="http://github.com/tverbeiren">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer> 
+</main>    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="/assets/js/vendor/modernizr.js"></script>
+    <script src="/assets/js/foundation.min.js"></script>
+    
+    <script src="/assets/js/notepad.js"></script>
+    <script src="/assets/js/scripts.min.js"></script>
+    <script src="/assets/js/vendor/nprogress.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+    <script type='text/javascript'>console.log("HMFaysal Notepad Theme Version 2.0");</script>
+    <script type='text/javascript'>console.log("https://alum.mit.edu/www/hmfaysal");</script>
+
+
+<script>NProgress.start();var interval=setInterval(function(){NProgress.inc()},1000);jQuery(window).load(function(){clearInterval(interval);NProgress.done()});jQuery(window).unload(function(){NProgress.start()});</script> 
+</body>
+</html>

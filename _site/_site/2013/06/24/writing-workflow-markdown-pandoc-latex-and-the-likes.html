@@ -1,0 +1,34 @@
+<p>You wouldn’t tell from the updates on this website, but I’m actively writing again. Offline, that is, the online part is for later. For now, I want to share my experience improving my writing workflow.</p>
+
+<p>In the past, I used <a href="http://www.latex-project.org/">LaTeX</a> for scientific texts and MS Word for everything else. LaTeX gives me the professional and typographically correct texts that I want, but I spent too much time fiddling around with packages, remembering markup, etc. MS Word, on the other hand, quickly made me get things done, albeit without the professional look or scientific powers.</p>
+
+<p>I’m now in a situation that any writing (technical, scientific and even prose) can be done in the same way, delivering results in PDF, html or even MS Word:</p>
+
+<ol>
+  <li>
+    <p>It usually starts in <a href="http://www.iawriter.com/mac/">iA Writer</a> (on the Mac or the iPad), but any word processor able to handle ASCII text can be used. I choose iA Writer because of its distraction free writing.</p>
+  </li>
+  <li>
+    <p><a href="http://daringfireball.net/projects/markdown/">Markdown</a> is used as markup specification (including figures, footnotes, emphasis, etc.). Markdown is very basic, but it lets you focus on the content, rather than the form.</p>
+  </li>
+  <li>
+    <p><a href="http://www.rstudio.com/ide/docs/r_markdown">Programming</a> code (<a href="http://www.r-project.org/">R</a> for instance), <a href="http://www.rstudio.com/ide/docs/authoring/using_markdown_equations">formulas</a>, etc. can all be included in the Markdown format by means of the proper notation and possibly some extensions to the parser (see step 4).</p>
+  </li>
+  <li>
+    <p>By means of <a href="http://johnmacfarlane.net/pandoc/README.html">Pandoc</a>, the text is converted into the appropriate format (html, pdf, LaTeX, ePub, DocBook, …)</p>
+  </li>
+  <li>
+    <p>Ready!</p>
+  </li>
+</ol>
+
+<p>Ok, I hear you thinking, but you just lost all possible configuration of look and feel, layout, etc… That’s correct, there are some Markdown writing tools that allow you to create PDFs that look awful.</p>
+
+<p>The nice thing about Pandoc though is that during the conversion step (4), you can specify the templates (CSS, LaTeX header code, MS Word template) that should be used.</p>
+
+<p>It takes some fiddling in order to get the correct options to Pandoc and get proper templates in place. A Google should get you going.</p>
+
+<p>An example. From a slight adaptation of this file, we generate a Markdown file and this is converted in the <a href="http://www.data-intuitive.com/?attachment_id=453">PDF linked here</a>. A similar process is used to create the reports for the different analysis steps for the <a href="https://github.com/tverbeiren/dataMineR">dataMineR project</a>.</p>
+
+<p>Leave a comment if you would like to see more examples.</p>
+

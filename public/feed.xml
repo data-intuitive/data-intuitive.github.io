@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+
+
+
+  
+
+<title type="text">Data Intuitive</title>
+<generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="/" />
+<updated>2015-10-08T17:30:01+02:00</updated>
+<id>/</id>
+<author>
+  <name>Toni Verbeiren</name>
+  <uri>/</uri>
+  <email></email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Code Snippet Repository]]></title>
+  <link rel="alternate" type="text/html" href="/2015/05/29/code-snippet-repository/"/>
+  <id>/2015/05/29/code-snippet-repository</id>
+  <published>2015-05-29T15:45:42+02:00</published>
+  <updated>2015-05-29T15:45:42+02:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;I&amp;#39;m jumping between Scala/&lt;a href=&quot;http://spark.apache.org/&quot;&gt;Spark&lt;/a&gt; coding, some Javascript in between, Python/PySpark and then some &lt;a href=&quot;http://www.r-project.org/&quot;&gt;R&lt;/a&gt; every now and then. This in itself is already a challenge, but the worst thing is that I frequently encounter situations where I think: &lt;em&gt;I&amp;#39;ve encountered this situation before&lt;/em&gt;. In many cases, it&amp;#39;s a situation that required quite some work to resolve. You end up with two possibilities: 1) retrieve the solution from some code somewhere on your harddisk or 2) start finding the solution again from &lt;del&gt;scratch&lt;/del&gt;Google.&lt;/p&gt;
+
+&lt;p&gt;So I&amp;#39;m now wondering if this could not be organized better... Of course it can, but how? &lt;a href=&quot;https://gist.github.com/&quot;&gt;Github&lt;/a&gt; has the ability to store snippets of code, I could just keep a file handy for every programming environment/language. What are you using?&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#39;s an example of a snippet of Scala code that I need a lot: configuring a Spark context to use my credentials (store in environment variable) to connect to &lt;a href=&quot;http://aws.amazon.com/s3/&quot;&gt;Amazon S3&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fs_s3_awsAccessKeyId&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;lt;key&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fs_s3_awsSecretAccessKey&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;lt;key&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hadoopConfiguration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;fs.s3n.awsAccessKeyId&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fs_s3_awsAccessKeyId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hadoopConfiguration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;fs.s3n.awsSecretAccessKey&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fs_s3_awsSecretAccessKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;How do you cope with this challenge?&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/2015/05/29/code-snippet-repository/&quot;&gt;Code Snippet Repository&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on May 29, 2015.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Transposing a Spark RDD]]></title>
+  <link rel="alternate" type="text/html" href="/data/spark/2015/01/15/transposing-a-spark-rdd/"/>
+  <id>/data/spark/2015/01/15/transposing-a-spark-rdd</id>
+  <published>2015-01-15T22:26:35+01:00</published>
+  <updated>2015-01-15T22:26:35+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;I have been using &lt;a href=&quot;http://spark.apache.org/&quot;&gt;Spark&lt;/a&gt; quite a lot for the last year. At first using the &lt;a href=&quot;http://spark.apache.org/docs/latest/programming-guide.html#tab_scala_0&quot;&gt;Scala&lt;/a&gt; interface, but lately more using the &lt;a href=&quot;http://spark.apache.org/docs/latest/programming-guide.html#tab_python_0&quot;&gt;Python&lt;/a&gt; one.&lt;/p&gt;
+
+&lt;p&gt;In one of my recent projects, I received a dataset that contains expression profiles of chemical compounds on genes. That is to say, I got a dataset which had this data transposed, i.e., genes versus compounds, but that is not a handy format to work with. I load the original data into an RDD, but then I have to transpose this RDD.&lt;/p&gt;
+
+&lt;p&gt;I have been looking on the web but found no complete solution. Recently, a similar question came up on the Spark mailinglist. So I thought it is about time that I posted my approach.&lt;/p&gt;
+
+&lt;p&gt;This is the code for the function that transposes an RDD and returns a new RDD. There are other approaches, and there is room for optimisation as well. But this already gets the work done.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rddTranspose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rdd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rddT1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rdd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zipWithIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flatMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rddT2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rddT1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupByKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortByKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rddT3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rddT2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+                        &lt;span class=&quot;nb&quot;&gt;cmp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rddT4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rddT3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rddT4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asarray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This code converts the rows to numpy arrays in the return statement, so you need to import numpy as np. This step is strictly speaking not necessary, but it does make subsequent random access &lt;em&gt;inside&lt;/em&gt; the rows faster. It must be noted as well that the procedure only works when one row (one element of the original RDD as well as the transposed RDD) fits into the JVM memory of the workers.&lt;/p&gt;
+
+&lt;p&gt;I left out the comments in my code, to keep it a little exciting for you...&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/spark/2015/01/15/transposing-a-spark-rdd/&quot;&gt;Transposing a Spark RDD&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on January 15, 2015.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Writing Workflow and Reproducible Data Analysis]]></title>
+  <link rel="alternate" type="text/html" href="/2014/09/24/writing-workflow-and-reproducible-data-analysis/"/>
+  <id>/2014/09/24/writing-workflow-and-reproducible-data-analysis</id>
+  <published>2014-09-24T07:00:52+02:00</published>
+  <updated>2014-09-24T07:00:52+02:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;I&amp;#39;ve been writing about my &lt;a href=&quot;http://www.data-intuitive.com/2013/06/writing-workflow-markdown-pandoc-latex-and-the-likes/&quot;&gt;writing&lt;/a&gt; &lt;a href=&quot;http://www.data-intuitive.com/2013/10/activity-monitoring-from-smartphone-sensor-data-in-a-new-layout/&quot;&gt;workflow&lt;/a&gt; &lt;a href=&quot;http://www.data-intuitive.com/2014/07/publishing-html-presentations-on-github/&quot;&gt;before&lt;/a&gt;. Since some aspects of it are related to reproducible research and especially reproducible data analysis, I have &lt;a href=&quot;https://github.com/tverbeiren/ReproducibleDataAnalysis&quot;&gt;collected some material and tips&lt;/a&gt; in a presentation I gave last week on my &lt;a href=&quot;https://github.com/tverbeiren&quot;&gt;Github&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/tverbeiren/ReproducibleDataAnalysis&quot;&gt;&lt;img src=&quot;http://www.data-intuitive.com/wp-content/uploads/2014/09/RR-0-231x300.png&quot; alt=&quot;RR-0&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One aspect that I did not yet mention there, is how I approach this on my Mac. This depends a little bit on what type of text I&amp;#39;m writing. Data analysis is usually done within &lt;a href=&quot;http://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;. It has very good functionality for generating PDFs and the like, but I still prefer my own Makefile and knitr/Pandoc combination.&lt;/p&gt;
+
+&lt;p&gt;Less technical texts are usually writing using i&lt;a href=&quot;http://www.iawriter.com/mac/&quot;&gt;AWriter&lt;/a&gt;, but sometimes also in &lt;a href=&quot;http://www.sublimetext.com/&quot;&gt;Sublime Text&lt;/a&gt;. iAWriter by default has support for Markdown, Sublime Text can be configured with a very good Markdown plugin. I use &lt;a href=&quot;http://marked2app.com/&quot;&gt;Marked&lt;/a&gt; for previewing, proof-reading, etc.&lt;/p&gt;
+
+&lt;p&gt;Drop a comment if you want more info, or have a tip to share yourself.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/2014/09/24/writing-workflow-and-reproducible-data-analysis/&quot;&gt;Writing Workflow and Reproducible Data Analysis&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on September 24, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Impact in Risk Assessment]]></title>
+  <link rel="alternate" type="text/html" href="/decision/risks/2014/09/23/impact-in-risk-assessment/"/>
+  <id>/decision/risks/2014/09/23/impact-in-risk-assessment</id>
+  <published>2014-09-23T20:00:53+02:00</published>
+  <updated>2014-09-23T20:00:53+02:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;How many times have you seen project charters or business cases where a form of risk assessment has been provided? In many cases, people try to make the risks tangible and actionable by means of a &lt;a href=&quot;http://en.wikipedia.org/wiki/Risk_Matrix&quot;&gt;risk matrix&lt;/a&gt;. In this approach, every risk gets 2 parameters associated to it: &lt;em&gt;probability&lt;/em&gt; of the risk occurring and &lt;em&gt;impact&lt;/em&gt; when the risk occurs. In most cases, 3 possibilities are given for both parameters: low, medium, high.&lt;/p&gt;
+
+&lt;p&gt;There are two very big advantages to this approach:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;It gives people a framework, a way to quantify risks that is easy to understand&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The method not only looks at the probability of an event, but also at its impact. The latter has practical consequences.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;There are also disadvantages to this approach. Some are mentioned already on the &lt;a href=&quot;http://en.wikipedia.org/wiki/Risk_Matrix&quot;&gt;Wikipedia page&lt;/a&gt;, but three are missing, in my opinion:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Many events with high impact a) have often not been taught of as a risk or b) are the consequence of a combination of factors.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Usually, events that are rare have a bigger impact. But the probability of rare events is very hard to assess.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Impact appears to be a linear function, but it is not.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Let us give an example of the latter point. One computer failing in the office has small impact because the user may get a replacement lying around in 10 minutes or less. 10 computers failing in the office will require more time, because no 10 people are standby to service them in parallel and spare computers may be lacking. Imagine a fire, a hack, or something we can not think of now (see above)? When hundreds of computers need to be replaced?&lt;/p&gt;
+
+&lt;p&gt;This is a situation where the impact of an event increases faster than linear (polynomial? exponential?). It may get worse, when an event causes an impact that is not recoverable anymore: too much electricity can kill a person, too many losses can ruin even a bank or a state, etc.&lt;/p&gt;
+
+&lt;p&gt;The first two arguments can be thought of as applications of the &lt;a href=&quot;http://www.amazon.com/The-Black-Swan-Improbable-Robustness/dp/081297381X&quot;&gt;Black Swan&lt;/a&gt; concept to projects and risk. The last argument is an application of the concept that is elaborated on in a book by the same author: &lt;a href=&quot;http://www.amazon.com/Antifragile-Things-That-Disorder-Incerto/dp/0812979680&quot;&gt;Antifragile&lt;/a&gt;. Books could be written just applying concepts from these books!&lt;/p&gt;
+
+&lt;p&gt;What does it tell us? When considering mitigation of risks, &lt;em&gt;think about what are possible consequences on a large scale&lt;/em&gt;, not on the scale of individual events. Think about consequences like: nobody is able to work anymore, the whole building is destroyed, our competitor has leapfrogged us, etc. Thinking about mitigation of these consequences may tell you more about the underlying risks and events than the other way around.&lt;/p&gt;
+
+&lt;p&gt;On a slightly cynical note: While doing so, you may find that more (advanced) technology is not always a solution because it usually makes things more complex and thus prone to more complex risks rather than avoiding them.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/decision/risks/2014/09/23/impact-in-risk-assessment/&quot;&gt;Impact in Risk Assessment&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on September 23, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Publishing html presentations on Github]]></title>
+  <link rel="alternate" type="text/html" href="/data/writing/2014/07/10/publishing-html-presentations-on-github/"/>
+  <id>/data/writing/2014/07/10/publishing-html-presentations-on-github</id>
+  <published>2014-07-10T12:14:43+02:00</published>
+  <updated>2014-07-10T12:14:43+02:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;You&amp;#39;ve seen those &lt;a href=&quot;https://github.com/hakimel/reveal.js/wiki/Example-Presentations&quot;&gt;fancy html presentations&lt;/a&gt; on the web? &lt;a href=&quot;http://lab.hakim.se/reveal-js&quot;&gt;Reveal.js&lt;/a&gt; is a framework to create such things of beauty. And it goes along well with my &lt;a href=&quot;http://www.data-intuitive.com/2013/06/writing-workflow-markdown-pandoc-latex-and-the-likes/&quot;&gt;Markdown&lt;/a&gt; based style of writing, even for presentation slides.&lt;/p&gt;
+
+&lt;p&gt;I usually create the presentations on my laptop, using &lt;a href=&quot;http://johnmacfarlane.net/pandoc/&quot;&gt;Pandoc&lt;/a&gt; to convert to html. In principle, this should be ready for the web by default. If only I had an easy hosting solution to move it to.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt; allows you to host html files and even complete web sites. I had never tried it myself, but now I did. It&amp;#39;s really simple. Move your repository into the branch &lt;code&gt;gh-pages&lt;/code&gt; (you can do this on the Github website) and finished. The web site is accessible via &lt;code&gt;http://&amp;lt;username&amp;gt;.github.io/&amp;lt;projectname&amp;gt;&lt;/code&gt;. This is what Github calls a &lt;em&gt;Project Page&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Behind the scenes, Github uses &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; for building static website from source files in, e.g., Markdown format. When you publish something to the &lt;code&gt;gh-pages&lt;/code&gt; branch, it automatically kicks in... and gave very vague errors in my case.&lt;/p&gt;
+
+&lt;p&gt;After some trial and error, I found out, the best approach is to install &lt;code&gt;jekyll&lt;/code&gt; yourself and launch it locally. This immediately gives a readable error message. It turned out I had a stale symlink in my directory tree. Removing this removed the building issue for Github.&lt;/p&gt;
+
+&lt;p&gt;The result can be seen here: &lt;a href=&quot;http://tverbeiren.github.io/BigDataBe-Spark&quot;&gt;http://tverbeiren.github.io/BigDataBe-Spark&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;BTW, in order to install &lt;code&gt;jekyll&lt;/code&gt; on my MacBook Air, I had to install a newer version of &lt;code&gt;Ruby&lt;/code&gt; (tip: use &lt;code&gt;rvm&lt;/code&gt; for this, &lt;a href=&quot;https://rvm.io/&quot;&gt;link&lt;/a&gt;).&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/writing/2014/07/10/publishing-html-presentations-on-github/&quot;&gt;Publishing html presentations on Github&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on July 10, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Running Docker on MacOSX]]></title>
+  <link rel="alternate" type="text/html" href="/2013/11/25/running-docker-on-macosx/"/>
+  <id>/2013/11/25/running-docker-on-macosx</id>
+  <published>2013-11-25T15:20:40+01:00</published>
+  <updated>2013-11-25T15:20:40+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;I found out about &lt;a href=&quot;http://www.docker.io/&quot;&gt;docker&lt;/a&gt; this morning via &lt;a href=&quot;https://amplab.cs.berkeley.edu/2013/10/23/got-a-minute-spin-up-a-spark-cluster-on-your-laptop-with-docker/&quot;&gt;the blog of the people behind AMPlab&lt;/a&gt;, creators of Spark and such. In short (because it&amp;#39;s actually much more than this) it lets you run a Spark/Shark cluster (pre-built!) on your PC.&lt;/p&gt;
+
+&lt;p&gt;I want to use it to experiment with a (virtual) Spark/Shark cluster on my laptop. Isn&amp;#39;t that cool?!&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, docker is built for Ubuntu. Fortunately, there are instructions on how to set it up on other systems.&lt;/p&gt;
+
+&lt;p&gt;Two things needed to be done before I got it to work:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Upgrade the amount of memory available to Vagrant to 2GB. See here: &lt;a href=&quot;http://docs-v1.vagrantup.com/v1/docs/config/vm/customize.html&quot;&gt;http://docs-v1.vagrantup.com/v1/docs/config/vm/customize.html&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Edit the &lt;a href=&quot;https://github.com/amplab/docker-scripts/blob/master/deploy/start_nameserver.sh&quot;&gt;nameserver script&lt;/a&gt; in order for the nameserver test to complete with success.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For the second, I changed&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;dig nameserver @${NAMESERVER_IP} | grep ANSWER -A1 | grep 127.0.0.1 &amp;gt; /dev/null;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;into&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;dig nameserver @${NAMESERVER_IP} | grep ANSWER -A1 | grep ${NAMESERVER_IP} &amp;gt; /dev/null;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  
+  &lt;p&gt;&lt;a href=&quot;/2013/11/25/running-docker-on-macosx/&quot;&gt;Running Docker on MacOSX&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on November 25, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Activity Monitoring from Smartphone Sensor Data (in a new Layout)]]></title>
+  <link rel="alternate" type="text/html" href="/data/rationality/2013/10/14/activity-monitoring-from-smartphone-sensor-data-in-a-new-layout/"/>
+  <id>/data/rationality/2013/10/14/activity-monitoring-from-smartphone-sensor-data-in-a-new-layout</id>
+  <published>2013-10-14T22:39:22+02:00</published>
+  <updated>2013-10-14T22:39:22+02:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;&lt;a href=&quot;http://www.data-intuitive.com/wp-content/uploads/2013/10/ActivityMonitoring-Screen.pdf&quot;&gt;&lt;img src=&quot;http://www.data-intuitive.com/wp-content/uploads/2013/10/ActivityMonitoring-Cover-231x300.png&quot; alt=&quot;ActivityMonitoring-Cover&quot;&gt;&lt;/a&gt;As one of the assignments of the &lt;a href=&quot;https://www.coursera.org/course/dataanalysis&quot;&gt;Data Analysis Coursera&lt;/a&gt; class, participants were asked to detect movement type from the sensor data of a smartphone. When I did the assignment, I created the report in Markdown, and converted it using Pandoc. This process was much like I described in &lt;a href=&quot;http://www.data-intuitive.com/2013/06/writing-workflow-markdown-pandoc-latex-and-the-likes/&quot;&gt;an earlier post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Recently, &lt;a href=&quot;http://www.anneleenmaelfeyt.be/&quot;&gt;Anneleen Maelfeyt&lt;/a&gt; has created a document style and logo for texts by Data Intuitive which I converted to a LaTeX template. As a proof of concept, I compiled the Markdown file with the new template. If you&amp;#39;re reading on a screen (including tablets), use this version: &lt;a href=&quot;http://www.data-intuitive.com/wp-content/uploads/2013/10/ActivityMonitoring-Screen.pdf&quot;&gt;ActivityMonitoring-Screen&lt;/a&gt;. For printing, there&amp;#39;s a version with a modified cover and A4 paper size: &lt;a href=&quot;http://www.data-intuitive.com/wp-content/uploads/2013/10/ActivityMonitoring-Print.pdf&quot;&gt;ActivityMonitoring-Print&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;An excerpt from the introduction in Markdown format:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Smartphones are ubiquitous, partly because they enhance our 
+lives in many ways. Most recent smartphones have a so-called 
+accelerometer[^1]. This device measure acceleration in 
+3 directions and in some cases also rotation by means of a 
+gyroscope[^1a].
+
+A relatively recent phenomenon is that smartphones 
+(or the applications that run on them) attempt to be 
+aware of the user *context* in the broad sense: location, 
+movement, mood, schedule for the day, etc[^2].
+
+One aspect of detecting the context of the user is movement 
+and activity. Detecting whether someone is walking or sitting 
+down makes a big difference for all sort of things: interests, 
+way of interacting with the device (only thumb or more fingers?),
+etc.[^3]
+
+[^1]:  &amp;lt;http://en.wikipedia.org/wiki/Accelerometer&amp;gt;
+[^1a]: &amp;lt;http://en.wikipedia.org/wiki/Gyroscope&amp;gt;
+[^2]:  &amp;lt;http://www.forbes.com/sites/shelisrael/2012/07/17/
+  announcing-age-of-context-a-new-book-with-robert-scoble/&amp;gt;
+[^3]:  Davies, N., Siewiorek, D.P., Sukthankar, R.: Activity-based
+computing. IEEE Pervasive Computing 7(2) (April 2008) 20-21
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;By the way, the &lt;a href=&quot;https://www.coursera.org/course/dataanalysis&quot;&gt;Data Analysis&lt;/a&gt; course runs again starting the end of October. I highly recommend it.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/rationality/2013/10/14/activity-monitoring-from-smartphone-sensor-data-in-a-new-layout/&quot;&gt;Activity Monitoring from Smartphone Sensor Data (in a new Layout)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on October 14, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Turning Cloudera Quickstart VM into an R Studio Server]]></title>
+  <link rel="alternate" type="text/html" href="/2013/08/16/turning-cloudera-quickstart-vm-into-an-r-studio-server/"/>
+  <id>/2013/08/16/turning-cloudera-quickstart-vm-into-an-r-studio-server</id>
+  <published>2013-08-16T14:48:26+02:00</published>
+  <updated>2013-08-16T14:48:26+02:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;Downloading the image (in my case for VirtualBox) is easy enough. Make sure that the VM has a connection to the internet.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo yum -y install R
+sudo yum -y install wget
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;From the &lt;a href=&quot;http://www.rstudio.com/ide/download/server&quot;&gt;R Studio Server website&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wget http://download2.rstudio.org/rstudio-server-0.97.551-x86_64.rpm
+sudo yum install --nogpgcheck rstudio-server-0.97.551-x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ready! Make sure to connect using a local user (if necessary, create one).&lt;/p&gt;
+
+&lt;p&gt;There&amp;#39;s one caveat though. R version 3.0.1 is installed and most packages for working with Hadoop are not yet ported to version 3.&lt;/p&gt;
+
+&lt;p&gt;A quick workaround is the following:&lt;/p&gt;
+
+&lt;p&gt;Within R:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;install.packages(c(&amp;#39;Rcpp&amp;#39;,&amp;#39;RJSONIO&amp;#39;,&amp;#39;bitops&amp;#39;,&amp;#39;digest&amp;#39;,&amp;#39;functional&amp;#39;,&amp;#39;stringr&amp;#39;,&amp;#39;plyr&amp;#39;,&amp;#39;reshape2&amp;#39;,&amp;#39;rJava&amp;#39;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;From the console:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wget https://github.com/RevolutionAnalytics/rmr2/raw/master/build/rmr2_2.2.2.tar.gz
+
+
+
+
+wget https://github.com/RevolutionAnalytics/rhdfs/raw/master/build/rhdfs_1.0.6.tar.gz
+
+
+
+
+wget https://github.com/RevolutionAnalytics/rhbase/raw/master/build/rhbase_1.2.0.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;From the console:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo R CMD INSTALL r*.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This should do the trick!&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/2013/08/16/turning-cloudera-quickstart-vm-into-an-r-studio-server/&quot;&gt;Turning Cloudera Quickstart VM into an R Studio Server&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on August 16, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Writing workflow: Markdown, Pandoc, LaTeX and the likes]]></title>
+  <link rel="alternate" type="text/html" href="/2013/06/24/writing-workflow-markdown-pandoc-latex-and-the-likes/"/>
+  <id>/2013/06/24/writing-workflow-markdown-pandoc-latex-and-the-likes</id>
+  <published>2013-06-24T15:10:00+02:00</published>
+  <updated>2013-06-24T15:10:00+02:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;You wouldn&amp;#39;t tell from the updates on this website, but I&amp;#39;m actively writing again. Offline, that is, the online part is for later. For now, I want to share my experience improving my writing workflow.&lt;/p&gt;
+
+&lt;p&gt;In the past, I used &lt;a href=&quot;http://www.latex-project.org/&quot;&gt;LaTeX&lt;/a&gt; for scientific texts and MS Word for everything else. LaTeX gives me the professional and typographically correct texts that I want, but I spent too much time fiddling around with packages, remembering markup, etc. MS Word, on the other hand, quickly made me get things done, albeit without the professional look or scientific powers.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m now in a situation that any writing (technical, scientific and even prose) can be done in the same way, delivering results in PDF, html or even MS Word:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;It usually starts in &lt;a href=&quot;http://www.iawriter.com/mac/&quot;&gt;iA Writer&lt;/a&gt; (on the Mac or the iPad), but any word processor able to handle ASCII text can be used. I choose iA Writer because of its distraction free writing.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt; is used as markup specification (including figures, footnotes, emphasis, etc.). Markdown is very basic, but it lets you focus on the content, rather than the form.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.rstudio.com/ide/docs/r_markdown&quot;&gt;Programming&lt;/a&gt; code (&lt;a href=&quot;http://www.r-project.org/&quot;&gt;R&lt;/a&gt; for instance), &lt;a href=&quot;http://www.rstudio.com/ide/docs/authoring/using_markdown_equations&quot;&gt;formulas&lt;/a&gt;, etc. can all be included in the Markdown format by means of the proper notation and possibly some extensions to the parser (see step 4).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;By means of &lt;a href=&quot;http://johnmacfarlane.net/pandoc/README.html&quot;&gt;Pandoc&lt;/a&gt;, the text is converted into the appropriate format (html, pdf, LaTeX, ePub, DocBook, ...)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ready!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Ok, I hear you thinking, but you just lost all possible configuration of look and feel, layout, etc... That&amp;#39;s correct, there are some Markdown writing tools that allow you to create PDFs that look awful.&lt;/p&gt;
+
+&lt;p&gt;The nice thing about Pandoc though is that during the conversion step (4), you can specify the templates (CSS, LaTeX header code, MS Word template) that should be used.&lt;/p&gt;
+
+&lt;p&gt;It takes some fiddling in order to get the correct options to Pandoc and get proper templates in place. A Google should get you going.&lt;/p&gt;
+
+&lt;p&gt;An example. From a slight adaptation of this file, we generate a Markdown file and this is converted in the &lt;a href=&quot;http://www.data-intuitive.com/?attachment_id=453&quot;&gt;PDF linked here&lt;/a&gt;. A similar process is used to create the reports for the different analysis steps for the &lt;a href=&quot;https://github.com/tverbeiren/dataMineR&quot;&gt;dataMineR project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Leave a comment if you would like to see more examples.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/2013/06/24/writing-workflow-markdown-pandoc-latex-and-the-likes/&quot;&gt;Writing workflow: Markdown, Pandoc, LaTeX and the likes&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on June 24, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Issues with traditional SLM (Part 7)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2013/01/25/slm-issues-with-traditional-slm-part-7/"/>
+  <id>/data/slm/2013/01/25/slm-issues-with-traditional-slm-part-7</id>
+  <published>2013-01-25T07:00:04+01:00</published>
+  <updated>2013-01-25T07:00:04+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;h3&gt;Avoid Accountability&lt;/h3&gt;
+
+&lt;p&gt;When all goes wrong, and the KPIs are showing bad performance, there is one last option: avoid accountability. For instance, because other teams have not done their job which caused the resolution time to be above threshold. This can quickly lead to long discussions and eventually mistrust between teams and companies.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2013/01/25/slm-issues-with-traditional-slm-part-7/&quot;&gt;SLM: Issues with traditional SLM (Part 7)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on January 25, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Issues with traditional SLM (Part 6)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2013/01/23/slm-issues-with-traditional-slm-part-6/"/>
+  <id>/data/slm/2013/01/23/slm-issues-with-traditional-slm-part-6</id>
+  <published>2013-01-23T07:00:15+01:00</published>
+  <updated>2013-01-23T07:00:15+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;h3&gt;Gaming the system&lt;/h3&gt;
+
+&lt;p&gt;We start by considering metric 1 in the &lt;a href=&quot;http://www.data-intuitive.com/2012/11/slm-introduction-part-1/&quot;&gt;examples given before&lt;/a&gt;, which is related to the on-hold time of a call. There are several ways to avoid the penalty of crossing the threshold for this metric:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;One such way is to drop the call (a technical error is always possible after all).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Another way is to have an automated answering machine ask the user some (possibly irrelevant) questions.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A third option is to answer the call but forward it to a different team as soon as the user starts explaining the question or problem. In none of these cases, the service can be called qualitative, but the appropriate metrics are perfect. Other metrics can be gamed in similar ways.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To make things worse: Since usually only a small amount of KPIs are selected for monitoring service quality, they are easy to keep an eye on and follow-up. It is thus possible to make sure most of the metrics are managed in such a way that success is guaranteed.&lt;/p&gt;
+
+&lt;p&gt;If you combine this effect with &lt;a href=&quot;http://www.data-intuitive.com/2013/01/slm-issues-with-traditional-slm-part-4/&quot;&gt;the earlier&lt;/a&gt; &lt;a href=&quot;http://www.data-intuitive.com/2012/12/slm-issues-with-traditional-slm-part-3/&quot;&gt;issues&lt;/a&gt; one gets a nice collection of, say 5 KPIs and concludes that the service quality is optimal.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2013/01/23/slm-issues-with-traditional-slm-part-6/&quot;&gt;SLM: Issues with traditional SLM (Part 6)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on January 23, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Issues with traditional SLM (Part 5)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2013/01/21/slm-issues-with-traditional-slm-part-5/"/>
+  <id>/data/slm/2013/01/21/slm-issues-with-traditional-slm-part-5</id>
+  <published>2013-01-21T07:00:47+01:00</published>
+  <updated>2013-01-21T07:00:47+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;h3&gt;Focus on the wrong instances&lt;/h3&gt;
+
+&lt;p&gt;A consequence of dealing with averages and aggregate metrics is that in some cases, when a threshold value is reached there is no longer an incentive to act on the individual instance that went wrong. As an example, consider example 6 &lt;a href=&quot;http://www.data-intuitive.com/2012/11/slm-introduction-part-1/&quot;&gt;given before&lt;/a&gt;. If the resolution time of an incident is above threshold, it is counted in the percentage and it will not get any better over time, but also not worse! In other words, there is no longer a reason to fix the incident as soon as possible. Rather, it may be better to focus on other incidents that can still be fixed within threshold.&lt;/p&gt;
+
+&lt;p&gt;The result may be a large number of open incidents and thus unhappy customers, and rightly so.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2013/01/21/slm-issues-with-traditional-slm-part-5/&quot;&gt;SLM: Issues with traditional SLM (Part 5)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on January 21, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Issues with traditional SLM (Part 4)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2013/01/18/slm-issues-with-traditional-slm-part-4/"/>
+  <id>/data/slm/2013/01/18/slm-issues-with-traditional-slm-part-4</id>
+  <published>2013-01-18T10:59:18+01:00</published>
+  <updated>2013-01-18T10:59:18+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;Consider the following (fake) recommendation for a hotel room:&lt;/p&gt;
+
+&lt;blockquote&gt;The guaranteed average room temperature is 20 degrees Celcius.&lt;/blockquote&gt;
+
+&lt;p&gt;Even with a money back guarantee, I would not rent the room. Suppose its 40 degrees during the day and 0 degrees during the night? The average temperature may still be 20 degrees...&lt;/p&gt;
+
+&lt;h3&gt;Averages&lt;/h3&gt;
+
+&lt;p&gt;When dealing with customer interactions (calls), IT incidents and problems, etc., one usually deals with a large number of instances that are observed. Hundreds or even thousands of calls may be logged in a call center per day. In order to aggregate the information on these calls, one usually takes averages over a given period of time. This is reflected in the examples given before.&lt;/p&gt;
+
+&lt;p&gt;Averages, however, are only a first order representation of a set of instances. One bad instance can easily be compensated by a good instance resulting in a good average. In other words, if the average on-hold time for a callcenter is 2 minutes, it may well be that I have to wait 10 minutes. If only at another time 5 calls are answered within a second, the average is back to 2 minutes.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2013/01/18/slm-issues-with-traditional-slm-part-4/&quot;&gt;SLM: Issues with traditional SLM (Part 4)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on January 18, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Example of SLM issue]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2013/01/18/example-of-slm-issue/"/>
+  <id>/data/slm/2013/01/18/example-of-slm-issue</id>
+  <published>2013-01-18T09:40:32+01:00</published>
+  <updated>2013-01-18T09:40:32+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;This morning, I stumbled upon the following tweet:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/peteskomoroch/status/292140306806231040&quot;&gt;https://twitter.com/peteskomoroch/status/292140306806231040&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It points to a &lt;a href=&quot;http://petewarden.typepad.com/searchbrowser/2013/01/does-reality-improve-when-your-numbers-do.html&quot;&gt;blog post&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/peteskomoroch&quot;&gt;Peter Skomoroch &lt;/a&gt;in which he gives a nice example of the &lt;a href=&quot;http://www.data-intuitive.com/2012/12/slm-issues-with-traditional-slm-part-3/&quot;&gt;SLM issue we encountered in our last post&lt;/a&gt;. I especially liked the part where he quotes a former lecturer of his:&lt;/p&gt;
+
+&lt;blockquote&gt;&quot;You&#39;ll start off wanting to measure what you value, but you&#39;ll end up valuing what you can measure&quot;&lt;/blockquote&gt;
+
+&lt;p&gt;Sounds familiar?&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2013/01/18/example-of-slm-issue/&quot;&gt;Example of SLM issue&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on January 18, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Issues with traditional SLM (Part 3)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2012/12/06/slm-issues-with-traditional-slm-part-3/"/>
+  <id>/data/slm/2012/12/06/slm-issues-with-traditional-slm-part-3</id>
+  <published>2012-12-06T08:00:00+01:00</published>
+  <updated>2012-12-06T08:00:00+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;Considering further some aspects of (traditional) SLM that should be fixed.&lt;/p&gt;
+
+&lt;h3&gt;The wrong way around&lt;/h3&gt;
+
+&lt;p&gt;The practice of defining (mainly performance-based) KPIs is wide-spread, so wide-spread in fact that often the reasoning is reversed: Instead of measuring a set of KPIs that may have a positive influence quality, one often (implicitly) states that the quality of a service is &lt;em&gt;defined&lt;/em&gt; as the outcome of these KPIs.&lt;/p&gt;
+
+&lt;p&gt;To give an extreme example: Suppose the weather is proven to have an impact on customer satisfaction of a call center. Is it rational to state that the wheather &lt;em&gt;defines&lt;/em&gt; quality? Should the Service Level be calculated based on the weather statistics? I don&amp;#39;t think many managers would buy this.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, when Service Levels are defined, one often finds quality defined as just &lt;em&gt;one&lt;/em&gt; parameter like, e.g., &amp;#39;waiting time on-hold&amp;#39; or &amp;#39;system uptime&amp;#39;.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2012/12/06/slm-issues-with-traditional-slm-part-3/&quot;&gt;SLM: Issues with traditional SLM (Part 3)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on December 06, 2012.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Issues with traditional SLM (Part 2)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2012/12/05/slm-issues-with-traditional-slm-part-2/"/>
+  <id>/data/slm/2012/12/05/slm-issues-with-traditional-slm-part-2</id>
+  <published>2012-12-05T08:00:48+01:00</published>
+  <updated>2012-12-05T08:00:48+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;In our &lt;a href=&quot;http://www.data-intuitive.com/2012/11/service-level-management-the-series/&quot;&gt;series of posts&lt;/a&gt; concerning SLM, SLAs, etc. we have started considering aspects of traditional SLM that lead us astray. We continue with the quantitative versus qualitative discussion.&lt;/p&gt;
+
+&lt;h3&gt;Lack of representativeness&lt;/h3&gt;
+
+&lt;p&gt;The reason for defining metrics and KPIs was to measure the quality of a service. Quality is an abstract and broad notion that may have a subjective connotation that is hard to put in words. In most cases, KPIs are a representation of an aspect of the service, not the quality of the service as a whole. &lt;em&gt;Performance related metrics&lt;/em&gt; that deal with speed or turnover, for instance, are often used as KPIs (see examples 1, 2, 4, 5).&lt;/p&gt;
+
+&lt;p&gt;Performance (typically measured by the quantitative types of metrics, see &lt;a href=&quot;http://www.data-intuitive.com/2012/12/slm-issues-with-traditional-slm-part-1/&quot;&gt;here&lt;/a&gt;) is only part of the quality that is expected. Consider the following two examples:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A ticket can be solved in the requested amount of time but using a temporary solution. Overall quality is suffering, having an impact on customer satisfaction.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The time on hold at a service desk is too high according to company standards, but most cases are resolved during this one call meaning that the effort pays and customers are positive about the service.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In other words, the lack of representation can go both ways: the quality may be higher or lower than expected, based on  the performance KPI.&lt;/p&gt;
+
+&lt;p&gt;Another example: It is true that, on average, a customer that has to wait long on the phone before getting someone on the phone will likely be less happy than someone who does not have to wait at all. It is true that an IT issue that is resolved in 1 hour will be more appreciated than one that takes 2 days. But living in the illusion that fixing all IT incidents within an hour is the way to have a perfect IT service desk, is doomed to fail.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2012/12/05/slm-issues-with-traditional-slm-part-2/&quot;&gt;SLM: Issues with traditional SLM (Part 2)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on December 05, 2012.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Issues with traditional SLM (Part 1)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2012/12/04/slm-issues-with-traditional-slm-part-1/"/>
+  <id>/data/slm/2012/12/04/slm-issues-with-traditional-slm-part-1</id>
+  <published>2012-12-04T21:30:13+01:00</published>
+  <updated>2012-12-04T21:30:13+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;We &lt;a href=&quot;http://www.data-intuitive.com/2012/11/service-level-management-the-series/&quot;&gt;introduced&lt;/a&gt; some basic aspects of &lt;a href=&quot;http://www.data-intuitive.com/2012/11/slm-introduction-part-1/&quot;&gt;SLM&lt;/a&gt; in &lt;a href=&quot;http://www.data-intuitive.com/2012/11/slm-introduction-part-2/&quot;&gt;the&lt;/a&gt; &lt;a href=&quot;http://www.data-intuitive.com/2012/11/slm-introduction-part-3/&quot;&gt;previous&lt;/a&gt; &lt;a href=&quot;http://www.data-intuitive.com/2012/12/slm-introduction-part-4/&quot;&gt;posts&lt;/a&gt;. We now turn to a list of issues with traditional Service Level Management.&lt;/p&gt;
+
+&lt;h3&gt;Quantity instead of Quality&lt;/h3&gt;
+
+&lt;p&gt;In general, it is easier to define a metric or KPI that is based on a quantitative parameter: the number of incidents, number of escalations, number of errors, minutes downtime, etc. That is the reason that this type of parameters are often found in &lt;a href=&quot;http://www.data-intuitive.com/2012/12/slm-introduction-part-4/&quot;&gt;SLA&lt;/a&gt;s. In a lot of cases, quantity is &lt;em&gt;not&lt;/em&gt; related to quality.&lt;/p&gt;
+
+&lt;p&gt;&amp;#39;The number of incidents resolved&amp;#39;, for instance, is not a good quality parameter. It may well be that some of the incidents took years to acknowledge. &amp;#39;The number of incidents resolved in an agreed time frame&amp;#39; is better, but the resolution may be only a temporary workaround? Or, in order to attain the required time frame, staffing is doubled and costs skyrocket.&lt;/p&gt;
+
+&lt;p&gt;We can go on giving examples like this. Sometimes, quantitative information is good, or can be rephrased to be meaningful. Sometimes quantitative parameters can be used as informational. But be avoid drawing up an SLA on the basis of purely quantitative parameters only.&lt;/p&gt;
+
+&lt;p&gt;There is another way to handle quantitative KPIs, but we leave this for a later post.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2012/12/04/slm-issues-with-traditional-slm-part-1/&quot;&gt;SLM: Issues with traditional SLM (Part 1)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on December 04, 2012.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Introduction (part 4)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2012/12/04/slm-introduction-part-4/"/>
+  <id>/data/slm/2012/12/04/slm-introduction-part-4</id>
+  <published>2012-12-04T21:14:13+01:00</published>
+  <updated>2012-12-04T21:14:13+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;We introduced the service level in &lt;a href=&quot;http://www.data-intuitive.com/2012/11/slm-introduction-part-3/&quot;&gt;a previous post&lt;/a&gt;. A Service Level can be defined/calculated for one service or a set of services.&lt;/p&gt;
+
+&lt;h3&gt;Service Level Agreement&lt;/h3&gt;
+
+&lt;p&gt;A contract with a service provider typically includes several services. An agreement about each of these services and their respective targets and quality parameters is called a Service Level Agreement (SLA). Often, though, the term SLA is used &lt;em&gt;not&lt;/em&gt; to denote the contract as such, but rather the Service Level calculated for all the services is in the contract.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2012/12/04/slm-introduction-part-4/&quot;&gt;SLM: Introduction (part 4)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on December 04, 2012.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Introduction (part 3)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2012/11/20/slm-introduction-part-3/"/>
+  <id>/data/slm/2012/11/20/slm-introduction-part-3</id>
+  <published>2012-11-20T07:00:12+01:00</published>
+  <updated>2012-11-20T07:00:12+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;As mentioned before, lots of data points are gathered and averages are often used to reduce this amount to smaller proportions. The ultimate goal is often to reduce different KPIs to one single number: the service level.&lt;/p&gt;
+
+&lt;h3&gt;Service Level&lt;/h3&gt;
+
+&lt;p&gt;Traditionally, a service level is either defined as the result of one KPI or as the (weighted) average of a small set of KPIs, most often expressed as a percentage. This way, it is at best an average of a limited number of KPIs.&lt;/p&gt;
+
+&lt;p&gt;In practice, one often measures the service level and takes a baseline which is then used as benchmark.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2012/11/20/slm-introduction-part-3/&quot;&gt;SLM: Introduction (part 3)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on November 20, 2012.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[SLM: Introduction (part 2)]]></title>
+  <link rel="alternate" type="text/html" href="/data/slm/2012/11/19/slm-introduction-part-2/"/>
+  <id>/data/slm/2012/11/19/slm-introduction-part-2</id>
+  <published>2012-11-19T07:00:07+01:00</published>
+  <updated>2012-11-19T07:00:07+01:00</updated>
+  <author>
+    <name>Toni Verbeiren</name>
+    <uri></uri>
+    <email></email>
+  </author>
+  
+  <content type="html">
+  
+    &lt;p&gt;In the previous post about SLM, we gave some examples of metrics that are often used in the practice of SLM. We now turn to some characteristics of most service level implementations.&lt;/p&gt;
+
+&lt;h3&gt;Averages and Sums&lt;/h3&gt;
+
+&lt;p&gt;One often deals with lots of data points, for instance when considering incidents or service calls to a helpdesk.&lt;/p&gt;
+
+&lt;p&gt;Usually, a (small) number of important metrics are selected and calculated on a regular basis (monthly, quarterly). The metrics are defined as &lt;em&gt;averages&lt;/em&gt; or sums, such that one number is characteristic for the set of incidents, calls, problems, ... that it covers.&lt;/p&gt;
+
+&lt;p&gt;An important metric is often called a &lt;strong&gt;Key Performance Indicator&lt;/strong&gt;.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/data/slm/2012/11/19/slm-introduction-part-2/&quot;&gt;SLM: Introduction (part 2)&lt;/a&gt; was originally published by Toni Verbeiren at &lt;a href=&quot;&quot;&gt;Data Intuitive&lt;/a&gt; on November 19, 2012.&lt;/p&gt;</content>
+</entry>
+
+</feed>

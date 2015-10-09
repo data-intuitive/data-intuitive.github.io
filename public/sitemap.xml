@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc></loc>
+    </url>
+    
+    
+    <url>
+        <loc>/404/</loc>
+    </url>
+    
+    <url>
+        <loc>/categories/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>/featured/</loc>
+    </url>
+    
+    <url>
+        <loc>/feed.xml</loc>
+    </url>
+    
+    <url>
+        <loc>/</loc>
+    </url>
+    
+    <url>
+        <loc>/contact/</loc>
+    </url>
+    
+    <url>
+        <loc>/about/</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/</loc>
+    </url>
+    
+    <url>
+        <loc>/sitemap.xml</loc>
+    </url>
+    
+    <url>
+        <loc>/tags/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>/page2/</loc>
+    </url>
+    
+    <url>
+        <loc>/page3/</loc>
+    </url>
+    
+    <url>
+        <loc>/page4/</loc>
+    </url>
+    
+    <url>
+        <loc>/page5/</loc>
+    </url>
+    
+    <url>
+        <loc>/page6/</loc>
+    </url>
+    
+
+    
+    <url>
+        <loc>/2015/05/29/code-snippet-repository/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/spark/2015/01/15/transposing-a-spark-rdd/</loc>
+    </url>
+    
+    <url>
+        <loc>/2014/09/24/writing-workflow-and-reproducible-data-analysis/</loc>
+    </url>
+    
+    <url>
+        <loc>/decision/risks/2014/09/23/impact-in-risk-assessment/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/writing/2014/07/10/publishing-html-presentations-on-github/</loc>
+    </url>
+    
+    <url>
+        <loc>/2013/11/25/running-docker-on-macosx/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/rationality/2013/10/14/activity-monitoring-from-smartphone-sensor-data-in-a-new-layout/</loc>
+    </url>
+    
+    <url>
+        <loc>/2013/08/16/turning-cloudera-quickstart-vm-into-an-r-studio-server/</loc>
+    </url>
+    
+    <url>
+        <loc>/2013/06/24/writing-workflow-markdown-pandoc-latex-and-the-likes/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2013/01/25/slm-issues-with-traditional-slm-part-7/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2013/01/23/slm-issues-with-traditional-slm-part-6/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2013/01/21/slm-issues-with-traditional-slm-part-5/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2013/01/18/slm-issues-with-traditional-slm-part-4/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2013/01/18/example-of-slm-issue/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/12/06/slm-issues-with-traditional-slm-part-3/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/12/05/slm-issues-with-traditional-slm-part-2/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/12/04/slm-issues-with-traditional-slm-part-1/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/12/04/slm-introduction-part-4/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/11/20/slm-introduction-part-3/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/11/19/slm-introduction-part-2/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/11/16/slm-introduction-part-1/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/slm/2012/11/15/service-level-management-the-series/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/decision/rationality/2012/09/25/rational-decision-making-in-business/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/decision/2012/09/18/choosing-the-right-cover-photo/</loc>
+    </url>
+    
+    <url>
+        <loc>/2012/01/25/fight-against-tax-fraud-in-belgium/</loc>
+    </url>
+    
+    <url>
+        <loc>/2012/01/17/infografiek/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/2011/03/15/the-economist-on-corporate-governance/</loc>
+    </url>
+    
+    <url>
+        <loc>/data/2010/10/26/johan-bollen-twitter-mood-predicts-the-stock-market/</loc>
+    </url>
+    
+    <url>
+        <loc>/2010/10/19/open-letter-to-data-scientists/</loc>
+    </url>
+    
+    <url>
+        <loc>/site/2010/10/19/happy-with-the-current-result/</loc>
+    </url>
+    
+    <url>
+        <loc>/site/2010/10/19/wordpress-it-will-be/</loc>
+    </url>
+    
+    <url>
+        <loc>/2010/03/12/recommended-subsidies-for-food/</loc>
+    </url>
+    
+    <url>
+        <loc>/2010/03/11/using-a-hammer-to-paint-the-wall-part-1/</loc>
+    </url>
+    
+    <url>
+        <loc>/2010/02/24/life-expectancy-does-my-insurance-company-know-about-this/</loc>
+    </url>
+    
+    <url>
+        <loc>/2010/02/18/life-expectancy-the-difference-between-male-and-female/</loc>
+    </url>
+    
+    <url>
+        <loc>/2009/06/19/how-to-cope-with-change-an-alternative-approach/</loc>
+    </url>
+    
+    <url>
+        <loc>/2009/04/18/a-new-project/</loc>
+    </url>
+    
+    <url>
+        <loc>/2008/11/26/why-personal-productivity-may-be-hard-and-the-corporation-has-the-answer/</loc>
+    </url>
+    
+    <url>
+        <loc>/2008/09/15/how-to-measure-productivity/</loc>
+    </url>
+    
+    <url>
+        <loc>/2008/09/12/definition-of-productivity/</loc>
+    </url>
+    
+    <url>
+        <loc>/2008/04/03/vmware-vscsistats-the-paper/</loc>
+    </url>
+    
+    <url>
+        <loc>/2008/01/08/capacity-monitoring-for-desktops/</loc>
+    </url>
+    
+    <url>
+        <loc>/2008/01/02/chargeback/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/12/17/performance-monitoring-correlations/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/12/17/performance-monitoring-more-about-peaks/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/12/14/performance-monitoring-averages-and-peaks/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/12/14/capacity-planning-what-to-monitor-and-how-to-interpret/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/11/21/word-vs-excel/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/10/26/vmware-capacity-planner-taking-the-data-offline-part-2-cygwin-wget/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/10/25/vmware-capacity-planner-taking-the-data-offline-part-1-introduction/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/09/17/file-versioning/</loc>
+    </url>
+    
+    <url>
+        <loc>/2007/06/15/to-use-the-mouse-or-not/</loc>
+    </url>
+    
+</urlset>

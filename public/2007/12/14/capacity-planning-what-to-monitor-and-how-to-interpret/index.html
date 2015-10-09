@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<!--
+====================================================
+    __  ____  ______________  _______ ___    __ 
+   / / / /  |/  / ____/   \ \/ / ___//   |  / / 
+  / /_/ / /|_/ / /_  / /| |\  /\__ \/ /| | / /  
+ / __  / /  / / __/ / ___ |/ /___/ / ___ |/ /___
+/_/ /_/_/  /_/_/   /_/  |_/_//____/_/  |_/_____/
+                                                     
+====================================================
+Author: Hossain Mohammad Faysal
+Profile: https://www.facebook.com/hmfaysal
+Version: 1.0
+Description: Awesome dude, awesome life
+====================================================
+-->
+<head>
+<meta charset="utf-8">
+<title>CAPACITY PLANNING: WHAT TO MONITOR AND HOW TO INTERPRET &vert; DATA INTUITIVE</title>
+<meta name="description" content="Data where applicable, Intuition where needed">
+<meta name="keywords" content="Capacity, Monitoring, Performance">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/logo_white.png">
+<meta name="twitter:title" content="Capacity Planning: What to monitor and how to interpret">
+<meta name="twitter:description" content="Data where applicable, Intuition where needed">
+<meta name="twitter:creator" content="@tverbeiren">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Capacity Planning: What to monitor and how to interpret">
+<meta property="og:description" content="Data where applicable, Intuition where needed">
+<meta property="og:url" content="/2007/12/14/capacity-planning-what-to-monitor-and-how-to-interpret/">
+<meta property="og:site_name" content="Data Intuitive">
+<meta property="og:image" content="/images/graan-2-small.png">
+
+
+
+
+
+<link rel="canonical" href="/2007/12/14/capacity-planning-what-to-monitor-and-how-to-interpret/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Data Intuitive Feed">
+<link rel="author" href="https://plus.google.com/u/0/108837720006806497269?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/assets/css/vendor/nprogress.css">
+    <link rel="stylesheet" href="/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/post.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="notepad-post-container-simple" class="notepad-post-container-simple" role="main">
+            <header class="notepad-post-header-simple">
+                <div class="notepad-post-menu-header-simple">
+
+                    <a class="notepad-blog-logo" href="">
+                        <img src="/images/logo_white.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="notepad-blog-menu">      
+    <div class="notepad-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="notepad-menu">
+        <li class="notepad-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/">Home</a>
+                 </li>
+
+            <li>
+                    <a href="/categories">Categories</a>
+                 </li>
+
+            <li>
+                    <a href="/about">About</a>
+                 </li>
+            
+           <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="notepad-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="notepad-post-meta-simple">
+                            <h1>Capacity Planning: What to monitor and how to interpret</h1>
+                            <p>by <strong>Toni Verbeiren</strong> &#8212; on <a href="/tags/index.html#Capacity" data-toggle="tooltip" title="Posts tagged with Capacity" rel="tag">Capacity</a>&nbsp;&comma;&nbsp;<a href="/tags/index.html#Monitoring" data-toggle="tooltip" title="Posts tagged with Monitoring" rel="tag">Monitoring</a>&nbsp;&comma;&nbsp;<a href="/tags/index.html#Performance" data-toggle="tooltip" title="Posts tagged with Performance" rel="tag">Performance</a> <strong><time datetime="2007-12-14T15:35:00+01:00">14 Dec 2007</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="notepad-post-content post tag-simple">
+            <div><p>Capacity planning starts with capacity (of performance) monitoring.  </p>
+
+<p>Everybody who is involved in the monitoring of systems will acknowledge that the most difficult aspects in monitoring a server (or set of servers) are:  </p>
+
+<ol>
+<li><p>Finding the proper indicators for the performance of the system (CPU usage, CPU cycles, memory usage, paging, etc.)</p></li>
+<li><p>Making sure they are queried regularly, but not too much in order to avoid impacting the performance of the system by monitoring it.</p></li>
+<li><p>Storing the resulting data</p></li>
+<li><p>Summarize, create views, average, etc. (this also depends on what you want to know about the system)</p></li>
+<li><p>Analyze, interpret, etc.</p></li>
+</ol>
+
+<p>Did I say the most difficult aspects? Are there any other aspects? Well, not really... capacity monitoring (and planning as a further step) is not an easy task:  </p>
+
+<ul>
+<li><p>Are you aware of the utilization of your systems?  Even of your workstations?</p></li>
+<li><p>Would you have any idea how many of your servers could be placed on a virtualization platform with a specific set of hardware characteristics?</p></li>
+<li><p>Would you know when your mail server had the hardest time managing mail boxes the last couple of weeks?</p></li>
+</ul>
+
+<p>Probably the answer is &#39;no&#39;. Maybe the answer is &#39;I don&#39;t care&#39;?   </p>
+
+<p>Most companies do care, because of several reasons: cost, manageability, flexibility, scalability, environment, space, etc.  </p>
+
+<p>There are already some players on the market: VMware Capacity Planner (see earlier posts), PlateSpin PowerRecon, Veeam Monitor, etc.  I&#39;m mostly used to VMware Capacity Planner (VMCP) but recently, I have also evaluated both PowerRecon and Veeam Monitor. More about this later.</p>
+
+            </div>
+        </article>
+        <div class="cf"></div>
+
+        <div class="cf"></div>
+        
+            <div class="notepad-author-info">
+                <div class="row">
+                    <section class="notepad-post-author small-12 columns">
+                        
+                            <img src="/images/toni1.png" class="notepad-post-author-avatar" alt="Toni Verbeiren's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Toni Verbeiren</h1>
+                        
+                        
+                            <p><a href="mailto:" class="author-website"></a></p>
+                        
+                        
+                            <p></p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <div class="cf"></div>
+
+    <footer class="notepad-site-footer">
+    <div class="copyright">
+         <section>All content copyright <a href="/about">Toni Verbeiren</a> &copy; 2015 &bull; All rights reserved.</section>
+         <section>Proudly published with <a class="icon-ghost" href="https://jekyllrb.com/">Jekyll</a></section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/tverbeiren">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/0/108837720006806497269">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        
+        <a href="http://github.com/tverbeiren">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer> 
+</main>    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="/assets/js/vendor/modernizr.js"></script>
+    <script src="/assets/js/foundation.min.js"></script>
+    
+    <script src="/assets/js/notepad.js"></script>
+    <script src="/assets/js/scripts.min.js"></script>
+    <script src="/assets/js/vendor/nprogress.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+    <script type='text/javascript'>console.log("HMFaysal Notepad Theme Version 2.0");</script>
+    <script type='text/javascript'>console.log("https://alum.mit.edu/www/hmfaysal");</script>
+
+
+<script>NProgress.start();var interval=setInterval(function(){NProgress.inc()},1000);jQuery(window).load(function(){clearInterval(interval);NProgress.done()});jQuery(window).unload(function(){NProgress.start()});</script> 
+</body>
+</html>

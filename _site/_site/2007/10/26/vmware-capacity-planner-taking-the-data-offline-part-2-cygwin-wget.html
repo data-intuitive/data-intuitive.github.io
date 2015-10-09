@@ -1,0 +1,22 @@
+<p>I started thinking about avoiding <a href="http://verbeiren.blogspot.com/2007/09/vmware-capacity-planner-taking-data.html">the manual exports</a> from the VMCP website and remembered I used <a href="http://www.gnu.org/software/wget/">WGET</a> in the past for this kind of stuff. The difference with before was that this time, I needed to login to the website before being able to get data from it.  </p>
+
+<p>Login in to the VMCP <a href="https://optimize.vmware.com">website</a> is done using a POST method and luckily wget supports that.  The next thing is to understand what the post data needs to be.  This can be fetched from the source of the logon page:<br />
+<a href="http://bp1.blogger.com/_BQpPXr1uJkU/RyGsu5e3vzI/AAAAAAAABI0/NO6_D9Brfqo/s1600-h/logon.jpg"><img src="http://bp1.blogger.com/_BQpPXr1uJkU/RyGsu5e3vzI/AAAAAAAABI0/NO6_D9Brfqo/s320/logon.jpg" alt="" /></a>  </p>
+
+<p>The relevant POST data is derived to be<br />
+`<br />
+fuseaction=Security<br />
+Page=users_login.cfm<br />
+username=???<br />
+password=???<br />
+`  </p>
+
+<p>Since I run Windows XP on my laptop, I use <a href="http://www.cygwin.com/">Cygwin</a> to run wget.  Cookies are used to store a session ID for you logon session, so wget has to be told to store those cookies in a file. This is the resulting command line:  </p>
+
+<p><code>  
+wget --keep-session-cookies --save-cookies cookies.txt 'https://optimize.vmware.com/index.cfm' --post-data 'fuseaction=Security&amp;Page;=users_login.cfm&amp;username;=???&amp;password;=???' --no-check-certificate -O output.html  
+</code>  </p>
+
+<p>Parsing the output.html file, you should be able to see whether logon was succesful. The success depends on many factors (local proxy, network settings, username/password, etc.). You can get more info by adding suitable options to wget.  </p>
+
+<p>This concludes part 2 of this series of articles. In this part, we used wget to logon to the VMware capacity planner website.</p>

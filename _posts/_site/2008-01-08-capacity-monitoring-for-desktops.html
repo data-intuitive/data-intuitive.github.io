@@ -1,0 +1,47 @@
+<p>With the rise of VDI (Virtual Desktop Infrastructure, <a href="http://www.brianmadden.com/content/article/Virtual-Desktop-Infrastructures-VDI-Whats-real-today-whats-not-and-whats-needed">see here for a comprehensive overview</a>) and the momentum it has, one starts to ask similar questions as with conventional server consolidation: what type of virtualization platform is required, how many users/desktops can I host, will there still be room for scaling, etc.</p>
+
+<p>The way to approach this in server virtualization projects is by means of capacity monitoring and planning using virtualization scenarios. We refer to <a href="http://verbeiren.blogspot.com/2007/09/vmware-capacity-planner-taking-data.html">earlier</a> <a href="http://verbeiren.blogspot.com/2007/12/capacity-planning-what-to-monitor-and.html">posts</a> for more information about this topic. </p>
+
+<p>The question we are asking: can we use the same concepts and ideas for desktop virtualization? My answer is ‘NO’, because:</p>
+
+<ol>
+  <li>
+    <p>A user acts completely different than a process or service: less predictable, depending on our mood, depending on the time of the day, etc.</p>
+  </li>
+  <li>
+    <p>Some end-user applications ask 1OO% of the CPU even while they are not doing anything. The classic example used to be the game ‘Pinball’. Even a screensaver can take a large amount of CPU power. </p>
+  </li>
+  <li>
+    <p>In a VDI context, this becomes even more important. For instance: why would you scale your virtual desktop CPU and memory to include desktop search if really nothing personal can be found on the hosted desktop?</p>
+  </li>
+  <li>
+    <p>When starting and running 10 applications at the same time, we will probably only use 5 of them later, but still… they require CPU power (and memory) while seeming idle.</p>
+  </li>
+  <li>
+    <p>If a user has meetings half the time, does that mean his session is closed? Does it still require processing power? How can this be analyzed?</p>
+  </li>
+  <li>
+    <p>Etc.</p>
+  </li>
+</ol>
+
+<p>In other words, a desktop environment is inherently different from a server environment. This is why in my opinion it is harder to maintain a Citrix farm than a VMware farm: applications and users tend to be less predictable and ‘stable’ than servers.</p>
+
+<p>Does that mean that we can not do any sizing or planning in a VDI context? On the contrary, we should only keep in mind that applying exactly the same reasoning as with server consolidation planning is not a good idea. </p>
+
+<p>A few more tips:</p>
+
+<ul>
+  <li>
+    <p>Make sure you have an overview of running processes and their CPU/memory utilization. This helps in deciding what is really important.</p>
+  </li>
+  <li>
+    <p>Be careful with averages and peaks: a PC that is running all the time will have a low average, but may be used heavily during the day and a PC may be 100% used during the day because of some applications.</p>
+  </li>
+  <li>
+    <p>Take into account inactive time during the day.</p>
+  </li>
+  <li>
+    <p>Do not try to analyze the ‘average’ user, instead create classes (say 5 or so) that each have typical characteristics. Use these classes to create the virtualization scenarios.</p>
+  </li>
+</ul>
