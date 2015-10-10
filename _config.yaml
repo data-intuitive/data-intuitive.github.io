@@ -27,8 +27,8 @@ links:
     url: /
     external: false
     icon: home
-  # - title: Featured Posts
-  #   url: /featured
+  - title: Featured Posts
+    url: /featured
   - title: Categories
     url: /categories
   - title: About

@@ -5,7 +5,6 @@ date: 2015-01-15 21:26:35+00:00
 layout: post
 slug: transposing-a-spark-rdd
 title: Transposing a Spark RDD
-wordpress_id: 551
 categories:
 - Data
 - Spark

@@ -5,7 +5,11 @@ date: 2014-09-24 05:00:52+00:00
 layout: post
 slug: writing-workflow-and-reproducible-data-analysis
 title: Writing Workflow and Reproducible Data Analysis
-wordpress_id: 514
+featured: true
+categories:
+- Writing
+- Workflow
+- Reproducible Data Analysis
 ---
 
 I've been writing about my [writing](http://www.data-intuitive.com/2013/06/writing-workflow-markdown-pandoc-latex-and-the-likes/) [workflow](http://www.data-intuitive.com/2013/10/activity-monitoring-from-smartphone-sensor-data-in-a-new-layout/) [before](http://www.data-intuitive.com/2014/07/publishing-html-presentations-on-github/). Since some aspects of it are related to reproducible research and especially reproducible data analysis, I have [collected some material and tips](https://github.com/tverbeiren/ReproducibleDataAnalysis) in a presentation I gave last week on my [Github](https://github.com/tverbeiren):

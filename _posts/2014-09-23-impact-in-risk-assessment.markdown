@@ -5,10 +5,10 @@ date: 2014-09-23 18:00:53+00:00
 layout: post
 slug: impact-in-risk-assessment
 title: Impact in Risk Assessment
-wordpress_id: 510
+featured: true
 categories:
 - Decision
-- Risks
+- Risk
 ---
 
 How many times have you seen project charters or business cases where a form of risk assessment has been provided? In many cases, people try to make the risks tangible and actionable by means of a [risk matrix](http://en.wikipedia.org/wiki/Risk_Matrix). In this approach, every risk gets 2 parameters associated to it: _probability_ of the risk occurring and _impact_ when the risk occurs. In most cases, 3 possibilities are given for both parameters: low, medium, high.
