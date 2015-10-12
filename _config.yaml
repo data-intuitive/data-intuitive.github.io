@@ -34,6 +34,8 @@ links:
     url: /categories
   - title: About
     url: /about
+  - title: Contact
+    url: /contact
 
 paginate: 10
 category_dir: topics
