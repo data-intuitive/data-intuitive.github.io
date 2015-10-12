@@ -7,6 +7,7 @@ highlighter:      pygments
 lsi:              false
 logo:             logo_white.png
 default_bg:       graan-2-small.png
+disqus_shortname: data-intuitive
 
 owner:
   name:           Toni Verbeiren
