@@ -3,7 +3,9 @@ description:      "Data where applicable, Intuition where needed"
 url:		          'http://www.data-intuitive.com'
 # Permalink setting:
 # - pretty is not good because it uses the post's tags to prepend to the path...
-permalink:        "/:year/:month/:title"
+# The following format is compatible with the one we used on Wordpress.
+# This means all internal links should still be valid.
+permalink:        "/:year/:month/:title/"
 markdown:         redcarpet
 highlighter:      pygments
 lsi:              false
