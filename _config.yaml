@@ -1,7 +1,9 @@
 title:            Data Intuitive
 description:      "Data where applicable, Intuition where needed"
 url:		          'http://www.data-intuitive.com'
-permalink:        pretty
+# Permalink setting:
+# - pretty is not good because it uses the post's tags to prepend to the path...
+permalink:        "/:year/:month/:title"
 markdown:         redcarpet
 highlighter:      pygments
 lsi:              false
@@ -40,8 +42,10 @@ links:
 paginate: 10
 category_dir: topics
 category_title_prefix: 
-exclude: ["lib", "blog.rb", "Capfile", "config", "log", "Rakefile", "tmp"]
+exclude: ["lib", "blog.rb", "Capfile", "config", "log", "Rakefile", "tmp", ".gitignore", "TODO.md", "README.md"]
 destination: public
+
+include: ["tricks/tricks.md"]
 
 kramdown:
   input: GFM
