@@ -163,7 +163,7 @@ main, .notepad-share-icons, .notepad-disqus {
         color: black; }
 .notepad-site-head .notepad-site-head-content {
   /* Add image to text box */
-  background-image: url("/images/graan-2-small.png");
+  background-image: url("/images/graan-2-smaller.jpg");
   background-position: right bottom, left top;
   /* end modif */
   width: 100%;
