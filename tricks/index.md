@@ -19,7 +19,7 @@ find . -mtime +20 -type d -type f -delete
 This in fact means putting AND between the two types. The following is _better_:
 
 ```bash
-find . -mtime +20 -type f -o -type d -delete
+find . -mtime +20 -type d -o -type f -delete
 ```
 
 
@@ -40,4 +40,26 @@ In `_config_local.yaml`, this setting is overriden:
 Locally, Jekyll can then be started like this:
 
     jekyll serve -w --config _config.yaml,_config_local.yaml
+
+
+## Spark Notebook
+
+Starting Spark-Notebook requires to use the host stack (for now?!). This is a working config on the cluster we use:
+
+```
+docker run -d --net=host -v /data/toniv/spark-notebook-0.6.1/notebooks:/opt/docker/notebooks andypetrella/spark-notebook:0.6.2-SNAPSHOT-scala-2.10.4-spark-1.4.1-hadoop-2.2.0-with-hive-with-parquet
+```
+
+Using files stored on `HDFS` can be done like this:
+
+    val covFile = sc.textFile("hdfs://ly-1-09.exascience.org:54310/data/toniv/sample-1.coverage")
+
+
+## Connect to running Docker instance
+
+Use this to connect a terminal to running container for inspection:
+
+    docker exec -it [containerID] bash
+
+
 
