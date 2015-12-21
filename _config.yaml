@@ -10,8 +10,11 @@ markdown:         redcarpet
 highlighter:      pygments
 lsi:              false
 logo:             logo_white.png
-default_bg:       graan-2-small.png
+default_bg:       graan-2-smaller.png
 disqus_shortname: data-intuitive
+
+# Make sure sharing buttons are placed on every page by default
+share: true
 
 owner:
   name:           Toni Verbeiren
