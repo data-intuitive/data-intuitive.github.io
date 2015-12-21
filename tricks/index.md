@@ -52,7 +52,7 @@ docker run -d --net=host -v /data/toniv/spark-notebook-0.6.1/notebooks:/opt/dock
 
 Using files stored on `HDFS` can be done like this:
 
-    val covFile = sc.textFile("hdfs://ly-1-09.exascience.org:54310/data/toniv/sample-1.coverage")
+    val covFile = sc.textFile("hdfs://<FQDN>:54310/<PATH>")
 
 
 ## Connect to running Docker instance
@@ -62,4 +62,15 @@ Use this to connect a terminal to running container for inspection:
     docker exec -it [containerID] bash
 
 
+## `jq`
+
+When working a lot with `JSON` data (for instance, when using the Spark Jobserver described above), it is often handy to have some way of parsing this data. Some interesting oneliners below using [`jq`](https://stedolan.github.io/jq/).
+
+    cat output.json | jq '[.["result"][range(0;50)]]' > top50_correlated.json
+
+    cat output.json | jq '.["result"]' | jq 'length'
+
+    cat output.json | jq '[.["result"][range(31711;31761)]]' | jq 'reverse'
+
+    cat output.json | jq -r '.["result"][:50] | [.[][3]] | join(" ")'
 
