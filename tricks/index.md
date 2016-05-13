@@ -74,3 +74,7 @@ When working a lot with `JSON` data (for instance, when using the Spark Jobserve
 
     cat output.json | jq -r '.["result"][:50] | [.[][3]] | join(" ")'
 
+## Setting Java version
+
+Check out: <http://stackoverflow.com/a/24657630/4112468>
+

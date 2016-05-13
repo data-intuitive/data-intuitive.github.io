@@ -7,6 +7,7 @@ url:		          'http://www.data-intuitive.com'
 # This means all internal links should still be valid.
 permalink:        "/:year/:month/:title/"
 markdown:         redcarpet
+#markdown: kramdown
 highlighter:      pygments
 lsi:              false
 logo:             logo_white.png
@@ -55,6 +56,7 @@ include: ["tricks/tricks.md"]
 kramdown:
   input: GFM
   use_coderay: true
+#  math_engine: ritex
 #   coderay:
 #     coderay_css: class
 #     coderay_line_numbers: 
@@ -71,7 +73,7 @@ kramdown:
 
 # Redcarpet does syntax highlighting better than kramdown
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
+  extensions: ["footnotes", "no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 
 # prose:
 #    rooturl: '_posts'
