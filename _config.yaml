@@ -6,8 +6,7 @@ url:		          'http://www.data-intuitive.com'
 # The following format is compatible with the one we used on Wordpress.
 # This means all internal links should still be valid.
 permalink:        "/:year/:month/:title/"
-markdown:         redcarpet
-#markdown: kramdown
+markdown:         kramdown
 highlighter:      rouge
 lsi:              false
 logo:             logo_white.png
@@ -57,7 +56,8 @@ include: ["tricks/tricks.md"]
 
 kramdown:
   input: GFM
-  enable_coderay: true
+  syntax_highlighter: rouge
+#  enable_coderay: true
 #  math_engine: ritex
 #   coderay:
 #     coderay_css: class
@@ -74,8 +74,8 @@ kramdown:
 #   toc_levels: 1..6
 
 # Redcarpet does syntax highlighting better than kramdown
-redcarpet:
-  extensions: ["footnotes", "no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
+#redcarpet:
+#  extensions: ["footnotes", "no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 
 # prose:
 #    rooturl: '_posts'
