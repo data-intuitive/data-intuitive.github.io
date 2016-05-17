@@ -14,7 +14,7 @@ categories:
 
 I've been writing about my [writing](http://www.data-intuitive.com/2013/06/writing-workflow-markdown-pandoc-latex-and-the-likes/) [workflow](http://www.data-intuitive.com/2013/10/activity-monitoring-from-smartphone-sensor-data-in-a-new-layout/) [before](http://www.data-intuitive.com/2014/07/publishing-html-presentations-on-github/). Since some aspects of it are related to reproducible research and especially reproducible data analysis, I have [collected some material and tips](https://github.com/tverbeiren/ReproducibleDataAnalysis) in a presentation I gave last week on my [Github](https://github.com/tverbeiren):
 
-[![RR-0](http://www.data-intuitive.com/wp-content/uploads/2014/09/RR-0-231x300.png)](https://github.com/tverbeiren/ReproducibleDataAnalysis)
+[![RR](/images/RR.png)](https://github.com/tverbeiren/ReproducibleDataAnalysis)
 
 One aspect that I did not yet mention there, is how I approach this on my Mac. This depends a little bit on what type of text I'm writing. Data analysis is usually done within [RStudio](http://www.rstudio.com/). It has very good functionality for generating PDFs and the like, but I still prefer my own Makefile and knitr/Pandoc combination.
 

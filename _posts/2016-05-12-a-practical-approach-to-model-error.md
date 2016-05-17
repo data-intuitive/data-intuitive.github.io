@@ -7,6 +7,7 @@ date: 2016-05-12 18:29:49 +0200
 categories:
 - modelling
 - notebook
+- data science
 tags: []
 imagefeature: 
 mathjax: true
@@ -47,7 +48,7 @@ $$ \Delta S(t) = S(t) \mu \Delta t + S(t) \sigma \sqrt{\Delta t} \, z  $$
 
 [Taleb](https://drive.google.com/file/d/0B8nhAlfIk3QIdlJNSXo1dkMzOVU/view) uses a different representation of this formula, based on the solution of this equation:
 
-$$ S(t + \Delta t) = S(t) \exp \left[ \left( \mu - \frac{1}{2} \sigma\^2 \right) \Delta t  + \sigma \sqrt{\Delta t} \, z \right] $$
+$$ S(t + \Delta t) = S(t) \exp \left[ \left( \mu - \frac{1}{2} \sigma^2 \right) \Delta t  + \sigma \sqrt{\Delta t} \, z \right] $$
 
 Enough formulas for now, let us take a look at the simulation
 
@@ -63,7 +64,7 @@ In a follow-up post, I may delve a little deeper in the actual implementation. H
 
 Without any randomness in the system, the above dynamics reduces to:
 
-$$ S(t) = S(t_0) e\^{ \mu t}  $$
+$$ S(t) = S(t_0) e^{ \mu t}  $$
 
 With a doubling rate of say 20 days, we get over 300K after a year. That's a lot. A creepy amount. And note that this is only for a a doubling rate of 20 days. In practice, many diseases may be spreading much faster.
 

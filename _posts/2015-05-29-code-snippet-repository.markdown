@@ -6,6 +6,17 @@ layout: post
 slug: code-snippet-repository
 title: Code Snippet Repository
 wordpress_id: 559
+categories:
+- Scala
+- Spark
+- S3
+- Code
+tags: []
+imagefeature: 
+mathjax: flase
+chart: 
+comments: true
+featured: false
 ---
 
 I'm jumping between Scala/[Spark](http://spark.apache.org/) coding, some Javascript in between, Python/PySpark and then some [R](http://www.r-project.org/) every now and then. This in itself is already a challenge, but the worst thing is that I frequently encounter situations where I think: _I've encountered this situation before_. In many cases, it's a situation that required quite some work to resolve. You end up with two possibilities: 1) retrieve the solution from some code somewhere on your harddisk or 2) start finding the solution again from <del>scratch</del>Google.

@@ -8,6 +8,8 @@ title: Transposing a Spark RDD
 categories:
 - Data
 - Spark
+comments: true
+featured: false
 ---
 
 I have been using [Spark](http://spark.apache.org/) quite a lot for the last year. At first using the [Scala](http://spark.apache.org/docs/latest/programming-guide.html#tab_scala_0) interface, but lately more using the [Python](http://spark.apache.org/docs/latest/programming-guide.html#tab_python_0) one.
