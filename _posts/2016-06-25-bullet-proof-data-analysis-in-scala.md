@@ -18,9 +18,9 @@ featured: true
 ---
 
 
-# Introduction
+In this post, we go over some typical aspects and challenges that occur in typical data science projects in order to extract some requirements for data analysis in the broad sense of the word. We then illustrate how we tackle these requirements in typical data science projects using Scala.
 
-Let us go over some typical aspects and challenges that occur in typical data science projects in order to extract some requirements for data analysis in the broad sense of the word.
+# Introduction
 
 ## Joining and Annotations
 
@@ -41,11 +41,11 @@ And then, the fun starts. How to find out where things go wrong and how to make 
 
 A similar issue occurs when dealing with missing values, or missing columns in the data. It's very easy to end up with exceptions in the Scala/Java world or equivalent in other languages.
 
-The challenge of missing data becomes even more concrete when addtional data is aggregated. Suppose we have additional annotations about a subset of the data. There needs to be a way to cover situations like this.
+The challenge of missing data becomes even more concrete when additional data is aggregated. Suppose we have additional annotations about a subset of the data. There needs to be a way to cover situations like this.
 
 ## Solving the Challenge in Scala
 
-In other words, you don't have control over the input in most cases. In what follows, we describe an approach to data analysis in [Scala](xxx) that takes into account the above challenges. The approach is heavily based on principles of [Functional Programming](xxx) while capturing the data model in an object model.
+In other words, you don't have control over the input in most cases. In what follows, we describe an approach to data analysis in [Scala](http://www.scala-lang.org/) that takes into account the above challenges. The approach is heavily based on principles of [Functional Programming](https://en.wikipedia.org/wiki/Functional_programming) while capturing the data model in an object model.
 
 
 # Bullet Proof Data Science
