@@ -52,21 +52,21 @@ In other words, you don't have control over the input in most cases. In what fol
 
 ## Missing Values
 
-On important aspect of the above challenges is missing values. Say you're a service organization that keeps records of potential customers. Furthermore, say you want to analyse people's hobbies. You would like to allow for a distinction between 3 situations:
+On important aspect of the above challenges is missing values. Say you're a service organization that keeps records of potential customers. Furthermore, say you want to analyze people's hobbies. You would like to allow for a distinction between 3 situations:
 
 1. There is no information about the customer's hobbies
 2. The customer does not have any hobbies
 3. The customer has 1 or more hobbies
 
-Say you encode the hobbies as a `List` of `String` (freeform), then (2) corresponds to an empty list and (3) corresponds to a list of _n_ hobbies. But what does (1) correspond to? In R, one usually gets `NA`. In Java, one would often sees the occurrence of `null`, but using `null` is not a [good](http://blog.scalac.io/2015/05/31/dealing-with-npe.html) [habit](http://alvinalexander.com/scala/scala-null-values-option-uninitialized-variables).
+Say you encode the hobbies as a `List` of `String` (free form), then (2) corresponds to an empty list and (3) corresponds to a list of _n_ hobbies. But what does (1) correspond to? In R, one usually gets `NA`. In Java, one would often sees the occurrence of `null`, but using `null` is not a [good](http://blog.scalac.io/2015/05/31/dealing-with-npe.html) [habit](http://alvinalexander.com/scala/scala-null-values-option-uninitialized-variables).
 
 Instead, we use the `Option` type. It encapsulates whatever other data structure you want. The above 3 situations then correspond to:
 
-1. `None` for no hobbies known about this name
-2. `Some(List())` for this name does not have hobbies
-3. `Some(List(hobby1, hobby2, ...))` for the hobbies for this name
+1. `None` for no hobbies known about this person
+2. `Some(List())` for this person does not have hobbies
+3. `Some(List(hobby1, hobby2, ...))` for the hobbies for this person
 
-For the FP (Functional Programming) people among us, the option is a Monad. But let's not go there in order not to scare off the others...
+For the FP (Functional Programming) people among us, the option is a Monad. But let's not go there yet in order not to scare off the others...
 
 
 ## Start with the End in Mind
@@ -298,7 +298,7 @@ There are several approaches to this. One is to go from one class-representation
 
 Since a) the data ready for analytics should be in denormalized form, and b) we already have a model for that data that is able to cope with missing values, it is not hard to start from the data source that contains the most information about the denormalized form of the data. All fields/features that are not available in this first data source remain `None` (aka the default).
 
-Adding additional features later can easily be done by _updating_ the features from `None` to `Some(...)`[^1]. Adding additional data vertically can be done in the same way. It's perfectly fine to end up with a datastructure where most of the rows have `None` for a certain feature but some contain more information. And since our transformations are bullet proof, all runs safe.
+Adding additional features later can easily be done by _updating_ the features from `None` to `Some(...)`[^1]. Adding additional data vertically can be done in the same way. It's perfectly fine to end up with a data structure where most of the rows have `None` for a certain feature but some contain more information. And since our transformations are bullet proof, all runs safe.
 
 
 [^1]: This even reads nice!
