@@ -5,7 +5,8 @@ description:
 headline: 
 date: 2016-10-26 09:39:05 +0200
 categories:
-- draft
+- spark
+- Data Science
 tags: [spark summit]
 imagefeature: 
 mathjax: 
