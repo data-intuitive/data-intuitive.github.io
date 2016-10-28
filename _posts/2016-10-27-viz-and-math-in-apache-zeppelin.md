@@ -32,7 +32,8 @@ Support math notation is as easy as inserting a cell with the following content:
 
 ```html
 %angular
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'>
+</script>
 ```
 
 A markdown formatted cell looks like this:
