@@ -35,12 +35,12 @@ links:
     url: /
     external: false
     icon: home
-  - title: Featured Posts
-    url: /featured
-  - title: Categories
-    url: /categories
+  - title: Services 
+    url: /offering
   - title: About
     url: /about
+  - title: Featured Posts
+    url: /featured
   - title: Contact
     url: /contact
 
