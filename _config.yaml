@@ -52,7 +52,7 @@ destination: public
 
 gems: [jekyll-paginate]
 
-include: ["tricks/tricks.md"]
+include: ["tricks/tricks.md", "incertae/"]
 
 kramdown:
   input: GFM
