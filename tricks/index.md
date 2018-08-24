@@ -78,3 +78,46 @@ When working a lot with `JSON` data (for instance, when using the Spark Jobserve
 
 Check out: <http://stackoverflow.com/a/24657630/4112468>
 
+## Spark
+
+Setting up a `SQLContext`:
+
+```scala
+val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+import sqlContext.implicits._
+```
+
+Very simple example:
+
+```scala
+case class TestClass(date:String, dim:Int, col:String)
+
+val collection = Seq(TestClass("2014-12-1", 3, "b"), TestClass("2011-03-14",
+5, "d"))
+val tst = sc.parallelize(collection)
+val df = tst.toDF
+```
+
+Adding a column to a date field:
+
+```scala
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions.{unix_timestamp, to_date}
+
+df
+  .withColumn("dateMinusDimUTime", unix_timestamp(df("date"), "yyyy-MM-dd") -$"dim"*86400)
+  .withColumn("dateMinusDim",from_unixtime($"dateMinusDimUTime")).show
+```
+
+Finding a parsing issue with an unkown library (in a notebook or REPL):
+
+```
+(1 to ???).foreach{ i =>
+  print(i + ", ")
+  val latest = vcf.map(x => parse(x)).take(i)
+}
+```
+The moment the error is thrown, you have the line number and the first record
+in the data file that yields errors.
+
