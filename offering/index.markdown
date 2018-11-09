@@ -14,7 +14,7 @@ title: Products and Services
     <div class="panel radius">
         <h2>Jumpstart</h2>
         <img src="/images/offering-jumpstart.png" width="40%"/>
-        <p>Tip your toos into this new world of data mining, machine learning and big data without the need for large project structure...</p>
+        <p>Tip your toes into this new world of data mining, machine learning and big data without the need for large project structure...</p>
     </div>
     </a>
   </li>
