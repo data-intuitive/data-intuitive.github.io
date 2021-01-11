@@ -27,8 +27,6 @@ owner:
   # facebook:       hmfaysal
   github:         tverbeiren
   # instagram:      hmfaysal
-  # # For Google Authorship https://plus.google.com/authorship
-  google_plus:    https://plus.google.com/u/0/108837720006806497269
 
 links:
   - title: Home
@@ -46,7 +44,7 @@ links:
 
 paginate: 10
 category_dir: topics
-category_title_prefix: 
+category_title_prefix:
 exclude: ["lib", "blog.rb", "Capfile", "config", "log", "Rakefile", "tmp", ".gitignore", "TODO.md", "README.md"]
 destination: public
 
