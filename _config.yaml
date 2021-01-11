@@ -19,14 +19,9 @@ share: true
 owner:
   name:           Toni Verbeiren
   avatar:         toni1.png
-  # email:          hmfaysal@alum.mit.edu
-  # # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
-  # description:    Awesome Dude, Awesome Life
-  # # Social networking links used in footer. Update and remove as you like.
-  twitter:        tverbeiren
-  # facebook:       hmfaysal
-  github:         tverbeiren
-  # instagram:      hmfaysal
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:        DataIntuitive
+  github:         data-intuitive
 
 links:
   - title: Home
