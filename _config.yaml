@@ -40,7 +40,7 @@ links:
 paginate: 10
 category_dir: topics
 category_title_prefix:
-exclude: ["lib", "blog.rb", "Capfile", "config", "log", "Rakefile", "tmp", ".gitignore", "TODO.md", "README.md"]
+exclude: ["lib", "blog.rb", "Capfile", "config", "log", "Rakefile", "tmp", ".gitignore", "TODO.md", "README.md", "_posts/*.Rmd"]
 destination: public
 
 gems: [jekyll-paginate]
