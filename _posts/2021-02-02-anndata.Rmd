@@ -7,7 +7,7 @@ headline: "Porting anndata to R with reticulate."
 date: 2021-02-02T20:53:00+00:00
 categories: ["Data science"]
 tags: ["Data science", "Bioinformatics", "scanpy", "Transcriptomics", "R"]
-imagefeature: anndata.png
+imagefeature: 
 mathjax: 
 chart: 
 comments: true
@@ -22,6 +22,8 @@ output:
 for keeping track of data and learned annotations, and can be used to read from and write to the h5ad 
 file format. It is also the main data format used in the scanpy python package
 (Wolf, Angerer, and Theis 2018).
+
+![anndata](https://raw.githubusercontent.com/rcannood/anndata/master/man/readme_files/anndata_for_r.svg)
 
 However, using scanpy/anndata in R can be a major hassle. When trying to read an h5ad file,
 R users could approach this problem in one of two ways. A) You could read in the file manually
