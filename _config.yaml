@@ -27,13 +27,13 @@ links:
   - title: Home
     url: /
     external: false
-    icon: home
-  - title: Services 
-    url: /offering
-  - title: About
+    #    icon: home
+    #  - title: Services 
+    #url: /offering
+  - title: Careers 
     url: /about
-  - title: Featured Posts
-    url: /featured
+    #- title: Featured Posts
+    #url: /featured
   - title: Contact
     url: /contact
 
@@ -46,6 +46,7 @@ destination: public
 gems: [jekyll-paginate]
 
 include: ["tricks/tricks.md", "incertae/"]
+
 
 kramdown:
   input: GFM
