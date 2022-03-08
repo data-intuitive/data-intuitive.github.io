@@ -1,6 +1,6 @@
-title:            Data Intuitive
-description:      ""
-#description:      "Data where applicable, Intuition where needed"
+title:           "WEBSITE UNDER CONSTRUCTION"
+
+description:      "Data where applicable, Intuition where needed"
 url:              'https://www.data-intuitive.com'
 # Permalink setting:
 # - pretty is not good because it uses the post's tags to prepend to the path...
@@ -11,7 +11,7 @@ markdown:         kramdown
 highlighter:      rouge
 lsi:              false
 logo:             logo_white.png
-default_bg:       graan-2-smaller.png
+default_bg:       graan-2-smaller.jpg
 disqus_shortname: data-intuitive
 
 # Make sure sharing buttons are placed on every page by default
