@@ -13,9 +13,9 @@ Founded in 2011, Data Intuitive is a Belgian-based bioinformatics company provid
 
 We specialise in supporting research institutions in developing bioinformatics analyses.
 
-Through the use of our internally developed approach we can accelerate the development of (single cell) data pipelines drastically. The use of independent, consistent and reusable workflows modules allows easy prototyping and creates a foundation for robust data pipelines.
- 
-We are committed to consistency, transparency and *FAIR* work. Above all, we value open communication internally and with the customer.
+Through the use of our internally developed approach we can accelerate the development of (e.g. single-cell sequencing) data pipelines drastically. The use of independent, consistent and reusable workflow modules allows easy prototyping and creates a foundation for robust data pipeline development and operations.
+
+We are committed to consistency, transparency and *FAIR* work. Above all, we value open communication internally and with our customers.
 
 
 <!-- <div class="row"  
