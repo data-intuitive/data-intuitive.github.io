@@ -8,3 +8,7 @@ a.navbar-brand-logo > img {
   max-height: 3rem;
   margin: 1rem;
 }
+
+.fullwidth {
+  width: 100%
+}
