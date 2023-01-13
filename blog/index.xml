@@ -9,7 +9,7 @@
 <link>https://www.data-intuitive.com/blog/index.html</link>
 <atom:link href="https://www.data-intuitive.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.2.280</generator>
+<generator>quarto-1.2.313</generator>
 <lastBuildDate>Tue, 02 Feb 2021 20:53:00 GMT</lastBuildDate>
 <item>
   <title>anndata: annotated data in R</title>
@@ -113,10 +113,10 @@ s2    5    7    9</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">ad<span class="sc" style="color: #5E5E5E;">$</span>uns[[<span class="st" style="color: #20794D;">"b"</span>]]</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  i j      value
-1 1 4 0.33318343
-2 2 5 0.05922296
-3 3 6 0.17838406</code></pre>
+<pre><code>  i j     value
+1 1 4 0.5621165
+2 2 5 0.9093555
+3 3 6 0.1762186</code></pre>
 </div>
 </div>
 <section id="using-scanpy" class="level3">
@@ -274,7 +274,7 @@ s2 1.750000   10 5.250000</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1">ad<span class="sc" style="color: #5E5E5E;">$</span><span class="fu" style="color: #4758AB;">chunked_X</span>(<span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;generator object AnnData.chunked_X at 0x7f3793a89c40&gt;</code></pre>
+<pre><code>&lt;generator object AnnData.chunked_X at 0x7f8dc9799cb0&gt;</code></pre>
 </div>
 </div>
 <p>Following functionality has not been tested:</p>

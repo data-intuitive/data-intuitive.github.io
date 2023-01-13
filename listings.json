@@ -5,5 +5,11 @@
       "/blog/posts/2021-02-02-anndata-for-r/index.html",
       "/blog/posts/2020-12-15-diflow/index.html"
     ]
+  },
+  {
+    "listing": "/careers/index.html",
+    "items": [
+      "/careers/data_workflow_developer/index.html"
+    ]
   }
 ]

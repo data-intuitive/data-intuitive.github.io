@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,22 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -58,6 +60,35 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-openpositions .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-openpositions'] = new List('listing-openpositions', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SJVLXW7DQ5"></script>
 
 <script type="text/javascript">
@@ -69,15 +100,16 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 </script>
 <style>
     .quarto-title-block .quarto-title-banner {
-      color: #6442A1;
-background: #f9f7ff;
+      color: #723B8F;
+background-image: url(../images/hero_background.jpg);
+background-size: cover;
     }
     </style>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Data Intuitive - Careers">
-<meta property="og:description" content="Data Intuitive is a Belgium-based company that specializes in bioinformatics, data science, and pipeline development.">
 <meta property="og:site-name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
 </head>
@@ -89,8 +121,8 @@ background: #f9f7ff;
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/logo_white.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo_white.svg" alt="" class="navbar-logo">
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -99,33 +131,33 @@ background: #f9f7ff;
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="../index.html">
  <span class="menu-text">Data Intuitive</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./products/viash.html">
+    <a class="nav-link" href="../products/viash.html">
  <span class="menu-text">Viash</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./products/compass.html">
+    <a class="nav-link" href="../products/compass.html">
  <span class="menu-text">ComPass</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog/index.html">
+    <a class="nav-link" href="../blog/index.html">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./careers.html" aria-current="page">
+    <a class="nav-link active" href="../careers/index.html" aria-current="page">
  <span class="menu-text">Careers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html">
+    <a class="nav-link" href="../contact.html">
  <span class="menu-text">Contact</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
+    <a class="nav-link" href="../about.html">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -137,7 +169,7 @@ background: #f9f7ff;
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
+    <div class="quarto-title column-page">
       <h1 class="title">Careers</h1>
                       </div>
   </div>
@@ -151,23 +183,62 @@ background: #f9f7ff;
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
-<p>Data Intuitive is a Belgium-based company that specializes in bioinformatics, data science, and pipeline development. We are a team of highly skilled and experienced professionals who are dedicated to helping our clients unlock the potential of their data.</p>
-<p>Our team has a deep understanding of the latest technologies and techniques in the field of bioinformatics, and we are able to apply this knowledge to a wide range of applications. Whether you are looking to improve your understanding of complex biological systems, identify new drug targets, or develop more efficient and effective data analysis pipelines, we can help.</p>
-<p>At Data Intuitive, we are always looking for talented and passionate individuals to join our team. If you are a data scientist, bioinformatician, or software engineer with a strong background in biology or computer science, we would love to hear from you.</p>
-<p>We offer a dynamic and collaborative work environment, and our team members have the opportunity to work on a wide range of exciting projects. We are committed to providing ongoing support and training to help our employees develop their skills and advance their careers.</p>
-<p>If you are interested in joining our team, please send your resume and a cover letter to <a href="mailto:info@data-intuitive.com">info@data-intuitive.com</a>. We look forward to hearing from you.</p>
+<div id="careers" class="content-block">
+<h2 id="join-the-data-intuitive-team-and-collaborate-on-innovative-projects" class="anchored">Join the Data Intuitive Team and Collaborate on Innovative Projects</h2>
+<p>Our company is dedicated to research and development, and offers a range of services to help clients build their own expertise in bioinformatics and data science. We are known for our agile approach to projects, and we are always looking for new ways to solve challenging problems and make a difference in the industry. When you join us, you will have the chance to work on both client and in-house projects with the support of your colleagues at every stage of the process.</p>
+<p>At Data Intuitive, we value the expertise and skills of our employees, which is why we offer highly competetive pay and seek to hire the strongest technical profiles. As a candidate, you will need to pass a technical test and participate in a technical interview to demonstrate your knowledge and ability to handle complex IT techniques. As a member of our team, you can expect to work at a high technical level with talented colleagues.</p>
+<p>Our team is made up of remote workers who come together for in-person meetings six times per year to strengthen relationships and improve communication.</p>
+<h2 id="current-open-positions" class="anchored">Current open positions</h2>
+<div id="listing-openpositions" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1673631973242" data-listing-reading-time-sort="1.245">
+<a href="../careers/data_workflow_developer/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="../careers/data_workflow_developer/image.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Bioinformatics Data Workflow Developer
+</h5>
+<div class="card-text listing-description">
+Flanders, Belgium
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+<h2 id="application-form" class="anchored">Application Form</h2>
+<form action="https://formspree.io/f/mwkjkkgw" enctype="multipart/form-data" method="POST">
+<div class="form-group">
+<label class="col-form-label mt-4" for="inputDefault">First name *</label> <input type="text" class="form-control" id="firstname" name="Firstname" required=""> <label class="col-form-label mt-4" for="inputDefault">Last Name * </label> <input type="text" class="form-control" id="lastname" name="Lastname" required=""> <label class="col-form-label mt-4" for="inputDefault">Email * </label> <input type="text" class="form-control" id="email" required=""> <label class="col-form-label mt-4" for="inputDefault">Upload your CV in PDF format</label> <input type="file" class="form-control" id="CV" name="attachement" accept="pdf"> <label for="exampleTextarea" class="form-label mt-4">Message *</label>
+<textarea class="form-control" name="message" rows="3"></textarea>
+</div>
+<p><br> <input type="Submit" value="Submit" class="btn-action btn btn-info"></p>
+</form>
+<p><sup>By submitting this form, you agree to the collection and use of your personal data in accordance with our privacy policy. Your data will be used solely for the purpose of responding to your inquiry and will not be shared with third parties. You have the right to access, modify, or erase your personal data at any time. </sup></p>
+</div>
+
 
 
 
