@@ -1,43 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.data-intuitive.com/blog/index.html</loc>
-    <lastmod>2023-01-13T17:52:03.993Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/news/2023-02-05-sustain/index.html</loc>
+    <lastmod>2023-03-03T18:02:16.688Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/blog/posts/2021-02-02-anndata-for-r/index.html</loc>
-    <lastmod>2023-01-13T17:52:10.057Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/news/2022-12-25-fueled_by_vlaio/index.html</loc>
+    <lastmod>2023-03-03T18:02:17.416Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/blog/posts/2020-12-15-diflow/index.html</loc>
-    <lastmod>2023-01-13T17:52:10.361Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/news/2022-12-15-fit_to_go_global/index.html</loc>
+    <lastmod>2023-03-03T18:02:17.788Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/index.html</loc>
-    <lastmod>2023-01-13T17:52:11.449Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/index_use_cases.html</loc>
+    <lastmod>2023-03-03T18:02:18.164Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/about.html</loc>
-    <lastmod>2023-01-13T17:52:11.737Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/index.html</loc>
+    <lastmod>2023-03-03T18:02:18.660Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/products/compass.html</loc>
-    <lastmod>2023-01-13T17:52:12.057Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/index_blog.html</loc>
+    <lastmod>2023-03-03T18:02:19.060Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/products/viash.html</loc>
-    <lastmod>2023-01-13T17:52:12.345Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/use_cases/openpipelines/index.html</loc>
+    <lastmod>2023-03-03T18:02:19.396Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/careers/index.html</loc>
-    <lastmod>2023-01-13T17:52:12.665Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/use_cases/openproblems/index.html</loc>
+    <lastmod>2023-03-03T18:02:19.776Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2021-02-02-anndata-for-r/index.html</loc>
+    <lastmod>2023-03-03T18:02:20.492Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2020-12-15-diflow/index.html</loc>
+    <lastmod>2023-03-03T18:02:20.848Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/index_news.html</loc>
+    <lastmod>2023-03-03T18:02:21.252Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/bookmeeting.html</loc>
+    <lastmod>2023-03-03T18:02:21.572Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/privacy_policy.html</loc>
+    <lastmod>2023-03-03T18:02:21.980Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/disclaimer.html</loc>
+    <lastmod>2023-03-03T18:02:22.324Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/careers/data_workflow_developer/index.html</loc>
-    <lastmod>2023-01-13T17:52:12.997Z</lastmod>
+    <lastmod>2023-03-03T18:02:22.704Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/careers/web_developer/index.html</loc>
+    <lastmod>2023-03-03T18:02:23.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/careers/index.html</loc>
+    <lastmod>2023-03-03T18:02:23.448Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/subscribe.html</loc>
+    <lastmod>2023-03-03T18:02:23.796Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/company.html</loc>
+    <lastmod>2023-03-03T18:02:24.180Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/thank_contact.html</loc>
+    <lastmod>2023-03-03T18:02:24.504Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services.html</loc>
+    <lastmod>2023-03-03T18:02:24.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/thank_apply.html</loc>
+    <lastmod>2023-03-03T18:02:25.216Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/solutions/compass.html</loc>
+    <lastmod>2023-03-03T18:02:25.588Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/solutions/viash.html</loc>
+    <lastmod>2023-03-03T18:02:26.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/index.html</loc>
+    <lastmod>2023-03-03T18:02:26.444Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services/courses/subscribe.html</loc>
+    <lastmod>2023-03-03T18:02:26.832Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services/courses/index.html</loc>
+    <lastmod>2023-03-03T18:02:27.220Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services/consultancy.html</loc>
+    <lastmod>2023-03-03T18:02:27.636Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/contact.html</loc>
-    <lastmod>2023-01-13T17:52:13.329Z</lastmod>
+    <lastmod>2023-03-03T18:02:27.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/thank_subscribe.html</loc>
+    <lastmod>2023-03-03T18:02:28.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/blog/index.html</loc>
+    <lastmod>2023-03-03T18:02:28.668Z</lastmod>
   </url>
 </urlset>

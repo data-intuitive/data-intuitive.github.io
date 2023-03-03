@@ -1,15 +1,47 @@
 [
   {
-    "listing": "/blog/index.html",
+    "listing": "/insights/index_use_cases.html",
     "items": [
-      "/blog/posts/2021-02-02-anndata-for-r/index.html",
-      "/blog/posts/2020-12-15-diflow/index.html"
+      "/insights/use_cases/openproblems/index.html",
+      "/insights/use_cases/openpipelines/index.html"
+    ]
+  },
+  {
+    "listing": "/insights/index.html",
+    "items": [
+      "/insights/use_cases/openproblems/index.html",
+      "/insights/use_cases/openpipelines/index.html",
+      "/insights/news/2023-02-05-sustain/index.html",
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html",
+      "/insights/news/2022-12-15-fit_to_go_global/index.html",
+      "/insights/blog/2021-02-02-anndata-for-r/index.html",
+      "/insights/blog/2020-12-15-diflow/index.html"
+    ]
+  },
+  {
+    "listing": "/insights/index_blog.html",
+    "items": [
+      "/insights/blog/2020-12-15-diflow/index.html",
+      "/insights/blog/2021-02-02-anndata-for-r/index.html"
+    ]
+  },
+  {
+    "listing": "/insights/index_news.html",
+    "items": [
+      "/insights/news/2023-02-05-sustain/index.html",
+      "/insights/news/2022-12-15-fit_to_go_global/index.html",
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
     ]
   },
   {
     "listing": "/careers/index.html",
     "items": [
-      "/careers/data_workflow_developer/index.html"
+      "/careers/data_workflow_developer/index.html",
+      "/careers/web_developer/index.html"
     ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": []
   }
 ]
