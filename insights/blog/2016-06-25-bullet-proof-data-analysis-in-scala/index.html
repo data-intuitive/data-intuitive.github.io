@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2016-06-25">
+<meta name="description" content="How to use Scala/Spark in such a way that user or machine errors lead to minimal harm?">
+
+<title>Data Intuitive - Bullet Proof Data Science in Scala</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../images/logo_white.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SJVLXW7DQ5"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Data Intuitive - Bullet Proof Data Science in Scala">
+<meta property="og:description" content="How to use Scala/Spark in such a way that user or machine errors lead to minimal harm?">
+<meta property="og:site-name" content="Data Intuitive">
+<meta property="og:locale" content="en_GB">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../images/logo_white.svg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">DATA INTUITIVE</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../company.html">
+ <span class="menu-text">Company</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-solutions" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Solutions</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-solutions">    
+        <li>
+    <a class="dropdown-item" href="../../../solutions/viash.html">
+ <span class="dropdown-text">Viash</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../solutions/compass.html">
+ <span class="dropdown-text">ComPass</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../services/consultancy.html">
+ <span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../insights/index.html">
+ <span class="menu-text">Insights</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-connect" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Connect</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-connect">    
+        <li>
+    <a class="dropdown-item" href="../../../contact.html">
+ <span class="dropdown-text">Contact Us</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../bookmeeting.html">
+ <span class="dropdown-text">Book a Meeting</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../careers/index.html">
+ <span class="dropdown-text">Careers</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#joining-and-annotations" id="toc-joining-and-annotations" class="nav-link" data-scroll-target="#joining-and-annotations">Joining and Annotations</a></li>
+  <li><a href="#parsing-libraries" id="toc-parsing-libraries" class="nav-link" data-scroll-target="#parsing-libraries">Parsing Libraries</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a></li>
+  <li><a href="#solving-the-challenge-in-scala" id="toc-solving-the-challenge-in-scala" class="nav-link" data-scroll-target="#solving-the-challenge-in-scala">Solving the Challenge in Scala</a></li>
+  </ul></li>
+  <li><a href="#bullet-proof-data-science" id="toc-bullet-proof-data-science" class="nav-link" data-scroll-target="#bullet-proof-data-science">Bullet Proof Data Science</a>
+  <ul class="collapse">
+  <li><a href="#missing-values-1" id="toc-missing-values-1" class="nav-link" data-scroll-target="#missing-values-1">Missing Values</a></li>
+  <li><a href="#start-with-the-end-in-mind" id="toc-start-with-the-end-in-mind" class="nav-link" data-scroll-target="#start-with-the-end-in-mind">Start with the End in Mind</a></li>
+  <li><a href="#safe-transformation" id="toc-safe-transformation" class="nav-link" data-scroll-target="#safe-transformation">Safe transformation</a></li>
+  <li><a href="#immutability-and-lenses" id="toc-immutability-and-lenses" class="nav-link" data-scroll-target="#immutability-and-lenses">Immutability and Lenses</a></li>
+  <li><a href="#bullet-proof-reading-of-data-sources" id="toc-bullet-proof-reading-of-data-sources" class="nav-link" data-scroll-target="#bullet-proof-reading-of-data-sources">Bullet Proof Reading of Data Sources</a></li>
+  <li><a href="#bullet-proof-aggregation-of-data-sources" id="toc-bullet-proof-aggregation-of-data-sources" class="nav-link" data-scroll-target="#bullet-proof-aggregation-of-data-sources">Bullet Proof Aggregation of Data Sources</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bullet Proof Data Science in Scala</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Data Science</div>
+    <div class="quarto-category">Scala</div>
+    <div class="quarto-category">Missing Values</div>
+    <div class="quarto-category">Spark</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    How to use Scala/Spark in such a way that user or machine errors lead to minimal harm?
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 25, 2016</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In this post, we go over some typical aspects and challenges that occur in typical data science projects in order to extract some requirements for data analysis in the broad sense of the word. We then illustrate how we tackle these requirements in typical data science projects using Scala.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="joining-and-annotations" class="level2">
+<h2 class="anchored" data-anchor-id="joining-and-annotations">Joining and Annotations</h2>
+<p>The reality is that often times several data sources need to be aggregated. Aggregation can be in two ways/directions:</p>
+<ol type="1">
+<li><em>Vertical</em>: New data, similar to what we already have, and</li>
+<li><em>Horizontal</em>: Additional information about data we already obtained.</li>
+</ol>
+</section>
+<section id="parsing-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="parsing-libraries">Parsing Libraries</h2>
+<p>Last week I was parsing a tab-separated file with information about genomic variants (aka a <a href="https://github.com/tmoerman/vcf-comp">VCF file</a>). The parsing was done using a <a href="https://github.com/tmoerman/adam-fx">custom library</a> created by a colleague of mine. I had uses the library before, but now suddenly it did not work anymore. All I got was a <a href="https://plus.google.com/u/0/photos/albums/pgjn4t8o2070opjbq27bm8tg97jig4pu5?pid=6293736964412074498&amp;oid=108837720006806497269">confusing error about some exception</a>:</p>
+<p><img src="https://lh4.googleusercontent.com/-Hsj5FX-c8Q0/V1fYbGmG6gI/AAAAAAAAI3s/i-vrYvoslC0IPUxgRzJWHy9Ib8WlJ3nhgCL0B/w1065-h383-no/2016-06-08.png" class="img-fluid"></p>
+<p>And then, the fun starts. How to find out where things go wrong and how to make sure you don’t have to rewrite (part of) the parser? It turned out additional fields can be added to a VCF format file, which the parser does not take into account.</p>
+</section>
+<section id="missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="missing-values">Missing Values</h2>
+<p>A similar issue occurs when dealing with missing values, or missing columns in the data. It’s very easy to end up with exceptions in the Scala/Java world or equivalent in other languages.</p>
+<p>The challenge of missing data becomes even more concrete when additional data is aggregated. Suppose we have additional annotations about a subset of the data. There needs to be a way to cover situations like this.</p>
+</section>
+<section id="solving-the-challenge-in-scala" class="level2">
+<h2 class="anchored" data-anchor-id="solving-the-challenge-in-scala">Solving the Challenge in Scala</h2>
+<p>In other words, you don’t have control over the input in most cases. In what follows, we describe an approach to data analysis in <a href="http://www.scala-lang.org/">Scala</a> that takes into account the above challenges. The approach is heavily based on principles of <a href="https://en.wikipedia.org/wiki/Functional_programming">Functional Programming</a> while capturing the data model in an object model.</p>
+</section>
+</section>
+<section id="bullet-proof-data-science" class="level1">
+<h1>Bullet Proof Data Science</h1>
+<section id="missing-values-1" class="level2">
+<h2 class="anchored" data-anchor-id="missing-values-1">Missing Values</h2>
+<p>On important aspect of the above challenges is missing values. Say you’re a service organization that keeps records of potential customers. Furthermore, say you want to analyze people’s hobbies. You would like to allow for a distinction between 3 situations:</p>
+<ol type="1">
+<li>There is no information about the customer’s hobbies</li>
+<li>The customer does not have any hobbies</li>
+<li>The customer has 1 or more hobbies</li>
+</ol>
+<p>Say you encode the hobbies as a <code>List</code> of <code>String</code> (free form), then (2) corresponds to an empty list and (3) corresponds to a list of <em>n</em> hobbies. But what does (1) correspond to? In R, one usually gets <code>NA</code>. In Java, one would often sees the occurrence of <code>null</code>, but using <code>null</code> is not a <a href="http://blog.scalac.io/2015/05/31/dealing-with-npe.html">good</a> <a href="http://alvinalexander.com/scala/scala-null-values-option-uninitialized-variables">habit</a>.</p>
+<p>Instead, we use the <code>Option</code> type. It encapsulates whatever other data structure you want. The above 3 situations then correspond to:</p>
+<ol type="1">
+<li><code>None</code> for no hobbies known about this person</li>
+<li><code>Some(List())</code> for this person does not have hobbies</li>
+<li><code>Some(List(hobby1, hobby2, ...))</code> for the hobbies for this person</li>
+</ol>
+<p>For the FP (Functional Programming) people among us, the option is a Monad. But let’s not go there yet in order not to scare off the others…</p>
+</section>
+<section id="start-with-the-end-in-mind" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-the-end-in-mind">Start with the End in Mind</h2>
+<p>In our experience, it makes sense to define a good model for the data after aggregation and processing and capture this in an object model. This model need to be the one that can be used as input for a machine learning library as such, but it should capture the logic of the application domain.</p>
+<p>And Scala’s <code>case</code> classes come in very handy. We will not cover the specifics or benefits of case classes here, but remember this: always put <code>case</code> in front of your class definition. Oh, and while you’re at it, add <code>val</code> before every class parameter as well.</p>
+<p>For instance, and to be in line with the discussion above, we could define a <code>Name</code> class definition as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="kw">class</span> <span class="ex">Name</span><span class="op">(</span><span class="kw">val</span> firstName<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">],</span> <span class="kw">val</span> lastName<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>One can add safe getters and setters if necessary:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="kw">class</span> <span class="ex">Name</span><span class="op">(</span><span class="kw">val</span> firstName<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">],</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                <span class="kw">val</span> lastName<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getSafeFirstName <span class="op">=</span> firstName<span class="op">.</span><span class="fu">getOrElse</span><span class="op">(</span><span class="st">"First name not known"</span><span class="op">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getSafeLastName  <span class="op">=</span> lastName<span class="op">.</span><span class="fu">getOrElse</span><span class="op">(</span><span class="st">"Last name not known"</span><span class="op">)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Please note that the safe getters return a <code>String</code>, even if the value is not available.</p>
+</section>
+<section id="safe-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="safe-transformation">Safe transformation</h2>
+<p>Once we encapsulated the data in an <code>Option</code>, we can safely process this data as well. There are multiple way to do this, but all come down to the same principle:</p>
+<ol type="1">
+<li>Only process <em>values</em> that should be processed, so don’t process missing entries, and</li>
+<li>Make sure the processing itself is <em>safe</em> by catching exceptions where necessary.</li>
+</ol>
+<p>Coming back to our example: In practice one seldom gets a dataset with first name and last name clearly split. We could store input as well, and define a companion object in order for people to easily use the API:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="kw">class</span> <span class="ex">Name</span><span class="op">(</span><span class="kw">val</span> unparsed<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">],</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                <span class="kw">val</span> firstName<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]=</span><span class="bu">None</span><span class="op">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                <span class="kw">val</span> lastName<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]=</span><span class="bu">None</span><span class="op">)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> <span class="ex">Name</span> <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>unparsedStr<span class="op">:</span> <span class="ex">String</span><span class="op">)</span> <span class="op">=</span> <span class="kw">new</span> <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>unparsedStr<span class="op">))</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>unparsedStr<span class="op">:</span> <span class="ex">String</span><span class="op">,</span> fnStr<span class="op">:</span><span class="ex">String</span><span class="op">,</span> lnStr<span class="op">:</span><span class="ex">String</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>unparsedStr<span class="op">),</span> <span class="bu">Some</span><span class="op">(</span>fnStr<span class="op">),</span> <span class="bu">Some</span><span class="op">(</span>lnStr<span class="op">))</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We used default values for the first and last name. Imagine now what you can do with an object model like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> name1BeforeParsing <span class="op">=</span> <span class="ex">Name</span><span class="op">(</span><span class="st">"John Doo"</span><span class="op">)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> name2BeforeParsing <span class="op">=</span> <span class="ex">Name</span><span class="op">(</span><span class="st">"Bar Foo"</span><span class="op">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> name3BeforeParsing <span class="op">=</span> <span class="ex">Name</span><span class="op">(</span><span class="st">"Franz Octupus"</span><span class="op">)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">// A very crude parsing function</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">parseName</span><span class="op">(</span>in<span class="op">:</span><span class="ex">Name</span><span class="op">):</span><span class="ex">Name</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> names <span class="op">=</span> in<span class="op">.</span>unparsed<span class="op">.</span><span class="fu">map</span><span class="op">(</span>_<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">" "</span><span class="op">))</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    in<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>firstName <span class="op">=</span> names<span class="op">.</span><span class="fu">map</span><span class="op">(</span><span class="fu">_</span><span class="op">(</span><span class="dv">0</span><span class="op">)),</span> lastName <span class="op">=</span> names<span class="op">.</span><span class="fu">map</span><span class="op">(</span><span class="fu">_</span><span class="op">(</span><span class="dv">1</span><span class="op">)))</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> name1 <span class="op">=</span> <span class="fu">parseName</span><span class="op">(</span>name1BeforeParsing<span class="op">)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> name2 <span class="op">=</span> <span class="fu">parseName</span><span class="op">(</span>name2BeforeParsing<span class="op">)</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> listOfPersons <span class="op">=</span> <span class="ex">List</span><span class="op">(</span>name1<span class="op">,</span> name2<span class="op">,</span> name3BeforeParsing<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, obviously there are lots of problems with this approach to parsing the name. One could improve this in many ways. For instance, we did not take into account a middle name. One approach to improve the parsing itself could be to use a database of common first names and last names. But that’s not the aim of this post. So let us continue with the important stuff here. Let us convert all first names to initials in a safe way:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">getInitials</span><span class="op">(</span>s<span class="op">:</span> <span class="ex">String</span><span class="op">):</span><span class="ex">String</span> <span class="op">=</span> s<span class="op">.</span>toCharArray<span class="op">.</span>head<span class="op">.</span>toString<span class="op">.</span>toUpperCase <span class="op">+</span> <span class="st">"."</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">firstNameToInitials</span><span class="op">(</span>name<span class="op">:</span> <span class="ex">Name</span><span class="op">):</span><span class="ex">Name</span> <span class="op">=</span> name<span class="op">.</span>firstName <span class="cf">match</span> <span class="op">{</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="bu">Some</span><span class="op">(</span>nameString<span class="op">)</span> <span class="op">=&gt;</span> name<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>firstName <span class="op">=</span> <span class="bu">Some</span><span class="op">(</span><span class="fu">getInitials</span><span class="op">(</span>nameString<span class="op">))</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="bu">None</span> <span class="op">=&gt;</span> name</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The result is as follows:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>listOfPersons<span class="op">.</span><span class="fu">map</span><span class="op">(</span>firstNameToInitials<span class="op">).</span>foreach<span class="op">{</span>println<span class="op">}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>John Doo<span class="op">),</span><span class="bu">Some</span><span class="op">(</span>J<span class="op">.),</span><span class="bu">Some</span><span class="op">(</span>Doo<span class="op">))</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>Bar Foo<span class="op">),</span><span class="bu">Some</span><span class="op">(</span>B<span class="op">.),</span><span class="bu">Some</span><span class="op">(</span>Foo<span class="op">))</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>Franz Octupus<span class="op">),</span><span class="bu">None</span><span class="op">,</span><span class="bu">None</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>See how the function gracefully managed to pass over nonexistent values! The initials of nothing is still nothing. It does not end here, though, because we managed to cope with missing values, but we did not yet make the transformation fully bullet proof! See what happens in the following case:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">firstNameToInitials</span><span class="op">(</span><span class="fu">parseName</span><span class="op">(</span><span class="ex">Name</span><span class="op">(</span><span class="st">"Jacobus"</span><span class="op">)))</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>java<span class="op">.</span>util<span class="op">.</span><span class="ex">NoSuchElementException</span><span class="op">:</span> next on empty iterator</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  at scala<span class="op">.</span>collection<span class="op">.</span>Iterator$$anon$<span class="fl">2.</span><span class="fu">next</span><span class="op">(</span><span class="ex">Iterator</span><span class="op">.</span>scala<span class="op">:</span><span class="dv">39</span><span class="op">)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  at scala<span class="op">.</span>collection<span class="op">.</span>Iterator$$anon$<span class="fl">2.</span><span class="fu">next</span><span class="op">(</span><span class="ex">Iterator</span><span class="op">.</span>scala<span class="op">:</span><span class="dv">37</span><span class="op">)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  at scala<span class="op">.</span>collection<span class="op">.</span>IndexedSeqLike$Elements<span class="op">.</span><span class="fu">next</span><span class="op">(</span>IndexedSeqLike<span class="op">.</span>scala<span class="op">:</span><span class="dv">63</span><span class="op">)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  at scala<span class="op">.</span>collection<span class="op">.</span>IterableLike$class<span class="op">.</span><span class="fu">head</span><span class="op">(</span>IterableLike<span class="op">.</span>scala<span class="op">:</span><span class="dv">107</span><span class="op">)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  at scala<span class="op">.</span>collection<span class="op">.</span>mutable<span class="op">.</span>ArrayOps$ofChar<span class="op">.</span>scala$collection$IndexedSeqOptimized$$super$<span class="fu">head</span><span class="op">(</span>ArrayOps<span class="op">.</span>scala<span class="op">:</span><span class="dv">222</span><span class="op">)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  at scala<span class="op">.</span>collection<span class="op">.</span>IndexedSeqOptimized$class<span class="op">.</span><span class="fu">head</span><span class="op">(</span>IndexedSeqOptimized<span class="op">.</span>scala<span class="op">:</span><span class="dv">126</span><span class="op">)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  at scala<span class="op">.</span>collection<span class="op">.</span>mutable<span class="op">.</span>ArrayOps$ofChar<span class="op">.</span><span class="fu">head</span><span class="op">(</span>ArrayOps<span class="op">.</span>scala<span class="op">:</span><span class="dv">222</span><span class="op">)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  at <span class="op">.</span><span class="fu">firstNameToInitials</span><span class="op">(&lt;</span>console<span class="op">&gt;:</span><span class="dv">10</span><span class="op">)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span> <span class="dv">33</span> elided</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>An easy way to solve this, and one that is compatible with our approach thus far is by using <code>Try</code> in Scala. You have two choices now, which depend on how you want the API to work:</p>
+<ol type="1">
+<li>When an exception occurs during the transformation, let the result be <code>None</code>. So in other words, let it correspond to a missing value.</li>
+<li>When an exception occurs, insert a default value</li>
+</ol>
+<p>Both scenarios are shown below:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> scala<span class="op">.</span>util<span class="op">.</span>Try</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> DEFAULT<span class="op">:</span><span class="ex">String</span> <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">getInitialsDefault</span><span class="op">(</span>s<span class="op">:</span> <span class="ex">String</span><span class="op">):</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Some</span><span class="op">(</span><span class="fu">Try</span><span class="op">(</span>s<span class="op">.</span>toCharArray<span class="op">.</span>head<span class="op">.</span>toString<span class="op">.</span>toUpperCase <span class="op">+</span> <span class="st">"."</span><span class="op">).</span>toOption<span class="op">.</span><span class="fu">getOrElse</span><span class="op">(</span>DEFAULT<span class="op">))</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">getInitialsOption</span><span class="op">(</span>s<span class="op">:</span> <span class="ex">String</span><span class="op">):</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Try</span><span class="op">(</span>s<span class="op">.</span>toCharArray<span class="op">.</span>head<span class="op">.</span>toString<span class="op">.</span>toUpperCase <span class="op">+</span> <span class="st">"."</span><span class="op">).</span>toOption</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">firstNameToInitials</span><span class="op">(</span>name<span class="op">:</span> <span class="ex">Name</span><span class="op">,</span> </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                        getInitialF<span class="op">:</span><span class="ex">String</span><span class="op">=&gt;</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span><span class="ex">Name</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    name<span class="op">.</span>firstName <span class="cf">match</span> <span class="op">{</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="bu">Some</span><span class="op">(</span>nameString<span class="op">)</span> <span class="op">=&gt;</span> name<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>firstName <span class="op">=</span> <span class="fu">getInitialF</span><span class="op">(</span>nameString<span class="op">))</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="bu">None</span> <span class="op">=&gt;</span> name</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And use it as follows:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">firstNameToInitials</span><span class="op">(</span><span class="ex">Name</span><span class="op">(</span><span class="st">"def"</span><span class="op">,</span> <span class="st">""</span><span class="op">,</span> <span class="st">"def"</span><span class="op">),</span> getInitialsDefault _<span class="op">)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>res<span class="op">:</span> <span class="ex">Name</span> <span class="op">=</span> <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span><span class="kw">def</span><span class="op">),</span><span class="bu">Some</span><span class="op">(),</span><span class="bu">Some</span><span class="op">(</span><span class="kw">def</span><span class="op">))</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">firstNameToInitials</span><span class="op">(</span><span class="ex">Name</span><span class="op">(</span><span class="st">"def"</span><span class="op">,</span> <span class="st">""</span><span class="op">,</span> <span class="st">"def"</span><span class="op">),</span> getInitialsOption _<span class="op">)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>res<span class="op">:</span> <span class="ex">Name</span> <span class="op">=</span> <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span><span class="kw">def</span><span class="op">),</span><span class="bu">None</span><span class="op">,</span><span class="bu">Some</span><span class="op">(</span><span class="kw">def</span><span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By now, the FP adepts give us 1 point for keeping our data structures immutable: the above functions do not mutate the <code>name</code> object, but rather instantiate a new one.</p>
+<p>But we receive a <em>negative score</em> on omitting to acknowledge that <code>Option</code> is a Monad and that a much better way of writing the above exists:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">getInitialsDefault2</span><span class="op">(</span>name<span class="op">:</span> <span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]</span> <span class="op">=</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    name<span class="op">.</span><span class="fu">map</span><span class="op">(</span> s <span class="op">=&gt;</span> <span class="fu">Try</span><span class="op">(</span>s<span class="op">.</span>toCharArray<span class="op">.</span>head<span class="op">.</span>toString<span class="op">.</span>toUpperCase <span class="op">+</span> <span class="st">"."</span><span class="op">).</span><span class="fu">getOrElse</span><span class="op">(</span>DEFAULT<span class="op">))</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">getInitialsOption2</span><span class="op">(</span>name<span class="op">:</span> <span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]</span> <span class="op">=</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    name<span class="op">.</span><span class="fu">flatMap</span><span class="op">(</span> s <span class="op">=&gt;</span> <span class="fu">Try</span><span class="op">(</span>s<span class="op">.</span>toCharArray<span class="op">.</span>head<span class="op">.</span>toString<span class="op">.</span>toUpperCase <span class="op">+</span> <span class="st">"."</span><span class="op">).</span>toOption<span class="op">)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">firstNameToInitials2</span><span class="op">(</span>name<span class="op">:</span> <span class="ex">Name</span><span class="op">,</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                         getInitialF<span class="op">:</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]=&gt;</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span><span class="ex">Name</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    name<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>firstName <span class="op">=</span> <span class="fu">getInitialF</span><span class="op">(</span>name<span class="op">.</span>firstName<span class="op">))</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These functions do not exactly do the same as the earlier functions, but they illustrate a very important concept: <code>map</code> or <code>flatMap</code> on <code>None</code> results in <code>None</code>. So, there is no need to explicitly use pattern matching here. In order to parse the list of names, we simply <code>map</code> over it (indentation added for ease of reading):</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>listOfPersons<span class="op">.</span><span class="fu">map</span><span class="op">(</span><span class="fu">firstNameToInitials2</span><span class="op">(</span>_<span class="op">,</span> getInitialsDefault2<span class="op">))</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>res<span class="op">:</span> <span class="ex">List</span><span class="op">[</span><span class="ex">Name</span><span class="op">]</span> <span class="op">=</span> <span class="ex">List</span><span class="op">(</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                    <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>John Doo<span class="op">),</span><span class="bu">Some</span><span class="op">(</span>J<span class="op">.),</span><span class="bu">Some</span><span class="op">(</span>Doo<span class="op">)),</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                    <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>Bar Foo<span class="op">),</span><span class="bu">Some</span><span class="op">(</span>B<span class="op">.),</span><span class="bu">Some</span><span class="op">(</span>Foo<span class="op">)),</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                    <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>Franz Octupus<span class="op">),</span><span class="bu">None</span><span class="op">,</span><span class="bu">None</span><span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For a nice and graphical introduction to Monads and related concepts, I recommend the following <a href="http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html">blog post</a>. Transformations like the above can be composed in a bullet-proof way, once a missing value or exception occurs, we either continue with a default value or with <code>None</code>.</p>
+<p>We can go a bit further still for the FP fanatics among us. The function <code>firstNameToInitials</code> in fact is <em>the setter</em> part of what is called <a href="http://koff.io/posts/292173-lens-in-scala/">a <code>Lens</code></a>. We will come back to this later in this post.</p>
+</section>
+<section id="immutability-and-lenses" class="level2">
+<h2 class="anchored" data-anchor-id="immutability-and-lenses">Immutability and Lenses</h2>
+<p>Please note the examples above do not <em>mutate</em> any objects. We use the <code>copy</code> method to create an updated version of an object. We will not discuss the benefits of this kind of programming, but just mention the use of a Lens in order to <em>update</em> an immutable data structure.</p>
+<p>Several libraries exist for working with Lenses, some based on Scala macros others more high-level. For the sake of the argument, we lift the <code>Lens</code> definition out the <a href="https://github.com/scalaz/scalaz">Scalaz</a> project:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="kw">class</span> Lens<span class="op">[</span>A<span class="op">,</span>B<span class="op">](</span>get<span class="op">:</span> A <span class="op">=&gt;</span> B<span class="op">,</span> set<span class="op">:</span> <span class="op">(</span>A<span class="op">,</span>B<span class="op">)</span> <span class="op">=&gt;</span> A<span class="op">)</span> <span class="kw">extends</span> Function1<span class="op">[</span>A<span class="op">,</span>B<span class="op">]</span> <span class="kw">with</span> Immutable <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>whole<span class="op">:</span> A<span class="op">):</span> B   <span class="op">=</span> <span class="fu">get</span><span class="op">(</span>whole<span class="op">)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">updated</span><span class="op">(</span>whole<span class="op">:</span> A<span class="op">,</span> part<span class="op">:</span> B<span class="op">):</span> A <span class="op">=</span> <span class="fu">set</span><span class="op">(</span>whole<span class="op">,</span> part<span class="op">)</span> <span class="co">// like on immutable maps</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">mod</span><span class="op">(</span>a<span class="op">:</span> A<span class="op">,</span> f<span class="op">:</span> B <span class="op">=&gt;</span> B<span class="op">)</span> <span class="op">=</span> <span class="fu">set</span><span class="op">(</span>a<span class="op">,</span> <span class="fu">f</span><span class="op">(</span><span class="kw">this</span><span class="op">(</span>a<span class="op">)))</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> compose<span class="op">[</span>C<span class="op">](</span>that<span class="op">:</span> Lens<span class="op">[</span>C<span class="op">,</span>A<span class="op">])</span> <span class="op">=</span> Lens<span class="op">[</span>C<span class="op">,</span>B<span class="op">](</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=&gt;</span> <span class="kw">this</span><span class="op">(</span><span class="fu">that</span><span class="op">(</span>c<span class="op">)),</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>c<span class="op">,</span> b<span class="op">)</span> <span class="op">=&gt;</span> that<span class="op">.</span><span class="fu">mod</span><span class="op">(</span>c<span class="op">,</span> <span class="fu">set</span><span class="op">(</span>_<span class="op">,</span> b<span class="op">))</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> andThen<span class="op">[</span>C<span class="op">](</span>that<span class="op">:</span> Lens<span class="op">[</span>B<span class="op">,</span>C<span class="op">])</span> <span class="op">=</span> that compose <span class="kw">this</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A lens for first name can then be defined as such:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> aLens <span class="op">=</span> Lens<span class="op">[</span><span class="ex">Name</span><span class="op">,</span><span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]](</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    _<span class="op">.</span>firstName<span class="op">,</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>o<span class="op">,</span> value<span class="op">)</span> <span class="op">=&gt;</span> o<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>firstName <span class="op">=</span> value<span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So, you provide two functions: a getter and a setter.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>aLens<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="fu">listOfPersons</span><span class="op">(</span><span class="dv">1</span><span class="op">))</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>res<span class="op">:</span> <span class="ex">Option</span><span class="op">[</span><span class="ex">String</span><span class="op">]</span> <span class="op">=</span> <span class="bu">Some</span><span class="op">(</span>Bar<span class="op">)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>aLens<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="fu">listOfPersons</span><span class="op">(</span><span class="dv">1</span><span class="op">),</span> <span class="bu">Some</span><span class="op">(</span><span class="st">"Barby"</span><span class="op">))</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>res<span class="op">:</span> <span class="ex">Name</span> <span class="op">=</span> <span class="ex">Name</span><span class="op">(</span><span class="bu">Some</span><span class="op">(</span>Bar Foo<span class="op">),</span><span class="bu">Some</span><span class="op">(</span>Barby<span class="op">),</span><span class="bu">Some</span><span class="op">(</span>Foo<span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this case the usage of a lens is almost trivial because using the copy method on a class is an easy thing to do. But when you start to nest classes to create a more complicated model, multiple copy calls are required. Lenses are a good alternative in that case.</p>
+</section>
+<section id="bullet-proof-reading-of-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="bullet-proof-reading-of-data-sources">Bullet Proof Reading of Data Sources</h2>
+<p>The foundation of the bullet proof approach thus far clearly is the <code>Option</code> type, aka the <code>Maybe</code> Monad in Haskell. We already used <code>Try</code> to catch exceptions in a user-friendly and safe way.</p>
+<p>Using <code>Try</code> while reading a file allows us to cope with missing values, columns or when transforming numbers encoded in strings to integers or floating point numbers. In every case, we have the option to cast the possible exceptions to <code>None</code> (missing value) or a default value.</p>
+</section>
+<section id="bullet-proof-aggregation-of-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="bullet-proof-aggregation-of-data-sources">Bullet Proof Aggregation of Data Sources</h2>
+<p>As mentioned already it is seldom the case that all data is available from one input file/database. Sometimes additional annotations need to be added (horizontal aggregation), coming from a different source. Sometimes, more data should be added which lacks certain features that the already parsed data contains (vertical aggregation).</p>
+<p>There are several approaches to this. One is to go from one class-representation to another. But in this case, classes should be closely matched to the source of the data. We use a different approach, also making use of the (… tada! …) <code>Option</code> type.</p>
+<p>Since a) the data ready for analytics should be in denormalized form, and b) we already have a model for that data that is able to cope with missing values, it is not hard to start from the data source that contains the most information about the denormalized form of the data. All fields/features that are not available in this first data source remain <code>None</code> (aka the default).</p>
+<p>Adding additional features later can easily be done by <em>updating</em> the features from <code>None</code> to <code>Some(...)</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Adding additional data vertically can be done in the same way. It’s perfectly fine to end up with a data structure where most of the rows have <code>None</code> for a certain feature but some contain more information. And since our transformations are bullet proof, all runs safe.</p>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>To summarize:</p>
+<ul>
+<li>Start out with the object model that would be used when all available would be loaded</li>
+<li>Use <code>Option</code> types for <em>all</em> fields in order to</li>
+<li>Use default values <code>None</code> for data that is only later to be processed or loaded</li>
+<li>Use the Monadic property of the <code>Option</code> type for easy manipulation</li>
+<li>Use <code>Try</code> in combination with <code>Option</code>s for safe reading and transformation of data</li>
+<li>From beginning to end, work with the same data model (using case classes) and fill in the blanks by updating <code>None</code> to <code>Some(...)</code>.</li>
+</ul>
+<p>… and of course …</p>
+<ul>
+<li>Update the data model, transformations, aggregations, etc. whenever necessary</li>
+</ul>
+<hr>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This even reads nice!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<!-- main -->
+
+<footer class="column-screen">
+<div id="banner">
+<div class="footer">
+<div class="quarto-layout-panel">
+<div class="di-grid">
+<div class="box quarto-layout-cell grid-span-col-2">
+<p><img src="../../../images/logo_white.svg" class="img-fluid" width="60"></p>
+<p>Founded in 2011, Data Intuitive is a team of computational scientists with a wealth of experience in data science and creating and optimizing bioinformatics data workflows.</p>
+</div>
+
+
+<section id="links" class="level3 box quarto-layout-cell">
+<h3 class="anchored" data-anchor-id="links">Links</h3>
+
+<p><a href="../../../disclaimer.html">Disclaimer</a><br>
+<a href="../../../privacy_policy.html">Privacy Statement</a><br>
+<a href="https://www.quarto.org" target="_blank">Powered by Quarto</a><br>
+</p>
+</section>
+
+<section id="follow-us" class="level3 box quarto-layout-cell">
+<h3 class="anchored" data-anchor-id="follow-us">Follow Us</h3>
+
+<p> <a href="https://github.com/data-intuitive/" target="_blank"><i class="b-icon" data-feather="github"></i> GitHub</a></p>
+<!-- Include the Feather icons library -->
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+feather.replace();
+</script>
+<p> <a href="https://www.linkedin.com/company/data-intuitive/" target="_blank"><i class="b-icon" data-feather="linkedin"></i> LinkedIn</a></p>
+<!-- Include the Feather icons library -->
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+feather.replace();
+</script>
+<p> <a href="Mailto:info@data-intuitive.com" target="_blank"><i class="b-icon" data-feather="mail"></i> Mail</a>
+<!-- Include the Feather icons library -->
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+feather.replace();
+</script>
+</p><p> <a href="https://twitter.com/data-intuitive" target="_blank"><i class="b-icon" data-feather="twitter"></i> Twitter</a></p>
+<!-- Include the Feather icons library -->
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+feather.replace();
+</script>
+</section>
+</div>
+</div>
+</div>
+</div> 
+</footer>
+
+<!-- animated js -->
+<script src="../../../animated/wow.min.js"> </script>
+<script>
+  new WOW().init();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
