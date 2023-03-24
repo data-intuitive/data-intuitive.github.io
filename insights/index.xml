@@ -9,7 +9,7 @@
 <link>https://www.data-intuitive.com/insights/index.html</link>
 <atom:link href="https://www.data-intuitive.com/insights/index.xml" rel="self" type="application/rss+xml"/>
 <description>Data Intuitive develops intuitive tools and custom biotech data pipelines to help clients gain valuable insights and make data-driven decisions.</description>
-<generator>quarto-1.2.335</generator>
+<generator>quarto-1.2.475</generator>
 <lastBuildDate>Mon, 06 Feb 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>DI’s Sustainability and Wellness Initiative</title>
@@ -21,14 +21,7 @@
 <p>One of the difficulties faced by a fully remote company is fostering a sense of unity and collaboration among employees. To address this, the company explores different work methods and leverages technology to create a virtual environment that mimics the experience of working together in one large shared space. Teleworking also helps reduce commute emissions, promote sustainability, and support personal well-being through flexible work arrangements. The plan places a strong emphasis on open-source technology and support for non-profit scientific organizations, further reinforcing Data Intuitive’s commitment to sustainability.</p>
 <p>This effort showcases Data Intuitive’s dedication to sustainability and well-being, and its aim to create a better future for both its employees and the planet.</p>
 <p><img src="https://www.data-intuitive.com/insights/news/2023-02-05-sustain/sustainability2.jpg" class="img-fluid"></p>
-<button class="btn-action btn btn-info" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p><a href="../../../insights/index.html#news" class="btn-action btn btn-info">Back</a></p>
 
 
 </section>
@@ -42,14 +35,7 @@ function goBack() {
   <link>https://www.data-intuitive.com/insights/news/2022-12-25-fueled_by_vlaio/index.html</link>
   <description><![CDATA[ 
 <p>Data Intuitive is pleased to announce that we have received funding from VLAIO, which will bolster our research and development efforts as we continue to push the boundaries of data science and bioinformatics data pipelines. We are grateful for the support of VLAIO and are excited to see what the future holds as we continue to innovate and progress in our field.</p>
-<button class="btn-action btn btn-info" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p><a href="../../../insights/index.html#news" class="btn-action btn btn-info">Back</a></p>
 
 
  ]]></description>
@@ -62,14 +48,7 @@ function goBack() {
   <link>https://www.data-intuitive.com/insights/news/2022-12-15-fit_to_go_global/index.html</link>
   <description><![CDATA[ 
 <p>We are thrilled to announce that this website is being launched with the funding of Flanders Investment and Trade (FIT). This funding will not only help us to create a professional and user-friendly website, but it will also support the international expansion of our company. We are grateful for the support and belief in our mission, and we look forward to working together as we continue to grow and develop on a global scale.</p>
-<button class="btn-action btn btn-info" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p><a href="../../../insights/index.html#news" class="btn-action btn btn-info">Back</a></p>
 
 
  ]]></description>
@@ -351,14 +330,7 @@ s2 1.750000   10 5.250000</code></pre>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Wolf, F Alexander, Philipp Angerer, and Fabian J Theis. 2018. “SCANPY: Large-Scale Single-Cell Gene Expression Data Analysis.” Genome Biology 19 (February): 15. <a href="https://doi.org/10.1186/s13059-017-1382-0" class="uri">https://doi.org/10.1186/s13059-017-1382-0</a>.</p>
-<button class="btn-action btn btn-info" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p><a href="../../../insights/index.html#blog-posts" class="btn-action btn btn-info">Back</a></p>
 
 
 </section>
@@ -390,21 +362,13 @@ function goBack() {
 </ul>
 <pre><code>[ ID, data, config ]</code></pre>
 <p>Please refer to the <a href="https://github.com/data-intuitive/diflow">GitHub</a> repository for more information and documentation.</p>
-<button class="btn-action btn btn-info" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p><a href="../../../insights/index.html#blog-posts" class="btn-action btn btn-info">Back</a></p>
 
 
 
  ]]></description>
   <guid>https://www.data-intuitive.com/insights/blog/2020-12-15-diflow/index.html</guid>
   <pubDate>Tue, 15 Dec 2020 09:01:45 GMT</pubDate>
-  <media:content url="https://www.data-intuitive.com/insights/blog/2020-12-15-diflow/Github_Diflow.png" medium="image" type="image/png" height="97" width="144"/>
 </item>
 <item>
   <title>Open Problems for Single-Cell Analysis</title>
@@ -412,19 +376,12 @@ function goBack() {
   <description><![CDATA[ 
 <p>OpenProblems is an open-source platform for benchmarking and formalizing computational tasks in single-cell analysis. The platform aims to facilitate the development of new methods for single-cell omics by defining mathematical interpretations of tasks, providing publicly available gold-standard datasets in standardized formats, defining quantitative metrics to evaluate success, and ranking state-of-the-art methods in continuously updated leaderboards. OpenProblems is hosted on GitHub and evaluated using AWS with support from the Chan Zuckerberg Initiative.</p>
 <p>Viash is being used in OpenProblems to streamline the development, execution, and sharing of methods, metrics and dataset loaders. It allows users to define their components as reusable modules that can be combined to form pipelines, and it manages dependencies, versioning, and execution on different computing environments. Viash also provides a user-friendly interface for configuring pipelines and visualizing results. By using Viash, OpenProblems can provide a flexible and scalable platform for benchmarking single-cell analysis methods.</p>
-<button class="btn-action btn btn-info" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p><a href="../../../insights/index.html#use-cases" class="btn-action btn btn-info">Back</a></p>
 
 
  ]]></description>
   <guid>https://www.data-intuitive.com/insights/use_cases/openproblems/index.html</guid>
-  <pubDate>Tue, 21 Mar 2023 17:29:59 GMT</pubDate>
+  <pubDate>Fri, 24 Mar 2023 10:38:06 GMT</pubDate>
   <media:content url="https://www.data-intuitive.com/insights/use_cases/openproblems/image.png" medium="image" type="image/png" height="37" width="144"/>
 </item>
 <item>
@@ -434,19 +391,12 @@ function goBack() {
 <p>Breakthroughs in single-cell genomics have been made possible by the simultaneous advancement of experimental and computational technologies. While experimental techniques standardize quickly, computational analysis pipelines are more challenging to compare and thus vary. Analysis platforms such as Seurat and Scanpy have facilitated pipeline building and introduced basic quality standards. Furthermore, we have made first attempts at standardizing workflows for scRNA-seq to bridge the language-gap between these platforms and their users.</p>
 <p>However, as new analysis methods are being proposed at an increasing rate and novel multi-omic sequencing technologies are becoming commonplace, there is an urgent need for new analysis standards for single-cell (multi-)omics data.</p>
 <p>OpenPipelines are best-practice workflows for single-cell single- and multi-omics data. To ensure these workflows are accessible to non-experts and can be deployed in a fast and reproducible way, we will build these into reproducible, modular and updatable best-practice analysis pipelines using industry-standard workflow tools, high-performance versions of popular methods and an interoperable, language-independent framework.</p>
-<button class="btn-action btn btn-info" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p><a href="../../../insights/index.html#use-cases" class="btn-action btn btn-info">Back</a></p>
 
 
  ]]></description>
   <guid>https://www.data-intuitive.com/insights/use_cases/openpipelines/index.html</guid>
-  <pubDate>Tue, 21 Mar 2023 17:29:59 GMT</pubDate>
+  <pubDate>Fri, 24 Mar 2023 10:38:06 GMT</pubDate>
   <media:content url="https://www.data-intuitive.com/insights/use_cases/openpipelines/image.png" medium="image" type="image/png" height="72" width="144"/>
 </item>
 </channel>
