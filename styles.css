@@ -37,12 +37,13 @@ footer.footer .nav-footer, #quarto-header nav {
   padding: 0;
 }
 
-.navbar-brand-container {
-  margin-left: 2rem;
+#quarto-search {
+  margin-inline-end: 2rem;
 }
 
 .navbar-dark .navbar-toggler {
-  margin-right: 2rem;
+  margin-left: 2rem;
+
 }
 
 /* custom blocks */
@@ -212,7 +213,7 @@ h2 + p {
     background-color: #ffffff;
     color: #5d3a8d;
     display: block;
-    margin-top: 0;
+    margin-top: -0.5rem;
     top:50px;
     left:0px;
   }
@@ -221,23 +222,9 @@ h2 + p {
     color: #5d3a8d;
     display: none;
   }
-  .dropdown:hover .dropdown-toggle::after {
-    background-color: #ffffff;
-    color: #5d3a8d;
-    border-bottom: 0.3em solid #ffffff;
-    border-top: 0;
-  }
 
 }
 
-  @media screen and (max-width: 991px) {
-    .dropdown-toggle.show::after {
-      background-color: #ffffff;
-      color: #5d3a8d;
-      border-top: 0;
-      border-bottom: 0.3em solid;
-    }
-  }
 
 li {
     list-style-type: none;
@@ -440,6 +427,10 @@ ol, ul {
   .footer {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .navbar-brand-container {
+    margin-left: 2rem;
   }
 
 }
