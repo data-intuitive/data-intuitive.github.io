@@ -30,6 +30,7 @@
       "/insights/news/2023-02-05-sustain/index.html",
       "/insights/news/2022-12-25-fueled_by_vlaio/index.html",
       "/insights/news/2022-12-15-fit_to_go_global/index.html",
+      "/insights/blog/2023-05-22-scverse-hackathon/index.html",
       "/insights/blog/2021-02-02-anndata-for-r/index.html",
       "/insights/blog/2020-12-15-diflow/index.html",
       "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
@@ -62,6 +63,7 @@
   {
     "listing": "/insights/index_blog.html",
     "items": [
+      "/insights/blog/2023-05-22-scverse-hackathon/index.html",
       "/insights/blog/2021-02-02-anndata-for-r/index.html",
       "/insights/blog/2020-12-15-diflow/index.html",
       "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
