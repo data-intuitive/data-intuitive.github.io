@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Toni Verbeiren">
-<meta name="dcterms.date" content="2014-09-23">
+<meta name="author" content="Robrecht Cannoodt">
+<meta name="dcterms.date" content="2023-06-16">
 
-<title>Data Intuitive - Impact in Risk Assessment</title>
+<title>Data Intuitive - GitHub Action: Reclaim The Bytes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,10 +108,13 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Data Intuitive - Impact in Risk Assessment">
-<meta property="og:description" content="">
+<meta property="og:title" content="Data Intuitive - GitHub Action: Reclaim The Bytes">
+<meta property="og:description" content="Remove unused software to reclaim disk space.">
+<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/image.png">
 <meta property="og:site-name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:height" content="384">
+<meta property="og:image:width" content="768">
 </head>
 
 <body class="nav-fixed">
@@ -158,17 +195,25 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background-and-inspiration" id="toc-background-and-inspiration" class="nav-link active" data-scroll-target="#background-and-inspiration">Background and Inspiration</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#measurements" id="toc-measurements" class="nav-link" data-scroll-target="#measurements">Measurements</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Impact in Risk Assessment</h1>
+<h1 class="title">GitHub Action: Reclaim The Bytes</h1>
+<p class="subtitle lead">Remove unused software to reclaim disk space.</p>
   <div class="quarto-categories">
-    <div class="quarto-category">Decision</div>
-    <div class="quarto-category">Risk</div>
+    <div class="quarto-category">DevOps</div>
   </div>
   </div>
 
@@ -179,14 +224,14 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Toni Verbeiren </p>
+             <p>Robrecht Cannoodt </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 23, 2014</p>
+      <p class="date">June 16, 2023</p>
     </div>
   </div>
   
@@ -196,33 +241,199 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 
 </header>
 
-<p>How many times have you seen project charters or business cases where a form of risk assessment has been provided? In many cases, people try to make the risks tangible and actionable by means of a <a href="http://en.wikipedia.org/wiki/Risk_Matrix">risk matrix</a>. In this approach, every risk gets 2 parameters associated to it: <em>probability</em> of the risk occurring and <em>impact</em> when the risk occurs. In most cases, 3 possibilities are given for both parameters: low, medium, high.</p>
-<p>There are&nbsp;two&nbsp;very big advantages to this approach:</p>
-<ol type="1">
-<li><p>It gives people a framework, a way to quantify risks that is easy to understand</p></li>
-<li><p>The method not only looks at the probability of an event, but also at its impact. The latter has practical consequences.</p></li>
-</ol>
-<p>There are also disadvantages to this approach. Some are mentioned already on the <a href="http://en.wikipedia.org/wiki/Risk_Matrix">Wikipedia page</a>, but three are missing, in my opinion:</p>
-<ol type="1">
-<li><p>Many events with high impact a) have&nbsp;often not been taught of as a risk or b) are the consequence of a combination of factors.</p></li>
-<li><p>Usually, events that are rare have a bigger impact. But the probability of rare events is very hard to assess.</p></li>
-<li><p>Impact appears&nbsp;to be a linear function, but it is not.</p></li>
-</ol>
-<p>Let us give an example of the latter point. One computer failing in the office has small impact because the user may get a replacement lying around in 10 minutes or less. 10 computers failing in the office will require more time, because no 10 people are standby to service them in parallel and spare computers may be lacking. Imagine a fire, a hack, or something we can not think of now (see above)? When hundreds of computers need to be replaced?</p>
-<p>This is a situation where the impact of an event increases faster than linear (polynomial? exponential?). It may get worse, when an event causes an impact that is not recoverable anymore: too much electricity can kill a person, too many losses can ruin even a bank or a state, etc.</p>
-<p>The first two arguments can be thought of as applications of the <a href="http://www.amazon.com/The-Black-Swan-Improbable-Robustness/dp/081297381X">Black Swan</a> concept to projects and risk. The last argument is an application of the concept that is elaborated on&nbsp;in a book by the same author: <a href="http://www.amazon.com/Antifragile-Things-That-Disorder-Incerto/dp/0812979680">Antifragile</a>. Books could be written just applying concepts from these books!</p>
-<p>What does it tell us? When considering mitigation of risks, <em>think about what are possible consequences on a large scale</em>, not on the scale of individual events. Think about consequences like: nobody is able to work anymore, the whole building is destroyed, our competitor has leapfrogged us, etc. Thinking about mitigation of these consequences&nbsp;may tell you more about the underlying risks and events than the other way around.</p>
-<p>On a slightly cynical note: While doing so, you may find that more (advanced) technology is not always a solution because it usually makes things more complex and thus prone to more complex risks rather than avoiding them.</p>
-<button class="btn-action btn btn-info" role="button" onclick="goBack()">
-Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<p>In the dynamic world of data science and software development, making efficient use of available resources is not just an option but an absolute necessity. In a lot of our projects (e.g.&nbsp;<a href="https://github.com/openpipelines-bio/openpipeline">OpenPipelines</a>, <a href="https://github.com/viash-io/website">viash.io</a>, <a href="https://github.com/openproblems-bio/openproblems-v2">OpenProblems</a>), we need to build or use so many Docker image as part of our CI workflow, that we run out of disk space quite quickly.</p>
+<p>As part of our commitment to empowering developers, we at Data Intuitive are excited to announce the Version 1 release of our innovative GitHub Action, <a href="https://github.com/marketplace/actions/reclaim-the-bytes">“Reclaim The Bytes”</a>. This GitHub action is designed to streamline your workflow by freeing up disk space on GitHub runners during the build process, helping you make the most of the available space.</p>
+<section id="background-and-inspiration" class="level2">
+<h2 class="anchored" data-anchor-id="background-and-inspiration">Background and Inspiration</h2>
+<p>The development of “Reclaim The Bytes” was motivated by a desire to enhance the efficiency of workspace environments in GitHub. It was inspired by similar initiatives such as easimon’s <a href="https://github.com/easimon/maximize-build-space">maximize-build-space</a>, ThewApp’s <a href="https://github.com/ThewApp/free-actions">free-actions</a>. The discussion thread <a href="https://github.com/actions/runner-images/discussions/3242">here</a> provided additional insights that shaped the development of this action.</p>
+<p>The action works by executing <code>rm -rf</code> on specific folders, thereby removing unnecessary software and liberating valuable disk space. While the process is simple and quick, it is critical to understand that it might inadvertently delete dependencies required by your job, potentially disrupting your build. For instance, if your build job uses a .NET based tool and the required runtime is deleted, it may affect the smooth execution of your task. Therefore, it is crucial to ascertain which software may or may not be removed for your specific use case.</p>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<p>Below is an example usage in a GitHub workflow:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> My build action requiring more space</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> push</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build my artifact</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Reclaim the bytes</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> data-intuitive/reclaim-the-bytes@v1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-hosted-tool-cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-go</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-codeql</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-powershell</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-android-sdk</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-haskell-ghc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-swift</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-dotnet</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-docker-images</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">remove-swap</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Checkout</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Report free space</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>          echo "Free space:"</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>          df -h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="measurements" class="level2">
+<h2 class="anchored" data-anchor-id="measurements">Measurements</h2>
+<p>Understanding the balance between the time taken to remove a piece of software and the amount of space freed as a result is essential for optimizing your usage of “Reclaim The Bytes”. We have provided a visualization to help you comprehend this balance better. Below is a summary table that provides data on the software removed, the operating system, the duration in seconds for the removal process, and the amount of space freed in GB.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">OS</th>
+<th style="text-align: right;">Duration (s)</th>
+<th style="text-align: right;">Space freed (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">android-sdk</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">26.8</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">android-sdk</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">37.0</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">codeql</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">codeql</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">docker-images</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">18.4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">docker-images</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dotnet</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">5.6</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dotnet</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">haskell-ghc</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">haskell-ghc</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">hosted-tool-cache</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hosted-tool-cache</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">powershell</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">powershell</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">swap</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">swap</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">swift</td>
+<td style="text-align: left;">ubuntu-20.04</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">swift</td>
+<td style="text-align: left;">ubuntu-22.04</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, a scatterplot visualizes the same information, providing an intuitive understanding of the trade-off between removal duration and space freed. This way, you can make informed decisions about which software to keep or remove based on your unique requirements and constraints.</p>
+<p><img src="image.png" class="img-fluid"></p>
+<p>In summary, “Reclaim The Bytes” provides an efficient method for software developers to optimize their GitHub actions and maximize disk space usage. However, it is essential to understand its operation to ensure the successful execution of your build jobs. With this understanding, we hope you will leverage “Reclaim The Bytes” to improve your workflow and make your software development journey smoother and more efficient. Enjoy coding!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <!-- main -->
