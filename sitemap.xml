@@ -1,247 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.data-intuitive.com/company.html</loc>
-    <lastmod>2023-09-05T06:08:32.344Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/thank_apply.html</loc>
-    <lastmod>2023-09-05T06:08:31.672Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/commontext/salary_culture.html</loc>
-    <lastmod>2023-09-05T06:08:30.992Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/commontext/outro.html</loc>
-    <lastmod>2023-09-05T06:08:30.072Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/careers/full-stack-web-developer/index.html</loc>
-    <lastmod>2023-09-05T06:08:29.300Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/solutions/compass.html</loc>
-    <lastmod>2023-09-05T06:08:28.372Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/subscribe.html</loc>
-    <lastmod>2023-09-05T06:08:27.376Z</lastmod>
-  </url>
-  <url>
     <loc>https://www.data-intuitive.com/thank_contact.html</loc>
-    <lastmod>2023-09-05T06:08:26.616Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/contact.html</loc>
-    <lastmod>2023-09-05T06:08:25.984Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/disclaimer.html</loc>
-    <lastmod>2023-09-05T06:08:25.240Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/services/courses/index.html</loc>
-    <lastmod>2023-09-05T06:08:24.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/index_use_cases.html</loc>
-    <lastmod>2023-09-05T06:08:23.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2016-10-26-data-intuitive-at-spark-summit-2016/index.html</loc>
-    <lastmod>2023-09-05T06:08:21.648Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2015-10-29-thoughts-on-the-spark-summit-europe-2015/index.html</loc>
-    <lastmod>2023-09-05T06:08:20.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2014-09-24-writing-workflow-and-reproducible-data-analysis/index.html</loc>
-    <lastmod>2023-09-05T06:08:20.004Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2023-05-22-scverse-hackathon/index.html</loc>
-    <lastmod>2023-09-05T06:08:19.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html</loc>
-    <lastmod>2023-09-05T06:08:17.088Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2013-06-24-writing-workflow-markdown-pandoc-latex-and-the-likes/index.html</loc>
-    <lastmod>2023-09-05T06:08:16.176Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2014-07-10-publishing-html-presentations-on-github/index.html</loc>
-    <lastmod>2023-09-05T06:08:15.436Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html</loc>
-    <lastmod>2023-09-05T06:08:14.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2009-06-19-how-to-cope-with-change-an-alternative-approach/index.html</loc>
-    <lastmod>2023-09-05T06:08:13.744Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2012-09-18-choosing-the-right-cover-photo/index.html</loc>
-    <lastmod>2023-09-05T06:08:12.960Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2020-12-15-diflow/index.html</loc>
-    <lastmod>2023-09-05T06:08:12.076Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2016-06-25-bullet-proof-data-analysis-in-scala/index.html</loc>
-    <lastmod>2023-09-05T06:08:10.996Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2007-10-25-vmware-capacity-planner-taking-the-data-offline-part-1-introduction/index.html</loc>
-    <lastmod>2023-09-05T06:08:09.772Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2007-12-17-performance-monitoring-correlations/index.html</loc>
-    <lastmod>2023-09-05T06:08:09.012Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2014-09-23-impact-in-risk-assessment/index.html</loc>
-    <lastmod>2023-09-05T06:08:08.268Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/use_cases/openproblems/index.html</loc>
-    <lastmod>2023-09-05T06:08:06.908Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/index_news.html</loc>
-    <lastmod>2023-09-05T06:08:06.216Z</lastmod>
+    <lastmod>2023-12-18T11:02:45.308Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/insights/news/2023-02-05-sustain/index.html</loc>
-    <lastmod>2023-09-05T06:08:05.432Z</lastmod>
+    <lastmod>2023-12-18T11:02:44.656Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/privacy_policy.html</loc>
-    <lastmod>2023-09-05T06:08:04.348Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/use_cases/openproblems/index.html</loc>
+    <lastmod>2023-12-18T11:02:43.944Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/insights/news/2022-12-15-fit_to_go_global/index.html</loc>
-    <lastmod>2023-09-05T06:08:05.064Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/news/2022-12-25-fueled_by_vlaio/index.html</loc>
-    <lastmod>2023-09-05T06:08:05.772Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/use_cases/openpipelines/index.html</loc>
-    <lastmod>2023-09-05T06:08:06.564Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/index.html</loc>
-    <lastmod>2023-09-05T06:08:07.880Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2007-12-14-capacity-planning-what-to-monitor-and-how-to-interpret/index.html</loc>
-    <lastmod>2023-09-05T06:08:08.640Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html</loc>
-    <lastmod>2023-09-05T06:08:09.400Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/index_news.html</loc>
+    <lastmod>2023-12-18T11:02:43.184Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/insights/blog/2007-12-17-performance-monitoring-more-about-peaks/index.html</loc>
-    <lastmod>2023-09-05T06:08:10.180Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2021-02-02-anndata-for-r/index.html</loc>
-    <lastmod>2023-09-05T06:08:11.728Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2016-10-27-viz-and-math-in-apache-zeppelin/index.html</loc>
-    <lastmod>2023-09-05T06:08:12.604Z</lastmod>
+    <lastmod>2023-12-18T11:02:40.928Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/insights/blog/2008-01-08-capacity-monitoring-for-desktops/index.html</loc>
-    <lastmod>2023-09-05T06:08:13.368Z</lastmod>
+    <lastmod>2023-12-18T11:02:39.784Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2007-12-14-performance-monitoring-averages-and-peaks/index.html</loc>
-    <lastmod>2023-09-05T06:08:14.196Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html</loc>
+    <lastmod>2023-12-18T11:02:38.792Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/insights/blog/2012-01-17-infografiek/index.html</loc>
-    <lastmod>2023-09-05T06:08:15.040Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2012-09-25-rational-decision-making-in-business/index.html</loc>
-    <lastmod>2023-09-05T06:08:15.788Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2015-01-15-transposing-a-spark-rdd/index.html</loc>
-    <lastmod>2023-09-05T06:08:16.544Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2015-05-29-code-snippet-repository/index.html</loc>
-    <lastmod>2023-09-05T06:08:17.452Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2012-11-16-slm-introduction-part-1/index.html</loc>
-    <lastmod>2023-09-05T06:08:19.664Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.data-intuitive.com/insights/blog/2012-01-25-fight-against-tax-fraud-in-belgium/index.html</loc>
-    <lastmod>2023-09-05T06:08:20.400Z</lastmod>
+    <lastmod>2023-12-18T11:02:37.948Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/insights/blog/2012-12-04-slm-issues-with-traditional-slm-part-1/index.html</loc>
-    <lastmod>2023-09-05T06:08:21.324Z</lastmod>
+    <lastmod>2023-12-18T11:02:35.668Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/insights/index_blog.html</loc>
-    <lastmod>2023-09-05T06:08:23.320Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2012-01-25-fight-against-tax-fraud-in-belgium/index.html</loc>
+    <lastmod>2023-12-18T11:02:34.740Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/services/consultancy.html</loc>
-    <lastmod>2023-09-05T06:08:24.124Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2009-06-19-how-to-cope-with-change-an-alternative-approach/index.html</loc>
+    <lastmod>2023-12-18T11:02:33.900Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/services/courses/subscribe.html</loc>
-    <lastmod>2023-09-05T06:08:24.916Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2007-12-17-performance-monitoring-correlations/index.html</loc>
+    <lastmod>2023-12-18T11:02:32.968Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/index.html</loc>
-    <lastmod>2023-09-05T06:08:25.628Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2021-02-02-anndata-for-r/index.html</loc>
+    <lastmod>2023-12-18T11:02:32.108Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/thank_calendar_booking.html</loc>
-    <lastmod>2023-09-05T06:08:26.320Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html</loc>
+    <lastmod>2023-12-18T11:02:30.844Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/services.html</loc>
-    <lastmod>2023-09-05T06:08:27.028Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2015-10-29-thoughts-on-the-spark-summit-europe-2015/index.html</loc>
+    <lastmod>2023-12-18T11:02:29.807Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/solutions/viash.html</loc>
-    <lastmod>2023-09-05T06:08:27.936Z</lastmod>
+    <loc>https://www.data-intuitive.com/insights/blog/2007-12-14-capacity-planning-what-to-monitor-and-how-to-interpret/index.html</loc>
+    <lastmod>2023-12-18T11:02:28.919Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2014-09-23-impact-in-risk-assessment/index.html</loc>
+    <lastmod>2023-12-18T11:02:28.139Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2013-06-24-writing-workflow-markdown-pandoc-latex-and-the-likes/index.html</loc>
+    <lastmod>2023-12-18T11:02:26.659Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2016-10-26-data-intuitive-at-spark-summit-2016/index.html</loc>
+    <lastmod>2023-12-18T11:02:25.771Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/index_use_cases.html</loc>
+    <lastmod>2023-12-18T11:02:24.287Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/thank_apply.html</loc>
+    <lastmod>2023-12-18T11:02:23.459Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/careers/full-stack-web-developer/index.html</loc>
+    <lastmod>2023-12-18T11:02:22.787Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/careers/index.html</loc>
-    <lastmod>2023-09-05T06:08:28.864Z</lastmod>
+    <lastmod>2023-12-18T11:02:21.843Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/careers/bioinformatics-workflow-engineer/index.html</loc>
-    <lastmod>2023-09-05T06:08:29.736Z</lastmod>
+    <loc>https://www.data-intuitive.com/company.html</loc>
+    <lastmod>2023-12-18T11:02:20.967Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/privacy_policy.html</loc>
+    <lastmod>2023-12-18T11:02:20.131Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/disclaimer.html</loc>
+    <lastmod>2023-12-18T11:02:19.175Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/subscribe.html</loc>
+    <lastmod>2023-12-18T11:02:18.367Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/solutions/viash.html</loc>
+    <lastmod>2023-12-18T11:02:17.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services/courses/subscribe.html</loc>
+    <lastmod>2023-12-18T11:02:16.315Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/commontext/intro.html</loc>
-    <lastmod>2023-09-05T06:08:30.560Z</lastmod>
+    <lastmod>2023-12-18T11:02:15.415Z</lastmod>
   </url>
   <url>
-    <loc>https://www.data-intuitive.com/thank_subscribe.html</loc>
-    <lastmod>2023-09-05T06:08:31.360Z</lastmod>
+    <loc>https://www.data-intuitive.com/commontext/outro.html</loc>
+    <lastmod>2023-12-18T11:02:14.298Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/commontext/salary_culture.html</loc>
+    <lastmod>2023-12-18T11:02:15.062Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services/consultancy.html</loc>
+    <lastmod>2023-12-18T11:02:15.887Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services/courses/index.html</loc>
+    <lastmod>2023-12-18T11:02:16.835Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/solutions/compass.html</loc>
+    <lastmod>2023-12-18T11:02:17.951Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/index.html</loc>
+    <lastmod>2023-12-18T11:02:18.807Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/services.html</loc>
+    <lastmod>2023-12-18T11:02:19.659Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/contact.html</loc>
+    <lastmod>2023-12-18T11:02:20.535Z</lastmod>
   </url>
   <url>
     <loc>https://www.data-intuitive.com/bookmeeting.html</loc>
-    <lastmod>2023-09-05T06:08:31.964Z</lastmod>
+    <lastmod>2023-12-18T11:02:21.311Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/careers/bioinformatics-workflow-engineer/index.html</loc>
+    <lastmod>2023-12-18T11:02:22.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/thank_subscribe.html</loc>
+    <lastmod>2023-12-18T11:02:23.119Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/thank_calendar_booking.html</loc>
+    <lastmod>2023-12-18T11:02:23.847Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/index.html</loc>
+    <lastmod>2023-12-18T11:02:25.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2012-09-25-rational-decision-making-in-business/index.html</loc>
+    <lastmod>2023-12-18T11:02:26.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2016-06-25-bullet-proof-data-analysis-in-scala/index.html</loc>
+    <lastmod>2023-12-18T11:02:27.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2020-12-15-diflow/index.html</loc>
+    <lastmod>2023-12-18T11:02:28.523Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2014-07-10-publishing-html-presentations-on-github/index.html</loc>
+    <lastmod>2023-12-18T11:02:29.339Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2015-05-29-code-snippet-repository/index.html</loc>
+    <lastmod>2023-12-18T11:02:30.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2012-11-16-slm-introduction-part-1/index.html</loc>
+    <lastmod>2023-12-18T11:02:31.308Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2007-12-14-performance-monitoring-averages-and-peaks/index.html</loc>
+    <lastmod>2023-12-18T11:02:32.600Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html</loc>
+    <lastmod>2023-12-18T11:02:33.484Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2007-10-25-vmware-capacity-planner-taking-the-data-offline-part-1-introduction/index.html</loc>
+    <lastmod>2023-12-18T11:02:34.332Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2012-09-18-choosing-the-right-cover-photo/index.html</loc>
+    <lastmod>2023-12-18T11:02:35.100Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2023-05-22-scverse-hackathon/index.html</loc>
+    <lastmod>2023-12-18T11:02:37.576Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2014-09-24-writing-workflow-and-reproducible-data-analysis/index.html</loc>
+    <lastmod>2023-12-18T11:02:38.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2016-10-27-viz-and-math-in-apache-zeppelin/index.html</loc>
+    <lastmod>2023-12-18T11:02:39.292Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/blog/2015-01-15-transposing-a-spark-rdd/index.html</loc>
+    <lastmod>2023-12-18T11:02:40.352Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/index_blog.html</loc>
+    <lastmod>2023-12-18T11:02:42.712Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/use_cases/openpipelines/index.html</loc>
+    <lastmod>2023-12-18T11:02:43.544Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/news/2022-12-15-fit_to_go_global/index.html</loc>
+    <lastmod>2023-12-18T11:02:44.292Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.data-intuitive.com/insights/news/2022-12-25-fueled_by_vlaio/index.html</loc>
+    <lastmod>2023-12-18T11:02:44.980Z</lastmod>
   </url>
 </urlset>

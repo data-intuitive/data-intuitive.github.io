@@ -1,5 +1,13 @@
 [
   {
+    "listing": "/insights/index_news.html",
+    "items": [
+      "/insights/news/2023-02-05-sustain/index.html",
+      "/insights/news/2022-12-15-fit_to_go_global/index.html",
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
+    ]
+  },
+  {
     "listing": "/insights/index_use_cases.html",
     "items": [
       "/insights/use_cases/openproblems/index.html",
@@ -7,11 +15,10 @@
     ]
   },
   {
-    "listing": "/insights/index_news.html",
+    "listing": "/careers/index.html",
     "items": [
-      "/insights/news/2023-02-05-sustain/index.html",
-      "/insights/news/2022-12-15-fit_to_go_global/index.html",
-      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
+      "/careers/bioinformatics-workflow-engineer/index.html",
+      "/careers/full-stack-web-developer/index.html"
     ]
   },
   {
@@ -85,13 +92,6 @@
       "/insights/blog/2007-12-14-performance-monitoring-averages-and-peaks/index.html",
       "/insights/blog/2007-12-14-capacity-planning-what-to-monitor-and-how-to-interpret/index.html",
       "/insights/blog/2007-10-25-vmware-capacity-planner-taking-the-data-offline-part-1-introduction/index.html"
-    ]
-  },
-  {
-    "listing": "/careers/index.html",
-    "items": [
-      "/careers/bioinformatics-workflow-engineer/index.html",
-      "/careers/full-stack-web-developer/index.html"
     ]
   }
 ]
