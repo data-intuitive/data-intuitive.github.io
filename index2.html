@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="See demo">
 
-<title>Data Intuitive - Viash Hub CLI demo</title>
+<title>Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,58 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../..//images/main-logo.png" rel="icon" type="image/png">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href=".//images/main-logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -119,28 +85,22 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
-<meta property="og:title" content="Data Intuitive - Viash Hub CLI demo">
+<meta property="og:title" content="Data Intuitive">
 <meta property="og:site-name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Data Intuitive - Viash Hub CLI demo">
-<meta property="og:description" content="Data Intuitive develops intuitive tools and custom biotech data pipelines to help clients gain valuable insights and make data-driven decisions.">
-<meta property="og:image" content="https://www.data-intuitive.com/images/viash-hub.svg">
+<meta property="og:title" content="Data Intuitive">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
 </head>
-<body class="fullcontent"><video autoplay="" muted="" loop="" class="custom-background-video">
-  <source src="../../../images/white.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+<body class="fullcontent">
   <div class="topmenuspacer"></div>
   <header class="main-header mt-xl-4">
     <nav class="navbar navbar-expand-xl">
       <div class="container">
-        <a class="navbar-brand" href="../../../index.html"><img src="../../../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+        <a class="navbar-brand" href="./index.html"><img src="./images/main-logo.svg" alt="website logo" class="img-fluid"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -152,10 +112,10 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solutions</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../../../solutions/nopipeline.html">NoPipeline</a></li>
-                <li><a class="dropdown-item" href="../../../solutions/viash.html">Viash</a></li>
-                <li><a class="dropdown-item" href="../../../solutions/viashhub.html">Viash Hub</a></li>
-                <li><a class="dropdown-item" href="../../../solutions/viashhubpro.html">Viash Hub PRO</a></li>
+                <li><a class="dropdown-item" href="./solutions/nopipeline.html">NoPipeline</a></li>
+                <li><a class="dropdown-item" href="./solutions/viash.html">Viash</a></li>
+                <li><a class="dropdown-item" href="./solutions/viashhub.html">Viash Hub</a></li>
+                <li><a class="dropdown-item" href="./solutions/viashhubpro.html">Viash Hub PRO</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -163,10 +123,10 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
                 Services
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../../../services/viashpro.html">Viash Pro Support</a></li>
-                <li><a class="dropdown-item" href="../../../services/bioinformatics.html">Bioinformatics</a></li>
-                <li><a class="dropdown-item" href="../../../services/benchmarking.html">Benchmarking</a></li>
-                <li><a class="dropdown-item" href="../../../services/training.html">Training</a></li>
+                <li><a class="dropdown-item" href="./services/viashpro.html">Viash Pro Support</a></li>
+                <li><a class="dropdown-item" href="./services/bioinformatics.html">Bioinformatics</a></li>
+                <li><a class="dropdown-item" href="./services/benchmarking.html">Benchmarking</a></li>
+                <li><a class="dropdown-item" href="./services/training.html">Training</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -174,9 +134,9 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
             Company
             </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../../../company/company.html">About</a></li>
-                <li><a class="dropdown-item" href="../../../company/company.html#people">Team</a></li>
-                <li><a class="dropdown-item" href="../../../company/careers.html">Careers</a></li>
+                <li><a class="dropdown-item" href="./company/company.html">About</a></li>
+                <li><a class="dropdown-item" href="./company/company.html#people">Team</a></li>
+                <li><a class="dropdown-item" href="./company/careers.html">Careers</a></li>
 
               </ul>
             </li>
@@ -185,149 +145,216 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
               Insights
               </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../../../insights/projects.html">Projects</a></li>
-                  <li><a class="dropdown-item" href="../../../insights/showcase.html">Showcases</a></li>
-                  <li><a class="dropdown-item" href="../../../insights/news.html">News</a></li>
-                  <li><a class="dropdown-item" href="../../../insights/blog.html">Blogs</a></li>
+                  <li><a class="dropdown-item" href="./insights/projects.html">Projects</a></li>
+                  <li><a class="dropdown-item" href="./insights/showcase.html">Showcases</a></li>
+                  <li><a class="dropdown-item" href="./insights/news.html">News</a></li>
+                  <li><a class="dropdown-item" href="./insights/blog.html">Blogs</a></li>
                 </ul>
               </li>
           </ul>
-          <a href="../../../contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
+          <a href="./contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
         </div>
       </div>
     </nav>
   </header>
 
 
-  <script src="../../../js/scripts.js"></script>
+  <script src="./js/scripts.js"></script>
    <!--  menu stops here (in quarto menu.html) -->
-<script src="../../../js/asciinema-player.min.js"></script>
 
 
-<link rel="stylesheet" href="../../../css/style.css">
-<link rel="stylesheet" href="../../../animated/animate.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./animated/animate.css">
 
 
 
 
 <div id="quarto-search-results"></div>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-layout-custom">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#test-data" id="toc-test-data" class="nav-link" data-scroll-target="#test-data">Test data</a></li>
-  <li><a href="#run-directly-from-viashhub" id="toc-run-directly-from-viashhub" class="nav-link" data-scroll-target="#run-directly-from-viashhub">Run directly from ViashHub</a></li>
-  <li><a href="#run-from-a-local-copy" id="toc-run-from-a-local-copy" class="nav-link" data-scroll-target="#run-from-a-local-copy">Run from a local copy</a></li>
-  </ul>
-</nav>
-    </div>
 <!-- main -->
-<div class="quarto-about-marquee content">
-  <div class="about-image-container">
-    <img src="/images/viash-hub.svg" class="about-image " style="width: 100%;">
-  </div>
-  <div class="about-contents">
-    <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Viash Hub CLI demo</h1>
-</div>
-<div class="quarto-title-meta">
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>See demo </p>
-          </div>
-  </div>
-  </div>
-</header> <main class="content" id="quarto-document-content">
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In what follows, we will demonstrate how <a href="https://viash.io" target="_blank">Viash</a> and later <a href="../../../solutions/viashhub.html" target="_blank">Viash Hub</a> allow anyone with a minimal set of technical skills to develop and perform a simple task: Run QC on a (potentially large) set of fastq files and combine all those QC reports into one (multiqc) report.</p>
-<p>A bioinformatician could use <code>fastqc</code> in combination with a (<code>bash</code>) shell <code>for</code> loop. This, however, would not be run in parallel. Command-line tools exists to parallelize these tasks, but the ones we know of can hardly be called easy to use.</p>
-<p>What if one could just reuse existing functionality (aka Viash components or Nextflow modules) and combine those in a simple Nextflow pipeline in order to achieve the mentioned goal. That’s where this demo project comes in: <a href="https://viash-hub.com/data-intuitive/viash_hub_demo/-/tree/v0.1?ref_type=heads" class="uri" target="_blank">https://viash-hub.com/data-intuitive/viash_hub_demo/-/tree/v0.1?ref_type=heads</a>.</p>
-<p>Below, we run this pipeline on a test dataset in two ways. Screencasts are provided to demonstrate the use.</p>
-</section>
-<section id="test-data" class="level1">
-<h1>Test data</h1>
-<p>We will fetch test data from this repository: <a href="https://github.com/hartwigmedical/testdata" class="uri" target="_blank">https://github.com/hartwigmedical/testdata</a>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/hartwigmedical/testdata testData </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="run-directly-from-viashhub" class="level1">
-<h1>Run directly from ViashHub</h1>
-<p>In order to fetch the workflow from Viash Hub, the following should be added to <code>~/.nextflow/scm</code>:</p>
-<pre><code>providers {
-  vsh {
-    platform = 'gitlab'
-    server = "viash-hub.com"
-  }
-}</code></pre>
-<p>Then, with the data fetched above present under <code>testData</code>, we can run fastqc in parallel on all 32 fastq files:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run data-intuitive/viash_hub_demo <span class="dt">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-hub</span> vsh <span class="dt">\</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-main-script</span> target/nextflow/workflows/parallel_qc/main.nf <span class="dt">\</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-r</span> main <span class="dt">\</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input</span> <span class="st">"testData/**/*.fastq.gz"</span> <span class="dt">\</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--publish_dir</span> output <span class="dt">\</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-with-docker</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The output will be stored under <code>output</code> as indicated by the <code>--publish_dir</code> argument.</p>
-<p>Screencast of fetching test data and running the pipeline from Viash Hub directly:</p>
-<div id="demo" class="asciinemademo">
-  <script>
-    AsciinemaPlayer.create('/insights/screencast/demo_vsh.cast', document.getElementById('demo'), {cols: 120, rows: 40});
-  </script>
-  </div>
-</section>
-<section id="run-from-a-local-copy" class="level1">
-<h1>Run from a local copy</h1>
-<p>First of all, build the workflow component and fetch the dependencies:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> viash ns build</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">temporaryFolder:</span> /tmp/viash_hub_repo5484030342718552259 uri: https://github.com/openpipelines-bio/openpipeline.git</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Cloning</span> into <span class="st">'.'</span>...</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">checkout</span> out: List<span class="er">(</span><span class="fu">git</span>, checkout, tags/0.12.1, <span class="at">--,</span> .<span class="kw">)</span> <span class="ex">0</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> temporary <span class="st">'target/.build.yaml'</span> file for op as this file seems to be missing.</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Exporting</span> parallel_qc <span class="er">(</span><span class="ex">workflows</span><span class="kw">)</span> <span class="ex">=nextflow=</span><span class="op">&gt;</span> <span class="op">&lt;</span>...<span class="op">&gt;</span>/demo/target/nextflow/workflows/parallel_qc</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Exporting</span> transpose <span class="er">(</span><span class="ex">utils</span><span class="kw">)</span> <span class="ex">=nextflow=</span><span class="op">&gt;</span> <span class="op">&lt;</span>...<span class="op">&gt;</span>/demo/target/nextflow/utils/transpose</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">All</span> 2 configs built successfully</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now, run fastqc on all fastq files that can be found under in the <code>testData</code> directory:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> nextflow run target/nextflow/workflows/parallel_qc/main.nf <span class="dt">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input</span> <span class="st">"testData/**/*.fastq.gz"</span>  <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--publish_dir</span> output <span class="dt">\</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-with-docker</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Screencast of fetching test data and running the pipeline from a local copy:</p>
-<div id="demo2" class="asciinemademo">
-  <script>
-    AsciinemaPlayer.create('/insights/screencast/demo_lcl.cast', document.getElementById('demo2'), {cols: 120, rows: 40});
-  </script>
-  </div>
-<p>Done!</p>
-            <div class="text-center text-md-start v-dev-advantage">
-              <div class="d-flex flex-column flex-md-row align-items-center gap-3">
-              <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" target="”_blank”" onclick="goBack()"> <i class="bi bi-arrow-left"> </i>Back</button>
-              <!--<a href="https://github.com/openpipelines-bio/openpipeline"><img src="/images/icons/cloud.svg" target=”_blank” alt="cloud">Website</a>
-              <a href="https://github.com/openpipelines-bio/openpipeline"><img src="/images/icons/github-icon.svg" target=”_blank” alt="github-icon"> GitHub</a>
-               <a href="https://www.science.org/doi/10.1126/science.1132939"><img src="/images/icons/note-2.svg" target=”_blank” alt="note-2"> Paper </a> -->
-              </div>
+
+
+
+<section class="v-hero mt-5 mb-5 custom-background">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-6">
+                <div class="v-hero-left">
+                    <div class="sub-text d-flex gap-1 align-items-center">
+                        Where Data Meets Intuition<span class="flash">_</span>
+                    </div>
+                    <h1 class="v-hero-title">
+                        Empowering Biotech R&amp;D with Modular Data Workflows
+                    </h1>
+                    <p>We are specialists in biotechnological data workflows, streamlining complex processes with innovative, adaptable, and efficient solutions.</p> 
+                </div>  
             </div>
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video">
+                        <source src="./images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<button onclick="setPlaybackSpeed(1)">Normal Speed</button>
+<button onclick="setPlaybackSpeed(.5)">.5x Speed</button>
+<button onclick="setPlaybackSpeed(.2)">.2x Speed</button>
+
+<section class="mb-5 pb-xl-5">
+    <div class="container">
+        <div class="row justify-content-between mb-5 pb-xl-4">
+            <div class="col-md-4">
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="single-block p-3 p-xl-4 rounded-4 h-100 border box-purple text-center mt-2">
+                            <h2 class="p-color">We Go Beyond Data Pipelines</h2>
+                             <p> We <b class="p-color">integrate</b> knowledge, tools, scripts, documentation, and operations into integrable, modular building blocks. <br><br>
+                             We <b class="p-color">centralize</b> computational knowledge within a unified repository.<br><br>
+                            We facilitate <b class="p-color">research collaboration </b> to drive innovation and transformative breakthroughs in biotech and data pipelines. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col d-md-none">
+                      <div class="single-block p-3  p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 text-center bg-white-di">
+                          <h2 class="p-color">"Not Only the Pipeline"</h2>
+                            <p> A unified framework that encompasses <b> a modular approach, a central platform, and a innovative tool.</b> The NoPipeline strategy is designed to meet the needs of a diverse range of professionals in the biotech field, including managers, biologists, and developers. </p>
+                            <a href="./solutions/nopipeline.html" class="btn mt-5 btn-primary rounded-pill d-inline-flex align-items-center gap-2">nopipeline<i class="bi bi-arrow-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col d-none d-md-block">
+                        <div class="single-block p-3  p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 text-center bg-white-di mt-2">
+                            <h2 class="p-color">Knowledge Management &amp; Collaboration</h2>
+                            <p><b>Viash Hub is a central platform</b>, providing a 
+                            repository for all modular building blocks and pipelines fostering overview, efficiency and collaboration in the R&amp;D proces<br></p>
+                            <a href="./solutions/viashhub.html" class="btn mt-5 btn-primary rounded-pill d-inline-flex align-items-center gap-2">VIASH HUB<i class="bi bi-arrow-right"></i></a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row w-100 text-center mt-5 mb-4 centered-img">
+                    <h1 class="v-hero-title-p mb-5 m-0 p-0">THE NOPIPELINE REVOLUTION</h1>
+                    <img src="./images/nopipeline/circle.svg" alt="schema" class="img-fluid">
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="row mb-4">
+                    <div class="col d-md-none">
+                      <div class="single-block p-3  p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 text-center bg-white-di">
+                          <h2 class="p-color">Modular &amp; Adaptive</h2>
+                                                      <p> <b>Viash is the core tool</b> facilitating the automatic creation of <b>independently
+                          running pipeline modules</b> for seamless pipeline construction and adaptation. <br> Each block is a self-contained pipeline, ready for execution or integration.
+                          </p>                        
+                          <a href="./solutions/viash.html" class="btn mt-5 btn-primary rounded-pill d-inline-flex align-items-center gap-2">VIASH<i class="bi bi-arrow-right"></i></a> 
+
+                      </div>
+                    </div>
+                    <div class="col d-none d-md-block">
+                        <div class="single-block p-3  p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 text-center bg-white-di">
+                            <h2 class="p-color">"Not Only the Pipeline"</h2>
+                              <p> A unified framework that encompasses <b> a modular approach, a central platform, and a innovative tool.</b> The NoPipeline strategy is designed to meet the needs of a diverse range of professionals in the biotech field, including managers, biologists, and developers. </p>
+                               <a href="./solutions/nopipeline.html" class="btn mt-5 btn-primary rounded-pill d-inline-flex align-items-center gap-2">nopipeline<i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col d-md-none">
+                    <div class="single-block p-3  p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 text-center bg-white-di mt-2">
+                        <h2 class="p-color">Knowledge Management &amp; Collaboration</h2>
+                        <p><b>Viash Hub is a central platform</b>, providing a 
+                        repository for all modular building blocks and pipelines fostering overview, efficiency and collaboration in the R&amp;D proces<br></p>
+                        <a href="./solutions/viashhub.html" class="btn mt-5 btn-primary rounded-pill d-inline-flex align-items-center gap-2">VIASH HUB<i class="bi bi-arrow-right"></i></a> 
+                    </div>
+                </div>
+                    <div class="col d-none d-md-block">
+                        <div class="single-block p-3  p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 text-center bg-white-di">
+                            <h2 class="p-color">Modular &amp; Adaptive</h2>
+                                                        <p> <b>Viash is the core tool</b> facilitating the automatic creation of <b>independently
+                            running pipeline modules</b> for seamless pipeline construction and adaptation. <br> Each block is a self-contained pipeline, ready for execution or integration.
+                            </p>                        
+                            <a href="./solutions/viash.html" class="btn mt-5 btn-primary rounded-pill d-inline-flex align-items-center gap-2">VIASH<i class="bi bi-arrow-right"></i></a> 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  <section>
+    <div class="bg-primary-60 mx-3 mx-md-0 py-4 py-md-5 text-center text-md-start mb-5">
+    <div class="container px-4 px-md-3 my-xl-5">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-6 d-none d-md-block">
+          <img src="./images/photo/IS4A8860_top_viashPRO.png" alt="Index_our_promise_to_industry_big 2" class="img-fluid rounded-4">
+        </div>
+        <div class="col-md-6 col-xl-5">
+          <h2 class="sub-title">Expertise</h2>
+          <p>As experts in the IT aspect of bioinformatics, our full-stack bioinformatics teams specialize in building sustainable, adaptive data pipelines, enabling researchers to concentrate on pioneering scientific advancements. </p>
+          <a href="./services/bioinformatics.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Explore Our Consultancy Services<i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-between align-items-center text-center text-md-start mb-5 py-xl-5">
+        <div class="col-md-6 order-md-2 mb-3">
+          <img src="./images/photo/index_our_promise_to_industry_big 2.png" alt="Consultancy" class="img-fluid rounded-4">
+        </div>
+               
+        <div class="col-md-6 col-xl-5">
+          <h2 class="sub-title">Redefining Health</h2>
+          <p>At Data Intuitive, we're dedicated to enhancing life quality through the development of collaborative and sustainable R&amp;D technology, complemented by the work-life balance benefits of full-time telework.</p>
+          <a href="./company/company.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Know More About Us<i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="row justify-content-between align-items-center text-center text-md-start">
+        <div class="col-md-6 d-none d-md-block">
+          <img src="./images/photo/IS4A9389.png" alt="Join the Pioneers of Data Intuition" class="img-fluid rounded-4">
+        </div>
+        <div class="col-md-6 col-xl-5">
+          <h2 class="sub-title">Join Data Intuitive</h2>
+          <img src="./images/photo/IS4A9389.png" alt="Join the Pioneers of Data Intuition" class="img-fluid d-md-none mb-3 rounded-4">
+          <p>Engage with a team that champions innovation. Let's co-create the future of data science and bioinformatics.</p>
+          <a href="./company/careers.html#careers" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Open Positions<i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+      <div class="row justify-content-center text-center pt-5 mt-xl-5">
+        <div class="col-lg-8">
+          <h3>Data Intuitive: Empowering Top 10 Pharma Industry </h3>
+          <p>We are privileged to work with some of the world's top 10 pharmaceutical firms, respecting their confidentiality at all times.</p>
+          <a href="./insights/projects.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Projects<i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+  </div>
 <script>
-function goBack() {
-  window.history.back();
+ function setPlaybackSpeed(speed) {
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed;
 }
 </script>
 
 
-</section>
-</main> 
-  </div>
-</div>
- <!-- /main -->
+
+
  
- </div>
+ </section></div>
    <!--  Footer starts here (in quarto footer.html) -->
  <section class="elevate-dataworkflows text-center mt-5 pt-5">
     <div class="container justify-content-center flex-column">
@@ -339,7 +366,7 @@ function goBack() {
             <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
               the
               ﬁnal product, all while providing end-to-end support. </p>
-            <a href="../../../contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">book a meeting with us</a>
+            <a href="./contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">book a meeting with us</a>
           </div>
         </div>
       </div>
@@ -356,7 +383,7 @@ function goBack() {
           <div class="di-grid">
 
             <div class="box quarto-layout-cell">
-              <p><img src="../../../images/logoditext.svg" class="img-fluid"></p>
+              <p><img src="./images/logoditext.svg" class="img-fluid"></p>
 
 
 
@@ -366,12 +393,12 @@ function goBack() {
 
             <section id="links" class="level3 box quarto-layout-cell">
 
-              <p><a href="../../../index.html">Index</a>
-                <a href="../../../static/disclaimer.html">Disclaimer</a>
-                <a href="../../../static/sustainability_statement.html">Sustainability
+              <p><a href="./index.html">Index</a>
+                <a href="./static/disclaimer.html">Disclaimer</a>
+                <a href="./static/sustainability_statement.html">Sustainability
                   Statement</a>
                 <a href="https://www.quarto.org/" target="_blank">Powered by Quarto</a>
-                <a href="../../../static/privacy_policy.html">Privacy Statement</a><br>
+                <a href="./static/privacy_policy.html">Privacy Statement</a><br>
               </p>
             </section>
 
@@ -382,8 +409,8 @@ function goBack() {
         
       </div>
       <div class="bottom-graphics-container">
-        <img src="../../../images/vlaio.png" class="bottom-img">
-        <img src="../../../images/fit.jpg" class="bottom-img">
+        <img src="./images/vlaio.png" class="bottom-img">
+        <img src="./images/fit.jpg" class="bottom-img">
     </div>
     </div>
 
@@ -401,7 +428,7 @@ function goBack() {
       <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
     </svg></a>
 
-    <a href="../../../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
+    <a href="./contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
       <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"></path>
       <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"></path>
     </svg></a>
@@ -441,6 +468,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

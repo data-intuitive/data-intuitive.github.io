@@ -1,32 +1,5 @@
 [
   {
-    "listing": "/services/training.html",
-    "items": [
-      "/services/course/introduction_running/index.html",
-      "/services/course/pipeline_fundamentals/index.html",
-      "/services/course/pipeline_advanced/index.html"
-    ]
-  },
-  {
-    "listing": "/services/benchmarking.html",
-    "items": [
-      "/insights/projects/benchmarking_openproblems/index.html"
-    ]
-  },
-  {
-    "listing": "/solutions/viash.html",
-    "items": [
-      "/insights/showcase/viash_basic/index.html"
-    ]
-  },
-  {
-    "listing": "/solutions/viashhub.html",
-    "items": [
-      "/insights/showcase/viashhub_clibase/index copy.html",
-      "/insights/showcase/viashhub_clibase/index.html"
-    ]
-  },
-  {
     "listing": "/insights/news.html",
     "items": [
       "/insights/news/2022-12-15-fit_to_go_global/index.html",
@@ -39,8 +12,7 @@
     "items": [
       "/insights/showcase/viash_basic/index.html",
       "/insights/showcase/openpipeline/index.html",
-      "/insights/showcase/viashhub_clibase/index.html",
-      "/insights/showcase/viashhub_clibase/index copy.html"
+      "/insights/showcase/viashhub_cli/index.html"
     ]
   },
   {
@@ -71,6 +43,32 @@
       "/insights/projects/anndata-for-r/index.html",
       "/insights/projects/virusbank/index.html",
       "/insights/projects/dynverse/index.html"
+    ]
+  },
+  {
+    "listing": "/solutions/viashhub.html",
+    "items": [
+      "/insights/showcase/viashhub_cli/index.html"
+    ]
+  },
+  {
+    "listing": "/solutions/viash.html",
+    "items": [
+      "/insights/showcase/viash_basic/index.html"
+    ]
+  },
+  {
+    "listing": "/services/benchmarking.html",
+    "items": [
+      "/insights/projects/benchmarking_openproblems/index.html"
+    ]
+  },
+  {
+    "listing": "/services/training.html",
+    "items": [
+      "/services/course/introduction_running/index.html",
+      "/services/course/pipeline_fundamentals/index.html",
+      "/services/course/pipeline_advanced/index.html"
     ]
   }
 ]

@@ -214,14 +214,17 @@ header .navbar .navbar-toggler {
 
 
 .custom-background-video {
-  position: fixed; /* vs absolute */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh; /* Full viewport height */
-  object-fit: cover; /* Cover the entire area */
-  z-index: -1; /* Ensure it's behind other content */
+  position: absolute; /* Keep it absolute to position it freely */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for perfect centering */
+  width: 120%; /* Full width of the parent container */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 50vh; /* Limit the height to 50% of the viewport */
+  object-fit: cover; /* Cover the entire area of the element */
+  z-index: -1; /* Keep it behind other content */
 }
+
 
 
 
@@ -239,18 +242,6 @@ header .navbar .navbar-toggler {
   background-repeat: no-repeat;
 }*/
 
-.custom-background2 {
-  width:100vw;  
-  margin-left:0vw;
-  height:auto; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../images/G_background.png');
-  background-size: auto 130%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 .quarto-about-marquee .about-image-container {
   width: 40%;
