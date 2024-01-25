@@ -20,33 +20,18 @@
     ]
   },
   {
-    "listing": "/insights/projects.html",
+    "listing": "/solutions/viashhub.html",
     "items": [
-      "/insights/projects/ComPass/index.html",
-      "/insights/projects/HT-RNA-SEQ/index.html",
-      "/insights/projects/benchmarking_openproblems/index.html",
-      "/insights/projects/openpipelines/index.html",
-      "/insights/projects/anndata-for-r/index.html",
-      "/insights/projects/virusbank/index.html",
-      "/insights/projects/dynverse/index.html"
+      "/insights/showcase/viashhub_clibase/index copy.html",
+      "/insights/showcase/viashhub_clibase/index.html"
     ]
   },
   {
-    "listing": "/company/careers.html",
+    "listing": "/insights/news.html",
     "items": [
-      "/company/careers/full-stack-web-developer/index.html",
-      "/company/careers/bioinformatics-workflow-engineer/index.html",
-      "/company/careers/junior-bioinformatics-engineer/index.html",
-      "/company/careers/Junior-computer-engineer/index.html"
-    ]
-  },
-  {
-    "listing": "/insights/blog.html",
-    "items": [
-      "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html",
-      "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
-      "/insights/blog/2023-05-22-scverse-hackathon/index.html",
-      "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html"
+      "/insights/news/2022-12-15-fit_to_go_global/index.html",
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html",
+      "/insights/news/2023-02-05-sustain/index.html"
     ]
   },
   {
@@ -59,18 +44,33 @@
     ]
   },
   {
-    "listing": "/insights/news.html",
+    "listing": "/insights/blog.html",
     "items": [
-      "/insights/news/2022-12-15-fit_to_go_global/index.html",
-      "/insights/news/2022-12-25-fueled_by_vlaio/index.html",
-      "/insights/news/2023-02-05-sustain/index.html"
+      "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html",
+      "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
+      "/insights/blog/2023-05-22-scverse-hackathon/index.html",
+      "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html"
     ]
   },
   {
-    "listing": "/solutions/viashhub.html",
+    "listing": "/company/careers.html",
     "items": [
-      "/insights/showcase/viashhub_clibase/index copy.html",
-      "/insights/showcase/viashhub_clibase/index.html"
+      "/company/careers/full-stack-web-developer/index.html",
+      "/company/careers/bioinformatics-workflow-engineer/index.html",
+      "/company/careers/junior-bioinformatics-engineer/index.html",
+      "/company/careers/Junior-computer-engineer/index.html"
+    ]
+  },
+  {
+    "listing": "/insights/projects.html",
+    "items": [
+      "/insights/projects/ComPass/index.html",
+      "/insights/projects/HT-RNA-SEQ/index.html",
+      "/insights/projects/benchmarking_openproblems/index.html",
+      "/insights/projects/openpipelines/index.html",
+      "/insights/projects/anndata-for-r/index.html",
+      "/insights/projects/virusbank/index.html",
+      "/insights/projects/dynverse/index.html"
     ]
   }
 ]
