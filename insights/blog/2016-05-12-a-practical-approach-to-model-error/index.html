@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.548">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Toni Verbeiren">
 <meta name="dcterms.date" content="2016-05-12">
 
 <title>Data Intuitive - A Practical Approach to Model Error</title>
@@ -25,13 +26,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../images/logo_white.svg" rel="icon" type="image/svg+xml">
+<link href="../../..//images/main-logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -42,12 +42,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -70,95 +77,140 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 </script>
+   <!--  menu starts here (in quarto menu.html) -->
+
+
+
+
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
+<meta property="og:title" content="Data Intuitive - A Practical Approach to Model Error">
+<meta property="og:site-name" content="Data Intuitive">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Data Intuitive - A Practical Approach to Model Error">
+<meta property="og:description" content="Data Intuitive develops intuitive tools and custom biotech data pipelines to help clients gain valuable insights and make data-driven decisions.">
+<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2016-05-12-a-practical-approach-to-model-error/ExponentialGrowthCurveWithNoise.png">
+<meta property="og:site_name" content="Data Intuitive">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image:height" content="400">
+<meta property="og:image:width" content="602">
+</head>
+<body class="fullcontent"><video autoplay="" muted="" loop="" class="custom-background-video">
+  <source src="../../../images/white.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+  <div class="topmenuspacer"></div>
+  <header class="main-header mt-xl-4">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <a class="navbar-brand" href="../../../index.html"><img src="../../../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
+            <!-- <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solutions</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../../../solutions/nopipeline.html">NoPipeline</a></li>
+                <li><a class="dropdown-item" href="../../../solutions/viash.html">Viash</a></li>
+                <li><a class="dropdown-item" href="../../../solutions/viashhub.html">Viash Hub</a></li>
+                <li><a class="dropdown-item" href="../../../solutions/viashhubpro.html">Viash Hub PRO</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../../../services/viashpro.html">Viash Pro Support</a></li>
+                <li><a class="dropdown-item" href="../../../services/bioinformatics.html">Bioinformatics</a></li>
+                <li><a class="dropdown-item" href="../../../services/benchmarking.html">Benchmarking</a></li>
+                <li><a class="dropdown-item" href="../../../services/training.html">Training</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Company
+            </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../../../company/company.html">About</a></li>
+                <li><a class="dropdown-item" href="../../../company/company.html#people">Team</a></li>
+                <li><a class="dropdown-item" href="../../../company/careers.html">Careers</a></li>
+
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Insights
+              </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../../../Insights/projects.html">Projects</a></li>
+                  <li><a class="dropdown-item" href="../../../Insights/showcase.html">Showcases</a></li>
+                  <li><a class="dropdown-item" href="../../../Insights/news.html">News</a></li>
+                  <li><a class="dropdown-item" href="../../../Insights/blog.html">Blogs</a></li>
+                </ul>
+              </li>
+          </ul>
+          <a href="../../../contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <script src="../../../js/scripts.js"></script>
+   <!--  menu stops here (in quarto menu.html) -->
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Data Intuitive - A Practical Approach to Model Error">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2016-05-12-a-practical-approach-to-model-error/ExponentialGrowthCurve.png">
-<meta property="og:site-name" content="Data Intuitive">
-<meta property="og:locale" content="en_GB">
-<meta property="og:image:height" content="409">
-<meta property="og:image:width" content="607">
-</head>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
-<body class="nav-fixed">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="../../../animated/animate.css">
+
+
+
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../images/logo_white.svg" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">DATA INTUITIVE</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../../company.html" rel="" target="">
- <span class="menu-text">Company</span></a>
-  </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-solutions" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">Solutions</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-solutions">    
-        <li>
-    <a class="dropdown-item" href="../../../solutions/viash.html" rel="" target="">
- <span class="dropdown-text">Viash</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../solutions/compass.html" rel="" target="">
- <span class="dropdown-text">ComPass</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../../../services/consultancy.html" rel="" target="">
- <span class="menu-text">Services</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../insights/index.html" rel="" target="">
- <span class="menu-text">Insights</span></a>
-  </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-connect" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">Connect</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-connect">    
-        <li>
-    <a class="dropdown-item" href="../../../contact.html" rel="" target="">
- <span class="dropdown-text">Contact Us</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../bookmeeting.html" rel="" target="">
- <span class="dropdown-text">Book a Meeting</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../careers/index.html" rel="" target="">
- <span class="dropdown-text">Careers</span></a>
-  </li>  
-    </ul>
-  </li>
-</ul>
-            <div class="quarto-navbar-tools">
-</div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -180,17 +232,18 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">A Practical Approach to Model Error</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">modelling</div>
-    <div class="quarto-category">notebook</div>
-    <div class="quarto-category">data science</div>
-  </div>
-  </div>
+</div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Toni Verbeiren </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -203,17 +256,19 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
 
-<p>In this post, I want to get a better sense of the effects of model error by simulating a very simple model for the spreading of a virus. It’s based on <a href="https://drive.google.com/file/d/0B8nhAlfIk3QIdlJNSXo1dkMzOVU/view">an analysis performed by Nassim Taleb</a>. I used the simulation below in the scope of a workshop paper <a href="http://decisive-workshop.dbvis.de/">on the effect of cognitive biases</a>. The <a href="http://nbn-resolving.de/urn:nbn:de:bsz:352-0-329490">published version</a> of the paper can be found <a href="https://kops.uni-konstanz.de/bitstream/handle/123456789/33726/Verbeiren_0-329490.pdf?sequence=3">here</a>.</p>
+
+<p>In this post, I want to get a better sense of the effects of model error by simulating a very simple model for the spreading of a virus. It’s based on <a href="https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf" target="_blank">an analysis performed by Nassim Taleb</a>. I used the simulation below in the scope of a workshop paper <a href="http://decisive-workshop.dbvis.de/" target="_blank">on the effect of cognitive biases</a>. The <a href="http://nbn-resolving.de/urn:nbn:de:bsz:352-0-329490" target="_blank">published version</a> of the paper can be found <a href="https://kops.uni-konstanz.de/bitstream/handle/123456789/33726/Verbeiren_0-329490.pdf?sequence=3" target="_blank">here</a>.</p>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>I don’t want to discuss the biology of a virus or its spreading, even though virus spreading is the topic of the simulation we’re about to do. I invite you to look <a href="http://arxiv.org/abs/1411.1472">elsewhere</a> for that.</p>
+<p>I don’t want to discuss the biology of a virus or its spreading, even though virus spreading is the topic of the simulation we’re about to do. I invite you to look <a href="http://arxiv.org/abs/1411.1472" target="_blank">elsewhere</a> for that.</p>
 <p>We mainly want to get a feel for the main message Taleb’s argument in his analysis linked above: The dangers of basing decisions on simple models for the spreading of virusses and the lack discussing the risks involved in analysing these models.</p>
-<p>We do this by modelling the spreading of a virus by means of a simple <a href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion">geometric Brownian motion</a> process. It’s the same process that is used in the (in)famous <a href="https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model">Black-Scholes model</a>.</p>
+<p>We do this by modelling the spreading of a virus by means of a simple <a href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion" target="_blank">geometric Brownian motion</a> process. It’s the same process that is used in the (in)famous <a href="https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model" target="_blank">Black-Scholes model</a>.</p>
 <p>The differential form of the process is as follows:</p>
 <p><span class="math display">\[ d S(t) = S(t) \mu dt + S(t) \sigma d W(t)  \]</span></p>
-<p>In this formula, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are generally referred to as respectively <em>drift</em> and <em>volatility</em>. <span class="math inline">\(W(t)\)</span> is a <a href="https://en.wikipedia.org/wiki/Wiener_process">Wiener process</a>, i.e.&nbsp;a continuous random walk.</p>
+<p>In this formula, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are generally referred to as respectively <em>drift</em> and <em>volatility</em>. <span class="math inline">\(W(t)\)</span> is a <a href="https://en.wikipedia.org/wiki/Wiener_process" target="_blank">Wiener process</a>, i.e.&nbsp;a continuous random walk.</p>
 <p>Both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> can be dependant on time or on the current state. But for the sake of the argument, this need not be the case.</p>
 <p>We can discretize this stochastic differential equation simply by replacing the differentials <span class="math inline">\(dt\)</span> with small finite differences in time <span class="math inline">\(\Delta t\)</span>. The Wiener process can be approximated by a random walk with finite <span class="math inline">\(\Delta t\)</span> as:</p>
 <p><span class="math display">\[ \Delta W(t) \approx \sqrt{\Delta t} \, z \]</span></p>
@@ -221,13 +276,13 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 <p><span class="math display">\[ z \sim\mathcal{N} (0,1) \]</span></p>
 <p>In other words, we can simulate a continous geometric Brownian motion process defined above by means of the following discretized version:</p>
 <p><span class="math display">\[ \Delta S(t) = S(t) \mu \Delta t + S(t) \sigma \sqrt{\Delta t} \, z  \]</span></p>
-<p><a href="https://drive.google.com/file/d/0B8nhAlfIk3QIdlJNSXo1dkMzOVU/view">Taleb</a> uses a different representation of this formula, based on the solution of this equation:</p>
+<p><a href="https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf" target="_blank">Taleb</a> uses a different representation of this formula, based on the solution of this equation:</p>
 <p><span class="math display">\[ S(t + \Delta t) = S(t) \exp \left[ \left( \mu - \frac{1}{2} \sigma^2 \right) \Delta t  + \sigma \sqrt{\Delta t} \, z \right] \]</span></p>
 <p>Enough formulas for now, let us take a look at the simulation</p>
 </section>
 <section id="simulation-approach" class="level1">
 <h1>Simulation Approach</h1>
-<p>From a technical point of view, the simulation that follows in fact is run in a notebook run on <a href="http://spark-notebook.io">Spark-Notebook</a>. We started out developing an object-based representation of the problem, but quickly turned to a purely functional (recursive) approach since it is simpler to understand and reason about. We start, as Taleb does, from the assumption that every 20 days the number of infected people is doubled (doubling time of 20 days).</p>
+<p>From a technical point of view, the simulation that follows in fact is run in a notebook run on <a href="http://spark-notebook.io" target="_blank">Spark-Notebook</a>. We started out developing an object-based representation of the problem, but quickly turned to a purely functional (recursive) approach since it is simpler to understand and reason about. We start, as Taleb does, from the assumption that every 20 days the number of infected people is doubled (doubling time of 20 days).</p>
 <p>In a follow-up post, I may delve a little deeper in the actual implementation. Here, we want to focus on the results.</p>
 </section>
 <section id="non-stochastic-version" class="level1">
@@ -248,8 +303,8 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
 <p>This post is becoming quite long already. Let us conclude with one important consequence of the above and leave further dicussion for a later stage. Although the above simulation is very rudimentary, it shows that relatively small variations<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to the rate of spreading cause the worst case scenario to be extremely far off the average scenario.</p>
-<button class="btn-action btn btn-info" role="button" onclick="goBack()">
-Back
+<button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
+<i class="bi bi-arrow-left"> </i>Back
 </button>
 <script>
 function goBack() {
@@ -267,67 +322,101 @@ function goBack() {
 <li id="fn1"><p>Even variations that are normally distributed, i.e., thin tailed.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
-<!-- main -->
+ 
+ </div>
+   <!--  Footer starts here (in quarto footer.html) -->
+ <section class="elevate-dataworkflows text-center mt-5 pt-5">
+    <div class="container justify-content-center flex-column">
+      <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+          <div class="bg-primary text-white rounded-5 elevate-dataworkflows-inner">
+            <h2 class="text-white">Elevate your data workflows</h2>
+            <p>Transform your data workflows with Data Intuitive’s complete support from start to finish.</p>
+            <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
+              the
+              ﬁnal product, all while providing end-to-end support. </p>
+            <a href="../../../contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">book a meeting with us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
 
-<footer class="column-screen">
-<div id="banner">
-<div class="footer">
-<div class="quarto-layout-panel">
-<div class="di-grid">
-<div class="box quarto-layout-cell grid-span-col-2">
-<p><img src="../../../images/logo_white.svg" class="img-fluid" width="60"></p>
-<p>Founded in 2011, Data Intuitive is a team of computational scientists with a wealth of experience in data science and creating and optimizing bioinformatics data workflows.</p>
-</div>
 
 
-<section id="links" class="level3 box quarto-layout-cell">
-<h3 class="anchored" data-anchor-id="links">Links</h3>
+  
+  <footer class="column-screen">
+    <div id="banner">
+      <div class="footer ">
+        <div class="quarto-layout-panel">
+          <div class="di-grid">
 
-<p><a href="../../../disclaimer.html">Disclaimer</a><br>
-<a href="../../../privacy_policy.html">Privacy Statement</a><br>
-<a href="https://www.quarto.org" target="_blank">Powered by Quarto</a><br>
-</p>
-</section>
+            <div class="box quarto-layout-cell">
+              <p><img src="../../../images/logoditext.svg" class="img-fluid"></p>
 
-<section id="follow-us" class="level3 box quarto-layout-cell">
-<h3 class="anchored" data-anchor-id="follow-us">Follow Us</h3>
 
-<p> <a href="https://github.com/data-intuitive/" target="_blank"><i class="b-icon" data-feather="github"></i> GitHub</a></p>
-<!-- Include the Feather icons library -->
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script>
-feather.replace();
-</script>
-<p> <a href="https://www.linkedin.com/company/data-intuitive/" target="_blank"><i class="b-icon" data-feather="linkedin"></i> LinkedIn</a></p>
-<!-- Include the Feather icons library -->
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script>
-feather.replace();
-</script>
-<p> <a href="Mailto:info@data-intuitive.com" target="_blank"><i class="b-icon" data-feather="mail"></i> Mail</a>
-<!-- Include the Feather icons library -->
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script>
-feather.replace();
-</script>
-</p><p> <a href="https://twitter.com/dataintuitive" target="_blank"><i class="b-icon" data-feather="twitter"></i> Twitter</a></p>
-<!-- Include the Feather icons library -->
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script>
-feather.replace();
-</script>
-</section>
-</div>
-</div>
-</div>
-</div> 
-</footer>
 
-<!-- animated js -->
-<script src="../../../animated/wow.min.js"> </script>
-<script>
-  new WOW().init();
-</script>
+            </div>
+            
+
+
+            <section id="links" class="level3 box quarto-layout-cell">
+
+              <p><a href="../../../index.html">Index</a>
+                <a href="../../../static/disclaimer.html">Disclaimer</a>
+                <a href="../../../static/sustainability_statement.html">Sustainability
+                  Statement</a>
+                <a href="https://www.quarto.org/" target="_blank">Powered by Quarto</a>
+                <a href="../../../static/privacy_policy.html">Privacy Statement</a><br>
+              </p>
+            </section>
+
+            <div class="di-background"></div>
+          </div>
+          
+        </div>
+        
+      </div>
+      <div class="bottom-graphics-container">
+        <img src="../../../images/vlaio.png" class="bottom-img">
+        <img src="../../../images/fit.jpg" class="bottom-img">
+    </div>
+    </div>
+
+  
+  </footer>
+
+
+  <div id="follow-us" class="position-fixed">  
+  
+    <a href="https://github.com/data-intuitive/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewbox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+    </svg></a>
+
+    <a href="https://www.linkedin.com/company/data-intuitive/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewbox="0 0 16 16">
+      <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+    </svg></a>
+
+    <a href="./contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
+      <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"></path>
+      <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"></path>
+    </svg></a>
+
+    <a href="https://twitter.com/dataintuitive" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 448 512"><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm297.1 84L257.3 234.6L379.4 396h-95.6L209 298.1L123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5l78.2-89.5h47.5zm-37.8 251.6L153.4 142.9h-28.3l171.8 224.7h26.3z"></path></svg></a>
+    <!-- Include the Feather icons library -->
+  </div>
+  
+  
+
+  <!-- animated js -->
+
+
+
+  
+  
+
+
+
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -407,10 +496,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -420,8 +508,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -434,6 +531,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -477,6 +693,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -502,6 +719,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -561,7 +804,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</div> <!-- /content -->
+ <!-- /content -->
+
 
 
 

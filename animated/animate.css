@@ -69,21 +69,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 @-webkit-keyframes flash {
-  0%, 50%, 100% {
+  0%, 20%, 40%, 60%, 80%, 100% {
     opacity: 1;
   }
-
-  25%, 75% {
+  10%, 30%, 50%, 70%, 90% {
     opacity: 0;
   }
 }
 
 @keyframes flash {
-  0%, 50%, 100% {
+  0%, 20%, 40%, 60%, 80%, 100% {
     opacity: 1;
   }
-
-  25%, 75% {
+  10%, 30%, 50%, 70%, 90% {
     opacity: 0;
   }
 }
@@ -91,6 +89,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .flash {
   -webkit-animation-name: flash;
   animation-name: flash;
+  -webkit-animation-duration: 10s linear infinite;
+  animation-duration: 10s linear infinite;
+  animation: flash 5s linear infinite;
 }
 
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */

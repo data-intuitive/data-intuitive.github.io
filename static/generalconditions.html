@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.548">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Intuitive</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//images/main-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SJVLXW7DQ5"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
+</script>
+   <!--  menu starts here (in quarto menu.html) -->
+
+
+
+
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
+<meta property="og:title" content="Data Intuitive">
+<meta property="og:site-name" content="Data Intuitive">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Data Intuitive">
+<meta property="og:description" content="Data Intuitive develops intuitive tools and custom biotech data pipelines to help clients gain valuable insights and make data-driven decisions.">
+<meta property="og:site_name" content="Data Intuitive">
+<meta property="og:locale" content="en_GB">
+</head>
+<body class="fullcontent"><video autoplay="" muted="" loop="" class="custom-background-video">
+  <source src="../images/white.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+  <div class="topmenuspacer"></div>
+  <header class="main-header mt-xl-4">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html"><img src="../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
+            <!-- <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solutions</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../solutions/nopipeline.html">NoPipeline</a></li>
+                <li><a class="dropdown-item" href="../solutions/viash.html">Viash</a></li>
+                <li><a class="dropdown-item" href="../solutions/viashhub.html">Viash Hub</a></li>
+                <li><a class="dropdown-item" href="../solutions/viashhubpro.html">Viash Hub PRO</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../services/viashpro.html">Viash Pro Support</a></li>
+                <li><a class="dropdown-item" href="../services/bioinformatics.html">Bioinformatics</a></li>
+                <li><a class="dropdown-item" href="../services/benchmarking.html">Benchmarking</a></li>
+                <li><a class="dropdown-item" href="../services/training.html">Training</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Company
+            </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../company/company.html">About</a></li>
+                <li><a class="dropdown-item" href="../company/company.html#people">Team</a></li>
+                <li><a class="dropdown-item" href="../company/careers.html">Careers</a></li>
+
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Insights
+              </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../Insights/projects.html">Projects</a></li>
+                  <li><a class="dropdown-item" href="../Insights/showcase.html">Showcases</a></li>
+                  <li><a class="dropdown-item" href="../Insights/news.html">News</a></li>
+                  <li><a class="dropdown-item" href="../Insights/blog.html">Blogs</a></li>
+                </ul>
+              </li>
+          </ul>
+          <a href="../contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <script src="../js/scripts.js"></script>
+   <!--  menu stops here (in quarto menu.html) -->
+
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../animated/animate.css">
+
+
+
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+
+
+
+<section id="general-conditions-data-intuitive-bv" class="container">
+<h1>General Conditions Data Intuitive BV</h1>
+<h2 id="article-1.-general-information" class="anchored">Article 1. General Information</h2>
+<p>Data Intuitive BV (hereinafter briefly referred to as Data Intuitive) is a limited liability company located at 9280 Lebbeke, Korte Breestraat 4a, and is registered in Dendermonde at the Crossroads Bank for Enterprises under number BE 0833.160.219.</p>
+<h2 id="article-2.-applicability" class="anchored">Article 2. Applicability</h2>
+<p>These general conditions apply to all services, agreements, deliveries, and sales of goods by Data Intuitive to its customers. The customer is deemed to be aware of these general conditions and to accept them without reservation. In case of contradiction, these general conditions will prevail over any differing general conditions of the customer, unless otherwise agreed in writing by one of the directors of Data Intuitive. Agreements that deviate from one or more provisions of these general conditions will only replace the provision or provisions from which they deviate. The other provisions remain fully applicable.</p>
+<h2 id="article-3.-object-of-the-service" class="anchored">Article 3. Object of the Service</h2>
+<p>The parties will agree on the precise object of Data Intuitive’s service provision at the start of the activities and, if necessary, adjust and/or expand it during further execution.</p>
+<h2 id="article-4.-price-quotes" class="anchored">Article 4. Price Quotes</h2>
+<p>§1. The specifications and price offers provided to the customer are valid for fourteen calendar days, unless otherwise stated on the specifications. §2. In addition to the current general conditions, the rights and obligations of the parties are determined by the agreement that follows from the specifications. (determination of the price)</p>
+<h2 id="article-5.-obligations-of-data-intuitive-bv" class="anchored">Article 5. Obligations of Data Intuitive BV</h2>
+<p>§1. An assignment is only binding if it is expressly and in writing accepted by a director. In the event of cancellation of the assignment, the total amount remains due, unless after prior written agreement. §2. The commitments of Data Intuitive are not obligations of result but obligations of effort unless agreed otherwise. All assignments are executed to the best of Data Intuitive’s ability. Data Intuitive has the option of outsourcing the assignments to employees within and outside the company, whereby the present general conditions remain fully applicable. Data Intuitive commits to delivering its services within a reasonable period. Data Intuitive is in no way liable for exceeding deadlines due to the customer, third parties, or force majeure. §3. Data Intuitive takes appropriate organizational and administrative measures to prevent conflicts of interest in advisory services between its customers from harming the interests of the latter. The customer must inform Data Intuitive of any information in its possession that would indicate that Data Intuitive may be in a conflict situation. Consequently, Data Intuitive reserves the right, for ethical reasons, to refuse an assignment if conflicts of interest may arise that could harm the interests of its customers.</p>
+<h2 id="article-6.-cooperation-of-the-customer" class="anchored">Article 6. Cooperation of the Customer</h2>
+<p>Data Intuitive does everything to provide optimal service to its customers. Smooth interaction and collaboration between Data Intuitive and the customer are very important in this regard. The service of Data Intuitive is tailor-made. The customer provides Data Intuitive, both at the start of the agreement and during its duration, if requested by Data Intuitive, promptly all the information required to make the optimal execution of its service possible. The customer is responsible for the accuracy, completeness, and reliability of the data, information, and documents provided by him. If the customer does not, does not timely, or does not in accordance with the agreements provide the necessary cooperation, Data Intuitive is free to no longer perform work for the customer and to completely withdraw from the case. Data Intuitive is not liable for any damage that may result from this withdrawal.</p>
+<h2 id="article-7.-remuneration-complaints-payment" class="anchored">Article 7. Remuneration – Complaints – Payment</h2>
+<p>§1. Data Intuitive charges for its services according to hourly rates or other methods, which have been determined in agreement with the customer. The rate is also determined based on the nature, complexity, commitment, and urgent character of the case. §2. Data Intuitive may ask the customer for one or more advances at the beginning and during its activities. After completing an assignment, the customer will receive a final invoice where the paid advances will be deducted from the total amount. §3. If the customer does not agree with an invoice, he must protest in writing and motivated within fourteen calendar days from the date of the invoice, under penalty of forfeiting the right. §4. Unless otherwise agreed, all invoices are payable in cash at the seat of Data Intuitive, without discount. If an invoice is not paid by the due date of the invoice, Data Intuitive - without having to give prior notice of default to the customer – has the right by law (A) to charge late payment interests at an interest rate of 1.5% per month from the due date of the invoice until the date of full payment as well as 10% of the late paid amount with a minimum of 200 EUR, notwithstanding her right to the court costs (including the applicable legal fees), should a judicial collection follow. Also, in this case, Data Intuitive has the right either to suspend the execution of its activities in all files with the concerned customer until all invoices are fully paid, or to terminate the overall cooperation with the customer with immediate effect. Data Intuitive is not liable for any damage resulting from the suspension of its activities or the termination of its agreement with the customer.</p>
+<h2 id="article-8.-delivery" class="anchored">Article 8. Delivery</h2>
+<p>§1. It is the customer’s responsibility to verify the accuracy of the results from services/products delivered by Data Intuitive. The customer must inspect the delivered goods as soon as possible after delivery. Any defects must be reported to Data Intuitive by registered letter within fourteen calendar days after delivery. After this period, Data Intuitive is only responsible for hidden defects that make the item unsuitable for the use for which it is intended. The customer must notify Data Intuitive of the existence of the hidden defect by registered letter with a detailed description of the defect within fourteen calendar days after discovering the hidden defect. Complaints about hidden defects do not suspend the customer’s payment obligation. §2. Products and services are delivered within the period specified in the agreement. Goods remain the property of Data Intuitive until full payment of the principal amount, costs, and interests. The goods are shipped at the risk of the customer. The transportation costs, unless otherwise determined, are at the expense of the customer. §3. If the customer does not pick up the goods on the communicated date, Data Intuitive reserves the right to consider the agreement as dissolved after a period of fourteen days, without prior notice of default. §4. The storage of the goods pending delivery or collection is at the risk of the customer. §5. As long as the delivered goods have not been paid for, they remain the property of Data Intuitive. However, the risk is transferred to the customer at the moment of contract conclusion.</p>
+<h3 id="article-8b.-training-courses" class="anchored">Article 8b. Training Courses</h3>
+<p>§1 In cases where a training course organized by Data Intuitive has fewer than three registrants, the following conditions will apply:</p>
+<ul>
+<li>Rescheduling Right: Data Intuitive reserves the right to reschedule the training course to a later date due to low enrollment. This rescheduling is limited to one occurrence.<br>
+</li>
+<li>Notification of Rescheduling: Data Intuitive will inform all registered participants about the rescheduled date in a timely manner.<br>
+</li>
+<li>No Refund Policy: In the event of rescheduling due to low enrollment, participants are not entitled to a refund of any fees paid for the training course.<br>
+</li>
+<li>Participant Commitment: Participants who are registered for a course that has been rescheduled due to low enrollment are expected to attend the course on the new date.<br>
+</li>
+<li>Final Rescheduling: If, after being rescheduled once, the training course still does not achieve the minimum required number of three participants, Data Intuitive will proceed with the course on the rescheduled date with the registered participants. No further rescheduling or cancellation will be possible.</li>
+</ul>
+<h2 id="article-9.-liability" class="anchored">Article 9. Liability</h2>
+<p>§1. Data Intuitive is not liable for damage resulting from incorrect or incomplete information provided by the customer. §2. Data Intuitive is not liable for any compensation for damage, directly or indirectly resulting from services provided by us, except in case of gross negligence or intent. Any liability of Data Intuitive and/or its subcontractors and appointees, whether contractual or non-contractual, is always limited in principal, costs, and interests to the amount excl. VAT charged in the file in which the liability is retained, and in the absence of such a file to a maximum of € 7,500 per incident. §3. Data Intuitive cannot be held liable for any indirect damage, consequential damage, loss of use, or loss of profit suffered by the customer or by third parties. §4. Although Data Intuitive makes reasonable efforts to protect its digital assets from viruses or other defects that could affect computers or an IT system, it is the responsibility of the customer to ensure appropriate measures exist to protect the customer’s computers and IT system against such viruses or defects. Data Intuitive accepts no liability for any loss or damage resulting from receiving or using electronic communications from Data Intuitive. §5. Data Intuitive is not liable for any damage caused by the installation of software. §6. Any unauthorized modification of the software or goods by the customer voids the right to warranty.</p>
+<h2 id="article-10.-intellectual-property-rights" class="anchored">Article 10. Intellectual Property Rights</h2>
+<p>The customer is not allowed to reproduce, make public, or use in any way the advices, notes, opinions, contracts, documents, slides, and all other intellectual works created by Data Intuitive, regardless of their form, without its prior written consent, other than in the context of the assignment awarded to Data Intuitive.</p>
+<h2 id="article-11.-modification" class="anchored">Article 11. Modification</h2>
+<p>Data Intuitive reserves the right to modify these general conditions at any time.</p>
+<h2 id="article-12.-applicable-law-and-competent-court" class="anchored">Article 12. Applicable Law and Competent Court</h2>
+<p>§1. All agreements between Data Intuitive and the customer are exclusively subject to Belgian law. §2. Parties prefer to settle their disputes amicably. §3. Only the courts of the judicial district of Dendermonde are competent to take cognizance of any dispute between Data Intuitive and the customer.</p>
+</section>
+
+
+
+</main> <!-- /main -->
+ 
+ </div>
+   <!--  Footer starts here (in quarto footer.html) -->
+ <section class="elevate-dataworkflows text-center mt-5 pt-5">
+    <div class="container justify-content-center flex-column">
+      <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+          <div class="bg-primary text-white rounded-5 elevate-dataworkflows-inner">
+            <h2 class="text-white">Elevate your data workflows</h2>
+            <p>Transform your data workflows with Data Intuitive’s complete support from start to finish.</p>
+            <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
+              the
+              ﬁnal product, all while providing end-to-end support. </p>
+            <a href="../contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">book a meeting with us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+
+
+
+  
+  <footer class="column-screen">
+    <div id="banner">
+      <div class="footer ">
+        <div class="quarto-layout-panel">
+          <div class="di-grid">
+
+            <div class="box quarto-layout-cell">
+              <p><img src="../images/logoditext.svg" class="img-fluid"></p>
+
+
+
+            </div>
+            
+
+
+            <section id="links" class="level3 box quarto-layout-cell">
+
+              <p><a href="../index.html">Index</a>
+                <a href="../static/disclaimer.html">Disclaimer</a>
+                <a href="../static/sustainability_statement.html">Sustainability
+                  Statement</a>
+                <a href="https://www.quarto.org/" target="_blank">Powered by Quarto</a>
+                <a href="../static/privacy_policy.html">Privacy Statement</a><br>
+              </p>
+            </section>
+
+            <div class="di-background"></div>
+          </div>
+          
+        </div>
+        
+      </div>
+      <div class="bottom-graphics-container">
+        <img src="../images/vlaio.png" class="bottom-img">
+        <img src="../images/fit.jpg" class="bottom-img">
+    </div>
+    </div>
+
+  
+  </footer>
+
+
+  <div id="follow-us" class="position-fixed">  
+  
+    <a href="https://github.com/data-intuitive/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewbox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+    </svg></a>
+
+    <a href="https://www.linkedin.com/company/data-intuitive/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewbox="0 0 16 16">
+      <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+    </svg></a>
+
+    <a href="./contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
+      <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"></path>
+      <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"></path>
+    </svg></a>
+
+    <a href="https://twitter.com/dataintuitive" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 448 512"><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm297.1 84L257.3 234.6L379.4 396h-95.6L209 298.1L123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5l78.2-89.5h47.5zm-37.8 251.6L153.4 142.9h-28.3l171.8 224.7h26.3z"></path></svg></a>
+    <!-- Include the Feather icons library -->
+  </div>
+  
+  
+
+  <!-- animated js -->
+
+
+
+  
+  
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+ <!-- /content -->
+
+
+
+
+</body></html>
