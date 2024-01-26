@@ -222,14 +222,14 @@ header .navbar .navbar-toggler {
   max-height: 90vh; /* Limit the height to 50% of the viewport */
   object-fit: cover; /* Cover the entire area of the element */
   z-index: -2; /* Keep it behind other content */
-  opacity:0.15;
+  opacity:0;
 }
 
 .custom-background-video-light {
   position: absolute; /* Keep it absolute to position it freely */
   left: 0%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Adjust for perfect centering */
-  width: 225%; /* Full width of the parent container */
+  width: 200%; /* Full width of the parent container */
   height: auto; /* Maintain aspect ratio */
   max-height: 90vh; /* Limit the height to 50% of the viewport */
   object-fit: cover; /* Cover the entire area of the element */
@@ -272,8 +272,6 @@ header .navbar .navbar-toggler {
 
 .v-hero-left {
   position: relative;
-  max-height:400px;
-  min-height:400px;
 }
 .v-hero-left:before {
   position: absolute;
@@ -1088,16 +1086,6 @@ textarea.form-control {
   .bg-white-di:hover {
     background-color: #F3FCF6;
   }
-
-.custom-background-video {
-    position: absolute;
-    top: -680px; /* Offset from the top */
-    left: 0; /* Align to the left */
-    width: 100%; /* Full width */
-    height: calc(100% + 150px); /* Adjust height to account for the offset */
-    object-fit: cover; /* Ensures the video covers the area */
-    z-index: -1; /* Layered behind other content in the container */
-}
 
 }
 /*                                     480 */
