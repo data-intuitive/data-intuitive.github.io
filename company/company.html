@@ -180,27 +180,36 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 
 
 
-  <section class="v-hero mt-4 mb-5 mt-5 pb-xl-5">
+  <section class="v-hero mt-4 mb-3 pb-xl-5">
     <div class="container">
       <div class="row justify-content-between align-items-center">
-        <div class="col-md-6 ">
+        <div class="col-md-6">
           <div class="v-hero-left mb-4">
-            <div class="sub-text ">
-               Our Company
+            <div class="sub-text">
+              Our Company
             </div>
             <h1 class="v-hero-title">
               We are Data Intuitive<span class="flash">_</span>
             </h1>
-            <p> 
-            We believe in building trust and achieving success through clear, transparent communication, combined with long-term, quality-focused solutions that not only address current challenges but also anticipate future advancements in biotech IT.</p>
-                      </div>
-        <a href="../contact/contact.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Contact Us <i class="bi bi-arrow-right"></i></a>
+            <p> We believe in building trust and achieving success through clear, transparent communication, combined with long-term, quality-focused solutions that not only address current challenges but also anticipate future advancements in biotech IT.</p>
+            <a href="../contact/contact.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Contact Us <i class="bi bi-arrow-right"></i></a>
+           </div>
         </div>
-        <div class="col-md-6 col-lg-5">
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
+                        <source src="../images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
+
+
+
+
 
   <section class="mb-5 pb-xxl-5">
 
@@ -405,7 +414,14 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
   </section>
 
 
+<script>
+ function setPlaybackSpeed(speed) {
 
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed; 
+}
+  setPlaybackSpeed(0.6)
+</script>
 
 
 

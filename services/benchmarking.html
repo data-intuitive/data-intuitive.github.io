@@ -240,7 +240,7 @@ window.Quarto = {
 
 
 
-  <section class="v-hero mt-4 mb-3 mt-3 pb-xl-5">
+  <section class="v-hero mt-4 mb-3 pb-xl-5">
 
     <div class="container">
       <div class="row justify-content-between align-items-center">
@@ -254,11 +254,19 @@ window.Quarto = {
             </h1>
             <p>Explore our Benchmarking Services for Biotech Companies, designed to deliver accurate industry comparisons and performance metrics, coupled with data-driven insights to boost your research and operational effectiveness.</p>
             <a href="../contact/contact.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Contact Us <i class="bi bi-arrow-right"></i></a>
-          </div>
+           </div>
         </div>
-      </div>
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
+                        <source src="../images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
   <section class="mb-5 pb-xl-5">
     <div class="container">
@@ -327,7 +335,7 @@ window.Quarto = {
 
 <div id="listing-projects" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="Open Source,Client Project" data-listing-file-modified-sort="1706204489173" data-listing-reading-time-sort="2" data-listing-word-count-sort="300">
+<div class="g-col-1" data-index="0" data-categories="Open Source,Client Project" data-listing-file-modified-sort="1706280285496" data-listing-reading-time-sort="2" data-listing-word-count-sort="300">
 <a href="../insights/projects/benchmarking_openproblems/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -371,7 +379,14 @@ No matching items
     </div>
 
   </section>
+<script>
+ function setPlaybackSpeed(speed) {
 
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed; 
+}
+  setPlaybackSpeed(0.6)
+</script>
 
 
 

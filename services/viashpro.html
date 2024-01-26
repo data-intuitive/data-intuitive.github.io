@@ -180,7 +180,7 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
 
 
 
-  <section class="v-hero mt-4 mb-3 mt-3 pb-xl-5">
+  <section class="v-hero mt-4 mb-3 pb-xl-5">
     <div class="container">
       <div class="row justify-content-between align-items-center">
         <div class="col-md-6">
@@ -193,12 +193,19 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
             </h1>
             <p>Offering comprehensive, expert-level assistance for workflow development in critical environments, ensuring smooth operations and advanced computational knowledge management to empower scientists and organizations.</p>
             <a href="../contact/contact.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Contact Us <i class="bi bi-arrow-right"></i></a>
-            
-          </div>
+           </div>
         </div>
-      </div>
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
+                        <source src="../images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
  <section class="mb-5 pb-xxl-3">
     <div class="container"> 
@@ -322,7 +329,14 @@ gtag('config', 'G-SJVLXW7DQ5', { 'anonymize_ip': true});
       </div>
   </div>
 
- 
+ <script>
+ function setPlaybackSpeed(speed) {
+
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed; 
+}
+  setPlaybackSpeed(0.6)
+</script>
 
 
 

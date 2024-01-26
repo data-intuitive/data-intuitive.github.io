@@ -253,13 +253,19 @@ window.Quarto = {
             </h1>
             <p>Discover a platform designed to enhance your research efficiency and collaboration. Seamlessly develop, create, share, and reuse modular data workflows to accelerate scientific breakthroughs. <br><br><i> Available end 2024 </i></p>
             <a href="../contact/contact.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Contact Us <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-md-6">
-        </div>
       </div>
+        </div>
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
+                        <source src="../images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
  <section class="mb-5 pb-xl-5">
     <div class="container">
       <div class="row justify-content-between mb-5 pb-xl-4">
@@ -307,7 +313,7 @@ window.Quarto = {
 
         <div class="col-lg-6 pe-xl-5 mb-xxl-4 mt-4 mb-4">
           <div class="col-12">
-            <a href="../static/emaillist.html" class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center gap-2 w-80 mx-auto">Preregister for Viash Hub <i class="bi bi-arrow-right"></i></a>
+            <a href="../solutions/viashhub.html#viashhubregister" class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center gap-2 w-80 mx-auto">Preregister for Viash Hub <i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
 
@@ -449,7 +455,7 @@ window.Quarto = {
 
 <div id="listing-showcase" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1706204489197" data-listing-reading-time-sort="3" data-listing-word-count-sort="558">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1706280285520" data-listing-reading-time-sort="3" data-listing-word-count-sort="558">
 <a href="../insights/showcase/viashhub_cli/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -482,13 +488,13 @@ No matching items
     </div>
   </section>
 
-  <section class="v-download-whitepaper text-center bg-primary-60 py-5">
+  <section id="viashhubregister" class="v-download-whitepaper text-center bg-primary-60 py-5">
     <div class="container py-xl-5">
       <div class="row justify-content-center">
         <div class="col-12">
           <h2 class="mb-xl-4">Join the Viash Hub Beta Testing</h2>
           <div class="max-w405 mx-auto">
-            <p>Enter your email and get exclusive access to test the cutting-edge features of Viash Hub.</p>
+            <p>Submit your email to test the innovative features of Viash Hub in beta version, and we'll keep you updated on the platform's status and developments.</p>
           <form class="mt-4" action="https://formspree.io/f/xrgneege" method="POST">
             <input type="email" name="add to viash hub email list &amp; access" class="form-control rounded-pill mb-3 mb-xl-4 py-2 py-xl-3 px-4 bg-dark-subtle" placeholder="E-mail">
             <input type="submit" value="Submit" class="btn btn-primary rounded-pill">
@@ -498,7 +504,14 @@ No matching items
       </div>
     </div>
   </section>
+<script>
+ function setPlaybackSpeed(speed) {
 
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed; 
+}
+  setPlaybackSpeed(0.6)
+</script>
   
 
 

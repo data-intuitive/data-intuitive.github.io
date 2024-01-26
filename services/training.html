@@ -239,7 +239,7 @@ window.Quarto = {
 
 
 
-  <section class="v-hero mb-3 mt-3 pb-xl-5">
+  <section class="v-hero mb-3 mt-4 pb-xl-5">
     <div class="container">
       <div class="row justify-content-between align-items-center">
         <div class="col-md-6 col-xxl-5">
@@ -250,13 +250,20 @@ window.Quarto = {
             <h1 class="v-hero-title">
               Discover our Viash courses
             </h1>
-            <p>Enroll now to effortlessly create your Nextﬂow workﬂows and unleash the full potential of your computational biology projects.
-            
-          </p></div>
+            <p>Enroll now to effortlessly create your Nextﬂow workﬂows and unleash the full potential of your computational biology projects.</p>
+           </div>
         </div>
-      </div>
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
+                        <source src="../images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
  <section class="mb-2 pb-xxl-5">
 
@@ -285,7 +292,7 @@ window.Quarto = {
 
 <div id="listing-course" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1706204489257" data-listing-reading-time-sort="5" data-listing-word-count-sort="906">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1706280285588" data-listing-reading-time-sort="5" data-listing-word-count-sort="906">
 <a href="../services/course/introduction_running/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <div class="card-body post-contents">
@@ -335,7 +342,7 @@ Price
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1706204489257" data-listing-reading-time-sort="5" data-listing-word-count-sort="820">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1706280285588" data-listing-reading-time-sort="5" data-listing-word-count-sort="820">
 <a href="../services/course/pipeline_fundamentals/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <div class="card-body post-contents">
@@ -385,7 +392,7 @@ Price
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1706204489257" data-listing-reading-time-sort="5" data-listing-word-count-sort="823">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1706280285588" data-listing-reading-time-sort="5" data-listing-word-count-sort="823">
 <a href="../services/course/pipeline_advanced/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <div class="card-body post-contents">
@@ -477,6 +484,14 @@ No matching items
       </div>
     </div>
   </section>
+  <script>
+ function setPlaybackSpeed(speed) {
+
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed; 
+}
+  setPlaybackSpeed(0.6)
+</script>
 
 
 

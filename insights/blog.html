@@ -253,9 +253,17 @@ window.Quarto = {
             <p>Welcome to Data Intuitive's Tech Blog: your go-to source for insights into our latest tech innovations, hackathon highlights, and cutting-edge Open Source.</p>
           </div>
         </div>
-      </div>
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
+                        <source src="../images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
 
   <section class="projects-wrapper">
@@ -268,7 +276,7 @@ window.Quarto = {
 
 <div id="listing-blog" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1463070589000" data-listing-file-modified-sort="1706204489129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="758">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1463070589000" data-listing-file-modified-sort="1706280285448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="758">
 <a href="../insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -293,7 +301,7 @@ May 12, 2016
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1536228000000" data-listing-file-modified-sort="1706204489141" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="316">
+<div class="g-col-1" data-index="1" data-listing-date-sort="1536228000000" data-listing-file-modified-sort="1706280285460" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="316">
 <a href="../insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -318,7 +326,7 @@ Sep 6, 2018
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1684713600000" data-listing-file-modified-sort="1706204489145" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1338">
+<div class="g-col-1" data-index="2" data-listing-date-sort="1684713600000" data-listing-file-modified-sort="1706280285464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1338">
 <a href="../insights/blog/2023-05-22-scverse-hackathon/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -343,7 +351,7 @@ May 22, 2023
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1686873600000" data-listing-file-modified-sort="1706204489145" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1599">
+<div class="g-col-1" data-index="3" data-listing-date-sort="1686873600000" data-listing-file-modified-sort="1706280285464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1599">
 <a href="../insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -379,7 +387,14 @@ No matching items
       </div>
     </div>
   </section>
+<script>
+ function setPlaybackSpeed(speed) {
 
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed; 
+}
+  setPlaybackSpeed(0.6)
+</script>
 
 
 

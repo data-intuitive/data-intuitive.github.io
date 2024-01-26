@@ -215,32 +215,28 @@ header .navbar .navbar-toggler {
 
 .custom-background-video {
   position: absolute; /* Keep it absolute to position it freely */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
+  left: 25%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Adjust for perfect centering */
-  width: 120%; /* Full width of the parent container */
+  width: 160%; /* Full width of the parent container */
   height: auto; /* Maintain aspect ratio */
-  max-height: 50vh; /* Limit the height to 50% of the viewport */
+  max-height: 90vh; /* Limit the height to 50% of the viewport */
   object-fit: cover; /* Cover the entire area of the element */
-  z-index: -1; /* Keep it behind other content */
+  z-index: -2; /* Keep it behind other content */
+  opacity:0.15;
 }
 
+.custom-background-video-light {
+  position: absolute; /* Keep it absolute to position it freely */
+  left: 0%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for perfect centering */
+  width: 225%; /* Full width of the parent container */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 90vh; /* Limit the height to 50% of the viewport */
+  object-fit: cover; /* Cover the entire area of the element */
+  z-index: -2; /* Keep it behind other content */
+  opacity:0.15;
+}
 
-
-
-
-/*.custom-background {
-  width:100%; 
-  margin-left:0vw;
-  height:auto; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../images/backgroundtest4.png');
-  background-size: auto 130%;
-  background-position: center;
-  background-repeat: no-repeat;
-}*/
 
 
 .quarto-about-marquee .about-image-container {
@@ -276,6 +272,8 @@ header .navbar .navbar-toggler {
 
 .v-hero-left {
   position: relative;
+  max-height:400px;
+  min-height:400px;
 }
 .v-hero-left:before {
   position: absolute;
@@ -708,6 +706,7 @@ background-position: bottom;
   .di-background {
     display: none;
   }
+
 }
 
 #quarto-content > * {
@@ -1341,9 +1340,9 @@ textarea.form-control {
     font-size: 1.5rem; /*24*/
   }
 
-  /*.topmenuspacer {
-    height: 175px;
-  }*/
+  .custom-background-video {
+    opacity:0.9;
+  }
 
   header .navbar .container {
     border: 1px solid #e8e5f7;
@@ -1703,7 +1702,7 @@ textarea.form-control {
 
 .thumbnail {
   flex-basis: 40%;
-  max-width:440px;
+  max-width:390px;
   width:400px;
   min-width:340px;
   max-height:200px;
@@ -1720,7 +1719,7 @@ margin-right: 0;
   /*font-size: 1.5rem; /*1,5 em*/
   line-height: 27px;
   margin-bottom: 15px;
-  height: 2.1em;
+  height: 3.1em;
   color: black;
 }  
 

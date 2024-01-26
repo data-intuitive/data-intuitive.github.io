@@ -239,7 +239,7 @@ window.Quarto = {
 
 
 
-  <section class="v-hero mt-4 mb-5 mt-5 pb-xl-5">
+  <section class="v-hero mt-4 mb-5 pb-xl-5">
     <div class="container">
       <div class="row justify-content-between align-items-center">
         <div class="col-md-6 col-xxl-5">
@@ -254,11 +254,19 @@ window.Quarto = {
             <a href="../company/careers.html#careers" class="btn btn-primary rounded-pill d-inline-flex align-items-center">Open
               Positions </a>
 
-          </div>
+           </div>
         </div>
-      </div>
+            <div class="col-md-6 col-xl-5">
+                <div class="v-hero-right position-relative">
+                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
+                        <source src="../images/di.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
   <section class="mb-5 pb-xl-5">
     <div class="container">
@@ -298,7 +306,7 @@ window.Quarto = {
         </div>
 <div id="listing-careers" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1706204488937" data-listing-reading-time-sort="2" data-listing-word-count-sort="325">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1706280285216" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
 <a href="../company/careers/full-stack-web-developer/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -320,7 +328,7 @@ Remote, Flanders - Belgium
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1706204488937" data-listing-reading-time-sort="2" data-listing-word-count-sort="339">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1706280285216" data-listing-reading-time-sort="2" data-listing-word-count-sort="337">
 <a href="../company/careers/bioinformatics-workflow-engineer/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -342,7 +350,7 @@ Remote, Flanders - Belgium
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1706204488937" data-listing-reading-time-sort="2" data-listing-word-count-sort="327">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1706280285216" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
 <a href="../company/careers/junior-bioinformatics-engineer/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -364,7 +372,7 @@ Remote, Flanders - Belgium
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1706204488937" data-listing-reading-time-sort="2" data-listing-word-count-sort="314">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1706280285216" data-listing-reading-time-sort="2" data-listing-word-count-sort="311">
 <a href="../company/careers/Junior-computer-engineer/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -439,7 +447,14 @@ No matching items
       </div>
     </div>
   </section>
+<script>
+ function setPlaybackSpeed(speed) {
 
+  var video = document.getElementById("myvideo");
+  video.playbackRate = speed; 
+}
+  setPlaybackSpeed(0.6)
+</script>
 
 
 
