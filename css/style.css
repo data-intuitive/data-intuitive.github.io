@@ -706,7 +706,9 @@ background-position: bottom;
   .di-background {
     display: none;
   }
-
+  div.quarto-post .thumbnail img {
+    width: 60vw;
+}
 }
 
 #quarto-content > * {
