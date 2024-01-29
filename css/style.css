@@ -294,7 +294,9 @@ header .navbar .navbar-toggler {
 
 
 
-.v-hero-title {
+.title, .description {
+visibility: hidden;
+max-height:0px;
 }
 
 .v-hero p {
