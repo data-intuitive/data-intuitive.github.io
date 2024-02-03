@@ -294,7 +294,7 @@ header .navbar .navbar-toggler {
 
 
 
-.title, .description {
+.title, .description, .keywords {
 visibility: hidden;
 max-height:0px;
 }

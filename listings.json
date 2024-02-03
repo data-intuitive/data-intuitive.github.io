@@ -1,5 +1,17 @@
 [
   {
+    "listing": "/services/benchmarking.html",
+    "items": [
+      "/insights/projects/benchmarking_openproblems/index.html"
+    ]
+  },
+  {
+    "listing": "/solutions/viashhub.html",
+    "items": [
+      "/insights/showcase/viashhub_cli/index.html"
+    ]
+  },
+  {
     "listing": "/insights/projects.html",
     "items": [
       "/insights/projects/ComPass/index.html",
@@ -9,15 +21,6 @@
       "/insights/projects/anndata-for-r/index.html",
       "/insights/projects/virusbank/index.html",
       "/insights/projects/dynverse/index.html"
-    ]
-  },
-  {
-    "listing": "/company/careers.html",
-    "items": [
-      "/company/careers/full-stack-web-developer/index.html",
-      "/company/careers/bioinformatics-workflow-engineer/index.html",
-      "/company/careers/junior-bioinformatics-engineer/index.html",
-      "/company/careers/Junior-computer-engineer/index.html"
     ]
   },
   {
@@ -46,21 +49,18 @@
     ]
   },
   {
-    "listing": "/solutions/viashhub.html",
-    "items": [
-      "/insights/showcase/viashhub_cli/index.html"
-    ]
-  },
-  {
     "listing": "/solutions/viash.html",
     "items": [
       "/insights/showcase/viash_basic/index.html"
     ]
   },
   {
-    "listing": "/services/benchmarking.html",
+    "listing": "/company/careers.html",
     "items": [
-      "/insights/projects/benchmarking_openproblems/index.html"
+      "/company/careers/full-stack-web-developer/index.html",
+      "/company/careers/bioinformatics-workflow-engineer/index.html",
+      "/company/careers/junior-bioinformatics-engineer/index.html",
+      "/company/careers/Junior-computer-engineer/index.html"
     ]
   },
   {
