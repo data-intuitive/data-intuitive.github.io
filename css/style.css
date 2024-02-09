@@ -536,14 +536,14 @@ background-color: #E5DBEF;
 .bottom-graphics-container {
   display: flex;
   justify-content: center; /* Center the items horizontally */
-  align-items: center;     
+  align-items: center;        
   margin-top:-50px;/* Center the items vertically */
 }
 
 .bottom-img {
   max-width: auto; /* Ensure the image is responsive and doesn't overflow its container */
   height: 50px;    /* Maintain the aspect ratio of the image */
-  padding-right:5px;
+  padding-right:8px;
 }
 
 .v-unlock-nopipeline .footer-text {
