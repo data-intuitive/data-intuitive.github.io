@@ -58,7 +58,29 @@ html {
   z-index: -5;
 }
 
+g[id*="flowchart-X"] rect,
+g[id*="flowchart-Y"] rect,
+g[id*="flowchart-Z"] rect
+ {
+  fill:#02c55c !important;
+}
 
+[id*="flowchart-Y"] ,
+[id*="flowchart-X"] ,
+[id*="flowchart-Z"] {
+--mermaid-label-fg-color:white;
+}
+
+g[id*="flowchart-START"] rect,
+g[id*="flowchart-STOP"] rect
+{
+  fill:white !important;
+}
+
+[id*="flowchart-START"] ,
+[id*="flowchart-STOP"] {
+--mermaid-label-fg-color:#black;
+}
 
 .dropdown-toggle::after {
   border-top-color: var(--p-color);

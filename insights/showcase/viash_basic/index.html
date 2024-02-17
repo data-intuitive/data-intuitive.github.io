@@ -215,11 +215,12 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-   A(file?.tsv) --&gt; B[/remove_comments/]
-   B --&gt; C[/take_column/]
-   C --&gt; D[/combine_columns/]
-   D --&gt; E(output)
+<pre class="mermaid mermaid-js">graph TD
+   START(input: file?.tsv) --&gt; X[vsh_flatten] 
+   X --file1.tsv--&gt; B1[/remove_comments/] --&gt; C1[/take_column/] --&gt; Y
+   X --file2.tsv--&gt; B2[/remove_comments/] --&gt; C2[/take_column/] --&gt; Y
+   Y[vsh_toList] --&gt; D[/combine_columns/]
+   D --&gt; STOP(output)
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -231,7 +232,7 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
 <div id="demo" class="asciinemademo">
   <script src="../../../js/asciinema-player.min.js"></script>
   <script>
-    AsciinemaPlayer.create('/insights/screencast/basicdemo.cast', document.getElementById('demo'), {cols:120}, {
+    AsciinemaPlayer.create('/insights/screencast/basictemplate.cast', document.getElementById('demo'), {cols:120}, {
   rows:40});
   </script>
   </div>
