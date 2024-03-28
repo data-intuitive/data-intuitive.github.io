@@ -1,11 +1,40 @@
 [
   {
+    "listing": "/solutions/viash.html",
+    "items": [
+      "/insights/showcase/viash_basic/index.html"
+    ]
+  },
+  {
+    "listing": "/services/training.html",
+    "items": [
+      "/services/course/introduction_running/index.html",
+      "/services/course/pipeline_fundamentals/index.html",
+      "/services/course/pipeline_advanced/index.html"
+    ]
+  },
+  {
+    "listing": "/company/careers.html",
+    "items": [
+      "/company/careers/bioinformatics-workflow-engineer/index.html"
+    ]
+  },
+  {
     "listing": "/insights/blog.html",
     "items": [
       "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html",
       "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
       "/insights/blog/2023-05-22-scverse-hackathon/index.html",
-      "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html"
+      "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
+      "/insights/blog/2024-03-19-framework-laptops/index.html"
+    ]
+  },
+  {
+    "listing": "/insights/news.html",
+    "items": [
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html",
+      "/insights/news/2023-02-05-sustain/index.html",
+      "/insights/news/2023-12-15-fit_to_go_global/index.html"
     ]
   },
   {
@@ -35,40 +64,9 @@
     ]
   },
   {
-    "listing": "/services/training.html",
-    "items": [
-      "/services/course/introduction_running/index.html",
-      "/services/course/pipeline_fundamentals/index.html",
-      "/services/course/pipeline_advanced/index.html"
-    ]
-  },
-  {
     "listing": "/solutions/viashhub.html",
     "items": [
       "/insights/showcase/viashhub_cli/index.html"
-    ]
-  },
-  {
-    "listing": "/solutions/viash.html",
-    "items": [
-      "/insights/showcase/viash_basic/index.html"
-    ]
-  },
-  {
-    "listing": "/company/careers.html",
-    "items": [
-      "/company/careers/full-stack-web-developer/index.html",
-      "/company/careers/bioinformatics-workflow-engineer/index.html",
-      "/company/careers/junior-bioinformatics-engineer/index.html",
-      "/company/careers/Junior-computer-engineer/index.html"
-    ]
-  },
-  {
-    "listing": "/insights/news.html",
-    "items": [
-      "/insights/news/2022-12-25-fueled_by_vlaio/index.html",
-      "/insights/news/2023-02-05-sustain/index.html",
-      "/insights/news/2023-12-15-fit_to_go_global/index.html"
     ]
   }
 ]

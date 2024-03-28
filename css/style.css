@@ -314,7 +314,12 @@ header .navbar .navbar-toggler {
   display: inline-block;
 }
 
-
+.lead {
+  font-size: 2rem;
+  color:var(--p-color);
+  
+  font-weight: 300;
+}
 
 .title, .description, .keywords {
 visibility: hidden;
