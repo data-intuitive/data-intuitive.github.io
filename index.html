@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const animation = lottie.loadAnimation({
           container: container, // the DOM element that will contain the animation
           renderer: 'svg', // 'svg', 'canvas' or 'html'
-          loop: false, // Disable infinite looping
+          loop: true, // Disable infinite looping
           autoplay: false, // Disable autoplay, we'll control it via scrolling
           path: jsonPath, // the path to the animation json
           name: animationName, // optional, a name for the animation. Can be used to reference the animation later
@@ -459,18 +459,23 @@ document.addEventListener("DOMContentLoaded", function () {
       let lastScrollY = window.pageYOffset;
 
       window.addEventListener('scroll', function () {
-          const currentScrollY = window.pageYOffset;
-          const scrollDelta = currentScrollY - lastScrollY;
+    const currentScrollY = window.pageYOffset;
+    const scrollDelta = currentScrollY - lastScrollY;
 
-          // Calculate the frame change based on scroll direction and multiplier
-          const frameChange = scrollDelta * scrollSpeedMultiplier;
-          const currentFrame = animation.currentFrame + frameChange;
+    // Calculate the frame change based on scroll direction and multiplier
+    const frameChange = scrollDelta * scrollSpeedMultiplier;
+    let currentFrame = animation.currentFrame + frameChange;
 
-          // Go to the calculated frame, clamping between 0 and the total frames of the animation
-          animation.goToAndStop(Math.max(0, Math.min(animation.totalFrames - 1, currentFrame)), true);
+    // Loop the animation if the current frame exceeds the total frames
+    if (currentFrame >= animation.totalFrames) {
+        currentFrame = currentFrame % animation.totalFrames; // Reset to the beginning
+    } else if (currentFrame < 0) {
+        currentFrame = animation.totalFrames + (currentFrame % animation.totalFrames); // Handle negative scrolling
+    }
 
-          lastScrollY = currentScrollY;
-      });
+    animation.goToAndStop(currentFrame, true);
+    lastScrollY = currentScrollY;
+});
 
       animation.addEventListener('DOMLoaded', function () {
           console.log("Animation loaded and ready");

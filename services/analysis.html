@@ -418,7 +418,7 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                         and discuss in which order they should be run in your workflow.“​</p>
                       <p></p>
                     </div>
-                    <div class="col-lg-4 col-md-6 px-3 position-relative">
+                    <div class="col-lg-4 col-md-6 px-3 mb-4 position-relative">
                       <div class="dashed-line2 full"></div>
                       <div class="process-icon mb-3">
                         <img src="../images/bollen/bol-paars_compose.svg" alt="icon_document-text" class="img-fluid">
@@ -544,7 +544,7 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                           tools and discuss in which order they should be run in your workflow.“​</p>
                         <p></p>
                       </div>
-                      <div class="col-lg-4 col-md-6 px-3 position-relative">
+                      <div class="col-lg-4 col-md-6 px-3 mb-4 position-relative">
                         <div class="dashed-line2 full"></div>
                         <div class="process-icon mb-3">
                           <img src="../images/bollen/bol-paars_compose.svg" alt="icon_document-text" class="img-fluid">
@@ -740,15 +740,17 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
 
 
 
-<section id="viashhubregister" class="v-download-whitepaper text-center bg-primary-60 py-4">
-  <section class="mb-4 pb-xl-0 container">
-    <div class="row text-center justify-content-center">
-      <div class="col-lg-6">
-        <h1>Contact Us <br>To Explore Our Comprehensive <br>Catalogue of Analysis Modules</h1>
+<a href="../products/viashcatalogue.html" style="text-decoration: none;">
+  <section id="viashhubregister" class="v-download-whitepaper text-center bg-primary-60 py-4">
+    <div class="container mb-4 pt-4 pb-xl-2">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1>Explore Our Comprehensive Catalogue of Analysis Modules</h1>
+        </div>
       </div>
     </div>
   </section>
-</section>
+</a>
 
 
 <section id="supportapproach" class="mb-5 mt-5 pb-xxl-3">
@@ -848,7 +850,8 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
         report</b>, ensuring seamless integration and efficiency.
       <p>
     </p></div>
-    <div class="pt-5 mt-xl-1 mb-5 train-height" id="di_slang3"></div>
+    <div class="pt-5 mt-xl-1 mb-5 train-height d-md-block d-none" id="di_slang3"></div>
+    <div class="pt-5 mt-xl-1 mb-5 train-height d-md-none" id="di_slang4"></div>
 
   </div>
 </div>
@@ -886,18 +889,23 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
       let lastScrollY = window.pageYOffset;
 
       window.addEventListener('scroll', function () {
-        const currentScrollY = window.pageYOffset;
-        const scrollDelta = currentScrollY - lastScrollY;
+    const currentScrollY = window.pageYOffset;
+    const scrollDelta = currentScrollY - lastScrollY;
 
-        // Calculate the frame change based on scroll direction and multiplier
-        const frameChange = scrollDelta * scrollSpeedMultiplier;
-        const currentFrame = animation.currentFrame + frameChange;
+    // Calculate the frame change based on scroll direction and multiplier
+    const frameChange = scrollDelta * scrollSpeedMultiplier;
+    let currentFrame = animation.currentFrame + frameChange;
 
-        // Go to the calculated frame, clamping between 0 and the total frames of the animation
-        animation.goToAndStop(Math.max(0, Math.min(animation.totalFrames - 1, currentFrame)), true);
+    // Loop the animation if the current frame exceeds the total frames
+    if (currentFrame >= animation.totalFrames) {
+        currentFrame = currentFrame % animation.totalFrames; // Reset to the beginning
+    } else if (currentFrame < 0) {
+        currentFrame = animation.totalFrames + (currentFrame % animation.totalFrames); // Handle negative scrolling
+    }
 
-        lastScrollY = currentScrollY;
-      });
+    animation.goToAndStop(currentFrame, true);
+    lastScrollY = currentScrollY;
+});
 
       animation.addEventListener('DOMLoaded', function () {
         console.log("Animation loaded and ready");
@@ -908,8 +916,40 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     initLottieAnimation('di_slang3', '/images/anim_data.json', 'myAnimation3', 0.5);
   });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed for di_anim");
 
+    function initLottieAnimation(containerId, jsonPath, animationName, speedFactor = 1) {
+      const container = document.getElementById(containerId);
+      if (!container) {
+        console.error("Container not found: " + containerId);
+        return;
+      }
 
+      const animation = lottie.loadAnimation({
+        container: container, // the DOM element that will contain the animation
+        renderer: 'svg', // 'svg', 'canvas' or 'html'
+        loop: true, // Enable infinite looping
+        autoplay: true, // Enable autoplay for continuous scrolling
+        path: jsonPath, // the path to the animation json
+        name: animationName, // optional, a name for the animation
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid meet', // options are similar to the ones in the SVG spec
+        }
+      });
+
+      // Set the playback speed using Lottie's built-in setSpeed method
+      animation.addEventListener('DOMLoaded', function () {
+        console.log("Animation loaded and ready");
+        animation.setSpeed(speedFactor); // Control speed here
+      });
+    }
+
+    // Initialize the animation with a speed factor (adjust the speed factor as needed)
+    initLottieAnimation('di_slang4', '/images/anim_data_scroll.json', 'myAnimation3', 2); // Speed factor 2 for faster scrolling
+  });
+</script>
 
 
 
