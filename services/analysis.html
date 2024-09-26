@@ -32,6 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="..//images/main-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-showcase .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-showcase'] = new List('listing-showcase', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7R3RCC8ZCE"></script>
 
 <script type="text/javascript">
@@ -142,7 +173,8 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </ul>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Approach
+                <a class="nav-link" href="../approach/approach.html" role="button" aria-expanded="false">
+                  Approach
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -154,7 +186,6 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                   <li>
                     <a class="dropdown-item" href="../approach/approach.html#ecosystem">Viash Ecosystem</a>
                   </li>
-     
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -186,10 +217,10 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                     <a class="dropdown-item" href="../insights/projects.html">Projects</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
+                    <a class="dropdown-item" href="../insights/showcase.html">Showcases</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../insights/showcase.html">Showcases</a>
+                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="../insights/news.html">News</a>
@@ -211,6 +242,35 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
   
 
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../animated/animate.css">
@@ -856,7 +916,131 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
   </div>
 </div>
 
+<section class="projects-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center mb-6 mt-6 mb-xl-5">Data Analysis Insights</h2>
+        <div class="row g-4 g-xxl-5">
 
+<div id="listing-showcase" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-1">
+<div class="g-col-1" data-index="0" data-categories="publication,data analysis,scverse,spatial omics" data-listing-file-modified-sort="1727374532004" data-listing-reading-time-sort="2" data-listing-word-count-sort="239">
+<a href="../insights/showcase/vib_hackathon_on_spatial_omics_tools_and_methods/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img src="../images/icons/icon_publication.svg" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+VIB Hackathon on Spatial Omics Tools and Methods
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
+publication
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
+data analysis
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('scverse'); return false;">
+scverse
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('spatial omics'); return false;">
+spatial omics
+</div>
+</div>
+<div class="card-text listing-description">
+
+    Rombaut, B., Pollaris, L., Sang-aram, C., Cruysse, M. V., <span style="color: var(--p-color);">Cannoodt, R.</span>, Vernaillen, F., Defauw, A., Mortier, J., Ali, M., Bestak, K., Blampey, Q., Bortolomeazzi, M.…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+See more
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="publication,data analysis,single-cell omics" data-listing-file-modified-sort="1727374531942" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
+<a href="../insights/showcase/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img src="../images/icons/icon_publication.svg" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+A Scalable SCENIC Workflow for Single-Cell Gene Regulatory Network Analysis (2020)
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
+publication
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
+data analysis
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
+single-cell omics
+</div>
+</div>
+<div class="card-text listing-description">
+
+    Van de Sande, B., Flerin, C., Davie, K., De Waegeneer, M., Hulselmans, G., Aibar, S., Seurinck, R., Saelens, W., <span style="color: var(--p-color);">Cannoodt, R.</span>, Rouchon, Q., <span style="color: var(--p-color);">Verbeiren, T.</span>, De Maeyer…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+See more
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="publication,data analysis,single-cell omics" data-listing-file-modified-sort="1727374531954" data-listing-reading-time-sort="2" data-listing-word-count-sort="276">
+<a href="../insights/showcase/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img src="../images/icons/icon_publication.svg" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Recent Advances in Trajectory Inference from Single-Cell Omics Data (2021)
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
+publication
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
+data analysis
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
+single-cell omics
+</div>
+</div>
+<div class="card-text listing-description">
+
+    Deconinck, L., <span style="color: var(--p-color);">Cannoodt, R.</span>, Saelens, W., Deplancke, B., &amp; Saeys, Y. (2021).
+
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+See more
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
@@ -1069,6 +1253,7 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     </div>
   </section>
   -->
+
 
 
 

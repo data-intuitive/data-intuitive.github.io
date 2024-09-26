@@ -469,17 +469,23 @@ color:white;
 }
 
 .lead {
-  font-size: 2rem;
+  font-size: 1rem;
   color: var(--p-color);
 
   font-weight: 300;
 }
 
 .title,
+.subtitle,
 .description,
 .keywords {
   visibility: hidden;
   max-height: 0px;
+}
+
+.about-contents .title, .subtitle {
+  visibility: visible;
+  max-height: 100% 
 }
 
 .v-hero p {
@@ -2459,11 +2465,6 @@ textarea.form-control {
 
 }
 
-#listing-course .card .card-body {
-  padding: 0;
-
-}
-
 
 /* hack to have a "read more" button: use the author field*/
 #listing-projects .listing-author,
@@ -2483,22 +2484,6 @@ textarea.form-control {
   text-transform: none;
 }
 
-#listing-course .listing-author {
-  background-color: var(--white);
-  color: var(--p-color);
-  border-color: var(--p-color);
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-
-  margin-top: 15px;
-  padding: 8px;
-  width: 140px;
-  border-radius: 18px;
-  border-style: solid;
-  border-width: 1px;
-  text-transform: none;
-}
 
 
 /* hack to have a "read more" button: hide author field in the projects detail*/
@@ -2511,8 +2496,7 @@ textarea.form-control {
 
 /* hack to have a "read more" make text white */
 #listing-projects .listing-author:hover,
-#listing-showcase .listing-author:hover,
-#listing-course .listing-author:hover {
+#listing-showcase .listing-author:hover {
   color: white;
   background: var(--p-color);
 
@@ -2542,7 +2526,7 @@ div.quarto-post .metadata {
   padding-top: 3px;
 }
 
-div.quarto-post {
+#listing-news div.quarto-post {
   display: flex;
   gap: 2em;
   margin: 1em;
@@ -2553,6 +2537,23 @@ div.quarto-post {
 
 }
 
+#listing-publication div.quarto-post {
+  display: flex;
+  gap: 2em;
+  margin: 1em;
+  border-radius: 36px;
+  padding: 15px;
+  border-bottom: 0;
+
+}
+
+#listing-publication .thumbnail {
+  display: none;
+}
+
+#listing-publication .metadata {
+  display: none;
+}
 div.quarto-post a {
   color:var(--bs-heading-color);
 }
