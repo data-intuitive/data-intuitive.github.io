@@ -252,60 +252,39 @@
     "text": "Data Intuitive is thrilled to announce our move towards sustainability by adopting Framework. Framework laptops, a decision that mirrors our commitment to innovative and environmentally responsible technology. Framework’s mission aligns with ours: to challenge the norm of planned obsolescence with easily repairable and upgradable laptops.\n\nWhy Framework?\nChoosing Framework laptops is a statement of our dedication to a sustainable future. These laptops are designed with longevity in mind, allowing for easy repairs and upgrades. This aligns with our goal to minimize electronic waste and champion sustainable tech use.\n\n\n\nCustomization and Sustainability\nFramework stands out for its customization capabilities, offering users the choice of essential ports like USB-A, USB-C, HDMI, or Ethernet. This not only tailors the laptop to individual needs but also prolongs its lifespan by focusing on upgrades only where necessary.\n\n\n\nThe Path Ahead\nOur choice to work with Framework underscores our broader commitment to blending technological advancement with environmental stewardship. It’s a step towards a future where technology and sustainability go hand in hand, exemplifying our role in shaping a greener, tech-enabled world.\n\nJoin Us as we lead the charge towards a sustainable tech future, proving that environmental responsibility and cutting-edge technology can coexist.\n\n Back"
   },
   {
-    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
-    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
-    "title": "GitHub Action: Reclaim The Bytes",
+    "objectID": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html",
+    "href": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html",
+    "title": "A Practical Approach to Model Error",
     "section": "",
-    "text": "In the dynamic world of data science and software development, making efficient use of available resources is not just an option but an absolute necessity. In a lot of our projects (e.g. OpenPipelines, viash.io, OpenProblems), we need to build or use so many Docker image as part of our CI workflow, that we run out of disk space quite quickly.\nAs part of our commitment to empowering developers, we at Data Intuitive are excited to announce the Version 1 release of our innovative GitHub Action, “Reclaim The Bytes”. This GitHub action is designed to streamline your workflow by freeing up disk space on GitHub runners during the build process, helping you make the most of the available space."
+    "text": "In this post, I want to get a better sense of the effects of model error by simulating a very simple model for the spreading of a virus. It’s based on an analysis performed by Nassim Taleb. I used the simulation below in the scope of a workshop paper on the effect of cognitive biases. The published version of the paper can be found here."
   },
   {
-    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#background-and-inspiration",
-    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#background-and-inspiration",
-    "title": "GitHub Action: Reclaim The Bytes",
-    "section": "Background and Inspiration",
-    "text": "Background and Inspiration\nThe development of “Reclaim The Bytes” was motivated by a desire to enhance the efficiency of workspace environments in GitHub. It was inspired by similar initiatives such as easimon’s maximize-build-space, ThewApp’s free-actions. The discussion thread here provided additional insights that shaped the development of this action.\nThe action works by executing rm -rf on specific folders, thereby removing unnecessary software and liberating valuable disk space. While the process is simple and quick, it is critical to understand that it might inadvertently delete dependencies required by your job, potentially disrupting your build. For instance, if your build job uses a .NET based tool and the required runtime is deleted, it may affect the smooth execution of your task. Therefore, it is crucial to ascertain which software may or may not be removed for your specific use case."
+    "objectID": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html#footnotes",
+    "href": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html#footnotes",
+    "title": "A Practical Approach to Model Error",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nEven variations that are normally distributed, i.e., thin tailed.↩︎"
   },
   {
-    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#usage",
-    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#usage",
-    "title": "GitHub Action: Reclaim The Bytes",
-    "section": "Usage",
-    "text": "Usage\nBelow is an example usage in a GitHub workflow:\nname: My build action requiring more space\non: push\n\njobs:\n  build:\n    name: Build my artifact\n    runs-on: ubuntu-latest\n    steps:\n      - name: Reclaim the bytes\n        uses: data-intuitive/reclaim-the-bytes@v1\n        with:\n          remove-hosted-tool-cache: true\n          remove-go: false\n          remove-codeql: false\n          remove-powershell: false\n          remove-android-sdk: true\n          remove-haskell-ghc: true\n          remove-swift: true\n          remove-dotnet: true\n          remove-docker-images: true\n          remove-swap: true\n\n      - name: Checkout\n        uses: actions/checkout@v3\n\n      - name: Report free space\n        run: |\n          echo \"Free space:\"\n          df -h"
-  },
-  {
-    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#measurements",
-    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#measurements",
-    "title": "GitHub Action: Reclaim The Bytes",
-    "section": "Measurements",
-    "text": "Measurements\nUnderstanding the balance between the time taken to remove a piece of software and the amount of space freed as a result is essential for optimizing your usage of “Reclaim The Bytes”. We have provided a visualization to help you comprehend this balance better. Below is a summary table that provides data on the software removed, the operating system, the duration in seconds for the removal process, and the amount of space freed in GB.\n\n\n\nSoftware\nOS\nDuration (s)\nSpace freed (GB)\n\n\n\n\nandroid-sdk\nubuntu-20.04\n26.8\n12\n\n\nandroid-sdk\nubuntu-22.04\n37.0\n13\n\n\ncodeql\nubuntu-20.04\n1.0\n6\n\n\ncodeql\nubuntu-22.04\n1.0\n6\n\n\ndocker-images\nubuntu-20.04\n18.4\n5\n\n\ndocker-images\nubuntu-22.04\n17.0\n4\n\n\ndotnet\nubuntu-20.04\n5.6\n3\n\n\ndotnet\nubuntu-22.04\n2.2\n2\n\n\ngo\nubuntu-20.04\n2.2\n1\n\n\ngo\nubuntu-22.04\n1.2\n2\n\n\nhaskell-ghc\nubuntu-20.04\n2.8\n5\n\n\nhaskell-ghc\nubuntu-22.04\n3.4\n5\n\n\nhosted-tool-cache\nubuntu-20.04\n5.0\n10\n\n\nhosted-tool-cache\nubuntu-22.04\n3.4\n9\n\n\npowershell\nubuntu-20.04\n0.8\n1\n\n\npowershell\nubuntu-22.04\n0.6\n2\n\n\npython\nubuntu-20.04\n0.0\n0\n\n\npython\nubuntu-22.04\n0.4\n0\n\n\nswap\nubuntu-20.04\n0.0\n0\n\n\nswap\nubuntu-22.04\n0.0\n0\n\n\nswift\nubuntu-20.04\n0.6\n2\n\n\nswift\nubuntu-22.04\n0.4\n2\n\n\n\nAdditionally, a scatterplot visualizes the same information, providing an intuitive understanding of the trade-off between removal duration and space freed. This way, you can make informed decisions about which software to keep or remove based on your unique requirements and constraints.\n\nIn summary, “Reclaim The Bytes” provides an efficient method for software developers to optimize their GitHub actions and maximize disk space usage. However, it is essential to understand its operation to ensure the successful execution of your build jobs. With this understanding, we hope you will leverage “Reclaim The Bytes” to improve your workflow and make your software development journey smoother and more efficient. Enjoy coding!\n\n Back"
-  },
-  {
-    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
-    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
-    "title": "A Practical Approach to Model Error - Part 2",
+    "objectID": "insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
+    "href": "insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
+    "title": "Data Intuitive’s Impact at the Inaugural scverse Conference 2024",
     "section": "",
-    "text": "It’s been a while since I first wrote about tackling model error using a simple model. It’s about time to come back to it.\nWhat triggered the current post is the opportunity I was given to give a masterclass in the Evidence and policy summer school. Since my masterclass is about uncertainty in decision making, it seemed like a nice opportunity to look back at the simple model."
+    "text": "Data Intuitive was thrilled to be part of the very first scverse Conference, held at the Technical University of Munich (Schedule). With around 150 single-cell bioinformaticians and software developers in attendance, this inaugural event was a must-attend for us. The conference offered an invaluable opportunity to connect with the vibrant open-source community from around the world that is driving innovation in single-cell analysis. We were excited to share our insights and learn from the best in the field."
   },
   {
-    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-1-no-randomness",
-    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-1-no-randomness",
-    "title": "A Practical Approach to Model Error - Part 2",
-    "section": "Step 1: No Randomness",
-    "text": "Step 1: No Randomness\nBy clicking on the parameters of the simulation, or below in the footer on the words can be changed, the simulation settings can be adjusted.\nSet the variables such that there is no randomness applied to the scenario. Only one scenario is sufficient in this case:\n\nAnd see what the result looks like:"
+    "objectID": "insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html#a-couple-of-highlights-from-the-conference",
+    "href": "insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html#a-couple-of-highlights-from-the-conference",
+    "title": "Data Intuitive’s Impact at the Inaugural scverse Conference 2024",
+    "section": "A couple of highlights from the conference:",
+    "text": "A couple of highlights from the conference:\n\nTalks from industry leaders like Angela Oliveira Pisco (insitro), David Brocks (Immunai), Alex Wolf (Lamin), Ryan Williams (TileDB), and Maximilian Lombardo (CZI) highlighted the symbiotic relationship between companies and the single-cell community, where companies leverage research advancements and in turn contribute back with open-source software, standards, ML models, and large quantities of omics data.\nTraining models on atlas-scale single-cell datasets by Ryan Williams (TileDB) and Maximilian Lombardo (CZI). The CELLxGENE Discover Census workshop demonstrated the power of accessing metadata from millions of cells and being able to query and download omics data in a unified interface. Particularly, the Census Similarity Search functionality promises to be a valuable tool in leveraging the CELLxGENE Discover Census data to automatically annotate incoming datasets (demo).\nFrom scanpy to the virtual cell: The coming-of-age of single-cell analysis by Fabian Theis (Helmholtz Munich): Fabian provided a very insightful overview of the history of scverse. His interactive poll on desired topics for the scverse Conference 2025 edition highlighted the need for continued focus on interoperability, workflows, and data management.\n\n\n\nLuke Zappia’s Sketchnotes: Luke captured the essence of the keynote talks through insightful sketchnotes, which can be found on his blog post here.\n\n\nPoll Results: Most Requested Topics for scverse Conference 2025\nFabian Theis’ poll underscored the relevance of Data Intuitive’s contributions to the scverse ecosystem. Our presentations and workshops at the conference perfectly aligned with those topics:\n\nBenchmarking Open Problems in Single Cell Analysis by Malte Luecken (Helmholtz Munich) and Robrecht Cannoodt (Data Intuitive): We led a workshop on fostering community engagement in creating robust benchmarks for single-cell analysis and deriving best practices from them. Link\nPolyglot Programming for Single-cell Analysis by Louise Deconinck (VIB), Benjamin Rombaut (VIB), and Robrecht Cannoodt (Data Intuitive): Our presentation on polyglot programming equipped researchers and developers with strategies for seamlessly integrating diverse tools and languages in single-cell workflows. saeyslab.github.io/polygloty\nanndataR: Easily Interact with anndata in R by Louise Deconinck (VIB): anndataR is an R package that streamlines working with anndata and other single-cell data formats in R. anndataR is developed and maintained by Data Intuitive. anndataR.data-intuitive.com"
   },
   {
-    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-2-a-bit-of-randomness",
-    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-2-a-bit-of-randomness",
-    "title": "A Practical Approach to Model Error - Part 2",
-    "section": "Step 2: A bit of Randomness",
-    "text": "Step 2: A bit of Randomness\nIn step 2, we add a bit of randomness. For this we use the default settings, although you could increase the number of scenarios if you wanted to:\n\nThe result should look similar to the following. Please note that randomness has been added, so your result should not look exactly like the one presented here!"
-  },
-  {
-    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-3-a-bit-more-randomness",
-    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-3-a-bit-more-randomness",
-    "title": "A Practical Approach to Model Error - Part 2",
-    "section": "Step 3: A bit more Randomness",
-    "text": "Step 3: A bit more Randomness\nIn step 3, we increase the amount of randomness added to the scenarios. For instance:\n\nNow, given more randomness in the scenarios, yours might be completely different from the one below:\n\n\n Back"
+    "objectID": "insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html#conclusion",
+    "href": "insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html#conclusion",
+    "title": "Data Intuitive’s Impact at the Inaugural scverse Conference 2024",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe scverse Conference 2024 was a fantastic experience, and not just for the excellent catering! We thoroughly enjoyed connecting with so many passionate individuals from the single-cell analysis community. The open and collaborative atmosphere was truly inspiring, and the commitment to open-source principles was evident throughout the event. We’re already excited about participating in the next scverse Conference in 2025!\n\n Back"
   },
   {
     "objectID": "services/subscribe.html",
@@ -553,25 +532,60 @@
     "text": "Program\n                \n                  \n                  \n                      - \n                  \n                  \n                      -  - Online\n                  \n                  \n                     150,00 € taxes excluded\n                  \n                \n                \n                  Enroll This Course\n                \n                \n                \n                  Enroll Multiple Courses\n                \n                \n                \n                   Our  general\n                        terms\n                        and conditions apply to all contracts and courses.  \n                \n                \n                   Back"
   },
   {
-    "objectID": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html",
-    "href": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html",
-    "title": "A Practical Approach to Model Error",
+    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
+    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
+    "title": "A Practical Approach to Model Error - Part 2",
     "section": "",
-    "text": "In this post, I want to get a better sense of the effects of model error by simulating a very simple model for the spreading of a virus. It’s based on an analysis performed by Nassim Taleb. I used the simulation below in the scope of a workshop paper on the effect of cognitive biases. The published version of the paper can be found here."
+    "text": "It’s been a while since I first wrote about tackling model error using a simple model. It’s about time to come back to it.\nWhat triggered the current post is the opportunity I was given to give a masterclass in the Evidence and policy summer school. Since my masterclass is about uncertainty in decision making, it seemed like a nice opportunity to look back at the simple model."
   },
   {
-    "objectID": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html#footnotes",
-    "href": "insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html#footnotes",
-    "title": "A Practical Approach to Model Error",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nEven variations that are normally distributed, i.e., thin tailed.↩︎"
+    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-1-no-randomness",
+    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-1-no-randomness",
+    "title": "A Practical Approach to Model Error - Part 2",
+    "section": "Step 1: No Randomness",
+    "text": "Step 1: No Randomness\nBy clicking on the parameters of the simulation, or below in the footer on the words can be changed, the simulation settings can be adjusted.\nSet the variables such that there is no randomness applied to the scenario. Only one scenario is sufficient in this case:\n\nAnd see what the result looks like:"
   },
   {
-    "objectID": "insights/blog/2024-09-10-interact-AnndataR-scverse/index.html",
-    "href": "insights/blog/2024-09-10-interact-AnndataR-scverse/index.html",
-    "title": "Easily interact with anndata in R",
+    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-2-a-bit-of-randomness",
+    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-2-a-bit-of-randomness",
+    "title": "A Practical Approach to Model Error - Part 2",
+    "section": "Step 2: A bit of Randomness",
+    "text": "Step 2: A bit of Randomness\nIn step 2, we add a bit of randomness. For this we use the default settings, although you could increase the number of scenarios if you wanted to:\n\nThe result should look similar to the following. Please note that randomness has been added, so your result should not look exactly like the one presented here!"
+  },
+  {
+    "objectID": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-3-a-bit-more-randomness",
+    "href": "insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html#step-3-a-bit-more-randomness",
+    "title": "A Practical Approach to Model Error - Part 2",
+    "section": "Step 3: A bit more Randomness",
+    "text": "Step 3: A bit more Randomness\nIn step 3, we increase the amount of randomness added to the scenarios. For instance:\n\nNow, given more randomness in the scenarios, yours might be completely different from the one below:\n\n\n Back"
+  },
+  {
+    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
+    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
+    "title": "GitHub Action: Reclaim The Bytes",
     "section": "",
-    "text": "scverse Conference 2024\n\n    At the recent scverse Conference 2024, Louise Deconinck and Robrecht Cannoodt presented {anndataR}, a project aimed at improving the interoperability between R and Python for single-cell transcriptomics data analysis.\n    The presentation highlighted the importance of making the AnnData format natively accessible in R, thus eliminating the need for complex workarounds and ensuring a seamless workflow.\n    \n    {anndataR} is designed to enable R users to interact with AnnData objects easily and efficiently, either by working directly with the format or converting it to popular R-based formats like SingleCellExperiment or Seurat. The project stands out because it mimics the familiar AnnData interface and uses native R libraries like HDF5 and zarr, eliminating the need for Python dependencies. This simplifies the process of working with .h5ad and zarr files, which are increasingly used in single-cell analysis due to their cloud-ready, scalable storage solutions.\n\nKey Features of {anndataR}:\n\n    Provides an R6 class to work with AnnData objects in R, either in-memory or on-disk.\n    Native support for reading and writing .h5ad files.\n    Conversion capabilities between AnnData and SingleCellExperiment or Seurat objects, making it flexible for R users.\n    A maintainable design, focused on simplicity and ease of use, without requiring Python.\n\n\n    Robrecht’s contribution to {anndataR} has been pivotal in bringing this project to life, and his talk demonstrated how the tool offers an elegant solution to the historically cumbersome process of converting single-cell data between frameworks. The audience learned not only the technical details of using {anndataR}, but also the future of cross-language interoperability in single-cell analysis.\n\n\n\n    \n    Page: 1 / ?\n    \n\n\n  Contact us for more information about AnndataR.\n\n\n    \n        \n             Back\n        \n        \n             Website\n        \n        \n             GitHub"
+    "text": "In the dynamic world of data science and software development, making efficient use of available resources is not just an option but an absolute necessity. In a lot of our projects (e.g. OpenPipelines, viash.io, OpenProblems), we need to build or use so many Docker image as part of our CI workflow, that we run out of disk space quite quickly.\nAs part of our commitment to empowering developers, we at Data Intuitive are excited to announce the Version 1 release of our innovative GitHub Action, “Reclaim The Bytes”. This GitHub action is designed to streamline your workflow by freeing up disk space on GitHub runners during the build process, helping you make the most of the available space."
+  },
+  {
+    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#background-and-inspiration",
+    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#background-and-inspiration",
+    "title": "GitHub Action: Reclaim The Bytes",
+    "section": "Background and Inspiration",
+    "text": "Background and Inspiration\nThe development of “Reclaim The Bytes” was motivated by a desire to enhance the efficiency of workspace environments in GitHub. It was inspired by similar initiatives such as easimon’s maximize-build-space, ThewApp’s free-actions. The discussion thread here provided additional insights that shaped the development of this action.\nThe action works by executing rm -rf on specific folders, thereby removing unnecessary software and liberating valuable disk space. While the process is simple and quick, it is critical to understand that it might inadvertently delete dependencies required by your job, potentially disrupting your build. For instance, if your build job uses a .NET based tool and the required runtime is deleted, it may affect the smooth execution of your task. Therefore, it is crucial to ascertain which software may or may not be removed for your specific use case."
+  },
+  {
+    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#usage",
+    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#usage",
+    "title": "GitHub Action: Reclaim The Bytes",
+    "section": "Usage",
+    "text": "Usage\nBelow is an example usage in a GitHub workflow:\nname: My build action requiring more space\non: push\n\njobs:\n  build:\n    name: Build my artifact\n    runs-on: ubuntu-latest\n    steps:\n      - name: Reclaim the bytes\n        uses: data-intuitive/reclaim-the-bytes@v1\n        with:\n          remove-hosted-tool-cache: true\n          remove-go: false\n          remove-codeql: false\n          remove-powershell: false\n          remove-android-sdk: true\n          remove-haskell-ghc: true\n          remove-swift: true\n          remove-dotnet: true\n          remove-docker-images: true\n          remove-swap: true\n\n      - name: Checkout\n        uses: actions/checkout@v3\n\n      - name: Report free space\n        run: |\n          echo \"Free space:\"\n          df -h"
+  },
+  {
+    "objectID": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#measurements",
+    "href": "insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html#measurements",
+    "title": "GitHub Action: Reclaim The Bytes",
+    "section": "Measurements",
+    "text": "Measurements\nUnderstanding the balance between the time taken to remove a piece of software and the amount of space freed as a result is essential for optimizing your usage of “Reclaim The Bytes”. We have provided a visualization to help you comprehend this balance better. Below is a summary table that provides data on the software removed, the operating system, the duration in seconds for the removal process, and the amount of space freed in GB.\n\n\n\nSoftware\nOS\nDuration (s)\nSpace freed (GB)\n\n\n\n\nandroid-sdk\nubuntu-20.04\n26.8\n12\n\n\nandroid-sdk\nubuntu-22.04\n37.0\n13\n\n\ncodeql\nubuntu-20.04\n1.0\n6\n\n\ncodeql\nubuntu-22.04\n1.0\n6\n\n\ndocker-images\nubuntu-20.04\n18.4\n5\n\n\ndocker-images\nubuntu-22.04\n17.0\n4\n\n\ndotnet\nubuntu-20.04\n5.6\n3\n\n\ndotnet\nubuntu-22.04\n2.2\n2\n\n\ngo\nubuntu-20.04\n2.2\n1\n\n\ngo\nubuntu-22.04\n1.2\n2\n\n\nhaskell-ghc\nubuntu-20.04\n2.8\n5\n\n\nhaskell-ghc\nubuntu-22.04\n3.4\n5\n\n\nhosted-tool-cache\nubuntu-20.04\n5.0\n10\n\n\nhosted-tool-cache\nubuntu-22.04\n3.4\n9\n\n\npowershell\nubuntu-20.04\n0.8\n1\n\n\npowershell\nubuntu-22.04\n0.6\n2\n\n\npython\nubuntu-20.04\n0.0\n0\n\n\npython\nubuntu-22.04\n0.4\n0\n\n\nswap\nubuntu-20.04\n0.0\n0\n\n\nswap\nubuntu-22.04\n0.0\n0\n\n\nswift\nubuntu-20.04\n0.6\n2\n\n\nswift\nubuntu-22.04\n0.4\n2\n\n\n\nAdditionally, a scatterplot visualizes the same information, providing an intuitive understanding of the trade-off between removal duration and space freed. This way, you can make informed decisions about which software to keep or remove based on your unique requirements and constraints.\n\nIn summary, “Reclaim The Bytes” provides an efficient method for software developers to optimize their GitHub actions and maximize disk space usage. However, it is essential to understand its operation to ensure the successful execution of your build jobs. With this understanding, we hope you will leverage “Reclaim The Bytes” to improve your workflow and make your software development journey smoother and more efficient. Enjoy coding!\n\n Back"
   },
   {
     "objectID": "insights/blog/2023-05-22-scverse-hackathon/index.html",

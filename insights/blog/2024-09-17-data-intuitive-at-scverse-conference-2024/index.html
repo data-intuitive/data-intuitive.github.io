@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.548">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Robrecht Cannoodt">
-<meta name="dcterms.date" content="2024-09-10">
+<meta name="dcterms.date" content="2024-09-24">
 
-<title>Data Intuitive - Easily interact with anndata in R</title>
+<title>Data Intuitive’s Impact at the Inaugural scverse Conference 2024 – Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,13 +86,13 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><meta property="og:title" content="Data Intuitive - Easily interact with anndata in R">
-<meta property="og:description" content="Easily interact with anndata in R">
-<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2024-09-10-interact-AnndataR-scverse/anndata.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><meta property="og:title" content="Data Intuitive’s Impact at the Inaugural scverse Conference 2024 – Data Intuitive">
+<meta property="og:description" content="Data Intuitive develops intuitive tools and custom biotech data pipelines to help clients gain valuable insights and make data-driven decisions.">
+<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/scverse_bw_300x300.png">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image:height" content="222">
-<meta property="og:image:width" content="227">
+<meta property="og:image:height" content="300">
+<meta property="og:image:width" content="300">
 </head>
   
   <body class="fullcontent">
@@ -225,17 +225,27 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#a-couple-of-highlights-from-the-conference" id="toc-a-couple-of-highlights-from-the-conference" class="nav-link active" data-scroll-target="#a-couple-of-highlights-from-the-conference">A couple of highlights from the conference:</a>
+  <ul class="collapse">
+  <li><a href="#poll-results-most-requested-topics-for-scverse-conference-2025" id="toc-poll-results-most-requested-topics-for-scverse-conference-2025" class="nav-link" data-scroll-target="#poll-results-most-requested-topics-for-scverse-conference-2025">Poll Results: Most Requested Topics for scverse Conference 2025</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-marquee content">
+<div class="quarto-about-marquee">
   <div class="about-image-container">
-    <img src="anndata.png" class="about-image " style="width: 100%;">
+    <img src="scverse_bw_300x300.png" class="about-image " style="width: 100%;">
   </div>
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Easily interact with anndata in R</h1>
-<p class="subtitle lead">Easily interact with anndata in R</p>
+<h1 class="title">Data Intuitive’s Impact at the Inaugural scverse Conference 2024</h1>
 </div>
 <div class="quarto-title-meta">
     <div>
@@ -247,142 +257,50 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 10, 2024</p>
+      <p class="date">September 24, 2024</p>
     </div>
   </div>
   </div>
 </header> <main class="content" id="quarto-document-content">
-    <style>
-        #pdfViewer {
-            width: 100%;
-            height: 100%;
-            border: 1px solid #ccc;
-        }
-        .v-dev-advantage {
-            margin-top: 20px;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .d-inline-flex {
-            display: inline-flex;
-        }
-        .align-items-center {
-            align-items: center;
-        }
-        .gap-3 {
-            gap: 15px;
-        }
-        .navigation {
-            margin-top: 15px;
-            text-align: center;
-        }
-    </style>
-<h2>scverse Conference 2024</h2>
-<p>
-    At the recent scverse Conference 2024, Louise Deconinck and Robrecht Cannoodt presented <strong>{anndataR}</strong>, a project aimed at improving the interoperability between R and Python for single-cell transcriptomics data analysis.
-    <br>The presentation highlighted the importance of making the AnnData format natively accessible in R, thus eliminating the need for complex workarounds and ensuring a seamless workflow.
-    <br><br>
-    <strong>{anndataR}</strong> is designed to enable R users to interact with AnnData objects easily and efficiently, either by working directly with the format or converting it to popular R-based formats like <em>SingleCellExperiment</em> or <em>Seurat</em>. The project stands out because it mimics the familiar AnnData interface and uses native R libraries like <em>HDF5</em> and <em>zarr</em>, eliminating the need for Python dependencies. This simplifies the process of working with <em>.h5ad</em> and <em>zarr</em> files, which are increasingly used in single-cell analysis due to their cloud-ready, scalable storage solutions.
-</p>
-<h3>Key Features of {anndataR}:</h3>
+
+<p>Data Intuitive was thrilled to be part of the very first <strong>scverse Conference</strong>, held at the <strong>Technical University of Munich</strong> (<a href="https://scverse.org/conference2024/schedule" target="_blank">Schedule</a>). With around 150 single-cell bioinformaticians and software developers in attendance, this inaugural event was a must-attend for us. The conference offered an invaluable opportunity to connect with the vibrant open-source community from around the world that is driving innovation in single-cell analysis. We were excited to share our insights and learn from the best in the field.</p>
+<p><img src="group.jpg" class="img-fluid"></p>
+<section id="a-couple-of-highlights-from-the-conference" class="level2">
+<h2 data-anchor-id="a-couple-of-highlights-from-the-conference">A couple of highlights from the conference:</h2>
 <ul>
-    <li>Provides an R6 class to work with AnnData objects in R, either in-memory or on-disk.</li>
-    <li>Native support for reading and writing <em>.h5ad</em> files.</li>
-    <li>Conversion capabilities between AnnData and <em>SingleCellExperiment</em> or <em>Seurat</em> objects, making it flexible for R users.</li>
-    <li>A maintainable design, focused on simplicity and ease of use, without requiring Python.</li>
+<li><p>Talks from industry leaders like <strong>Angela Oliveira Pisco</strong> (insitro), <strong>David Brocks</strong> (Immunai), <strong>Alex Wolf</strong> (Lamin), <strong>Ryan Williams</strong> (TileDB), and <strong>Maximilian Lombardo</strong> (CZI) highlighted the symbiotic relationship between companies and the single-cell community, where companies leverage research advancements and in turn contribute back with open-source software, standards, ML models, and large quantities of omics data.</p></li>
+<li><p><a href="https://cfp.scverse.org/2024/talk/GQHNYE/" target="_blank"><strong>Training models on atlas-scale single-cell datasets</strong></a> by Ryan Williams (TileDB) and Maximilian Lombardo (CZI). The <strong>CELLxGENE Discover Census workshop</strong> demonstrated the power of accessing metadata from millions of cells and being able to query and download omics data in a unified interface. Particularly, the <strong>Census Similarity Search</strong> functionality promises to be a valuable tool in leveraging the CELLxGENE Discover Census data to automatically annotate incoming datasets (<a href="https://chanzuckerberg.github.io/cellxgene-census/notebooks/api_demo/census_embedding_search.html" target="_blank">demo</a>).</p></li>
+<li><p><a href="https://cfp.scverse.org/2024/talk/VK7ZLD/" target="_blank"><strong>From scanpy to the virtual cell: The coming-of-age of single-cell analysis</strong></a> by <strong>Fabian Theis</strong> (Helmholtz Munich): Fabian provided a very insightful overview of the history of scverse. His interactive poll on desired topics for the <strong>scverse Conference 2025 edition</strong> highlighted the need for continued focus on interoperability, workflows, and data management.</p></li>
 </ul>
-<p>
-    Robrecht’s contribution to <strong>{anndataR}</strong> has been pivotal in bringing this project to life, and his talk demonstrated how the tool offers an elegant solution to the historically cumbersome process of converting single-cell data between frameworks. The audience learned not only the technical details of using <strong>{anndataR}</strong>, but also the future of cross-language interoperability in single-cell analysis.
-</p>
-<canvas id="pdfViewer"></canvas>
-<div class="navigation">
-    <button id="prevPage" class="btn "><i class="bi bi-chevron-left"></i></button>
-    <span>Page: <span id="pageNumber">1</span> / <span id="pageCount">?</span></span>
-    <button id="nextPage" class="btn "><i class="bi bi-chevron-right"></i></button>
-</div>
-<p>
-  Contact us for more information about AnndataR.
-</p>
-<div class="text-center text-md-start v-dev-advantage">
-    <div class="d-flex flex-column flex-md-row align-items-center gap-3">
-        <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
-            <i class="bi bi-arrow-left"></i> Back
-        </button>
-        <a target="_blank" href="https://anndatar.data-intuitive.com/">
-            <img src="../../../images/icons/cloud.svg" alt="cloud"> Website
-        </a>
-        <a target="_blank" href="https://github.com/scverse/anndataR">
-            <img src="../../../images/icons/github-icon.svg" alt="github-icon"> GitHub
-        </a>
-    </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+<p><img src="favorite.jpg" class="img-fluid"></p>
+<ul>
+<li><strong>Luke Zappia’s Sketchnotes</strong>: Luke captured the essence of the keynote talks through insightful sketchnotes, which can be found on his blog post <a href="https://lazappi.id.au/posts/2024-09-15-scverse-conference/" target="_blank">here</a>.</li>
+</ul>
+<section id="poll-results-most-requested-topics-for-scverse-conference-2025" class="level3">
+<h3 data-anchor-id="poll-results-most-requested-topics-for-scverse-conference-2025">Poll Results: Most Requested Topics for scverse Conference 2025</h3>
+<p>Fabian Theis’ poll underscored the relevance of Data Intuitive’s contributions to the scverse ecosystem. Our presentations and workshops at the conference perfectly aligned with those topics:</p>
+<ul>
+<li><p><a href="https://cfp.scverse.org/2024/talk/7ME8ED/" target="_blank"><strong>Benchmarking Open Problems in Single Cell Analysis</strong></a> by <strong>Malte Luecken</strong> (Helmholtz Munich) and <strong>Robrecht Cannoodt</strong> (Data Intuitive): We led a workshop on fostering community engagement in creating robust benchmarks for single-cell analysis and deriving best practices from them. <a href="https://docs.google.com/presentation/d/1DYj6H3jtq29z-sfM8EIPNksURY7rwmQuO8JfNNFWGUA/edit?usp=sharing" target="_blank">Link</a></p></li>
+<li><p><a href="https://cfp.scverse.org/2024/talk/AWKXCB/" target="_blank"><strong>Polyglot Programming for Single-cell Analysis</strong></a> by <strong>Louise Deconinck</strong> (VIB), <strong>Benjamin Rombaut</strong> (VIB), and <strong>Robrecht Cannoodt</strong> (Data Intuitive): Our presentation on polyglot programming equipped researchers and developers with strategies for seamlessly integrating diverse tools and languages in single-cell workflows. <a href="https://saeyslab.github.io/polygloty" target="_blank">saeyslab.github.io/polygloty</a></p></li>
+<li><p><a href="https://cfp.scverse.org/2024/talk/TAVWXX/" target="_blank"><strong>anndataR: Easily Interact with anndata in R</strong> by <strong>Louise Deconinck</strong></a> (VIB): anndataR is an R package that streamlines working with anndata and other single-cell data formats in R. anndataR is developed and maintained by Data Intuitive. <a href="https://anndataR.data-intuitive.com" target="_blank">anndataR.data-intuitive.com</a></p></li>
+</ul>
+<p><img src="robrechtpresents.jpg" class="img-fluid"></p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 data-anchor-id="conclusion">Conclusion</h2>
+<p>The <strong>scverse Conference 2024</strong> was a fantastic experience, and not just for the excellent catering! We thoroughly enjoyed connecting with so many passionate individuals from the single-cell analysis community. The open and collaborative atmosphere was truly inspiring, and the commitment to open-source principles was evident throughout the event. We’re already excited about participating in the next <strong>scverse Conference</strong> in 2025!</p>
+<button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
+<i class="bi bi-arrow-left"> </i>Back
+</button>
 <script>
-    var url = '/resources/anndatartalk.pdf';
-    var pdfDoc = null,
-        pageNum = 1,
-        pageRendering = false,
-        pageNumPending = null,
-        scale = 1.5,
-        canvas = document.getElementById('pdfViewer'),
-        ctx = canvas.getContext('2d');
-    function goBack() {
-        window.history.back();
-    }
-    function renderPage(num) {
-        pageRendering = true;
-        pdfDoc.getPage(num).then(function(page) {
-            var viewport = page.getViewport({scale: scale});
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            var renderContext = {
-                canvasContext: ctx,
-                viewport: viewport
-            };
-            var renderTask = page.render(renderContext);
-            renderTask.promise.then(function() {
-                pageRendering = false;
-                if (pageNumPending !== null) {
-                    renderPage(pageNumPending);
-                    pageNumPending = null;
-                }
-            });
-        });
-        document.getElementById('pageNumber').textContent = num;
-    }
-    function queueRenderPage(num) {
-        if (pageRendering) {
-            pageNumPending = num;
-        } else {
-            renderPage(num);
-        }
-    }
-    function onPrevPage() {
-        if (pageNum <= 1) {
-            return;
-        }
-        pageNum--;
-        queueRenderPage(pageNum);
-    }
-    function onNextPage() {
-        if (pageNum >= pdfDoc.numPages) {
-            return;
-        }
-        pageNum++;
-        queueRenderPage(pageNum);
-    }
-    document.getElementById('prevPage').addEventListener('click', onPrevPage);
-    document.getElementById('nextPage').addEventListener('click', onNextPage);
-    var loadingTask = pdfjsLib.getDocument(url);
-    loadingTask.promise.then(function(pdf) {
-        pdfDoc = pdf;
-        document.getElementById('pageCount').textContent = pdf.numPages;
-        renderPage(pageNum);
-    });
+function goBack() {
+  window.history.back();
+}
 </script>
 
 
+</section>
 </main> 
   </div>
 </div>
@@ -510,18 +428,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -553,7 +460,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.data-intuitive\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -588,7 +535,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
