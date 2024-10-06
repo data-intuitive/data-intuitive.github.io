@@ -2605,7 +2605,7 @@ body {
 .main-header {
   background-color: rgba(255, 255, 255, 0.95);
   position: fixed;
-  top: 0;
+  top: 1em;
   right: 0;
   left: 0;
   will-change: transform;
