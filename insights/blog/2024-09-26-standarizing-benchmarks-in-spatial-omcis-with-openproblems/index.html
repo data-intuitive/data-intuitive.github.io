@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Project Details">
+<meta name="dcterms.date" content="2024-09-26">
 
-<title>High-throughput RNA sequencing – Data Intuitive</title>
+<title>Standardizing Benchmarks in Spatial Omics with OpenProblems – Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,9 +85,9 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><meta property="og:title" content="High-throughput RNA sequencing – Data Intuitive">
-<meta property="og:description" content="Data Intuitive develops intuitive tools and custom biotech data pipelines to help clients gain valuable insights and make data-driven decisions.">
-<meta property="og:image" content="https://www.data-intuitive.com/images/htrnaseq.svg">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><meta property="og:title" content="Standardizing Benchmarks in Spatial Omics with OpenProblems – Data Intuitive">
+<meta property="og:description" content="Standardizing Benchmarks in Spatial Omics with OpenProblems">
+<meta property="og:image" content="https://openproblems.bio/results/spatial_decomposition/thumbnail.svg">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
 </head>
@@ -231,49 +231,48 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#implementation-and-customization-with-viash" id="toc-implementation-and-customization-with-viash" class="nav-link" data-scroll-target="#implementation-and-customization-with-viash">Implementation and Customization with Viash</a></li>
-  <li><a href="#confidentiality-and-impact" id="toc-confidentiality-and-impact" class="nav-link" data-scroll-target="#confidentiality-and-impact">Confidentiality and Impact</a></li>
+  <li><a href="#new-spatial-omics-tasks-in-openproblems" id="toc-new-spatial-omics-tasks-in-openproblems" class="nav-link active" data-scroll-target="#new-spatial-omics-tasks-in-openproblems">New Spatial Omics Tasks in OpenProblems</a></li>
+  <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking Ahead</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <div class="quarto-about-marquee">
   <div class="about-image-container">
-    <img src="/images/htrnaseq.svg" class="about-image " style="width: 100%;">
+    <img src="https://openproblems.bio/results/spatial_decomposition/thumbnail.svg" class="about-image " style="width: 100%;">
   </div>
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">High-throughput RNA sequencing</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">project</div>
-    <div class="quarto-category">viash</div>
-  </div>
-  </div>
+<h1 class="title">Standardizing Benchmarks in Spatial Omics with OpenProblems</h1>
+<p class="subtitle lead">Standardizing Benchmarks in Spatial Omics with OpenProblems</p>
+</div>
 <div class="quarto-title-meta">
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-             <p>Project Details </p>
-          </div>
+      <p class="date">September 26, 2024</p>
+    </div>
   </div>
   </div>
 </header> <main class="content" id="quarto-document-content">
 
-<section id="introduction" class="level2">
-<h2 data-anchor-id="introduction">Introduction</h2>
-<p>Data Intuitive recently undertook a successful project for an undisclosed client in the top 10 pharma R&amp;D. In this project, we co-developed a high-throughput RNA sequencing pipeline using our powerful and versatile tool, <a href="https://viash.io" target="_blank">Viash</a>. The goal was to streamline the processing and analysis of large-scale RNA sequencing data, allowing the client to extract valuable insights from their experiments efficiently and accurately.</p>
-<p>An early implementation was developed using an approach that was hard to maintain and did not scale well.</p>
+<p>Spatial omics is an emerging field that is allowing researchers to unravel the complexities of cellular organization and function within their native tissue context. Given the diversity of technologies and techniques involved in spatial omics, there isn’t a one-size-fits-all solution for data analysis. This calls for formalized and standardized benchmarks to guide researchers in selecting the right methods for their analyses. This is where <a href="https://openproblems.bio/" target="_blank">OpenProblems</a> comes in. The success of OpenProblems in benchmarking computational tasks in single-cell analysis is attracting the attention of the spatial omics community, leading to a growing number of researchers contributing their own benchmarks to the OpenProblems platform.</p>
+<section id="new-spatial-omics-tasks-in-openproblems" class="level2">
+<h2 data-anchor-id="new-spatial-omics-tasks-in-openproblems">New Spatial Omics Tasks in OpenProblems</h2>
+<p>Several new benchmarking tasks related to spatial omics are being introduced:</p>
+<ul>
+<li><p><a href="https://openproblems.bio/results/spatial_decomposition/" target="_blank"><strong>Spatial Decomposition</strong></a>: Carried over from the first version of OpenProblems, this task focuses on methods that estimate the composition of cell types/states that are present at each capture location.</p></li>
+<li><p><a href="https://openproblems.bio/results/spatially_variable_genes/" target="_blank"><strong>Spatially Variable Genes</strong></a>: This recently released task focuses on methods that detect genes whose expression levels vary across spatial regions.</p></li>
+<li><p><strong>Spatial Simulators</strong>: An ongoing task is to assess methods that simulate spatial transcriptomics data. These simulators are crucial for validating analytical methods when gold-standard datasets with ground-truth labels are scarce or unavailable.</p></li>
+<li><p><strong>Image-Based Spatial Transcriptomics Preprocessing</strong>: A benchmark to evaluate various approaches for preprocessing image-based spatial transcriptomics data is being developed. Unlike the other tasks where AnnData was the primary data format used to standardise datasets, efforts are also being made to support the SpatialData format, enhancing the interoperability across methods in the spatial omics field.</p></li>
+</ul>
 </section>
-<section id="implementation-and-customization-with-viash" class="level2">
-<h2 data-anchor-id="implementation-and-customization-with-viash">Implementation and Customization with Viash</h2>
-<p>Our team of experts leveraged Viash’s modular approach to create a customized and optimized pipeline tailored to the client’s specific requirements. Due to the fact that we create Nextflow-compatible modules and pipelines using Viash, we could leverage Nextflow’s ability to run on a cluster and thus scale the processing.</p>
-<p>Throughout the development process, we prioritized reproducibility and scalability, ensuring that the pipeline could handle increasing volumes of data without compromising data quality or performance. As a result, the client now benefits from an advanced pipeline, empowering them to conduct cutting-edge research and accelerate their discoveries in a number of applications while still actively extending it to new application domains.</p>
-</section>
-<section id="confidentiality-and-impact" class="level2">
-<h2 data-anchor-id="confidentiality-and-impact">Confidentiality and Impact</h2>
-<p>Due to confidentiality agreements, we are unable to disclose the specific details of the client or the project, but we are proud to have played a crucial role in advancing their scientific endeavors.</p>
+<section id="looking-ahead" class="level2">
+<h2 data-anchor-id="looking-ahead">Looking Ahead</h2>
+<p>OpenProblems aims to provide a platform for developing comprehensive and continuously updated benchmarks for various spatial omics analysis tasks. By developing a unified and extensible framework, benchmarking results are ensured to not only be reproducible but also reusable, serving as foundational resources for developing other tasks.</p>
+<p>A key example of this is the development of the <a href="https://www.biorxiv.org/content/10.1101/2024.05.29.596418v1" target="_blank"><strong>spatial simulators</strong></a> task. The current lack of comprehensive gold standard datasets with well-defined ground truth information has led to each spatial omics task relying on its own distinct datasets for evaluation, causing inconsistencies in testing across tasks. But once the spatial simulator benchmark is fully developed, the best simulator could generate a set of standardised high-quality synthetic datasets, providing a common resource that could be used across multiple tasks in the absence of real-world gold standards.</p>
+<p>Similarly, the best approach from the <strong>image-based spatial transcriptomics preprocessing</strong> could set the stage for developing more standardised workflows in spatial omics, allowing researchers to follow more rigorous, reproducible workflows, ultimately accelerating discovery in this field.</p>
 <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
 <i class="bi bi-arrow-left"> </i>Back
 </button>

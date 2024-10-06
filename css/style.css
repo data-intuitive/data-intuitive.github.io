@@ -18,6 +18,17 @@ green {
 }
 
 
+.top-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: var(--p-color);
+  color: white;
+  text-align: center;
+  padding: 1px 0;
+}
 
 html {
   font-size: 16px;
@@ -1483,6 +1494,8 @@ textarea.form-control {
     width: 1200px!important;
 
   }
+
+
 
   #follow-us {
     flex-direction: row;

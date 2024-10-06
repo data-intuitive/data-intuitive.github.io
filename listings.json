@@ -16,6 +16,7 @@
   {
     "listing": "/insights/blog.html",
     "items": [
+      "/insights/blog/2024-09-26-standarizing-benchmarks-in-spatial-omcis-with-openproblems/index.html",
       "/insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
       "/insights/blog/2024-03-19-framework-laptops/index.html",
       "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
@@ -34,18 +35,21 @@
     ]
   },
   {
-    "listing": "/services/analysis.html",
+    "listing": "/services/benchmarking.html",
     "items": [
-      "/insights/showcase/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
-      "/insights/showcase/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
-      "/insights/showcase/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
-      "/insights/showcase/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
+      "/insights/showcase/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
+      "/insights/showcase/multimodal-single-cell-data-integration-challenge-2022/index.html",
+      "/insights/showcase/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
+      "/insights/showcase/benchmarking_openproblems_workshop_scverse202409/index.html",
+      "/insights/showcase/benchmarking_openproblems/index.html",
+      "/insights/showcase/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
     ]
   },
   {
-    "listing": "/products/viashcatalogue.html",
+    "listing": "/products/viashhub.html",
     "items": [
-      "/insights/showcase/openpipeline_project/index.html"
+      "/insights/showcase/openpipeline_demo/index.html",
+      "/insights/showcase/viashhub_cli/index.html"
     ]
   },
   {
@@ -59,21 +63,18 @@
     ]
   },
   {
-    "listing": "/products/viashhub.html",
+    "listing": "/products/viashcatalogue.html",
     "items": [
-      "/insights/showcase/openpipeline_demo/index.html",
-      "/insights/showcase/viashhub_cli/index.html"
+      "/insights/showcase/openpipeline_project/index.html"
     ]
   },
   {
-    "listing": "/services/benchmarking.html",
+    "listing": "/services/analysis.html",
     "items": [
-      "/insights/showcase/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
-      "/insights/showcase/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/showcase/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
-      "/insights/showcase/benchmarking_openproblems_workshop_scverse202409/index.html",
-      "/insights/showcase/benchmarking_openproblems/index.html",
-      "/insights/showcase/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
+      "/insights/showcase/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
+      "/insights/showcase/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
+      "/insights/showcase/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
+      "/insights/showcase/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
     ]
   },
   {
