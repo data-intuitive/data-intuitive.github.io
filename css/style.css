@@ -77,6 +77,14 @@ html {
 }
 
 
+.default-visible {
+  display: block;
+}
+
+.default-hidden {
+  display: none;
+}
+
 .content-block {
   display: none;
 
@@ -729,7 +737,7 @@ h2 {
 
 
 .s-31 {
-  width: 1px;
+  width: 81px;
   height: 81px;
 }
 
@@ -1387,6 +1395,11 @@ ul.social-block li a:hover {
   background-color: var(--p-color-06);
 }
 
+#video-player {
+  border-radius: 15px; /* Adjust the radius as desired */
+  overflow: hidden; /* Ensures corners stay rounded */
+  display: block;
+}
 
 .img-container {
   display: none;
