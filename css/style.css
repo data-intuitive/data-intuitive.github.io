@@ -106,7 +106,7 @@ li.content-block {
 .iframe-wc {
   border: 0;
   width: 100%;
-  frameborder: 0;
+
 }
 
 .iframe-wc.poll {
@@ -117,6 +117,9 @@ li.content-block {
   height: 760px;
 }
 
+.btn-circle {
+  border: 1px solid white !important;
+}
 
 
 #mermaid-1 .edgeLabel, #mermaid-1 .edgeLabel rect, #mermaid-1 .label div .edgeLabel {
@@ -1057,6 +1060,9 @@ footer ul li a:hover {
     background-position: bottom;
 
     height: 238px;
+  }
+  .iframe-wc.results {
+    height: 421px;
   }
 }
 

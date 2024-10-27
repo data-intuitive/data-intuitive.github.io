@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Robrecht Cannoodt">
-<meta name="dcterms.date" content="2023-05-22">
 
-<title>anndataR at the scverse 2023-04 hackathon – Data Intuitive</title>
+<title>pollresults – Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,58 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../..//images/main-logo.png" rel="icon" type="image/png">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//images/main-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -117,25 +82,23 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     <meta charset="utf-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><meta property="og:title" content="anndataR at the scverse 2023-04 hackathon – Data Intuitive">
-<meta property="og:description" content="A deep dive into the development of anndataR">
-<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2023-05-22-scverse-hackathon/image.jpg">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><meta property="og:title" content="Data Intuitive">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
 </head>
   
   <body class="fullcontent">
     <div class="top-banner">
-      <a href="../../../insights/news/2024-08-30-bioeurope/" style="color: white;">Join us at Bio-Europe from 4 to 6 November in Stockholm.</a>
+      <a href="../insights/news/2024-08-30-bioeurope/" style="color: white;">Join us at Bio-Europe from 4 to 6 November in Stockholm.</a>
     </div>
     <div class="topmenuspacer"></div>
     <header class="main-header mt-xl-4">
       <nav class="navbar navbar-expand-xl">
         <div class="container">
-          <a class="navbar-brand" href="../../../index.html"><img src="../../../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+          <a class="navbar-brand" href="../index.html"><img src="../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -150,13 +113,13 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../../../services/analysis.html">Data Analysis</a>
+                    <a class="dropdown-item" href="../services/analysis.html">Data Analysis</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../services/benchmarking.html">Benchmarking</a>
+                    <a class="dropdown-item" href="../services/benchmarking.html">Benchmarking</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../services/training.html">Training</a>
+                    <a class="dropdown-item" href="../services/training.html">Training</a>
                   </li>
                 </ul>
               </li>
@@ -164,20 +127,20 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../../../products/viashhub.html">Viash Hub</a>
+                    <a class="dropdown-item" href="../products/viashhub.html">Viash Hub</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../products/viashcatalogue.html">Viash Catalogue</a>
+                    <a class="dropdown-item" href="../products/viashcatalogue.html">Viash Catalogue</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../products/viashhubprivate.html">Viash Hub Private</a>
+                    <a class="dropdown-item" href="../products/viashhubprivate.html">Viash Hub Private</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../products/viash.html">Viash Tool</a>
+                    <a class="dropdown-item" href="../products/viash.html">Viash Tool</a>
                   </li>
                 </ul>
               </li>
-                <a class="nav-link" href="../../../approach/approach.html" role="button" aria-expanded="false">
+                <a class="nav-link" href="../approach/approach.html" role="button" aria-expanded="false">
                   Approach
                 </a>
               <li class="nav-item dropdown">
@@ -185,13 +148,13 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../../../company/company.html">About</a>
+                    <a class="dropdown-item" href="../company/company.html">About</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../company/company.html#people">Team</a>
+                    <a class="dropdown-item" href="../company/company.html#people">Team</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../company/careers.html">Careers</a>
+                    <a class="dropdown-item" href="../company/careers.html">Careers</a>
                   </li>
                    <!--<li>
                     <a class="dropdown-item" href="/company/students.html"
@@ -206,19 +169,19 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../../../insights/projects.html">Projects</a>
+                    <a class="dropdown-item" href="../insights/projects.html">Projects</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../insights/showcase.html">Showcases</a>
+                    <a class="dropdown-item" href="../insights/showcase.html">Showcases</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../insights/publications.html">Publications</a>
+                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../insights/news.html">News</a>
+                    <a class="dropdown-item" href="../insights/news.html">News</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../../../insights/blog.html">Blogs</a>
+                    <a class="dropdown-item" href="../insights/blog.html">Blogs</a>
                   </li>
                    <!-- <li>
                     <a class="dropdown-item" href="/insights/pollresults.html"
@@ -228,244 +191,48 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </ul>
               </li>
             </ul>
-            <a href="../../../contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
+            <a href="../contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
           </div>
         </div>
       </nav>
     </header>
 
-    <script src="../../../js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
     <!--  menu stops here (in quarto menu.html) -->
   
 
-<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../../css/style.css">
-<link rel="stylesheet" href="../../../animated/animate.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../animated/animate.css">
 
 
 
 
 <div id="quarto-search-results"></div>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-layout-custom">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#anndata-in-r" id="toc-anndata-in-r" class="nav-link active" data-scroll-target="#anndata-in-r">AnnData in R</a></li>
-  <li><a href="#existing-approaches" id="toc-existing-approaches" class="nav-link" data-scroll-target="#existing-approaches">Existing approaches</a></li>
-  <li><a href="#introducing-anndatar" id="toc-introducing-anndatar" class="nav-link" data-scroll-target="#introducing-anndatar">Introducing anndataR</a></li>
-  <li><a href="#demo" id="toc-demo" class="nav-link" data-scroll-target="#demo">Demo</a></li>
-  <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking ahead</a></li>
-  </ul>
-</nav>
-    </div>
 <!-- main -->
-<div class="quarto-about-marquee">
-  <div class="about-image-container">
-    <img src="image.jpg" class="about-image " style="width: 100%;">
-  </div>
-  <div class="about-contents">
-    <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">anndataR at the scverse 2023-04 hackathon</h1>
-<p class="subtitle lead">A deep dive into the development of anndataR</p>
-</div>
-<div class="quarto-title-meta">
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Robrecht Cannoodt </p>
-          </div>
-  </div>
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 22, 2023</p>
-    </div>
-  </div>
-  </div>
-</header> <main class="content" id="quarto-document-content">
-
-<p>I had the privilege of participating in the <a href="https://scverse.org/events/2023_04_hackathon/" target="_blank">scverse Hackathon in Heidelberg</a> hosted by the Stegle and Saez labs. It was an exhilarating event packed with exciting developments, intense coding, inspiring collaborations, and of course, pizza. The hackathon’s central themes were enhancing AnnData operability across programming languages, and improving the integration of biological information into the AnnData file format.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./image.jpg" class="img-fluid figure-img"></p>
-<figcaption>The hackathon brought together single-cell experts from across the globe.</figcaption>
-</figure>
-</div>
-<p>Our team, which consisted of Martin Morgan (<a href="https://github.com/mtmorgan" target="_blank"><span class="citation" data-cites="mtmorgan">@mtmorgan</span></a>), Luke Zappia (<a href="https://github.com/lazappi" target="_blank"><span class="citation" data-cites="lazappi">@lazappi</span></a>), Louise Deconinck (<a href="https://github.com/LouiseDck" target="_blank"><span class="citation" data-cites="LouiseDck">@LouiseDck</span></a>), Danila Bredikhin (<a href="https://github.com/gtca" target="_blank"><span class="citation" data-cites="gtca">@gtca</span></a>), and myself (<a href="https://github.com/rcannood" target="_blank"><span class="citation" data-cites="rcannood">@rcannood</span></a>), dedicated our efforts towards bridging the gap between <code>.h5ad</code> files and the R / Bioconductor ecosystem.</p>
-<section id="anndata-in-r" class="level2">
-<h2 data-anchor-id="anndata-in-r">AnnData in R</h2>
-<p>Our ultimate goal was an implementation of AnnData in R that would allow us to read, edit, and write <code>.h5ad</code> files, and convert them to SingleCellExperiment or SeuratObject objects. To achieve this, we outlined a set of minimal requirements based on our combined use cases:</p>
-<p><strong>Requirement 1: Use a native HDF5 library.</strong> We aimed for a solution that utilized an HDF5 library like <a href="https://cran.r-project.org/package=hdf5r" target="_blank">hdf5r</a> or <a href="https://bioconductor.org/packages/release/bioc/html/rhdf5.html" target="_blank">rhdf5</a> to read or write data from <code>.h5ad</code> files. This native approach would prevent challenges related to installing Python dependencies from R and converting Python objects to R, which could arise when using an inter-language interface such as <a href="https://cran.r-project.org/package=reticulate" target="_blank">reticulate</a>. Packages with native h5ad readers: <a href="https://github.com/theislab/zellkonverter" target="_blank">h5ad</a>, <a href="https://github.com/ilia-kats/MuData" target="_blank">MuData</a>, <a href="https://github.com/mojaveazure/seurat-disk/" target="_blank">SeuratDisk</a>, <a href="https://github.com/pmbio/MuDataSeurat" target="_blank">MuDataSeurat</a>.</p>
-<p><strong>Requirement 2: Mimic existingAnnData interface.</strong> Despite several R packages that directly convert an <code>.h5ad</code> file into a SingleCellExperiment or SeuratObject, the data structures of AnnData objects do not map perfectly to those of SingleCellExperiment and SeuratObject. Consequently, a direct conversion inadvertently results in data loss. As such, we prefer data structures and interfaces that emulate a Python AnnData object as closely as possible. Packages with AnnData-like interfaces: <a href="https://github.com/mtmorgan/h5ad" target="_blank">h5ad</a>, <a href="https://github.com/dynverse/anndata" target="_blank">anndata for R</a>.</p>
-<p><strong>Requirement 3: Allow converting to common R data structures.</strong> Both SingleCellExperiment and SeuratObject are associated with a wide range of existing tools and packages for data analysis and visualization. By offering converters to these structures, users can easily leverage these tools for their <code>.h5ad</code> data.</p>
-</section>
-<section id="existing-approaches" class="level2">
-<h2 data-anchor-id="existing-approaches">Existing approaches</h2>
-<p>We evaluated the strengths and limitations of existing solutions for handling <code>.h5ad</code> files in R. Unfortunately, none of them fully satisfied our minimal requirements. Moreover, each package had a significant list of known issues or was too limited in scope.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Backend</th>
-<th style="text-align: left;">Data structures</th>
-<th style="text-align: left;">Converters</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/theislab/zellkonverter" target="_blank">zellkonverter</a></td>
-<td style="text-align: left;">reticulate</td>
-<td style="text-align: left;">SingleCellExperiment</td>
-<td style="text-align: left;">Implicit</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://github.com/mtmorgan/h5ad" target="_blank">h5ad</a></td>
-<td style="text-align: left;">rhdf5</td>
-<td style="text-align: left;">AnnData</td>
-<td style="text-align: left;">None</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/dynverse/anndata" target="_blank">anndata for R</a></td>
-<td style="text-align: left;">reticulate</td>
-<td style="text-align: left;">AnnData</td>
-<td style="text-align: left;">None</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://github.com/ilia-kats/MuData" target="_blank">MuData</a></td>
-<td style="text-align: left;">rhdf5</td>
-<td style="text-align: left;">SingleCellExperiment</td>
-<td style="text-align: left;">Implicit</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/cellgeni/sceasy" target="_blank">sceasy</a></td>
-<td style="text-align: left;">reticulate</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: left;">Seurat &amp; SingleCellExperiment</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://github.com/mojaveazure/seurat-disk/" target="_blank">SeuratDisk</a></td>
-<td style="text-align: left;">hdf5r</td>
-<td style="text-align: left;">Seurat</td>
-<td style="text-align: left;">Implicit</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/pmbio/MuDataSeurat" target="_blank">MuDataSeurat</a></td>
-<td style="text-align: left;">hdf5r</td>
-<td style="text-align: left;">Seurat</td>
-<td style="text-align: left;">Implicit</td>
-</tr>
-</tbody>
-</table>
-<p>To better address our needs, we set about developing <a href="https://xkcd.com/927" target="_blank"><em>yet another</em></a> AnnData for R package that fulfills each of our requirements. We identified the following strategies to avoid common pitfalls:</p>
-<ul>
-<li><strong>Understand the <a href="https://anndata.readthedocs.io/en/latest/fileformat-prose.html" target="_blank">AnnData HDF5 on-disk format</a></strong>: Start by gaining an in-depth understanding of the AnnData HDF5 on-disk format. Knowing the specifications and how the data is organized in <code>.h5ad</code> files will help in designing effective internal data structures and interfaces.</li>
-<li><strong>Implement rigorous testing</strong>: Implement a comprehensive suite of unit tests for individual data structures and functions. This can help catch and fix bugs early in the development process, and ensures that the package continues to work correctly as changes and updates are made.</li>
-<li><strong>Learn from existing implementations</strong>: Use the combined experience gained from developing and using <code>zellkonverter</code>, <code>h5ad</code>, <code>anndata for R</code> and <code>MuData</code>.</li>
-<li><strong>Plan for flexibility</strong>: Consider how the package might be used in various workflows and aim for flexibility.</li>
-</ul>
-</section>
-<section id="introducing-anndatar" class="level2">
-<h2 data-anchor-id="introducing-anndatar">Introducing anndataR</h2>
-<p><code>anndataR</code> is an R package engineered to bridge the gap between the Python-based AnnData and the R ecosystem. It provides an interface for handling backed h5ad files, directly accessing various slots, and converting the data into SingleCellExperiment and Seurat objects. As part of the hackathon, we had set ourselves the goal to only include the <code>X</code>, <code>obs</code>, <code>var</code> and <code>layers</code> slots for now.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-  class AbstractAnnData {
-    abstract Matrix X
-    abstract List~Matrix~ layers
-    abstract DataFrame obs
-    abstract DataFrame var
-    abstract Array~String~ obs_names
-    abstract Array~String~ var_names
-    int n_obs()
-    int n_vars()
-    to_SingleCellExperiment() SingleCellExperiment
-    to_Seurat() SeuratObject
-    to_HDF5AnnData() HDF5AnnData
-    to_InMemoryAnnData() InMemoryAnnData
-  }
-  AbstractAnnData &lt;|-- HDF5AnnData
-  class HDF5AnnData {
-    -H5File .h5file
-    init(path, obs_names, var_names, X, layers, obs, var) HDF5AnnData
-  }
-  AbstractAnnData &lt;|-- InMemoryAnnData
-  class InMemoryAnnData {
-    -Matrix .X
-    -List~Matrix~ .layers
-    -DataFrame .obs
-    -DataFrame .var
-    -Array~String~ .obs_names
-    -Array~String~ .var_names
-    init(X, obs_names, var_names, X, layers, obs, var) InMemoryAnnData
-  }
-  class anndataR {
-    from_SingleCellExperiment(sce, backend) AbstractAnnData
-    from_Seurat(obj, backend) AbstractAnnData
-  }
-  anndataR --&gt; AbstractAnnData
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Since the functions <code>to_SingleCellExperiment()</code> and <code>to_Seurat()</code> are defined in the AbstractAnnData class, we can seamlessly implement other backends such as a <code>ZarrAnnData</code> and <code>ReticulateAnnData</code> and conveniently convert them into different file formats. Note that the <code>X</code>, <code>layers</code>, <code>obs</code>, <code>var</code>, <code>obs_names</code> and <code>var_names</code> are in reality active bindings; while they appear as variables to the end-user, the <code>HDF5AnnData</code> and <code>InMemoryAnnData</code> should have their own implementation for reading data from / to these slots.</p>
-</section>
-<section id="demo" class="level2">
-<h2 data-anchor-id="demo">Demo</h2>
-<p>Below is a simple demonstration of how to use anndataR:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(anndataR)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Download a sample h5ad file</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://github.com/chanzuckerberg/cellxgene/raw/main/example-dataset/pbmc3k.h5ad"</span>, <span class="st">"pbmc3k.h5ad"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read an h5ad file</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>adata <span class="ot">&lt;-</span> HDF5AnnData<span class="sc">$</span><span class="fu">new</span>(<span class="st">"pbmc3k.h5ad"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Access AnnData slots</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>adata<span class="sc">$</span>X</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>adata<span class="sc">$</span>obs</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>adata<span class="sc">$</span>var</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the AnnData object to a SingleCellExperiment object</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sce <span class="ot">&lt;-</span> adata<span class="sc">$</span><span class="fu">to_SingleCellExperiment</span>()</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the AnnData object to a Seurat object</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> adata<span class="sc">$</span><span class="fu">to_Seurat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="looking-ahead" class="level2">
-<h2 data-anchor-id="looking-ahead">Looking ahead</h2>
-<p>At the scverse hackathon, we developed the initial version of <a href="https://github.com/scverse/anndataR" target="_blank">anndataR</a>, and we’re still actively enhancing it. Our aim is for it to fully replace <code>zellkonverter</code>, <code>h5ad</code> and <code>anndata for R</code>, and serve as a basis for interacting with SpatialData and MuData objects in R.</p>
-<p>The scverse Hackathon 2023 was a remarkable event, and I’m grateful for the opportunity to have been a part of it. The development of anndataR is an ongoing process, and we’re excited about the potential this package has to offer. If you’re interested in contributing, feel free to check out the project <a href="https://github.com/scverse/anndataR" target="_blank">on GitHub</a>.</p>
-<p>Stay tuned for more updates on our ongoing projects and initiatives, and happy coding!</p>
-<button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
-<i class="bi bi-arrow-left"> </i>Back
-</button>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
 
 
-</section>
-</main> 
-  </div>
+
+
+<div class="container">
+<div class="col-lg-12">
+    <h1>Conference Poll - Challenges in data analysis</h1>
+    <br>
+    <h2>What is your biggest challenge concerning data analysis?  </h2>
+
+<!-- iframe WC_results begin -->
+<iframe src="https://di-wc-56d4f.web.app/results" class="iframe-wc results"></iframe>
+<!-- end iframe WC -->
 </div>
- <!-- /main -->
+
+
+
+
  
  </div>
    <!--  Footer starts here (in quarto footer.html) -->
@@ -479,7 +246,7 @@ function goBack() {
             <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
               the
               ﬁnal product, all while providing end-to-end support. </p>
-            <a href="../../../contact/contact.html" class="btn btn-secondary book-meeting rounded-pill">Contact Us</a>
+            <a href="../contact/contact.html" class="btn btn-secondary book-meeting rounded-pill">Contact Us</a>
           </div>
         </div>
       </div>
@@ -497,18 +264,18 @@ function goBack() {
   
             <div class="box quarto-layout-cell">
 
-              <a href="../../../index.html">
-                <img src="../../../images/logoditext.svg" alt="logo Data Intuitive" class="img-fluid">
+              <a href="../index.html">
+                <img src="../images/logoditext.svg" alt="logo Data Intuitive" class="img-fluid">
               </a>
             </div>
   
             <section id="links" class="level3 box quarto-layout-cell">
               <p>
-                <a href="../../../index.html">Index</a>
-                <a href="../../../static/disclaimer.html">Disclaimer</a>
-                <a href="../../../static/sustainability_statement.html">Sustainability Statement</a>
+                <a href="../index.html">Index</a>
+                <a href="../static/disclaimer.html">Disclaimer</a>
+                <a href="../static/sustainability_statement.html">Sustainability Statement</a>
                 <a href="https://www.quarto.org/" target="_blank">Powered by Quarto</a>
-                <a href="../../../static/privacy_policy.html">Privacy Statement</a><br>
+                <a href="../static/privacy_policy.html">Privacy Statement</a><br>
               </p>
             </section>
   
@@ -517,8 +284,8 @@ function goBack() {
         </div>
       </div>
       <div class="bottom-graphics-container">
-        <img src="../../../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
-        <img src="../../../images/fit.png" alt="FIT Flanders" class="bottom-img">
+        <img src="../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
+        <img src="../images/fit.png" alt="FIT Flanders" class="bottom-img">
       </div>
     </div>
   </footer>
@@ -534,7 +301,7 @@ function goBack() {
       <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
     </svg></a>
 
-    <a href="../../../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
+    <a href="../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
       <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"></path>
       <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"></path>
     </svg></a>
@@ -574,6 +341,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -967,7 +741,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
- <!-- /content -->
+</div> <!-- /content -->
 
 
 
