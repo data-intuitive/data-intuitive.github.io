@@ -1034,23 +1034,23 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
 
 <script>
 
-  function startVideo(withSound) {
-    // Hide the image and overlay buttons
-    document.getElementById('thumbnail').style.display = 'none';
-    document.getElementById('left-half').style.display = 'none';
-    document.getElementById('right-half').style.display = 'none';
+function startVideo(withSound) {
+  // Hide the image and overlay buttons
+  document.getElementById('thumbnail').style.display = 'none';
+  document.getElementById('left-half').style.display = 'none';
+  document.getElementById('right-half').style.display = 'none';
 
-    // Show and configure the video
-    var video = document.getElementById('video-player');
-    video.style.display = 'block';
-    video.muted = !withSound; // Mute video if playing without sound
-    video.currentTime = 0; // Restart the video
-    video.play();
-  }
+  // Show and configure the video
+  var video = document.getElementById('video-player');
+  video.style.display = 'block';
+  video.muted = !withSound; // Mute video if playing without sound
+  video.currentTime = 0; // Restart the video
+  video.play();
+}
 
-  // Attach the functions to the left and right halves
-  document.getElementById('left-half').onclick = function () { startVideo(true); };
-  document.getElementById('right-half').onclick = function () { startVideo(false); };
+// Attach the functions to the left and right halves
+document.getElementById('left-half').onclick = function() { startVideo(true); };
+document.getElementById('right-half').onclick = function() { startVideo(false); };
 
 
   function setPlaybackSpeed(speed) {

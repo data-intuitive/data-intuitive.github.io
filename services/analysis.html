@@ -358,28 +358,25 @@ window.Quarto = {
               <div class="col-md-5 col-lg-5 mb-0">
                 <div class="p-3 p-xl-4 rounded-4 h-100 d-flex flex-column">
                   <div class="card-body p-4">
-
                     <p>
                       <b>Combine</b> existing building blocks from Viash Catalogue with custom-developed ones. <br><br>
-                      <b>Seamless integration and deployment support</b> ensure your workflow is ready to use with
-                      minimal effort.<br><br>
+                      <b>Seamless integration and deployment support</b> ensure your workflow is ready to use with minimal effort.<br><br>
                       <b>Three approaches</b> allow us to adapt based on the complexity of your project.
                     </p>
-                    <div class="v-dev-advantage_p v-dev-advantage d-flex flex-column flex-md-row align-items-center gap-3">
-                      <button class="mt-0 gap-3 toggle-button ms-auto" id="mute-toggle-button" onclick="toggleMute()">Unmute Video<i class="bi bi-arrow-right"></i></button>
+                    <div class="v-dev-advantage_p v-dev-advantage d-flex flex-column align-items-center gap-3">
+                      <button class="toggle-button ms-auto" id="mute-toggle-button" onclick="toggleMute()">Unmute Video <i class="bi bi-arrow-right"></i></button>
+                      <button class="toggle-button ms-auto" onclick="restartVideo()">Restart Video</button>
                     </div>
-                </div>
+                  </div>
                 </div>
               </div>
 
-              <div class="col-md-7 col-lg-7 mb-0 mt-0">
-                <div class="v-hero-right position-relative">
+              <div class="col-md-7 col-lg-7 mb-0 mt-0 ms-0 me-0">
                   <div id="video-container" style="position: relative;">
                     <video id="video-player" width="100%" loop="" autoplay="" muted="">
                       <source src="../video/cycle_short.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
-                  </div>
                 </div>
               </div>
 
@@ -624,7 +621,7 @@ window.Quarto = {
             <div function-toggle="option2" id="option2" class="col-md-12 col-lg-12 mt-4 mb-4 content-block  ">
               <div class="single-block p-3 p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 bg-white-di d-flex flex-column">
                 <div class="row">
-                  <div function-toggle="option2" class="col-md-12 col-lg-12 mb-4 pb-0 content-block ">
+                  <div function-toggle="option2" class="col-md-12 col-lg-12 mb-4 pb-0 content-block d-none d-md-block">
                     <div class="approach-holder text-center">
                       <h6 class="mb-4 p-color">Biotech Data Workflow Composing</h6>
                       <div class="container my-xl-4">
@@ -980,7 +977,7 @@ window.Quarto = {
 
 <div id="listing-showcase" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="publication,data analysis,scverse,spatial omics" data-listing-file-modified-sort="1730136379796" data-listing-reading-time-sort="2" data-listing-word-count-sort="239">
+<div class="g-col-1" data-index="0" data-categories="publication,data analysis,scverse,spatial omics" data-listing-file-modified-sort="1730212295332" data-listing-reading-time-sort="2" data-listing-word-count-sort="239">
 <a href="../insights/showcase/vib_hackathon_on_spatial_omics_tools_and_methods/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -1017,7 +1014,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="publication,data analysis,single-cell omics" data-listing-file-modified-sort="1730136379728" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
+<div class="g-col-1" data-index="1" data-categories="publication,data analysis,single-cell omics" data-listing-file-modified-sort="1730212295268" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
 <a href="../insights/showcase/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -1051,7 +1048,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="publication,data analysis,single-cell omics" data-listing-file-modified-sort="1730136379740" data-listing-reading-time-sort="2" data-listing-word-count-sort="276">
+<div class="g-col-1" data-index="2" data-categories="publication,data analysis,single-cell omics" data-listing-file-modified-sort="1730212295280" data-listing-reading-time-sort="2" data-listing-word-count-sort="276">
 <a href="../insights/showcase/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -1086,7 +1083,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="publication,data analysis,r" data-listing-file-modified-sort="1730136379740" data-listing-reading-time-sort="2" data-listing-word-count-sort="330">
+<div class="g-col-1" data-index="3" data-categories="publication,data analysis,r" data-listing-file-modified-sort="1730212295280" data-listing-reading-time-sort="2" data-listing-word-count-sort="330">
 <a href="../insights/showcase/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -1232,7 +1229,14 @@ No matching items
     // Update button text based on mute state
     document.getElementById('mute-toggle-button').textContent = video.muted ? 'Unmute Video' : 'Mute Video';
   }
-  </script>
+
+  function restartVideo() {
+    var video = document.getElementById('video-player');
+    video.currentTime = 0; // Restart video from the beginning
+    video.play(); // Ensure the video is playing after restart
+  }
+</script>
+
 
 
 <script>
