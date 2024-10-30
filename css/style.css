@@ -117,6 +117,10 @@ li.content-block {
   height: 760px;
 }
 
+.iframe-wc.both {
+  height: 1500px;
+}
+
 .btn-circle {
   border: 1px solid white !important;
 }
@@ -130,6 +134,11 @@ li.content-block {
 #quarto-appendix.default {
 background-color: white;
 }
+
+.dark {
+  background-color: #09090B !important;
+  color: white !important;
+  }
 
 *#myVideo {
   position: fixed;
@@ -1081,6 +1090,10 @@ footer ul li a:hover {
   
   .iframe-wc.results {
     height: 375px;
+  }
+
+  .iframe-wc.both {
+    height: 1500px;
   }
 }
 

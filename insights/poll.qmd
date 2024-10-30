@@ -9,21 +9,19 @@ toc: false
 
 ::: {.container}
 ```{=html}
+
 <div class="col-lg-12">
   <div class="sub-text  d-flex gap-1 align-items-center">
-      Conference Poll - Challenges in data analysis
+      Conference Poll - Challenges in data analysis boe
     </div>
     <h2 class="v-hero-title">
       What is your biggest challenge concerning data analysis?
     </h2>
     <p>Select or enter a maximum of three challenges.</p>
  </div>
-<!-- iframe WC_poll begin -->
-<iframe src="https://di-wc-56d4f.web.app/poll" class="iframe-wc poll"></iframe>
-<!-- end iframe WC -->
 
-<!-- iframe WC_results begin -->
-<iframe src="https://di-wc-56d4f.web.app/results" class="iframe-wc results"></iframe>
+<!-- iframe WC_poll begin -->
+<iframe src="https://di-wc-56d4f.web.app/both" class="iframe-wc both"></iframe>
 <!-- end iframe WC -->
 ```
 :::
