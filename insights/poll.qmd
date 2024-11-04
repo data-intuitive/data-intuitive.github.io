@@ -14,10 +14,10 @@ toc: false
   <div class="sub-text  d-flex gap-1 align-items-center">
       Conference Poll - Challenges in data analysis boe
     </div>
-    <h2 class="v-hero-title">
+ <!-- <h2 class="v-hero-title">
       What is your biggest challenge concerning data analysis?
     </h2>
-    <p>Select or enter a maximum of three challenges.</p>
+    <p>Select or enter a maximum of three challenges.</p -->
  </div>
 
 <!-- iframe WC_poll begin -->
