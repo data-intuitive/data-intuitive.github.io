@@ -1446,6 +1446,10 @@ ul.social-block li a:hover {
   margin-bottom: 10px;
 }
 
+.accordion {
+  --bs-accordion-btn-padding-y: 0.1rem;
+}
+
 .check-list-style {
   margin-top: 10px;
   padding-left: 0;
