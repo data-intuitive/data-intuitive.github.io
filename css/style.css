@@ -1450,6 +1450,16 @@ ul.social-block li a:hover {
   --bs-accordion-btn-padding-y: 0.1rem;
 }
 
+.green-circle {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background-color:  #02c55c;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+
 .check-list-style {
   margin-top: 10px;
   padding-left: 0;

@@ -410,19 +410,20 @@ window.Quarto = {
   </div>
 </section>
 
-<section class="mb-5 pb-xxl-5">
-  <div id="services" class="d-flex flex-column text-center align-items-center justify-content-center mb-4">
-    <div class="col-md-8 mb-3 px-4">
-      <h1>We can assist you <br>in refining your data analysis development <br>with expert support and training
-      </h1>
 
+<div class="container">
+  <div class="row justify-content-center text-center pt-5 mt-xl-1 mb-5">
+    <div class="col-lg-9">
+      <h1>We tackle key challenges in custom data analysis development</h1>
     </div>
-    <div class="col-md-8 px-4">
-      <a href="../services/analysis.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Data Analysis Services <i class="bi bi-arrow-right"></i></a>
-
-    </div>
+    <div class="pt-5 mt-xl-1 mb-5 train-height" id="di_slang1"></div>  
+    
   </div>
-</section>
+</div>
+
+
+
+
 
 
 <section class="mb-5 pb-xl-5">
@@ -661,6 +662,21 @@ window.Quarto = {
 </div>
 </section>
 
+<section class="mb-5 pb-xxl-5">
+  <div id="services" class="d-flex flex-column text-center align-items-center justify-content-center mb-4">
+    <div class="col-md-8 mb-3 px-4">
+      <h1>We can assist you <br>in refining your data analysis development <br>with expert support and training
+      </h1>
+
+    </div>
+    <div class="col-md-8 px-4">
+      <a href="../services/analysis.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Data Analysis Services <i class="bi bi-arrow-right"></i></a>
+
+    </div>
+  </div>
+</section>
+
+
 <section id="viashhubregister" class="mb-5 v-download-whitepaper text-center bg-primary-60 py-5">
   <div class="container py-xl-3">
     <div class="row justify-content-center">
@@ -698,7 +714,7 @@ window.Quarto = {
 
 <div id="listing-showcase" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="publication,viash,workflows" data-listing-file-modified-sort="1730964482506" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
+<div class="g-col-1" data-index="0" data-categories="publication,viash,workflows" data-listing-file-modified-sort="1731359485541" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
 <a href="../insights/showcase/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -733,7 +749,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="showcase,viash" data-listing-file-modified-sort="1730964482506" data-listing-reading-time-sort="2" data-listing-word-count-sort="283">
+<div class="g-col-1" data-index="1" data-categories="showcase,viash" data-listing-file-modified-sort="1731359485541" data-listing-reading-time-sort="2" data-listing-word-count-sort="283">
 <a href="../insights/showcase/viash_basic/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -763,7 +779,7 @@ See demo
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="project,viash" data-listing-file-modified-sort="1730964482490" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+<div class="g-col-1" data-index="2" data-categories="project,viash" data-listing-file-modified-sort="1731359485529" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
 <a href="../insights/showcase/HT-RNA-SEQ/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -793,7 +809,7 @@ Project Details
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="viash,showcase" data-listing-file-modified-sort="1730964482502" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
+<div class="g-col-1" data-index="3" data-categories="viash,showcase" data-listing-file-modified-sort="1731359485537" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
 <a href="../insights/showcase/explainer_viash/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -823,7 +839,7 @@ See video
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="viash,article" data-listing-file-modified-sort="1730964482506" data-listing-reading-time-sort="3" data-listing-word-count-sort="482">
+<div class="g-col-1" data-index="4" data-categories="viash,article" data-listing-file-modified-sort="1731359485541" data-listing-reading-time-sort="3" data-listing-word-count-sort="482">
 <a href="../insights/showcase/viash-plus-nextflow/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -937,6 +953,63 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleFunctions(defaultGroup);
 });
 </script>
+
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed for di_anim");
+  
+    function initLottieAnimation(containerId, jsonPath, animationName, scrollSpeedMultiplier = 1) {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.error("Container not found: " + containerId);
+            return;
+        }
+  
+        const animation = lottie.loadAnimation({
+            container: container, // the DOM element that will contain the animation
+            renderer: 'svg', // 'svg', 'canvas' or 'html'
+            loop: true, // Disable infinite looping
+            autoplay: false, // Disable autoplay, we'll control it via scrolling
+            path: jsonPath, // the path to the animation json
+            name: animationName, // optional, a name for the animation. Can be used to reference the animation later
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid meet', // options are similar to the ones in the SVG spec
+            }
+        });
+  
+        let lastScrollY = window.pageYOffset;
+  
+        window.addEventListener('scroll', function () {
+      const currentScrollY = window.pageYOffset;
+      const scrollDelta = currentScrollY - lastScrollY;
+  
+      // Calculate the frame change based on scroll direction and multiplier
+      const frameChange = scrollDelta * scrollSpeedMultiplier;
+      let currentFrame = animation.currentFrame + frameChange;
+  
+      // Loop the animation if the current frame exceeds the total frames
+      if (currentFrame >= animation.totalFrames) {
+          currentFrame = currentFrame % animation.totalFrames; // Reset to the beginning
+      } else if (currentFrame < 0) {
+          currentFrame = animation.totalFrames + (currentFrame % animation.totalFrames); // Handle negative scrolling
+      }
+  
+      animation.goToAndStop(currentFrame, true);
+      lastScrollY = currentScrollY;
+  });
+  
+        animation.addEventListener('DOMLoaded', function () {
+            console.log("Animation loaded and ready");
+        });
+    }
+  
+    // Initialize the animation with a scroll speed multiplier (adjust the multiplier as needed)
+    initLottieAnimation('di_slang1', '/lottie/anim_icons_straight_korter.json', 'myAnimation1', 0.5);
+    
+  });
+  </script>
 
 
 

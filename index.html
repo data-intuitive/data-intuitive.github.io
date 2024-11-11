@@ -255,14 +255,13 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
           <div class="col-md-6">
               <div class="v-hero-left">
                     <div class="sub-text d-flex gap-1 align-items-center">
-                      Focus on the science; we handle the code<span class="flash">_</span>
+                     What’s the next step for the data obtained from your experiments?
                      </div>
                            <h1 class="v-hero-title">
                             The intuitive path to data-driven decisions
                   </h1>
                   <p>We are experts in <strong>custom bioinformatics data workflow development</strong>, backed
-                  <br>by years of experience. Our core tool Viash generates the boilerplate code, 
-                  <br><strong>streamlining your workflow operations.</strong></p>  
+                  <br>by years of experience. </p>  
                    <!--   <a href="./contact/contact.html" class="mt-2 btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Contact Us <i class="bi bi-arrow-right"></i></a> -->
               </div>  
           </div>
@@ -320,17 +319,18 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
 </div>
 </section>
 
-
-  <div class="container">
-    <div class="row justify-content-center text-center pt-5 mt-xl-5 mb-3">
-      <div class="col-lg-8">
-        <h1>We tackle key challenges in custom data analysis development</h1>
-      </div>
-      <div class="pt-5 mt-xl-1 mb-5 train-height" id="di_slang1"></div>  
-      <a href="./approach/approach.html#challenges" class="mb-5 btn btn-primary rounded-pill d-inline-flex align-items-center gap-2 w-auto">Find Out More<i class="bi bi-arrow-right"></i></a>
-    
+<div class="container">
+  <div class="row justify-content-center text-center pt-5 mt-xl-5 mb-3">
+    <div class="col-lg-8">
+      <h1>From Raw to Processed Data</h1>
+       <p>We provide comprehensive <b>end-to-end data workflow support</b> from raw to processed data obtained from your experiment, ensuring seamless integration and efficiency. <br><br> Ensure expert assistance in data workflow development with services such as <span class="green-circle"></span> <b>Data Extraction and Transformation</b> <span class="green-circle"></span> <b>High-Throughput Demultiplexing</b> <span class="green-circle"></span> <b>Multi-omics Data Processing</b> <span class="green-circle"></span> <b>Data Quality Control</b>.</p>
     </div>
+    <div class="pt-5 mt-xl-1 mb-5 train-height d-md-block d-none" id="di_slang3"></div>
+    <div class="pt-5 mt-xl-1 mb-5 train-height d-md-none" id="di_slang4"></div>
+
+  </div>
 </div>
+
 <!--
 <section id="viashhubregister" class="mb-5 v-download-whitepaper text-center bg-primary py-5">
   <div class="container py-xl-3">
@@ -500,6 +500,95 @@ document.addEventListener("DOMContentLoaded", function () {
   initLottieAnimation('di_slang1', '/lottie/anim_icons_straight_korter.json', 'myAnimation1', 0.5);
   
 });
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed for di_anim");
+
+    function initLottieAnimation(containerId, jsonPath, animationName, scrollSpeedMultiplier = 1) {
+      const container = document.getElementById(containerId);
+      if (!container) {
+        console.error("Container not found: " + containerId);
+        return;
+      }
+
+      const animation = lottie.loadAnimation({
+        container: container, // the DOM element that will contain the animation
+        renderer: 'svg', // 'svg', 'canvas' or 'html'
+        loop: false, // Disable infinite looping
+        autoplay: false, // Disable autoplay, we'll control it via scrolling
+        path: jsonPath, // the path to the animation json
+        name: animationName, // optional, a name for the animation. Can be used to reference the animation later
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid meet', // options are similar to the ones in the SVG spec
+        }
+      });
+
+      let lastScrollY = window.pageYOffset;
+
+      window.addEventListener('scroll', function () {
+        const currentScrollY = window.pageYOffset;
+        const scrollDelta = currentScrollY - lastScrollY;
+
+        // Calculate the frame change based on scroll direction and multiplier
+        const frameChange = scrollDelta * scrollSpeedMultiplier;
+        let currentFrame = animation.currentFrame + frameChange;
+
+        // Loop the animation if the current frame exceeds the total frames
+        if (currentFrame >= animation.totalFrames) {
+          currentFrame = currentFrame % animation.totalFrames; // Reset to the beginning
+        } else if (currentFrame < 0) {
+          currentFrame = animation.totalFrames + (currentFrame % animation.totalFrames); // Handle negative scrolling
+        }
+
+        animation.goToAndStop(currentFrame, true);
+        lastScrollY = currentScrollY;
+      });
+
+      animation.addEventListener('DOMLoaded', function () {
+        console.log("Animation loaded and ready");
+      });
+    }
+
+    // Initialize the animation with a scroll speed multiplier (adjust the multiplier as needed)
+    initLottieAnimation('di_slang3', '/images/anim_data.json', 'myAnimation3', 0.5);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed for di_anim");
+
+    function initLottieAnimation(containerId, jsonPath, animationName, speedFactor = 1) {
+      const container = document.getElementById(containerId);
+      if (!container) {
+        console.error("Container not found: " + containerId);
+        return;
+      }
+
+      const animation = lottie.loadAnimation({
+        container: container, // the DOM element that will contain the animation
+        renderer: 'svg', // 'svg', 'canvas' or 'html'
+        loop: true, // Enable infinite looping
+        autoplay: true, // Enable autoplay for continuous scrolling
+        path: jsonPath, // the path to the animation json
+        name: animationName, // optional, a name for the animation
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid meet', // options are similar to the ones in the SVG spec
+        }
+      });
+
+      // Set the playback speed using Lottie's built-in setSpeed method
+      animation.addEventListener('DOMLoaded', function () {
+        console.log("Animation loaded and ready");
+        animation.setSpeed(speedFactor); // Control speed here
+      });
+    }
+
+    // Initialize the animation with a speed factor (adjust the speed factor as needed)
+    initLottieAnimation('di_slang4', '/images/anim_data_scroll.json', 'myAnimation3', 2); // Speed factor 2 for faster scrolling
+  });
 </script>
 
 
