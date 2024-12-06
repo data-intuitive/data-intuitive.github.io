@@ -33,6 +33,7 @@
   {
     "listing": "/insights/blog.html",
     "items": [
+      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
       "/insights/blog/2024-11-27-navigating-the-use-of-llm-for-code-generation/index.html",
       "/insights/blog/2024-11-04-standarizing-benchmarks-in-spatial-omcis-with-openproblems/index.html",
       "/insights/blog/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
