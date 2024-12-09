@@ -1,0 +1,20 @@
+---
+page-layout: full
+section-divs: false
+toc: false
+#title: none
+#title-block-banner: images/hero_background.jpg
+#title-block-banner-color: "#723B8F"
+---
+::: {.container}
+## Email Disclaimer
+
+This email and any attachments are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you are not the intended recipient, please notify the sender immediately, delete this email from your system, and do not disclose its contents to any other person or use them for any purpose.
+
+We take your privacy seriously and process your personal data in accordance with applicable data protection laws, including the General Data Protection Regulation (GDPR). For more information about how we process your data and your rights, please see our [Privacy Policy](privacy_policy.qmd).
+
+If you have any concerns about data protection or wish to exercise your rights, you can contact us at [DPO at Data-intuitive.com](mailto:DPO@data-intuitive.com).
+
+Thank you.
+
+:::
