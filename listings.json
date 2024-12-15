@@ -1,11 +1,5 @@
 [
   {
-    "listing": "/products/viashcatalogue.html",
-    "items": [
-      "/insights/showcase/openpipeline_project/index.html"
-    ]
-  },
-  {
     "listing": "/services/benchmarking.html",
     "items": [
       "/insights/showcase/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
