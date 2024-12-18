@@ -1021,6 +1021,28 @@ footer ul li a:hover {
   /* margin-right:20px; */
 }
 
+.box {
+  flex: 1; /* Optional: Ensure columns take up equal width */
+  display: flex; /* Make the child content of .box a flex container */
+  align-items: center; /* Vertically center child content within each box */
+  justify-content: center; /* Horizontally center child content (optional for the logo) */
+}
+
+.bottom-graphics-container a {
+  color: white; /* Sets the text color to white */
+  text-decoration: none; /* Optional: Removes underline if it's a link */
+}
+
+.bottom-graphics-container a,
+.bottom-graphics-container img {
+    margin-right: 10px; /* Adjust spacing between elements */
+}
+
+.bottom-graphics-container {
+    display: flex; /* Align elements in a row */
+    align-items: center; /* Vertically align items */
+}
+
 .quarto-layout-cell>p {
   margin: 0.2em;
 }
