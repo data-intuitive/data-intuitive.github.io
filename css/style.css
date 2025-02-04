@@ -1255,8 +1255,8 @@ footer img {
 
 #follow-us {
   /* position:fixed; */
-  bottom: 5%;
-  right: 1vw;
+  bottom: 6%;
+  right: 9px;
   z-index: 20;
   flex-direction: column;
   display: flex;
@@ -1273,7 +1273,7 @@ footer img {
 }
 
 #follow-us svg {
-  width: 30px;
+  width: 35px;
   height: auto;
   color: var(--p-color);
 }
@@ -1585,7 +1585,7 @@ textarea.form-control {
 @media (max-width: 767.98px) {
 
   #follow-us svg {
-    width: 20px;
+    width: 30px;
     height: auto;
   }
 
@@ -1601,9 +1601,8 @@ textarea.form-control {
 
   #follow-us {
     /* position:fixed; */
-    bottom: 0;
-
-    right: 0;
+    bottom: 6%;
+    right: 12px;
     z-index: 20;
     gap: 13px;
     max-width: 400px;
