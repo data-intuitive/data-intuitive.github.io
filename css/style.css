@@ -1255,7 +1255,7 @@ footer img {
 
 #follow-us {
   /* position:fixed; */
-  bottom: 6%;
+  bottom: 8%;
   right: 9px;
   z-index: 20;
   flex-direction: column;
@@ -1601,7 +1601,7 @@ textarea.form-control {
 
   #follow-us {
     /* position:fixed; */
-    bottom: 6%;
+    bottom: 8%;
     right: 12px;
     z-index: 20;
     gap: 13px;
