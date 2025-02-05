@@ -415,6 +415,42 @@ header .navbar .navbar-toggler {
   pointer-events: none; 
 }
 
+ /* Outer container */
+ .logo-slider {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  padding: 5px ;
+  display: flex;
+  align-items: center;
+}
+
+/* Moving logo wrapper */
+.logo-track {
+  display: flex;
+  align-items: top;
+  gap: 100px;
+  animation: scroll 55s linear infinite;
+  width: max-content;
+}
+
+/* Logos */
+.logo-track img {
+  height: 60px; /* Adjust logo height */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+}
+
+/* Keyframes for smooth scrolling */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); } /* Moves half the total content width */
+}
+
+/* Pause on hover
+.logo-slider:hover .logo-track {
+ animation-play-state: paused;
+} */
 
 .custom-background-video {
   position: absolute;
@@ -1255,8 +1291,8 @@ footer img {
 
 #follow-us {
   /* position:fixed; */
-  bottom: 8%;
-  right: 9px;
+  bottom: 2%;
+  left: 9px;
   z-index: 20;
   flex-direction: column;
   display: flex;
@@ -1601,8 +1637,8 @@ textarea.form-control {
 
   #follow-us {
     /* position:fixed; */
-    bottom: 8%;
-    right: 12px;
+    bottom: 2%;
+    left: 9px;
     z-index: 20;
     gap: 13px;
     max-width: 400px;
