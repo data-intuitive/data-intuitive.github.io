@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="See more">
+<meta name="keywords" content="Next-Generation Sequencing Data Analyses, Easy Pipeline running, Easy nextflow pipelines">
+<meta name="description" content="Viash is a command-line tool that transforms scripts into self-contained, reusable and reproducible components.">
 
-<title>News – Data Intuitive</title>
+<title>Technical overview: how Viash works in practice – Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,21 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="..//images/main-logo.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../..//images/main-logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-news .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-news'] = new List('listing-news', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7R3RCC8ZCE"></script>
 
 <script type="text/javascript">
@@ -113,12 +84,16 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     <meta charset="utf-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="News – Data Intuitive">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Technical overview: how Viash works in practice – Data Intuitive">
+<meta property="og:description" content="Viash is a command-line tool that transforms scripts into self-contained, reusable and reproducible components.">
+<meta property="og:image" content="https://www.data-intuitive.com/insights/showcase/how-viash-works-in-practice/schema_component_2.png">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:height" content="3299">
+<meta property="og:image:width" content="6981">
 </head>
   
   <!-- Start of HubSpot Embed Code -->
@@ -132,7 +107,7 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
     <header class="main-header mt-xl-4">
       <nav class="navbar navbar-expand-xl">
         <div class="container">
-          <a class="navbar-brand" href="../index.html"><img src="../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+          <a class="navbar-brand" href="../../../index.html"><img src="../../../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -147,13 +122,13 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../services/analysis.html">Data Analysis</a>
+                    <a class="dropdown-item" href="../../../services/analysis.html">Data Analysis</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../services/benchmarking.html">Computational Benchmarking</a>
+                    <a class="dropdown-item" href="../../../services/benchmarking.html">Computational Benchmarking</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../services/training.html">Training</a>
+                    <a class="dropdown-item" href="../../../services/training.html">Training</a>
                   </li>
                 </ul>
               </li>
@@ -161,20 +136,20 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../products/viashcatalogue.html">Viash Catalogue</a>
+                    <a class="dropdown-item" href="../../../products/viashcatalogue.html">Viash Catalogue</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../products/viashhub.html">Viash Hub</a>
+                    <a class="dropdown-item" href="../../../products/viashhub.html">Viash Hub</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../products/viashhubprivate.html">Viash Hub Private</a>
+                    <a class="dropdown-item" href="../../../products/viashhubprivate.html">Viash Hub Private</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../products/viash.html">Viash Tool</a>
+                    <a class="dropdown-item" href="../../../products/viash.html">Viash Tool</a>
                   </li>
                 </ul>
               </li>
-                <a class="nav-link" href="../approach/approach.html" role="button" aria-expanded="false">
+                <a class="nav-link" href="../../../approach/approach.html" role="button" aria-expanded="false">
                   Approach
                 </a>
               <li class="nav-item dropdown">
@@ -182,13 +157,13 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../company/company.html">About</a>
+                    <a class="dropdown-item" href="../../../company/company.html">About</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../company/company.html#people">Team</a>
+                    <a class="dropdown-item" href="../../../company/company.html#people">Team</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../company/careers.html">Careers</a>
+                    <a class="dropdown-item" href="../../../company/careers.html">Careers</a>
                   </li>
                    <!--<li>
                     <a class="dropdown-item" href="/company/students.html"
@@ -203,19 +178,19 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../insights/projects.html">Projects</a>
+                    <a class="dropdown-item" href="../../../insights/projects.html">Projects</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../insights/showcase.html">Showcases</a>
+                    <a class="dropdown-item" href="../../../insights/showcase.html">Showcases</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
+                    <a class="dropdown-item" href="../../../insights/publications.html">Publications</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../insights/news.html">News</a>
+                    <a class="dropdown-item" href="../../../insights/news.html">News</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../insights/blog.html">Blogs</a>
+                    <a class="dropdown-item" href="../../../insights/blog.html">Blogs</a>
                   </li>    <!--
                    <li>
                     <a class="dropdown-item" href="/insights/pollresults.html"
@@ -225,264 +200,315 @@ gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
                 </ul>
               </li>
             </ul>
-            <a href="../contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
+            <a href="../../../contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
           </div>
         </div>
       </nav>
     </header>
 
-    <script src="../js/scripts.js"></script>
+    <script src="../../../js/scripts.js"></script>
     <!--  menu stops here (in quarto menu.html) -->
   
 
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../animated/animate.css">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="../../../animated/animate.css">
 
 
 
 
 <div id="quarto-search-results"></div>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#core-functionality" id="toc-core-functionality" class="nav-link active" data-scroll-target="#core-functionality">Core functionality</a></li>
+  <li><a href="#automated-component-generation" id="toc-automated-component-generation" class="nav-link" data-scroll-target="#automated-component-generation">Automated component generation</a></li>
+  <li><a href="#testing-and-debugging" id="toc-testing-and-debugging" class="nav-link" data-scroll-target="#testing-and-debugging">Testing and Debugging</a></li>
+  <li><a href="#building-larger-workflows" id="toc-building-larger-workflows" class="nav-link" data-scroll-target="#building-larger-workflows">Building larger workflows</a></li>
+  <li><a href="#reusability" id="toc-reusability" class="nav-link" data-scroll-target="#reusability">Reusability</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">News</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
+<div class="quarto-about-marquee">
+  <div class="about-image-container">
+    <img src="./schema_component_2.png" class="about-image " style="width: 100%;">
   </div>
-  
-
-
-</header>
-
-
-  <section class="v-hero mt-4 mb-3 pb-3 pb-xl-5">
-    <div class="container">
-      <div class="row justify-content-between align-items-center">
-        <div class="col-md-6 ">
-          <div class="v-hero-left mb-4">
-            <div class="sub-title">
-              Stay Ahead
-            </div>
-            <h1 class="v-hero-title">
-              Data Intuitive News
-            </h1>
-       
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Technical overview: how Viash works in practice</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">viash</div>
+    <div class="quarto-category">showcase</div>
+  </div>
+  </div>
+<div>
+  <div class="description">
+    Viash is a command-line tool that transforms scripts into self-contained, reusable and reproducible components.
+  </div>
+</div>
+<div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>See more </p>
           </div>
-        </div>
-            <div class="col-md-6 col-xl-5  d-none d-md-block">
-                <div class="v-hero-right position-relative">
-                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
-                        <source src="../images/di.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
+  </div>
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Next-Generation Sequencing Data Analyses, Easy Pipeline running, Easy nextflow pipelines</p>
+  </div>
+</div>
+</header> <main class="content" id="quarto-document-content">
+
+<p>Viash is a command-line tool that transforms scripts into self-contained, reusable and reproducible components.</p>
+<section id="core-functionality" class="level3">
+<h3 data-anchor-id="core-functionality">Core functionality</h3>
+<p>Viash operates by combining two key elements:</p>
+<ol type="1">
+<li>Your source script (written in Python, R, Bash, C#, or other languages)</li>
+<li>A YAML configuration file that specifies:<br>
+</li>
+</ol>
+<ul>
+<li>Component metadata<br>
+</li>
+<li>Input/output arguments<br>
+</li>
+<li>Software dependencies<br>
+</li>
+</ul>
+<p align="center">
+<img src="./schema_component_2.png" alt="Schema Component" width="85%">
+</p>
+<!-- Load Prism.js only for this table -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+<!-- Markdown-style table inside existing HTML -->
+<table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+<tbody><tr>
+<th style="border: 1px solid #ccc; padding: 8px; width: 50%; background-color: white; color: black; text-align: left;">
+src/minimal_component/script.py
+</th>
+<th style="border: 1px solid #ccc; padding: 8px; width: 50%; background-color: white; color: black; text-align: left;">
+src/minimal_component/config.vsh.yaml
+</th>
+</tr>
+<tr>
+<td style="border: 1px solid #ccc; padding: 0; background-color: black; color: white; vertical-align: top;">
+<pre style="margin: 0; background-color: black; color: white; padding: 10px; text-align: left;">        <code class="language-python" style="background-color: black; ">import shutil
+# copy file
+print(
+  f"Copying {par['input']} to {par['output']}."
+)
+shutil.copyfile(par['input'], par['output'])</code>
+      </pre>
+</td>
+<td style="border: 1px solid #ccc; padding: 0; background-color: black; color: white; vertical-align: top;">
+<pre style="margin: 0; background-color: black; color: white; padding: 10px; text-align: left;">        <code class="language-yaml" style="background-color: black; ">name: minimal_component
+description: A minimal example component.
+arguments:
+  - type: file
+    name: --input
+  - type: file
+    name: --output
+    direction: output
+resources:
+  - type: python_script
+    path: script.py
+engines:
+  - type: docker
+    image: "python:3.10-slim"
+  - type: native
+runners:
+  - type: executable
+  - type: nextflow</code>
+      </pre>
+</td>
+</tr>
+</tbody></table>
+<p><img src="./1_run_config.gif" class="img-fluid"></p>
 </section>
-
-  <section class="projects-wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h2 class="text-center mb-4 mb-xl-5"></h2>
-          <div class="row g-4 g-xxl-5">
-
-
-<div id="listing-news" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-listing-date-sort="1730937600000" data-listing-file-modified-sort="1741709226943" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
-<div class="thumbnail">
-<p><a href="../insights/news/2024-11-12-scienceforhealth/index.html" class="no-external"></a></p><a href="../insights/news/2024-11-12-scienceforhealth/index.html" class="no-external">
-<p><img loading="lazy" src="../insights/news/2024-11-12-scienceforhealth/sfh.png" class="thumbnail-image" style="height: 100%;"></p>
-</a><p><a href="../insights/news/2024-11-12-scienceforhealth/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../insights/news/2024-11-12-scienceforhealth/index.html" class="no-external">Science for Health 2024</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../insights/news/2024-11-12-scienceforhealth/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../insights/news/2024-11-12-scienceforhealth/index.html" class="no-external">We’re thrilled to share that Data Intuitive will have a booth at Science for Health 2024, focusing on the theme of AI, Data &amp; Digitalization, taking place at Square Brussels!<br><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="../insights/news/2024-11-12-scienceforhealth/index.html" class="no-external">
-<div class="listing-date">
-Nov 7, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="1" data-listing-date-sort="1724976000000" data-listing-file-modified-sort="1741709226943" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
-<div class="thumbnail">
-<p><a href="../insights/news/2024-08-30-bioeurope/index.html" class="no-external"></a></p><a href="../insights/news/2024-08-30-bioeurope/index.html" class="no-external">
-<p><img loading="lazy" src="../insights/news/2024-08-30-bioeurope/banner2.jpg" class="thumbnail-image" style="height: 100%;"></p>
-</a><p><a href="../insights/news/2024-08-30-bioeurope/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../insights/news/2024-08-30-bioeurope/index.html" class="no-external">Bio Europe 2024</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../insights/news/2024-08-30-bioeurope/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../insights/news/2024-08-30-bioeurope/index.html" class="no-external">We’re excited to announce that Data Intuitive will be attending Bio-Europe 2024! <br><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="../insights/news/2024-08-30-bioeurope/index.html" class="no-external">
-<div class="listing-date">
-Aug 30, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="2" data-listing-date-sort="1702630800000" data-listing-file-modified-sort="1741709226942" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="91">
-<div class="thumbnail">
-<p><a href="../insights/news/2023-12-15-fit_to_go_global/index.html" class="no-external"></a></p><a href="../insights/news/2023-12-15-fit_to_go_global/index.html" class="no-external">
-<p><img loading="lazy" src="../insights/news/2023-12-15-fit_to_go_global/image.jpg" class="thumbnail-image" style="height: 100%;"></p>
-</a><p><a href="../insights/news/2023-12-15-fit_to_go_global/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../insights/news/2023-12-15-fit_to_go_global/index.html" class="no-external">Fit to Go Global</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../insights/news/2023-12-15-fit_to_go_global/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../insights/news/2023-12-15-fit_to_go_global/index.html" class="no-external">We are thrilled to announce that this website is being launched with the funding of Flanders Investment and Trade (FIT). This funding will not only help us to create a…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../insights/news/2023-12-15-fit_to_go_global/index.html" class="no-external">
-<div class="listing-date">
-Dec 15, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="3" data-listing-date-sort="1675641600000" data-listing-file-modified-sort="1741709226931" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="192">
-<div class="thumbnail">
-<p><a href="../insights/news/2023-02-05-sustain/index.html" class="no-external"></a></p><a href="../insights/news/2023-02-05-sustain/index.html" class="no-external">
-<p><img loading="lazy" src="../insights/news/2023-02-05-sustain/logo.png" class="thumbnail-image" style="height: 100%;"></p>
-</a><p><a href="../insights/news/2023-02-05-sustain/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../insights/news/2023-02-05-sustain/index.html" class="no-external">DI’s Sustainability and Wellness Initiative</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../insights/news/2023-02-05-sustain/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../insights/news/2023-02-05-sustain/index.html" class="no-external">As a telework-based company, Data Intuitive is committed to promoting both sustainability and the well-being of its employees. With the support of Ready2improve and Axudo…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../insights/news/2023-02-05-sustain/index.html" class="no-external">
-<div class="listing-date">
-Feb 6, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="4" data-listing-date-sort="1671958800000" data-listing-file-modified-sort="1741709226931" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="78">
-<div class="thumbnail">
-<p><a href="../insights/news/2022-12-25-fueled_by_vlaio/index.html" class="no-external"></a></p><a href="../insights/news/2022-12-25-fueled_by_vlaio/index.html" class="no-external">
-<p><img loading="lazy" src="../insights/news/2022-12-25-fueled_by_vlaio/image.png" class="thumbnail-image" style="height: 100%;"></p>
-</a><p><a href="../insights/news/2022-12-25-fueled_by_vlaio/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../insights/news/2022-12-25-fueled_by_vlaio/index.html" class="no-external">Fueled by VLAIO and Driven by innovation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../insights/news/2022-12-25-fueled_by_vlaio/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../insights/news/2022-12-25-fueled_by_vlaio/index.html" class="no-external">Data Intuitive is pleased to announce that we have received funding from VLAIO, which will bolster our research and development efforts as we continue to push the boundaries…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../insights/news/2022-12-25-fueled_by_vlaio/index.html" class="no-external">
-<div class="listing-date">
-Dec 25, 2022
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="automated-component-generation" class="level3">
+<h3 data-anchor-id="automated-component-generation">Automated component generation</h3>
+<p>When you run Viash to build your component based on the script and configuration file, it automatically:</p>
+<ul>
+<li>Generates a standalone, self-contained executable that encapsulates your script, and the required software dependencies</li>
+<li>Creates the necessary containerization files (e.g.&nbsp;Dockerfile) based on the specified dependencies</li>
+<li>Produces Nextflow executables, without requiring manually writing any VDSL code</li>
+<li>Handles parameter validation and documentation generation of your component</li>
+</ul>
+<p>When Viash processes your script and configuration, it automatically generates all the boilerplate code through a deterministic, rule-based system, no LLM or other AI involved. This means:</p>
+<ul>
+<li>The generation process is consistent and predictable</li>
+<li>The same input always produces the same output</li>
+<li>Generated code follows established patterns and best practices<br>
+</li>
+</ul>
+<p>The generated components can run locally, in containers (e.g.&nbsp;Docker, Podman or Singularity), or as a stand-alone Nextflow executable, with future support planned for other workflow systems as well (e.g.&nbsp;Snakemake or Argo Workflows).</p>
+<p><img src="./2_build_config.gif" class="img-fluid"></p>
+</section>
+<section id="testing-and-debugging" class="level3">
+<h3 data-anchor-id="testing-and-debugging">Testing and Debugging</h3>
+<p>Viash provides integrated testing and debugging features that work within your component’s defined environment. Unit tests can be placed alongside your script and configuration, such that these tests can be detected and run in the correct environment.</p>
+<p>In addition, built-in debugging commands allow you to troubleshoot issues in the same environment where your component will actually run, ensuring consistency between development and deployment.</p>
+<!-- Load Prism.js only for this table -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+<!-- Markdown-style table inside existing HTML -->
+<table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+<tbody><tr>
+<th style="border: 1px solid #ccc; padding: 8px; width: 50%; background-color: white; color: black; text-align: left;">
+src/minimal_component/test.sh
+</th>
+<th style="border: 1px solid #ccc; padding: 8px; width: 50%; background-color: white; color: black; text-align: left;">
+src/minimal_component/config.vsh.yaml
+</th>
+</tr>
+<tr>
+<td style="border: 1px solid #ccc; padding: 0; background-color: black; color: white; vertical-align: top;">
+<pre style="margin: 0; background-color: black; color: white; padding: 10px; text-align: left;">        <code class="language-bash" style="background-color: black;">#!/usr/bin/env bash
+set -ex
+touch test_file.txt
+./example_python \
+ --input test_file.txt \
+ --output output.txt
+[[ ! -f output.txt ]] &amp;&amp; echo "It seems no output file is generated" &amp;&amp; exit 1
+exit 0</code>
+      </pre>
+</td>
+<td style="border: 1px solid #ccc; padding: 0; background-color: black; color: white; vertical-align: top;">
+<pre style="margin: 0; background-color: black; color: white; padding: 10px; text-align: left;">        <code class="language-yaml" style="background-color: black;">name: example_python
+description: A minimal example component.
+arguments:
+  - type: file
+    name: --input
+  - type: file
+    name: --output
+    direction: output
+resources:
+  - type: python_script
+    path: script.py
+test_resources:
+  - type: bash_script
+    path: test.sh
+engines:
+  - type: docker
+    image: "python:3.10-slim"
+  - type: native
+runners:
+  - type: executable
+  - type: nextflow</code>
+      </pre>
+</td>
+</tr>
+</tbody></table>
+<p><img src="./3_test_config.gif" class="img-fluid"></p>
+</section>
+<section id="building-larger-workflows" class="level3">
+<h3 data-anchor-id="building-larger-workflows">Building larger workflows</h3>
+<p>Viash components are designed to be building blocks that can be executed as stand-alone entities, but can also be easily combined into larger workflows. Each component has clearly defined inputs and outputs, making it straight-forward to connect them in sequential or branching workflows. Viash automatically generates Nextflow-compatible components, allowing you to arrange these components in any order as part of a larger Nextflow workflow, and scale from local testing to high-performance computing environments. Importantly, components can be added as dependencies from your local repo or from the extensive Viash Catalogue.</p>
+<!-- Load Prism.js only for this table -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+<!-- Nextflow uses C-like syntax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+<!-- Markdown-style table inside existing HTML -->
+<table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+<tbody><tr>
+<th style="border: 1px solid #ccc; padding: 8px; width: 50%; background-color: white; color: black; text-align: left;">
+src/larger_workflow/main.nf
+</th>
+<th style="border: 1px solid #ccc; padding: 8px; width: 50%; background-color: white; color: black; text-align: left;">
+src/larger_workflow/config.vsh.yaml
+</th>
+</tr>
+<tr>
+<td style="border: 1px solid #ccc; padding: 0; background-color: black; color: white; vertical-align: top;">
+<pre style="margin: 0; background-color: black; color: white; padding: 10px; text-align: left;">        <code class="language-clike" style="background-color: black; ">workflow run_wf {
+  take: input_ch
+  main:
+  output_ch = input_ch
+  | minimal_component.run(
+      // the output of the minimal_component 
+      // becomes the input of concat_text
+      toState: ["input": "output"]
+    )
+  | concat_text
+  emit: output_ch
+}</code>
+      </pre>
+</td>
+<td style="border: 1px solid #ccc; padding: 0; background-color: black; color: white; vertical-align: top;">
+<pre style="margin: 0; background-color: black; color: white; padding: 10px; text-align: left;">        <code class="language-yaml" style="background-color: black;">name: larger_workflow
+description: A larger example workflow.
+arguments:
+ - type: file
+   name: --input
+ - type: file
+   name: --output
+   direction: output
+ - type: boolean_true
+   name: --gzip_output
+resources:
+ - type: nextflow_script
+   path: main.nf
+   entrypoint: run_wf
+dependencies:
+ - name: concat_text
+   repository: craftbox
+ - name: minimal_component
+repositories:
+ - name: craftbox
+   type: vsh
+   repo: vsh/craftbox
+   tag: v0.1.0
+runners:
+ - type: nextflow</code>
+      </pre>
+</td>
+</tr>
+</tbody></table>
+<p><img src="./4_workflow.gif" class="img-fluid"></p>
+</section>
+<section id="reusability" class="level3">
+<h3 data-anchor-id="reusability">Reusability</h3>
+<p>By refining your configuration file and iteratively developing Viash modules, you create reusable source components that can be dynamically regenerated for various execution platforms. Viash currently supports multiple containerization technologies (Docker, Podman, Singularity) and workflow systems (Nextflow), with additional platforms in development. This architecture mitigates vendor lock-in risk, enabling seamless migration between technologies as organizational requirements evolve.</p>
+<p>Are you interested to learn how Viash compares to traditional workflow development tools? <a href="../../../insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools /" target="_blank">see our blog article</a></p>
+            <div class="text-center text-md-start v-dev-advantage">
+              <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+              <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" target="”_blank”" onclick="goBack()"> <i class="bi bi-arrow-left"> </i>Back</button>
+               <a target="”_blank”" href="https://viash.io/"><img src="../../../images/icons/cloud.svg" alt="cloud">Website</a>
+              <a target="”_blank”" href="https://github.com/viash-io/viash"><img src="../../../images/icons/github-icon.svg" alt="github-icon"> GitHub</a>
+               <a href="https://joss.theoj.org/papers/10.21105/joss.06089"><img src="../../../images/icons/note-2.svg" target="”_blank”" alt="note-2"> Paper </a> 
+              </div>
+            </div>
 <script>
- function setPlaybackSpeed(speed) {
-
-  var video = document.getElementById("myvideo");
-  video.playbackRate = speed; 
+function goBack() {
+  window.history.back();
 }
-  setPlaybackSpeed(0.6)
 </script>
 
 
-
-
-
+</section>
+</main> 
+  </div>
+</div>
+ <!-- /main -->
  
  </div>
    <!--  Footer starts here (in quarto footer.html) -->
@@ -496,7 +522,7 @@ No matching items
             <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
               the
               ﬁnal product, all while providing end-to-end support. </p>
-            <a href="../contact/contact.html" class="btn btn-secondary book-meeting rounded-pill">Contact Us</a>
+            <a href="../../../contact/contact.html" class="btn btn-secondary book-meeting rounded-pill">Contact Us</a>
           </div>
         </div>
       </div>
@@ -514,17 +540,17 @@ No matching items
   
             <div class="box quarto-layout-cell">
 
-              <a href="../index.html">
-                <img src="../images/main-logo.svg" alt="logo Data Intuitive" class="img-fluid">
+              <a href="../../../index.html">
+                <img src="../../../images/main-logo.svg" alt="logo Data Intuitive" class="img-fluid">
               </a>
             </div>
   
             <section id="links" class="level3 box quarto-layout-cell">
               <p>
-                <a href="../static/disclaimer.html">Disclaimer</a>
-                <a href="../static/trust_center.html" target="_blank">Trust Center</a>
-                <a href="../static/sustainability_statement.html">Sustainability Statement</a>
-                <a href="../static/privacy_policy.html">Privacy Statement</a><br>
+                <a href="../../../static/disclaimer.html">Disclaimer</a>
+                <a href="../../../static/trust_center.html" target="_blank">Trust Center</a>
+                <a href="../../../static/sustainability_statement.html">Sustainability Statement</a>
+                <a href="../../../static/privacy_policy.html">Privacy Statement</a><br>
 
               </p>
             </section>
@@ -535,8 +561,8 @@ No matching items
       </div>
       <div class="bottom-graphics-container">
         <a>© 2025 Data Intuitive</a>
-        <img src="../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
-        <img src="../images/fit.png" alt="FIT Flanders" class="bottom-img">
+        <img src="../../../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
+        <img src="../../../images/fit.png" alt="FIT Flanders" class="bottom-img">
     </div>
     </div>
   </footer>
@@ -552,7 +578,7 @@ No matching items
       <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
     </svg></a>
 
-    <a href="../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
+    <a href="../../../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
       <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"></path>
       <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"></path>
     </svg></a>
@@ -588,13 +614,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
