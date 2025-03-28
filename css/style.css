@@ -49,6 +49,9 @@ green {
   pointer-events: none; /* Prevent overlay from blocking clicks */
 }
 
+
+
+
 /* Overlay text should still be clickable */
 .overlay .info {
   color: white;
@@ -343,8 +346,11 @@ body {
   transform: translateY(-55px);
 }
 
+.cc-nb-okagree, .cc-cp-foot-save {
+  background-color:var(--s-color) !important;
+}
 
-.border-green{
+.border-green, .cc-pc-head-close {
   border-color:var(--s-color) !important;
 }
 
@@ -398,6 +404,8 @@ body {
   --bs-btn-padding-x: 0.5rem !important;
   --bs-btn-font-size: 0.875rem;
 }
+
+
 
 h1,
 h2,
