@@ -1105,16 +1105,30 @@ blockquote:after {
   padding: 18px 30px;
 }
 
-footer {
-  background-color: #0f0e0e;
+footer.footer {
+  background-color: #2C3242;
+max-height: 1em;
+margin-top:0;
+padding-top:0;
 }
+
+
+
 
 img.footer-logo.img-fluid {
   margin-top: 15px;
   width: 90px;
   margin-bottom: 35px;
 }
+.nav-footer, .nav-footer-left, .nav-footer-right, .nav-footer-center {
+  max-height: 0em;
+  min-height: 0em;
+  background-color: #2C3242;
+  color: #8a8a8a;
+  padding:0;
+  margin:0;
 
+}
 
 .img-fluid {
 
