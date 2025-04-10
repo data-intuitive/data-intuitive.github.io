@@ -56,26 +56,14 @@
     ]
   },
   {
-    "listing": "/services/benchmarking.html",
+    "listing": "/insights/news.html",
     "items": [
-      "/insights/showcase/NeurIPS_2021_Competition/index.html",
-      "/insights/showcase/NeurIPS_2022_Competition/index.html",
-      "/insights/showcase/NeurIPS_2023_24_Competition copy/index.html",
-      "/insights/showcase/benchmarking_openproblems/index.html",
-      "/insights/showcase/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
-      "/insights/showcase/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
-      "/insights/showcase/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/showcase/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
-    ]
-  },
-  {
-    "listing": "/services/analysis.html",
-    "items": [
-      "/insights/showcase/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
-      "/insights/showcase/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
-      "/insights/showcase/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
-      "/insights/showcase/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
-      "/insights/showcase/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
+      "/insights/news/2024-05-08-knowledgeforgrowth/index.html",
+      "/insights/news/2024-11-12-scienceforhealth/index.html",
+      "/insights/news/2024-08-30-bioeurope/index.html",
+      "/insights/news/2023-12-15-fit_to_go_global/index.html",
+      "/insights/news/2023-02-05-sustain/index.html",
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
     ]
   },
   {
@@ -89,13 +77,26 @@
     ]
   },
   {
-    "listing": "/insights/news.html",
+    "listing": "/services/analysis.html",
     "items": [
-      "/insights/news/2024-11-12-scienceforhealth/index.html",
-      "/insights/news/2024-08-30-bioeurope/index.html",
-      "/insights/news/2023-12-15-fit_to_go_global/index.html",
-      "/insights/news/2023-02-05-sustain/index.html",
-      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
+      "/insights/showcase/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
+      "/insights/showcase/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
+      "/insights/showcase/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
+      "/insights/showcase/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
+      "/insights/showcase/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
+    ]
+  },
+  {
+    "listing": "/services/benchmarking.html",
+    "items": [
+      "/insights/showcase/NeurIPS_2021_Competition/index.html",
+      "/insights/showcase/NeurIPS_2022_Competition/index.html",
+      "/insights/showcase/NeurIPS_2023_24_Competition copy/index.html",
+      "/insights/showcase/benchmarking_openproblems/index.html",
+      "/insights/showcase/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
+      "/insights/showcase/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
+      "/insights/showcase/multimodal-single-cell-data-integration-challenge-2022/index.html",
+      "/insights/showcase/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
     ]
   },
   {

@@ -1629,6 +1629,30 @@ ul.social-block li a:hover {
   margin: 0 5px;
 }
 
+.checklist {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.check-icon {
+  background-image: url('../images/icons/green.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  margin: 0.5em 0; /* space around the icon */
+}
+
+.check-text {
+  max-width: 600px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 
 .check-list-style {
   margin-top: 10px;
