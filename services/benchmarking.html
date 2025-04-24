@@ -100,6 +100,34 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-publication .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-publication'] = new List('listing-publication', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7R3RCC8ZCE"></script>
 
@@ -137,7 +165,7 @@ cookieconsent.run({
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/main-logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/main-logo.png">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -163,7 +191,7 @@ cookieconsent.run({
         ],
         "sameAs": [
           "https://www.linkedin.com/company/data-intuitive",
-          "https://github.com/data-intuitive",
+          "https://github.com/data-intuitive"
         ],
         "address": {
           "@type": "PostalAddress",
@@ -220,7 +248,7 @@ cookieconsent.run({
           "OpenProblems NeurIPS 2022 Competition",
           "OpenProblems NeurIPS 2023-24 Competition",
           "Tabula Sapiens v2"
-        ],
+        ]
       }
       </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Benchmarking – Data Intuitive">
@@ -289,10 +317,10 @@ cookieconsent.run({
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../company/company.html">About</a>
+                    <a class="dropdown-item" href="../company/index.html">About</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../company/company.html#people">Team</a>
+                    <a class="dropdown-item" href="../company/index.html#people">Team</a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="../company/careers.html">Careers</a>
@@ -416,6 +444,7 @@ window.Quarto = {
 </header>
 
 
+<hr>
 <link rel="canonical" href="https://www.data-intuitive.com/services/benchmarking.html">
 <section class="v-hero mt-4 mb-3 pb-xl-5">
   <div class="container">
@@ -671,7 +700,7 @@ window.Quarto = {
 
 <div id="listing-projects" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="benchmarking" data-listing-file-modified-sort="1744286520232" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
+<div class="g-col-1" data-index="0" data-categories="benchmarking" data-listing-file-modified-sort="1745496557716" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
 <a href="../insights/showcase/NeurIPS_2021_Competition/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -698,7 +727,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="benchmarking" data-listing-file-modified-sort="1744286520233" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
+<div class="g-col-1" data-index="1" data-categories="benchmarking" data-listing-file-modified-sort="1745496557717" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
 <a href="../insights/showcase/NeurIPS_2022_Competition/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -725,7 +754,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="benchmarking" data-listing-file-modified-sort="1744286520234" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
+<div class="g-col-1" data-index="2" data-categories="benchmarking" data-listing-file-modified-sort="1745496557719" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
 <a href="../insights/showcase/NeurIPS_2023_24_Competition copy/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -752,7 +781,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="Open Source,project,benchmarking" data-listing-file-modified-sort="1744286520236" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
+<div class="g-col-1" data-index="3" data-categories="Open Source,project,benchmarking" data-listing-file-modified-sort="1745496557720" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
 <a href="../insights/showcase/benchmarking_openproblems/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -785,143 +814,6 @@ Read more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1744286520237" data-listing-reading-time-sort="2" data-listing-word-count-sort="331">
-<a href="../insights/showcase/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Defining and Benchmarking Open Problems in Single-Cell Analysis (2024)
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
-publication
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
-single-cell omics
-</div>
-</div>
-<div class="card-text listing-description">
-
-    Luecken, M., Gigante, S., Burkhardt, D., <span style="color: var(--p-color);">Cannoodt, R.</span>, Strobl, D., Markov, N., <span style="color: var(--p-color);">Zappia, L.</span>, Palla, G., Lewis, W., Dimitrov, D., Vinyard, M., Magruder, D., Andersson, A.…<span style="color: var(--p-color);"></span>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1744286520235" data-listing-reading-time-sort="2" data-listing-word-count-sort="386">
-<a href="../insights/showcase/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A benchmark for prediction of transcriptomic responses to chemical perturbations across cell types (2024)
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
-publication
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
-single-cell omics
-</div>
-</div>
-<div class="card-text listing-description">
-
-    Artur Szałata, Andrew Benz, <span style="color: var(--p-color);">Robrecht Cannoodt,</span>, Mauricio Cortes, Jason Fong, Sunil Kuppasani, Richard Lieberman, Tianyu Liu, Javier A. Mas-Rosario, Rico Meinl, Jalil…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1744286520251" data-listing-reading-time-sort="2" data-listing-word-count-sort="369">
-<a href="../insights/showcase/multimodal-single-cell-data-integration-challenge-2022/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Multimodal Single Cell Data Integration Challenge (2022)
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
-publication
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
-single-cell omics
-</div>
-</div>
-<div class="card-text listing-description">
-
-    Lance, C., Luecken, M. D., Burkhardt, D. B., <span style="color: var(--p-color);">Cannoodt, R.</span>, Rautenstrauch, P., Laddach, A., Ubingazhibov, A., Cao, Z.-J., Deng, K., Khan, S., Liu, Q., Russkikh, N.…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1744286520252" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
-<a href="../insights/showcase/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Spearheading Future Omics Analyses Using Dyngen, a Multi-Modal Simulator of Single Cells (2021)
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
-publication
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
-single-cell omics
-</div>
-</div>
-<div class="card-text listing-description">
-
-    <span style="color: var(--p-color);">Cannoodt, R.</span>, Saelens, W., Deconinck, L., &amp; Saeys, Y. (2021).
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -935,8 +827,181 @@ No matching items
           disclosed. As a result, only open source projects will be mentioned in this context.</sup> </li>
     </ul>
   </div>
-
 </section>
+
+<section class="mt-6 projects-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center mb-6 mt-6 mt-xl-5 mb-xl-5">Related Publications &amp; Papers</h1>
+        <div class="row g-4 g-xxl-5">
+
+<div id="listing-publication" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-left" data-index="0" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1745496557708" data-listing-reading-time-sort="2" data-listing-word-count-sort="331">
+<div class="thumbnail">
+<p><a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external"></a></p><a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external">
+<p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
+</a><p><a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external">Defining and Benchmarking Open Problems in Single-Cell Analysis (2024)</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external">This paper defines and benchmarks key open problems in single-cell analysis, providing a comprehensive overview of challenges and solutions in the field.</a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
+publication
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
+benchmarking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
+single-cell omics
+</div>
+</div>
+<div class="listing-description">
+<a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external">
+    Luecken, M., Gigante, S., Burkhardt, D., <span style="color: var(--p-color);">Cannoodt, R.</span>, Strobl, D., Markov, N., <span style="color: var(--p-color);">Zappia, L.</span>, Palla, G., Lewis, W., Dimitrov, D., Vinyard, M., Magruder, D., Andersson, A., Dann, E., Qin, Q., Otto, D., Klein, M., Botvinnik, O., Deconinck, L.,<span style="color: var(--p-color);">Waldrant, K.</span>, Rieck, B., Ahlmann-Eltze, C., Beltrame, E. da V., Benz, A., González-Blas, C. B., Chen, A., DeMeo, B., Ergen, C., Floc’hlay, S., Gayoso, A., Hicks, S., Ji, Y., Kleshchevnikov, V., Manno, G. L., Lombardo, M., Lopez, R., Righelli, D., Sarkar, H., Svensson, V., Tong, A., Xing, G., Xu, C., Bloom, J., Pisco, A., Saez-Rodriguez, J., Wulsin, D., Pinello, L., Saeys, Y., Theis, F., &amp; Krishnaswamy, S. (2024).
+</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external"></a></p><a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external">
+<div class="listing-author">
+See more
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="1" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1745496557708" data-listing-reading-time-sort="2" data-listing-word-count-sort="386">
+<div class="thumbnail">
+<p><a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external"></a></p><a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external">
+<p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
+</a><p><a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external">A benchmark for prediction of transcriptomic responses to chemical perturbations across cell types (2024)</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external">NeurIPS23 Competition Analysis Paper</a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
+publication
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
+benchmarking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
+single-cell omics
+</div>
+</div>
+<div class="listing-description">
+<a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external">
+    Artur Szałata, Andrew Benz, <span style="color: var(--p-color);">Robrecht Cannoodt,</span>, Mauricio Cortes, Jason Fong, Sunil Kuppasani, Richard Lieberman, Tianyu Liu, Javier A. Mas-Rosario, Rico Meinl, Jalil Nourisa, Jared Tumiel, Tin M. Tunjic, Mengbo Wang, Noah Weber, Hongyu Zhao, Benedict Anchang, Fabian J Theis, Malte D Luecken, Daniel B Burkhardt
+    </a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external"></a></p><a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external">
+<div class="listing-author">
+See more
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="2" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1745496557708" data-listing-reading-time-sort="2" data-listing-word-count-sort="369">
+<div class="thumbnail">
+<p><a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external"></a></p><a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external">
+<p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
+</a><p><a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external">Multimodal Single Cell Data Integration Challenge (2022)</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external">This paper reviews the results of the multimodal single-cell data integration challenge, highlighting key lessons learned.</a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
+publication
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
+benchmarking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
+single-cell omics
+</div>
+</div>
+<div class="listing-description">
+<a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external">
+    Lance, C., Luecken, M. D., Burkhardt, D. B., <span style="color: var(--p-color);">Cannoodt, R.</span>, Rautenstrauch, P., Laddach, A., Ubingazhibov, A., Cao, Z.-J., Deng, K., Khan, S., Liu, Q., Russkikh, N., Ryazantsev, G., Ohler, U., Pisco, A. O., Bloom, J., Krishnaswamy, S., &amp; Theis, F. J. (2022).
+</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external"></a></p><a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external">
+<div class="listing-author">
+See more
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="3" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1745496557708" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
+<div class="thumbnail">
+<p><a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external"></a></p><a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external">
+<p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
+</a><p><a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external">Spearheading Future Omics Analyses Using Dyngen, a Multi-Modal Simulator of Single Cells (2021)</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external">This article introduces dyngen, a multi-modal simulator for future omics analyses of single cells.</a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('publication'); return false;">
+publication
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
+benchmarking
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('single-cell omics'); return false;">
+single-cell omics
+</div>
+</div>
+<div class="listing-description">
+<a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external">
+    <span style="color: var(--p-color);">Cannoodt, R.</span>, Saelens, W., Deconinck, L., &amp; Saeys, Y. (2021).
+</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external"></a></p><a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external">
+<div class="listing-author">
+See more
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <script>
   function setPlaybackSpeed(speed) {
 

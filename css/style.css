@@ -11,7 +11,11 @@
   --s-color-60: rgba(2, 197, 92, 0.06);
 }
 
-
+div.sourceCode {
+  background-color: black;
+  border: 1px solid black;
+  border-radius: .25rem;
+}
 
 green {
   color: var(--s-color);

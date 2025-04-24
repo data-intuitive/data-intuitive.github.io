@@ -1,4 +1,4 @@
-{"version": 2, "width": 120, "height": 40, "timestamp": 1706957900, "env": {"SHELL": "/bin/zsh", "TERM": "xterm-256color"}}
+{"version": 2, "width": 120, "height": 14, "timestamp": 1706957900, "env": {"SHELL": "/bin/zsh", "TERM": "xterm-256color"}}
 [0.009465, "o", "\u001b[?2004h> "]
 [0.010027, "o", "#"]
 [0.079723, "o", " "]
