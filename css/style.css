@@ -1025,9 +1025,9 @@ h2 {
 .bottom-img {
   max-width: auto;
   /* Ensure the image is responsive and doesn't overflow its container */
-  height: 50px;
+  height: 70px;
   /* Maintain the aspect ratio of the image */
-  padding-right: 8px;
+  padding-right: 10px;
 }
 
 .v-unlock-approach .footer-text {
