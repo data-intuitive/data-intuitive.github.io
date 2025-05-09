@@ -201,9 +201,9 @@ cookieconsent.run({
   <!-- HubSpot -->
   
   <body class="fullcontent">
- <div class="top-banner">
-      <a href="../insights/news/2025-05-08-knowledgeforgrowth/" style="color: white;">Visit us at booth 37 during Knowledge for Growth on 8 May in Antwerp.</a>
-    </div> 
+    <!-- <div class="top-banner">
+      <a href="/insights/news/2025-05-08-knowledgeforgrowth/" style="color: white;">Visit us at booth 37 during Knowledge for Growth on 8 May in Antwerp.</a>
+    </div> -->
     <div class="topmenuspacer"></div>
     <header class="main-header mt-xl-4">
       <nav class="navbar navbar-expand-xl">
@@ -357,40 +357,50 @@ cookieconsent.run({
 
 
 <link rel="canonical" href="https://www.data-intuitive.com/products/viashhubprivate.html">
-<section class="v-hero mt-4 mb-4">
+<section class="v-hero mb-4 mt-2">
   <div class="container">
-    <div class="row justify-content-between align-items-center">
+    <div class="row justify-content-between ">
       <div class="col-md-8 col-xxl-6">
-        <div class="v-hero-left mb-4">
-          <div class="sub-text  d-flex gap-1 align-items-center">
+        <div class="v-hero-left mb-0">
+          <div class="sub-text d-flex gap-1 align-items-center">
             Organisation Dedicated Data Analysis Repository
           </div>
           <h1 class="v-hero-title">
             Viash Hub Private
+
           </h1>
           <p>Viash Hub Private is a dedicated version of the platform for company use, providing a <b>robust
-              infrastructure</b> to securely centralize and protect your intellectual property. <br><br>It supports
-            <b>secure collaboration</b> within private cloud or on-premise environments, backed by <b>priority
-              support</b> to ensure a <b>long-term, reliable solution</b>.</p>
+            infrastructure</b> to securely centralize and protect your intellectual property. <br><br>It supports
+          <b>secure collaboration</b> within private cloud or on-premise environments, backed by <b>priority
+            support</b> to ensure a <b>long-term, reliable solution</b>.</p>
+            <div class="d-none d-md-block">
+              <a href="../contact/contact.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Contact Us For More Information<i class="bi bi-arrow-right"></i></a>
+            </div>
 
-          <br><i> Available 2025 - status: Testing prototype in Industry</i>
-          <p></p>
-          <div class="d-none d-md-block">
-          <a href="../contact/contact.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2 ">Contact Us<i class="bi bi-arrow-right"></i></a>
         </div>
       </div>
-      </div>
-      <div class="col-md-4 col-xxl-5 d-none d-md-block">
+
+      <div class="col-md-8 col-xl-6 mb-0 mt-0">
         <div class="v-hero-right position-relative">
-          <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
-            <source src="../images/di.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <div id="video-container" style="position: relative;">
+
+            <!-- PNG Image as a Link -->
+            <img src="../images/viashhub/start.png" alt="Play Video" id="thumbnail" class="img-fluid" style="width: 100%;">
+
+
+            <div id="left-half" style="position: absolute; top: 0; left: 0; width: 60%; height: 100%;"></div>
+            <div id="right-half" style="position: absolute; top: 0; right: 0; width: 40%; height: 100%;"></div>
+
+            <!-- Video Element -->
+            <video id="video-player" width="100%" controls="" style="display: none;">
+              <source src="../video/viashhub.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
 <section class="mb-5 pb-xl-5">
@@ -481,7 +491,7 @@ cookieconsent.run({
 <thead class="thead-light custom-table-header">
 <tr class="header">
 <th data-quarto-table-cell-role="th" scope="col" style="width: 33.33%">Feature</th>
-<th data-quarto-table-cell-role="th" scope="col" style="width: 33.33%">Viash Hub Public</th>
+<th data-quarto-table-cell-role="th" scope="col" style="width: 33.33%">Viash Hub Public (coming soon)</th>
 <th data-quarto-table-cell-role="th" scope="col" style="width: 33.33%">Viash Hub Private</th>
 </tr>
 </thead>
@@ -614,12 +624,36 @@ cookieconsent.run({
 
 
 <script>
-  function setPlaybackSpeed(speed) {
 
-    var video = document.getElementById("myvideo");
-    video.playbackRate = speed;
+
+  function startVideo(withSound) {
+    // Hide the image and overlay buttons
+    document.getElementById('thumbnail').style.display = 'none';
+    document.getElementById('left-half').style.display = 'none';
+    document.getElementById('right-half').style.display = 'none';
+  
+    // Show and configure the video
+    var video = document.getElementById('video-player');
+    video.style.display = 'block';
+    video.muted = !withSound; // Mute video if playing without sound
+    video.currentTime = 0; // Restart the video
+    video.play();
   }
-  setPlaybackSpeed(0.6)
+  
+  // Attach the functions to the left and right halves
+  document.getElementById('left-half').onclick = function() { startVideo(true); };
+  document.getElementById('right-half').onclick = function() { startVideo(false); };
+  
+  
+  
+  
+   function setPlaybackSpeed(speed) {
+  
+    var video = document.getElementById("myvideo");
+    video.playbackRate = speed; 
+  }
+    setPlaybackSpeed(0.6)
+  
 </script>
 
 

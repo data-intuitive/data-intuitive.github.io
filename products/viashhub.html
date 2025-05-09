@@ -235,9 +235,9 @@ cookieconsent.run({
   <!-- HubSpot -->
   
   <body class="fullcontent">
- <div class="top-banner">
-      <a href="../insights/news/2025-05-08-knowledgeforgrowth/" style="color: white;">Visit us at booth 37 during Knowledge for Growth on 8 May in Antwerp.</a>
-    </div> 
+    <!-- <div class="top-banner">
+      <a href="/insights/news/2025-05-08-knowledgeforgrowth/" style="color: white;">Visit us at booth 37 during Knowledge for Growth on 8 May in Antwerp.</a>
+    </div> -->
     <div class="topmenuspacer"></div>
     <header class="main-header mt-xl-4">
       <nav class="navbar navbar-expand-xl">
@@ -420,37 +420,52 @@ window.Quarto = {
 
 
 <link rel="canonical" href="https://www.data-intuitive.com/products/viashhub.html">
-
-<section class="v-hero mt-4 mb-4">
+<section class="v-hero mb-4 mt-2">
   <div class="container">
-    <div class="row justify-content-between align-items-center">
+    <div class="row justify-content-between ">
       <div class="col-md-8 col-xxl-6">
-        <div class="v-hero-left mb-4">
-          <div class="sub-text  d-flex gap-1 align-items-center">
+        <div class="v-hero-left mb-0">
+          <div class="sub-text d-flex gap-1 align-items-center">
             Data Workflow Management Platform
           </div>
           <h1 class="v-hero-title">
             Viash Hub
+
           </h1>
           <p>Viash Hub is a comprehensive platform that <b>simplifies workflow development</b> and sharing of bioinformatics tools in a <b>FAIR</b> way. <br><br>
             It fosters community <b>collaboration</b> and is optimized for <b>easy running</b> of data workflows and pipelines across various environments. 
             <br><br><i> Public Viash Hub Available in 2025</i></p>
           <a href="../products/viashhubprivate.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Discover Also Viash Hub Private <i class="bi bi-arrow-right"></i></a>
+       
+
         </div>
       </div>
-      <div class="col-md-4 col-xxl-5 d-none d-md-block">
+
+      <div class="col-md-8 col-xl-6 mb-0 mt-0">
         <div class="v-hero-right position-relative">
-          <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
-            <source src="../images/di.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <div id="video-container" style="position: relative;">
+
+            <!-- PNG Image as a Link -->
+            <img src="../images/viashhub/start.png" alt="Play Video" id="thumbnail" class="img-fluid" style="width: 100%;">
+
+
+            <div id="left-half" style="position: absolute; top: 0; left: 0; width: 60%; height: 100%;"></div>
+            <div id="right-half" style="position: absolute; top: 0; right: 0; width: 40%; height: 100%;"></div>
+
+            <!-- Video Element -->
+            <video id="video-player" width="100%" controls="" style="display: none;">
+              <source src="../video/viashhub.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
+ 
 <section class="mb-4 pb-xl-5">
   <div class="container">
     <div class="row justify-content-between mb-1 pb-xl-4">
@@ -652,7 +667,7 @@ window.Quarto = {
 
 <div id="listing-showcase" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="viash hub,showcase" data-listing-file-modified-sort="1746459993580" data-listing-reading-time-sort="6" data-listing-word-count-sort="1106">
+<div class="g-col-1" data-index="0" data-categories="viash hub,showcase" data-listing-file-modified-sort="1746779055581" data-listing-reading-time-sort="6" data-listing-word-count-sort="1106">
 <a href="../insights/showcase/openpipeline_demo/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -682,7 +697,7 @@ See more
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="showcase,viash hub" data-listing-file-modified-sort="1746459993581" data-listing-reading-time-sort="3" data-listing-word-count-sort="559">
+<div class="g-col-1" data-index="1" data-categories="showcase,viash hub" data-listing-file-modified-sort="1746779055582" data-listing-reading-time-sort="3" data-listing-word-count-sort="559">
 <a href="../insights/showcase/viashhub_cli/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
@@ -731,12 +746,36 @@ No matching items
 
 
 <script>
-  function setPlaybackSpeed(speed) {
 
-    var video = document.getElementById("myvideo");
-    video.playbackRate = speed;
+
+  function startVideo(withSound) {
+    // Hide the image and overlay buttons
+    document.getElementById('thumbnail').style.display = 'none';
+    document.getElementById('left-half').style.display = 'none';
+    document.getElementById('right-half').style.display = 'none';
+  
+    // Show and configure the video
+    var video = document.getElementById('video-player');
+    video.style.display = 'block';
+    video.muted = !withSound; // Mute video if playing without sound
+    video.currentTime = 0; // Restart the video
+    video.play();
   }
-  setPlaybackSpeed(0.6)
+  
+  // Attach the functions to the left and right halves
+  document.getElementById('left-half').onclick = function() { startVideo(true); };
+  document.getElementById('right-half').onclick = function() { startVideo(false); };
+  
+  
+  
+  
+   function setPlaybackSpeed(speed) {
+  
+    var video = document.getElementById("myvideo");
+    video.playbackRate = speed; 
+  }
+    setPlaybackSpeed(0.6)
+  
 
   function toggleFunctions(group) {
     const allBlocks = document.querySelectorAll('.content-block');
