@@ -919,49 +919,49 @@
   {
     "objectID": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
     "href": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
-    "title": "Escaping the GitHub Graveyard: How to Preserve Computational Knowledge for the Long Term",
+    "title": "How to Avoid the GitHub Graveyard?",
     "section": "",
     "text": "Each summer a familiar scene repeats itself across research groups and R&D units: students graduate, postdocs move on, contractors wrap up. Along with them vanishes a wealth of computational know-how: code snippets vanish into personal GitHub accounts, untracked storage devices, or deprecated virtual machines.\nThis phenomenon - what we might call the “GitHub graveyard” - is one of the most pervasive yet underaddressed challenges in computational research. Every departing researcher leaves behind a trail of potentially valuable code that, without proper preservation and packaging, becomes nearly impossible to locate, understand, run or re-use."
   },
   {
     "objectID": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#the-hidden-cost-of-fragmented-computational-knowledge",
     "href": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#the-hidden-cost-of-fragmented-computational-knowledge",
-    "title": "Escaping the GitHub Graveyard: How to Preserve Computational Knowledge for the Long Term",
+    "title": "How to Avoid the GitHub Graveyard?",
     "section": "The Hidden Cost of Fragmented Computational Knowledge",
     "text": "The Hidden Cost of Fragmented Computational Knowledge\nThe problem extends far beyond simple inconvenience. Imagine a graduate student who spent months perfecting a data preprocessing pipeline for single-cell RNA sequencing. Their script works flawlessly on their laptop, processes datasets efficiently, and produces publication-quality results. But what remains after they graduate?\nWhat’s typically left behind is:\n\nA minimally documented GitHub repo\n\nUnspecified dependencies\n\nA script that only works in a specific, now-forgotten environment\n\nThe next researcher who needs similar functionality faces a dilemma: spend days or weeks getting the existing code to run, or simply start from scratch. More often than not, they choose the latter, leading to a costly cycle of reinvention.\nThis computational fragmentation manifests in several ways:\nEnvironment Drift: Scripts that worked perfectly in 2022 may fail spectacularly in 2025 due to changes in dependencies, deprecated packages, or OS differences.\nDocumentation Decay: Even well-intended documentation becomes stale. Installation instructions assume specific system configurations, referenced example dataset no longer exist, and the original context that made the code meaningful fades with time.\nInstitutional Memory Loss: Departing researchers not only take their code, but also the tacit knowledge of how to run it: the subtle parameter tweaks, the workarounds for edge cases, the understanding of when the tool works well and when it doesn’t.\nOpportunity cost: If previous effort can be built upon rather than be rewritten or forgotten, effort could go to further extending and improving the tool or method."
   },
   {
     "objectID": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#enter-viash-a-sustainable-solution",
     "href": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#enter-viash-a-sustainable-solution",
-    "title": "Escaping the GitHub Graveyard: How to Preserve Computational Knowledge for the Long Term",
+    "title": "How to Avoid the GitHub Graveyard?",
     "section": "Enter Viash: A Sustainable Solution",
     "text": "Enter Viash: A Sustainable Solution\nAt Data Intuitive, we’ve developed a different strategy for addressing this challenge. Rather than expecting researchers to become software engineering experts, we’ve created tools that make robust packaging and reproducibility accessible to anyone.\nViash is a CLI tool that transforms any script - whether it’s a ten-line Bash helper or a complex multi-language workflow - into a standardized, portable component. By wrapping scripts in a standardized interface, Viash addresses many of the common failure modes that consign code to the GitHub graveyard:\nEnvironment Isolation: Viash lets you define your exact environment: dependencies, OS, and I/O configurations - ensuring your script runs the same way today, tomorrow, or five years from now, regardless of the host-system.\nStandardized Interfaces: Viash is a CLI tool that exposes a consistent interface for every component, removing the guesswork of how to run a tool or what input and parameters it expects.\nMulti-Platform Compatibility: Viash components are fully self-contained, meaning they run seamlessly across platforms - whether it’s your laptop, an HPC cluster or in the cloud - without the need for refactoring or environment-specific adjustments.\nBuilt-in Documentation: Documentation is packaged with the component, so users always have clear usage instructions, parameter descriptions, and context that remains coupled to the code itself."
   },
   {
     "objectID": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#from-prototype-to-production",
     "href": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#from-prototype-to-production",
-    "title": "Escaping the GitHub Graveyard: How to Preserve Computational Knowledge for the Long Term",
+    "title": "How to Avoid the GitHub Graveyard?",
     "section": "From Prototype to Production",
     "text": "From Prototype to Production\nViash bridges the gap between research prototypes and production-ready tools. Consider the example of the graduating student that we mentioned earlier. With Viash, the student could package their work in a matter of hours, creating a component that:\n\nRuns identically on any system - from local machines to cloud environments\n\nIncludes comprehensive, built-in documentation\n\nPreserves the exact environment to ensure results remain consistent, even years later\n\nExposes a clear, standardized interface making it easy to reuse the tool by others\n\nIntegrates seamlessly into larger workflows\n\nIs built for scalability, compliance, and long-term maintainability\n\nWhat’s preserved isn’t just code - it’s a computational asset that can be built upon, reused and trusted."
   },
   {
     "objectID": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#building-a-fair-computational-commons",
     "href": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#building-a-fair-computational-commons",
-    "title": "Escaping the GitHub Graveyard: How to Preserve Computational Knowledge for the Long Term",
+    "title": "How to Avoid the GitHub Graveyard?",
     "section": "Building a FAIR Computational Commons",
     "text": "Building a FAIR Computational Commons\nViash is more than a tool - it’s the motor of a broader ecosystem designed for FAIR (Findable, Accessible, Interoperable, Reusable) computational research.\nViash Hub was developed to support this vision: a platform that enables communities to govern, share, and maintain high-quality computational components. Rather than having each research group maintain its own collection of tools, the community can build upon a shared foundation of well-tested, well-documented components under proper governance oversight.\nThis approach has demonstrated value in pharmaceutical R&D settings, where regulatory compliance and reproducibility are essential. But the same principles that make Viash valuable for industrial applications - reliability, traceability, and maintainability - benefit academic research as well."
   },
   {
     "objectID": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#the-path-forward",
     "href": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#the-path-forward",
-    "title": "Escaping the GitHub Graveyard: How to Preserve Computational Knowledge for the Long Term",
+    "title": "How to Avoid the GitHub Graveyard?",
     "section": "The Path Forward",
     "text": "The Path Forward\nThe GitHub graveyard exists in part because academic incentives reward novelty over sustainability. Scientific publications often prize novel methods rather than robust implementations, and researchers advance careers by breaking ground, not building infrastructure.\nViash doesn’t fix the incentives, but it lowers the barrier to robust, sustainable and shareable research.\n\n\nThe GitHub graveyard exists in part because academic incentives reward novelty over sustainability.\n\n\nBy making reproducibility and packaging simple, it lets researchers add long-term value with minimal effort. And by exposing ground-breaking tools in the Viash Catalogue, it becomes part of a growing ecosystem of reusable components, ready for use by a larger community to power the next community."
   },
   {
     "objectID": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#getting-started",
     "href": "insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html#getting-started",
-    "title": "Escaping the GitHub Graveyard: How to Preserve Computational Knowledge for the Long Term",
+    "title": "How to Avoid the GitHub Graveyard?",
     "section": "Getting Started",
     "text": "Getting Started\nWhether you’re an academic researcher with a collection of useful scripts or part of an R&D team trying to standardize your computational workflows, Viash offers a practical, low-friction path to reusability. The tool is designed to work with existing code and development practices, without requiring major rewrites or steep learning curves.\nWe believe that robust knowledge management should be the rule rather than the exception. After a light-touch quality review, your packaged tool can be added to the Viash Catalogue, where it becomes discoverable, traceable and potentially the next component adopted by industry.\nThe GitHub graveyard isn’t inevitable. With the right tools and a commitment to preserving computational knowledge, we can build a more sustainable, collaborative future for scientific computing.\n            \n              \n                Back\n               Documentation Website\n               Viash Catalogue"
   },
