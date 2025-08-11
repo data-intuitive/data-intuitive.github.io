@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-image","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -422,9 +422,13 @@ window.Quarto = {
           <br><br>
           With years of experience and a <b>robust approach to workflow development</b>, we address key challenges and ensure efficient, accurate, and cost-effective data processing.
           </p>
+            <!-- 
           <div class="d-none d-md-block">
-            <a href="../approach/approach.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Approach<i class="bi bi-arrow-right"></i></a>
+            <a href="../approach/approach.html"
+              class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">Approach<i
+                class="bi bi-arrow-right"></i></a>
           </div>
+         -->
         </div>
       </div>
       <div class="col-md-6 col-xl-5 d-none d-md-block">
@@ -444,41 +448,11 @@ window.Quarto = {
 <section id="cycle" class="mb-5 mt-0">
   <div class="container">
     <div class="row">
-      <h6 class="p-color sub-title mb-3">Sustainable Biotech Analyses and Workflows</h6>
+           <!-- <h6 class="p-color sub-title mb-3">Sustainable Biotech Analyses and Workflows</h6> -->
       <!-- Large Block with Border Around Everything -->
       <div class=" p-3 p-xl-4 rounded-4 h-100 border border-light-subtle border-opacity-10 bg-white-di d-flex flex-column bg-secondary-60">
         <div class="row h-100">
-          <div class="v-hero-left mb-4 mb-md-0">
 
-            <div class="row h-100">
-              <div class="col-md-5 col-lg-5 mb-0">
-                <div class="p-3 p-xl-4 rounded-4 h-100 d-flex flex-column">
-                  <div class="card-body p-4">
-                    <p>
-                      <b>Combine</b> existing building blocks from Viash Catalogue with custom-developed ones. <br><br>
-                      <b>Seamless integration and deployment support</b> ensure your workflow is ready to use with minimal effort.<br><br>
-                      <b>Three approaches</b> allow us to adapt based on the complexity of your project.
-                    </p>
-                    <div class="v-dev-advantage_p v-dev-advantage d-flex flex-column align-items-center gap-3">
-                      <button class="toggle-button ms-auto" id="mute-toggle-button" onclick="toggleMute()">Unmute Video <i class="bi bi-arrow-right"></i></button>
-                      <button class="toggle-button ms-auto" onclick="restartVideo()">Restart Video</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-7 col-lg-7 mb-0 mt-0 ms-0 me-0">
-                  <div id="video-container" style="position: relative;">
-                    <video id="video-player" width="100%" loop="" autoplay="" muted="">
-                      <source src="../video/cycle_short.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                </div>
-              </div>
-
-
-            </div>
-          </div>
 
 
           <div class="col-md-4 col-lg-4 mt-4 mb-4">
@@ -604,7 +578,7 @@ window.Quarto = {
                           <div class="text-center cyclebutton d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
                             <a href="../approach/approach.html#continuous_improvement" class="s-color">Deploy </a>
                           </div>
-                          <p class="fs-6 line-height-process">We deploy the data workflow on your scalable cloud provider or HPC, ensuring it is easily usable and operational.</p>
+                          <p class="fs-6 line-height-process">We deploy the data workflow in your environment, on your scalable cloud provider or HPC, ensuring it is easily usable and operational.</p>
                         </div>
                       </div>
                     </div>
@@ -662,7 +636,7 @@ window.Quarto = {
                             <div class="text-center cyclebutton d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
                               <a href="../approach/approach.html#continuous_improvement" class="s-color">Deploy </a>
                             </div>
-                            <p class="fs-6 line-height-process">We deploy the data workflows on your scalable cloud provider or HPC, ensuring it is easily usable and operational.</p>
+                            <p class="fs-6 line-height-process">We deploy the data workflows in your environment, on your scalable cloud provider or HPC, ensuring it is easily usable and operational.</p>
                           </div>
                         </div>
                       </div>
@@ -700,7 +674,7 @@ window.Quarto = {
                             <div class="text-center cyclebutton d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
                               <a href="../approach/approach.html#continuous_improvement" class="s-color">Compose </a>
                             </div>
-                            <p class="fs-6 line-height-process">We combine the various tools into a cohesive bioinformatics data workflow, ensuring seamless data flow between the elements.<br></p>
+                            <p class="fs-6 line-height-process">We integrate diverse tools into a cohesive bioinformatics workflow, seamlessly fitting into your data workflows and processes.<br></p>
                           </div>
                           <div class="col-lg-4 col-md-6 px-3 mb-4 position-relative">
                             <div class="dashed-line2 half left"></div>
@@ -710,7 +684,7 @@ window.Quarto = {
                             <div class="text-center cyclebutton d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
                               <a href="../approach/approach.html#continuous_improvement" class="s-color">Deploy </a>
                             </div>
-                            <p class="fs-6 line-height-process">We deploy the data workflow on your scalable cloud provider or HPC, ensuring it is easily usable and operational.</p>
+                            <p class="fs-6 line-height-process">We deploy the data workflow in your environment, on your scalable cloud provider or HPC, ensuring it is easily usable and operational.</p>
                           </div>
                         </div>
                       </div>
@@ -803,6 +777,39 @@ window.Quarto = {
               </div>
             </div>
           </div>
+
+          <div class="v-hero-left mb-4 mb-md-0">
+
+            <div class="row h-100">
+              <div class="col-md-5 col-lg-5 mb-0">
+                <div class="p-3 p-xl-4 rounded-4 h-100 d-flex flex-column">
+                  <div class="card-body p-4">
+                    <p>
+                      <b>Combine</b> existing workflow building blocks with custom-developed ones. <br><br>
+                      <b>Seamless integration and deployment support</b> make it easy to incorporate the workflow into your own environment with minimal effort.<br><br>
+                      <b>Three approaches</b> allow us to adapt based on the complexity of your project.
+                    </p>
+                    <div class="v-dev-advantage_p v-dev-advantage d-flex flex-column align-items-center gap-3">
+                      <button class="toggle-button ms-auto" id="mute-toggle-button" onclick="toggleMute()">Unmute Video <i class="bi bi-arrow-right"></i></button>
+                      <button class="toggle-button ms-auto" onclick="restartVideo()">Restart Video</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-7 col-lg-7 mb-0 mt-0 ms-0 me-0">
+                  <div id="video-container" style="position: relative;">
+                    <video id="video-player" width="100%" loop="" autoplay="" muted="">
+                      <source src="../video/cycle_short.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -998,7 +1005,156 @@ window.Quarto = {
 
 <div id="listing-showcase" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-
+<div class="g-col-1" data-index="0" data-categories="viash,showcase" data-listing-file-modified-sort="1754928076549" data-listing-reading-time-sort="3" data-listing-word-count-sort="418">
+<a href="../insights/showcase/Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img loading="lazy" src="../insights/showcase/Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/3leaf.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Mastering Bioinformatics Tool &amp; Workflow Management with Viash
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('viash'); return false;">
+viash
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('showcase'); return false;">
+showcase
+</div>
+</div>
+<div class="card-text listing-description">
+Are you a bioinformatician tired of spending hours configuring environments, debugging container arguments, or struggling with complex workflow maintenance? Our…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+See More
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="viash,showcase" data-listing-file-modified-sort="1754928076565" data-listing-reading-time-sort="11" data-listing-word-count-sort="2104">
+<a href="../insights/showcase/how-viash-works-in-practice/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img loading="lazy" src="../insights/showcase/how-viash-works-in-practice/schema_component_2.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Technical overview: how Viash works in practice
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('viash'); return false;">
+viash
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('showcase'); return false;">
+showcase
+</div>
+</div>
+<div class="card-text listing-description">
+Viash is a command-line tool that transforms scripts into self-contained, reusable and reproducible components.
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+See more
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="showcase,viash" data-listing-file-modified-sort="1754928076568" data-listing-reading-time-sort="2" data-listing-word-count-sort="283">
+<a href="../insights/showcase/viash_basic/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img loading="lazy" src="../insights/showcase/viash_basic/vsh.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Viash Basics Demo
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('showcase'); return false;">
+showcase
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('viash'); return false;">
+viash
+</div>
+</div>
+<div class="card-text listing-description">
+Watch our screencast demonstration to see the getting started script of Viash.io in action.
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+See demo
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="viash,showcase" data-listing-file-modified-sort="1754928076561" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
+<a href="../insights/showcase/explainer_viash/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img loading="lazy" src="../insights/showcase/explainer_viash/front.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Explainer animation Viash
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('viash'); return false;">
+viash
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('showcase'); return false;">
+showcase
+</div>
+</div>
+<div class="card-text listing-description">
+1 minute explainer video about the possibilities of Viash
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+See video
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="viash,article" data-listing-file-modified-sort="1754928076568" data-listing-reading-time-sort="3" data-listing-word-count-sort="482">
+<a href="../insights/showcase/viash-plus-nextflow/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img loading="lazy" src="../images/nextflowviash.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Why use Nextflow and Viash?
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('viash'); return false;">
+viash
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('article'); return false;">
+article
+</div>
+</div>
+<div class="card-text listing-description">
+Nextflow is a leading workflow manager in computational biology, known for its portability, scalability, and reproducibility. However, developing workflows can be…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+Read more
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
