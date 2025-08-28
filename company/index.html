@@ -352,7 +352,7 @@ cookieconsent.run({
             <h1 class="v-hero-title">
               We are Data Intuitive<span class="flash">_</span>
             </h1>
-            <p> Founded in 2011, Data Intuitive is a Belgian-based <b>bioinformatics company specialising in data workflow development and deployment. </b>
+            <p> Founded in 2011, Data Intuitive is a Belgian-based <b>bioinformatics company specialising in omics data workflows. </b>
              <br><br>
 
              We focus on clear, transparent communication to build trust with our clients, <b>offering long-term, quality-driven solutions</b> that not only tackle current challenges but also anticipate future advancements in biotech IT.</p>
@@ -597,7 +597,44 @@ cookieconsent.run({
       </div>
     </div>
   </section>
+  <div class="logo-slider">
+    <div class="logo-track" id="logoTrack">
+        <!-- 8 SVG Logos -->
 
+        <img src="../images/logo/aws.svg" style="height:50px;">
+        <img src="../images/logo/googlecloud.svg" style="height:50px;">
+        <img src="../images/logo/docker.svg" style="height:50px;">
+        <img src="../images/logo/singularity.svg" style="height:50px;">
+        <img src="../images/logo/podman.svg" style="height:50px;">
+        <img src="../images/logo/kubernetes.svg" style="height:50px;">
+        <img src="../images/logo/nextflow.svg" style="height:50px;">
+        <img src="../images/logo/seqeraplatform.svg" style="height:50px;">
+        <img src="../images/logo/argo.svg" style="height:50px;">
+        <img src="../images/logo/lamin.svg" style="height:50px;">
+        <img src="../images/logo/tiledb.svg" style="height:50px;">
+        <img src="../images/logo/aws.svg" style="height:50px;">
+        <img src="../images/logo/googlecloud.svg" style="height:50px;">
+        <img src="../images/logo/docker.svg" style="height:50px;">
+        <img src="../images/logo/singularity.svg" style="height:50px;">
+        <img src="../images/logo/podman.svg" style="height:50px;">
+        <img src="../images/logo/kubernetes.svg" style="height:50px;">
+        <img src="../images/logo/nextflow.svg" style="height:50px;">
+        <img src="../images/logo/seqeraplatform.svg" style="height:50px;">
+        <img src="../images/logo/argo.svg" style="height:50px;">
+        <img src="../images/logo/lamin.svg" style="height:50px;">
+        <img src="../images/logo/tiledb.svg" style="height:50px;">
+       
+    </div>
+</div>
+
+<script>
+  // Duplicate logos dynamically to ensure seamless scrolling
+  document.addEventListener("DOMContentLoaded", function() {
+      const track = document.getElementById("logoTrack");
+      const clones = track.cloneNode(true); // Clone the entire track
+      track.parentNode.appendChild(clones); // Append the cloned track
+  });
+</script>
 
 <script>
  function setPlaybackSpeed(speed) {

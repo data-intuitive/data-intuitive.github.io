@@ -461,7 +461,49 @@ cookieconsent.run({
     </div>
 </div>
 </section>
+<!-- Second SVG scroll -->
+<div class="logo-slider">
+  <div class="logo-track" id="logoTrack2">
+    <!-- Different SVGs to keep streams distinct -->
+    <img src="./images/logo/janssen.svg" style="height:80px;">
+    <img src="./images/logo/uzgent.svg" style="height:80px;">
+    <img src="./images/logo/gsk.svg" style="height:80px;">
+    <img src="./images/logo/czbiohub.svg" style="height:80px;">
+    <img src="./images/logo/jnj.svg" style="height:80px;">
+    <img src="./images/logo/cellarity.svg" style="height:80px;">
+    <img src="./images/logo/helmholtz.svg" style="height:80px;">
+    <img src="./images/logo/vib.svg" style="height:80px;">
+    <img src="./images/logo/virusbank.svg" style="height:80px;">
+    <img src="./images/logo/czi.svg" style="height:80px;">
 
+
+
+
+    <!-- repeat once for smoother loop -->
+    <!-- Different SVGs to keep streams distinct -->
+    <img src="./images/logo/janssen.svg" style="height:80px;">
+    <img src="./images/logo/uzgent.svg" style="height:80px;">
+    <img src="./images/logo/gsk.svg" style="height:80px;">
+    <img src="./images/logo/czbiohub.svg" style="height:80px;">
+    <img src="./images/logo/jnj.svg" style="height:80px;">
+    <img src="./images/logo/cellarity.svg" style="height:80px;">
+    <img src="./images/logo/helmholtz.svg" style="height:80px;">
+    <img src="./images/logo/vib.svg" style="height:80px;">
+    <img src="./images/logo/virusbank.svg" style="height:80px;">
+    <img src="./images/logo/czi.svg" style="height:80px;">
+  </div>
+</div>
+
+<script>
+  // Clone the second track so CSS animation has enough width to loop seamlessly
+  document.addEventListener("DOMContentLoaded", function() {
+    const track2 = document.getElementById("logoTrack2");
+    if (track2) {
+      const clone2 = track2.cloneNode(true);
+      track2.parentNode.appendChild(clone2);
+    }
+  });
+</script>
 <section>
   <div class="mx-3 mx-md-0 py-4 py-md-5 text-center text-md-start mb-0">
   <div class="container px-4 px-md-3 my-xl-5">
@@ -480,65 +522,7 @@ cookieconsent.run({
   </div>
 </section>
 
-  <div class="logo-slider">
-    <div class="logo-track" id="logoTrack">
-        <!-- 8 SVG Logos -->
 
-        <img src="./images/logo/aws.svg" alt="Logo 1">
-        <img src="./images/logo/googlecloud.svg" alt="Logo 2">
-        <img src="./images/logo/docker.svg" alt="Logo 3">
-        <img src="./images/logo/singularity.svg" alt="Logo 4">
-        <img src="./images/logo/podman.svg" alt="Logo 5">
-        <img src="./images/logo/kubernetes.svg" alt="Logo 6">
-        <img src="./images/logo/nextflow.svg" alt="Logo 7">
-        <img src="./images/logo/seqeraplatform.svg" alt="Logo 8">
-        <img src="./images/logo/argo.svg" alt="Logo 9">
-        <img src="./images/logo/lamin.svg" alt="Logo 10">
-        <img src="./images/logo/tiledb.svg" alt="Logo 11">
-        <img src="./images/logo/aws.svg" alt="Logo 1">
-        <img src="./images/logo/googlecloud.svg" alt="Logo 2">
-        <img src="./images/logo/docker.svg" alt="Logo 3">
-        <img src="./images/logo/singularity.svg" alt="Logo 4">
-        <img src="./images/logo/podman.svg" alt="Logo 5">
-        <img src="./images/logo/kubernetes.svg" alt="Logo 6">
-        <img src="./images/logo/nextflow.svg" alt="Logo 7">
-        <img src="./images/logo/seqeraplatform.svg" alt="Logo 8">
-        <img src="./images/logo/argo.svg" alt="Logo 9">
-        <img src="./images/logo/lamin.svg" alt="Logo 10">
-        <img src="./images/logo/tiledb.svg" alt="Logo 11">
-        <img src="./images/logo/aws.svg" alt="Logo 1">
-        <img src="./images/logo/googlecloud.svg" alt="Logo 2">
-        <img src="./images/logo/docker.svg" alt="Logo 3">
-        <img src="./images/logo/singularity.svg" alt="Logo 4">
-        <img src="./images/logo/podman.svg" alt="Logo 5">
-        <img src="./images/logo/kubernetes.svg" alt="Logo 6">
-        <img src="./images/logo/nextflow.svg" alt="Logo 7">
-        <img src="./images/logo/seqeraplatform.svg" alt="Logo 8">
-        <img src="./images/logo/argo.svg" alt="Logo 9">
-        <img src="./images/logo/lamin.svg" alt="Logo 10">
-        <img src="./images/logo/tiledb.svg" alt="Logo 11">
-        <img src="./images/logo/aws.svg" alt="Logo 1">
-        <img src="./images/logo/googlecloud.svg" alt="Logo 2">
-        <img src="./images/logo/docker.svg" alt="Logo 3">
-        <img src="./images/logo/singularity.svg" alt="Logo 4">
-        <img src="./images/logo/podman.svg" alt="Logo 5">
-        <img src="./images/logo/kubernetes.svg" alt="Logo 6">
-        <img src="./images/logo/nextflow.svg" alt="Logo 7">
-        <img src="./images/logo/seqeraplatform.svg" alt="Logo 8">
-        <img src="./images/logo/argo.svg" alt="Logo 9">
-        <img src="./images/logo/lamin.svg" alt="Logo 10">
-        <img src="./images/logo/tiledb.svg" alt="Logo 11">
-    </div>
-</div>
-
-<script>
-  // Duplicate logos dynamically to ensure seamless scrolling
-  document.addEventListener("DOMContentLoaded", function() {
-      const track = document.getElementById("logoTrack");
-      const clones = track.cloneNode(true); // Clone the entire track
-      track.parentNode.appendChild(clones); // Append the cloned track
-  });
-</script>
 
 <script>
 
