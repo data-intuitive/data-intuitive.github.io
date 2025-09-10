@@ -75,20 +75,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-showcase .list');
+    const listingTargetEl = window.document.querySelector('#listing-blog .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-showcase'] = new List('listing-showcase', options);
+    window['quarto-listings']['listing-blog'] = new List('listing-blog', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -331,18 +331,17 @@ cookieconsent.run({
                   <li>
                     <a class="dropdown-item" href="../insights/projects.html">Projects</a>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="../insights/showcase.html">Showcases</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="../insights/news.html">News</a>
-                  </li>
+
+
                   <li>
                     <a class="dropdown-item" href="../insights/blog.html">Blogs</a>
-                  </li>    <!--
+                  </li>  
+                   <li>
+                    <a class="dropdown-item" href="../insights/news.html">News</a>
+                  </li>
+                                    <li>
+                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
+                  </li>  <!--
                    <li>
                     <a class="dropdown-item" href="/insights/pollresults.html"
                       >Conference Poll Results</a
@@ -822,13 +821,13 @@ window.Quarto = {
           <h1 class="text-center mb-6 mt-6 mb-xl-5">Viash Showcases and Explainers</h1>
           <div class="row g-4 g-xxl-5">
 
-<div id="listing-showcase" class="quarto-listing quarto-listing-container-grid">
+<div id="listing-blog" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="viash,showcase" data-listing-file-modified-sort="1756389082297" data-listing-reading-time-sort="3" data-listing-word-count-sort="418">
-<a href="../insights/showcase/Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-categories="viash" data-listing-date-sort="1746921600000" data-listing-file-modified-sort="1757529124127" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="418">
+<a href="../insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
-<img loading="lazy" src="../insights/showcase/Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/3leaf.png" class="thumbnail-image card-img" style="height: 100%;">
+<img loading="lazy" src="../insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/3leaf.png" class="thumbnail-image card-img" style="height: 100%;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -838,27 +837,27 @@ Mastering Bioinformatics Tool &amp; Workflow Management with Viash
 <div class="listing-category" onclick="window.quartoListingCategory('viash'); return false;">
 viash
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('showcase'); return false;">
-showcase
-</div>
 </div>
 <div class="card-text listing-description">
 Are you a bioinformatician tired of spending hours configuring environments, debugging container arguments, or struggling with complex workflow maintenance? Our…
 </div>
-<div class="card-attribution card-text-small start">
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
-See More
+Dorien Roosen
+</div>
+<div class="listing-date">
+May 11, 2025
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="viash,showcase" data-listing-file-modified-sort="1756389082314" data-listing-reading-time-sort="11" data-listing-word-count-sort="2104">
-<a href="../insights/showcase/how-viash-works-in-practice/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="1" data-categories="viash,showcase" data-listing-date-sort="1728086400000" data-listing-file-modified-sort="1757529124104" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2104">
+<a href="../insights/blog/2024-10-05-how-viash-works-in-practice/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
-<img loading="lazy" src="../insights/showcase/how-viash-works-in-practice/schema_component_2.png" class="thumbnail-image card-img" style="height: 100%;">
+<img loading="lazy" src="../insights/blog/2024-10-05-how-viash-works-in-practice/schema_component_2.png" class="thumbnail-image card-img" style="height: 100%;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -875,20 +874,23 @@ showcase
 <div class="card-text listing-description">
 Viash is a command-line tool that transforms scripts into self-contained, reusable and reproducible components.
 </div>
-<div class="card-attribution card-text-small start">
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
-See more
+Toni Verbeiren
+</div>
+<div class="listing-date">
+Oct 5, 2024
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="showcase,viash" data-listing-file-modified-sort="1756389082317" data-listing-reading-time-sort="2" data-listing-word-count-sort="283">
-<a href="../insights/showcase/viash_basic/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-categories="showcase,viash" data-listing-date-sort="1700611200000" data-listing-file-modified-sort="1757529124098" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="283">
+<a href="../insights/blog/2023-11-22-viash_basic/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top">
-<img loading="lazy" src="../insights/showcase/viash_basic/vsh.png" class="thumbnail-image card-img" style="height: 100%;">
+<img loading="lazy" src="../insights/blog/2023-11-22-viash_basic/vsh.png" class="thumbnail-image card-img" style="height: 100%;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -905,9 +907,12 @@ viash
 <div class="card-text listing-description">
 Watch our screencast demonstration to see the getting started script of Viash.io in action.
 </div>
-<div class="card-attribution card-text-small start">
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
-See demo
+Andy Boschmans
+</div>
+<div class="listing-date">
+Nov 22, 2023
 </div>
 </div>
 </div>
@@ -921,7 +926,7 @@ No matching items
 </div>
 <div id="showcases" class="d-flex flex-column text-center align-items-center justify-content-center mb-4">
   <div class="col-md-8 px-4">
-    <a href="https://www.data-intuitive.com/insights/showcase.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">More Insights <i class="bi bi-arrow-right"></i></a>
+    <a href="../insights/showcase.html" class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2">More Insights <i class="bi bi-arrow-right"></i></a>
 
   </div>
 </div>
@@ -940,7 +945,7 @@ No matching items
 
 <div id="listing-publication" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="publication,viash,workflows" data-listing-file-modified-sort="1756389082289" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
+<div class="quarto-post image-left" data-index="0" data-categories="publication,viash,workflows" data-listing-file-modified-sort="1757529124239" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
 <div class="thumbnail">
 <p><a href="../insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html" class="no-external"></a></p><a href="../insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html" class="no-external">
 <p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
@@ -978,7 +983,7 @@ See more
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-categories="publication,single-cell omics,viash" data-listing-file-modified-sort="1756389082289" data-listing-reading-time-sort="2" data-listing-word-count-sort="362">
+<div class="quarto-post image-left" data-index="1" data-categories="publication,single-cell omics,viash" data-listing-file-modified-sort="1757529124239" data-listing-reading-time-sort="2" data-listing-word-count-sort="362">
 <div class="thumbnail">
 <p><a href="../insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html" class="no-external"></a></p><a href="../insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html" class="no-external">
 <p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>

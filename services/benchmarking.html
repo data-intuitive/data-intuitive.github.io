@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -331,18 +331,17 @@ cookieconsent.run({
                   <li>
                     <a class="dropdown-item" href="../insights/projects.html">Projects</a>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="../insights/showcase.html">Showcases</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="../insights/news.html">News</a>
-                  </li>
+
+
                   <li>
                     <a class="dropdown-item" href="../insights/blog.html">Blogs</a>
-                  </li>    <!--
+                  </li>  
+                   <li>
+                    <a class="dropdown-item" href="../insights/news.html">News</a>
+                  </li>
+                                    <li>
+                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
+                  </li>  <!--
                    <li>
                     <a class="dropdown-item" href="/insights/pollresults.html"
                       >Conference Poll Results</a
@@ -678,147 +677,6 @@ window.Quarto = {
   </div>
 </section>
 
-
-
-
-<section class="projects-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2 class="text-center mb-6 mt-6 mb-xl-5">Benchmarking Insights <a class="p-color no-line" href="#note"><sup>(1)</sup></a>&nbsp; </h2>
-        <div class="row g-4 g-xxl-5">
-
-<div id="listing-projects" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="benchmarking" data-listing-file-modified-sort="1756389082298" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
-<a href="../insights/showcase/NeurIPS_2021_Competition/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/benchmarking/neurips2021.png" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-NeurIPS 2021 Competition
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-</div>
-<div class="card-text listing-description">
-The OpenProblems NeurIPS 2021 focused on improving multimodal single-cell data integration.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="benchmarking" data-listing-file-modified-sort="1756389082299" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
-<a href="../insights/showcase/NeurIPS_2022_Competition/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/benchmarking/neurips2022.png" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-NeurIPS 2022 Competition
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-</div>
-<div class="card-text listing-description">
-The OpenProblems NeurIPS 2022 focused on improving time-series multimodal single-cell data integration.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="benchmarking" data-listing-file-modified-sort="1756389082300" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
-<a href="../insights/showcase/NeurIPS_2023_24_Competition copy/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/benchmarking/neurips2324.png" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-NeurIPS 2023-24 Competition
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-</div>
-<div class="card-text listing-description">
-The OpenProblems NeurIPS 2024 focused on improving single-cell perturbation data analysis.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="Open Source,project,benchmarking" data-listing-file-modified-sort="1756389082301" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
-<a href="../insights/showcase/benchmarking_openproblems/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/benchmarking/logo_op_new.png" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Open Problems for Single-Cell Analysis
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Open Source'); return false;">
-Open Source
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('project'); return false;">
-project
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-</div>
-<div class="card-text listing-description">
-OpenProblems is an open-source platform for benchmarking and formalizing computational tasks in single-cell analysis. The platform aims to facilitate the development of new…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Read more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-        </div>
-      </div>
-    </div>
-    <ul id="note" class="list-unstyled mt-4">
-      <li class="mb-1"><sup>(1) Benchmarking projects are often undertaken for clients whose identities are not
-          disclosed. As a result, only open source projects will be mentioned in this context.</sup> </li>
-    </ul>
-  </div>
-</section>
-
 <section class="mt-6 projects-wrapper">
   <div class="container">
     <div class="row">
@@ -828,7 +686,7 @@ No matching items
 
 <div id="listing-publication" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1756389082288" data-listing-reading-time-sort="5" data-listing-word-count-sort="870">
+<div class="quarto-post image-left" data-index="0" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1757529124238" data-listing-reading-time-sort="5" data-listing-word-count-sort="870">
 <div class="thumbnail">
 <p><a href="../insights/publications/benchmarking_openproblems/index.html" class="no-external"></a></p><a href="../insights/publications/benchmarking_openproblems/index.html" class="no-external">
 <p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
@@ -866,7 +724,7 @@ See more
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1756389082288" data-listing-reading-time-sort="2" data-listing-word-count-sort="331">
+<div class="quarto-post image-left" data-index="1" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1757529124239" data-listing-reading-time-sort="2" data-listing-word-count-sort="331">
 <div class="thumbnail">
 <p><a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external"></a></p><a href="../insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html" class="no-external">
 <p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
@@ -904,7 +762,7 @@ See more
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="2" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1756389082288" data-listing-reading-time-sort="2" data-listing-word-count-sort="386">
+<div class="quarto-post image-left" data-index="2" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1757529124238" data-listing-reading-time-sort="2" data-listing-word-count-sort="386">
 <div class="thumbnail">
 <p><a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external"></a></p><a href="../insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html" class="no-external">
 <p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
@@ -942,7 +800,7 @@ See more
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="3" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1756389082289" data-listing-reading-time-sort="2" data-listing-word-count-sort="369">
+<div class="quarto-post image-left" data-index="3" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1757529124239" data-listing-reading-time-sort="2" data-listing-word-count-sort="369">
 <div class="thumbnail">
 <p><a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external"></a></p><a href="../insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html" class="no-external">
 <p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
@@ -980,7 +838,7 @@ See more
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="4" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1756389082289" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
+<div class="quarto-post image-left" data-index="4" data-categories="publication,benchmarking,single-cell omics" data-listing-file-modified-sort="1757529124239" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
 <div class="thumbnail">
 <p><a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external"></a></p><a href="../insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html" class="no-external">
 <p><img loading="lazy" src="../images/icons/icon_publication.svg" class="thumbnail-image" style="height: 100%;"></p>
@@ -1046,7 +904,14 @@ No matching items
 
 
  
- </div>
+ <div class="quarto-listing quarto-listing-container-grid" id="listing-projects">
+<div class="list grid quarto-listing-cols-1">
+
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></div>
    <!--  Footer starts here (in quarto footer.html) -->
  <section class="elevate-dataworkflows text-center mt-5 pt-5">
     <div class="container justify-content-center flex-column">
