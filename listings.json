@@ -1,28 +1,5 @@
 [
   {
-    "listing": "/insights/blog.html",
-    "items": [
-      "/insights/blog/2025-08-28-anndataR/index.html",
-      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
-      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
-      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
-      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
-      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
-      "/insights/blog/2024-11-27-navigating-the-use-of-llm-for-code-generation/index.html",
-      "/insights/blog/2024-11-04-standarizing-benchmarks-in-spatial-omcis-with-openproblems/index.html",
-      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
-      "/insights/blog/2024-07-01-openpipeline_demo/index.html",
-      "/insights/blog/2024-05-24-explainer_viash/index.html",
-      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
-      "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
-      "/insights/blog/2023-05-02-anndata-for-r/index.html",
-      "/insights/blog/2022-05-03-dynverse/index.html",
-      "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
-      "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html"
-    ]
-  },
-  {
     "listing": "/insights/showcase.html",
     "items": [
       "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
@@ -47,6 +24,36 @@
       "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
       "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
       "/insights/publications/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
+    ]
+  },
+  {
+    "listing": "/insights/blog.html",
+    "items": [
+      "/insights/blog/2025-09-24-user-friendly-workflows/index.html",
+      "/insights/blog/2025-08-28-anndataR/index.html",
+      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
+      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
+      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
+      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
+      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
+      "/insights/blog/2024-11-27-navigating-the-use-of-llm-for-code-generation/index.html",
+      "/insights/blog/2024-11-04-standarizing-benchmarks-in-spatial-omcis-with-openproblems/index.html",
+      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
+      "/insights/blog/2024-07-01-openpipeline_demo/index.html",
+      "/insights/blog/2024-05-24-explainer_viash/index.html",
+      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
+      "/insights/blog/2023-11-22-viash_basic/index.html",
+      "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
+      "/insights/blog/2023-05-02-anndata-for-r/index.html",
+      "/insights/blog/2022-05-03-dynverse/index.html",
+      "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
+      "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html"
+    ]
+  },
+  {
+    "listing": "/products/viashhub.html",
+    "items": [
+      "/insights/blog/2024-07-01-openpipeline_demo/index.html"
     ]
   },
   {
@@ -87,12 +94,6 @@
       "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
       "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
       "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
-    ]
-  },
-  {
-    "listing": "/products/viashhub.html",
-    "items": [
-      "/insights/blog/2024-07-01-openpipeline_demo/index.html"
     ]
   },
   {
