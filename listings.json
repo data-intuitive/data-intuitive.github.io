@@ -33,17 +33,7 @@
     ]
   },
   {
-    "listing": "/services/benchmarking.html",
-    "items": [
-      "/insights/publications/benchmarking_openproblems/index.html",
-      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
-      "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
-      "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
-    ]
-  },
-  {
-    "listing": "/services/analysis.html",
+    "listing": "/services/workflow_development.html",
     "items": [
       "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
       "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
@@ -54,6 +44,16 @@
       "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
       "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
       "/insights/blog/2024-03-01-viash-plus-nextflow/index.html"
+    ]
+  },
+  {
+    "listing": "/services/benchmarking.html",
+    "items": [
+      "/insights/publications/benchmarking_openproblems/index.html",
+      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
+      "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
+      "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
+      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
     ]
   },
   {
@@ -70,12 +70,6 @@
       "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
       "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
       "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html"
-    ]
-  },
-  {
-    "listing": "/products/viashhub.html",
-    "items": [
-      "/insights/blog/2024-07-01-openpipeline_demo/index.html"
     ]
   },
   {
