@@ -318,8 +318,8 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#implementation-and-customization-with-viash" id="toc-implementation-and-customization-with-viash" class="nav-link" data-scroll-target="#implementation-and-customization-with-viash">Implementation and Customization with Viash</a></li>
-  <li><a href="#confidentiality-and-impact" id="toc-confidentiality-and-impact" class="nav-link" data-scroll-target="#confidentiality-and-impact">Confidentiality and Impact</a></li>
+  <li><a href="#implementation-and-automation" id="toc-implementation-and-automation" class="nav-link" data-scroll-target="#implementation-and-automation">Implementation and Automation</a></li>
+  <li><a href="#impact" id="toc-impact" class="nav-link" data-scroll-target="#impact">Impact</a></li>
   </ul>
 </nav>
     </div>
@@ -348,17 +348,28 @@ cookieconsent.run({
 
 <section id="introduction" class="level2">
 <h2 data-anchor-id="introduction">Introduction</h2>
-<p>Data Intuitive recently undertook a successful project for an undisclosed client in the top 10 pharma R&amp;D. In this project, we developed a fully modular high-throughput RNA sequencing pipeline using our powerful and versatile tool, <a href="https://viash.io" target="_blank">Viash</a> to generate the modules. The goal was to streamline the processing and analysis of large-scale RNA sequencing data, allowing the client to extract valuable insights from their experiments efficiently and accurately.</p>
-<p>An early implementation was developed using an approach that was hard to maintain and did not scale well.</p>
+<p>Data Intuitive recently delivered an end-to-end, fully automated high-throughput RNA-seq workflow for a top-10 pharma R&amp;D client. Built with <strong>Viash‑generated, Nextflow‑compatible modules</strong>, the system streamlines large‑scale processing and analysis while remaining reproducible and portable across environments.</p>
+<p>On top of the workflow, we implemented an <strong>automation layer</strong>, enabling the entire process to be triggered from a single sample sheet (CSV)-eliminating manual path entry and reducing the need for error-prone parameter forms.</p>
+<p>This version of the end-to-end workflow is built on an earlier version that was <strong>already using Viash</strong> for module generation. This time, besides a much improved interface and automation capabilities, we increased modularity even more by splitting the full end-to-end flow in <strong>3 subworkflows</strong> that each can be <strong>continually improved</strong>.</p>
+<p>As a result, the client’s previous implementation was replaced with a more <strong>modular and automated solution</strong>.</p>
 </section>
-<section id="implementation-and-customization-with-viash" class="level2">
-<h2 data-anchor-id="implementation-and-customization-with-viash">Implementation and Customization with Viash</h2>
-<p>Our team of experts leveraged Viash’s modular approach to create a customized and optimized pipeline tailored to the client’s specific requirements. Due to the fact that we create Nextflow-compatible modules and pipelines using Viash, we could leverage Nextflow’s ability to run on a cluster and thus scale the processing.</p>
-<p>Throughout the development process, we prioritized reproducibility and scalability, ensuring that the pipeline could handle increasing volumes of data without compromising data quality or performance. As a result, the client now benefits from an advanced pipeline, empowering them to conduct cutting-edge research and accelerate their discoveries in a number of applications while still actively extending it to new application domains.</p>
+<section id="implementation-and-automation" class="level2">
+<h2 data-anchor-id="implementation-and-automation">Implementation and Automation</h2>
+<p>Our team leveraged Viash’s modular approach to build a pipeline tailored to the client’s requirements. Because Viash produces Nextflow-compatible modules and pipelines, we were able to take full advantage of Nextflow’s <strong>scalability and cluster execution capabilities</strong>.</p>
+<p>Moreover, rather than creating a new workflow from scratch or modifying an existing one, with the power of Viash we simply created a wrapper workflow dealing with the changes required for it to function in an automation context. This wrapper workflow is built up from a number of different Viash/workflow <em>packages</em>, some publicly available on <strong>Viash Hub</strong> (<a href="https://www.viash-hub.com/packages/demultiplex/latest" target="_blank">demultiplex</a>, <a href="https://www.viash-hub.com/packages/htrnaseq/latest" target="_blank">HT-RNAseq</a>) while others are proprietary and available in a <strong>private Viash Hub</strong> at the client’s side.</p>
+<p>To make the workflow truly automated and <em>intuitive</em>, we implemented:</p>
+<ul>
+<li><p><strong>Structured CSV sample sheet</strong> as the primary interface: all samples and run-specific parameters are captured in one file, with reference resources (genome reference files, lab setup parameters) addressed via labels rather than raw paths and cryptic parameters.</p></li>
+<li><p><strong>Run‑ID based ingestion</strong>: users provide a (sequencing) run identifier, and the workflow automatically resolves input files (e.g., on S3 or shared storage).</p></li>
+<li><p><strong>Deterministic data organization</strong>: outputs are structured using project and experiment identifiers, standardizing both inputs and outputs and improving traceability. At the same time, data is stored according to the data governance policy in turn ensuring strict adherence to it.</p></li>
+</ul>
+<p>This approach made the system more user-friendly and accessible for both <strong>lab scientists and bioinformaticians</strong>, while preserving the hallmark strengths of Viash workflows: <strong>scalability, robustness, reliability and reproducibility</strong>.</p>
+<p>For further insights into how we approach user-friendly workflow design, see our related blog post <a href="../../../insights/blog/2025-09-24-user-friendly-workflows/" target="_blank"><em>“Re-thinking user-friendly computational workflows”</em></a>.</p>
 </section>
-<section id="confidentiality-and-impact" class="level2">
-<h2 data-anchor-id="confidentiality-and-impact">Confidentiality and Impact</h2>
-<p>Due to confidentiality agreements, we are unable to disclose the specific details of the client or the project, but we are proud to have played a crucial role in advancing their scientific endeavors.</p>
+<section id="impact" class="level2">
+<h2 data-anchor-id="impact">Impact</h2>
+<p>While specific project details remain confidential, the result is a <strong>reliable, automated, and user‑friendly workflow</strong> that minimizes manual steps, reduces potential failure modes, and accelerates research. The combination of modular engineering and intelligent automation demonstrates how Data Intuitive designs systems that fit seamlessly into real-world scientific operations—<strong>powerful technology made practical</strong>.</p>
+<p>&nbsp;</p>
 <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
 <i class="bi bi-arrow-left"> </i>Back
 </button>
