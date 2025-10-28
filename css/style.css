@@ -416,13 +416,19 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+hbig {
   font-family: "Cal Sans";
   font-weight: 600;
 }
 
 p {
   font-size: 0.9rem;
+  /*48*/
+}
+
+hbig {
+  font-size: 3rem;
   /*48*/
 }
 
