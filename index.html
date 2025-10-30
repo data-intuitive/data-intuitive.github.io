@@ -201,9 +201,9 @@ cookieconsent.run({
   <!-- HubSpot -->
   
   <body class="fullcontent">
-    <!-- <div class="top-banner">
-      <a href="/insights/news/2025-05-08-knowledgeforgrowth/" style="color: white;">Visit us at booth 37 during Knowledge for Growth on 8 May in Antwerp.</a>
-    </div> -->
+     <div class="top-banner">
+      <a href="./insights/news/2025-09-16-NGOUK25/" style="color: white;">Meet us at Booth 18 | NextGen Omics London 13-14 Nov.</a>
+    </div>
     <div class="topmenuspacer"></div>
     <header class="main-header mt-xl-4">
       <nav class="navbar navbar-expand-xl">
@@ -291,7 +291,7 @@ cookieconsent.run({
                 </ul>
               </li>
             </ul>
-            <a href="./contact/bookmeeting.html" class="btn btn-primary rounded-pill">Book a meeting</a>
+            <a href="./contact/contact.html" class="btn btn-primary rounded-pill">Contact Us</a>
           </div>
         </div>
       </nav>
@@ -347,30 +347,29 @@ cookieconsent.run({
 
 
 <link rel="canonical" href="https://www.data-intuitive.com/index.html">
-<section class="v-hero mt-1 mb-2">
-  <div class="container">
-      <div class="row justify-content-between align-items-center">
-          <div class="col-md-6">
-              <div class="v-hero-left">
-                    <div class="sub-text d-flex gap-1 align-items-center">
-                     Reproducible bioinformatics - From R&amp;D to deployement
-                     </div>
-                           <hbig class="v-hero-title">
-                            Your Data, Our Workflows.
-                  </hbig>
-                  <p><b>We are experts in bioinformatics data pipelines, backed by years of experience.</b></p>  
-              </div>  
-          </div>
-          <div class="col-md-5  d-none d-md-block">
-            <div class="v-hero-right position-relative">
-              <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
-                <source src="../images/di.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
+<section class="v-hero mt-1 mb-2 position-relative" style="overflow:hidden;">
+  <!-- Background video (full width) -->
+  <video autoplay="" muted="" loop="" playsinline="" class="custom-background-video-light" style="position:absolute; top:-100px; left:50%; transform:translateX(-60%);
+                width:100%; height:100%; object-fit:cover; opacity:0.1; z-index:0;">
+    <source src="../images/di.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Text content -->
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-8">
+        <div class="sub-text d-flex gap-1 align-items-center justify-content-center mb-2">
+          Reproducible bioinformatics
+        </div>
+        <hbig class="v-hero-title-big">
+          Your Data,<br> Our Workflows.
+        </hbig>
+        <p>We are experts in bioinformatics data pipelines, <br> backed by years of experience.</p>
+      </div>
+    </div>
   </div>
-</div></section>
+</section>
 
 <section class="mb-1 mt-1">
 <div class="container">
@@ -434,6 +433,7 @@ cookieconsent.run({
 </div>
 </section>
 <!-- Second SVG scroll -->
+<div class="container overflow-hidden my-4">
 <div class="logo-slider">
   <div class="logo-track" id="logoTrack2">
     <!-- Different SVGs to keep streams distinct -->
@@ -461,7 +461,7 @@ cookieconsent.run({
     <img src="./images/logo/czi.svg" style="height:80px;">
   </div>
 </div>
-
+</div>
 <script>
   // Clone the second track so CSS animation has enough width to loop seamlessly
   document.addEventListener("DOMContentLoaded", function() {
@@ -657,7 +657,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
               the
               ﬁnal product, all while providing end-to-end support. </p>
-            <a href="./contact/contact.html" class="btn btn-secondary book-meeting rounded-pill">Contact Us</a>
+            <a href="./contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">Book a meeting</a>
           </div>
         </div>
       </div>

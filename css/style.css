@@ -1860,6 +1860,10 @@ textarea.form-control {
     --bs-gutter-x: 2.5rem;
   }
 
+      .v-hero-title-big {
+    font-size: 3rem;  /* 56 orig */
+    margin-bottom: 18px;
+  }
   .row.g-2,
   .row.gx-2 {
     --bs-gutter-x: 0.5rem;
@@ -2052,8 +2056,10 @@ textarea.form-control {
 
     color: #0f0e0e;
   }
-
-
+    .v-hero-title-big {
+    font-size: 3rem;  /* 56 orig */
+    margin-bottom: 18px;
+  }
   .no-pipeline-block {
     padding: 30px;
   }
@@ -2244,6 +2250,11 @@ textarea.form-control {
 
   .v-hero-title {
     /*font-size: 3rem;  /* 56 orig */
+    margin-bottom: 18px;
+  }
+
+    .v-hero-title-big {
+    font-size: 4rem;  /* 56 orig */
     margin-bottom: 18px;
   }
 
