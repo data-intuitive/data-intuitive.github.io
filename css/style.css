@@ -1053,28 +1053,12 @@ h2 {
 blockquote {
   position: relative;
   border-left: none;
+  color: var(--s-color)!important;
+  padding-right: 4em !important;
+  padding-left: 3em !important;
 }
 
-blockquote:before {
-  content: open-quote;
-  font-size: 4rem;
-  /*55*/
-  color: var(--s-color);
-  position: absolute;
-  left: 0;
-  top: 8px;
-  line-height: 0;
-}
 
-blockquote:after {
-  content: close-quote;
-  opacity: 0;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  position: absolute;
-  pointer-events: none;
-}
 
 .v-download-whitepaper {
   background-color: #f0fbf5;
@@ -2475,8 +2459,9 @@ textarea.form-control {
   }
 
   blockquote:before {
-    font-size: 6rem;
+    font-size: 3rem;
     /*75*/
+    visibility: hidden;
     left: 0;
     top: 17px;
     margin-left: -32px;

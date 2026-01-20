@@ -9,56 +9,27 @@
     ]
   },
   {
-    "listing": "/company/careers.html",
-    "items": [
-      "/company/careers/workflow_systems_architect/index.html"
-    ]
-  },
-  {
-    "listing": "/services/workflow_development.html",
-    "items": [
-      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
-      "/insights/blog/2025-06-11-Webinar/index.html",
-      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
-      "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2024-05-24-explainer_viash/index.html",
-      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
-      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
-      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
-      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
-      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html"
-    ]
-  },
-  {
-    "listing": "/services/benchmarking.html",
+    "listing": "/insights/publications.html",
     "items": [
       "/insights/publications/benchmarking_openproblems/index.html",
+      "/insights/publications/funkyheatmap-visualising-data-frames-with-mixed-data-types-2025/index.html",
+      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
+      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html",
       "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
       "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
+      "/insights/publications/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
       "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
-    ]
-  },
-  {
-    "listing": "/products/viash.html",
-    "items": [
-      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
-      "/insights/blog/2025-06-11-Webinar/index.html",
-      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
-      "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2024-05-24-explainer_viash/index.html",
-      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
-      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
-      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
-      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
-      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
-      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
-      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html"
+      "/insights/publications/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
+      "/insights/publications/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
+      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
+      "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
+      "/insights/publications/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
     ]
   },
   {
     "listing": "/insights/blog.html",
     "items": [
+      "/insights/blog/2026-01-15-jpm-2026-from-ai-hype-to-roi/index.html",
       "/insights/blog/2025-12-10-presentation-london/index.html",
       "/insights/blog/2025-10-14-single-cell_whereML-meets-biology/index.html",
       "/insights/blog/2025-09-24-user-friendly-workflows/index.html",
@@ -84,21 +55,51 @@
     ]
   },
   {
-    "listing": "/insights/publications.html",
+    "listing": "/products/viash.html",
+    "items": [
+      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
+      "/insights/blog/2025-06-11-Webinar/index.html",
+      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
+      "/insights/blog/2023-11-22-viash_basic/index.html",
+      "/insights/blog/2024-05-24-explainer_viash/index.html",
+      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
+      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
+      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
+      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
+      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
+      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
+      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html"
+    ]
+  },
+  {
+    "listing": "/services/benchmarking.html",
     "items": [
       "/insights/publications/benchmarking_openproblems/index.html",
-      "/insights/publications/funkyheatmap-visualising-data-frames-with-mixed-data-types-2025/index.html",
-      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
-      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html",
       "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
       "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
-      "/insights/publications/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
       "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/publications/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
-      "/insights/publications/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
-      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
-      "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
-      "/insights/publications/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
+      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
+    ]
+  },
+  {
+    "listing": "/services/workflow_development.html",
+    "items": [
+      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
+      "/insights/blog/2025-06-11-Webinar/index.html",
+      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
+      "/insights/blog/2023-11-22-viash_basic/index.html",
+      "/insights/blog/2024-05-24-explainer_viash/index.html",
+      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
+      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
+      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
+      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
+      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html"
+    ]
+  },
+  {
+    "listing": "/company/careers.html",
+    "items": [
+      "/company/careers/bioinformatics-workflow-engineer/index.html"
     ]
   },
   {
