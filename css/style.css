@@ -1026,6 +1026,7 @@ h2 {
   align-items: center;
   margin-top: -50px;
   /* Center the items vertically */
+    transform: scale(0.9);
 }
 
 .bottom-img {
@@ -1319,6 +1320,7 @@ footer ul li a:hover {
   }
 
   .bottom-graphics-container {
+        transform: scale(1);
     flex-direction: column;
     /* Stack the items vertically */
   }

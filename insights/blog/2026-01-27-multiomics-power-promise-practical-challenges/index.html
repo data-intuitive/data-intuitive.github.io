@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Luke Zappia">
+<meta name="dcterms.date" content="2026-01-27">
 
-<title>Pitfall redirect – Data Intuitive</title>
+<title>Making Sense of Multiomics Data – Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="..//images/main-logo.png" rel="icon" type="image/png">
-<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../..//images/main-logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,9 +103,9 @@ cookieconsent.run({
     <meta charset="utf-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/main-logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/main-logo.png">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -190,9 +191,13 @@ cookieconsent.run({
         ]
       }
       </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Pitfall redirect – Data Intuitive">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Making Sense of Multiomics Data – Data Intuitive">
+<meta property="og:description" content="Power, Promise, and Practical Challenges">
+<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2026-01-27-multiomics-power-promise-practical-challenges/multiomics4.png">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:height" content="308">
+<meta property="og:image:width" content="786">
 </head>
   
   <!-- HubSpot -->
@@ -205,7 +210,7 @@ cookieconsent.run({
     <header class="main-header mt-xl-4">
       <nav class="navbar navbar-expand-xl">
         <div class="container">
-          <a class="navbar-brand" href="../index.html"><img src="../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+          <a class="navbar-brand" href="../../../index.html"><img src="../../../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -220,10 +225,10 @@ cookieconsent.run({
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../services/workflow_development.html">Custom Workflow Development</a>
+                    <a class="dropdown-item" href="../../../services/workflow_development.html">Custom Workflow Development</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../services/benchmarking.html">Computational Benchmarking</a>
+                    <a class="dropdown-item" href="../../../services/benchmarking.html">Computational Benchmarking</a>
                   </li>
                 </ul>
               </li>
@@ -231,14 +236,14 @@ cookieconsent.run({
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../products/viashcatalogue.html">Bioinformatics Workflows</a>
+                    <a class="dropdown-item" href="../../../products/viashcatalogue.html">Bioinformatics Workflows</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../products/viashhub.html">Workflow Management Platform</a>
+                    <a class="dropdown-item" href="../../../products/viashhub.html">Workflow Management Platform</a>
                   </li>
                 </ul>
               </li>
-                <a class="nav-link" href="../approach/approach.html" role="button" aria-expanded="false">
+                <a class="nav-link" href="../../../approach/approach.html" role="button" aria-expanded="false">
                   Approach
                 </a>
               <li class="nav-item dropdown">
@@ -246,13 +251,13 @@ cookieconsent.run({
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../company/index.html">About</a>
+                    <a class="dropdown-item" href="../../../company/index.html">About</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../company/index.html#people">Team</a>
+                    <a class="dropdown-item" href="../../../company/index.html#people">Team</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../company/careers.html">Careers</a>
+                    <a class="dropdown-item" href="../../../company/careers.html">Careers</a>
                   </li>
                    <!--<li>
                     <a class="dropdown-item" href="/company/students.html"
@@ -267,18 +272,18 @@ cookieconsent.run({
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../insights/projects.html">Projects</a>
+                    <a class="dropdown-item" href="../../../insights/projects.html">Projects</a>
                   </li>
 
 
                   <li>
-                    <a class="dropdown-item" href="../insights/blog.html">Blogs</a>
+                    <a class="dropdown-item" href="../../../insights/blog.html">Blogs</a>
                   </li>  
                    <li>
-                    <a class="dropdown-item" href="../insights/news.html">News</a>
+                    <a class="dropdown-item" href="../../../insights/news.html">News</a>
                   </li>
                                     <li>
-                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
+                    <a class="dropdown-item" href="../../../insights/publications.html">Publications</a>
                   </li>  <!--
                    <li>
                     <a class="dropdown-item" href="/insights/pollresults.html"
@@ -288,72 +293,93 @@ cookieconsent.run({
                 </ul>
               </li>
             </ul>
-            <a href="../contact/contact.html" class="btn btn-primary rounded-pill">Contact Us</a>
+            <a href="../../../contact/contact.html" class="btn btn-primary rounded-pill">Contact Us</a>
           </div>
         </div>
       </nav>
     </header>
 
-    <script src="../js/scripts.js"></script>
+    <script src="../../../js/scripts.js"></script>
     <!--  menu stops here (in quarto menu.html) -->
   
 
 
 
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../animated/animate.css">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="../../../animated/animate.css">
 
 
 
 
 <div id="quarto-search-results"></div>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-<!-- main -->
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Pitfall redirect</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section class="v-hero mb-4 mt-2">
-  <div class="container">
-    <div class="row justify-content-between ">
-      <div class="col-md-8 col-xl-8 mb-0 mt-0">
-        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-        <script>
-          hbspt.forms.create({
-            portalId: "48498752",
-            formId: "daddfcbb-f5ea-46fd-ad7c-3501b7a871fe"
-          });
-        </script>
-      </div>
-
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#why-multiomics-matters" id="toc-why-multiomics-matters" class="nav-link active" data-scroll-target="#why-multiomics-matters"><strong>Why multiomics matters</strong></a></li>
+  </ul>
+</nav>
     </div>
-    We respect your privacy. Your information will not be shared. <br>
-    You can unsubscribe anytime using the link in the email.
+<!-- main -->
+<div class="quarto-about-marquee">
+  <div class="about-image-container">
+    <img src="./multiomics4.png" class="about-image " style="width: 100%;">
   </div>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Making Sense of Multiomics Data</h1>
+<p class="subtitle lead">Power, Promise, and Practical Challenges</p>
+</div>
+<div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Luke Zappia </p>
+          </div>
+  </div>
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 27, 2026</p>
+    </div>
+  </div>
+  </div>
+</header> <main class="content" id="quarto-document-content">
+
+<p>The use of multiomics technologies and analysis for research continues to expand in academia and across industry. Multiomics assays measure multiple sources of biological information from a single sample. In the single-cell context, examples include CITE-seq (RNA gene expression and antibody-based protein expression), 10x Multiome (transcriptomics with chromatin accessibility) and spatial transcriptomics approaches (cellular or subcellular locations along with gene expression). Multiomics analysis aims to extract meaning from multiple modalities, either from a multiomics technology or by combining data from separate assays.</p>
+<p><img src="multiomics3.png" class="img-fluid" style="width:100.0%"></p>
+<section id="why-multiomics-matters" class="level2">
+<h2 data-anchor-id="why-multiomics-matters"><strong>Why multiomics matters</strong></h2>
+<p>Multiomics technologies can be a powerful tool to learn more about a biological system in a variety of ways. Measuring complementary modalities can provide an orthogonal viewpoint. For example, having gene expression and lipidomics from the same samples can help discover links between parts of the metabolic system that are not visible from a single modality. Analysis can also benefit from additional context, such as spatial locations being used to confirm whether ligand-recepter pairs expressed in different cell types are physically close enough to interact, something that cannot be inferred from dissociated cells alone. Paired multiomics measurements can also be used to validate results, for example confirming that changes in gene expression are correlated with protein expression in the same cells.<br>
+<br>
+<strong>The challenges of multiomics analysis</strong></p>
+<p><img src="abstract2.png" class="img-fluid" style="width:100.0%"></p>
+<p>While multiomics opens up a range of possibilities, it also comes with a new set of challenges. Multiomics assays are often more expensive and can require more complex sample preparation steps. Computational analysis of multiomics can be significantly more complex and requires analysts to become familiar with several tool sets and algorithms as each modality has its own processing steps, assumptions and limitations. Less common modalities often do not have established best practices for analysis and require more experimentation with different approaches. Scale also presents a challenge, as does the variety of file types and measured values. When and how to combine modalities is a particularly crucial decision. Depending on the technologies used and the research question, it may make sense to concatenate measurements before analysis, use an integration method to place them in a shared space or to analyse each modality separately and combine the results.</p>
+<p><strong>Toward robust and scalable solutions</strong></p>
+<p>As the field matures and organisations develop internal practices many of the computational challenges can be addressed by developing standard processing workflows, allowing different approaches to be run in parallel while making use of available compute resources.</p>
+<p><strong><em>Multiomics is not just about adding more data layers - it is about building the right analytical foundations to turn that complexity into insight.</em></strong></p>
+            <div class="text-center text-md-start v-dev-advantage">
+              <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+              <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" target="”_blank”" onclick="goBack()"> <i class="bi bi-arrow-left"> </i>Back</button>
+              </div>
+            </div>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+
 </section>
-
-
-
-
+</main> 
+  </div>
+</div>
+ <!-- /main -->
  
  </div>
    <!--  Footer starts here (in quarto footer.html) -->
@@ -367,7 +393,7 @@ cookieconsent.run({
             <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
               the
               ﬁnal product, all while providing end-to-end support. </p>
-            <a href="../contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">Book a meeting</a>
+            <a href="../../../contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">Book a meeting</a>
           </div>
         </div>
       </div>
@@ -385,17 +411,17 @@ cookieconsent.run({
   
             <div class="box quarto-layout-cell">
 
-              <a href="../index.html">
-                <img src="../images/main-logo.svg" alt="logo Data Intuitive" class="img-fluid">
+              <a href="../../../index.html">
+                <img src="../../../images/main-logo.svg" alt="logo Data Intuitive" class="img-fluid">
               </a>
             </div>
   
             <section id="links" class="level3 box quarto-layout-cell">
               <p>
-                <a href="../static/disclaimer.html">Disclaimer</a>
-                <a href="../static/trust_center.html" target="_blank">Trust Center</a>
-                <a href="../static/sustainability_statement.html">Sustainability Statement</a>
-                <a href="../static/privacy_policy.html">Privacy Statement</a><br>
+                <a href="../../../static/disclaimer.html">Disclaimer</a>
+                <a href="../../../static/trust_center.html" target="_blank">Trust Center</a>
+                <a href="../../../static/sustainability_statement.html">Sustainability Statement</a>
+                <a href="../../../static/privacy_policy.html">Privacy Statement</a><br>
 
               </p>
             </section>
@@ -405,12 +431,12 @@ cookieconsent.run({
         </div>
       </div>
       <div class="bottom-graphics-container">
-         <img src="../images/scientistdotcom.webp" alt="scientistdotcom" class="bottom-img">
-        <img src="../images/iso27001.png" alt="iso27001" class="bottom-img">
-        <img src="../images/iso13485.png" alt="iso13485" class="bottom-img">
-        <img src="../images/gdpr.png" alt="gdpr" class="bottom-img">
-        <img src="../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
-        <img src="../images/fit.png" alt="FIT Flanders" class="bottom-img">
+         <img src="../../../images/scientistdotcom.webp" alt="scientistdotcom" class="bottom-img">
+        <img src="../../../images/iso27001.png" alt="iso27001" class="bottom-img">
+        <img src="../../../images/iso13485.png" alt="iso13485" class="bottom-img">
+        <img src="../../../images/gdpr.png" alt="gdpr" class="bottom-img">
+        <img src="../../../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
+        <img src="../../../images/fit.png" alt="FIT Flanders" class="bottom-img">
 
 
     </div>
@@ -428,7 +454,7 @@ cookieconsent.run({
       <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
     </svg></a>
 
-    <a href="../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
+    <a href="../../../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
       <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"></path>
       <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"></path>
     </svg></a>
@@ -464,13 +490,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
