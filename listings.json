@@ -9,6 +9,24 @@
     ]
   },
   {
+    "listing": "/insights/publications.html",
+    "items": [
+      "/insights/publications/benchmarking_openproblems/index.html",
+      "/insights/publications/funkyheatmap-visualising-data-frames-with-mixed-data-types-2025/index.html",
+      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
+      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html",
+      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
+      "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
+      "/insights/publications/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
+      "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
+      "/insights/publications/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
+      "/insights/publications/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
+      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
+      "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
+      "/insights/publications/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
+    ]
+  },
+  {
     "listing": "/company/careers.html",
     "items": [
       "/company/careers/bioinformatics-workflow-engineer/index.html"
@@ -59,6 +77,7 @@
   {
     "listing": "/insights/blog.html",
     "items": [
+      "/insights/blog/2026-02-10-eu-data-processing/index.html",
       "/insights/blog/2026-01-27-multiomics-power-promise-practical-challenges/index.html",
       "/insights/blog/2026-01-15-jpm-2026-from-ai-hype-to-roi/index.html",
       "/insights/blog/2025-12-10-presentation-london/index.html",
@@ -86,26 +105,9 @@
     ]
   },
   {
-    "listing": "/insights/publications.html",
-    "items": [
-      "/insights/publications/benchmarking_openproblems/index.html",
-      "/insights/publications/funkyheatmap-visualising-data-frames-with-mixed-data-types-2025/index.html",
-      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
-      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html",
-      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
-      "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
-      "/insights/publications/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
-      "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/publications/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
-      "/insights/publications/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
-      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
-      "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
-      "/insights/publications/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
-    ]
-  },
-  {
     "listing": "/insights/news.html",
     "items": [
+      "/insights/news/2026-01-30-luxprovide/index.html",
       "/insights/news/2025-12-18-wrapup25/index.html",
       "/insights/news/2025-09-16-NGOUK25/index.html",
       "/insights/news/2025-07-02-15AGW/index.html",
