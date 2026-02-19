@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Welcome to our project exhibition, showcasing innovation and excellence led by the Data Intuitive Team, our flagship project embodying quality and creativity.">
+<meta name="author" content="Dries Schaumont">
+<meta name="dcterms.date" content="2026-02-18">
 
-<title>Projects – Data Intuitive</title>
+<title>A Deep Dive into Nextflow’s Asset Caching – Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,26 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="..//images/main-logo.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../..//images/main-logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-project .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-project'] = new List('listing-project', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7R3RCC8ZCE"></script>
 
 <script type="text/plain" cookie-consent="tracking">
@@ -134,9 +103,9 @@ cookieconsent.run({
     <meta charset="utf-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/main-logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/main-logo.png">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -222,10 +191,13 @@ cookieconsent.run({
         ]
       }
       </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Projects – Data Intuitive">
-<meta property="og:description" content="Welcome to our project exhibition, showcasing innovation and excellence led by the Data Intuitive Team, our flagship project embodying quality and creativity.">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="A Deep Dive into Nextflow’s Asset Caching – Data Intuitive">
+<meta property="og:description" content="Resuming Workflow">
+<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2026-02-18-resuming-workflow-nextflow-asset-caching/icon.png">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:height" content="1536">
+<meta property="og:image:width" content="2816">
 </head>
   
   <!-- HubSpot -->
@@ -238,7 +210,7 @@ cookieconsent.run({
     <header class="main-header mt-xl-4">
       <nav class="navbar navbar-expand-xl">
         <div class="container">
-          <a class="navbar-brand" href="../index.html"><img src="../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+          <a class="navbar-brand" href="../../../index.html"><img src="../../../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -253,10 +225,10 @@ cookieconsent.run({
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../services/workflow_development.html">Custom Workflow Development</a>
+                    <a class="dropdown-item" href="../../../services/workflow_development.html">Custom Workflow Development</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../services/benchmarking.html">Computational Benchmarking</a>
+                    <a class="dropdown-item" href="../../../services/benchmarking.html">Computational Benchmarking</a>
                   </li>
                 </ul>
               </li>
@@ -264,14 +236,14 @@ cookieconsent.run({
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../products/viashcatalogue.html">Bioinformatics Workflows</a>
+                    <a class="dropdown-item" href="../../../products/viashcatalogue.html">Bioinformatics Workflows</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../products/viashhub.html">Workflow Management Platform</a>
+                    <a class="dropdown-item" href="../../../products/viashhub.html">Workflow Management Platform</a>
                   </li>
                 </ul>
               </li>
-                <a class="nav-link" href="../approach/approach.html" role="button" aria-expanded="false">
+                <a class="nav-link" href="../../../approach/approach.html" role="button" aria-expanded="false">
                   Approach
                 </a>
               <li class="nav-item dropdown">
@@ -279,13 +251,13 @@ cookieconsent.run({
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../company/index.html">About</a>
+                    <a class="dropdown-item" href="../../../company/index.html">About</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../company/index.html#people">Team</a>
+                    <a class="dropdown-item" href="../../../company/index.html#people">Team</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../company/careers.html">Careers</a>
+                    <a class="dropdown-item" href="../../../company/careers.html">Careers</a>
                   </li>
                    <!--<li>
                     <a class="dropdown-item" href="/company/students.html"
@@ -300,18 +272,18 @@ cookieconsent.run({
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="../insights/projects.html">Projects</a>
+                    <a class="dropdown-item" href="../../../insights/projects.html">Projects</a>
                   </li>
 
 
                   <li>
-                    <a class="dropdown-item" href="../insights/blog.html">Blogs</a>
+                    <a class="dropdown-item" href="../../../insights/blog.html">Blogs</a>
                   </li>  
                    <li>
-                    <a class="dropdown-item" href="../insights/news.html">News</a>
+                    <a class="dropdown-item" href="../../../insights/news.html">News</a>
                   </li>
                                     <li>
-                    <a class="dropdown-item" href="../insights/publications.html">Publications</a>
+                    <a class="dropdown-item" href="../../../insights/publications.html">Publications</a>
                   </li>  <!--
                    <li>
                     <a class="dropdown-item" href="/insights/pollresults.html"
@@ -321,331 +293,174 @@ cookieconsent.run({
                 </ul>
               </li>
             </ul>
-            <a href="../contact/contact.html" class="btn btn-primary rounded-pill">Contact Us</a>
+            <a href="../../../contact/contact.html" class="btn btn-primary rounded-pill">Contact Us</a>
           </div>
         </div>
       </nav>
     </header>
 
-    <script src="../js/scripts.js"></script>
+    <script src="../../../js/scripts.js"></script>
     <!--  menu stops here (in quarto menu.html) -->
   
 
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../animated/animate.css">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="../../../animated/animate.css">
 
 
 
 
 <div id="quarto-search-results"></div>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#how-nextflow-caching-works" id="toc-how-nextflow-caching-works" class="nav-link active" data-scroll-target="#how-nextflow-caching-works"><strong>How Nextflow Caching Works</strong></a></li>
+  <li><a href="#phase-1-eliminating-basic-variance" id="toc-phase-1-eliminating-basic-variance" class="nav-link" data-scroll-target="#phase-1-eliminating-basic-variance"><strong>Phase 1: Eliminating Basic Variance</strong></a></li>
+  <li><a href="#phase-2-digging-into-the-hashes" id="toc-phase-2-digging-into-the-hashes" class="nav-link" data-scroll-target="#phase-2-digging-into-the-hashes"><strong>Phase 2: Digging into the Hashes</strong></a></li>
+  <li><a href="#phase-3-root-cause-analysis" id="toc-phase-3-root-cause-analysis" class="nav-link" data-scroll-target="#phase-3-root-cause-analysis"><strong>Phase 3: Root Cause Analysis</strong></a>
+  <ul class="collapse">
+  <li><a href="#the-failure-logic" id="toc-the-failure-logic" class="nav-link" data-scroll-target="#the-failure-logic"><strong>The Failure Logic</strong></a></li>
+  </ul></li>
+  <li><a href="#phase-4-reproduction-and-solution" id="toc-phase-4-reproduction-and-solution" class="nav-link" data-scroll-target="#phase-4-reproduction-and-solution"><strong>Phase 4: Reproduction and Solution</strong></a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-
-<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-about-marquee">
+  <div class="about-image-container">
+    <img src="./icon.png" class="about-image " style="width: 100%;">
+  </div>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects</h1>
+<h1 class="title">A Deep Dive into Nextflow’s Asset Caching</h1>
+<p class="subtitle lead">Resuming Workflow</p>
 </div>
-
-<div>
-  <div class="description">
-    Welcome to our project exhibition, showcasing innovation and excellence led by the Data Intuitive Team, our flagship project embodying quality and creativity.
-  </div>
-</div>
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dries Schaumont </p>
+          </div>
   </div>
-  
-
-
-</header>
-
-
-  <section class="v-hero mt-4 mb-3 pb-3 pb-xl-5">
-    <div class="container">
-      <div class="row justify-content-between align-items-center">
-        <div class="col-md-6 ">
-          <div class="v-hero-left mb-4">
-            <div class="sub-text  d-flex gap-1 align-items-center">
-              Where cutting-edge research meets practical solutions
-            </div>
-            <h1 class="v-hero-title">
-              Projects Gallery
-            </h1>
-          
-          </div>
-        </div>
-            <div class="col-md-6 col-xl-5  d-none d-md-block">
-                <div class="v-hero-right position-relative">
-                    <video id="myvideo" autoplay="" muted="" loop="" class="custom-background-video-light">
-                        <source src="../images/di.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 18, 2026</p>
     </div>
+  </div>
+  </div>
+</header> <main class="content" id="quarto-document-content">
+
+<p>At Data Intuitive, we deploy data workflows at scale using <strong>Viash</strong>, a framework that allows us to build reusable Nextflow modules and an accompanying Docker container from scripts and a standardized metadata file.</p>
+<p>At the beginning of May, we began receiving reports that some of the OpenPipeline workflows deployed at our customers were unable to be resumed. The ability to resume a workflow is critical when handling large amounts of data because it saves cost and time, for example, when recovering from an infrastructure outage or re-analyzing data with slightly different parameters.</p>
+<p>We investigated and uncovered two bugs in Nextflow’s caching mechanism (#6112 and #6604) specifically related to source code assets. Here is the full breakdown of how we debugged it.</p>
+<section id="how-nextflow-caching-works" class="level2">
+<h2 data-anchor-id="how-nextflow-caching-works"><strong>How Nextflow Caching Works</strong></h2>
+<p>Nextflow’s caching mechanism works by creating a checksum (also called a <strong>task hash</strong>) for each executed task based on different pieces of (meta-)data available for the process.</p>
+<p>When a workflow is resumed, the hashes from the current run are compared to the hashes of previously executed tasks. If there is a match, the task can be skipped <em>if</em> the previous results are available in the work directory.</p>
+<p>Therefore, there are two strict requirements for a resume:</p>
+<ol type="1">
+<li>Task hashes must match exactly.</li>
+<li>Results must be available at the correct location (the work directory).</li>
+</ol>
+<p>When a workflow fails to cache, it usually means there is a source of unintended variance between runs.</p>
 </section>
-
-
-  <section class="projects-wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h2 class="text-center mb-4 mb-xl-5"></h2>
-          <div class="row g-4 g-xxl-5">
-
-
-<div id="listing-project" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-1">
-<div class="g-col-1" data-index="0" data-categories="project" data-listing-file-modified-sort="1771508723214" data-listing-reading-time-sort="3" data-listing-word-count-sort="465">
-<a href="../insights/projects/HT-RNA-SEQ/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/htrnaseq.svg" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Automated Demultiplexing and Processing of High-Throughput Transcriptomics
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('project'); return false;">
-project
-</div>
-</div>
-<div class="card-text listing-description">
-Data Intuitive recently delivered an end-to-end, fully automated high-throughput RNA-seq workflow for a top-10 pharma R&amp;D client. Built with <strong>Viash‑generated…</strong>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Project Details
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Open Source,project,benchmarking" data-listing-file-modified-sort="1771508723214" data-listing-reading-time-sort="2" data-listing-word-count-sort="323">
-<a href="../insights/projects/benchmarking_openproblems/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../images/benchmarking/logo_op_new.png" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Standardized Benchmarks in Single-Cell Analysis
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Open Source'); return false;">
-Open Source
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('project'); return false;">
-project
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('benchmarking'); return false;">
-benchmarking
-</div>
-</div>
-<div class="card-text listing-description">
-OpenProblems is an open-source platform for benchmarking and formalizing computational tasks in single-cell analysis. The platform aims to facilitate the development of new…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Read more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="open source,project,viash catalogue" data-listing-file-modified-sort="1771508723216" data-listing-reading-time-sort="3" data-listing-word-count-sort="523">
-<a href="../insights/projects/openpipeline_spatial/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../insights/projects/openpipeline_spatial/image.svg" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-End-to-End Workflows for Spatial Omics Data Processing
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('open source'); return false;">
-open source
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('project'); return false;">
-project
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('viash catalogue'); return false;">
-viash catalogue
-</div>
-</div>
-<div class="card-text listing-description">
-Our collaboration with a top 10 pharmaceutical company has reached a significant milestone with the successful release of a comprehensive suite of end-to-end workflows for…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="open source,project,viash catalogue" data-listing-file-modified-sort="1771508723215" data-listing-reading-time-sort="2" data-listing-word-count-sort="387">
-<a href="../insights/projects/openpipeline_project/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../insights/projects/openpipeline_project/image.svg" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Processing Single-Cell Data at Scale
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('open source'); return false;">
-open source
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('project'); return false;">
-project
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('viash catalogue'); return false;">
-viash catalogue
-</div>
-</div>
-<div class="card-text listing-description">
-In collaboration with a leading pharmaceutical company’s R&amp;D department, we have embarked on an ambitious journey to revolutionize the field of single-cell genomics. This…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="Open Source,Project" data-listing-file-modified-sort="1771508723218" data-listing-reading-time-sort="2" data-listing-word-count-sort="304">
-<a href="../insights/projects/virusbank/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../insights/projects/virusbank/image.png" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Phylotrees for Virusbank
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Open Source'); return false;">
-Open Source
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Project'); return false;">
-Project
-</div>
-</div>
-<div class="card-text listing-description">
-The VirusBank Initiative, an ambitious project led by KU Leuven, aims to transform the global response to viral epidemics and pandemics. At the heart of this initiative is…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-See demo
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="Open Source,project" data-listing-file-modified-sort="1771508723214" data-listing-reading-time-sort="3" data-listing-word-count-sort="581">
-<a href="../insights/projects/ComPass/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../insights/projects/ComPass/02-icon-compass.png" class="thumbnail-image card-img" style="height: 100%;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-ComPass: Connectivity Map Data Analysis
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Open Source'); return false;">
-Open Source
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('project'); return false;">
-project
-</div>
-</div>
-<div class="card-text listing-description">
-ComPass is an application for querying and analyzing Connectivity Map data<sup>1</sup>, also known as L1000 data but could be extended for other types of data as well. It captures the…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Read more
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="phase-1-eliminating-basic-variance" class="level2">
+<h2 data-anchor-id="phase-1-eliminating-basic-variance"><strong>Phase 1: Eliminating Basic Variance</strong></h2>
+<p>Debugging involves stripping away variation until the underlying issue is exposed. Before diving deep, we checked the basics:</p>
+<ul>
+<li><strong>Input Data:</strong> We verified that input data had not changed. We created a smaller test dataset to replicate the failure and perform faster test runs.</li>
+<li><strong>Nextflow Version:</strong> Different versions calculate hashes differently. We pinned the version using the NXF_VER environment variable (e.g., export NXF_VER=v25.10.2 in the pre-run script) to ensure both the base run and resume run used the exact same logic.</li>
+<li><strong>Workflow Code:</strong> If the processing code changes, the hash <em>should</em> change. We ensured we were using a static commit, avoiding floating git tags or main branch references.</li>
+</ul>
+</section>
+<section id="phase-2-digging-into-the-hashes" class="level2">
+<h2 data-anchor-id="phase-2-digging-into-the-hashes"><strong>Phase 2: Digging into the Hashes</strong></h2>
+<p>In this specific case, all the above checked out, yet the resume failed. We needed to see exactly what Nextflow was hashing.</p>
+<p>We enabled debug output. On the CLI, this is done via -dump-hashes; on Seqera Platform, we added dumpHashes = true to the Nextflow configuration. This outputs the task hash and the entries used to build it.</p>
+<p><strong>The output revealed the mismatch:</strong></p>
+<pre><code>nextflow.processor.TaskProcessor - [process_samples:run_wf:add_id:processWf:add_id_process (2)] cache hash: 052f66253c5cf344c8f4cd6de1eca673; mode: STANDARD; entries:
+ ec7378cb... [java.util.UUID] a2687fce-acf7-4e87-b649-d3c5273ba0a2
+ 39b48d5b... [java.lang.String] process_samples:run_wf:add_id:processWf:add_id_process
+ ...
+ 29526141... [java.lang.String] resourcesDir
+ c5fde678... [nextflow.util.ArrayBag] [FileHolder(sourceObj:.../.viash_meta_resources, ...)]
+ ...
+ 16fe7483... [java.lang.Boolean] true</code></pre>
+<p>When comparing the hashes of two processes, the entry for .viash_meta_resources was different. This directory is a feature of Viash that allows introspection of properties (process name, arguments, static source files, etc.). However, this meta information is <strong>static</strong> and part of the source code—it should not change between runs.</p>
+<p>We listed the contents of the directory to be sure:</p>
+<pre><code>total 360
+-rw-r--r--. 1   6890  .config.vsh.yaml
+-rw-r--r--. 1 143399  main.nf
+-rw-r--r--. 1   4147  nextflow.config
+-rw-r--r--. 1   2238  nextflow_labels.config
+-rw-r--r--. 1    344  nextflow_params.yaml
+-rw-r--r--. 1   4211  nextflow_schema.json
+-rw-r--r--. 1    371  setup_logger.py</code></pre>
+<p>By manually calculating a checksum of the two .viash_meta_resources directories directly from storage, we confirmed that the directories were identical. This raised the suspicion that we needed to look at the internals of Nextflow itself.</p>
+</section>
+<section id="phase-3-root-cause-analysis" class="level2">
+<h2 data-anchor-id="phase-3-root-cause-analysis"><strong>Phase 3: Root Cause Analysis</strong></h2>
+<p>Nextflow’s caching operates in three modes, determined by the process.cache configuration:</p>
+<ol type="1">
+<li><strong>Standard (Default):</strong> Uses Filename + Size + <strong>Last Updated Timestamp</strong>.</li>
+<li><strong>Lenient:</strong> Uses Filename + Size (ignores timestamp).</li>
+<li><strong>Deep:</strong> Uses the actual <strong>File Content</strong>.</li>
+</ol>
+<p>Crucially, <strong>Source Code Assets</strong> are treated differently. Nextflow ignores the configured caching mode and always uses the file’s contents (Deep caching) for the hash. This is because source code files are small, and hashing their content allows resuming across different versions or machines.</p>
+<p>In Nextflow’s HashBuilder code, there is an isAssetFile switch used to identify files that are part of the git repository. Our .viash_meta_resources folder <em>was</em> in the source code, so it should have been deeply hashed.</p>
+<p>To confirm why it wasn’t, we enabled trace debugging by exporting NXF_TRACE=nextflow.util. The logs revealed the smoking gun:</p>
+<pre><code>TRACE nextflow.util.HashBuilder - Hashing file meta: path=/scratch/.../metadata/add_id; size=2560, mode=STANDARD</code></pre>
+<p>The log showed mode=STANDARD. This method (hashFileMetadata) uses the file size and <strong>timestamp</strong>, not the content.</p>
+<p><img src="explain.png" class="img-fluid"></p>
+<section id="the-failure-logic" class="level3">
+<h3 data-anchor-id="the-failure-logic"><strong>The Failure Logic</strong></h3>
+<p>This final clue explained the behavior:</p>
+<ol type="1">
+<li><strong>Initial Run:</strong> The repo is fetched, and the workflow runs. The asset has a specific timestamp.</li>
+<li><strong>Resume Run:</strong> On remote executors (like AWS Batch), a <strong>new clone</strong> of the repository is fetched.</li>
+<li><strong>The Bug:</strong> Nextflow failed to recognize the item as a repository asset because it was in a subdirectory (not a sibling of main.nf).</li>
+<li><strong>The Result:</strong> Because it didn’t see it as an asset, it defaulted to STANDARD hashing. Since it was a fresh clone, the timestamp changed, the hash changed, and the resume failed.</li>
+</ol>
+</section>
+</section>
+<section id="phase-4-reproduction-and-solution" class="level2">
+<h2 data-anchor-id="phase-4-reproduction-and-solution"><strong>Phase 4: Reproduction and Solution</strong></h2>
+<p>The need for a fresh clone explains why this was hard to reproduce locally (where repos persist in the user’s home directory). We replicated the issue locally using nextflow drop to clear the cache:</p>
+<pre><code># Cleaning the environment
+$ nextflow drop DriesSchaumont/nextflow-subfolder-basedir-asset-caching &gt; /dev/null; rm -rf .nextflow &amp;&amp; rm -f .nextflow.log* &amp;&amp; rm -rf work
+# Initial run
+$ NXF_VER=25.10.0 NXF_TRACE=nextflow.util nextflow run DriesSchaumont/nextflow-subfolder-basedir-asset-caching -main-script pipeline/main.nf
+# Removing the code assets to simulate fresh clone
+$ nextflow drop DriesSchaumont/nextflow-subfolder-basedir-asset-caching
+# Demonstrate resume functionality failing
+$ NXF_VER=25.10.0 NXF_TRACE=nextflow.util nextflow run DriesSchaumont/nextflow-subfolder-basedir-asset-caching -main-script pipeline/main.nf -resume</code></pre>
+<p>Investigating Nextflow’s caching is aided by eliminating sources of variation while enabling deep debugging via dumpHashes and NXF_TRACE. Creating a locally reproducible example is preferred, but not always feasible when the root cause is unclear.</p>
+<p>Luckily, our customer graciously provided us with a test environment to investigate the issue. If you are interested in our proposed solution, you can find more information in the pull requests we’ve submitted to the Nextflow project (#6605 and #6113).</p>
+            <div class="text-center text-md-start v-dev-advantage">
+              <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+              <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" target="”_blank”" onclick="goBack()"> <i class="bi bi-arrow-left"> </i>Back</button>
+   </div>
+            </div>
 <script>
- function setPlaybackSpeed(speed) {
-
-  var video = document.getElementById("myvideo");
-  video.playbackRate = speed; 
+function goBack() {
+  window.history.back();
 }
-  setPlaybackSpeed(0.6)
 </script>
 
 
-
-
-
+</section>
+</main> 
+  </div>
+</div>
+ <!-- /main -->
  
  </div>
    <!--  Footer starts here (in quarto footer.html) -->
@@ -659,7 +474,7 @@ No matching items
             <p class="text-color-gray">Our team can assist with deﬁning requirements, troubleshooting, and maintaining
               the
               ﬁnal product, all while providing end-to-end support. </p>
-            <a href="../contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">Book a meeting</a>
+            <a href="../../../contact/bookmeeting.html" class="btn btn-secondary book-meeting rounded-pill">Book a meeting</a>
           </div>
         </div>
       </div>
@@ -677,17 +492,17 @@ No matching items
   
             <div class="box quarto-layout-cell">
 
-              <a href="../index.html">
-                <img src="../images/main-logo.svg" alt="logo Data Intuitive" class="img-fluid">
+              <a href="../../../index.html">
+                <img src="../../../images/main-logo.svg" alt="logo Data Intuitive" class="img-fluid">
               </a>
             </div>
   
             <section id="links" class="level3 box quarto-layout-cell">
               <p>
-                <a href="../static/disclaimer.html">Disclaimer</a>
-                <a href="../static/trust_center.html" target="_blank">Trust Center</a>
-                <a href="../static/sustainability_statement.html">Sustainability Statement</a>
-                <a href="../static/privacy_policy.html">Privacy Statement</a><br>
+                <a href="../../../static/disclaimer.html">Disclaimer</a>
+                <a href="../../../static/trust_center.html" target="_blank">Trust Center</a>
+                <a href="../../../static/sustainability_statement.html">Sustainability Statement</a>
+                <a href="../../../static/privacy_policy.html">Privacy Statement</a><br>
 
               </p>
             </section>
@@ -697,12 +512,12 @@ No matching items
         </div>
       </div>
       <div class="bottom-graphics-container">
-         <img src="../images/scientistdotcom.webp" alt="scientistdotcom" class="bottom-img">
-        <img src="../images/iso27001.png" alt="iso27001" class="bottom-img">
-        <img src="../images/iso13485.png" alt="iso13485" class="bottom-img">
-        <img src="../images/gdpr.png" alt="gdpr" class="bottom-img">
-        <img src="../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
-        <img src="../images/fit.png" alt="FIT Flanders" class="bottom-img">
+         <img src="../../../images/scientistdotcom.webp" alt="scientistdotcom" class="bottom-img">
+        <img src="../../../images/iso27001.png" alt="iso27001" class="bottom-img">
+        <img src="../../../images/iso13485.png" alt="iso13485" class="bottom-img">
+        <img src="../../../images/gdpr.png" alt="gdpr" class="bottom-img">
+        <img src="../../../images/vlaio.png" alt="VLAIO Flanders" class="bottom-img">
+        <img src="../../../images/fit.png" alt="FIT Flanders" class="bottom-img">
 
 
     </div>
@@ -720,7 +535,7 @@ No matching items
       <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
     </svg></a>
 
-    <a href="../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
+    <a href="../../../contact/contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewbox="0 0 16 16">
       <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"></path>
       <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"></path>
     </svg></a>
@@ -756,13 +571,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
