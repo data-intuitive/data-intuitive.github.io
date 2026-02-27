@@ -1,11 +1,15 @@
 [
   {
-    "listing": "/insights/showcase.html",
+    "listing": "/insights/publications.html",
     "items": [
-      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
-      "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2024-07-01-openpipeline_demo/index.html",
-      "/insights/blog/2024-05-24-explainer_viash/index.html"
+      "/insights/publications/benchmarking_openproblems/index.html",
+      "/insights/publications/funkyheatmap-visualising-data-frames-with-mixed-data-types-2025/index.html",
+      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
+      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html",
+      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
+      "/insights/publications/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
+      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
+      "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html"
     ]
   },
   {
@@ -32,9 +36,7 @@
       "/insights/blog/2024-05-24-explainer_viash/index.html",
       "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
       "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2023-06-16-github-actions-reclaim-the-bytes/index.html",
       "/insights/blog/2023-05-02-anndata-for-r/index.html",
-      "/insights/blog/2022-05-03-dynverse/index.html",
       "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
       "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html"
     ]
@@ -54,16 +56,6 @@
       "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
       "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
       "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html"
-    ]
-  },
-  {
-    "listing": "/services/benchmarking.html",
-    "items": [
-      "/insights/publications/benchmarking_openproblems/index.html",
-      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
-      "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
-      "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html"
     ]
   },
   {
@@ -113,26 +105,18 @@
     ]
   },
   {
-    "listing": "/insights/publications.html",
+    "listing": "/insights/showcase.html",
     "items": [
-      "/insights/publications/benchmarking_openproblems/index.html",
-      "/insights/publications/funkyheatmap-visualising-data-frames-with-mixed-data-types-2025/index.html",
-      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
-      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html",
-      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
-      "/insights/publications/a-benchmark-for-prediction-of-transcritomic-responses-to-chemical-pertubations-across-cell-types/index.html",
-      "/insights/publications/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
-      "/insights/publications/multimodal-single-cell-data-integration-challenge-2022/index.html",
-      "/insights/publications/a-sandbox-for-prediction-and-integration-of-dna-rna-and-proteins-in-single-cells/index.html",
-      "/insights/publications/recent-advances-in-trajectory-Inference-from-single-cell-omics-data-2021/index.html",
-      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
-      "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html",
-      "/insights/publications/the-rockerverse-packages-and-applications-for-containerization-with-r-2020/index.html"
+      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
+      "/insights/blog/2023-11-22-viash_basic/index.html",
+      "/insights/blog/2024-07-01-openpipeline_demo/index.html",
+      "/insights/blog/2024-05-24-explainer_viash/index.html"
     ]
   },
   {
     "listing": "/company/careers.html",
     "items": [
+      "/company/careers/bioinformatics-workflow-engineer/index.html",
       "/company/careers/nopopenpositionsc/index.html"
     ]
   }
