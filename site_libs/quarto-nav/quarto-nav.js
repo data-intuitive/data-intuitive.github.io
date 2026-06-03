@@ -270,11 +270,12 @@ window.document.addEventListener("DOMContentLoaded", function () {
 
   // fixup index.html links if we aren't on the filesystem
   if (window.location.protocol !== "file:") {
-    const links = window.document.querySelectorAll("a");
+    const links = window.document.querySelectorAll("a[href]");
     for (let i = 0; i < links.length; i++) {
-      if (links[i].href) {
-        links[i].dataset.originalHref = links[i].href;
-        links[i].href = links[i].href.replace(/\/index\.html/, "/");
+      const _href = links[i].href;
+      if (typeof _href === "string" && _href) {
+        links[i].dataset.originalHref = _href;
+        links[i].href = _href.replace(/\/index\.html/, "/");
       }
     }
 

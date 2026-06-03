@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="keywords" content="Omics analysis platform, Bioinformatics platform, Private Platform, Workflow modules, Omics data workflows, Validated pipelines, Multi-omics, ISO 27001, Audit-ready by construction, Pharma R&amp;D, Vendor-neutral, Cloud-native, On-premise, Single-tenant deployment, Nextflow, Viash, Reproducible bioinformatics">
+<meta name="description" content="An industrial-grade, vendor-neutral omics analysis platform. Validated pipelines, audit-ready by construction, runs on your infrastructure.">
+
+<title>Platform – Data Intuitive</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//images/main-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7R3RCC8ZCE"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-7R3RCC8ZCE', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+<!--  menu starts here (in quarto menu.html) -->
+
+
+  
+    <meta charset="utf-8">
+
+    <!-- ============================================================
+         No-index / no-AI directives.
+         Reinforced by /robots.txt which lists every major bot
+         User-agent explicitly. Meta tags here cover crawlers that
+         honour HTML directives instead of (or as well as) robots.txt.
+         ============================================================ -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, max-snippet:0, max-image-preview:none, max-video-preview:0">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="googlebot-news" content="noindex, nofollow">
+    <meta name="bingbot" content="noindex, nofollow">
+    <meta name="slurp" content="noindex, nofollow">
+    <meta name="duckduckbot" content="noindex, nofollow">
+    <meta name="baiduspider" content="noindex, nofollow">
+    <meta name="yandex" content="noindex, nofollow">
+
+    <!-- AI / LLM training and retrieval opt-outs -->
+    <meta name="GPTBot" content="noindex, nofollow">
+    <meta name="ChatGPT-User" content="noindex, nofollow">
+    <meta name="OAI-SearchBot" content="noindex, nofollow">
+    <meta name="Google-Extended" content="noindex, nofollow">
+    <meta name="ClaudeBot" content="noindex, nofollow">
+    <meta name="Claude-Web" content="noindex, nofollow">
+    <meta name="anthropic-ai" content="noindex, nofollow">
+    <meta name="PerplexityBot" content="noindex, nofollow">
+    <meta name="CCBot" content="noindex, nofollow">
+    <meta name="Bytespider" content="noindex, nofollow">
+    <meta name="Amazonbot" content="noindex, nofollow">
+    <meta name="Applebot-Extended" content="noindex, nofollow">
+    <meta name="Meta-ExternalAgent" content="noindex, nofollow">
+    <meta name="cohere-ai" content="noindex, nofollow">
+    <meta name="cohere-training-data-crawler" content="noindex, nofollow">
+
+    <!-- AI content licence opt-outs (TDM Reservation Protocol, ai-usage hints) -->
+    <meta name="ai-content-declaration" content="prohibited">
+    <meta name="ai-training" content="false">
+    <meta name="ai-usage" content="prohibited">
+    <meta name="tdm-reservation" content="1">
+
+    <!-- Copyright reservation -->
+    <meta name="copyright" content="© Data Intuitive. All rights reserved. No use, reproduction, training, distribution, indexing, retrieval or display permitted.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/main-logo.png">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Data Intuitive",
+        "url": "https://www.data-intuitive.com",
+        "logo": "https://www.data-intuitive.com/images/main-logo.svg",
+        "description": "Data Intuitive delivers expert bioinformatics solutions through customizable, modular data analysis workflows for biotech, medtech, and pharmaceutical industries. Specializing in single-cell analysis, multi-omics integration, and atlas-scale datasets with sustainable, scalable infrastructure.",
+        "keywords": "bioinformatics, data analysis, biotech, medtech, Viash, modular workflows, single-cell analysis, multi-omics integration, atlas-scale data, benchmarking services, workflow development, custom pipeline development, reproducible pipelines, computational biology, spatial omics, containerization, cloud implementation, high-throughput sequence processing, data validation, gene regulatory network, trajectory inference, scalable solutions, R programming, full-stack bioinformatics, data visualization",
+        "founder": [
+          {
+            "@type": "Person",
+            "name": "Toni Verbeiren"
+          },
+          {
+            "@type": "Person",
+            "name": "Andy Boschmans"
+          },
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/company/data-intuitive",
+          "https://github.com/data-intuitive"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kortebreestraat 4a",
+          "addressLocality": "Lebbeke",
+          "postalCode": "9280",
+          "addressCountry": "BE"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "info@data-intuitive.com",
+          "availableLanguage": ["English", "Dutch"]
+        },
+        "foundingDate": "2015-01-01",
+        "areaServed": ["Global", "Europe", "North America"],
+        "knowsAbout": [
+          "Bioinformatics", 
+          "Single-cell Analysis", 
+          "Multi-omics Integration", 
+          "Computational Biology", 
+          "Data Pipeline Development",
+          "Benchmarking Services",
+          "Viash Workflows",
+          "Nextflow",
+          "Kubernetes"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Data Intuitive Services",
+          "itemListElement": [
+            {
+              "@type": "Service",
+              "name": "Bioinformatics Expert Services",
+              "description": "End-to-end support for developing, optimizing, and deploying biotech data analysis workflows",
+              "url": "https://www.data-intuitive.com/services/services.html"
+            },
+            {
+              "@type": "Service",
+              "name": "Benchmarking Services",
+              "description": "Accurate industry comparisons and insights for single-cell analyses",
+              "url": "https://www.data-intuitive.com/services/benchmarking.html"
+            },
+                        {
+              "@type": "Platform",
+              "name": "Omics analysis Platform",
+              "description": "Viash Hub is a one-stop workflow management platform designed for enterprise use in single cell analysis",
+              "url": "https://www.data-intuitive.com/products/platform.html"
+            },
+            {
+              "@type": "Service",
+              "name": "Infrastructure Support",
+              "description": "Scalable cloud and on-premise infrastructure for bioinformatics workflows",
+              "url": "https://www.data-intuitive.com/services/services.html"
+            }
+          ]
+        },
+        "award": [
+          "OpenProblems NeurIPS 2021 Competition",
+          "OpenProblems NeurIPS 2022 Competition",
+          "OpenProblems NeurIPS 2023-24 Competition",
+          "Tabula Sapiens v2"
+        ]
+      }
+      </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Platform – Data Intuitive">
+<meta property="og:description" content="An industrial-grade, vendor-neutral omics analysis platform. Validated pipelines, audit-ready by construction, runs on your infrastructure.">
+<meta property="og:site_name" content="Data Intuitive">
+<meta property="og:locale" content="en_GB">
+</head>
+  
+  <!-- HubSpot -->
+  
+  <body class="fullcontent">
+   <!--   <div class="top-banner">
+      <a href="/insights/news/2025-09-16-NGOUK25/" style="color: white;">Meet us at Booth 18 | NextGen Omics London 13-14 Nov.</a>
+    </div> -->
+    <div class="topmenuspacer"></div>
+    <header class="main-header mt-xl-4">
+      <nav class="navbar navbar-expand-xl">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html"><img src="../images/main-logo.svg" alt="website logo" class="img-fluid"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto my-2 my-lg-0" style="--bs-scroll-height: 100px">
+              <!-- <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+            </li> -->
+              <li class="nav-item">
+                <a class="nav-link active" href="../products/platform.html" aria-current="page">Platform</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../services/services.html">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../products/partnerships.html">Partnerships</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../company/index.html">Company</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../insights/news.html">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../insights/blog.html">Blog</a>
+              </li>
+            </ul>
+            <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+              <svg class="theme-toggle-sun" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+              <svg class="theme-toggle-moon" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+            <a href="../contact/contact.html" class="btn btn-secondary">Contact Us</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <script>
+    /* ============================================================
+       Self-contained dark / light toggle.
+
+       We deliberately do NOT call Quarto's window.quartoToggleColorScheme.
+       That function is unreliable across the site (see bug report). Instead
+       we own the state directly:
+
+         localStorage["quarto-color-scheme"]  = "alternate" (dark) | "default" (light)
+         body.quarto-dark / body.quarto-light = Quarto's class hook
+         html[data-bs-theme]                  = Bootstrap 5 dark-mode hook
+         link.quarto-color-scheme[.alternate] = Quarto's two compiled bundles
+                                                we swap via rel=stylesheet
+                                                / rel=disabled-stylesheet
+
+       The same vocabulary as Quarto so any of Quarto's own readers still
+       agree with what we wrote.
+
+       Order of execution: this script is inline inside <body>, so it runs
+       synchronously while the DOM is parsing. apply() is called once to
+       restore the saved state, and a delegated click listener on document
+       handles the .theme-toggle button no matter when it enters the DOM.
+       ============================================================ */
+    (function(){
+      var KEY = 'quarto-color-scheme';
+
+      function isDark(){
+        try { return localStorage.getItem(KEY) === 'alternate'; }
+        catch(e){ return false; }
+      }
+
+      function swapStylesheets(dark){
+        // Light bundle = .quarto-color-scheme without .quarto-color-alternate
+        document
+          .querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)')
+          .forEach(function(l){ l.rel = dark ? 'disabled-stylesheet' : 'stylesheet'; });
+        // Dark bundle = both classes
+        document
+          .querySelectorAll('link.quarto-color-scheme.quarto-color-alternate')
+          .forEach(function(l){ l.rel = dark ? 'stylesheet' : 'disabled-stylesheet'; });
+      }
+
+      // applyBody is set up by theme-init.html in the head; this function
+      // is for the full re-sync after body has parsed.
+      function apply(){
+        var dark = isDark();
+        if (document.body) {
+          document.body.classList.toggle('quarto-dark', dark);
+          document.body.classList.toggle('quarto-light', !dark);
+        }
+        document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+        swapStylesheets(dark);
+      }
+
+      function setDark(dark){
+        try { localStorage.setItem(KEY, dark ? 'alternate' : 'default'); } catch(e){}
+        apply();
+      }
+
+      // Initial sync - re-apply whatever's in storage so all three signals
+      // agree, regardless of what Quarto's own init may have done.
+      apply();
+      if (!document.body) {
+        document.addEventListener('DOMContentLoaded', apply, { once: true });
+      }
+
+      // Guard against late mutators (Quarto's after-body init, plugins,
+      // anything else) that might flip body.quarto-dark/light or the
+      // html data-bs-theme back to the system preference. We watch and
+      // immediately restore the saved state if it drifts.
+      function lockState(){
+        if (!document.body) return;
+        var dark = isDark();
+        var bodyObs = new MutationObserver(function(){
+          var shouldBeDark = isDark();
+          var hasDark  = document.body.classList.contains('quarto-dark');
+          var hasLight = document.body.classList.contains('quarto-light');
+          if (shouldBeDark && (!hasDark || hasLight)) {
+            document.body.classList.add('quarto-dark');
+            document.body.classList.remove('quarto-light');
+          } else if (!shouldBeDark && (hasDark || !hasLight)) {
+            document.body.classList.remove('quarto-dark');
+            document.body.classList.add('quarto-light');
+          }
+        });
+        bodyObs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+        var htmlObs = new MutationObserver(function(){
+          var shouldBeDark = isDark();
+          var want = shouldBeDark ? 'dark' : 'light';
+          if (document.documentElement.getAttribute('data-bs-theme') !== want) {
+            document.documentElement.setAttribute('data-bs-theme', want);
+          }
+        });
+        htmlObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+      }
+      if (document.body) lockState();
+      else document.addEventListener('DOMContentLoaded', lockState, { once: true });
+
+      // Also force a final re-apply on the load event in case anything ran
+      // even later than DOMContentLoaded (Quarto's after-body init runs on
+      // DOMContentLoaded, plugins can run on load).
+      window.addEventListener('load', apply);
+
+      // Delegated click handler for the toggle button anywhere on the page.
+      document.addEventListener('click', function(e){
+        var btn = e.target && e.target.closest && e.target.closest('.theme-toggle');
+        if (!btn) return;
+        e.preventDefault();
+        setDark(!isDark());
+      });
+
+      // Tiny debug surface so issues can be inspected from the console.
+      window.diTheme = { isDark: isDark, setDark: setDark, apply: apply };
+    })();
+    </script>
+    <script src="../js/scripts.js"></script>
+    <!--  menu stops here (in quarto menu.html) -->
+  
+
+
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../animated/animate.css">
+
+
+
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Platform</h1>
+</div>
+
+<div>
+  <div class="description">
+    An industrial-grade, vendor-neutral omics analysis platform. Validated pipelines, audit-ready by construction, runs on your infrastructure.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Omics analysis platform, Bioinformatics platform, Private Platform, Workflow modules, Omics data workflows, Validated pipelines, Multi-omics, ISO 27001, Audit-ready by construction, Pharma R&amp;D, Vendor-neutral, Cloud-native, On-premise, Single-tenant deployment, Nextflow, Viash, Reproducible bioinformatics</p>
+  </div>
+</div>
+
+</header>
+
+
+<link rel="canonical" href="https://www.data-intuitive.com/products/platform.html">
+
+<!-- 1. HERO -->
+<section class="v-hero page-hero mb-0">
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-md-8 col-xxl-7">
+        <div class="v-hero-left mb-4 mb-md-0">
+          <span class="overline">Platform</span>
+          <h1 class="v-hero-title">Validated omics pipelines any scientist can run</h1>
+          <p>Reproducible, validated pipelines that run via our platform on your own infrastructure. Pick the assay, set the parameters, click run, and get interpretation-ready results in hours, not weeks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM PROCESS - dense single-visual section, matches home page style -->
+<section class="sec-white" id="platform-process">
+  <div class="container">
+    <div class="sec-head-new reveal" style="max-width: 820px;">
+      <span class="overline">How it works</span>
+      <h2>From experimental intent to biological insight</h2>
+    </div>
+
+    <!-- HOW IT WORKS - three structural zones with handover sticking out -->
+    <style>
+      .hiw-flow-svg a { cursor: pointer; text-decoration: none; }
+      .hiw-flow-svg a text { text-decoration: none; }
+      .hiw-flow-svg a rect.hiw-step-rect,
+      .hiw-flow-svg a circle.hiw-step-rect { transition: stroke .15s, filter .15s, fill-opacity .15s; }
+      .hiw-flow-svg a:hover rect.hiw-step-rect,
+      .hiw-flow-svg a:hover circle.hiw-step-rect { stroke-opacity: 1; filter: brightness(1.18); fill-opacity: 0.20; }
+      /* Active step - purple glow on steps 1-3, mint glow on steps 4-7 and the
+         data message band. The B5A8E8-stroke selector matches purple steps,
+         everything else inherits the mint glow. */
+      .hiw-flow-svg a.is-active-step rect.hiw-step-rect,
+      .hiw-flow-svg a.is-active-step circle.hiw-step-rect {
+        stroke: #1FCFA1 !important;
+        stroke-opacity: 1 !important;
+        stroke-width: 2.5 !important;
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(31,207,161,0.55));
+      }
+      .hiw-flow-svg a.is-active-step rect.hiw-step-rect[stroke="#B5A8E8"],
+      .hiw-flow-svg a.is-active-step circle.hiw-step-rect[stroke="#B5A8E8"] {
+        stroke: #B5A8E8 !important;
+        filter: brightness(1.25) drop-shadow(0 0 8px rgba(181,168,232,0.75));
+      }
+      .hiw-flow-svg a:hover text { text-decoration: none; }
+      .hiw-flow-svg a:focus { outline: none; }
+      .hiw-flow-svg a:focus rect.hiw-step-rect,
+      .hiw-flow-svg a:focus circle.hiw-step-rect { stroke-opacity: 1; }
+    </style>
+    <div class="reveal d-none d-lg-block" style="background: #0F1B3D; padding: 28px 28px; border-radius: 12px; font-family: 'DM Sans', sans-serif; margin: 24px 0 16px; max-width: 100%;">
+      <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #9098B5; display: inline-flex; align-items: center; gap: 8px;">
+        <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V6a2 2 0 1 1 4 0v5"></path><path d="M9 11V8a2 2 0 1 0-4 0v6a8 8 0 0 0 8 8h0a6 6 0 0 0 6-6v-4a2 2 0 1 0-4 0"></path><path d="M13 11V7a2 2 0 1 1 4 0v4"></path></svg>
+        Click any block to read the detail below
+      </p>
+      <svg class="hiw-flow-svg" width="100%" viewbox="-130 0 1400 420" role="img" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;" aria-labelledby="hiwTitle hiwDesc">
+        <title id="hiwTitle">Data Intuitive – how it works</title>
+        <desc id="hiwDesc">Seven-step user journey. Raw omics data on the left, three configuration steps on the Data Intuitive platform (1-3), a handover (4), then three execution steps inside your own environment (5-7), and a data-privacy message band you can click for detail.</desc>
+
+        <defs>
+          <lineargradient id="hiwPlatformZone" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#1F1A40;stop-opacity:0.35"></stop>
+            <stop offset="100%" style="stop-color:#2D2654;stop-opacity:0.25"></stop>
+          </lineargradient>
+          <lineargradient id="hiwCustomerZone" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#142347;stop-opacity:0.35"></stop>
+            <stop offset="100%" style="stop-color:#1A2C5A;stop-opacity:0.25"></stop>
+          </lineargradient>
+          <lineargradient id="hiwHandoffZone" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1FCFA1;stop-opacity:0.22"></stop>
+            <stop offset="100%" style="stop-color:#1FCFA1;stop-opacity:0.12"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMessageGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#1FCFA1;stop-opacity:0.08"></stop>
+            <stop offset="50%" style="stop-color:#1FCFA1;stop-opacity:0.16"></stop>
+            <stop offset="100%" style="stop-color:#1FCFA1;stop-opacity:0.08"></stop>
+          </lineargradient>
+          <filter id="hiwHandoverGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <fegaussianblur in="SourceAlpha" stddeviation="6"></fegaussianblur>
+            <feflood flood-color="#1FCFA1" flood-opacity="0.55"></feflood>
+            <fecomposite in2="SourceAlpha" operator="in"></fecomposite>
+            <femerge>
+              <femergenode></femergenode>
+              <femergenode in="SourceGraphic"></femergenode>
+            </femerge>
+          </filter>
+          <marker id="hiwArrowStep" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#7A88B5" stroke-width="1.5" stroke-linecap="round"></path>
+          </marker>
+          <marker id="hiwArrowMint" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="8" markerheight="8" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#1FCFA1" stroke-width="1.5" stroke-linecap="round"></path>
+          </marker>
+        </defs>
+
+        <!-- SOURCE column (outside the three zones) -->
+        <text x="-100" y="60" font-size="9" font-weight="700" letter-spacing="1.8" fill="#7A88B5">SOURCE</text>
+        <rect x="-110" y="80" width="100" height="200" rx="14" fill="rgba(15,27,61,0.30)" stroke="#7A88B5" stroke-width="0.8" stroke-opacity="0.55" stroke-dasharray="3,3"></rect>
+        <g transform="translate(-78, 124)" stroke="#9098B5" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="14" cy="4" rx="14" ry="3.8"></ellipse>
+          <path d="M0 4 L0 26 C0 28 6 30 14 30 C22 30 28 28 28 26 L28 4"></path>
+          <path d="M0 15 C0 17 6 19 14 19 C22 19 28 17 28 15"></path>
+        </g>
+        <text x="-60" y="208" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">Raw omics</text>
+        <text x="-60" y="224" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">data</text>
+        <line x1="0" y1="170" x2="22" y2="170" stroke="#9098B5" stroke-width="1.5" marker-end="url(#hiwArrowStep)"></line>
+
+        <!-- HOSTED BY DATA INTUITIVE zone -->
+        <rect x="30" y="60" width="510" height="220" rx="14" fill="url(#hiwPlatformZone)" stroke="#B5A8E8" stroke-width="1.6" stroke-opacity="0.85"></rect>
+        <text x="56" y="88" font-size="10.5" font-weight="700" letter-spacing="1.8" fill="#B5A8E8">HOSTED BY DATA INTUITIVE</text>
+        <text x="56" y="118" font-size="22" font-weight="600" fill="#FFFFFF">In our platform</text>
+        <text x="56" y="140" font-size="12" fill="#C5D1E8">Browser-based · No data passes through</text>
+
+        <!-- STEP 1 -->
+        <a href="#step-1" aria-label="See step 1 detail: Respond to experiment questions">
+          <circle class="hiw-step-rect" cx="120" cy="200" r="22" fill="#B5A8E8" fill-opacity="0.10" stroke="#B5A8E8" stroke-width="1.6"></circle>
+          <text x="120" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#C5BFE8">1</text>
+          <text x="120" y="248" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">Respond to experiment</text>
+          <text x="120" y="264" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">questions</text>
+        </a>
+        <line x1="145" y1="200" x2="260" y2="200" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwArrowStep)"></line>
+
+        <!-- STEP 2 -->
+        <a href="#step-2" aria-label="See step 2 detail: Select your instrument and assay kit">
+          <circle class="hiw-step-rect" cx="285" cy="200" r="22" fill="#B5A8E8" fill-opacity="0.10" stroke="#B5A8E8" stroke-width="1.6"></circle>
+          <text x="285" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#C5BFE8">2</text>
+          <text x="285" y="248" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">Select your instrument</text>
+          <text x="285" y="264" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">&amp; assay kit</text>
+        </a>
+        <line x1="310" y1="200" x2="425" y2="200" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwArrowStep)"></line>
+
+        <!-- STEP 3 -->
+        <a href="#step-3" aria-label="See step 3 detail: We compose your data workflow">
+          <circle class="hiw-step-rect" cx="450" cy="200" r="22" fill="#B5A8E8" fill-opacity="0.10" stroke="#B5A8E8" stroke-width="1.6"></circle>
+          <text x="450" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#C5BFE8">3</text>
+          <text x="450" y="248" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">We compose your</text>
+          <text x="450" y="264" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">data workflow</text>
+        </a>
+
+        <!-- Mint handoff arrows — symmetric 7/16/7 gap-arrow-gap around the handover -->
+        <line x1="547" y1="170" x2="563" y2="170" stroke="#1FCFA1" stroke-width="2.2" marker-end="url(#hiwArrowMint)"></line>
+        <line x1="697" y1="170" x2="713" y2="170" stroke="#1FCFA1" stroke-width="2.2" marker-end="url(#hiwArrowMint)"></line>
+
+        <!-- HANDOVER zone (taller, sticks out above and below) -->
+        <a href="#step-handover" aria-label="See handover (step 4): We deliver the workflow">
+          <rect class="hiw-step-rect" x="570" y="40" width="120" height="260" rx="14" fill="url(#hiwHandoffZone)" stroke="#1FCFA1" stroke-width="3" stroke-opacity="1" filter="url(#hiwHandoverGlow)"></rect>
+          <text x="630" y="68" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="2" fill="#5DDFB8">HANDOVER</text>
+          <circle cx="630" cy="118" r="26" fill="#1FCFA1" fill-opacity="0.18" stroke="#5DDFB8" stroke-width="1.4"></circle>
+          <text x="630" y="125" text-anchor="middle" font-size="16" font-weight="700" fill="#5DDFB8">4</text>
+          <g transform="translate(608, 162)" stroke="#5DDFB8" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="0" y="6" width="44" height="34" rx="2.5"></rect>
+            <line x1="0" y1="17" x2="44" y2="17"></line>
+            <line x1="22" y1="6" x2="22" y2="17"></line>
+            <path d="M 10 6 L 22 -2 L 34 6"></path>
+          </g>
+          <text x="630" y="244" text-anchor="middle" font-size="13" font-weight="600" fill="#FFFFFF">We deliver</text>
+          <text x="630" y="262" text-anchor="middle" font-size="13" font-weight="600" fill="#FFFFFF">the workflow</text>
+        </a>
+
+        <!-- YOUR ENVIRONMENT zone (510px wide to match hosted) -->
+        <rect x="720" y="60" width="510" height="220" rx="14" fill="url(#hiwCustomerZone)" stroke="#1FCFA1" stroke-width="1.6" stroke-dasharray="6,4" stroke-opacity="0.95"></rect>
+        <text x="746" y="88" font-size="10.5" font-weight="700" letter-spacing="1.8" fill="#1FCFA1">YOUR ENVIRONMENT</text>
+        <text x="746" y="118" font-size="22" font-weight="600" fill="#FFFFFF">On your infrastructure</text>
+        <text x="746" y="140" font-size="12" fill="#C5D1E8">Your cloud, HPC or on-prem · Your data, your compute, your audit</text>
+
+        <!-- STEP 5 — step centres 165px apart, matching hosted side -->
+        <a href="#step-4" aria-label="See step 5 detail: You start the workflow">
+          <circle class="hiw-step-rect" cx="810" cy="200" r="22" fill="#1FCFA1" fill-opacity="0.10" stroke="#1FCFA1" stroke-width="1.6"></circle>
+          <text x="810" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#5DDFB8">5</text>
+          <text x="810" y="248" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">You start the</text>
+          <text x="810" y="264" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">workflow</text>
+        </a>
+        <line x1="835" y1="200" x2="950" y2="200" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwArrowStep)"></line>
+
+        <!-- STEP 6 -->
+        <a href="#step-5" aria-label="See step 6 detail: Workflow runs in your compute">
+          <circle class="hiw-step-rect" cx="975" cy="200" r="22" fill="#1FCFA1" fill-opacity="0.10" stroke="#1FCFA1" stroke-width="1.6"></circle>
+          <text x="975" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#5DDFB8">6</text>
+          <text x="975" y="248" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">Workflow runs in</text>
+          <text x="975" y="264" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">your compute</text>
+        </a>
+        <line x1="1000" y1="200" x2="1115" y2="200" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwArrowStep)"></line>
+
+        <!-- STEP 7 -->
+        <a href="#step-6" aria-label="See step 7 detail: You start interpreting results">
+          <circle class="hiw-step-rect" cx="1140" cy="200" r="22" fill="#1FCFA1" fill-opacity="0.10" stroke="#1FCFA1" stroke-width="1.6"></circle>
+          <text x="1140" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#5DDFB8">7</text>
+          <text x="1140" y="248" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">You start</text>
+          <text x="1140" y="264" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">interpreting results</text>
+        </a>
+
+        <!-- CORE MESSAGE BAND - clickable for data privacy detail (1340 wide to span source-left to env-right) -->
+        <a href="#step-data" aria-label="See the data privacy detail">
+          <rect class="hiw-step-rect" x="-110" y="324" width="1340" height="80" rx="12" fill="url(#hiwMessageGrad)" stroke="#1FCFA1" stroke-width="0.8" stroke-opacity="0.6"></rect>
+          <g transform="translate(-78, 348)" stroke="#1FCFA1" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 16 0 L 30 6 L 30 18 C 30 26 24 32 16 36 C 8 32 2 26 2 18 L 2 6 Z"></path>
+            <path d="M 11 18 L 15 22 L 22 14"></path>
+          </g>
+          <text x="-22" y="358" font-size="17" font-weight="600" fill="#FFFFFF">Your data stays in your environment.</text>
+          <text x="-22" y="382" font-size="12" fill="#5DDFB8">We never even see it. Configuration happens with us. Data and compute stay with you.</text>
+          <text x="1198" y="372" text-anchor="end" font-size="10" font-weight="700" fill="#5DDFB8" letter-spacing="1.4">CLICK FOR DETAIL →</text>
+        </a>
+      </svg>
+    </div>
+
+    <!-- HOW IT WORKS - mobile / tablet portrait (< lg), stacked HTML vertical flow -->
+    <style>
+      .pp-flow-mob {
+        background: #0F1B3D;
+        border-radius: 12px;
+        padding: 28px 20px 24px;
+        margin: 16px auto 24px;
+        max-width: 520px;
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #FFFFFF;
+      }
+      .pp-flow-mob-source {
+        display: flex; align-items: center; gap: 14px;
+        padding: 14px 14px; margin: 0 0 12px;
+        border: 1.2px dashed rgba(154, 168, 197, 0.5);
+        border-radius: 12px;
+        background: rgba(15, 27, 61, 0.55);
+      }
+      .pp-flow-mob-source-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px;
+        color: #9098B5; text-transform: uppercase;
+      }
+      .pp-flow-mob-source-name { font-size: 15px; font-weight: 500; color: #FFFFFF; margin-top: 2px; }
+      .pp-flow-mob-arrow {
+        display: flex; justify-content: center;
+        color: #9098B5;
+        margin: 4px 0;
+      }
+      .pp-flow-mob-arrow.is-mint { color: #1FCFA1; }
+      .pp-flow-mob-zone {
+        border-radius: 12px;
+        padding: 16px 14px 10px;
+        background: rgba(31, 26, 64, 0.45);
+        border: 1px solid rgba(181, 168, 232, 0.55);
+      }
+      .pp-flow-mob-zone.is-customer {
+        background: rgba(20, 35, 71, 0.55);
+        border-color: rgba(31, 207, 161, 0.65);
+        border-style: dashed;
+      }
+      .pp-flow-mob-zone-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 9.5px; font-weight: 700; letter-spacing: 1.8px;
+        color: #B5A8E8; text-transform: uppercase;
+        margin: 0 0 2px;
+      }
+      .pp-flow-mob-zone.is-customer .pp-flow-mob-zone-label { color: #1FCFA1; }
+      .pp-flow-mob-zone-title {
+        font-size: 17px; font-weight: 600; color: #FFFFFF;
+        margin: 0 0 2px; line-height: 1.2;
+      }
+      .pp-flow-mob-zone-sub { font-size: 11px; color: #9FAACB; margin: 0 0 14px; }
+      .pp-flow-mob-steps { display: flex; flex-direction: column; }
+      .pp-flow-mob-step {
+        display: flex; align-items: center; gap: 14px;
+        padding: 8px 4px;
+        text-decoration: none; color: #FFFFFF;
+        position: relative; border-radius: 8px;
+        transition: background .15s;
+      }
+      .pp-flow-mob-step:hover { background: rgba(255,255,255,0.05); color: #FFFFFF; }
+      .pp-flow-mob-step:not(:last-child)::after {
+        content: ''; position: absolute;
+        left: 19px; top: 42px; height: 14px; width: 1px;
+        background: rgba(181, 168, 232, 0.45);
+      }
+      .pp-flow-mob-zone.is-customer .pp-flow-mob-step:not(:last-child)::after {
+        background: rgba(31, 207, 161, 0.5);
+      }
+      .pp-flow-mob-step-num {
+        width: 28px; height: 28px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: rgba(181, 168, 232, 0.16);
+        border: 0.8px solid rgba(181, 168, 232, 0.7);
+        color: #C5BFE8;
+        font-size: 13px; font-weight: 700;
+        flex-shrink: 0;
+      }
+      .pp-flow-mob-zone.is-customer .pp-flow-mob-step-num {
+        background: rgba(31, 207, 161, 0.16);
+        border-color: rgba(31, 207, 161, 0.7);
+        color: #5DDFB8;
+      }
+      .pp-flow-mob-step-label { font-size: 15px; font-weight: 500; color: #FFFFFF; line-height: 1.3; }
+      .pp-flow-mob-handover {
+        display: flex; align-items: center; gap: 14px;
+        padding: 16px 16px; margin: 4px 0;
+        border: 2px solid #1FCFA1; border-radius: 12px;
+        background: linear-gradient(135deg, rgba(31, 207, 161, 0.22) 0%, rgba(31, 207, 161, 0.10) 100%);
+        text-decoration: none;
+        box-shadow: 0 6px 20px rgba(31, 207, 161, 0.15);
+        transition: background .15s, transform .15s;
+      }
+      .pp-flow-mob-handover:hover {
+        background: linear-gradient(135deg, rgba(31, 207, 161, 0.30) 0%, rgba(31, 207, 161, 0.16) 100%);
+        transform: translateY(-1px);
+      }
+      .pp-flow-mob-handover-icon { color: #5DDFB8; flex-shrink: 0; }
+      .pp-flow-mob-handover-text { display: flex; flex-direction: column; }
+      .pp-flow-mob-handover-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 10.5px; font-weight: 700; letter-spacing: 2px;
+        color: #5DDFB8; text-transform: uppercase;
+      }
+      .pp-flow-mob-handover-name {
+        font-size: 15px; font-weight: 600; color: #FFFFFF;
+        margin-top: 2px; line-height: 1.3;
+      }
+      .pp-flow-mob-message {
+        display: flex; align-items: flex-start; gap: 12px;
+        margin: 16px 0 0;
+        padding: 16px 16px;
+        border-radius: 12px;
+        background: linear-gradient(90deg, rgba(31,207,161,0.10) 0%, rgba(31,207,161,0.18) 50%, rgba(31,207,161,0.10) 100%);
+        border: 0.8px solid rgba(31, 207, 161, 0.55);
+        color: inherit; text-decoration: none;
+        transition: background .15s, border-color .15s;
+      }
+      a.pp-flow-mob-message { cursor: pointer; }
+      a.pp-flow-mob-message:hover {
+        border-color: rgba(31, 207, 161, 0.9);
+        background: linear-gradient(90deg, rgba(31,207,161,0.14) 0%, rgba(31,207,161,0.24) 50%, rgba(31,207,161,0.14) 100%);
+      }
+      .pp-flow-mob-message-icon { color: #1FCFA1; flex-shrink: 0; margin-top: 2px; }
+      .pp-flow-mob-message-body { display: flex; flex-direction: column; gap: 4px; }
+      .pp-flow-mob-message-text { font-size: 14.5px; font-weight: 600; color: #FFFFFF; line-height: 1.35; }
+      .pp-flow-mob-message-sub { font-size: 12.5px; color: #5DDFB8; line-height: 1.4; }
+    </style>
+
+    <div class="pp-flow-mob reveal d-block d-lg-none" aria-label="Platform steps">
+      <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #9098B5; display: inline-flex; align-items: center; gap: 8px;">
+        <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V6a2 2 0 1 1 4 0v5"></path><path d="M9 11V8a2 2 0 1 0-4 0v6a8 8 0 0 0 8 8h0a6 6 0 0 0 6-6v-4a2 2 0 1 0-4 0"></path><path d="M13 11V7a2 2 0 1 1 4 0v4"></path></svg>
+        Tap any block to read the detail below
+      </p>
+      <div class="pp-flow-mob-source">
+        <svg width="28" height="30" viewbox="0 0 28 30" fill="none" stroke="#9098B5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;">
+          <ellipse cx="14" cy="4" rx="13" ry="3.5"></ellipse>
+          <path d="M1 4 L1 24 C1 26 7 28 14 28 C21 28 27 26 27 24 L27 4"></path>
+          <path d="M1 14 C1 16 7 18 14 18 C21 18 27 16 27 14"></path>
+        </svg>
+        <div style="display: flex; flex-direction: column;">
+          <span class="pp-flow-mob-source-label">Source</span>
+          <span class="pp-flow-mob-source-name">Raw omics data</span>
+        </div>
+      </div>
+
+      <div class="pp-flow-mob-arrow" aria-hidden="true">
+        <svg width="18" height="24" viewbox="0 0 18 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="9" y1="2" x2="9" y2="18"></line>
+          <path d="M3 16 L9 22 L15 16"></path>
+        </svg>
+      </div>
+
+      <div class="pp-flow-mob-zone">
+        <p class="pp-flow-mob-zone-label">Hosted by Data Intuitive</p>
+        <h4 class="pp-flow-mob-zone-title">In our platform</h4>
+        <p class="pp-flow-mob-zone-sub">Browser-based · No data passes through</p>
+        <div class="pp-flow-mob-steps">
+          <a href="#step-1" class="pp-flow-mob-step">
+            <span class="pp-flow-mob-step-num">1</span>
+            <span class="pp-flow-mob-step-label">Respond to experiment questions</span>
+          </a>
+          <a href="#step-2" class="pp-flow-mob-step">
+            <span class="pp-flow-mob-step-num">2</span>
+            <span class="pp-flow-mob-step-label">Select your instrument &amp; assay kit</span>
+          </a>
+          <a href="#step-3" class="pp-flow-mob-step">
+            <span class="pp-flow-mob-step-num">3</span>
+            <span class="pp-flow-mob-step-label">We compose your data workflow</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pp-flow-mob-arrow is-mint" aria-hidden="true">
+        <svg width="18" height="24" viewbox="0 0 18 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="9" y1="2" x2="9" y2="18"></line>
+          <path d="M3 16 L9 22 L15 16"></path>
+        </svg>
+      </div>
+
+      <a href="#step-handover" class="pp-flow-mob-handover">
+        <span class="pp-flow-mob-step-num" style="background: rgba(31, 207, 161, 0.18); border-color: rgba(31, 207, 161, 0.75); color: #5DDFB8; flex-shrink: 0;">4</span>
+        <svg class="pp-flow-mob-handover-icon" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="8" width="18" height="13" rx="2"></rect>
+          <line x1="3" y1="13" x2="21" y2="13"></line>
+          <line x1="12" y1="8" x2="12" y2="13"></line>
+          <path d="M 8 8 L 12 4 L 16 8"></path>
+        </svg>
+        <span class="pp-flow-mob-handover-text">
+          <span class="pp-flow-mob-handover-label">Handover</span>
+          <span class="pp-flow-mob-handover-name">We deliver the workflow</span>
+        </span>
+      </a>
+
+      <div class="pp-flow-mob-arrow is-mint" aria-hidden="true">
+        <svg width="18" height="24" viewbox="0 0 18 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="9" y1="2" x2="9" y2="18"></line>
+          <path d="M3 16 L9 22 L15 16"></path>
+        </svg>
+      </div>
+
+      <div class="pp-flow-mob-zone is-customer">
+        <p class="pp-flow-mob-zone-label">Your environment</p>
+        <h4 class="pp-flow-mob-zone-title">On your infrastructure</h4>
+        <p class="pp-flow-mob-zone-sub">Your cloud, HPC or on-prem · Your data, your compute, your audit</p>
+        <div class="pp-flow-mob-steps">
+          <a href="#step-4" class="pp-flow-mob-step">
+            <span class="pp-flow-mob-step-num">5</span>
+            <span class="pp-flow-mob-step-label">You start the workflow</span>
+          </a>
+          <a href="#step-5" class="pp-flow-mob-step">
+            <span class="pp-flow-mob-step-num">6</span>
+            <span class="pp-flow-mob-step-label">Workflow runs in your compute</span>
+          </a>
+          <a href="#step-6" class="pp-flow-mob-step">
+            <span class="pp-flow-mob-step-num">7</span>
+            <span class="pp-flow-mob-step-label">You start interpreting results</span>
+          </a>
+        </div>
+
+        <a href="#step-data" class="pp-flow-mob-message" aria-label="See the data privacy detail">
+          <svg class="pp-flow-mob-message-icon" width="22" height="22" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M 12 2 L 21 6 L 21 13 C 21 18 17 22 12 23 C 7 22 3 18 3 13 L 3 6 Z"></path>
+            <path d="M 8 12 L 11 15 L 16 9"></path>
+          </svg>
+          <span class="pp-flow-mob-message-body">
+            <span class="pp-flow-mob-message-text">Your data stays in your environment.</span>
+            <span class="pp-flow-mob-message-sub">We never even see it. Configuration happens with us. Data and compute stay with you. Tap for detail.</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- OLD vertical SVG kept hidden as fallback; the HTML mobile flow above replaces it -->
+    <div class="reveal mx-auto d-none" style="background: #0F1B3D; padding: 20px 14px; border-radius: 12px; font-family: 'DM Sans', sans-serif; margin: 32px auto; max-width: 420px;">
+      <svg width="100%" viewbox="0 0 380 1770" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="hiwMbTitle hiwMbDesc">
+        <title id="hiwMbTitle">Data Intuitive – how it works (mobile)</title>
+        <desc id="hiwMbDesc">Six-step user journey on the Data Intuitive platform, stacked vertically. Steps 1-3 happen on Data Intuitive infrastructure (Experiment facts, Experiment question, Prepare data workflow). A handoff zone shows the pipeline being shipped. Steps 4-6 happen on the customer's infrastructure (Run, Analyse, Interpret).</desc>
+
+        <defs>
+          <lineargradient id="hiwMbPlatformZone" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#1F1A40;stop-opacity:0.35"></stop>
+            <stop offset="100%" style="stop-color:#2D2654;stop-opacity:0.25"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbCustomerZone" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#142347;stop-opacity:0.35"></stop>
+            <stop offset="100%" style="stop-color:#1A2C5A;stop-opacity:0.25"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbHandoffZone" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1FCFA1;stop-opacity:0.10"></stop>
+            <stop offset="100%" style="stop-color:#1FCFA1;stop-opacity:0.04"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbSetupGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1F1A40;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#2D2654;stop-opacity:1"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbRunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#142347;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#1A2C5A;stop-opacity:1"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbMessageGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#1FCFA1;stop-opacity:0.08"></stop>
+            <stop offset="50%" style="stop-color:#1FCFA1;stop-opacity:0.16"></stop>
+            <stop offset="100%" style="stop-color:#1FCFA1;stop-opacity:0.08"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbPipeLine1" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#B5A8E8" stop-opacity="0.3"></stop>
+            <stop offset="50%" stop-color="#B5A8E8" stop-opacity="0.9"></stop>
+            <stop offset="100%" stop-color="#1FCFA1" stop-opacity="0.9"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbPipeLine2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#1FCFA1" stop-opacity="0.9"></stop>
+            <stop offset="100%" stop-color="#B5A8E8" stop-opacity="0.9"></stop>
+          </lineargradient>
+          <lineargradient id="hiwMbPipeLine3" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#B5A8E8" stop-opacity="0.9"></stop>
+            <stop offset="100%" stop-color="#1FCFA1" stop-opacity="0.3"></stop>
+          </lineargradient>
+          <marker id="hiwMbArrowStep" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#7A88B5" stroke-width="1.5" stroke-linecap="round"></path>
+          </marker>
+          <marker id="hiwMbArrowMint" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="8" markerheight="8" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#1FCFA1" stroke-width="1.5" stroke-linecap="round"></path>
+          </marker>
+        </defs>
+
+        <text x="16" y="22" font-size="10" font-weight="500" letter-spacing="1.6" fill="#1FCFA1">HOW IT WORKS</text>
+
+        <!-- RAW OMICS DATA (source, above zone 1) -->
+        <rect x="16" y="40" width="348" height="120" rx="14" fill="rgba(15,27,61,0.45)" stroke="#7A88B5" stroke-width="0.6" stroke-opacity="0.55" stroke-dasharray="3,3"></rect>
+        <text x="32" y="70" font-size="10" font-weight="600" letter-spacing="1.6" fill="#9098B5">SOURCE</text>
+        <g transform="translate(150, 90)" stroke="#9098B5" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="13" cy="3" rx="13" ry="3.5"></ellipse>
+          <path d="M0 3 L0 24 C0 26 6 28 13 28 C20 28 26 26 26 24 L26 3"></path>
+          <path d="M0 13 C0 15 6 17 13 17 C20 17 26 15 26 13"></path>
+        </g>
+        <text x="190" y="146" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">Raw omics data</text>
+
+        <line x1="190" y1="168" x2="190" y2="190" stroke="#9098B5" stroke-width="1.5" marker-end="url(#hiwMbArrowStep)"></line>
+
+        <!-- ZONE 1: HOSTED BY DATA INTUITIVE -->
+        <rect x="16" y="200" width="348" height="724" rx="14" fill="url(#hiwMbPlatformZone)" stroke="#B5A8E8" stroke-width="0.7" stroke-opacity="0.4"></rect>
+        <text x="32" y="230" font-size="10" font-weight="600" letter-spacing="1.6" fill="#B5A8E8">HOSTED BY DATA INTUITIVE</text>
+        <text x="32" y="254" font-size="13" font-weight="500" fill="#FFFFFF">In our platform</text>
+        <text x="32" y="274" font-size="10" fill="#9FAACB">Browser-based · No data passes through</text>
+
+        <!-- STEP 1 -->
+        <rect x="32" y="300" width="316" height="186" rx="10" fill="url(#hiwMbSetupGrad)" stroke="#B5A8E8" stroke-width="0.6" stroke-opacity="0.6"></rect>
+        <circle cx="190" cy="332" r="16" fill="#B5A8E8" fill-opacity="0.18" stroke="#B5A8E8" stroke-width="0.8"></circle>
+        <text x="190" y="338" text-anchor="middle" font-size="14" font-weight="600" fill="#C5BFE8">1</text>
+        <text x="190" y="374" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">Assay kit</text>
+        <text x="190" y="392" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">&amp; instrument</text>
+        <text x="190" y="422" text-anchor="middle" font-size="11" fill="#9FAACB">Assay kit used?</text>
+        <text x="190" y="440" text-anchor="middle" font-size="11" fill="#9FAACB">Analytical instrument?</text>
+        <text x="190" y="458" text-anchor="middle" font-size="11" fill="#9FAACB">Custom settings</text>
+        <text x="190" y="476" text-anchor="middle" font-size="11" fill="#9FAACB">Desired output format</text>
+
+        <line x1="190" y1="486" x2="190" y2="508" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwMbArrowStep)"></line>
+
+        <!-- STEP 2 -->
+        <rect x="32" y="516" width="316" height="206" rx="10" fill="url(#hiwMbSetupGrad)" stroke="#B5A8E8" stroke-width="0.6" stroke-opacity="0.6"></rect>
+        <circle cx="190" cy="548" r="16" fill="#B5A8E8" fill-opacity="0.18" stroke="#B5A8E8" stroke-width="0.8"></circle>
+        <text x="190" y="554" text-anchor="middle" font-size="14" font-weight="600" fill="#C5BFE8">2</text>
+        <text x="190" y="590" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">Experiment</text>
+        <text x="190" y="608" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">question</text>
+        <text x="190" y="638" text-anchor="middle" font-size="11" fill="#9FAACB">What you want to learn</text>
+        <text x="190" y="656" text-anchor="middle" font-size="11" fill="#9FAACB">from the data?</text>
+        <text x="190" y="680" text-anchor="middle" font-size="10" fill="#7A88B5">DE, cell types, variants</text>
+
+        <line x1="190" y1="722" x2="190" y2="744" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwMbArrowStep)"></line>
+
+        <!-- STEP 3 -->
+        <rect x="32" y="752" width="316" height="158" rx="10" fill="url(#hiwMbSetupGrad)" stroke="#B5A8E8" stroke-width="0.6" stroke-opacity="0.6"></rect>
+        <circle cx="190" cy="782" r="16" fill="#B5A8E8" fill-opacity="0.18" stroke="#B5A8E8" stroke-width="0.8"></circle>
+        <text x="190" y="788" text-anchor="middle" font-size="14" font-weight="600" fill="#C5BFE8">3</text>
+        <text x="190" y="824" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">Prepare data workflow</text>
+        <text x="190" y="850" text-anchor="middle" font-size="11" fill="#9FAACB">Platform builds the omics data</text>
+        <text x="190" y="868" text-anchor="middle" font-size="11" fill="#9FAACB">pipeline from existing modules.</text>
+
+        <line x1="190" y1="932" x2="190" y2="960" stroke="#1FCFA1" stroke-width="2.2" marker-end="url(#hiwMbArrowMint)"></line>
+
+        <!-- ZONE 2: HANDOFF -->
+        <rect x="16" y="968" width="348" height="90" rx="14" fill="url(#hiwMbHandoffZone)" stroke="#1FCFA1" stroke-width="1.4" stroke-dasharray="5,4" stroke-opacity="0.75"></rect>
+        <text x="190" y="1000" text-anchor="middle" font-size="15" font-weight="600" letter-spacing="1.2" fill="#5DDFB8">HANDOVER</text>
+        <text x="190" y="1018" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">Composed omics workflow</text>
+        <text x="190" y="1036" text-anchor="middle" font-size="13" font-weight="500" fill="#FFFFFF">for the experiment</text>
+
+        <line x1="190" y1="1066" x2="190" y2="1094" stroke="#1FCFA1" stroke-width="2.2" marker-end="url(#hiwMbArrowMint)"></line>
+
+        <!-- ZONE 3: YOUR ENVIRONMENT -->
+        <rect x="16" y="1102" width="348" height="476" rx="14" fill="url(#hiwMbCustomerZone)" stroke="#1FCFA1" stroke-width="0.7" stroke-opacity="0.4"></rect>
+        <text x="32" y="1132" font-size="10" font-weight="600" letter-spacing="1.6" fill="#1FCFA1">YOUR ENVIRONMENT</text>
+        <text x="32" y="1156" font-size="13" font-weight="500" fill="#FFFFFF">On your infrastructure</text>
+        <text x="32" y="1176" font-size="10" fill="#9FAACB">Your cloud, HPC or on-prem · Your data, your audit</text>
+
+        <!-- STEP 4 -->
+        <rect x="32" y="1202" width="316" height="106" rx="10" fill="url(#hiwMbRunGrad)" stroke="#1FCFA1" stroke-width="0.6" stroke-opacity="0.7"></rect>
+        <circle cx="190" cy="1232" r="16" fill="#1FCFA1" fill-opacity="0.15" stroke="#1FCFA1" stroke-width="0.8"></circle>
+        <text x="190" y="1238" text-anchor="middle" font-size="14" font-weight="600" fill="#5DDFB8">4</text>
+        <text x="190" y="1274" text-anchor="middle" font-size="16" font-weight="500" fill="#FFFFFF">Run</text>
+        <text x="190" y="1296" text-anchor="middle" font-size="11" fill="#9FAACB">Pipeline executes on your compute.</text>
+
+        <line x1="190" y1="1308" x2="190" y2="1330" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwMbArrowStep)"></line>
+
+        <!-- STEP 5 -->
+        <rect x="32" y="1338" width="316" height="106" rx="10" fill="url(#hiwMbRunGrad)" stroke="#1FCFA1" stroke-width="0.6" stroke-opacity="0.7"></rect>
+        <circle cx="190" cy="1368" r="16" fill="#1FCFA1" fill-opacity="0.15" stroke="#1FCFA1" stroke-width="0.8"></circle>
+        <text x="190" y="1374" text-anchor="middle" font-size="14" font-weight="600" fill="#5DDFB8">5</text>
+        <text x="190" y="1410" text-anchor="middle" font-size="16" font-weight="500" fill="#FFFFFF">Analyse</text>
+        <text x="190" y="1432" text-anchor="middle" font-size="11" fill="#9FAACB">QC, counts, variants, harmonised outputs</text>
+
+        <line x1="190" y1="1444" x2="190" y2="1466" stroke="#7A88B5" stroke-width="1.5" marker-end="url(#hiwMbArrowStep)"></line>
+
+        <!-- STEP 6 -->
+        <rect x="32" y="1474" width="316" height="106" rx="10" fill="url(#hiwMbRunGrad)" stroke="#1FCFA1" stroke-width="0.6" stroke-opacity="0.7"></rect>
+        <circle cx="190" cy="1504" r="16" fill="#1FCFA1" fill-opacity="0.15" stroke="#1FCFA1" stroke-width="0.8"></circle>
+        <text x="190" y="1510" text-anchor="middle" font-size="14" font-weight="600" fill="#5DDFB8">6</text>
+        <text x="190" y="1546" text-anchor="middle" font-size="16" font-weight="500" fill="#FFFFFF">Interpret</text>
+        <text x="190" y="1568" text-anchor="middle" font-size="11" fill="#9FAACB">Biological insight, biomarkers, report</text>
+
+        <!-- CORE MESSAGE BAND -->
+        <rect x="16" y="1602" width="348" height="156" rx="12" fill="url(#hiwMbMessageGrad)" stroke="#1FCFA1" stroke-width="0.8" stroke-opacity="0.6"></rect>
+        <g transform="translate(174, 1620)" stroke="#1FCFA1" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 16 0 L 30 6 L 30 18 C 30 26 24 32 16 36 C 8 32 2 26 2 18 L 2 6 Z"></path>
+          <path d="M 11 18 L 15 22 L 22 14"></path>
+        </g>
+        <text x="190" y="1698" text-anchor="middle" font-size="18" font-weight="600" fill="#FFFFFF">Your data stays in your environment.</text>
+        <text x="190" y="1722" text-anchor="middle" font-size="12" fill="#5DDFB8">We never even see it.</text>
+        <text x="190" y="1742" text-anchor="middle" font-size="11" fill="#5DDFB8">Configuration with us. Data and compute with you.</text>
+      </svg>
+    </div>
+
+    <!-- STEP DETAILS - one compact block per pill, anchor targets for #step-N -->
+    <style>
+      .pp-detail-grid { display: block; max-width: 100%; margin: 16px 0 0; }
+      .pp-detail-grid-3col { display: block; }
+      .pp-detail-grid-3col > .pp-detail { width: 100%; max-width: 100%; margin-bottom: 0; }
+      /* Single-active mode - show one panel at a time, always next to the sticky graphic */
+      .pp-detail { display: none !important; }
+      .pp-detail.is-open { display: flex !important; }
+      .handover-frame { display: none !important; }
+      .handover-frame.is-open { display: block !important; }
+      .pp-detail-grid + .pp-detail-grid { margin-top: 0; }
+      /* Lock all detail panels (steps + handover) to the SAME fixed total height on desktop
+         so every block renders identically. box-sizing folds padding + border into the
+         height; overflow auto is a safety net but the height is sized to fit the tallest
+         block (4 bullets + 2 CTAs) without scrolling. Mobile rules below reset to auto. */
+      .pp-detail.is-open,
+      .handover-frame.is-open {
+        box-sizing: border-box !important;
+        height: 520px !important;
+        min-height: 520px !important;
+        max-height: 520px !important;
+        overflow: auto;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+      /* Mobile (<= 991px): no graphic; show ALL step + handover blocks stacked open. */
+      @media (max-width: 991.98px) {
+        .pp-flow-svg-wrap-mobile,
+        .reveal.d-md-block.d-none-mobile { display: none !important; }
+        .pp-detail,
+        .pp-detail.is-open,
+        .handover-frame,
+        .handover-frame.is-open {
+          display: flex !important;
+          flex-direction: column;
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+          min-height: 0 !important;
+          max-height: none !important;
+          overflow: visible !important;
+          margin: 0 0 16px !important;
+          cursor: pointer;
+          transition: border-color .2s, background .2s, box-shadow .2s;
+        }
+        .handover-frame,
+        .handover-frame.is-open { display: block !important; }
+        /* Hide the +/- toggle indicator on mobile */
+        .pp-detail::after,
+        .handover-frame::after { display: none !important; }
+        /* Highlight the currently-active block (URL hash or last clicked) */
+        .pp-detail.is-open {
+          border-color: var(--p-color);
+          background: #FAF7FC;
+          box-shadow: 0 8px 24px rgba(124,75,172,0.18);
+        }
+        .pp-detail.is-customer.is-open {
+          border-color: var(--s-color);
+          background: #F2FBF9;
+          box-shadow: 0 8px 24px rgba(0,180,160,0.18);
+        }
+        .handover-frame.is-open {
+          box-shadow: 0 12px 32px rgba(0,180,160,0.28);
+        }
+      }
+      /* When scrolling the active panel into view, keep a small 3px gap to the
+         bottom edge of the viewport (block: 'end' alignment). */
+      .pp-detail, .handover-frame { scroll-margin-top: 110px; scroll-margin-bottom: 3px; }
+
+      /* Half-width panel placement on desktop:
+         steps 1-3 sit on the LEFT half,
+         steps 5-7 (ids step-4..step-6) sit on the RIGHT half,
+         the HANDOVER frame is half-width but centered. */
+      @media (min-width: 992px) {
+        #step-1.is-open, #step-2.is-open, #step-3.is-open {
+          width: 50%; max-width: 50%; margin-left: 0; margin-right: auto;
+        }
+        #step-4.is-open, #step-5.is-open, #step-6.is-open {
+          width: 50%; max-width: 50%; margin-left: auto; margin-right: 0;
+        }
+        .handover-frame.is-open { width: 50%; max-width: 50%; margin-left: auto; margin-right: auto; }
+      }
+      .pp-detail {
+        display: flex; flex-direction: column; align-items: stretch;
+        border: 1px solid rgba(124,75,172,0.18);
+        border-radius: 12px; padding: 22px 24px;
+        background: #FFFFFF;
+        scroll-margin-top: 110px;
+      }
+      .pp-detail-num { margin: 0 auto 14px; }
+      .pp-detail.is-customer { border-color: rgba(0,180,160,0.32); }
+      .pp-detail.is-handover {
+        border-style: dashed; border-color: rgba(0,180,160,0.55);
+        background: rgba(0,180,160,0.04);
+      }
+      /* Highlight the targeted step after a pill / SVG link is clicked */
+      .pp-detail { transition: border-color .25s, box-shadow .25s, background .25s; }
+      .pp-detail:target {
+        border-color: var(--p-color);
+        background: #FAF7FC;
+        box-shadow: 0 0 0 4px rgba(124,75,172,0.18), 0 10px 30px rgba(124,75,172,0.10);
+        animation: pp-target-pulse 1.2s ease-out 1;
+      }
+      .pp-detail.is-customer:target {
+        border-color: var(--s-color);
+        background: #F2FBF9;
+        box-shadow: 0 0 0 4px rgba(0,180,160,0.18), 0 10px 30px rgba(0,180,160,0.10);
+      }
+      .pp-detail.is-handover:target {
+        border-color: var(--s-color);
+        background: rgba(0,180,160,0.10);
+        box-shadow: 0 0 0 4px rgba(0,180,160,0.22), 0 10px 30px rgba(0,180,160,0.12);
+      }
+      @keyframes pp-target-pulse {
+        0%   { box-shadow: 0 0 0 0 rgba(124,75,172,0.45); }
+        60%  { box-shadow: 0 0 0 12px rgba(124,75,172,0); }
+        100% { box-shadow: 0 0 0 4px rgba(124,75,172,0.18), 0 10px 30px rgba(124,75,172,0.10); }
+      }
+      .pp-detail-num {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: 16px; font-weight: 700;
+        background: rgba(124,75,172,0.10); color: var(--p-color);
+        border: 1px solid rgba(124,75,172,0.42);
+      }
+      .pp-detail.is-customer .pp-detail-num { background: rgba(0,180,160,0.10); color: var(--s-color); border-color: rgba(0,180,160,0.45); }
+      .pp-detail.is-handover .pp-detail-num { background: rgba(0,180,160,0.14); color: var(--s-color); border-color: var(--s-color); }
+      .pp-detail-zone {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+        color: #7A88B5; margin-bottom: 4px; display: inline-block;
+      }
+      .pp-detail-title { font-size: 20px; line-height: 1.25; margin: 0 0 8px; color: #0F1B3D; min-height: calc(1.25em * 2); }
+      .pp-detail-body { font-size: 14.5px; color: #2F3A55; line-height: 1.55; margin: 0 0 14px; min-height: calc(1.55em * 3); }
+      .pp-detail-body strong { color: #0F1B3D; font-weight: 600; }
+      /* Inner wrapper becomes a flex column; bullets expand to fill, so AI-row and CTA always sit at the bottom of every box */
+      .pp-detail > div:not(.pp-detail-num) { display: flex; flex-direction: column; flex: 1; }
+      .pp-detail-bullets { flex: 1 1 auto; }
+      /* Responsive: drop the min-height locks at narrower widths so empty space doesn't pile up
+         when each box has more horizontal room and body wraps to fewer lines. */
+      @media (max-width: 900px) {
+        .pp-detail-body { min-height: calc(1.55em * 2); }
+      }
+      @media (max-width: 720px) {
+        .pp-detail-title,
+        .pp-detail-body { min-height: 0; }
+      }
+      .pp-detail-bullets { list-style: none; padding: 0; margin: 0; font-size: 14px; color: #2F3A55; }
+      .pp-detail-bullets li {
+        padding: 4px 0; line-height: 1.5;
+        display: flex; gap: 10px; align-items: flex-start;
+      }
+      .pp-detail-bullets li::before {
+        content: '';
+        width: 6px; height: 6px; border-radius: 50%;
+        background: var(--p-color);
+        flex-shrink: 0;
+        margin-top: 0.5em;
+      }
+      .pp-detail.is-customer .pp-detail-bullets li::before,
+      .pp-detail.is-handover .pp-detail-bullets li::before { background: var(--s-color); }
+      .pp-detail-cta {
+        display: inline-flex; align-items: center; gap: 6px;
+        margin-top: 14px;
+        padding: 8px 14px;
+        font-size: 13px; font-weight: 600;
+        background: rgba(0,180,160,0.10);
+        color: var(--s-color);
+        border: 1px solid rgba(0,180,160,0.45);
+        border-radius: 999px;
+        text-decoration: none;
+        transition: background .15s, border-color .15s;
+      }
+      .pp-detail-cta:hover { background: rgba(0,180,160,0.18); color: var(--s-color); border-color: var(--s-color); }
+      .pp-detail-cta svg { transition: transform .15s; }
+      .pp-detail-cta:hover svg { transform: translateX(2px); }
+      .pp-detail .pp-detail-ai-row {
+        display: inline-block; margin-top: 10px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px; letter-spacing: .1em; color: var(--s-color);
+      }
+      .pp-detail-body .pp-detail-ai {
+        display: inline-block; margin-top: 8px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px; letter-spacing: .1em; color: var(--s-color);
+      }
+      @media (max-width: 720px) {
+        .pp-detail { padding: 18px 18px; }
+        .pp-detail-title { font-size: 17px; }
+      }
+
+      /* Single-active panel layout. The graphic above is sticky so the user can
+         always see the 1→7 flow while reading details about the active step. */
+      .pp-detail { position: relative; flex-direction: column; }
+    </style>
+
+    <!-- STEPS 1-3 - In our platform -->
+    <div class="pp-detail-grid reveal">
+      <div class="pp-detail-grid-3col">
+
+        <div id="step-1" class="pp-detail">
+                  <div class="pp-detail-num">1</div>
+                  <div>
+                    <span class="pp-detail-zone">In our platform</span>
+                    <h3 class="pp-detail-title">Respond to experiment questions</h3>
+                    <p class="pp-detail-body">A few plain questions about your experiment narrow the space to the right downstream modules. No bioinformatics knowledge needed.</p>
+                    <ul class="pp-detail-bullets">
+                      <li>Experiment type: single-cell, spatial, bulk or HT RNA-seq</li>
+                      <li>Species and reference genome</li>
+                      <li>Number of samples and batches</li>
+                      <li>Comparing conditions (treatment vs control)?</li>
+                    </ul>
+                    <div><a href="../services/services.html#svc-interpretation" class="pp-detail-cta">Help framing your question
+                      <svg width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+                    </a></div>
+                  </div>
+                </div>
+
+        <div id="step-2" class="pp-detail">
+                  <div class="pp-detail-num">2</div>
+                  <div>
+                    <span class="pp-detail-zone">In our platform</span>
+                    <h3 class="pp-detail-title">Select the used instrument and assay kit</h3>
+                    <p class="pp-detail-body">The combination of facts narrows the space of valid pipelines to one. Same facts, same blueprint, every time.</p>
+                    <ul class="pp-detail-bullets">
+                      <li>Assay kit used</li>
+                      <li>Analytical instrument</li>
+                      <li>Custom settings</li>
+                      <li>Desired output format</li>
+                    </ul>
+                  </div>
+                </div>
+
+        <div id="step-3" class="pp-detail">
+                  <div class="pp-detail-num">3</div>
+                  <div>
+                    <span class="pp-detail-zone">In our platform</span>
+                    <h3 class="pp-detail-title">We compose your data workflow</h3>
+                    <p class="pp-detail-body">Validated modules compose into an executable pipeline. No new code, only tested pieces combined for your run.</p>
+                    <ul class="pp-detail-bullets">
+                      <li>Selected from the validated module catalogue</li>
+                      <li>Versioned and containerised</li>
+                      <li>Nextflow orchestration generated automatically</li>
+                      <li>Audit-ready by construction (report on demand)</li>
+                    </ul>
+                  </div>
+                </div>
+
+      </div><!-- /.pp-detail-grid-3col -->
+    </div><!-- /.pp-detail-grid steps 1-3 -->
+
+<!-- HANDOVER - solid clear mint frame, mirrors the graphic's handover treatment -->
+    <style>
+      .handover-frame {
+        border: 2.5px solid var(--s-color);
+        border-radius: 18px;
+        padding: 32px 36px;
+        background: rgba(0,180,160,0.05);
+        max-width: 100%; margin: 32px 0 0;
+        box-shadow: 0 8px 24px rgba(0,180,160,0.08);
+        cursor: pointer; user-select: none;
+        position: relative;
+        transition: background .2s, box-shadow .2s;
+      }
+      .handover-frame:hover:not(.is-open) { background: rgba(0,180,160,0.10); box-shadow: 0 6px 20px rgba(0,180,160,0.16); }
+      .handover-frame.is-open { cursor: default; padding: 24px 32px 28px; }
+      /* Collapse: hide everything below the title row + headline (handover-intro h2) */
+      .handover-frame > :not(.handover-title-row):not(.handover-intro) { display: none; }
+      .handover-frame.is-open > :not(.handover-title-row):not(.handover-intro) { display: revert; }
+      .handover-frame .handover-intro p { display: none; }
+      .handover-frame.is-open .handover-intro p { display: block; }
+      .handover-frame:not(.is-open) .handover-intro { margin-bottom: 0; }
+      .handover-frame:not(.is-open) .handover-title-row { margin-bottom: 14px; }
+      .handover-frame:not(.is-open) .handover-icon { display: none; }
+      /* +/- toggle button removed - panels are mutually-exclusive via the graphic schema, no indicator needed */
+      .handover-title-row { text-align: center; margin-bottom: 16px; }
+      .handover-title-row .handover-bigtitle {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 18px; font-weight: 700; letter-spacing: .22em;
+        color: var(--s-color); text-transform: uppercase;
+        margin: 0;
+      }
+      .handover-title-row .handover-icon { display: none; }
+      .handover-intro { text-align: center; max-width: 820px; margin: 0 auto 18px; }
+      .handover-intro h2 { margin: 0 0 8px; font-size: 22px; }
+      .handover-intro p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+      .handover-bullets { list-style: none; padding: 0; margin: 0; font-size: 15px; color: #4A5570; line-height: 1.55; }
+      .handover-bullets li { padding: 5px 0; display: flex; gap: 10px; align-items: flex-start; }
+      .handover-bullets li::before {
+        content: ''; width: 6px; height: 6px; border-radius: 50%;
+        background: var(--s-color); flex-shrink: 0; margin-top: 0.55em;
+      }
+      .handover-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(0,180,160,0.22);
+        border-radius: 12px;
+        padding: 26px 26px; height: 100%;
+      }
+      .handover-card .handover-card-label {
+        font-size: 18px; font-weight: 600; color: #0F1B3D; margin: 0 0 14px;
+      }
+      @media (max-width: 720px) {
+        .handover-frame { padding: 32px 20px; }
+        .handover-title-row .handover-bigtitle { font-size: 24px; letter-spacing: .18em; }
+      }
+    </style>
+
+    <div id="step-handover" class="handover-frame reveal">
+
+      <div class="handover-title-row">
+        <div class="handover-num" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:rgba(0,180,160,0.10); border:1px solid rgba(0,180,160,0.45); color:var(--s-color); font-weight:700; font-size:16px; margin: 0 auto 10px;">4</div>
+        <h2 class="handover-bigtitle">Handover</h2>
+        <div class="handover-icon" style="margin-top: 12px;">
+          <svg width="44" height="44" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="8" width="18" height="13" rx="2"></rect>
+            <line x1="3" y1="13" x2="21" y2="13"></line>
+            <line x1="12" y1="8" x2="12" y2="13"></line>
+            <path d="M 8 8 L 12 4 L 16 8"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="handover-intro">
+        <h2>We deliver the workflow</h2>
+        <p>When a scientist clicks run, the platform sends a validated workflow to you. You can run it in your compute environment, easy. Your infrastructure runs it against your data. The workflow itself stays on the platform, where we maintain it.</p>
+      </div>
+
+      <style>
+        .handover-graphic {
+          background: #FFFFFF;
+          border: 1px solid rgba(0, 180, 160, 0.25);
+          border-radius: 14px;
+          padding: 26px 36px;
+          margin: 0 auto 22px;
+          max-width: 1080px;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          gap: 32px;
+          align-items: center;
+          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .hg-side-left  { text-align: left; }
+        .hg-side-right { text-align: right; }
+        .hg-eyebrow {
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 11px; font-weight: 700; letter-spacing: .22em;
+          color: var(--s-color); text-transform: uppercase;
+          display: block; margin: 0 0 16px;
+        }
+        .hg-title {
+          font-size: 30px; font-weight: 600; color: #0E8276;
+          margin: 0 0 10px; letter-spacing: -0.01em; line-height: 1.15;
+        }
+        .hg-sub {
+          font-size: 15px; color: #5A8580;
+          margin: 0; line-height: 1.4;
+        }
+        .hg-arrow {
+          display: flex; flex-direction: column; align-items: center; gap: 8px;
+          padding: 0 8px;
+        }
+        .hg-arrow-label {
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 11px; font-weight: 700; letter-spacing: .22em;
+          color: var(--s-color); text-transform: uppercase;
+        }
+        .hg-arrow svg {
+          width: 180px; height: 14px;
+          stroke: var(--s-color); stroke-width: 1.8;
+          fill: none; stroke-linecap: round; stroke-linejoin: round;
+        }
+        @media (max-width: 820px) {
+          .handover-graphic { padding: 28px 22px; gap: 24px; }
+          .hg-title { font-size: 26px; }
+          .hg-arrow svg { width: 120px; }
+        }
+        @media (max-width: 640px) {
+          .handover-graphic {
+            grid-template-columns: 1fr;
+            gap: 14px;
+            text-align: center;
+            padding: 28px 20px;
+          }
+          .hg-side-left, .hg-side-right { text-align: center; }
+          .hg-eyebrow { margin-bottom: 10px; }
+          .hg-title { font-size: 24px; }
+          .hg-arrow { flex-direction: row; gap: 12px; padding: 6px 0; }
+          .hg-arrow svg {
+            width: 14px; height: 60px;
+            transform: rotate(90deg);
+          }
+        }
+        .pp-handover-statements {
+          max-width: 940px;
+          margin: 0 auto;
+          display: flex; flex-direction: column;
+          gap: 18px;
+          text-align: center;
+          padding: 12px 0 4px;
+        }
+        .pp-handover-statements p {
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 14px; font-weight: 700; letter-spacing: .015em;
+          color: var(--s-color); text-transform: uppercase;
+          line-height: 1.5;
+          margin: 0;
+        }
+        @media (max-width: 720px) {
+          .pp-handover-statements p { font-size: 12.5px; letter-spacing: 0; }
+        }
+      </style>
+      <ul class="handover-bullets reveal" style="max-width: 820px; margin: 0 auto;">
+        <li>We maintain the workflow so you always run the current validated version, or one you pin.</li>
+        <li>One way of working across every assay – the foundation for multi-omics.</li>
+      </ul>
+
+    </div>
+
+    <!-- DATA PRIVACY panel - opens when the message band is clicked -->
+    <div id="step-data" class="handover-frame reveal">
+
+      <div class="handover-title-row">
+        <h2 class="handover-bigtitle">Your data</h2>
+        <div class="handover-icon" style="margin-top: 12px;">
+          <svg width="44" height="44" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12 l2 2 l4-4"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="handover-intro">
+        <h2>Nobody sees your data unless you decide they should</h2>
+        <p>The platform configures the workflow with us. Your data and compute stay with you, in one of two environments.</p>
+      </div>
+
+      <style>
+        .data-options {
+          display: grid;
+          grid-template-columns: 240px 1fr;
+          gap: 16px 32px;
+          max-width: 820px;
+          margin: 0 auto;
+          padding: 0;
+        }
+        .data-options dt {
+          margin: 0;
+          font-weight: 600;
+          font-size: 15px;
+          color: #0F1B3D;
+          display: flex;
+          align-items: baseline;
+          gap: 10px;
+          line-height: 1.4;
+        }
+        .data-options dt::before {
+          content: '';
+          flex-shrink: 0;
+          width: 7px; height: 7px; border-radius: 50%;
+          background: var(--s-color);
+          transform: translateY(-1px);
+        }
+        .data-options dd {
+          margin: 0;
+          font-size: 15px;
+          line-height: 1.55;
+          color: #4A5570;
+        }
+        @media (max-width: 640px) {
+          .data-options { grid-template-columns: 1fr; gap: 4px 0; }
+          .data-options dd { margin-bottom: 14px; }
+        }
+        body.quarto-dark .data-options dt,
+        [data-bs-theme="dark"] .data-options dt { color: var(--text-strong) !important; }
+        body.quarto-dark .data-options dd,
+        [data-bs-theme="dark"] .data-options dd { color: var(--text) !important; }
+      </style>
+
+      <dl class="data-options reveal">
+        <dt>Your own environment</dt>
+        <dd>Your cloud account or HPC cluster. Workflows run against your storage; nothing copies out.</dd>
+
+        <dt>A dedicated environment we set up</dt>
+        <dd>Your team or your CRO writes raw and ready-to-interpret data into it. You stay the owner.</dd>
+
+        <dt>Never on our infrastructure</dt>
+        <dd>Only configuration and validation artefacts pass through the platform.</dd>
+      </dl>
+
+    </div>
+
+<!-- STEPS 4-6 - Your environment -->
+    <div class="pp-detail-grid reveal">
+      <div class="pp-detail-grid-3col">
+
+        <div id="step-4" class="pp-detail is-customer">
+                  <div class="pp-detail-num">5</div>
+                  <div>
+                    <span class="pp-detail-zone" style="color: var(--s-color);">Your environment</span>
+                    <h3 class="pp-detail-title">You start the workflow</h3>
+                    <p class="pp-detail-body">You execute the pipeline on your own compute. Containers and commands run inside your environment, never ours.</p>
+                    <ul class="pp-detail-bullets">
+                      <li>AWS, Google Cloud or Azure</li>
+                      <li>High Performance Computing</li>
+                      <li>On-premise behind your firewall</li>
+                      <li>Workflow started by you</li>
+                    </ul>
+                    <div><a href="../services/services.html#svc-infrastructure" class="pp-detail-cta">We set up your environment
+                      <svg width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+                    </a></div>
+                  </div>
+                </div>
+
+        <div id="step-5" class="pp-detail is-customer">
+                  <div class="pp-detail-num">6</div>
+                  <div>
+                    <span class="pp-detail-zone" style="color: var(--s-color);">Your environment</span>
+                    <h3 class="pp-detail-title">The workflow runs in your compute</h3>
+                    <p class="pp-detail-body">Raw signal becomes harmonised, decision-ready data.</p>
+                    <ul class="pp-detail-bullets">
+                      <li>QC metrics and counts</li>
+                      <li>Variants and annotations</li>
+                      <li>Integrated multimodal datasets</li>
+                      <li>Audit log generated automatically (optional service)</li>
+                    </ul>
+                  </div>
+                </div>
+
+        <div id="step-6" class="pp-detail is-customer">
+                  <div class="pp-detail-num">7</div>
+                  <div>
+                    <span class="pp-detail-zone" style="color: var(--s-color);">Your environment</span>
+                    <h3 class="pp-detail-title">You start interpreting the results</h3>
+                    <p class="pp-detail-body">Outputs are ready for interpretation, in your own notebooks and tools, or with our bioinformatics support.</p>
+                    <ul class="pp-detail-bullets">
+                      <li>Open, standard output formats</li>
+                      <li>Your notebooks: Jupyter, R, scverse</li>
+                      <li>Downstream tools via platform</li>
+                      <li>Optional bioinformatics support</li>
+                    </ul>
+                    <div><a href="../services/services.html#svc-interpretation" class="pp-detail-cta">Get interpretation assistance
+                      <svg width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+                    </a></div>
+                  </div>
+                </div>
+
+      </div><!-- /.pp-detail-grid-3col -->
+    </div><!-- /.pp-detail-grid steps 4-6 -->
+
+</div></section>
+
+
+<!-- PLANS - tabbed format -->
+<!-- TODO (Sales): confirm whether a fourth tier ("Enterprise+" or similar) is needed; currently three. -->
+<style>
+.plan-tabs { margin-top: 8px; }
+.plan-tab-bar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  border-bottom: 1px solid rgba(124,75,172,0.18);
+  margin-bottom: 32px;
+}
+.plan-tab {
+  appearance: none; background: transparent; border: 0; cursor: pointer;
+  padding: 14px 18px;
+  font-family: inherit; font-size: 13px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  color: #5A6890; line-height: 1.3;
+  display: inline-flex; align-items: center; gap: 10px;
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+  transition: color .15s, border-color .15s;
+}
+.plan-tab .plan-tab-num {
+  font-size: 12px; font-weight: 700; letter-spacing: 1.4px;
+  color: #9098B5; text-transform: uppercase;
+}
+.plan-tab .plan-tab-label {
+  font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+}
+.plan-tab:hover { color: #0F1B3D; }
+.plan-tab:hover .plan-tab-num { color: var(--p-color); }
+.plan-tab.is-active { color: #0F1B3D; border-bottom-color: var(--p-color); }
+.plan-tab.is-active .plan-tab-num { color: var(--p-color); }
+.plan-tab.is-active.tab-teal { border-bottom-color: var(--s-color); }
+.plan-tab.is-active.tab-teal .plan-tab-num { color: var(--s-color); }
+.plan-tab:focus-visible { outline: 2px solid var(--p-color); outline-offset: 2px; border-radius: 4px; }
+
+.plan-tab-panel { display: none; }
+.plan-tab-panel.is-active { display: block; animation: planFade .25s ease-out; }
+@keyframes planFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.plan-panel-header { display: flex; align-items: center; gap: 18px; margin: 0 0 18px; }
+.plan-panel-icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(124,75,172,0.08); color: var(--p-color);
+  flex-shrink: 0;
+}
+.plan-panel-icon.teal { background: rgba(0,180,160,0.10); color: var(--s-color); }
+
+.plan-panel h3 { font-size: 26px; line-height: 1.2; margin: 0; color: #0F1B3D; }
+.plan-panel .label-pill {
+  font-size: 13px; font-weight: 700; letter-spacing: 1.3px;
+  text-transform: uppercase; margin: 8px 0 10px;
+}
+.plan-panel p.body-text { font-size: 15.5px; color: #4A5570; line-height: 1.6; margin-bottom: 14px; }
+.plan-panel .included-card {
+  background: #F7F8FB; border: 1px solid rgba(124,75,172,0.16);
+  border-radius: 14px; padding: 24px 22px;
+}
+.plan-panel .included-card.teal { background: #EEFBF8; border-color: rgba(0,180,160,0.18); }
+.plan-panel .included-list { list-style: none; padding: 0; margin: 0; font-size: 14.5px; color: #4A5570; }
+.plan-panel .included-list li { padding: 8px 0 8px 26px; position: relative; line-height: 1.5; }
+.plan-panel .included-list li span.tick { position: absolute; left: 0; color: var(--s-color); font-weight: 700; }
+.plan-panel .panel-cta { margin-top: 22px; }
+
+/* Included card sits at the top of the right column, aligning with the icon on the left */
+
+/* Below ~720px: keep all tab titles visible by wrapping into chip-style buttons (no scrolling) */
+@media (max-width: 720px) {
+  .plan-tab-bar {
+    border-bottom: 0;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+  .plan-tab {
+    padding: 8px 13px;
+    border: 1px solid rgba(124,75,172,0.22);
+    border-radius: 999px;
+    background: #FFFFFF;
+    margin-bottom: 0;
+    line-height: 1.2;
+    font-size: 11.5px; letter-spacing: .9px; gap: 6px;
+  }
+  .plan-tab .plan-tab-num { font-size: 10.5px; letter-spacing: 1px; }
+  .plan-tab.tab-teal { border-color: rgba(0,180,160,0.28); }
+  .plan-tab.is-active {
+    background: rgba(124,75,172,0.10);
+    border-color: var(--p-color);
+    color: #0F1B3D;
+  }
+  .plan-tab.is-active.tab-teal {
+    background: rgba(0,180,160,0.10);
+    border-color: var(--s-color);
+  }
+  .plan-panel h3 { font-size: 22px; }
+}
+
+/* Side-tab variant: vertical list on the left, content on the right (≥ lg) */
+@media (min-width: 992px) {
+  .plan-row { margin-top: 8px; }
+  .plan-side-tabs {
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 0;
+    border-left: 2px solid rgba(124,75,172,0.18);
+    margin-bottom: 0;
+    align-items: stretch;
+  }
+  .plan-side-tabs .plan-tab {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 0;
+    border-left: 3px solid transparent;
+    margin-bottom: 0;
+    margin-left: -2px;
+    width: 100%;
+    justify-content: flex-start;
+    letter-spacing: 1px;
+    line-height: 1.35;
+    align-items: flex-start;
+  }
+  .plan-side-tabs .plan-tab .plan-tab-label { white-space: normal; }
+  @media (min-width: 1280px) {
+    .plan-side-tabs .plan-tab .plan-tab-label { white-space: nowrap; }
+  }
+  .plan-side-tabs .plan-tab.is-active {
+    border-bottom: 0;
+    border-left-color: var(--p-color);
+    background: rgba(124,75,172,0.06);
+  }
+  .plan-side-tabs .plan-tab.is-active.tab-teal {
+    border-left-color: var(--s-color);
+    background: rgba(0,180,160,0.06);
+  }
+}
+</style>
+
+<section class="sec-off" id="plans">
+  <div class="container">
+    <div class="sec-head-new reveal" style="max-width: 820px;">
+      <span class="overline">For every size</span>
+      <h2>From a single researcher to a global R&amp;D organisation or CRO</h2>
+      <p>Run analyses as an individual researcher, scale to a small science team, or deploy the platform across a multi-site R&amp;D organisation or CRO. Same engine, same catalogue, same guarantees.</p>
+    </div>
+
+    <div class="reveal mx-auto" style="display:none; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; margin: 8px auto 32px; padding: 12px 18px; max-width: 720px; background: rgba(124,75,172,0.06); border: 1px solid rgba(124,75,172,0.22); border-radius: 999px;">
+      <svg width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="var(--p-color)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      <span style="font-size:14px; color:#0F1B3D;">
+        <b>Sold through regional distributors.</b>
+        <a href="../partners.html" style="color:var(--p-color); font-weight:600; margin-left:6px; text-decoration:none;">Find yours →</a>
+      </span>
+    </div>
+
+    <div class="plan-tabs reveal" id="planTabs">
+     <div class="row g-5 align-items-start plan-row">
+      <div class="col-lg-5">
+        <div class="plan-tab-bar plan-side-tabs" role="tablist" aria-label="For every size">
+          <button class="plan-tab is-active" data-tab="lab" role="tab" aria-selected="true" aria-controls="ptab-lab" id="planbtn-lab">
+            <span class="plan-tab-num">01</span>
+            <span class="plan-tab-label">For Individual researcher</span>
+          </button>
+          <button class="plan-tab tab-teal" data-tab="pro" role="tab" aria-selected="false" aria-controls="ptab-pro" id="planbtn-pro">
+            <span class="plan-tab-num">02</span>
+            <span class="plan-tab-label">For Small science team</span>
+          </button>
+          <button class="plan-tab" data-tab="enterprise" role="tab" aria-selected="false" aria-controls="ptab-enterprise" id="planbtn-enterprise">
+            <span class="plan-tab-num">03</span>
+            <span class="plan-tab-label">For Enterprise/CRO</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-7 plan-panels">
+
+      <!-- LAB -->
+      <div class="plan-tab-panel plan-panel is-active" id="ptab-lab" role="tabpanel" aria-labelledby="planbtn-lab">
+        <div class="row g-5 align-items-start">
+          <div class="col-md-7">
+            <div class="plan-panel-header">
+              <div class="plan-panel-icon">
+                <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6L3 20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2L15 8V2"></path><path d="M9 2h6"></path><path d="M6 14h12"></path></svg>
+              </div>
+              <h3>For an individual researcher</h3>
+            </div>
+            <p class="label-pill" style="color:var(--p-color);">Who it's for</p>
+            <p class="body-text">Research labs and small biotechs that want to run analyses without standing up infrastructure.</p>
+            <a href="../products/pricing.html" class="btn btn-primary panel-cta d-inline-flex align-items-center gap-2">
+              See credit pricing
+              <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <div class="col-md-5">
+            <div class="included-card">
+              <p class="label-pill" style="color:var(--p-color);">What's included</p>
+              <ul class="included-list">
+                <li><span class="tick">✓</span> Pay-as-you-go credits</li>
+                <li><span class="tick">✓</span> Full validated pipeline catalogue</li>
+                <li><span class="tick">✓</span> Runs on your compute</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan-tab-panel plan-panel" id="ptab-pro" role="tabpanel" aria-labelledby="planbtn-pro">
+        <div class="row g-5 align-items-start">
+          <div class="col-md-7">
+            <div class="plan-panel-header">
+              <div class="plan-panel-icon teal">
+                <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <h3>For a small science team</h3>
+            </div>
+            <p class="label-pill" style="color:var(--s-color);">Who it's for</p>
+            <p class="body-text">Labs and small biotechs running multiple analyses across the team. Scientists pick the assay and run it themselves.</p>
+            <a href="../products/pricing.html" class="btn btn-primary panel-cta d-inline-flex align-items-center gap-2">
+              See credit pricing
+              <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <div class="col-md-5">
+            <div class="included-card teal">
+              <p class="label-pill" style="color:var(--s-color);">What's included</p>
+              <ul class="included-list">
+                <li><span class="tick">✓</span> Pay-as-you-go credits</li>
+                <li><span class="tick">✓</span> Full validated pipeline catalogue</li>
+                <li><span class="tick">✓</span> Multiple analyses per user</li>
+                <li><span class="tick">✓</span> Team-level support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="plan-tab-panel plan-panel" id="ptab-enterprise" role="tabpanel" aria-labelledby="planbtn-enterprise">
+        <div class="row g-5 align-items-start">
+          <div class="col-md-7">
+            <div class="plan-panel-header">
+              <div class="plan-panel-icon">
+                <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>
+              </div>
+              <h3>For multi-site pharma R&amp;D or CROs</h3>
+            </div>
+            <p class="label-pill" style="color:var(--p-color);">Who it's for</p>
+            <p class="body-text">Multi-site R&amp;D organisations and CROs that need the platform embedded in their stack.</p>
+            <a href="../enterprise.html" class="btn btn-primary panel-cta d-inline-flex align-items-center gap-2">
+              Enterprise detail
+              <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <div class="col-md-5">
+            <div class="included-card">
+              <p class="label-pill" style="color:var(--p-color);">What's included</p>
+              <ul class="included-list">
+                <li><span class="tick">✓</span> On-premise or private-cloud deployment</li>
+                <li><span class="tick">✓</span> LIMS and enterprise stack integration <em style="color:#7A88B5; font-style:italic;">(optional)</em></li>
+                <li><span class="tick">✓</span> Custom compliance reports <em style="color:#7A88B5; font-style:italic;">(optional)</em></li>
+                <li><span class="tick">✓</span> Onboarding in 4–12 weeks</li>
+                <li><span class="tick">✓</span> Dedicated support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div><!-- /.col-lg-7 -->
+     </div><!-- /.row -->
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  var root = document.getElementById('planTabs');
+  if (!root) return;
+  var tabs = root.querySelectorAll('.plan-tab');
+  var panels = root.querySelectorAll('.plan-tab-panel');
+  var bar = root.querySelector('.plan-tab-bar');
+  function scrollIntoBar(tab){
+    if (!bar || !tab) return;
+    var tabLeft = tab.offsetLeft;
+    var tabRight = tabLeft + tab.offsetWidth;
+    var visLeft = bar.scrollLeft;
+    var visRight = visLeft + bar.clientWidth;
+    if (tabLeft < visLeft + 8) {
+      bar.scrollTo({left: Math.max(0, tabLeft - 16), behavior: 'smooth'});
+    } else if (tabRight > visRight - 8) {
+      bar.scrollTo({left: tabRight - bar.clientWidth + 28, behavior: 'smooth'});
+    }
+  }
+  function activate(name){
+    var activeTab = null;
+    tabs.forEach(function(t){
+      var on = t.dataset.tab === name;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      if (on) activeTab = t;
+    });
+    panels.forEach(function(p){
+      p.classList.toggle('is-active', p.id === 'ptab-' + name);
+    });
+    scrollIntoBar(activeTab);
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.dataset.tab); });
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        var list = Array.prototype.slice.call(tabs);
+        var i = list.indexOf(t);
+        var next = e.key === 'ArrowRight' ? (i + 1) % list.length : (i - 1 + list.length) % list.length;
+        list[next].focus();
+        activate(list[next].dataset.tab);
+      }
+    });
+  });
+})();
+</script>
+
+<script>
+/* Step-detail collapse/expand
+   - Boxes start collapsed (CSS hides everything below the title).
+   - Click a box to toggle .is-open.
+   - Hash navigation (#step-1, etc.) auto-opens the targeted box. */
+(function(){
+  var boxes = document.querySelectorAll('.pp-detail, .handover-frame');
+  if (!boxes.length) return;
+
+  function openOnly(target, options){
+    boxes.forEach(function(b){ b.classList.toggle('is-open', b === target); });
+    highlightInSvg(target ? target.id : null);
+    if (target && options && options.scroll) {
+      // Small delay so the panel becomes visible before we scroll to it.
+      setTimeout(function(){
+        if (options.anchor === 'section') {
+          // Cross-page initial load: scroll the whole "how it works"
+          // section into view so the graphic AND the freshly-opened
+          // panel are both visible from the start.
+          var sec = document.getElementById('platform-process');
+          if (sec) {
+            sec.scrollIntoView({ behavior: 'auto', block: 'start' });
+            return;
+          }
+        }
+        // In-page click on the SVG graphic: graphic stays sticky at the
+        // top, panel slides up so its bottom rests at the viewport
+        // bottom, both visible together.
+        target.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 30);
+    }
+  }
+
+  // Highlight the active step rect inside the desktop SVG flow
+  function highlightInSvg(id){
+    document.querySelectorAll('.hiw-flow-svg a').forEach(function(a){
+      var href = a.getAttribute('href') || a.getAttribute('xlink:href') || '';
+      var isActive = href === '#' + id;
+      a.classList.toggle('is-active-step', isActive);
+    });
+  }
+
+  function openFromHash(scroll, anchor){
+    var hash = window.location.hash;
+    if (!hash) return;
+    var el = document.querySelector(hash);
+    if (el && el.classList && (el.classList.contains('pp-detail') || el.classList.contains('handover-frame'))) {
+      openOnly(el, scroll ? { scroll: true, anchor: anchor } : undefined);
+    }
+  }
+  window.addEventListener('hashchange', function(){ openFromHash(true); });
+
+  // SVG step links: prevent the default scroll-jump (graphic stays sticky)
+  // and just swap the active panel + scroll it into view below the graphic.
+  document.querySelectorAll('.hiw-flow-svg a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = a.getAttribute('href') || a.getAttribute('xlink:href') || '';
+      if (!href.startsWith('#')) return;
+      var target = document.querySelector(href);
+      if (!target || !(target.classList.contains('pp-detail') || target.classList.contains('handover-frame'))) return;
+      e.preventDefault();
+      openOnly(target, { scroll: true });
+      history.replaceState(null, '', href);
+    });
+  });
+
+  // Mobile: clicking any panel makes it the highlighted/active one.
+  // (On desktop, the half-width panels are already the active one, so this is a no-op there.)
+  boxes.forEach(function(box){
+    box.addEventListener('click', function(e){
+      if (e.target.closest('a')) return;
+      if (box.classList.contains('is-open')) return;
+      openOnly(box);
+      if (box.id) history.replaceState(null, '', '#' + box.id);
+    });
+  });
+
+  // Initial state: open whatever the URL hash points to, else default to step-1.
+  // Cross-page arrivals (e.g. from the home-page graphic) use anchor:'section'
+  // so the whole "how it works" block lands at the viewport top, with the
+  // graphic and the open panel both visible. Without this, the browser's
+  // anchor-jump lands at the still-collapsed panel position and the later
+  // smooth scroll ends in a confusing offset.
+  if (window.location.hash) {
+    setTimeout(function(){ openFromHash(true, 'section'); }, 80);
+  } else {
+    var first = document.getElementById('step-1');
+    if (first) openOnly(first);
+  }
+
+})();
+</script>
+
+
+
+
+
+
+ </div>
+  <!--  Footer starts here (in quarto footer.html) -->
+ <section class="elevate-cta-section text-center">
+    <!-- Brand flow pattern (light, static) -->
+    <svg class="elevate-flow-svg" viewbox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <lineargradient id="elv-lg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7C4BAC" stop-opacity="0.0"></stop>
+          <stop offset="50%" stop-color="#7C4BAC" stop-opacity="0.55"></stop>
+          <stop offset="100%" stop-color="#00B4A0" stop-opacity="0.45"></stop>
+        </lineargradient>
+        <lineargradient id="elv-lg2" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#00B4A0" stop-opacity="0.0"></stop>
+          <stop offset="60%" stop-color="#00B4A0" stop-opacity="0.5"></stop>
+          <stop offset="100%" stop-color="#7C4BAC" stop-opacity="0.3"></stop>
+        </lineargradient>
+      </defs>
+      <g stroke="url(#elv-lg1)" stroke-width="1" fill="none" opacity="0.7">
+        <path d="M60 120 Q200 140 260 240 T460 340"></path>
+        <path d="M80 280 Q180 300 280 260 T500 200"></path>
+        <path d="M100 440 Q220 420 300 360 T520 420"></path>
+        <path d="M60 120 Q140 220 260 240"></path>
+      </g>
+      <g stroke="url(#elv-lg2)" stroke-width="1" fill="none" opacity="0.5">
+        <path d="M500 120 Q420 220 460 340"></path>
+        <path d="M260 240 Q340 320 300 360"></path>
+        <path d="M280 260 Q380 300 460 340"></path>
+      </g>
+      <g fill="#7C4BAC" opacity="0.7">
+        <circle cx="60" cy="120" r="4"></circle><circle cx="500" cy="120" r="4"></circle>
+        <circle cx="80" cy="280" r="3"></circle><circle cx="100" cy="440" r="3"></circle>
+      </g>
+      <g fill="#00B4A0" opacity="0.7">
+        <circle cx="260" cy="240" r="5"></circle><circle cx="280" cy="260" r="3"></circle>
+        <circle cx="460" cy="340" r="6"></circle><circle cx="300" cy="360" r="4"></circle>
+        <circle cx="500" cy="200" r="3"></circle><circle cx="520" cy="420" r="3"></circle>
+      </g>
+      <g fill="none" stroke="#00B4A0" stroke-width="0.5" opacity="0.45">
+        <circle cx="460" cy="340" r="14"></circle><circle cx="260" cy="240" r="12"></circle>
+      </g>
+    </svg>
+    <div class="container position-relative" style="z-index:2;">
+      <span class="overline" id="footer-cta-overline" style="color:#9B73C2;">Start a conversation</span>
+      <h2 class="text-white" id="footer-cta-title">Start a conversation about your omics data.</h2>
+      <p class="text-white-75 mx-auto" id="footer-cta-body" style="max-width:58ch; font-size:17px; opacity:0.75; margin-bottom:32px;">Whether you're scoping a platform deployment or a one-off engagement, we'll make sure the first call is short and the next step is clear.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="../contact/bookmeeting.html" class="btn btn-secondary" id="footer-cta-primary">
+          <span id="footer-cta-primary-text">Book a meeting</span>
+          <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="../contact/contact.html" class="btn btn-secondary-light">Contact us</a>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var p = window.location.pathname || "";
+      // Hide the closing CTA on pages where users are already in an action flow
+      // (contact, book-meeting, careers apply, careers detail pages).
+      if (p.indexOf("/contact/contact") === 0
+          || p.indexOf("/contact/bookmeeting") === 0
+          || p.indexOf("/company/careers") === 0) {
+        var section = document.querySelector(".elevate-cta-section");
+        if (section) section.style.display = "none";
+        return;
+      }
+      var title = document.getElementById("footer-cta-title");
+      var body = document.getElementById("footer-cta-body");
+      var primary = document.getElementById("footer-cta-primary");
+      var primaryText = document.getElementById("footer-cta-primary-text");
+      var overline = document.getElementById("footer-cta-overline");
+      if (!title || !body || !primary || !primaryText) return;
+
+      function set(o, t, b, href, btn) {
+        overline.textContent = o;
+        title.textContent = t;
+        body.innerHTML = b;
+        primary.setAttribute("href", href);
+        primaryText.textContent = btn;
+      }
+
+      // Order matters: most specific paths first.
+      if (p.indexOf("/products/partnerships") === 0) {
+        set(
+          "Become a partner",
+          "Build on, resell or embed the platform.",
+          "Tell us which route fits, reseller, kit, instrument, OEM or method contribution. We'll set up an introductory call and outline the commercial path.",
+          "/contact/contact.html",
+          "Discuss a partnership"
+        );
+      } else if (p.indexOf("/products/pricing") === 0) {
+        set(
+          "Get a quote",
+          "Pricing that matches the way you'll use it.",
+          "Tell us the team size, the assays and how you want to deploy. We'll point you to the right distributor for credit packs, or scope an enterprise agreement directly.",
+          "/contact/bookmeeting.html",
+          "Request a quote"
+        );
+      } else if (p === "/luxprovide.html" || p.indexOf("/luxprovide") === 0) {
+        set(
+          "European HPC",
+          "Bring your omics workloads to MeluXina.",
+          "A 60 minute call with Data Intuitive. We'll tell you what's possible on sovereign European HPC and what the next step looks like.",
+          "/contact/bookmeeting.html",
+          "Book a scoping call"
+        );
+      } else if (p.indexOf("/products/platform") === 0) {
+        // Platform page closes on the 7-step flow and the demo iframe - invite
+        // to walk through the same flow live, on the user's own assay.
+        set(
+          "See it in action",
+          "Walk through the platform with us.",
+          "A 45-minute live walkthrough with a PhD bioinformatician. We map your assay to the right pipeline and answer questions as they come up.",
+          "/contact/bookmeeting.html",
+          "Book a walkthrough"
+        );
+      } else if (p.indexOf("/products/catalogue") === 0 || p.indexOf("/products/pipelines") === 0) {
+        // Pages that list validated pipelines - the natural next step is
+        // "what if mine isn't on the list?"
+        set(
+          "Missing a pipeline?",
+          "Don't see your assay?",
+          "Tell us what you're running. We'll tell you whether it's already in the catalogue, in development, or something we can build with you.",
+          "/contact/contact.html",
+          "Ask about a pipeline"
+        );
+      } else if (p.indexOf("/products/comparison") === 0) {
+        // Comparison page closes on the feature matrix - invite for a tailored
+        // side-by-side on the visitor's own context.
+        set(
+          "Decide together",
+          "Want a side-by-side on your case?",
+          "Send us your current stack or your shortlist. We'll show you exactly where the Data Intuitive platform sits in your situation. 45 minutes, no slide deck.",
+          "/contact/bookmeeting.html",
+          "Book a comparison call"
+        );
+      } else if (p.indexOf("/products/approach") === 0) {
+        // Foundational approach - engineering-flavoured close, no sales pitch.
+        set(
+          "Engineering conversation",
+          "Want to talk engineering?",
+          "If the way we build resonates, let's have an honest engineering conversation. No sales pitch, just a 45-minute chat with someone who builds this stuff.",
+          "/contact/bookmeeting.html",
+          "Talk engineering"
+        );
+      } else if (p.indexOf("/products/technical-prerequisites") === 0) {
+        // Setup page - readers landed here trying to figure out infrastructure.
+        // Close with a setup-help offer that mirrors the in-page "talk to us".
+        set(
+          "Setup help",
+          "Want help picking a setup?",
+          "Book a 45-minute call. A PhD bioinformatician will help you choose the right option and walk through what your IT team needs to do.",
+          "/contact/bookmeeting.html",
+          "Book a meeting"
+        );
+      } else if (p.indexOf("/services/") === 0) {
+        set(
+          "Scope a project",
+          "Talk to an expert",
+          "Tell us the assay, the bottleneck and the deadline. We'll tell you whether a service engagement is the right fit and what it would look like.",
+          "/contact/bookmeeting.html",
+          "Talk to an expert"
+        );
+      } else if (p.indexOf("/static/trust_center") === 0) {
+        set(
+          "Documentation",
+          "Need a security questionnaire or audit pack?",
+          "We remain committed to maintaining and evolving our security posture. For further information or to request documentation, contact our data protection officer.",
+          "mailto:DPO@Data-Intuitive.com",
+          "Contact DPO@Data-Intuitive.com"
+        );
+      } else if (p.indexOf("/company") === 0) {
+        set(
+          "Join us",
+          "Want to work with us?",
+          "We're hiring engineers, computational biologists and bioinformaticians. Send us your CV or tell us where you'd fit.",
+          "/company/careers.html",
+          "Apply now"
+        );
+      } else if (p.indexOf("/insights/") === 0 || p.indexOf("/approach/") === 0 || p.indexOf("/case-studies/") === 0) {
+        set(
+          "Take the next step",
+          "Like what you're reading?",
+          "Bring a real assay or a real problem and we'll show you what the platform does end-to-end. 30 minutes, no slide deck.",
+          "/contact/bookmeeting.html",
+          "Book a demo"
+        );
+      } else if (p.indexOf("/contact") === 0) {
+        // Already on contact, keep generic, with a softer pointer back to product info.
+        set(
+          "Or read first",
+          "Want context before the call?",
+          "Have a look at how the platform fits together, what services we offer and how partnerships work, then come back here when you're ready.",
+          "/products/platform.html",
+          "See the platform"
+        );
+      } else if (p === "/" || p === "/index.html") {
+        // Home closing CTA - consultative, opens up the full range of what we
+        // do and lets the visitor pick a technical or commercial conversation.
+        set(
+          "45-minute call",
+          "Talk to an expert.",
+          "Tell us what you're working on and we'll show you how we can help - the platform, a service engagement or a partnership. Technical or commercial, whoever you need in the room. No slide deck.",
+          "/contact/bookmeeting.html",
+          "Book a meeting"
+        );
+      }
+      // Default: untouched generic "Start a conversation" CTA (for pages outside the above paths).
+    })();
+    </script>
+  </section>
+
+  <footer class="footer-main">
+    <div class="container">
+      <div class="row gy-3">
+
+        <!-- Brand column -->
+        <div class="col-12 col-lg-3 mb-2">
+          <a href="../index.html" class="d-inline-block mb-3">
+            <img src="../images/main-logo.svg" alt="Data Intuitive" class="footer-logo">
+          </a>
+          <p class="footer-tagline">Belgian bioinformatics company specialising in omics data workflows since 2011.</p>
+          <div class="footer-social">
+            <a href="https://github.com/data-intuitive/" target="_blank" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/data-intuitive/" target="_blank" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path></svg>
+            </a>
+            <a href="../contact/contact.html" aria-label="Contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewbox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Platform column -->
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+          <h6 class="footer-col-heading">Platform</h6>
+          <ul class="footer-links">
+            <li><a href="../products/platform.html">Platform</a></li>
+            <li><a href="../services/services.html">Services</a></li>
+            <li><a href="../products/pricing.html">Pricing</a></li>
+            <li><a href="../products/partnerships.html">Partnerships</a></li>
+          </ul>
+        </div>
+
+        <!-- Company column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <h6 class="footer-col-heading">Company</h6>
+          <ul class="footer-links">
+            <li><a href="../company/index.html">About</a></li>
+            <li><a href="../company/index.html#people">Team</a></li>
+            <li><a href="../company/careers.html">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- News & Blog column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <h6 class="footer-col-heading">News &amp; Blog</h6>
+          <ul class="footer-links">
+            <li><a href="../insights/news.html">News</a></li>
+            <li><a href="../insights/blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <h6 class="footer-col-heading">Contact</h6>
+          <ul class="footer-links">
+            <li><a href="../contact/contact.html">Get in touch</a></li>
+            <li><a href="../contact/bookmeeting.html">Book a meeting</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <hr class="footer-divider">
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <div class="footer-badges">
+          <img src="../images/iso27001.png" alt="ISO 27001" class="footer-badge footer-badge-lg">
+          <img src="../images/vlaio.png" alt="VLAIO Flanders" class="footer-badge">
+          <img src="../images/fit.png" alt="FIT Flanders" class="footer-badge">
+        </div>
+        <div class="footer-legal">
+          <a href="../static/disclaimer.html">Disclaimer</a>
+          <a href="../static/site-structure.html">Site structure</a>
+          <a href="../static/generalconditions.html">General Conditions</a>
+          <a href="../static/trust_center.html" target="_blank">Trust Center</a>
+          <a href="../static/privacy_policy.html">Privacy</a>
+        </div>
+      </div>
+
+      <p class="footer-copy">© <span id="footer-year">2026</span> Data Intuitive. All rights reserved.</p>
+      <script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
+
+    </div>
+  </footer>
+
+
+
+  <!-- animated js -->
+
+
+
+
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.data-intuitive\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+ <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

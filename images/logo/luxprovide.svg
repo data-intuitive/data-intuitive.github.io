@@ -68,81 +68,81 @@
      transform="matrix(0.23519553,0,0,0.23519553,-16.016816,-12.11257)">
     <g
        id="g104"
-       style="fill:#7c4ba0;fill-opacity:1">
+       style="fill:#7C4BAC;fill-opacity:1">
 		<g
    id="g94"
-   style="fill:#7c4ba0;fill-opacity:1">
+   style="fill:#7C4BAC;fill-opacity:1">
 			<path
    class="st0"
    d="m 364.7,200 c 25.2,0 41.5,15 41.5,37.4 0,22.4 -17.2,38.1 -42.4,38.1 h -17.9 v 31.3 h -29 V 200 Z m -2.7,51.9 c 9.3,0 15.3,-5.8 15.3,-13.7 0,-7.9 -6,-13.7 -15.3,-13.7 H 346 V 252 h 16 z"
    id="path80"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="m 471.5,200 c 23.8,0 40,14.3 40,35.9 0,15 -7.8,26.6 -20.4,32.5 l 25,38.5 h -33.6 l -20.9,-34.3 h -10.4 v 34.3 h -29 V 200 Z m -20.3,50.4 H 468 c 9.5,0 14.5,-5.3 14.5,-13 0,-7.6 -5,-13 -14.5,-13 h -16.8 z"
    id="path82"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="m 581.4,198.5 c 32.2,0 56,23.6 56,54.5 0,30.8 -24.7,55.4 -56.9,55.4 -32.2,0 -56,-23.7 -56,-54.5 0,-30.8 24.7,-55.4 56.9,-55.4 z m -0.5,83.2 c 16,0 27.5,-12.2 27.5,-28.2 0,-16 -11.4,-28.2 -27.5,-28.2 -16.1,0 -27.5,12.2 -27.5,28.2 0.1,16 11.5,28.2 27.5,28.2 z"
    id="path84"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="m 671.7,200 23.7,69 23.7,-69 h 31.3 l -41.2,106.8 h -29 L 638.9,200 Z"
    id="path86"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="M 791.5,200 V 306.8 H 761.7 V 200 Z"
    id="path88"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="m 853.8,200 c 34.5,0 59.1,22.6 59.1,52.9 0,30.3 -25.5,53.9 -60,53.9 H 813.7 V 200 Z m -11.2,81.7 H 854 c 17.4,0 29.8,-11.7 29.8,-28.2 0,-16.5 -12.4,-28.2 -29.8,-28.2 h -11.4 z"
    id="path90"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="m 929.6,200 h 80.9 v 25.2 h -51.9 v 15.3 h 44.3 v 23.7 h -44.3 v 17.5 h 53.4 v 25.2 h -82.4 z"
    id="path92"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 		</g>
 
 		<g
    id="g102"
-   style="fill:#7c4ba0;fill-opacity:1">
+   style="fill:#7C4BAC;fill-opacity:1">
 			<path
    class="st0"
    d="m 329.3,62.9 v 96.3 h 59.1 v 10.5 h -71 V 62.9 Z"
    id="path96"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="m 443.9,171.2 c -24.9,0 -42.6,-18 -42.6,-44.4 V 62.9 h 12.1 v 63.9 c 0,20 13,33.6 31,33.6 17.9,0 30.8,-13.6 30.8,-33.6 V 62.9 h 11.6 v 63.5 c 0,26.4 -18.2,44.8 -42.9,44.8 z"
    id="path98"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 			<path
    class="st0"
    d="m 502,169.7 42.9,-54.6 -40.7,-52.2 h 14.6 l 33.4,43.3 33.7,-43.3 h 13.9 l -40.9,52 43,54.8 H 587.3 L 551.6,123.6 516,169.7 Z"
    id="path100"
-   style="fill:#7c4ba0;fill-opacity:1" />
+   style="fill:#7C4BAC;fill-opacity:1" />
 
 		</g>
 
 	</g>
     <g
        id="g114"
-       style="fill:#7c4ba0;fill-opacity:1">
+       style="fill:#7C4BAC;fill-opacity:1">
 		<defs
    id="defs107">
 			<path
@@ -163,7 +163,7 @@
 			<rect
    x="32.099998"
    y="32.5"
-   style="fill:#7c4ba0;fill-opacity:1"
+   style="fill:#7C4BAC;fill-opacity:1"
    width="273.79999"
    height="320.60001"
    clip-path="url(#SVGID_00000154423534233121289520000012326721486223866787_)"
@@ -172,7 +172,7 @@
 	</g>
     <g
        id="g124"
-       style="fill:#7c4ba0;fill-opacity:1">
+       style="fill:#7C4BAC;fill-opacity:1">
 		<defs
    id="defs117">
 			<path
@@ -193,7 +193,7 @@
 			<rect
    x="32.099998"
    y="32.5"
-   style="fill:#7c4ba0;fill-opacity:1"
+   style="fill:#7C4BAC;fill-opacity:1"
    width="273.79999"
    height="320.60001"
    clip-path="url(#SVGID_00000166635141675606616900000008218045237573274799_)"

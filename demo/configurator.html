@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pipeline Configurator | Data Intuitive</title>
+<style>
+  :root{
+    --bg:#0b0b14;--panel:#11121d;--panel-2:#161826;--border:#232538;
+    --text:#e6e7ee;--muted:#8a8da0;--accent:#a78bfa;--accent-2:#f472b6;
+    --green:#34d399;--amber:#fbbf24;--red:#f87171;--blue:#60a5fa;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+    background:radial-gradient(1200px 600px at 20% -10%,#1a1230 0%,var(--bg) 50%) no-repeat var(--bg);
+    color:var(--text);min-height:100vh}
+  header{display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;border-bottom:1px solid var(--border);
+    position:sticky;top:0;background:rgba(11,11,20,.85);backdrop-filter:blur(8px);z-index:10}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600}
+  .logo{width:32px;height:32px;border-radius:6px;
+    background:linear-gradient(135deg,#6d28d9,#a78bfa);
+    display:grid;place-items:center;font-size:12px;font-weight:700}
+  .crumb{color:var(--muted);font-weight:400}
+  .toggle{width:52px;height:26px;border-radius:999px;background:#2b2d42;
+    position:relative;cursor:pointer;display:inline-block;margin-right:16px}
+  .toggle::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff}
+  .restart{color:var(--muted);cursor:pointer}
+  main{max-width:1100px;margin:32px auto;padding:0 20px}
+  h1{font-size:24px;margin:0 0 6px}
+  .subtitle{color:var(--muted);margin-bottom:28px;font-size:14px}
+  .section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:22px}
+  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .section-title{display:flex;align-items:baseline;gap:10px;font-size:16px;font-weight:600}
+  .step-num{color:var(--accent);font-family:var(--mono)}
+  .filter-btn{border:1px solid var(--border);background:transparent;color:var(--text);
+    padding:6px 12px;border-radius:8px;font-size:13px;cursor:pointer}
+  .grid{display:grid;gap:14px}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:900px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid-4,.grid-3{grid-template-columns:1fr}}
+  .card{background:var(--panel-2);border:1px solid var(--border);border-radius:12px;
+    padding:16px;cursor:pointer;transition:border-color .15s,background .15s,transform .15s;position:relative;min-height:120px}
+  .card:hover{border-color:#3a3d57}
+  .card.selected{border-color:var(--accent);
+    background:linear-gradient(180deg,rgba(167,139,250,.08),transparent);
+    box-shadow:0 0 0 1px var(--accent) inset}
+  .card.dim{opacity:.55}
+  .card-title{font-weight:600;font-size:15px;margin-bottom:6px}
+  .card-desc{color:var(--muted);font-size:13px;line-height:1.4}
+  .card-meta{color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+  .modality{text-align:center;padding:22px 14px}
+  .modality .icon{font-size:22px;margin-bottom:8px}
+  .modality .avail{color:var(--muted);font-size:11px;letter-spacing:.1em;margin-top:10px}
+  .badge{position:absolute;top:10px;right:10px;display:inline-block;font-size:10px;
+    padding:2px 8px;border-radius:999px;background:#3a2a0c;color:var(--amber);letter-spacing:.08em}
+  .status{position:absolute;top:12px;right:12px;width:18px;height:18px;border-radius:50%;
+    display:grid;place-items:center;font-size:11px;font-weight:700}
+  .status.ok{background:rgba(52,211,153,.15);color:var(--green)}
+  .status.no{background:rgba(248,113,113,.15);color:var(--red)}
+  .status.part{background:rgba(251,191,36,.15);color:var(--amber)}
+  .coming-up{margin-top:18px}
+  .coming-up .label{color:var(--muted);font-size:11px;letter-spacing:.12em;margin-bottom:8px}
+  .ghost{background:transparent;border:1px dashed var(--border);padding:14px;border-radius:10px;color:var(--muted)}
+  .chip{display:inline-block;font-family:var(--mono);font-size:11px;padding:3px 8px;
+    border-radius:6px;background:#1d1f2e;color:var(--muted);margin-right:6px;margin-top:6px}
+  .mono{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .preview-head{color:var(--muted);letter-spacing:.12em;font-size:11px;margin-bottom:14px}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px;font-size:12px;color:var(--muted)}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .d-input{background:#6b7280}.d-primary{background:#60a5fa}.d-qc{background:#fbbf24}
+  .d-proc{background:#22d3ee}.d-int{background:#a78bfa}.d-ann{background:#34d399}.d-ana{background:#f472b6}
+  .steps{display:flex;flex-direction:column;gap:6px}
+  .step{display:flex;align-items:center;gap:10px}
+  .step .arrow{color:var(--muted)}
+  .step .pill{font-family:var(--mono);font-size:12px;padding:6px 10px;
+    border:1px solid var(--border);border-radius:8px;background:#14152099;border-left:3px solid var(--border)}
+  .pill.input{border-left-color:#6b7280}
+  .pill.primary{border-left-color:#60a5fa}
+  .pill.qc{border-left-color:#fbbf24}
+  .pill.proc{border-left-color:#22d3ee}
+  .pill.int{border-left-color:#a78bfa}
+  .pill.ann{border-left-color:#34d399}
+  .pill.ana{border-left-color:#f472b6}
+  .connector{height:14px;width:1px;background:var(--border);margin-left:22px}
+  .footer-line{margin-top:18px;color:var(--muted);font-family:var(--mono);font-size:12px;
+    border-top:1px dashed var(--border);padding-top:12px}
+  .empty{color:var(--muted);font-family:var(--mono);font-size:13px;padding:10px 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">DI</div>
+    <span>Data Intuitive</span>
+    <span class="crumb">/ analysis configurator</span>
+  </div>
+  <div>
+    <span class="toggle" title="theme"></span>
+    <span class="restart" onclick="location.reload()">restart</span>
+  </div>
+</header>
+
+<main>
+  <h1>Configure your analysis</h1>
+  <p class="subtitle">Select modality, kit, and sequencer to resolve your workflow binding and parameters.</p>
+
+  <!-- Step 1 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title"><span class="step-num">1.</span> What kind of experiment are you running?</div>
+    </div>
+    <div id="modalities" class="grid grid-4"></div>
+    <div class="coming-up">
+      <div class="label">COMING UP</div>
+      <div class="grid grid-3">
+        <div class="ghost">&#128214; Long-read<div class="mono">6 kits available</div></div>
+        <div class="ghost">&#129514; Methylation<div class="mono">2 kits available</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title"><span class="step-num">2.</span> Which kit / assay?</div>
+      <button class="filter-btn">&#9661; Filter</button>
+    </div>
+    <div id="kits" class="grid grid-4"></div>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title"><span class="step-num">3.</span> Which sequencer?</div>
+      <button class="filter-btn">&#9661; Filter</button>
+    </div>
+    <div id="sequencers" class="grid grid-3"></div>
+  </section>
+
+  <!-- Pipeline preview -->
+  <section class="section">
+    <div class="preview-head">PIPELINE PREVIEW</div>
+    <div class="legend">
+      <span><span class="dot d-input"></span>input</span>
+      <span><span class="dot d-primary"></span>primary</span>
+      <span><span class="dot d-qc"></span>QC</span>
+      <span><span class="dot d-proc"></span>processing</span>
+      <span><span class="dot d-int"></span>integration</span>
+      <span><span class="dot d-ann"></span>annotation</span>
+      <span><span class="dot d-ana"></span>analysis</span>
+    </div>
+    <div id="pipeline"></div>
+  </section>
+</main>
+
+<script>
+const MODALITIES = [
+  {id:'sc', icon:'\u{1F9EC}', title:'Single-cell', desc:'Single-cell sequencing assays', kits:12},
+  {id:'sp', icon:'\u{1F5FA}\u{FE0F}', title:'Spatial', desc:'Spatial transcriptomics & proteomics', kits:5, badge:'PARTIAL'},
+  {id:'bk', icon:'\u{1F4CA}', title:'Bulk', desc:'Bulk DNA / RNA library prep', kits:13},
+  {id:'ht', icon:'\u{1F532}', title:'HT RNA-seq', desc:'Plate-format bulk, per-well experiments', kits:1},
+];
+
+const KITS = {
+  sc:[
+    {vendor:'10X Genomics', name:"Chromium GEM-X Single Cell 3' Gene Expression", desc:'scRNA-seq · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
+    {vendor:'10X Genomics', name:"Chromium GEM-X Single Cell 5' Gene Expression", desc:'scRNA-seq · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
+    {vendor:'10X Genomics', name:'Chromium GEM-X Single Cell ATAC', desc:'Chromatin accessibility · Peaks x Cells + fragments.tsv.gz', status:'no', wf:null, id:'tenx_atac · scatac_seq'},
+    {vendor:'10X Genomics', name:"Chromium 5' CITE-seq / Feature Barcoding (TotalSeq)", desc:'RNA + surface protein · Genes x Cells + Proteins x Cells', status:'ok', wf:'cite_seq'},
+    {vendor:'10X Genomics', name:'Chromium GEM-X Single Cell Flex (Fixed RNA / FFPE)', desc:'Fixed RNA Profiling (FFPE) · Genes x Cells (probe-based)', status:'part', wf:'scrna_partial'},
+    {vendor:'10X Genomics', name:'Chromium GEM-X Single Cell Multiome (ATAC + GEX)', desc:'Joint RNA + chromatin · Genes + Peaks x Cells (joint)', status:'no', wf:null, id:'tenx_multiome · multi'},
+    {vendor:'10X Genomics', name:"Chromium GEM-X Single Cell 5' + V(D)J Enrichment", desc:"5' GEX + TCR/BCR · Genes x Cells + Contig annotations + Clonotypes", status:'ok', wf:'vdj'},
+    {vendor:'BD Biosciences', name:'BD Rhapsody Targeted Panel', desc:'Targeted scRNA · Genes x Cells matrix (targeted panel)', status:'ok', wf:'scrna_full'},
+    {vendor:'BD Biosciences', name:'BD Rhapsody Whole Transcriptome Analysis', desc:'scRNA-seq · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
+    {vendor:'Parse Biosciences', name:'Evercode Whole Transcriptome (Mega/Giga)', desc:'Combinatorial barcoding · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
+    {vendor:'Scale Biosciences', name:'ScalePlex Single-Cell RNA/ATAC', desc:'Combinatorial barcoding · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
+    {vendor:'Takara Bio', name:'SMART-Seq Single Cell / SMARTer', desc:'Plate-based scRNA · Genes x Cells matrix (plate-based, full-length)', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
+  ],
+  sp:[
+    {vendor:'10X Genomics', name:'Visium HD Spatial Gene Expression Slide', desc:'Spatial transcriptomics · Genes x Spots matrix + tissue image (HD, 2 um bins)', status:'part', wf:'spatial_partial'},
+    {vendor:'10X Genomics', name:'Visium Spatial Gene Expression Slide', desc:'Spatial transcriptomics · Genes x Spots matrix + tissue image', status:'part', wf:'spatial_partial'},
+    {vendor:'10X Genomics', name:'Xenium Gene Expression Panel', desc:'In-situ spatial · Cells x Targets + tissue image', status:'part', wf:'spatial_partial'},
+    {vendor:'Bruker (ex-NanoString)', name:'CosMx Protein Panel (64+ targets)', desc:'Spatial proteomics · Cells x Proteins + tissue image', status:'no', wf:null, id:'cosmx_protein · spatial_prot'},
+    {vendor:'Bruker (ex-NanoString)', name:'CosMx RNA Panel (1000-6000 targets)', desc:'In-situ spatial · Cells x Targets + tissue image', status:'part', wf:'spatial_partial'},
+  ],
+  bk:[
+    {vendor:'Illumina', name:'AmpliSeq for Illumina', desc:'Targeted panel · FASTQ + amplicon-targeted library', status:'no', wf:null, id:'illumina_ampliseq · targeted_panel'},
+    {vendor:'Illumina', name:'Illumina DNA Prep (Nextera DNA Flex)', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, id:'illumina_dna_prep · bulk_dna'},
+    {vendor:'Illumina', name:'Illumina RNA Prep with Enrichment', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
+    {vendor:'Illumina', name:'Illumina Stranded Total RNA Prep (Ribo-Zero Plus)', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
+    {vendor:'NEB', name:'NEBNext Ultra II DNA Library Prep', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, id:'neb_dna · bulk_dna'},
+    {vendor:'NEB', name:'NEBNext Ultra II RNA Library Prep', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
+    {vendor:'Roche (KAPA)', name:'KAPA HyperPrep / HyperPlus', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, id:'kapa_hyper · bulk_dna'},
+    {vendor:'Roche (KAPA)', name:'KAPA RNA HyperPrep', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
+    {vendor:'IDT (Danaher)', name:'xGen Exome Hyb Panel v2', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
+    {vendor:'IDT (Danaher)', name:'xGen Prism DNA Library Prep (UMI-based)', desc:'Bulk DNA · FASTQ + UMI-tagged library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
+    {vendor:'MGI Tech (BGI)', name:'MGI Easy DNA Library Prep Kit', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
+    {vendor:'Twist Bioscience', name:'Twist Custom Hybridization Capture Panel', desc:'Targeted panel · FASTQ + capture-targeted library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
+    {vendor:'Twist Bioscience', name:'Twist Exome 2.0', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
+  ],
+  ht:[
+    {vendor:'Generic', name:'HT RNA-seq plate kit (generic)', desc:'bulk_plate · Per-well count matrix (one row per well)', status:'ok', wf:'ht_plate'},
+  ],
+};
+
+const SEQUENCERS = {
+  sc:[
+    {name:'AVITI / AVITI24', vendor:'Element Biosciences · short read', tput:'MEDIUM THROUGHPUT', formats:'bases, fastq', demux:'bases2fastq'},
+    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+    {name:'Chromium X / iX', vendor:'10x Genomics · single cell instrument', tput:'MEDIUM THROUGHPUT', formats:'fastq', demux:'BD pipeline (no demux)'},
+  ],
+  sp:[
+    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+  ],
+  bk:[
+    {name:'MiSeq', vendor:'Illumina · short read', tput:'LOW THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+  ],
+  ht:[
+    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
+  ],
+};
+
+const WORKFLOWS = {
+  scrna_full:{steps:[
+    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Cell Ranger count','primary'],
+    ['QC + Filtering','qc'],['Doublet removal','qc'],['Normalization','proc'],
+    ['HVG selection','proc'],['PCA','proc'],['Batch integration','int'],
+    ['Clustering','ana'],['Cell type annotation','ann']],
+    meta:'11 steps · ~35 min estimated · vsh/openpipeline v4.0.3'},
+  scrna_partial:{steps:[
+    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Probe alignment','primary'],
+    ['QC + Filtering','qc'],['Normalization','proc'],['Clustering','ana']],
+    meta:'6 steps · ~22 min estimated · vsh/openpipeline v4.0.3 (partial)'},
+  cite_seq:{steps:[
+    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Cell Ranger multi','primary'],
+    ['QC + Filtering','qc'],['ADT normalization','proc'],['Joint embedding','int'],
+    ['Clustering','ana'],['Cell type annotation','ann']],
+    meta:'8 steps · ~28 min estimated · vsh/openpipeline v4.0.3'},
+  vdj:{steps:[
+    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Cell Ranger vdj','primary'],
+    ['Contig assembly','proc'],['Clonotype calling','ana'],['Cell type annotation','ann']],
+    meta:'6 steps · ~26 min estimated · vsh/openpipeline v4.0.3'},
+  bulk_rna:{steps:[
+    ['BCL/FASTQ','input'],['Demultiplex','primary'],['STAR alignment','primary'],
+    ['QC (RSeQC)','qc'],['Quantification (featureCounts)','proc'],['DE analysis (DESeq2)','ana']],
+    meta:'6 steps · ~18 min estimated · vsh/bulk-rna v2.1.0'},
+  spatial_partial:{steps:[
+    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Space Ranger','primary'],
+    ['QC + Filtering','qc'],['Spot/cell normalization','proc'],['Clustering','ana']],
+    meta:'6 steps · ~30 min estimated · vsh/spatial v0.9.1 (partial)'},
+  ht_plate:{steps:[
+    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Per-well alignment','primary'],
+    ['QC + Filtering','qc'],['Per-well quantification','proc'],['Plate-level QC','ana']],
+    meta:'6 steps · ~12 min estimated · vsh/ht-plate v1.0.0'},
+};
+
+const STATUS_GLYPH = {ok:'✓', no:'✗', part:'◐'};
+
+const state = {modality:'sc', kit:0, sequencer:0};
+
+function render(){
+  // Modalities
+  const mEl = document.getElementById('modalities');
+  mEl.innerHTML = MODALITIES.map(function(m){ return `
+    <div class="card modality ${state.modality===m.id?'selected':''}" data-mod="${m.id}">
+      ${m.badge?`<span class="badge">${m.badge}</span>`:''}
+      <div class="icon">${m.icon}</div>
+      <div class="card-title">${m.title}</div>
+      <div class="card-desc">${m.desc}</div>
+      <div class="avail">${m.kits} KIT${m.kits>1?'S':''} AVAILABLE</div>
+    </div>`; }).join('');
+  mEl.querySelectorAll('.card').forEach(function(el){ el.onclick=function(){
+    state.modality = el.dataset.mod; state.kit = 0; state.sequencer = 0; render();
+  };});
+
+  // Kits
+  const kits = KITS[state.modality];
+  const kEl = document.getElementById('kits');
+  kEl.innerHTML = kits.map(function(k,i){ return `
+    <div class="card ${state.kit===i?'selected':''} ${k.dim?'dim':''}" data-i="${i}">
+      <div class="card-meta">${k.vendor}</div>
+      <div class="status ${k.status}">${STATUS_GLYPH[k.status]}</div>
+      <div class="card-title">${k.name}</div>
+      <div class="card-desc">${k.desc}</div>
+      ${k.note?`<div class="mono" style="margin-top:10px;font-style:italic">${k.note}</div>`:''}
+    </div>`; }).join('');
+  kEl.querySelectorAll('.card').forEach(function(el){ el.onclick=function(){
+    state.kit = +el.dataset.i; state.sequencer = 0; render();
+  };});
+
+  // Sequencers
+  const seqs = SEQUENCERS[state.modality];
+  const sEl = document.getElementById('sequencers');
+  sEl.innerHTML = seqs.map(function(s,i){ return `
+    <div class="card ${state.sequencer===i?'selected':''}" data-i="${i}">
+      <div class="card-title">${s.name}</div>
+      <div class="card-desc">${s.vendor}</div>
+      <span class="chip">${s.tput}</span>
+      <div class="mono" style="margin-top:10px">formats: ${s.formats}<br/>demux: ${s.demux}</div>
+    </div>`; }).join('');
+  sEl.querySelectorAll('.card').forEach(function(el){ el.onclick=function(){
+    state.sequencer = +el.dataset.i; render();
+  };});
+
+  // Pipeline
+  const kit = kits[state.kit];
+  const pEl = document.getElementById('pipeline');
+  if (!kit) { pEl.innerHTML = '<div class="empty">Select a kit to see your pipeline</div>'; return; }
+  if (!kit.wf) {
+    const id = kit.id || kit.name.toLowerCase().replace(/[^a-z0-9]+/g,'_');
+    pEl.innerHTML = `<div class="empty">No workflow registered for kit ${id}.</div>`;
+    return;
+  }
+  const wf = WORKFLOWS[kit.wf];
+  const stepHtml = wf.steps.map(function(s,i){ return `
+    <div class="step"><span class="arrow">▸</span><span class="pill ${s[1]}">${s[0]}</span></div>
+    ${i<wf.steps.length-1?'<div class="connector"></div>':''}`; }).join('');
+  pEl.innerHTML = `<div class="steps">${stepHtml}</div><div class="footer-line">${wf.meta}</div>`;
+}
+
+render();
+</script>
+
+</body>
+</html>

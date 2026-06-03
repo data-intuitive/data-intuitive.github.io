@@ -1,22 +1,9 @@
 [
   {
-    "listing": "/insights/publications.html",
-    "items": [
-      "/insights/publications/benchmarking_openproblems/index.html",
-      "/insights/publications/funkyheatmap-visualising-data-frames-with-mixed-data-types-2025/index.html",
-      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
-      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html",
-      "/insights/publications/defining-and-benchmarking-open-problems-in-single-cell-analysis-2024/index.html",
-      "/insights/publications/vib_hackathon_on_spatial_omics_tools_and_methods/index.html",
-      "/insights/publications/spearheading-future-omics-analyses-using-dyngen-a-multi-modal-simulator-of-single-cells-2021/index.html",
-      "/insights/publications/a-scalable-scenic-workflow-for-single-cell-gene-regulatory-network-analysis-2020/index.html"
-    ]
-  },
-  {
     "listing": "/insights/news.html",
     "items": [
+      "/insights/news/2026-05-24-knowledgeforgrowth/index.html",
       "/insights/news/2026-01-30-luxprovide/index.html",
-      "/insights/news/2025-12-18-wrapup25/index.html",
       "/insights/news/2025-09-16-NGOUK25/index.html",
       "/insights/news/2025-07-02-15AGW/index.html",
       "/insights/news/2025-04-29-iso27001cert/index.html",
@@ -33,18 +20,27 @@
     ]
   },
   {
+    "listing": "/company/index.html",
+    "items": [
+      "/company/careers/bioinformatics-workflow-engineer/index.html",
+      "/company/careers/internships/index.html"
+    ]
+  },
+  {
     "listing": "/insights/blog.html",
     "items": [
-      "/insights/blog/2026-04-21-spatial-data-hackathon-padua/index.html",
       "/insights/blog/2026-03-31-unlocking-data-platform-for-r-users-with-laminr/index.html",
       "/insights/blog/2026-02-18-resuming-workflow-nextflow-asset-caching/index.html",
       "/insights/blog/2026-02-10-eu-data-processing/index.html",
       "/insights/blog/2026-01-27-multiomics-power-promise-practical-challenges/index.html",
       "/insights/blog/2026-01-15-jpm-2026-from-ai-hype-to-roi/index.html",
+      "/insights/blog/2025-12-18-wrapup25/index.html",
       "/insights/blog/2025-12-10-presentation-london/index.html",
       "/insights/blog/2025-10-14-single-cell_whereML-meets-biology/index.html",
       "/insights/blog/2025-09-24-user-friendly-workflows/index.html",
+      "/insights/blog/2025-09-10-openpipeline-spatial/index.html",
       "/insights/blog/2025-08-28-anndataR/index.html",
+      "/insights/blog/2025-08-03-ht-rna-seq/index.html",
       "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
       "/insights/blog/2025-06-11-Webinar/index.html",
       "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
@@ -58,67 +54,13 @@
       "/insights/blog/2024-05-24-explainer_viash/index.html",
       "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
       "/insights/blog/2023-11-22-viash_basic/index.html",
+      "/insights/blog/2023-08-03-compass/index.html",
+      "/insights/blog/2023-06-21-virusbank/index.html",
       "/insights/blog/2023-05-02-anndata-for-r/index.html",
+      "/insights/blog/2023-01-06-benchmarking-openproblems/index.html",
+      "/insights/blog/2023-01-06-openpipeline/index.html",
       "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
       "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html"
-    ]
-  },
-  {
-    "listing": "/products/viash.html",
-    "items": [
-      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
-      "/insights/blog/2025-06-11-Webinar/index.html",
-      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
-      "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2024-05-24-explainer_viash/index.html",
-      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
-      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
-      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
-      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
-      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html",
-      "/insights/publications/viash-a-meta-framework-for-building-reusable-workflow-modules-2024/index.html",
-      "/insights/publications/tabula-sapiens-reveals-transcription-factor-expression-senescence-effects-and-sex-specific-features-in-cell-types-from-28-human-organs-and-tissues/index.html"
-    ]
-  },
-  {
-    "listing": "/services/workflow_development.html",
-    "items": [
-      "/insights/blog/2025-05-11-Mastering-Bioinformatics-Tool-Workflow-Management-with-Viash/index.html",
-      "/insights/blog/2025-06-11-Webinar/index.html",
-      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
-      "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2024-05-24-explainer_viash/index.html",
-      "/insights/blog/2025-02-01-10-common-pitfalls-in-omics-data-processing/index.html",
-      "/insights/blog/2024-12-06-tabula-sapiens-v2/index.html",
-      "/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/index.html",
-      "/insights/blog/2025-03-11-why-modern-omics-data-projects-need-better-workflow-tools/index.html",
-      "/insights/blog/2024-03-01-viash-plus-nextflow/index.html"
-    ]
-  },
-  {
-    "listing": "/company/careers.html",
-    "items": [
-      "/company/careers/bioinformatics-workflow-engineer/index.html"
-    ]
-  },
-  {
-    "listing": "/insights/showcase.html",
-    "items": [
-      "/insights/blog/2024-10-05-how-viash-works-in-practice/index.html",
-      "/insights/blog/2023-11-22-viash_basic/index.html",
-      "/insights/blog/2024-07-01-openpipeline_demo/index.html",
-      "/insights/blog/2024-05-24-explainer_viash/index.html"
-    ]
-  },
-  {
-    "listing": "/insights/projects.html",
-    "items": [
-      "/insights/projects/HT-RNA-SEQ/index.html",
-      "/insights/projects/benchmarking_openproblems/index.html",
-      "/insights/projects/openpipeline_spatial/index.html",
-      "/insights/projects/openpipeline_project/index.html",
-      "/insights/projects/virusbank/index.html",
-      "/insights/projects/ComPass/index.html"
     ]
   }
 ]
