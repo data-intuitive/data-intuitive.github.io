@@ -2,6 +2,7 @@
   {
     "listing": "/insights/blog.html",
     "items": [
+      "/insights/blog/2026-06-12-interoperable-single-cell-pipelines-anndatar-viash/index.html",
       "/insights/blog/2026-03-31-unlocking-data-platform-for-r-users-with-laminr/index.html",
       "/insights/blog/2026-02-18-resuming-workflow-nextflow-asset-caching/index.html",
       "/insights/blog/2026-02-10-eu-data-processing/index.html",
@@ -31,7 +32,6 @@
       "/insights/blog/2023-06-21-virusbank/index.html",
       "/insights/blog/2023-05-02-anndata-for-r/index.html",
       "/insights/blog/2023-01-06-openpipeline/index.html",
-      "/insights/blog/2023-01-06-benchmarking-openproblems/index.html",
       "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
       "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html"
     ]

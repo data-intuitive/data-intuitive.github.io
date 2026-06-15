@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Data Intuitive">
-<meta name="dcterms.date" content="2023-01-06">
-<meta name="description" content="Data Intuitive is a key contributor to OpenProblems, an open-source platform for benchmarking computational tasks in single-cell analysis using Viash-powered modular workflows.">
+<meta name="author" content="Luke Zappia">
+<meta name="dcterms.date" content="2026-06-12">
+<meta name="description" content="Single-cell transcriptomics analysis is split across two language ecosystems.">
 
-<title>Standardized Benchmarks in Single-Cell Analysis – Data Intuitive</title>
+<title>Interoperable single-cell pipelines with anndataR and Viash – Data Intuitive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -199,11 +199,13 @@ cookieconsent.run({
         ]
       }
       </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Standardized Benchmarks in Single-Cell Analysis – Data Intuitive">
-<meta property="og:description" content="Data Intuitive is a key contributor to OpenProblems, an open-source platform for benchmarking computational tasks in single-cell analysis using Viash-powered modular workflows.">
-<meta property="og:image" content="https://www.data-intuitive.com/images/benchmarking/logo_op_new.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Interoperable single-cell pipelines with anndataR and Viash – Data Intuitive">
+<meta property="og:description" content="Single-cell transcriptomics analysis is split across two language ecosystems.">
+<meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2026-06-12-interoperable-single-cell-pipelines-anndatar-viash/anndataR_viash_logo.png">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:height" content="1398">
+<meta property="og:image:width" content="2546">
 </head>
   
   <!-- HubSpot -->
@@ -396,60 +398,72 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#viash-a-catalyst-for-methodological-advancement" id="toc-viash-a-catalyst-for-methodological-advancement" class="nav-link active" data-scroll-target="#viash-a-catalyst-for-methodological-advancement">Viash: A Catalyst for Methodological Advancement</a></li>
+  <li><a href="#current-approaches" id="toc-current-approaches" class="nav-link active" data-scroll-target="#current-approaches">Current approaches</a></li>
+  <li><a href="#how-anndatar-works" id="toc-how-anndatar-works" class="nav-link" data-scroll-target="#how-anndatar-works">How anndataR works</a></li>
+  <li><a href="#why-this-matters-for-viash-pipelines" id="toc-why-this-matters-for-viash-pipelines" class="nav-link" data-scroll-target="#why-this-matters-for-viash-pipelines">Why this matters for Viash pipelines</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <div class="quarto-about-marquee">
   <div class="about-image-container">
-    <img src="/images/benchmarking/logo_op_new.png" class="about-image " style="width: 100%;">
+    <img src="./anndataR_viash_logo.png" class="about-image " style="width: 100%;">
   </div>
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Standardized Benchmarks in Single-Cell Analysis</h1>
-<p class="subtitle lead">OpenProblems as a Community-Driven Benchmarking Platform</p>
-  <div class="quarto-categories">
-    <div class="quarto-category">Open Source</div>
-    <div class="quarto-category">project</div>
-    <div class="quarto-category">benchmarking</div>
-  </div>
-  </div>
+<h1 class="title">Interoperable single-cell pipelines with anndataR and Viash</h1>
+</div>
 <div>
   <div class="description">
-    Data Intuitive is a key contributor to OpenProblems, an open-source platform for benchmarking computational tasks in single-cell analysis using Viash-powered modular workflows.
+    Single-cell transcriptomics analysis is split across two language ecosystems.
   </div>
 </div>
 <div class="quarto-title-meta">
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Data Intuitive </p>
+             <p>Luke Zappia </p>
           </div>
   </div>
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 6, 2023</p>
+      <p class="date">June 12, 2026</p>
     </div>
   </div>
   </div>
 </header> <main class="content" id="quarto-document-content">
 
-<p>OpenProblems is an open-source platform for benchmarking and formalizing computational tasks in single-cell analysis. The platform aims to facilitate the development of new methods for single-cell omics by defining mathematical interpretations of tasks, providing publicly available gold-standard datasets in standardized formats, defining quantitative metrics to evaluate success, and ranking state-of-the-art methods in continuously updated leaderboards. OpenProblems is hosted on GitHub and evaluated using AWS with support from the Chan Zuckerberg Initiative.</p>
-<p>We are proud to be a key contributor to the Open Problems for Single Cell Analysis initiative, where we benchmark state-of-the-art methods and foster collaboration within the community.</p>
-<section id="viash-a-catalyst-for-methodological-advancement" class="level2">
-<h2 data-anchor-id="viash-a-catalyst-for-methodological-advancement">Viash: A Catalyst for Methodological Advancement</h2>
-<p>Viash is being used in OpenProblems to streamline the development, execution, and sharing of methods, metrics and dataset loaders. It allows users to define their components as reusable modules that can be combined to form pipelines, and it manages dependencies, versioning, and execution on different computing environments. Viash also provides a user-friendly interface for configuring pipelines and visualizing results. By using Viash, OpenProblems can provide a flexible and scalable platform for benchmarking single-cell analysis methods.</p>
-            <div class="text-center text-md-start v-dev-advantage">
-              <div class="d-flex flex-column flex-md-row align-items-center gap-3">
-              <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" target="”_blank”" onclick="goBack()"> <i class="bi bi-arrow-left"> </i>Back</button>
-              <a target="”_blank”" href="https://openproblems.bio"><img src="../../../images/icons/cloud.svg" alt="cloud">Website</a>
-              <a target="”_blank”" href="https://github.com/openproblems-bio/openproblems-v2"><img src="../../../images/icons/github-icon.svg" alt="github-icon"> GitHub</a>
-              <!-- <a href="https://arxiv.org/abs/2110.11494"><img src="/images/icons/note-2.svg" target=”_blank” alt="note-2"> paper </a> -->
-              </div>
-            </div>
+<p>Single-cell transcriptomics analysis is split across two language ecosystems. In Python, the <a href="https://scverse.org/" target="_blank">scverse</a> ecosystem stores data in memory as an <code>AnnData</code> object and writes it to disk as a HDF5-based H5AD file or a Zarr store. R has two widely used in-memory objects, the <code>SingleCellExperiment</code> object used by the Bioconductor community and the <code>Seurat</code> object. Both play a similar role to <code>AnnData</code>, bundling an expression matrix with metadata and calculated information, but they have different structures and are not interchangeable.</p>
+<p>Unlike <code>AnnData</code>, which has a defined on-disk specification, R objects are often written to disk using R’s generic serialisation mechanisms which cannot be natively read by Python. Each ecosystem has real strengths, and best practice is to use tools from both in an analysis but this is made difficult by the challenges of moving data between languages.</p>
+<section id="current-approaches" class="level2">
+<h2 data-anchor-id="current-approaches">Current approaches</h2>
+<p>Currently, approaches for moving single-cell data between Python and R typically rely on a foreign function interface like <code>reticulate</code> or <code>rpy2</code>. This provides a bridge between languages, allowing compatible data to be transferred between environments. R packages like <code>sceasy</code> and <code>zellkonverter</code> that can read H5AD files do so by using the Python <code>anndata</code> package to perform the read the file, and then convert the contents to R objects by transferring information stored in matrices and data frames to the parallel R environment. The data is stored in a language-agnostic file format but an R user needs to configure a Python environment in order to read it, even if they don’t need Python for their analysis.</p>
+</section>
+<section id="how-anndatar-works" class="level2">
+<h2 data-anchor-id="how-anndatar-works">How anndataR works</h2>
+<p>The <code>anndataR</code> package is different: it reads and writes H5AD files natively in R without requiring a Python environment. It can read and write both the H5AD (via the <code>rhdf5</code> package) and Zarr (using <code>Rarr</code>) formats, adhering to the <code>AnnData</code> on-disk specification. Users can interact with the provided R <code>AnnData</code> object, or convert to a <code>SingleCellExperiment</code> or <code>Seurat</code> object for use with other R packages. When analysis is complete, the native R objects can be written directly to disk as a H5AD file or Zarr store. A robust set of round-trip tests make sure that files written by one language are compatible with the other.</p>
+<p>The fundamental differences between the objects makes conversion non-trivial. Each object stores different information in different locations, and <code>AnnData</code> places cells in rows and genes in columns while <code>SingleCellExperiment</code> and <code>Seurat</code> use the opposite orientation. <code>anndataR</code> handles this with sensible defaults that attempt to convert as much data as possible, and lets advanced users control every slot when they need precise control.</p>
+</section>
+<section id="why-this-matters-for-viash-pipelines" class="level2">
+<h2 data-anchor-id="why-this-matters-for-viash-pipelines">Why this matters for Viash pipelines</h2>
+<p>Viash builds pipelines from language-agnostic modules. A single module can be written in R, Python or Bash, and Viash wraps it into a standard component. A pipeline can mix modules from different languages without needing to know how they are implemented.</p>
+<p>That approach relies on being able to pass data between modules. If one module outputs data in a proprietary format that cannot be read by the next one, this presents a significant barrier to building workflows from reusable components.</p>
+<p>By using <code>anndataR</code> in R components, a single-cell workflow can take advantage of the strengths of different languages for a comprehensive analysis. The R components no longer need to include a Python environment, making them smaller and easier to maintain. Workflows also become simpler by using one file format and avoiding the need for explicit conversion steps.</p>
+<hr>
+<p><em><code>anndataR</code> is available under an open source MIT license.</em></p>
+<ul>
+<li><strong>Bioconductor:</strong> <a href="https://bioconductor.org/packages/anndataR/" class="uri" target="_blank">https://bioconductor.org/packages/anndataR/</a></li>
+<li><strong>GitHub:</strong> <a href="https://github.com/scverse/anndataR/" class="uri" target="_blank">https://github.com/scverse/anndataR/</a></li>
+<li><strong>Docs:</strong> <a href="https://anndatar.scverse.org" target="_blank">anndatar.scverse.org</a></li>
+<li><strong>Paper:</strong> <em>Bioinformatics</em> (2026), <a href="https://doi.org/10.1093/bioinformatics/btag288" class="uri" target="_blank">https://doi.org/10.1093/bioinformatics/btag288</a></li>
+</ul>
+<div class="text-center text-md-start v-dev-advantage">
+  <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+    <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()"><i class="bi bi-arrow-left"></i>Back</button>
+  </div>
+</div>
 <script>
 function goBack() {
   window.history.back();
