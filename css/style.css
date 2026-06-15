@@ -11411,3 +11411,31 @@ body.quarto-dark .team-card-photo,
 @media (max-width: 880px) {
   .mini-case { grid-template-columns: 1fr; gap: 22px; }
 }
+
+/* =========================================================================
+   Inline `code` - dark-mode legibility fix
+   Quarto/Bootstrap default is a near-white pill with light-pink text, which
+   has unreadable contrast on the dark navy theme. Use a soft brand-tinted
+   pill in both modes so in-prose code emphasis stays consistent.
+   ========================================================================= */
+:not(pre) > code {
+  background: rgba(124, 75, 172, 0.10);
+  color: var(--p-color, #7C4BAC);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.92em;
+  border: 1px solid rgba(124, 75, 172, 0.18);
+}
+body.quarto-dark :not(pre) > code,
+[data-bs-theme="dark"] :not(pre) > code {
+  background: rgba(0, 180, 160, 0.16);
+  color: #4FE0BD;
+  border-color: rgba(0, 180, 160, 0.30);
+}
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
+a code {
+  background: transparent;
+  color: inherit;
+  border: 0;
+  padding: 0;
+}
