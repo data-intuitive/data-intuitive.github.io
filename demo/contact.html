@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
+<title>Contact us · Platform Demo | Data Intuitive</title>
+<link rel="canonical" href="https://www.data-intuitive.com/demo/contact.html" />
+<link rel="stylesheet" href="/demo/_demo-shell.css" />
+<style>
+  /* HubSpot embed gets a coat of paint so it matches the rest of the page */
+  #hbForm form { font-family: var(--body-font) !important; color: var(--text) !important; }
+  #hbForm .hs-form-field label,
+  #hbForm .hs_error_rollup label { color: var(--text-strong) !important; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; }
+  #hbForm input[type="text"], #hbForm input[type="email"], #hbForm input[type="tel"], #hbForm textarea, #hbForm select {
+    width: 100% !important;
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+    font: inherit !important;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  #hbForm input:focus, #hbForm textarea:focus, #hbForm select:focus {
+    outline: none !important;
+    border-color: var(--p-color) !important;
+    box-shadow: 0 0 0 3px rgba(124,75,172,0.16) !important;
+  }
+  #hbForm .hs-submit { margin-top: 12px; }
+  #hbForm .hs-button.primary {
+    background: var(--p-color) !important;
+    color: #FFFFFF !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    padding: 12px 22px !important;
+    font: inherit !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    cursor: pointer;
+    transition: background .15s, transform .15s;
+  }
+  #hbForm .hs-button.primary:hover { background: #6A3F94 !important; transform: translateY(-1px); }
+  #hbForm .hs-error-msgs label { color: #C44A38 !important; font-size: 12.5px !important; }
+</style>
+</head>
+<body>
+
+<main class="demo-page">
+
+  <a href="#" class="demo-page-back" id="backLink">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to the demo
+  </a>
+
+  <header class="demo-page-head">
+    <span class="demo-page-eyebrow">Platform demo &middot; Contact</span>
+    <h1 class="demo-page-title">Tell us about your setup</h1>
+    <p class="demo-page-lead">We've kept your demo selections below. Add anything we should know, and a bioinformatician will reply within one working day.</p>
+  </header>
+
+  <div class="demo-config-summary" id="configSummary"></div>
+
+  <div class="demo-page-body">
+    <div id="hbForm">
+      <noscript>
+        <p>This form needs JavaScript. You can also email <a href="mailto:info@data-intuitive.com">info@data-intuitive.com</a>.</p>
+      </noscript>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  // Theme + embed handshake
+  var params = new URLSearchParams(window.location.search);
+  function applyTheme(value) {
+    document.documentElement.setAttribute('data-theme', value === 'dark' ? 'dark' : '');
+  }
+  if (params.get('theme') === 'dark') applyTheme('dark');
+  window.addEventListener('message', function(e){
+    if (e && e.data && e.data.type === 'di-demo-theme') applyTheme(e.data.value);
+  });
+
+  // Back link keeps embed/theme params
+  var back = document.getElementById('backLink');
+  back.href = '/demo/configurator.html?embed=' + (params.get('embed') === '1' ? '1' : '0') + '&theme=' + (params.get('theme') || 'light');
+
+  // Read the saved demo config and render a summary
+  var config = null;
+  try { config = JSON.parse(sessionStorage.getItem('di-demo-config') || 'null'); } catch(_){}
+
+  function row(label, value, sub) {
+    var dt = document.createElement('dt'); dt.textContent = label;
+    var dd = document.createElement('dd'); dd.textContent = value || '-';
+    if (sub) {
+      var s = document.createElement('small'); s.textContent = sub;
+      dd.appendChild(s);
+    }
+    var wrap = document.createElement('div'); wrap.className = 'demo-config-row';
+    wrap.appendChild(dt); wrap.appendChild(dd);
+    return wrap;
+  }
+  function formatConfig(c){
+    if (!c) return '';
+    var parts = [];
+    parts.push('Modality: ' + (c.modality || ''));
+    parts.push('Kit: ' + (c.kit || ''));
+    parts.push('Instrument: ' + (c.instrument || ''));
+    parts.push('Species: ' + (c.species || ''));
+    parts.push('Samples: ' + (c.samples || ''));
+    parts.push('Sample size: ' + (c.sampleSize || ''));
+    parts.push('Scenario: ' + (c.scenario || ''));
+    parts.push('Resolved workflow: ' + (c.workflowId || ''));
+    return parts.join('\n');
+  }
+
+  var summary = document.getElementById('configSummary');
+  if (config) {
+    var head = document.createElement('div'); head.className = 'demo-config-summary-head';
+    var h = document.createElement('h3'); h.textContent = 'Your demo selections';
+    var tag = document.createElement('span'); tag.className = 'demo-config-summary-tag'; tag.textContent = 'Carried over';
+    head.appendChild(h); head.appendChild(tag);
+    summary.appendChild(head);
+
+    var grid = document.createElement('div'); grid.className = 'demo-config-grid';
+    grid.appendChild(row('Modality', config.modality));
+    grid.appendChild(row('Kit',       config.kit));
+    grid.appendChild(row('Instrument', config.instrument));
+    grid.appendChild(row('Experiment', (config.species || '') + ' · ' + (config.samples || '') + ' samples', config.sampleSize || ''));
+    grid.appendChild(row('Scenario',  config.scenario));
+    grid.appendChild(row('Workflow',  config.workflowId));
+    summary.appendChild(grid);
+  } else {
+    summary.style.display = 'none';
+  }
+
+  // Load HubSpot v2 forms script and create the form
+  function injectForm(){
+    if (!window.hbspt || !window.hbspt.forms) return;
+    window.hbspt.forms.create({
+      portalId: '48498752',
+      formId:   '564c8cbf-02fd-422d-8f36-d21b45299d04',
+      target:   '#hbForm',
+      onFormReady: function($form){
+        try {
+          var node = $form && $form[0] ? $form[0] : $form;
+          if (!node || !node.querySelector) return;
+          var textarea = node.querySelector('textarea[name="message"], textarea[name="TICKET.content"], textarea');
+          if (textarea && config) {
+            var prefill = 'From the platform demo:\n' + formatConfig(config) + '\n\n';
+            if (!textarea.value) textarea.value = prefill;
+            else if (textarea.value.indexOf('From the platform demo') === -1) textarea.value = prefill + textarea.value;
+            textarea.dispatchEvent(new Event('input', { bubbles: true }));
+          }
+        } catch(_) {}
+      }
+    });
+  }
+  var s = document.createElement('script');
+  s.src = '//js.hsforms.net/forms/embed/v2.js';
+  s.async = true;
+  s.onload = injectForm;
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>

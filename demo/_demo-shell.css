@@ -1,0 +1,143 @@
+/* Shared styles for the demo modal pages (configurator + contact + bookmeeting).
+   These live inside the modal iframe on /products/platform.html, and as
+   standalone pages too. */
+:root {
+  --p-color: #7C4BAC;
+  --s-color: #00B4A0;
+  --navy: #0B1D3A;
+  --text: #2F3A55;
+  --text-strong: #0F1B3D;
+  --text-muted: #5A6890;
+  --text-soft: #7A88B5;
+  --surface: #FFFFFF;
+  --surface-alt: #F7F8FB;
+  --surface-elev: #FAFBFD;
+  --border: rgba(11, 29, 58, 0.10);
+  --border-soft: rgba(11, 29, 58, 0.06);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --body-font: 'General Sans', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --display-font: 'Cal Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+[data-theme="dark"] {
+  --text: #C7D2E5;
+  --text-strong: #FFFFFF;
+  --text-muted: #94A0BC;
+  --text-soft: #7A88B5;
+  --surface: #14213D;
+  --surface-alt: #1A2A4F;
+  --surface-elev: #0F1B3D;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-soft: rgba(255, 255, 255, 0.06);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--body-font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--surface-alt);
+  min-height: 100vh;
+}
+a { color: var(--p-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.demo-page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+.demo-page-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 12.5px; letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  transition: background .15s, color .15s;
+}
+.demo-page-back:hover { color: var(--p-color); background: var(--surface); text-decoration: none; }
+
+.demo-page-head {
+  margin-bottom: 22px;
+}
+.demo-page-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--p-color);
+  display: block; margin-bottom: 8px;
+}
+.demo-page-title {
+  font-family: var(--display-font);
+  font-size: 28px; line-height: 1.25; font-weight: 600;
+  color: var(--text-strong);
+  margin: 0 0 10px;
+  letter-spacing: -0.005em;
+}
+.demo-page-lead {
+  font-size: 15.5px; line-height: 1.55; color: var(--text-muted);
+  margin: 0;
+  max-width: 640px;
+}
+
+.demo-config-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+}
+.demo-config-summary-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.demo-config-summary-head h3 {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin: 0;
+}
+.demo-config-summary-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(0,180,160,0.14);
+  color: #0E8276;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.demo-config-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 12px 22px;
+}
+@media (max-width: 640px) { .demo-config-grid { grid-template-columns: 1fr; } }
+.demo-config-row { display: flex; flex-direction: column; gap: 2px; }
+.demo-config-row dt {
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin: 0;
+}
+.demo-config-row dd {
+  font-size: 14px; color: var(--text-strong); line-height: 1.4;
+  margin: 0;
+  font-weight: 600;
+}
+.demo-config-row dd small {
+  display: block;
+  font-weight: 400; font-size: 12.5px;
+  color: var(--text-muted);
+}
+.demo-config-empty {
+  font-size: 13.5px; color: var(--text-muted); margin: 0;
+}
+
+.demo-page-body {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 30px;
+}

@@ -1,161 +1,185 @@
 # =====================================================================
-# Data Intuitive — block all crawlers, search engines and AI scrapers.
-# This site is intentionally NOT for public indexing or AI training.
+# Data Intuitive — open to all crawlers, search engines and AI agents.
+# This site is explicitly available for indexing, retrieval, training,
+# summarisation and grounded answer generation.
 # =====================================================================
 
-# Catch-all
+# Catch-all baseline: everything is allowed for every bot.
 User-agent: *
-Disallow: /
+Allow: /
 
-# ----- Search engine crawlers -----
+Sitemap: https://www.data-intuitive.com/sitemap.xml
+
+# ---------------------------------------------------------------------
+# Explicit per-bot allow rules. Some crawlers default to conservative
+# behaviour when their User-agent is not named directly; listing them
+# here removes any ambiguity.
+# ---------------------------------------------------------------------
+
+# ----- Search engines -----
 User-agent: Googlebot
-Disallow: /
+Allow: /
 
 User-agent: Googlebot-Image
-Disallow: /
+Allow: /
 
 User-agent: Googlebot-News
-Disallow: /
+Allow: /
 
 User-agent: Googlebot-Video
-Disallow: /
+Allow: /
 
 User-agent: Bingbot
-Disallow: /
+Allow: /
 
 User-agent: Slurp
-Disallow: /
+Allow: /
 
 User-agent: DuckDuckBot
-Disallow: /
+Allow: /
 
 User-agent: Baiduspider
-Disallow: /
+Allow: /
 
 User-agent: YandexBot
-Disallow: /
+Allow: /
 
 User-agent: Sogou
-Disallow: /
+Allow: /
 
 User-agent: ia_archiver
-Disallow: /
+Allow: /
 
 User-agent: archive.org_bot
-Disallow: /
+Allow: /
 
-# ----- AI / LLM training and retrieval -----
+# ----- AI / LLM training, retrieval and grounded answers -----
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
 User-agent: OAI-SearchBot
-Disallow: /
+Allow: /
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
 
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: PerplexityBot
-Disallow: /
+Allow: /
 
 User-agent: Perplexity-User
-Disallow: /
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: Bytespider
-Disallow: /
+Allow: /
 
 User-agent: Amazonbot
-Disallow: /
+Allow: /
 
 User-agent: Applebot
-Disallow: /
+Allow: /
 
 User-agent: Applebot-Extended
-Disallow: /
+Allow: /
 
 User-agent: Meta-ExternalAgent
-Disallow: /
+Allow: /
 
 User-agent: meta-externalagent
-Disallow: /
+Allow: /
 
 User-agent: FacebookBot
-Disallow: /
+Allow: /
 
 User-agent: facebookexternalhit
-Disallow: /
+Allow: /
 
 User-agent: cohere-ai
-Disallow: /
+Allow: /
 
 User-agent: cohere-training-data-crawler
-Disallow: /
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
 
 User-agent: Diffbot
-Disallow: /
+Allow: /
 
 User-agent: ImagesiftBot
-Disallow: /
+Allow: /
 
 User-agent: img2dataset
-Disallow: /
+Allow: /
 
 User-agent: YouBot
-Disallow: /
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
 
 User-agent: TimpiBot
-Disallow: /
+Allow: /
 
 User-agent: FriendlyCrawler
-Disallow: /
+Allow: /
 
 User-agent: Omgili
-Disallow: /
+Allow: /
 
 User-agent: Omgilibot
-Disallow: /
+Allow: /
 
 User-agent: AwarioRssBot
-Disallow: /
+Allow: /
 
 User-agent: AwarioSmartBot
-Disallow: /
+Allow: /
 
 User-agent: DataForSeoBot
-Disallow: /
+Allow: /
+
+User-agent: Kagibot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
 
 # ----- SEO / commercial scrapers -----
 User-agent: AhrefsBot
-Disallow: /
+Allow: /
 
 User-agent: SemrushBot
-Disallow: /
+Allow: /
 
 User-agent: MJ12bot
-Disallow: /
+Allow: /
 
 User-agent: DotBot
-Disallow: /
-
-User-agent: PetalBot
-Disallow: /
+Allow: /
 
 User-agent: BLEXBot
-Disallow: /
+Allow: /
 
 User-agent: SeekportBot
-Disallow: /
+Allow: /

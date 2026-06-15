@@ -1,32 +1,5 @@
 [
   {
-    "listing": "/insights/news.html",
-    "items": [
-      "/insights/news/2026-05-24-knowledgeforgrowth/index.html",
-      "/insights/news/2026-01-30-luxprovide/index.html",
-      "/insights/news/2025-09-16-NGOUK25/index.html",
-      "/insights/news/2025-07-02-15AGW/index.html",
-      "/insights/news/2025-04-29-iso27001cert/index.html",
-      "/insights/news/2025-05-15-webinar/index.html",
-      "/insights/news/2025-05-08-knowledgeforgrowth/index.html",
-      "/insights/news/2024-11-12-scienceforhealth/index.html",
-      "/insights/news/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
-      "/insights/news/2024-08-30-bioeurope/index.html",
-      "/insights/news/2024-03-19-framework-laptops/index.html",
-      "/insights/news/2023-12-15-fit_to_go_global/index.html",
-      "/insights/news/2023-05-22-scverse-hackathon/index.html",
-      "/insights/news/2023-02-05-sustain/index.html",
-      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
-    ]
-  },
-  {
-    "listing": "/company/index.html",
-    "items": [
-      "/company/careers/bioinformatics-workflow-engineer/index.html",
-      "/company/careers/internships/index.html"
-    ]
-  },
-  {
     "listing": "/insights/blog.html",
     "items": [
       "/insights/blog/2026-03-31-unlocking-data-platform-for-r-users-with-laminr/index.html",
@@ -57,10 +30,37 @@
       "/insights/blog/2023-08-03-compass/index.html",
       "/insights/blog/2023-06-21-virusbank/index.html",
       "/insights/blog/2023-05-02-anndata-for-r/index.html",
-      "/insights/blog/2023-01-06-benchmarking-openproblems/index.html",
       "/insights/blog/2023-01-06-openpipeline/index.html",
+      "/insights/blog/2023-01-06-benchmarking-openproblems/index.html",
       "/insights/blog/2018-09-06-a-practical-approach-to-model-error-part-2/index.html",
       "/insights/blog/2016-05-12-a-practical-approach-to-model-error/index.html"
+    ]
+  },
+  {
+    "listing": "/company/index.html",
+    "items": [
+      "/company/careers/bioinformatics-workflow-engineer/index.html",
+      "/company/careers/internships/index.html"
+    ]
+  },
+  {
+    "listing": "/insights/news.html",
+    "items": [
+      "/insights/news/2026-05-24-knowledgeforgrowth/index.html",
+      "/insights/news/2026-01-30-luxprovide/index.html",
+      "/insights/news/2025-09-16-NGOUK25/index.html",
+      "/insights/news/2025-07-02-15AGW/index.html",
+      "/insights/news/2025-04-29-iso27001cert/index.html",
+      "/insights/news/2025-05-15-webinar/index.html",
+      "/insights/news/2025-05-08-knowledgeforgrowth/index.html",
+      "/insights/news/2024-11-12-scienceforhealth/index.html",
+      "/insights/news/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
+      "/insights/news/2024-08-30-bioeurope/index.html",
+      "/insights/news/2024-03-19-framework-laptops/index.html",
+      "/insights/news/2023-12-15-fit_to_go_global/index.html",
+      "/insights/news/2023-05-22-scverse-hackathon/index.html",
+      "/insights/news/2023-02-05-sustain/index.html",
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
     ]
   }
 ]

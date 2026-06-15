@@ -3,331 +3,1047 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pipeline Configurator | Data Intuitive</title>
+<meta name="robots" content="index, follow" />
+<title>Platform Demo · Omics Analysis Workflow Configurator | Data Intuitive</title>
+<link rel="canonical" href="https://www.data-intuitive.com/demo/configurator.html" />
 <style>
-  :root{
-    --bg:#0b0b14;--panel:#11121d;--panel-2:#161826;--border:#232538;
-    --text:#e6e7ee;--muted:#8a8da0;--accent:#a78bfa;--accent-2:#f472b6;
-    --green:#34d399;--amber:#fbbf24;--red:#f87171;--blue:#60a5fa;
-    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  :root {
+    --p-color: #7C4BAC;
+    --s-color: #00B4A0;
+    --navy: #0B1D3A;
+    --coral: #E05C4B;
+    --text: #2F3A55;
+    --text-strong: #0F1B3D;
+    --text-muted: #5A6890;
+    --text-soft: #7A88B5;
+    --surface: #FFFFFF;
+    --surface-alt: #F7F8FB;
+    --surface-elev: #FAFBFD;
+    --border: rgba(11, 29, 58, 0.10);
+    --border-soft: rgba(11, 29, 58, 0.06);
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --body-font: 'General Sans', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --display-font: 'Cal Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
-    background:radial-gradient(1200px 600px at 20% -10%,#1a1230 0%,var(--bg) 50%) no-repeat var(--bg);
-    color:var(--text);min-height:100vh}
-  header{display:flex;align-items:center;justify-content:space-between;
-    padding:14px 28px;border-bottom:1px solid var(--border);
-    position:sticky;top:0;background:rgba(11,11,20,.85);backdrop-filter:blur(8px);z-index:10}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:600}
-  .logo{width:32px;height:32px;border-radius:6px;
-    background:linear-gradient(135deg,#6d28d9,#a78bfa);
-    display:grid;place-items:center;font-size:12px;font-weight:700}
-  .crumb{color:var(--muted);font-weight:400}
-  .toggle{width:52px;height:26px;border-radius:999px;background:#2b2d42;
-    position:relative;cursor:pointer;display:inline-block;margin-right:16px}
-  .toggle::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff}
-  .restart{color:var(--muted);cursor:pointer}
-  main{max-width:1100px;margin:32px auto;padding:0 20px}
-  h1{font-size:24px;margin:0 0 6px}
-  .subtitle{color:var(--muted);margin-bottom:28px;font-size:14px}
-  .section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:22px}
-  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-  .section-title{display:flex;align-items:baseline;gap:10px;font-size:16px;font-weight:600}
-  .step-num{color:var(--accent);font-family:var(--mono)}
-  .filter-btn{border:1px solid var(--border);background:transparent;color:var(--text);
-    padding:6px 12px;border-radius:8px;font-size:13px;cursor:pointer}
-  .grid{display:grid;gap:14px}
-  .grid-4{grid-template-columns:repeat(4,1fr)}
-  .grid-3{grid-template-columns:repeat(3,1fr)}
-  @media(max-width:900px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.grid-4,.grid-3{grid-template-columns:1fr}}
-  .card{background:var(--panel-2);border:1px solid var(--border);border-radius:12px;
-    padding:16px;cursor:pointer;transition:border-color .15s,background .15s,transform .15s;position:relative;min-height:120px}
-  .card:hover{border-color:#3a3d57}
-  .card.selected{border-color:var(--accent);
-    background:linear-gradient(180deg,rgba(167,139,250,.08),transparent);
-    box-shadow:0 0 0 1px var(--accent) inset}
-  .card.dim{opacity:.55}
-  .card-title{font-weight:600;font-size:15px;margin-bottom:6px}
-  .card-desc{color:var(--muted);font-size:13px;line-height:1.4}
-  .card-meta{color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
-  .modality{text-align:center;padding:22px 14px}
-  .modality .icon{font-size:22px;margin-bottom:8px}
-  .modality .avail{color:var(--muted);font-size:11px;letter-spacing:.1em;margin-top:10px}
-  .badge{position:absolute;top:10px;right:10px;display:inline-block;font-size:10px;
-    padding:2px 8px;border-radius:999px;background:#3a2a0c;color:var(--amber);letter-spacing:.08em}
-  .status{position:absolute;top:12px;right:12px;width:18px;height:18px;border-radius:50%;
-    display:grid;place-items:center;font-size:11px;font-weight:700}
-  .status.ok{background:rgba(52,211,153,.15);color:var(--green)}
-  .status.no{background:rgba(248,113,113,.15);color:var(--red)}
-  .status.part{background:rgba(251,191,36,.15);color:var(--amber)}
-  .coming-up{margin-top:18px}
-  .coming-up .label{color:var(--muted);font-size:11px;letter-spacing:.12em;margin-bottom:8px}
-  .ghost{background:transparent;border:1px dashed var(--border);padding:14px;border-radius:10px;color:var(--muted)}
-  .chip{display:inline-block;font-family:var(--mono);font-size:11px;padding:3px 8px;
-    border-radius:6px;background:#1d1f2e;color:var(--muted);margin-right:6px;margin-top:6px}
-  .mono{font-family:var(--mono);font-size:12px;color:var(--muted)}
-  .preview-head{color:var(--muted);letter-spacing:.12em;font-size:11px;margin-bottom:14px}
-  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px;font-size:12px;color:var(--muted)}
-  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
-  .d-input{background:#6b7280}.d-primary{background:#60a5fa}.d-qc{background:#fbbf24}
-  .d-proc{background:#22d3ee}.d-int{background:#a78bfa}.d-ann{background:#34d399}.d-ana{background:#f472b6}
-  .steps{display:flex;flex-direction:column;gap:6px}
-  .step{display:flex;align-items:center;gap:10px}
-  .step .arrow{color:var(--muted)}
-  .step .pill{font-family:var(--mono);font-size:12px;padding:6px 10px;
-    border:1px solid var(--border);border-radius:8px;background:#14152099;border-left:3px solid var(--border)}
-  .pill.input{border-left-color:#6b7280}
-  .pill.primary{border-left-color:#60a5fa}
-  .pill.qc{border-left-color:#fbbf24}
-  .pill.proc{border-left-color:#22d3ee}
-  .pill.int{border-left-color:#a78bfa}
-  .pill.ann{border-left-color:#34d399}
-  .pill.ana{border-left-color:#f472b6}
-  .connector{height:14px;width:1px;background:var(--border);margin-left:22px}
-  .footer-line{margin-top:18px;color:var(--muted);font-family:var(--mono);font-size:12px;
-    border-top:1px dashed var(--border);padding-top:12px}
-  .empty{color:var(--muted);font-family:var(--mono);font-size:13px;padding:10px 0}
+  [data-theme="dark"] {
+    --text: #C7D2E5;
+    --text-strong: #FFFFFF;
+    --text-muted: #94A0BC;
+    --text-soft: #7A88B5;
+    --surface: #14213D;
+    --surface-alt: #1A2A4F;
+    --surface-elev: #0F1B3D;
+    --border: rgba(255, 255, 255, 0.10);
+    --border-soft: rgba(255, 255, 255, 0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--body-font);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--surface-alt);
+    min-height: 100vh;
+  }
+  a { color: var(--p-color); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .demo-header {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 28px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .demo-header-left { display: flex; align-items: center; gap: 14px; }
+  .demo-brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--text-strong); font-weight: 700; font-size: 15px;
+    text-decoration: none;
+  }
+  .demo-brand:hover { text-decoration: none; }
+  .demo-brand-logo {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--p-color), var(--s-color));
+    display: grid; place-items: center;
+    color: #FFFFFF; font-weight: 800; font-size: 13px;
+  }
+  .demo-crumb {
+    font-family: var(--mono);
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-soft);
+  }
+  .demo-crumb b { color: var(--text-strong); font-weight: 600; letter-spacing: 0.08em; text-transform: none; font-family: var(--display-font); font-size: 15px; }
+  .demo-header-right {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .demo-pill-toggle {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font: inherit; color: var(--text-muted);
+    font-size: 12.5px;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .demo-pill-toggle:hover { color: var(--text-strong); border-color: var(--p-color); }
+  .demo-pill-toggle .switch {
+    width: 28px; height: 14px; border-radius: 999px;
+    background: var(--border); position: relative;
+    transition: background .15s;
+  }
+  .demo-pill-toggle .switch::after {
+    content: ''; position: absolute; top: 1px; left: 1px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #FFFFFF;
+    transition: left .15s;
+  }
+  .demo-pill-toggle.is-on .switch { background: var(--s-color); }
+  .demo-pill-toggle.is-on .switch::after { left: 15px; }
+  .demo-restart {
+    background: transparent; border: 0;
+    color: var(--text-muted); cursor: pointer;
+    font: inherit; font-size: 13px;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: color .15s, background .15s;
+  }
+  .demo-restart:hover { color: var(--p-color); background: rgba(124,75,172,0.06); }
+
+  .demo-main {
+    max-width: 1280px; margin: 0 auto;
+    padding: 32px 24px 80px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .demo-main { grid-template-columns: 1fr; gap: 20px; padding: 20px 16px 60px; }
+  }
+
+  .demo-progress {
+    position: sticky; top: 76px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 22px 18px;
+  }
+  .demo-progress h3 {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 0 0 14px;
+  }
+  .demo-progress ol {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .demo-progress-step {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .demo-progress-step:hover { background: var(--surface-alt); }
+  .demo-progress-step.is-future { cursor: not-allowed; opacity: 0.55; }
+  .demo-progress-step.is-future:hover { background: transparent; }
+  .demo-step-num {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    display: grid; place-items: center;
+    font-family: var(--mono);
+    font-size: 12px; font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .demo-progress-step.is-active .demo-step-num {
+    background: var(--p-color); color: #FFFFFF; border-color: var(--p-color);
+  }
+  .demo-progress-step.is-complete .demo-step-num {
+    background: var(--s-color); color: #FFFFFF; border-color: var(--s-color);
+  }
+  .demo-step-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+  .demo-step-label {
+    font-size: 13.5px; font-weight: 600;
+    color: var(--text-strong);
+    line-height: 1.25;
+  }
+  .demo-progress-step.is-future .demo-step-label { color: var(--text-soft); font-weight: 500; }
+  .demo-step-summary {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.04em;
+    color: var(--text-muted);
+    line-height: 1.35;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  .demo-content { display: flex; flex-direction: column; gap: 16px; }
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 30px;
+    transition: border-color .15s, padding .15s;
+  }
+  .step-card.is-collapsed {
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s, transform .15s;
+  }
+  .step-card.is-collapsed:hover { border-color: var(--p-color); background: var(--surface-elev); transform: translateY(-1px); }
+  .step-card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px;
+  }
+  .step-card-title {
+    margin: 0;
+    font-family: var(--display-font);
+    font-size: 22px; font-weight: 600; line-height: 1.3;
+    color: var(--text-strong);
+  }
+  .step-card.is-collapsed .step-card-title { font-size: 15px; }
+  .step-card-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--p-color);
+    margin: 0 0 8px;
+    display: block;
+  }
+  .step-card.is-collapsed .step-card-eyebrow { margin-bottom: 4px; font-size: 10.5px; }
+  .step-card-edit {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--p-color); font-weight: 600; font-size: 12.5px;
+  }
+  .step-card-intro {
+    font-size: 15px; color: var(--text-muted); line-height: 1.55;
+    margin: 6px 0 22px;
+  }
+
+  .opt-grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  .opt-grid.wide { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .opt-card {
+    background: var(--surface-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color .15s, transform .15s, box-shadow .15s, background .15s;
+    display: flex; flex-direction: column; gap: 8px;
+    font: inherit;
+  }
+  .opt-card:hover {
+    border-color: var(--p-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(11,29,58,0.05);
+  }
+  .opt-card.is-selected {
+    border-color: var(--p-color);
+    background: rgba(124,75,172,0.06);
+    box-shadow: 0 0 0 3px rgba(124,75,172,0.12);
+  }
+  .opt-card-cat {
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+  }
+  .opt-card-title {
+    font-family: var(--display-font);
+    font-size: 16px; font-weight: 600;
+    color: var(--text-strong);
+    line-height: 1.3;
+  }
+  .opt-card-desc {
+    font-size: 13.5px; color: var(--text-muted); line-height: 1.45;
+    margin: 0;
+  }
+  .opt-card-meta {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: auto;
+  }
+  .opt-card-chip {
+    display: inline-flex; align-items: center;
+    background: rgba(124,75,172,0.10);
+    color: var(--p-color);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+  }
+  .opt-card-chip.teal  { background: rgba(0,180,160,0.12); color: var(--s-color); }
+  .opt-card-chip.amber { background: rgba(201, 162, 40, 0.16); color: #8C7218; }
+  .opt-card-chip.gray  { background: var(--surface-alt); color: var(--text-soft); }
+
+  .expr-group { margin-bottom: 22px; }
+  .expr-group h4 {
+    font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 0 0 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .expr-info-tip {
+    display: inline-grid; place-items: center;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    font-size: 10px; font-weight: 700;
+    cursor: help;
+  }
+  .expr-options { display: flex; flex-wrap: wrap; gap: 8px; }
+  .expr-pill {
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 9px 18px;
+    font: inherit; font-size: 13.5px; font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .expr-pill:hover { border-color: var(--p-color); color: var(--text-strong); }
+  .expr-pill.is-selected {
+    background: var(--p-color); color: #FFFFFF; border-color: var(--p-color);
+  }
+
+  .step-action {
+    display: flex; justify-content: flex-end; gap: 12px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--p-color); color: #FFFFFF;
+    border: 0; border-radius: 10px;
+    padding: 12px 20px;
+    font: inherit; font-size: 14.5px; font-weight: 700;
+    cursor: pointer;
+    transition: background .15s, transform .15s;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: #6A3F94; color: #FFFFFF; text-decoration: none; transform: translateY(-1px); }
+
+  .review-card {
+    background: linear-gradient(135deg, rgba(0,180,160,0.05), rgba(124,75,172,0.05));
+    border: 1px solid rgba(0,180,160,0.32);
+    border-radius: 16px;
+    padding: 30px 32px;
+    margin-top: 4px;
+  }
+  .review-badges {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .review-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .review-badge.coverage { background: rgba(0,180,160,0.18); color: #0E8276; border: 1px solid rgba(0,180,160,0.45); }
+  .review-badge.credits  { background: rgba(124,75,172,0.16); color: var(--p-color); border: 1px solid rgba(124,75,172,0.40); }
+  .review-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(11,29,58,0.08);
+  }
+  .review-row:first-of-type { border-top: 0; padding-top: 4px; }
+  .review-label {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+  }
+  .review-value {
+    font-family: var(--display-font);
+    font-size: 18px; font-weight: 600;
+    color: var(--text-strong);
+    line-height: 1.3;
+  }
+  .review-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin: 6px 0 0; }
+  .review-workflow-id {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: var(--p-color);
+    display: inline-block;
+    margin-top: 4px;
+  }
+  .review-callout {
+    margin: 24px 0 0;
+    padding: 16px 20px;
+    background: rgba(0, 180, 160, 0.08);
+    border: 1px solid rgba(0, 180, 160, 0.28);
+    border-left: 3px solid var(--s-color);
+    border-radius: 10px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .review-callout em {
+    font-style: normal;
+    color: var(--text-strong);
+    font-weight: 700;
+  }
+  .review-cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  @media (max-width: 540px) { .review-cta-row { grid-template-columns: 1fr; } }
+  .review-cta-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 22px;
+    border-radius: 12px;
+    font-size: 15.5px; font-weight: 700;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s, transform .15s, box-shadow .15s;
+  }
+  .review-cta-btn.is-primary { background: var(--p-color); color: #FFFFFF; }
+  .review-cta-btn.is-primary:hover { background: #6A3F94; color: #FFFFFF; text-decoration: none; transform: translateY(-1px); }
+  .review-cta-btn.is-secondary { background: var(--s-color); color: #FFFFFF; }
+  .review-cta-btn.is-secondary:hover { background: #009488; color: #FFFFFF; text-decoration: none; transform: translateY(-1px); }
+
+  @media (max-width: 720px) {
+    .demo-header { padding: 12px 16px; }
+    .demo-header-right { gap: 8px; }
+    .demo-pill-toggle { padding: 5px 10px; font-size: 11.5px; }
+    .demo-pill-toggle .switch { display: none; }
+    .step-card { padding: 22px 20px; }
+    .step-card.is-collapsed { padding: 14px 16px; }
+    .review-row { grid-template-columns: 1fr; gap: 12px; padding: 14px 0; }
+    .review-card { padding: 22px 20px; }
+    .demo-progress { position: static; }
+  }
+
+  /* Embedded mode (loaded inside a modal iframe on the platform page).
+     Hides the page header so the parent page can supply its own chrome. */
+  body.is-embedded .demo-header { display: none; }
+  body.is-embedded .demo-main { padding-top: 20px; padding-bottom: 40px; }
+  body.is-embedded .demo-progress { top: 12px; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="brand">
-    <div class="logo">DI</div>
-    <span>Data Intuitive</span>
-    <span class="crumb">/ analysis configurator</span>
+<header class="demo-header">
+  <div class="demo-header-left">
+    <a href="/" class="demo-brand">
+      <span class="demo-brand-logo">DI</span>
+      <span class="demo-crumb">Data Intuitive &middot; <b>Platform Demo</b></span>
+    </a>
   </div>
-  <div>
-    <span class="toggle" title="theme"></span>
-    <span class="restart" onclick="location.reload()">restart</span>
+  <div class="demo-header-right">
+    <button class="demo-pill-toggle is-on" id="coverageToggle" type="button" aria-pressed="true">
+      <span class="switch"></span>
+      <span class="label">Coverage filter</span>
+    </button>
+    <button class="demo-pill-toggle" id="themeToggle" type="button" aria-pressed="false">
+      <span class="switch"></span>
+      <span class="label">Dark</span>
+    </button>
+    <button class="demo-restart" id="restartBtn" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+      Restart
+    </button>
   </div>
 </header>
 
-<main>
-  <h1>Configure your analysis</h1>
-  <p class="subtitle">Select modality, kit, and sequencer to resolve your workflow binding and parameters.</p>
-
-  <!-- Step 1 -->
-  <section class="section">
-    <div class="section-head">
-      <div class="section-title"><span class="step-num">1.</span> What kind of experiment are you running?</div>
-    </div>
-    <div id="modalities" class="grid grid-4"></div>
-    <div class="coming-up">
-      <div class="label">COMING UP</div>
-      <div class="grid grid-3">
-        <div class="ghost">&#128214; Long-read<div class="mono">6 kits available</div></div>
-        <div class="ghost">&#129514; Methylation<div class="mono">2 kits available</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Step 2 -->
-  <section class="section">
-    <div class="section-head">
-      <div class="section-title"><span class="step-num">2.</span> Which kit / assay?</div>
-      <button class="filter-btn">&#9661; Filter</button>
-    </div>
-    <div id="kits" class="grid grid-4"></div>
-  </section>
-
-  <!-- Step 3 -->
-  <section class="section">
-    <div class="section-head">
-      <div class="section-title"><span class="step-num">3.</span> Which sequencer?</div>
-      <button class="filter-btn">&#9661; Filter</button>
-    </div>
-    <div id="sequencers" class="grid grid-3"></div>
-  </section>
-
-  <!-- Pipeline preview -->
-  <section class="section">
-    <div class="preview-head">PIPELINE PREVIEW</div>
-    <div class="legend">
-      <span><span class="dot d-input"></span>input</span>
-      <span><span class="dot d-primary"></span>primary</span>
-      <span><span class="dot d-qc"></span>QC</span>
-      <span><span class="dot d-proc"></span>processing</span>
-      <span><span class="dot d-int"></span>integration</span>
-      <span><span class="dot d-ann"></span>annotation</span>
-      <span><span class="dot d-ana"></span>analysis</span>
-    </div>
-    <div id="pipeline"></div>
-  </section>
+<main class="demo-main">
+  <aside class="demo-progress">
+    <h3>Progress</h3>
+    <ol id="progressList"></ol>
+  </aside>
+  <section class="demo-content" id="contentRoot"></section>
 </main>
 
 <script>
-const MODALITIES = [
-  {id:'sc', icon:'\u{1F9EC}', title:'Single-cell', desc:'Single-cell sequencing assays', kits:12},
-  {id:'sp', icon:'\u{1F5FA}\u{FE0F}', title:'Spatial', desc:'Spatial transcriptomics & proteomics', kits:5, badge:'PARTIAL'},
-  {id:'bk', icon:'\u{1F4CA}', title:'Bulk', desc:'Bulk DNA / RNA library prep', kits:13},
-  {id:'ht', icon:'\u{1F532}', title:'HT RNA-seq', desc:'Plate-format bulk, per-well experiments', kits:1},
-];
+(function(){
+  'use strict';
 
-const KITS = {
-  sc:[
-    {vendor:'10X Genomics', name:"Chromium GEM-X Single Cell 3' Gene Expression", desc:'scRNA-seq · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
-    {vendor:'10X Genomics', name:"Chromium GEM-X Single Cell 5' Gene Expression", desc:'scRNA-seq · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
-    {vendor:'10X Genomics', name:'Chromium GEM-X Single Cell ATAC', desc:'Chromatin accessibility · Peaks x Cells + fragments.tsv.gz', status:'no', wf:null, id:'tenx_atac · scatac_seq'},
-    {vendor:'10X Genomics', name:"Chromium 5' CITE-seq / Feature Barcoding (TotalSeq)", desc:'RNA + surface protein · Genes x Cells + Proteins x Cells', status:'ok', wf:'cite_seq'},
-    {vendor:'10X Genomics', name:'Chromium GEM-X Single Cell Flex (Fixed RNA / FFPE)', desc:'Fixed RNA Profiling (FFPE) · Genes x Cells (probe-based)', status:'part', wf:'scrna_partial'},
-    {vendor:'10X Genomics', name:'Chromium GEM-X Single Cell Multiome (ATAC + GEX)', desc:'Joint RNA + chromatin · Genes + Peaks x Cells (joint)', status:'no', wf:null, id:'tenx_multiome · multi'},
-    {vendor:'10X Genomics', name:"Chromium GEM-X Single Cell 5' + V(D)J Enrichment", desc:"5' GEX + TCR/BCR · Genes x Cells + Contig annotations + Clonotypes", status:'ok', wf:'vdj'},
-    {vendor:'BD Biosciences', name:'BD Rhapsody Targeted Panel', desc:'Targeted scRNA · Genes x Cells matrix (targeted panel)', status:'ok', wf:'scrna_full'},
-    {vendor:'BD Biosciences', name:'BD Rhapsody Whole Transcriptome Analysis', desc:'scRNA-seq · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
-    {vendor:'Parse Biosciences', name:'Evercode Whole Transcriptome (Mega/Giga)', desc:'Combinatorial barcoding · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
-    {vendor:'Scale Biosciences', name:'ScalePlex Single-Cell RNA/ATAC', desc:'Combinatorial barcoding · Genes x Cells matrix', status:'ok', wf:'scrna_full'},
-    {vendor:'Takara Bio', name:'SMART-Seq Single Cell / SMARTer', desc:'Plate-based scRNA · Genes x Cells matrix (plate-based, full-length)', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
-  ],
-  sp:[
-    {vendor:'10X Genomics', name:'Visium HD Spatial Gene Expression Slide', desc:'Spatial transcriptomics · Genes x Spots matrix + tissue image (HD, 2 um bins)', status:'part', wf:'spatial_partial'},
-    {vendor:'10X Genomics', name:'Visium Spatial Gene Expression Slide', desc:'Spatial transcriptomics · Genes x Spots matrix + tissue image', status:'part', wf:'spatial_partial'},
-    {vendor:'10X Genomics', name:'Xenium Gene Expression Panel', desc:'In-situ spatial · Cells x Targets + tissue image', status:'part', wf:'spatial_partial'},
-    {vendor:'Bruker (ex-NanoString)', name:'CosMx Protein Panel (64+ targets)', desc:'Spatial proteomics · Cells x Proteins + tissue image', status:'no', wf:null, id:'cosmx_protein · spatial_prot'},
-    {vendor:'Bruker (ex-NanoString)', name:'CosMx RNA Panel (1000-6000 targets)', desc:'In-situ spatial · Cells x Targets + tissue image', status:'part', wf:'spatial_partial'},
-  ],
-  bk:[
-    {vendor:'Illumina', name:'AmpliSeq for Illumina', desc:'Targeted panel · FASTQ + amplicon-targeted library', status:'no', wf:null, id:'illumina_ampliseq · targeted_panel'},
-    {vendor:'Illumina', name:'Illumina DNA Prep (Nextera DNA Flex)', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, id:'illumina_dna_prep · bulk_dna'},
-    {vendor:'Illumina', name:'Illumina RNA Prep with Enrichment', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
-    {vendor:'Illumina', name:'Illumina Stranded Total RNA Prep (Ribo-Zero Plus)', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
-    {vendor:'NEB', name:'NEBNext Ultra II DNA Library Prep', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, id:'neb_dna · bulk_dna'},
-    {vendor:'NEB', name:'NEBNext Ultra II RNA Library Prep', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
-    {vendor:'Roche (KAPA)', name:'KAPA HyperPrep / HyperPlus', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, id:'kapa_hyper · bulk_dna'},
-    {vendor:'Roche (KAPA)', name:'KAPA RNA HyperPrep', desc:'Bulk RNA · FASTQ + alignment-ready library', status:'ok', wf:'bulk_rna'},
-    {vendor:'IDT (Danaher)', name:'xGen Exome Hyb Panel v2', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
-    {vendor:'IDT (Danaher)', name:'xGen Prism DNA Library Prep (UMI-based)', desc:'Bulk DNA · FASTQ + UMI-tagged library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
-    {vendor:'MGI Tech (BGI)', name:'MGI Easy DNA Library Prep Kit', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
-    {vendor:'Twist Bioscience', name:'Twist Custom Hybridization Capture Panel', desc:'Targeted panel · FASTQ + capture-targeted library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
-    {vendor:'Twist Bioscience', name:'Twist Exome 2.0', desc:'Bulk DNA · FASTQ + alignment-ready library', status:'no', wf:null, dim:true, note:'Coverage gap, no end-to-end pipelines yet'},
-  ],
-  ht:[
-    {vendor:'Generic', name:'HT RNA-seq plate kit (generic)', desc:'bulk_plate · Per-well count matrix (one row per well)', status:'ok', wf:'ht_plate'},
-  ],
-};
+  var STEPS = [
+    { id: 'modality',   label: 'Modality' },
+    { id: 'kit',        label: 'Kit / Assay' },
+    { id: 'instrument', label: 'Instrument' },
+    { id: 'experiment', label: 'Experiment' },
+    { id: 'scenario',   label: 'Scenario' },
+    { id: 'review',     label: 'Review' }
+  ];
 
-const SEQUENCERS = {
-  sc:[
-    {name:'AVITI / AVITI24', vendor:'Element Biosciences · short read', tput:'MEDIUM THROUGHPUT', formats:'bases, fastq', demux:'bases2fastq'},
-    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-    {name:'Chromium X / iX', vendor:'10x Genomics · single cell instrument', tput:'MEDIUM THROUGHPUT', formats:'fastq', demux:'BD pipeline (no demux)'},
-  ],
-  sp:[
-    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-  ],
-  bk:[
-    {name:'MiSeq', vendor:'Illumina · short read', tput:'LOW THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-  ],
-  ht:[
-    {name:'NextSeq 1000/2000', vendor:'Illumina · short read', tput:'MEDIUM THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-    {name:'NovaSeq X / X Plus', vendor:'Illumina · short read', tput:'VERY HIGH THROUGHPUT', formats:'bcl, fastq', demux:'BCL Convert'},
-  ],
-};
+  var MODALITIES = [
+    { id: 'single-cell', name: 'Single-cell',  desc: 'Single-cell sequencing assays',           kits: 2 },
+    { id: 'bulk',        name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep',          kits: 2 },
+    { id: 'spatial',     name: 'Spatial',      desc: 'Spatial transcriptomics',                 kits: 3 },
+    { id: 'ht-rna',      name: 'HT RNA-seq',   desc: 'Plate-format bulk, per-well experiments', kits: 1 }
+  ];
 
-const WORKFLOWS = {
-  scrna_full:{steps:[
-    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Cell Ranger count','primary'],
-    ['QC + Filtering','qc'],['Doublet removal','qc'],['Normalization','proc'],
-    ['HVG selection','proc'],['PCA','proc'],['Batch integration','int'],
-    ['Clustering','ana'],['Cell type annotation','ann']],
-    meta:'11 steps · ~35 min estimated · vsh/openpipeline v4.0.3'},
-  scrna_partial:{steps:[
-    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Probe alignment','primary'],
-    ['QC + Filtering','qc'],['Normalization','proc'],['Clustering','ana']],
-    meta:'6 steps · ~22 min estimated · vsh/openpipeline v4.0.3 (partial)'},
-  cite_seq:{steps:[
-    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Cell Ranger multi','primary'],
-    ['QC + Filtering','qc'],['ADT normalization','proc'],['Joint embedding','int'],
-    ['Clustering','ana'],['Cell type annotation','ann']],
-    meta:'8 steps · ~28 min estimated · vsh/openpipeline v4.0.3'},
-  vdj:{steps:[
-    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Cell Ranger vdj','primary'],
-    ['Contig assembly','proc'],['Clonotype calling','ana'],['Cell type annotation','ann']],
-    meta:'6 steps · ~26 min estimated · vsh/openpipeline v4.0.3'},
-  bulk_rna:{steps:[
-    ['BCL/FASTQ','input'],['Demultiplex','primary'],['STAR alignment','primary'],
-    ['QC (RSeQC)','qc'],['Quantification (featureCounts)','proc'],['DE analysis (DESeq2)','ana']],
-    meta:'6 steps · ~18 min estimated · vsh/bulk-rna v2.1.0'},
-  spatial_partial:{steps:[
-    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Space Ranger','primary'],
-    ['QC + Filtering','qc'],['Spot/cell normalization','proc'],['Clustering','ana']],
-    meta:'6 steps · ~30 min estimated · vsh/spatial v0.9.1 (partial)'},
-  ht_plate:{steps:[
-    ['BCL/FASTQ','input'],['Demultiplex','primary'],['Per-well alignment','primary'],
-    ['QC + Filtering','qc'],['Per-well quantification','proc'],['Plate-level QC','ana']],
-    meta:'6 steps · ~12 min estimated · vsh/ht-plate v1.0.0'},
-};
+  var KITS = {
+    'single-cell': [
+      { id: 'chromium-3', name: "Chromium GEM-X Single Cell 3' Gene Expression", assay: 'scRNA-seq', vendor: '10x Genomics' },
+      { id: 'chromium-5', name: "Chromium GEM-X Single Cell 5' Gene Expression", assay: 'scRNA-seq', vendor: '10x Genomics' }
+    ],
+    'bulk': [
+      { id: 'illumina-rna-enrich', name: 'Illumina RNA Prep with Enrichment',                assay: 'Bulk RNA', vendor: 'Illumina' },
+      { id: 'illumina-ribozero',   name: 'Illumina Stranded Total RNA Prep (Ribo-Zero Plus)', assay: 'Bulk RNA', vendor: 'Illumina' }
+    ],
+    'spatial': [
+      { id: 'visium-hd', name: 'Visium HD Spatial Gene Expression Slide', assay: 'Spatial transcriptomics', vendor: '10x Genomics' },
+      { id: 'visium',    name: 'Visium Spatial Gene Expression Slide',    assay: 'Spatial transcriptomics', vendor: '10x Genomics' },
+      { id: 'xenium',    name: 'Xenium Gene Expression Panel',            assay: 'In-situ spatial',         vendor: '10x Genomics' }
+    ],
+    'ht-rna': [
+      { id: 'ht-plate', name: 'HT RNA-seq plate kit (generic)', assay: 'Plate-format RNA-seq', vendor: 'Generic' }
+    ]
+  };
 
-const STATUS_GLYPH = {ok:'✓', no:'✗', part:'◐'};
+  var INSTRUMENTS = {
+    'single-cell': [
+      { id: 'chromium-x', name: 'Chromium X / iX',    throughput: 'medium',    vendor: '10x Genomics',        type: 'single-cell instrument' },
+      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
+      { id: 'nextseq',    name: 'NextSeq 1000/2000',  throughput: 'medium',    vendor: 'Illumina',            type: 'short read' },
+      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
+    ],
+    'bulk': [
+      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
+      { id: 'nextseq',    name: 'NextSeq 1000/2000',  throughput: 'medium',    vendor: 'Illumina',            type: 'short read' },
+      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
+    ],
+    'spatial': [
+      { id: 'cytassist',  name: 'Visium CytAssist',   throughput: 'medium',    vendor: '10x Genomics',        type: 'spatial sequencing' },
+      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
+      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
+    ],
+    'ht-rna': [
+      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
+      { id: 'nextseq',    name: 'NextSeq 1000/2000',  throughput: 'medium',    vendor: 'Illumina',            type: 'short read' },
+      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
+    ]
+  };
 
-const state = {modality:'sc', kit:0, sequencer:0};
+  var SPECIES = [
+    { id: 'human', name: 'Human', tip: 'GRCh38 reference' },
+    { id: 'mouse', name: 'Mouse', tip: 'GRCm39 reference' },
+    { id: 'other', name: 'Other', tip: 'Custom reference' }
+  ];
+  var SAMPLES = [
+    { id: '1',    name: '1' },
+    { id: '2-4',  name: '2–4' },
+    { id: '5-12', name: '5–12' },
+    { id: '13+',  name: '13+' }
+  ];
+  var SAMPLE_SIZES_CELLS = [
+    { id: 'small',    name: 'Small <5k cells' },
+    { id: 'standard', name: 'Standard 5–20k cells' },
+    { id: 'large',    name: 'Large 20–50k cells' },
+    { id: 'xl',       name: 'XL >50k cells' }
+  ];
+  var SAMPLE_SIZES_READS = [
+    { id: 'small',    name: 'Small <30M reads' },
+    { id: 'standard', name: 'Standard 30–100M reads' },
+    { id: 'large',    name: 'Large 100–300M reads' },
+    { id: 'xl',       name: 'XL >300M reads' }
+  ];
 
-function render(){
-  // Modalities
-  const mEl = document.getElementById('modalities');
-  mEl.innerHTML = MODALITIES.map(function(m){ return `
-    <div class="card modality ${state.modality===m.id?'selected':''}" data-mod="${m.id}">
-      ${m.badge?`<span class="badge">${m.badge}</span>`:''}
-      <div class="icon">${m.icon}</div>
-      <div class="card-title">${m.title}</div>
-      <div class="card-desc">${m.desc}</div>
-      <div class="avail">${m.kits} KIT${m.kits>1?'S':''} AVAILABLE</div>
-    </div>`; }).join('');
-  mEl.querySelectorAll('.card').forEach(function(el){ el.onclick=function(){
-    state.modality = el.dataset.mod; state.kit = 0; state.sequencer = 0; render();
-  };});
+  var SCENARIOS_SC_SPATIAL = [
+    { id: 'counts',            name: 'Counts',                              desc: 'Run primary analysis (mapping/counting) and stop. Output: count matrix.' },
+    { id: 'single-sample',     name: 'Single-sample processing (in batch)', desc: 'Primary analysis plus sample preprocessing.' },
+    { id: 'batch-integration', name: 'Batch integration',                   desc: 'Primary analysis, preprocessing and batch integration.' },
+    { id: 'atlas',             name: 'Atlas generation',                    desc: 'Primary analysis, preprocessing, integration and annotation.' }
+  ];
+  var SCENARIOS = {
+    'single-cell': SCENARIOS_SC_SPATIAL,
+    'spatial':     SCENARIOS_SC_SPATIAL,
+    'bulk': [
+      { id: 'counts', name: 'Counts', desc: 'Primary analysis with STAR + featureCounts. Output: count matrix.' }
+    ],
+    'ht-rna': [
+      { id: 'plate-demux',     name: 'Plate demultiplexing only',                            desc: 'Demultiplex the plate.' },
+      { id: 'well-demux-map',  name: 'Well demultiplexing, mapping and counting (per well)', desc: 'Demultiplex wells based on barcodes, then map and count per well.' },
+      { id: 'well-annotation', name: 'Well demultiplexing, mapping/counting and annotation', desc: 'Generate fully annotated objects with well-based experiment metadata.' }
+    ]
+  };
 
-  // Kits
-  const kits = KITS[state.modality];
-  const kEl = document.getElementById('kits');
-  kEl.innerHTML = kits.map(function(k,i){ return `
-    <div class="card ${state.kit===i?'selected':''} ${k.dim?'dim':''}" data-i="${i}">
-      <div class="card-meta">${k.vendor}</div>
-      <div class="status ${k.status}">${STATUS_GLYPH[k.status]}</div>
-      <div class="card-title">${k.name}</div>
-      <div class="card-desc">${k.desc}</div>
-      ${k.note?`<div class="mono" style="margin-top:10px;font-style:italic">${k.note}</div>`:''}
-    </div>`; }).join('');
-  kEl.querySelectorAll('.card').forEach(function(el){ el.onclick=function(){
-    state.kit = +el.dataset.i; state.sequencer = 0; render();
-  };});
+  var WORKFLOWS = {
+    'single-cell': { id: 'vsh/openpipeline',         desc: 'OpenPipeline single-cell RNA-seq workflow.' },
+    'spatial':     { id: 'vsh/openpipeline_spatial', desc: 'OpenPipeline spatial transcriptomics workflow.' },
+    'bulk':        { id: 'vsh/rnaseq',               desc: 'Bulk RNA-seq workflow (STAR + featureCounts).' },
+    'ht-rna':      { id: 'vsh/htrnaseq',             desc: 'HT RNA-seq plate-based workflow.' }
+  };
 
-  // Sequencers
-  const seqs = SEQUENCERS[state.modality];
-  const sEl = document.getElementById('sequencers');
-  sEl.innerHTML = seqs.map(function(s,i){ return `
-    <div class="card ${state.sequencer===i?'selected':''}" data-i="${i}">
-      <div class="card-title">${s.name}</div>
-      <div class="card-desc">${s.vendor}</div>
-      <span class="chip">${s.tput}</span>
-      <div class="mono" style="margin-top:10px">formats: ${s.formats}<br/>demux: ${s.demux}</div>
-    </div>`; }).join('');
-  sEl.querySelectorAll('.card').forEach(function(el){ el.onclick=function(){
-    state.sequencer = +el.dataset.i; render();
-  };});
+  function modalityById(id) { return MODALITIES.find(function(m){ return m.id === id; }); }
+  function findIn(arr, id)  { return (arr || []).find(function(x){ return x.id === id; }); }
 
-  // Pipeline
-  const kit = kits[state.kit];
-  const pEl = document.getElementById('pipeline');
-  if (!kit) { pEl.innerHTML = '<div class="empty">Select a kit to see your pipeline</div>'; return; }
-  if (!kit.wf) {
-    const id = kit.id || kit.name.toLowerCase().replace(/[^a-z0-9]+/g,'_');
-    pEl.innerHTML = `<div class="empty">No workflow registered for kit ${id}.</div>`;
-    return;
+  var DEFAULTS = {
+    modality: null, kit: null, instrument: null,
+    species: 'human', samples: '2-4', sampleSize: 'standard',
+    scenario: null, activeStep: 0
+  };
+  var state = Object.assign({}, DEFAULTS);
+
+  function reset() {
+    state = Object.assign({}, DEFAULTS);
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  const wf = WORKFLOWS[kit.wf];
-  const stepHtml = wf.steps.map(function(s,i){ return `
-    <div class="step"><span class="arrow">▸</span><span class="pill ${s[1]}">${s[0]}</span></div>
-    ${i<wf.steps.length-1?'<div class="connector"></div>':''}`; }).join('');
-  pEl.innerHTML = `<div class="steps">${stepHtml}</div><div class="footer-line">${wf.meta}</div>`;
-}
 
-render();
+  function stepCompleteness(i) {
+    if (i === 0) return !!state.modality;
+    if (i === 1) return !!state.kit;
+    if (i === 2) return !!state.instrument;
+    if (i === 3) return !!(state.species && state.samples && state.sampleSize);
+    if (i === 4) return !!state.scenario;
+    return false;
+  }
+  function maxReachableStep() {
+    for (var i = 0; i < STEPS.length; i++) {
+      if (!stepCompleteness(i)) return i;
+    }
+    return STEPS.length - 1;
+  }
+  function setActiveStep(i) {
+    var max = maxReachableStep();
+    if (i > max) return;
+    state.activeStep = i;
+    render();
+    // Bring the newly-active step into view inside the iframe / page
+    setTimeout(function(){
+      var content = document.getElementById('contentRoot');
+      if (!content) return;
+      var active = content.querySelector('.step-card:not(.is-collapsed), .review-card');
+      if (active && typeof active.scrollIntoView === 'function') {
+        active.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 30);
+  }
+
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === 'class') node.className = attrs[k];
+      else if (k === 'html') node.innerHTML = attrs[k];
+      else if (k.indexOf('on') === 0) node.addEventListener(k.slice(2), attrs[k]);
+      else node.setAttribute(k, attrs[k]);
+    }
+    (children || []).forEach(function(c){
+      if (c == null) return;
+      node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return node;
+  }
+  function arrow(size) {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('width', size || '14'); s.setAttribute('height', size || '14');
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('fill', 'none'); s.setAttribute('stroke', 'currentColor'); s.setAttribute('stroke-width', '2');
+    s.innerHTML = '<path d="M5 12h14M13 5l7 7-7 7"/>';
+    return s;
+  }
+
+  function renderProgress() {
+    var list = document.getElementById('progressList');
+    list.innerHTML = '';
+    var max = maxReachableStep();
+    STEPS.forEach(function(step, i){
+      var li = document.createElement('li');
+      li.className = 'demo-progress-step';
+      if (i === state.activeStep) li.classList.add('is-active');
+      if (stepCompleteness(i) && i !== state.activeStep) li.classList.add('is-complete');
+      if (i > max) li.classList.add('is-future');
+
+      var summary = '';
+      if (i === 0 && state.modality)   summary = modalityById(state.modality).name;
+      if (i === 1 && state.kit)        summary = (findIn(KITS[state.modality], state.kit) || {}).name || '';
+      if (i === 2 && state.instrument) summary = (findIn(INSTRUMENTS[state.modality], state.instrument) || {}).name || '';
+      if (i === 3 && stepCompleteness(3)) {
+        var sp = findIn(SPECIES, state.species), sa = findIn(SAMPLES, state.samples);
+        var sizes = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
+        var sz = findIn(sizes, state.sampleSize);
+        summary = (sp ? sp.name : '') + ' · ' + (sa ? sa.name : '') + ' · ' + (sz ? sz.name : '');
+      }
+      if (i === 4 && state.scenario)   summary = (findIn(SCENARIOS[state.modality], state.scenario) || {}).name || '';
+      if (i === 5 && stepCompleteness(4)) summary = (WORKFLOWS[state.modality] || {}).id || '';
+
+      li.appendChild(el('div', { class: 'demo-step-num' }, [String(i + 1)]));
+      li.appendChild(el('div', { class: 'demo-step-text' }, [
+        el('span', { class: 'demo-step-label' }, [step.label]),
+        summary ? el('span', { class: 'demo-step-summary' }, [summary]) : null
+      ]));
+      li.addEventListener('click', function(){
+        if (i <= max) setActiveStep(i);
+      });
+      list.appendChild(li);
+    });
+  }
+
+  function collapsedCard(stepIndex, eyebrow, value) {
+    var card = el('div', { class: 'step-card is-collapsed' }, [
+      el('div', { class: 'step-card-head' }, [
+        el('div', null, [
+          el('span', { class: 'step-card-eyebrow' }, [eyebrow]),
+          el('div', null, [
+            el('span', { class: 'step-card-title' }, [value])
+          ])
+        ]),
+        el('span', { class: 'step-card-edit' }, ['Edit'])
+      ])
+    ]);
+    card.addEventListener('click', function(){ setActiveStep(stepIndex); });
+    return card;
+  }
+
+  function renderStep1() {
+    var grid = el('div', { class: 'opt-grid wide' });
+    MODALITIES.forEach(function(m){
+      var card = el('button', {
+        class: 'opt-card' + (state.modality === m.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){
+          if (state.modality !== m.id) {
+            state.modality = m.id;
+            state.kit = null; state.instrument = null;
+            state.sampleSize = 'standard';
+            state.scenario = null;
+          }
+          setActiveStep(1);
+        }
+      }, [
+        el('span', { class: 'opt-card-cat' }, ['Transcriptomics']),
+        el('div', { class: 'opt-card-title' }, [m.name]),
+        el('p', { class: 'opt-card-desc' }, [m.desc]),
+        el('div', { class: 'opt-card-meta' }, [
+          el('span', { class: 'opt-card-chip teal' }, [m.kits + ' kit' + (m.kits === 1 ? '' : 's')])
+        ])
+      ]);
+      grid.appendChild(card);
+    });
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 1 · Modality']),
+      el('h2', { class: 'step-card-title' }, ['What kind of experiment are you running?']),
+      el('p', { class: 'step-card-intro' }, ['Pick a modality. The wizard will surface only the kits, instruments and scenarios that have validated pipeline support.']),
+      grid
+    ]);
+  }
+
+  function renderStep2() {
+    var kits = KITS[state.modality] || [];
+    var grid = el('div', { class: 'opt-grid wide' });
+    kits.forEach(function(k){
+      var card = el('button', {
+        class: 'opt-card' + (state.kit === k.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){
+          if (state.kit !== k.id) {
+            state.kit = k.id;
+            state.instrument = null;
+            state.scenario = null;
+          }
+          setActiveStep(2);
+        }
+      }, [
+        el('span', { class: 'opt-card-cat' }, [k.vendor]),
+        el('div', { class: 'opt-card-title' }, [k.name]),
+        el('div', { class: 'opt-card-meta' }, [
+          el('span', { class: 'opt-card-chip' }, [k.assay])
+        ])
+      ]);
+      grid.appendChild(card);
+    });
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 2 · Kit / Assay']),
+      el('h2', { class: 'step-card-title' }, ['Which kit / assay?']),
+      el('p', { class: 'step-card-intro' }, ['Scoped to 10x Genomics kits, plus the Illumina prep kits where a 10x equivalent does not exist.']),
+      grid
+    ]);
+  }
+
+  function renderStep3() {
+    var insts = INSTRUMENTS[state.modality] || [];
+    var grid = el('div', { class: 'opt-grid wide' });
+    insts.forEach(function(inst){
+      var thrClass = inst.throughput === 'very high' ? 'opt-card-chip amber' : 'opt-card-chip gray';
+      var card = el('button', {
+        class: 'opt-card' + (state.instrument === inst.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){
+          state.instrument = inst.id;
+          setActiveStep(3);
+        }
+      }, [
+        el('div', { class: 'opt-card-title' }, [inst.name]),
+        el('p', { class: 'opt-card-desc' }, [inst.vendor + ' · ' + inst.type]),
+        el('div', { class: 'opt-card-meta' }, [
+          el('span', { class: thrClass }, [inst.throughput + ' throughput'])
+        ])
+      ]);
+      grid.appendChild(card);
+    });
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 3 · Instrument']),
+      el('h2', { class: 'step-card-title' }, ['Which instrument?']),
+      el('p', { class: 'step-card-intro' }, ['Sequencers are limited to Illumina and Element Biosciences (AVITI). 10x sample-prep instruments are shown where they apply.']),
+      grid
+    ]);
+  }
+
+  function pillRow(opts, selectedId, onPick) {
+    var row = el('div', { class: 'expr-options' });
+    opts.forEach(function(o){
+      var pill = el('button', {
+        class: 'expr-pill' + (selectedId === o.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){ onPick(o.id); }
+      }, [o.name]);
+      if (o.tip) pill.title = o.tip;
+      row.appendChild(pill);
+    });
+    return row;
+  }
+
+  function renderStep4() {
+    var sizeOpts = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
+
+    var nextBtn = el('button', {
+      class: 'btn-primary',
+      type: 'button',
+      onclick: function(){
+        if (!stepCompleteness(3)) return;
+        setActiveStep(4);
+      }
+    }, ['Choose scenario', arrow()]);
+
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 4 · Experiment']),
+      el('h2', { class: 'step-card-title' }, ['Tell us about your experiment']),
+      el('p', { class: 'step-card-intro' }, ['Three quick choices. We pre-fill sensible defaults; adjust to your run.']),
+      el('div', { class: 'expr-group' }, [
+        el('h4', null, ['Species', el('span', { class: 'expr-info-tip', title: 'Reference genome assigned per species' }, ['i'])]),
+        pillRow(SPECIES, state.species, function(id){ state.species = id; render(); })
+      ]),
+      el('div', { class: 'expr-group' }, [
+        el('h4', null, ['Number of samples', el('span', { class: 'expr-info-tip', title: 'Affects per-batch processing and integration paths' }, ['i'])]),
+        pillRow(SAMPLES, state.samples, function(id){ state.samples = id; render(); })
+      ]),
+      el('div', { class: 'expr-group' }, [
+        el('h4', null, ['Expected sample size', el('span', { class: 'expr-info-tip', title: state.modality === 'single-cell' ? 'In cells per sample' : 'In reads per sample' }, ['i'])]),
+        pillRow(sizeOpts, state.sampleSize, function(id){ state.sampleSize = id; render(); })
+      ]),
+      el('div', { class: 'step-action' }, [nextBtn])
+    ]);
+  }
+
+  function renderStep5() {
+    var scenarios = SCENARIOS[state.modality] || [];
+    var grid = el('div', { class: 'opt-grid wide' });
+    scenarios.forEach(function(sc){
+      var card = el('button', {
+        class: 'opt-card' + (state.scenario === sc.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){
+          state.scenario = sc.id;
+          setActiveStep(5);
+        }
+      }, [
+        el('div', { class: 'opt-card-title' }, [sc.name]),
+        el('p', { class: 'opt-card-desc' }, [sc.desc]),
+        el('div', { class: 'opt-card-meta' }, [
+          el('span', { class: 'opt-card-chip teal' }, ['0 credits'])
+        ])
+      ]);
+      grid.appendChild(card);
+    });
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 5 · Scenario']),
+      el('h2', { class: 'step-card-title' }, ['Choose analysis scenario']),
+      el('p', { class: 'step-card-intro' }, ['Scenarios are progressive. Pick how far through the pipeline you want this run to go.']),
+      grid
+    ]);
+  }
+
+  function renderStep6() {
+    var modality   = modalityById(state.modality);
+    var kit        = findIn(KITS[state.modality], state.kit);
+    var instrument = findIn(INSTRUMENTS[state.modality], state.instrument);
+    var species    = findIn(SPECIES, state.species);
+    var samples    = findIn(SAMPLES, state.samples);
+    var sizes      = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
+    var size       = findIn(sizes, state.sampleSize);
+    var scenario   = findIn(SCENARIOS[state.modality], state.scenario);
+    var workflow   = WORKFLOWS[state.modality];
+
+    var config = {
+      modality: state.modality, kit: state.kit, instrument: state.instrument,
+      species: state.species, samples: state.samples, sampleSize: state.sampleSize,
+      scenario: state.scenario, workflowId: workflow && workflow.id
+    };
+
+    function saveAndGo(url) {
+      return function(){
+        try { sessionStorage.setItem('di-demo-config', JSON.stringify(config)); } catch(_){}
+      };
+    }
+    var embedSuffix = (params.get('embed') === '1' ? '?embed=1' : '?')
+      + (params.get('embed') === '1' ? '&' : '')
+      + 'theme=' + encodeURIComponent(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+    var contactBtn = el('a', {
+      class: 'review-cta-btn is-primary',
+      href: '/demo/contact.html' + embedSuffix,
+      onclick: saveAndGo()
+    }, ['Contact us', arrow('16')]);
+
+    var bookingBtn = el('a', {
+      class: 'review-cta-btn is-secondary',
+      href: '/demo/bookmeeting.html' + embedSuffix,
+      onclick: saveAndGo()
+    }, ['Book a meeting', arrow('16')]);
+
+    return el('div', { class: 'review-card' }, [
+      el('div', { class: 'review-badges' }, [
+        el('span', { class: 'review-badge coverage' }, ['Full coverage']),
+        el('span', { class: 'review-badge credits' }, ['0 credits'])
+      ]),
+      el('div', { class: 'review-row' }, [
+        el('div', null, [
+          el('div', { class: 'review-label' }, ['Modality']),
+          el('div', { class: 'review-value' }, [modality.name]),
+          el('p', { class: 'review-desc' }, [modality.desc])
+        ]),
+        el('div', null, [
+          el('div', { class: 'review-label' }, ['Kit / Assay']),
+          el('div', { class: 'review-value' }, [kit.name]),
+          el('p', { class: 'review-desc' }, [kit.vendor + ' · ' + kit.assay])
+        ])
+      ]),
+      el('div', { class: 'review-row' }, [
+        el('div', null, [
+          el('div', { class: 'review-label' }, ['Instrument']),
+          el('div', { class: 'review-value' }, [instrument.name]),
+          el('p', { class: 'review-desc' }, [instrument.vendor + ' · ' + instrument.type + ' · ' + instrument.throughput + ' throughput'])
+        ]),
+        el('div', null, [
+          el('div', { class: 'review-label' }, ['Experiment']),
+          el('div', { class: 'review-value' }, [species.name + ' · ' + samples.name + ' samples']),
+          el('p', { class: 'review-desc' }, [size.name])
+        ])
+      ]),
+      el('div', { class: 'review-row' }, [
+        el('div', null, [
+          el('div', { class: 'review-label' }, ['Scenario']),
+          el('div', { class: 'review-value' }, [scenario.name]),
+          el('p', { class: 'review-desc' }, [scenario.desc])
+        ]),
+        el('div', null, [
+          el('div', { class: 'review-label' }, ['Resolved workflow']),
+          el('div', { class: 'review-workflow-id' }, [workflow.id]),
+          el('p', { class: 'review-desc' }, [workflow.desc])
+        ])
+      ]),
+      el('p', { class: 'review-callout' }, [
+        'With this information we deliver you the omics workflow you need, ',
+        el('em', null, ['based on your choices']),
+        '. Contact us for more information or to get going.'
+      ]),
+      el('div', { class: 'review-cta-row' }, [contactBtn, bookingBtn])
+    ]);
+  }
+
+  function renderStep(i) {
+    if (i === 0) return renderStep1();
+    if (i === 1) return renderStep2();
+    if (i === 2) return renderStep3();
+    if (i === 3) return renderStep4();
+    if (i === 4) return renderStep5();
+    if (i === 5) return renderStep6();
+  }
+
+  function render() {
+    var root = document.getElementById('contentRoot');
+    root.innerHTML = '';
+
+    for (var i = 0; i < state.activeStep; i++) {
+      if (!stepCompleteness(i)) continue;
+      var eyebrow = 'Step ' + (i + 1) + ' · ' + STEPS[i].label;
+      var value = '';
+      if (i === 0) value = modalityById(state.modality).name;
+      if (i === 1) value = findIn(KITS[state.modality], state.kit).name;
+      if (i === 2) value = findIn(INSTRUMENTS[state.modality], state.instrument).name;
+      if (i === 3) {
+        var sp = findIn(SPECIES, state.species);
+        var sa = findIn(SAMPLES, state.samples);
+        var sizes = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
+        var sz = findIn(sizes, state.sampleSize);
+        value = sp.name + ' · ' + sa.name + ' samples · ' + sz.name;
+      }
+      if (i === 4) value = findIn(SCENARIOS[state.modality], state.scenario).name;
+      root.appendChild(collapsedCard(i, eyebrow, value));
+    }
+
+    var stepNode = renderStep(state.activeStep);
+    if (stepNode) root.appendChild(stepNode);
+    renderProgress();
+  }
+
+  // ---- Embed + theme handshake ----
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('embed') === '1') document.body.classList.add('is-embedded');
+  function applyTheme(value) {
+    var dark = value === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.classList.toggle('is-on', dark);
+      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    }
+  }
+  if (params.get('theme') === 'dark') applyTheme('dark');
+  window.addEventListener('message', function(e){
+    if (e && e.data && e.data.type === 'di-demo-theme') applyTheme(e.data.value);
+  });
+
+  document.getElementById('restartBtn').addEventListener('click', reset);
+
+  var coverageBtn = document.getElementById('coverageToggle');
+  coverageBtn.addEventListener('click', function(){
+    var on = !coverageBtn.classList.contains('is-on');
+    coverageBtn.classList.toggle('is-on', on);
+    coverageBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+
+  var themeBtn = document.getElementById('themeToggle');
+  themeBtn.addEventListener('click', function(){
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? '' : 'dark');
+    themeBtn.classList.toggle('is-on', !dark);
+    themeBtn.setAttribute('aria-pressed', !dark ? 'true' : 'false');
+  });
+
+  render();
+})();
 </script>
 
 </body>

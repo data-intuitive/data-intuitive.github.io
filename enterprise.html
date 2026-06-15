@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="Enterprise bioinformatics, Single-tenant deployment, Private platform, Multi-omics platform, CI/CD pipelines, Automated testing, RBAC, Observability, Versioned pipelines, Private modules, Governed catalogue, Pharma R&amp;D, CRO, GAMP 5, ISO 13485, 21 CFR Part 11, ISO 27001, LIMS integration">
+<meta name="keywords" content="CRO data analysis platform, Pharma R&amp;D, Enterprise bioinformatics platform, Single-tenant omics platform, On-premise bioinformatics deployment, Private omics platform, Multi-team bioinformatics governance, LIMS integration bioinformatics, GxP compliant pipelines, IVDR, Computational knowledge management, RBAC, CI/CD, Semantic versioning, IQ/OQ/PQ, 21 CFR Part 11">
 <meta name="description" content="A dedicated, single-tenant deployment of the Data Intuitive multi-omics platform inside your environment, alongside your LIMS and enterprise stack. Multi-team governance, audit-ready validation, your data on your infrastructure.">
 
 <title>Enterprise – Data Intuitive</title>
@@ -105,46 +105,7 @@ cookieconsent.run({
   
     <meta charset="utf-8">
 
-    <!-- ============================================================
-         No-index / no-AI directives.
-         Reinforced by /robots.txt which lists every major bot
-         User-agent explicitly. Meta tags here cover crawlers that
-         honour HTML directives instead of (or as well as) robots.txt.
-         ============================================================ -->
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, max-snippet:0, max-image-preview:none, max-video-preview:0">
-    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-    <meta name="googlebot-news" content="noindex, nofollow">
-    <meta name="bingbot" content="noindex, nofollow">
-    <meta name="slurp" content="noindex, nofollow">
-    <meta name="duckduckbot" content="noindex, nofollow">
-    <meta name="baiduspider" content="noindex, nofollow">
-    <meta name="yandex" content="noindex, nofollow">
-
-    <!-- AI / LLM training and retrieval opt-outs -->
-    <meta name="GPTBot" content="noindex, nofollow">
-    <meta name="ChatGPT-User" content="noindex, nofollow">
-    <meta name="OAI-SearchBot" content="noindex, nofollow">
-    <meta name="Google-Extended" content="noindex, nofollow">
-    <meta name="ClaudeBot" content="noindex, nofollow">
-    <meta name="Claude-Web" content="noindex, nofollow">
-    <meta name="anthropic-ai" content="noindex, nofollow">
-    <meta name="PerplexityBot" content="noindex, nofollow">
-    <meta name="CCBot" content="noindex, nofollow">
-    <meta name="Bytespider" content="noindex, nofollow">
-    <meta name="Amazonbot" content="noindex, nofollow">
-    <meta name="Applebot-Extended" content="noindex, nofollow">
-    <meta name="Meta-ExternalAgent" content="noindex, nofollow">
-    <meta name="cohere-ai" content="noindex, nofollow">
-    <meta name="cohere-training-data-crawler" content="noindex, nofollow">
-
-    <!-- AI content licence opt-outs (TDM Reservation Protocol, ai-usage hints) -->
-    <meta name="ai-content-declaration" content="prohibited">
-    <meta name="ai-training" content="false">
-    <meta name="ai-usage" content="prohibited">
-    <meta name="tdm-reservation" content="1">
-
-    <!-- Copyright reservation -->
-    <meta name="copyright" content="© Data Intuitive. All rights reserved. No use, reproduction, training, distribution, indexing, retrieval or display permitted.">
+    <meta name="robots" content="index, follow">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -455,7 +416,7 @@ cookieconsent.run({
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>Enterprise bioinformatics, Single-tenant deployment, Private platform, Multi-omics platform, CI/CD pipelines, Automated testing, RBAC, Observability, Versioned pipelines, Private modules, Governed catalogue, Pharma R&amp;D, CRO, GAMP 5, ISO 13485, 21 CFR Part 11, ISO 27001, LIMS integration</p>
+    <p>CRO data analysis platform, Pharma R&amp;D, Enterprise bioinformatics platform, Single-tenant omics platform, On-premise bioinformatics deployment, Private omics platform, Multi-team bioinformatics governance, LIMS integration bioinformatics, GxP compliant pipelines, IVDR, Computational knowledge management, RBAC, CI/CD, Semantic versioning, IQ/OQ/PQ, 21 CFR Part 11</p>
   </div>
 </div>
 
@@ -700,7 +661,7 @@ cookieconsent.run({
   .cmp-tier-table {
     width: 100%;
     border-collapse: separate; border-spacing: 0;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-display, 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif);
     font-size: 14.5px;
     background: #FFFFFF;
     border: 1px solid rgba(124,75,172,0.18);
@@ -944,7 +905,7 @@ cookieconsent.run({
           "/contact/bookmeeting.html",
           "Book a walkthrough"
         );
-      } else if (p.indexOf("/products/catalogue") === 0 || p.indexOf("/products/pipelines") === 0) {
+      } else if (p.indexOf("/products/pipelines") === 0) {
         // Pages that list validated pipelines - the natural next step is
         // "what if mine isn't on the list?"
         set(
@@ -993,9 +954,9 @@ cookieconsent.run({
         );
       } else if (p.indexOf("/static/trust_center") === 0) {
         set(
-          "Documentation",
-          "Need a security questionnaire or audit pack?",
-          "We remain committed to maintaining and evolving our security posture. For further information or to request documentation, contact our data protection officer.",
+          "Questions about privacy?",
+          "Do you have questions about privacy handling in our company?",
+          "Ask us.",
           "mailto:DPO@Data-Intuitive.com",
           "Contact DPO@Data-Intuitive.com"
         );

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="Omics analysis platform, Bioinformatics platform, Private Platform, Workflow modules, Omics data workflows, Validated pipelines, Multi-omics, ISO 27001, Audit-ready by construction, Pharma R&amp;D, Vendor-neutral, Cloud-native, On-premise, Single-tenant deployment, Nextflow, Viash, Reproducible bioinformatics">
+<meta name="keywords" content="Omics analysis platform, Validated bioinformatics pipelines, No-code omics workflows, Reproducible RNA-seq pipeline, Single-cell RNA-seq workflow, Spatial transcriptomics pipeline, Viash modules, Containerised pipelines, Audit-ready pipelines, Illumina, Element Biosciences, 10x Genomics, Visium, Cell Ranger, Nextflow, Bulk RNA-seq, WGS, WES, ATAC-seq, ChIP-seq, Browser-based omics workflow configuration, Data Intuitive">
 <meta name="description" content="An industrial-grade, vendor-neutral omics analysis platform. Validated pipelines, audit-ready by construction, runs on your infrastructure.">
 
 <title>Platform – Data Intuitive</title>
@@ -105,46 +105,7 @@ cookieconsent.run({
   
     <meta charset="utf-8">
 
-    <!-- ============================================================
-         No-index / no-AI directives.
-         Reinforced by /robots.txt which lists every major bot
-         User-agent explicitly. Meta tags here cover crawlers that
-         honour HTML directives instead of (or as well as) robots.txt.
-         ============================================================ -->
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, max-snippet:0, max-image-preview:none, max-video-preview:0">
-    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-    <meta name="googlebot-news" content="noindex, nofollow">
-    <meta name="bingbot" content="noindex, nofollow">
-    <meta name="slurp" content="noindex, nofollow">
-    <meta name="duckduckbot" content="noindex, nofollow">
-    <meta name="baiduspider" content="noindex, nofollow">
-    <meta name="yandex" content="noindex, nofollow">
-
-    <!-- AI / LLM training and retrieval opt-outs -->
-    <meta name="GPTBot" content="noindex, nofollow">
-    <meta name="ChatGPT-User" content="noindex, nofollow">
-    <meta name="OAI-SearchBot" content="noindex, nofollow">
-    <meta name="Google-Extended" content="noindex, nofollow">
-    <meta name="ClaudeBot" content="noindex, nofollow">
-    <meta name="Claude-Web" content="noindex, nofollow">
-    <meta name="anthropic-ai" content="noindex, nofollow">
-    <meta name="PerplexityBot" content="noindex, nofollow">
-    <meta name="CCBot" content="noindex, nofollow">
-    <meta name="Bytespider" content="noindex, nofollow">
-    <meta name="Amazonbot" content="noindex, nofollow">
-    <meta name="Applebot-Extended" content="noindex, nofollow">
-    <meta name="Meta-ExternalAgent" content="noindex, nofollow">
-    <meta name="cohere-ai" content="noindex, nofollow">
-    <meta name="cohere-training-data-crawler" content="noindex, nofollow">
-
-    <!-- AI content licence opt-outs (TDM Reservation Protocol, ai-usage hints) -->
-    <meta name="ai-content-declaration" content="prohibited">
-    <meta name="ai-training" content="false">
-    <meta name="ai-usage" content="prohibited">
-    <meta name="tdm-reservation" content="1">
-
-    <!-- Copyright reservation -->
-    <meta name="copyright" content="© Data Intuitive. All rights reserved. No use, reproduction, training, distribution, indexing, retrieval or display permitted.">
+    <meta name="robots" content="index, follow">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -455,7 +416,7 @@ cookieconsent.run({
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>Omics analysis platform, Bioinformatics platform, Private Platform, Workflow modules, Omics data workflows, Validated pipelines, Multi-omics, ISO 27001, Audit-ready by construction, Pharma R&amp;D, Vendor-neutral, Cloud-native, On-premise, Single-tenant deployment, Nextflow, Viash, Reproducible bioinformatics</p>
+    <p>Omics analysis platform, Validated bioinformatics pipelines, No-code omics workflows, Reproducible RNA-seq pipeline, Single-cell RNA-seq workflow, Spatial transcriptomics pipeline, Viash modules, Containerised pipelines, Audit-ready pipelines, Illumina, Element Biosciences, 10x Genomics, Visium, Cell Ranger, Nextflow, Bulk RNA-seq, WGS, WES, ATAC-seq, ChIP-seq, Browser-based omics workflow configuration, Data Intuitive</p>
   </div>
 </div>
 
@@ -472,7 +433,7 @@ cookieconsent.run({
         <div class="v-hero-left mb-4 mb-md-0">
           <span class="overline">Platform</span>
           <h1 class="v-hero-title">Validated omics pipelines any scientist can run</h1>
-          <p>Reproducible, validated pipelines that run via our platform on your own infrastructure. Pick the assay, set the parameters, click run, and get interpretation-ready results in hours, not weeks.</p>
+          <p>Reproducible, validated pipelines that run via our platform on your own infrastructure. Pick the assay, set the parameters, click run, and get interpretation-ready results with the audit trail included.</p>
         </div>
       </div>
     </div>
@@ -515,7 +476,29 @@ cookieconsent.run({
       .hiw-flow-svg a:focus rect.hiw-step-rect,
       .hiw-flow-svg a:focus circle.hiw-step-rect { stroke-opacity: 1; }
     </style>
-    <div class="reveal d-none d-lg-block" style="background: #0F1B3D; padding: 28px 28px; border-radius: 12px; font-family: 'DM Sans', sans-serif; margin: 24px 0 16px; max-width: 100%;">
+    <style>
+      .hiw-frame {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1B2D52, #243B6B);
+        border: 1.5px solid rgba(0, 180, 160, 0.55);
+        box-shadow:
+          0 0 0 1px rgba(0, 180, 160, 0.14),
+          0 0 28px rgba(0, 180, 160, 0.18),
+          0 14px 38px rgba(11, 29, 58, 0.40);
+      }
+      .hiw-frame::before {
+        content: '';
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(560px 180px at 12% 0%, rgba(0,180,160,0.22), transparent 70%),
+          radial-gradient(440px 200px at 88% 100%, rgba(124, 75, 172, 0.22), transparent 70%);
+        pointer-events: none;
+        border-radius: inherit;
+      }
+      .hiw-frame > * { position: relative; }
+    </style>
+    <div class="reveal d-none d-lg-block hiw-frame" style="padding: 28px 28px; border-radius: 14px; font-family: var(--font-display, 'DM Sans', sans-serif); margin: 24px 0 16px; max-width: 100%;">
       <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #9098B5; display: inline-flex; align-items: center; gap: 8px;">
         <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V6a2 2 0 1 1 4 0v5"></path><path d="M9 11V8a2 2 0 1 0-4 0v6a8 8 0 0 0 8 8h0a6 6 0 0 0 6-6v-4a2 2 0 1 0-4 0"></path><path d="M13 11V7a2 2 0 1 1 4 0v4"></path></svg>
         Click any block to read the detail below
@@ -603,7 +586,7 @@ cookieconsent.run({
           <text x="450" y="264" text-anchor="middle" font-size="11.5" font-weight="500" fill="#FFFFFF">data workflow</text>
         </a>
 
-        <!-- Mint handoff arrows — symmetric 7/16/7 gap-arrow-gap around the handover -->
+        <!-- Mint handoff arrows - symmetric 7/16/7 gap-arrow-gap around the handover -->
         <line x1="547" y1="170" x2="563" y2="170" stroke="#1FCFA1" stroke-width="2.2" marker-end="url(#hiwArrowMint)"></line>
         <line x1="697" y1="170" x2="713" y2="170" stroke="#1FCFA1" stroke-width="2.2" marker-end="url(#hiwArrowMint)"></line>
 
@@ -629,7 +612,7 @@ cookieconsent.run({
         <text x="746" y="118" font-size="22" font-weight="600" fill="#FFFFFF">On your infrastructure</text>
         <text x="746" y="140" font-size="12" fill="#C5D1E8">Your cloud, HPC or on-prem · Your data, your compute, your audit</text>
 
-        <!-- STEP 5 — step centres 165px apart, matching hosted side -->
+        <!-- STEP 5 - step centres 165px apart, matching hosted side -->
         <a href="#step-4" aria-label="See step 5 detail: You start the workflow">
           <circle class="hiw-step-rect" cx="810" cy="200" r="22" fill="#1FCFA1" fill-opacity="0.10" stroke="#1FCFA1" stroke-width="1.6"></circle>
           <text x="810" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#5DDFB8">5</text>
@@ -663,7 +646,7 @@ cookieconsent.run({
             <path d="M 11 18 L 15 22 L 22 14"></path>
           </g>
           <text x="-22" y="358" font-size="17" font-weight="600" fill="#FFFFFF">Your data stays in your environment.</text>
-          <text x="-22" y="382" font-size="12" fill="#5DDFB8">We never even see it. Configuration happens with us. Data and compute stay with you.</text>
+          <text x="-22" y="382" font-size="12" fill="#5DDFB8">No sample data passes through us. Configuration happens in our browser-based platform. Data and compute stay with you.</text>
           <text x="1198" y="372" text-anchor="end" font-size="10" font-weight="700" fill="#5DDFB8" letter-spacing="1.4">CLICK FOR DETAIL →</text>
         </a>
       </svg>
@@ -672,14 +655,31 @@ cookieconsent.run({
     <!-- HOW IT WORKS - mobile / tablet portrait (< lg), stacked HTML vertical flow -->
     <style>
       .pp-flow-mob {
-        background: #0F1B3D;
-        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1B2D52, #243B6B);
+        border: 1.5px solid rgba(0, 180, 160, 0.55);
+        box-shadow:
+          0 0 0 1px rgba(0, 180, 160, 0.14),
+          0 0 28px rgba(0, 180, 160, 0.18),
+          0 14px 38px rgba(11, 29, 58, 0.40);
+        border-radius: 14px;
         padding: 28px 20px 24px;
         margin: 16px auto 24px;
         max-width: 520px;
-        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: var(--font-display, 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif);
         color: #FFFFFF;
       }
+      .pp-flow-mob::before {
+        content: '';
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(360px 140px at 12% 0%, rgba(0,180,160,0.22), transparent 70%),
+          radial-gradient(320px 160px at 88% 100%, rgba(124, 75, 172, 0.22), transparent 70%);
+        pointer-events: none;
+        border-radius: inherit;
+      }
+      .pp-flow-mob > * { position: relative; }
       .pp-flow-mob-source {
         display: flex; align-items: center; gap: 14px;
         padding: 14px 14px; margin: 0 0 12px;
@@ -897,14 +897,14 @@ cookieconsent.run({
           </svg>
           <span class="pp-flow-mob-message-body">
             <span class="pp-flow-mob-message-text">Your data stays in your environment.</span>
-            <span class="pp-flow-mob-message-sub">We never even see it. Configuration happens with us. Data and compute stay with you. Tap for detail.</span>
+            <span class="pp-flow-mob-message-sub">No sample data passes through us. Configuration happens in our browser-based platform. Data and compute stay with you. Tap for detail.</span>
           </span>
         </a>
       </div>
     </div>
 
     <!-- OLD vertical SVG kept hidden as fallback; the HTML mobile flow above replaces it -->
-    <div class="reveal mx-auto d-none" style="background: #0F1B3D; padding: 20px 14px; border-radius: 12px; font-family: 'DM Sans', sans-serif; margin: 32px auto; max-width: 420px;">
+    <div class="reveal mx-auto d-none hiw-frame" style="padding: 20px 14px; border-radius: 14px; font-family: var(--font-display, 'DM Sans', sans-serif); margin: 32px auto; max-width: 420px;">
       <svg width="100%" viewbox="0 0 380 1770" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="hiwMbTitle hiwMbDesc">
         <title id="hiwMbTitle">Data Intuitive – how it works (mobile)</title>
         <desc id="hiwMbDesc">Six-step user journey on the Data Intuitive platform, stacked vertically. Steps 1-3 happen on Data Intuitive infrastructure (Experiment facts, Experiment question, Prepare data workflow). A handoff zone shows the pipeline being shipped. Steps 4-6 happen on the customer's infrastructure (Run, Analyse, Interpret).</desc>
@@ -1057,8 +1057,8 @@ cookieconsent.run({
           <path d="M 11 18 L 15 22 L 22 14"></path>
         </g>
         <text x="190" y="1698" text-anchor="middle" font-size="18" font-weight="600" fill="#FFFFFF">Your data stays in your environment.</text>
-        <text x="190" y="1722" text-anchor="middle" font-size="12" fill="#5DDFB8">We never even see it.</text>
-        <text x="190" y="1742" text-anchor="middle" font-size="11" fill="#5DDFB8">Configuration with us. Data and compute with you.</text>
+        <text x="190" y="1722" text-anchor="middle" font-size="12" fill="#5DDFB8">No sample data passes through us.</text>
+        <text x="190" y="1742" text-anchor="middle" font-size="11" fill="#5DDFB8">Configuration in our browser-based platform. Data and compute stay with you.</text>
       </svg>
     </div>
 
@@ -1197,6 +1197,20 @@ cookieconsent.run({
       .pp-detail-title { font-size: 20px; line-height: 1.25; margin: 0 0 8px; color: #0F1B3D; min-height: calc(1.25em * 2); }
       .pp-detail-body { font-size: 14.5px; color: #2F3A55; line-height: 1.55; margin: 0 0 14px; min-height: calc(1.55em * 3); }
       .pp-detail-body strong { color: #0F1B3D; font-weight: 600; }
+      .pp-detail-timing {
+        font-size: 13px; color: var(--s-color); font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        background: rgba(0,180,160,0.06); border-left: 2px solid var(--s-color);
+        padding: 8px 12px; border-radius: 0 6px 6px 0; margin: 0 0 12px;
+        line-height: 1.5;
+      }
+      .pp-detail-timing b { color: var(--p-color); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+      .handover-timing {
+        font-size: 13px; color: var(--s-color); font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        background: rgba(0,180,160,0.08); border: 1px solid rgba(0,180,160,0.22);
+        padding: 8px 14px; border-radius: 8px; margin: 12px auto 0;
+        display: inline-block; line-height: 1.5;
+      }
+      .handover-timing b { color: var(--p-color); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
       /* Inner wrapper becomes a flex column; bullets expand to fill, so AI-row and CTA always sit at the bottom of every box */
       .pp-detail > div:not(.pp-detail-num) { display: flex; flex-direction: column; flex: 1; }
       .pp-detail-bullets { flex: 1 1 auto; }
@@ -1267,9 +1281,9 @@ cookieconsent.run({
                   <div>
                     <span class="pp-detail-zone">In our platform</span>
                     <h3 class="pp-detail-title">Respond to experiment questions</h3>
-                    <p class="pp-detail-body">A few plain questions about your experiment narrow the space to the right downstream modules. No bioinformatics knowledge needed.</p>
+                    <p class="pp-detail-body">A few plain questions about your experiment, in biologist's terms rather than bioinformatics jargon, pick the right pipeline for you. No coding, no command line, no prior bioinformatics knowledge needed.</p>
                     <ul class="pp-detail-bullets">
-                      <li>Experiment type: single-cell, spatial, bulk or HT RNA-seq</li>
+                      <li>Experiment type: single-cell RNA-seq, bulk RNA-seq, spatial (Visium), proteomics, metabolomics, lipidomics · with ATAC-seq, WGS, WES and ChIP-seq in development</li>
                       <li>Species and reference genome</li>
                       <li>Number of samples and batches</li>
                       <li>Comparing conditions (treatment vs control)?</li>
@@ -1301,6 +1315,7 @@ cookieconsent.run({
                     <span class="pp-detail-zone">In our platform</span>
                     <h3 class="pp-detail-title">We compose your data workflow</h3>
                     <p class="pp-detail-body">Validated modules compose into an executable pipeline. No new code, only tested pieces combined for your run.</p>
+                    <p class="pp-detail-timing"><b>Typically:</b> minutes from your answers to a composed pipeline.</p>
                     <ul class="pp-detail-bullets">
                       <li>Selected from the validated module catalogue</li>
                       <li>Versioned and containerised</li>
@@ -1387,6 +1402,7 @@ cookieconsent.run({
       <div class="handover-intro">
         <h2>We deliver the workflow</h2>
         <p>When a scientist clicks run, the platform sends a validated workflow to you. You can run it in your compute environment, easy. Your infrastructure runs it against your data. The workflow itself stays on the platform, where we maintain it.</p>
+        <p class="handover-timing"><b>Typically:</b> immediately after the setup.</p>
       </div>
 
       <style>
@@ -1401,7 +1417,7 @@ cookieconsent.run({
           grid-template-columns: 1fr auto 1fr;
           gap: 32px;
           align-items: center;
-          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: var(--font-display, 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif);
         }
         .hg-side-left  { text-align: left; }
         .hg-side-right { text-align: right; }
@@ -1612,6 +1628,287 @@ cookieconsent.run({
     </div><!-- /.pp-detail-grid steps 4-6 -->
 
 </div></section>
+
+<!-- ======== PLATFORM DEMO ======== -->
+<style>
+  .demo-section { padding: 64px 0 72px; background: #F7F8FB; }
+  [data-bs-theme="dark"] .demo-section { background: var(--surface-alt); }
+  .demo-card {
+    max-width: 1080px; margin: 0 auto;
+    background: linear-gradient(135deg, rgba(124, 75, 172, 0.08), rgba(0, 180, 160, 0.06));
+    border: 1px solid rgba(124, 75, 172, 0.22);
+    border-radius: 20px;
+    padding: 44px 48px 40px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .demo-card-left .overline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--p-color, #7C4BAC);
+    display: block; margin-bottom: 10px;
+  }
+  .demo-card h2 {
+    font-size: 30px; line-height: 1.2; font-weight: 700;
+    color: #0F1B3D; margin: 0 0 14px;
+    letter-spacing: -0.005em;
+  }
+  .demo-card h2 em { color: var(--p-color, #7C4BAC); font-style: normal; }
+  .demo-card-lead {
+    font-size: 16px; line-height: 1.6; color: #4A5570;
+    margin: 0 0 18px;
+  }
+  .demo-disclaimer {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: rgba(0, 180, 160, 0.07);
+    border: 1px solid rgba(0, 180, 160, 0.35);
+    border-left: 4px solid var(--s-color, #00B4A0);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 6px 0 22px;
+  }
+  .demo-disclaimer-icon { color: var(--s-color, #00B4A0); flex-shrink: 0; padding-top: 1px; }
+  .demo-disclaimer-text { flex: 1; }
+  .demo-disclaimer-lead { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text, #2F3A55); }
+  .demo-disclaimer-lead b { color: #0E8276; font-weight: 700; }
+  .demo-disclaimer-sub { margin: 8px 0 0; font-size: 14px; line-height: 1.55; color: var(--text-muted, #4A5570); }
+  .demo-disclaimer-sub a { color: var(--p-color); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .demo-disclaimer-sub a:hover { color: #6A3F94; }
+  .demo-cta-block {
+    background: #FFFFFF;
+    border: 1px solid rgba(11, 29, 58, 0.08);
+    border-radius: 14px;
+    padding: 26px 26px 22px;
+    text-align: center;
+  }
+  .demo-steps {
+    list-style: none; padding: 0; margin: 0 0 22px;
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+    text-align: left;
+  }
+  .demo-steps li {
+    font-size: 13px; color: #4A5570;
+    padding: 8px 12px;
+    background: rgba(11, 29, 58, 0.025);
+    border-radius: 8px;
+    display: flex; gap: 10px; align-items: baseline;
+  }
+  .demo-steps li .demo-step-num {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--p-color, #7C4BAC);
+    flex-shrink: 0;
+  }
+  .demo-get-started {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%;
+    padding: 14px 22px;
+    background: var(--p-color, #7C4BAC); color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+    transition: background .15s, transform .15s;
+    border: 0;
+    cursor: pointer;
+  }
+  .demo-get-started:hover { background: #6A3F94; color: #FFFFFF; transform: translateY(-1px); }
+  @media (max-width: 880px) {
+    .demo-card { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px 28px; }
+    .demo-card h2 { font-size: 24px; }
+  }
+</style>
+
+<!-- ======== PLATFORM DEMO (shared partial) ======== -->
+<!-- Included by index.qmd and products/platform.qmd via {{< include /_platform-demo.qmd >}}.
+     The card *look* (dark on the homepage, light on the product page) lives in each
+     page's own demo <style> block; the markup, modal and script are shared here. -->
+<section class="demo-section">
+  <div class="container">
+    <div class="demo-card reveal">
+      <div class="demo-card-left">
+        <span class="overline">Walk through a transcriptomics run <em>end to end</em></span>
+        <h2>Platform demo</h2>
+        <p class="demo-card-lead">A six-step wizard that takes you from experiment type to a ready-to-run analysis: the exact path you'd follow inside the platform, ending in the outputs you'd get back: from processed data to QC reports, results tables and figures.</p>
+        <div class="demo-disclaimer" role="note" aria-label="Demo scope and contact">
+          <span class="demo-disclaimer-icon" aria-hidden="true">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="13"></line><line x1="12" y1="16.5" x2="12.01" y2="16.5"></line></svg>
+          </span>
+          <div class="demo-disclaimer-text">
+            <p class="demo-disclaimer-lead"><b>This demo only covers a subset of transcriptomics pipelines</b> on Illumina, Element Biosciences and 10x. The full product carries much more experiments, instruments and kits.</p>
+            <p class="demo-disclaimer-sub"><a href="../contact/contact.html">Contact us</a> with your specific questions around an omics experiment - our expertise spans the full range, from standard transcriptomics and genomics to specialized proteomics, lipidomics and beyond.</p>
+          </div>
+        </div>
+      </div>
+      <div class="demo-cta-block">
+        <ol class="demo-steps">
+          <li><span class="demo-step-num">01</span> Modality</li>
+          <li><span class="demo-step-num">02</span> Kit / assay</li>
+          <li><span class="demo-step-num">03</span> Instrument</li>
+          <li><span class="demo-step-num">04</span> Experiment</li>
+          <li><span class="demo-step-num">05</span> Scenario</li>
+          <li><span class="demo-step-num">06</span> Review &amp; run</li>
+        </ol>
+        <button type="button" class="demo-get-started" id="openDemoModal">
+          Start the demo
+          <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PLATFORM DEMO MODAL ======== -->
+<style>
+  .demo-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(11, 29, 58, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9000;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .demo-modal-overlay.is-open { display: flex; animation: demoModalFade .2s ease-out; }
+  @keyframes demoModalFade { from { opacity: 0; } to { opacity: 1; } }
+  body.demo-modal-open { overflow: hidden; }
+
+  .demo-modal-window {
+    background: var(--surface, #FFFFFF);
+    border: 1px solid var(--border, rgba(11,29,58,0.10));
+    border-radius: 18px;
+    width: min(1280px, 100%);
+    height: min(880px, calc(100vh - 48px));
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(11,29,58,0.30);
+  }
+  .demo-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border, rgba(11,29,58,0.08));
+    background: var(--surface, #FFFFFF);
+  }
+  .demo-modal-title {
+    display: flex; align-items: center; gap: 14px;
+    margin: 0; flex: 1 1 auto; min-width: 0;
+    padding-right: 16px;
+  }
+  .demo-modal-title-tag {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(124,75,172,0.10); color: var(--p-color, #7C4BAC);
+    padding: 5px 12px; border-radius: 999px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .demo-modal-title-text {
+    font-family: var(--font-body, inherit);
+    font-size: 13.5px; font-weight: 500; line-height: 1.45;
+    color: var(--text-muted, #5A6890);
+  }
+  .demo-modal-title-text a {
+    color: var(--p-color, #7C4BAC); font-weight: 700;
+    text-decoration: none;
+  }
+  .demo-modal-title-text a:hover { text-decoration: underline; }
+  .demo-modal-close {
+    background: transparent; border: 0;
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    color: var(--text-muted, #5A6890);
+    cursor: pointer;
+    display: grid; place-items: center;
+    transition: background .15s, color .15s;
+  }
+  .demo-modal-close:hover { background: var(--surface-alt, #F7F8FB); color: var(--text-strong, #0F1B3D); }
+  .demo-modal-body { flex: 1; display: flex; min-height: 0; }
+  .demo-modal-iframe {
+    flex: 1; width: 100%; border: 0;
+    background: var(--surface-alt, #F7F8FB);
+  }
+
+  @media (max-width: 720px) {
+    .demo-modal-overlay { padding: 0; }
+    .demo-modal-window { width: 100%; height: 100vh; border-radius: 0; border: 0; }
+  }
+</style>
+
+<div class="demo-modal-overlay" id="demoModalOverlay" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+  <div class="demo-modal-window">
+    <div class="demo-modal-header">
+      <h2 class="demo-modal-title" id="demoModalTitle">
+        <span class="demo-modal-title-tag">Platform demo</span>
+        <span class="demo-modal-title-text">This demo only covers transcriptomics on Illumina, Element Biosciences and 10x. The full product carries much more. Your kit or instrument on the platform? <a href="../contact/contact.html">Contact us</a>.</span>
+      </h2>
+      <button type="button" class="demo-modal-close" id="closeDemoModal" aria-label="Close demo">
+        <svg width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="demo-modal-body">
+      <iframe class="demo-modal-iframe" id="demoModalIframe" title="Platform demo wizard" loading="lazy" aria-label="Platform demo wizard"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay   = document.getElementById('demoModalOverlay');
+  var openBtn   = document.getElementById('openDemoModal');
+  var closeBtn  = document.getElementById('closeDemoModal');
+  var frame     = document.getElementById('demoModalIframe');
+  if (!overlay || !openBtn || !closeBtn || !frame) return;
+
+  function currentTheme(){
+    return (document.body.classList.contains('quarto-dark') ||
+            document.documentElement.getAttribute('data-bs-theme') === 'dark') ? 'dark' : 'light';
+  }
+  function loadFrame(){
+    var theme = currentTheme();
+    if (!frame.src) {
+      frame.src = '/demo/configurator.html?embed=1&theme=' + encodeURIComponent(theme);
+    } else {
+      try {
+        frame.contentWindow.postMessage({ type: 'di-demo-theme', value: theme }, '*');
+      } catch(_) {}
+    }
+  }
+  function open(){
+    overlay.classList.add('is-open');
+    document.body.classList.add('demo-modal-open');
+    loadFrame();
+  }
+  function close(){
+    overlay.classList.remove('is-open');
+    document.body.classList.remove('demo-modal-open');
+  }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+  });
+
+  var themeBtn = document.querySelector('.theme-toggle, [data-theme-toggle]');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      if (overlay.classList.contains('is-open')) {
+        setTimeout(loadFrame, 50);
+      }
+    });
+  }
+  var mo = new MutationObserver(function(){
+    if (overlay.classList.contains('is-open')) loadFrame();
+  });
+  mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+})();
+</script>
 
 
 <!-- PLANS - tabbed format -->
@@ -2025,6 +2322,99 @@ cookieconsent.run({
 })();
 </script>
 
+<!-- ======== TECHNICAL FOUNDATION (Viash) - link to dedicated page ======== -->
+<style>
+  .fnd-cta-section { padding: 56px 0 72px; }
+  .fnd-cta {
+    max-width: 1080px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 28px 32px;
+    background: linear-gradient(135deg, #1B2D52, #243B6B);
+    border: 1.5px solid rgba(0, 180, 160, 0.55);
+    border-radius: 14px;
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0, 180, 160, 0.14),
+      0 0 28px rgba(0, 180, 160, 0.18),
+      0 14px 38px rgba(11, 29, 58, 0.40);
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .fnd-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(520px 160px at 12% 0%, rgba(0,180,160,0.22), transparent 70%),
+      radial-gradient(420px 200px at 88% 100%, rgba(124, 75, 172, 0.22), transparent 70%);
+    pointer-events: none;
+  }
+  .fnd-cta > * { position: relative; }
+  .fnd-cta:hover {
+    border-color: var(--s-color);
+    transform: translateY(-1px);
+    color: #FFFFFF; text-decoration: none;
+    box-shadow:
+      0 0 0 1px rgba(0, 180, 160, 0.28),
+      0 0 36px rgba(0, 180, 160, 0.28),
+      0 18px 48px rgba(11, 29, 58, 0.50);
+  }
+  .fnd-cta-text { display: flex; flex-direction: column; gap: 6px; }
+  .fnd-cta-eyebrow {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--s-color); font-weight: 700;
+  }
+  .fnd-cta-title {
+    font-family: var(--font-display, inherit);
+    font-size: 22px; font-weight: 600; line-height: 1.3;
+    color: #FFFFFF; margin: 0;
+  }
+  .fnd-cta-sub {
+    font-size: 14.5px; line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+    max-width: 620px;
+  }
+  .fnd-cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px;
+    background: rgba(0, 180, 160, 0.18);
+    border: 1px solid rgba(0, 180, 160, 0.45);
+    color: var(--s-color);
+    border-radius: 10px;
+    font-weight: 700; font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background .15s, color .15s;
+  }
+  .fnd-cta:hover .fnd-cta-btn { background: var(--s-color); color: #FFFFFF; border-color: var(--s-color); }
+  @media (max-width: 720px) {
+    .fnd-cta { grid-template-columns: 1fr; gap: 18px; padding: 22px 22px; }
+    .fnd-cta-btn { align-self: flex-start; }
+  }
+</style>
+
+<section class="sec-white fnd-cta-section">
+  <div class="container">
+    <a href="../products/foundation.html" class="fnd-cta reveal">
+      <div class="fnd-cta-text">
+        <span class="fnd-cta-eyebrow">Open by default</span>
+        <h2 class="fnd-cta-title">The workflows run on <b>Viash</b>-generated modules.</h2>
+        <p class="fnd-cta-sub">Versioned, containerised, open-source building blocks assembled into production-grade pipelines, so the method behind your results is inspectable and never a black box. Five-plus years in production, audit-ready by construction.</p>
+      </div>
+      <span class="fnd-cta-btn">
+        Explore the foundation
+        <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
 
 
 
@@ -2145,7 +2535,7 @@ cookieconsent.run({
           "/contact/bookmeeting.html",
           "Book a walkthrough"
         );
-      } else if (p.indexOf("/products/catalogue") === 0 || p.indexOf("/products/pipelines") === 0) {
+      } else if (p.indexOf("/products/pipelines") === 0) {
         // Pages that list validated pipelines - the natural next step is
         // "what if mine isn't on the list?"
         set(
@@ -2194,9 +2584,9 @@ cookieconsent.run({
         );
       } else if (p.indexOf("/static/trust_center") === 0) {
         set(
-          "Documentation",
-          "Need a security questionnaire or audit pack?",
-          "We remain committed to maintaining and evolving our security posture. For further information or to request documentation, contact our data protection officer.",
+          "Questions about privacy?",
+          "Do you have questions about privacy handling in our company?",
+          "Ask us.",
           "mailto:DPO@Data-Intuitive.com",
           "Contact DPO@Data-Intuitive.com"
         );

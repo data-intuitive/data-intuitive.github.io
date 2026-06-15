@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
+<title>Book a meeting · Platform Demo | Data Intuitive</title>
+<link rel="canonical" href="https://www.data-intuitive.com/demo/bookmeeting.html" />
+<link rel="stylesheet" href="/demo/_demo-shell.css" />
+<style>
+  .demo-booking-frame {
+    margin-top: 4px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #FFFFFF;
+  }
+  .demo-booking-frame iframe {
+    display: block; width: 100%; border: 0;
+    height: 720px;
+    background: #FFFFFF;
+  }
+  @media (max-width: 720px) {
+    .demo-booking-frame iframe { height: 640px; }
+  }
+</style>
+</head>
+<body>
+
+<main class="demo-page">
+
+  <a href="#" class="demo-page-back" id="backLink">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to the demo
+  </a>
+
+  <header class="demo-page-head">
+    <span class="demo-page-eyebrow">Platform demo &middot; Book a meeting</span>
+    <h1 class="demo-page-title">Pick a time that works for you</h1>
+    <p class="demo-page-lead">A bioinformatician on our team will hop on the call. We'll bring your demo selections with us so we can dig straight in.</p>
+  </header>
+
+  <div class="demo-config-summary" id="configSummary"></div>
+
+  <div class="demo-page-body" style="padding: 16px;">
+    <div class="demo-booking-frame">
+      <iframe
+        src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2dwx8y3MJ2LSyT4C_rIKidXNR0gBe4VGRpiLYvMxTfvVreUHXcw00AzhJ4SmuMdkcftUDjui5-"
+        title="Book a meeting with Data Intuitive"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        scrolling="no"></iframe>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  // Theme + embed handshake
+  var params = new URLSearchParams(window.location.search);
+  function applyTheme(value) {
+    document.documentElement.setAttribute('data-theme', value === 'dark' ? 'dark' : '');
+  }
+  if (params.get('theme') === 'dark') applyTheme('dark');
+  window.addEventListener('message', function(e){
+    if (e && e.data && e.data.type === 'di-demo-theme') applyTheme(e.data.value);
+  });
+
+  // Back link keeps embed/theme params
+  var back = document.getElementById('backLink');
+  back.href = '/demo/configurator.html?embed=' + (params.get('embed') === '1' ? '1' : '0') + '&theme=' + (params.get('theme') || 'light');
+
+  // Read demo config + render summary
+  var config = null;
+  try { config = JSON.parse(sessionStorage.getItem('di-demo-config') || 'null'); } catch(_){}
+
+  function row(label, value, sub) {
+    var dt = document.createElement('dt'); dt.textContent = label;
+    var dd = document.createElement('dd'); dd.textContent = value || '-';
+    if (sub) {
+      var s = document.createElement('small'); s.textContent = sub;
+      dd.appendChild(s);
+    }
+    var wrap = document.createElement('div'); wrap.className = 'demo-config-row';
+    wrap.appendChild(dt); wrap.appendChild(dd);
+    return wrap;
+  }
+
+  var summary = document.getElementById('configSummary');
+  if (config) {
+    var head = document.createElement('div'); head.className = 'demo-config-summary-head';
+    var h = document.createElement('h3'); h.textContent = 'Your demo selections';
+    var tag = document.createElement('span'); tag.className = 'demo-config-summary-tag'; tag.textContent = 'On the call';
+    head.appendChild(h); head.appendChild(tag);
+    summary.appendChild(head);
+
+    var grid = document.createElement('div'); grid.className = 'demo-config-grid';
+    grid.appendChild(row('Modality',   config.modality));
+    grid.appendChild(row('Kit',        config.kit));
+    grid.appendChild(row('Instrument', config.instrument));
+    grid.appendChild(row('Experiment', (config.species || '') + ' · ' + (config.samples || '') + ' samples', config.sampleSize || ''));
+    grid.appendChild(row('Scenario',   config.scenario));
+    grid.appendChild(row('Workflow',   config.workflowId));
+    summary.appendChild(grid);
+  } else {
+    summary.style.display = 'none';
+  }
+})();
+</script>
+
+</body>
+</html>

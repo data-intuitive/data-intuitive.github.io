@@ -1,0 +1,16 @@
+# Clean-URL rewrites — short, shareable routes that serve the canonical pages.
+# Netlify status 200 = rewrite (URL stays clean in the browser).
+
+/platform        /products/platform.html        200
+/services        /services/services.html        200
+/pricing         /products/pricing.html         200
+/partnerships    /products/partnerships.html    200
+/comparison      /products/comparison.html      200
+/pipelines       /products/pipelines.html       200
+/approach        /products/approach.html        200
+/company         /company/index.html            200
+/careers         /company/careers.html          200
+/trust-center    /static/trust_center.html      200
+/contact         /contact/contact.html          200
+/book            /contact/bookmeeting.html      200
+/alpha-lab       /contact/omics-alpha-lab.html  200
