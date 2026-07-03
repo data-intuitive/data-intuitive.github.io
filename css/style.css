@@ -8732,6 +8732,18 @@ header .navbar .navbar-toggler:focus {
 .info-strip a { color: var(--p-color); font-weight: 500; text-decoration: none; }
 .info-strip a:hover { text-decoration: underline; }
 
+/* Dark theme: info-strip inverts to sit legibly on dark surfaces */
+body.quarto-dark .info-strip,
+[data-bs-theme="dark"] .info-strip {
+  background: rgba(124, 75, 172, 0.14);
+  border-left-color: var(--accent-2, #C7B3EA);
+}
+body.quarto-dark .info-strip p,
+[data-bs-theme="dark"] .info-strip p { color: var(--text, rgba(255, 255, 255, 0.80)); }
+body.quarto-dark .info-strip a,
+[data-bs-theme="dark"] .info-strip a { color: var(--accent-2, #C7B3EA); }
+
+
 /* ===== Compare cards (Why structure matters for AI) ===== */
 .compare-card {
   position: relative;
@@ -8801,6 +8813,26 @@ header .navbar .navbar-toggler:focus {
   background: rgba(11, 29, 58, 0.25);
 }
 .compare-card-accent li::before { background: var(--s-color); }
+
+/* Dark theme: compare-card sits on dark surface */
+body.quarto-dark .compare-card,
+[data-bs-theme="dark"] .compare-card {
+  background: var(--surface, #14213D);
+  border-color: var(--border, rgba(255, 255, 255, 0.10));
+}
+body.quarto-dark .compare-card h3,
+[data-bs-theme="dark"] .compare-card h3 { color: var(--text-strong, #FFFFFF); }
+body.quarto-dark .compare-card li,
+[data-bs-theme="dark"] .compare-card li { color: var(--text-muted, rgba(255, 255, 255, 0.70)); }
+body.quarto-dark .compare-card li::before,
+[data-bs-theme="dark"] .compare-card li::before { background: rgba(255, 255, 255, 0.35); }
+body.quarto-dark .compare-card .compare-tag,
+[data-bs-theme="dark"] .compare-card .compare-tag { color: rgba(255, 255, 255, 0.55); }
+body.quarto-dark .compare-card.compare-card-accent,
+[data-bs-theme="dark"] .compare-card.compare-card-accent {
+  border-color: rgba(0, 180, 160, 0.55);
+  box-shadow: 0 12px 32px rgba(0, 180, 160, 0.14);
+}
 
 /* ===== Credit blocks (Pricing model 3-up) ===== */
 .credit-block {
@@ -9315,6 +9347,20 @@ header .navbar .navbar-toggler:focus {
 .sec-flow-wash .flow-step {
   background: #ffffff;
   border-color: rgba(11, 29, 58, 0.1);
+}
+
+/* Dark theme: swap the pastel wash for a subtle dark tint so text stays readable */
+body.quarto-dark .sec-flow-wash,
+[data-bs-theme="dark"] .sec-flow-wash {
+  background: linear-gradient(135deg, rgba(124,75,172,0.10) 0%, rgba(0,180,160,0.08) 100%),
+              var(--surface, #14213D);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+body.quarto-dark .sec-flow-wash .flow-step,
+[data-bs-theme="dark"] .sec-flow-wash .flow-step {
+  background: var(--surface, #14213D);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* ===== Coming-soon panel (engineer section "Web UI" callout) ===== */
@@ -11438,4 +11484,61 @@ a code {
   color: inherit;
   border: 0;
   padding: 0;
+}
+
+/* =========================================================================
+   Static legal / policy pages (page-layout: full + ::: {.container})
+   The site body has a navy background applied globally; pages that don't
+   wrap their content in .sec-white / .sec-off would leave text on that dark
+   surface unreadable. Give plain-container pages an explicit white paper
+   surface with legible typography.
+   ========================================================================= */
+main.content .container,
+main.quarto-body .container,
+body.quarto-full .container,
+body:not(:has(section.sec-white)):not(:has(section.sec-off)) main > .container,
+body:not(:has(section.sec-white)):not(:has(section.sec-off)) main .container {
+  /* no-op safety anchor; the real styling lives on .di-legal-page */
+}
+
+.di-legal-page {
+  background: var(--surface, #FFFFFF);
+  color: var(--text, #2F3A55);
+  max-width: 880px;
+  margin: 48px auto 64px;
+  padding: 48px 56px;
+  border-radius: 14px;
+  border: 1px solid var(--border, rgba(11, 29, 58, 0.08));
+  box-shadow: 0 6px 22px rgba(11, 29, 58, 0.05);
+}
+.di-legal-page h1,
+.di-legal-page h2,
+.di-legal-page h3 {
+  color: var(--text-strong, #0F1B3D);
+}
+.di-legal-page h1 { font-size: 32px; margin: 0 0 20px; }
+.di-legal-page h2 { font-size: 22px; margin: 32px 0 12px; }
+.di-legal-page h3 { font-size: 18px; margin: 24px 0 10px; }
+.di-legal-page p,
+.di-legal-page li { color: var(--text, #2F3A55); font-size: 15.5px; line-height: 1.6; }
+.di-legal-page a { color: var(--p-color, #7C4BAC); text-decoration: underline; text-underline-offset: 3px; }
+.di-legal-page hr { border: 0; border-top: 1px solid var(--border, rgba(11, 29, 58, 0.10)); margin: 28px 0; }
+.di-legal-page ul { padding-left: 22px; }
+.di-legal-page ul li { padding: 3px 0; }
+body.quarto-dark .di-legal-page,
+[data-bs-theme="dark"] .di-legal-page {
+  background: var(--surface, #14213D);
+  border-color: rgba(255, 255, 255, 0.10);
+  color: var(--text, #C7D2E5);
+}
+body.quarto-dark .di-legal-page h1,
+body.quarto-dark .di-legal-page h2,
+body.quarto-dark .di-legal-page h3,
+[data-bs-theme="dark"] .di-legal-page h1,
+[data-bs-theme="dark"] .di-legal-page h2,
+[data-bs-theme="dark"] .di-legal-page h3 { color: #FFFFFF; }
+body.quarto-dark .di-legal-page a,
+[data-bs-theme="dark"] .di-legal-page a { color: #C7B3EA; }
+@media (max-width: 720px) {
+  .di-legal-page { padding: 32px 22px; margin: 24px auto 40px; border-radius: 12px; }
 }

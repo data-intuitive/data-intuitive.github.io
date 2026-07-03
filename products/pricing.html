@@ -432,27 +432,50 @@ cookieconsent.run({
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(11, 29, 58, 0.04);
+  font-family: var(--font-body, inherit);
 }
 .pricing-row {
   display: grid;
-  grid-template-columns: 2fr 0.6fr 0.8fr;
-  gap: 16px;
-  padding: 16px 24px;
-  align-items: center;
+  grid-template-columns: 1.1fr 1.6fr 0.8fr 2fr;
+  gap: 20px;
+  padding: 18px 24px;
+  align-items: start;
   border-bottom: 1px solid #EEF0F3;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text, #2F3A55);
 }
 .pricing-row:last-child { border-bottom: 0; }
 .pricing-row-header {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: #9AA0A9;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #7A88B5;
   background: #FAFBFC;
 }
-.pricing-row .pname { font-weight: 600; color: #0B1D3A; font-size: 16px; }
-.pricing-row .pdesc { color: #5A626E; font-size: 13.5px; margin-top: 2px; }
-.pricing-row .pcredits { font-family: 'JetBrains Mono', monospace; color: #7C4BAC; font-size: 15px; font-weight: 600; }
+.pricing-row .pname {
+  font-family: var(--font-display, inherit);
+  font-weight: 700;
+  color: #0B1D3A;
+  font-size: 16px;
+  line-height: 1.25;
+}
+.pricing-row .pdesc {
+  color: #5A6890;
+  font-size: 13px;
+  margin-top: 3px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.pricing-row .pcredits {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #7C4BAC;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
 @media (max-width: 768px) {
   .pricing-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 16px; }
   .pricing-row-header { display: none; }
@@ -522,20 +545,21 @@ cookieconsent.run({
 <style>
   .price-band {
     max-width: 760px; margin: 24px 0 0;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px;
     background: rgba(124,75,172,0.06);
     border: 1px solid rgba(124,75,172,0.22);
     border-radius: 12px;
-    padding: 14px 20px;
+    padding: 16px 22px;
   }
   .price-band .price-figure {
-    display: flex; align-items: baseline; gap: 5px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace; color: #0F1B3D;
+    display: flex; align-items: baseline; gap: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #0F1B3D;
   }
-  .price-band .price-amount { font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -0.01em; }
-  .price-band .price-unit { font-size: 14px; color: var(--p-color); font-weight: 600; }
-  .price-band .price-note { font-size: 13.5px; color: #5A6890; line-height: 1.4; }
-  .price-band .price-note b { color: #0F1B3D; font-weight: 600; }
+  .price-band .price-amount { font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: 0; }
+  .price-band .price-unit { font-size: 14px; color: var(--p-color); font-weight: 700; letter-spacing: 0.02em; }
+  .price-band .price-note { font-family: var(--font-body, inherit); font-size: 14px; color: #5A6890; line-height: 1.5; }
+  .price-band .price-note b { color: #0F1B3D; font-weight: 700; }
 
   /* Discreet Omics Alpha Lab note below the €25 band */
   .oal-note {
@@ -576,15 +600,15 @@ cookieconsent.run({
     <div class="sec-head-new reveal">
       <span class="overline">Cost examples</span>
       <h2>What a typical analysis costs</h2>
-      <p>Credits scale with pipeline complexity. A simple bulk RNA-seq run consumes fewer credits than spatial transcriptomics or whole-genome analysis.</p>
+      <p>Credits scale with pipeline complexity.</p>
       <div class="price-band">
         <div class="price-figure">
-          <span class="price-amount">€25</span>
+          <span class="price-amount">±€26</span>
           <span class="price-unit">/ credit</span>
         </div>
         <span class="price-note"><b>Provisional maximum list price.</b> A workflow run costs several credits depending on complexity. The hundredth run costs the same as the second.</span>
       </div>
-      <p class="oal-note">
+      <p class="oal-note" style="display:none;">
         <span class="oal-note-dot" aria-hidden="true"></span>
         <span><b>Omics Alpha Lab partners run at zero credit cost</b> during the summer test window and lock in founding-partner pricing afterwards. <a href="../index.html#omics-alpha-lab">Five places open</a>.</span>
       </p>
@@ -593,49 +617,37 @@ cookieconsent.run({
       <div class="col-lg-10">
         <div class="pricing-table">
           <div class="pricing-row pricing-row-header">
-            <div>Analysis</div>
-            <div class="text-end">Complexity</div>
-            <div class="text-end">Credits per run</div>
+            <div>Phase</div>
+            <div>Function</div>
+            <div>Bounds</div>
+            <div>Typical modules or tools</div>
           </div>
           <div class="pricing-row">
             <div>
-              <div class="pname">Bulk RNA-seq</div>
-              <div class="pdesc">Differential expression, transcript quantification</div>
+              <div class="pname">Phase 1</div>
+              <div class="pdesc">Raw data to feature matrix</div>
             </div>
-            <div class="text-end">Standard</div>
-            <div class="text-end pcredits">2 – 3</div>
+            <div>Converts sequencing reads into a count matrix</div>
+            <div class="pcredits">2 credits</div>
+            <div>featureCounts, HTSeq-count, STAR GeneCounts, Salmon, Kallisto and RSEM</div>
           </div>
           <div class="pricing-row">
             <div>
-              <div class="pname">Whole exome</div>
-              <div class="pdesc">Targeted exome capture, variant calling</div>
+              <div class="pname">Phase 2</div>
+              <div class="pdesc">Standard processing</div>
             </div>
-            <div class="text-end">Standard</div>
-            <div class="text-end pcredits">4</div>
+            <div>Prepares the count matrix for analysis</div>
+            <div class="pcredits">2–10 credits</div>
+            <div>Quality control, filtering, normalisation, annotation, batch correction and standard preprocessing</div>
           </div>
           <div class="pricing-row">
             <div>
-              <div class="pname">Whole genome (30×)</div>
-              <div class="pdesc">Germline variant calling at 30× coverage</div>
+              <div class="pname">Phase 3</div>
+              <div class="pdesc">Downstream analysis</div>
             </div>
-            <div class="text-end">Standard</div>
-            <div class="text-end pcredits">3</div>
-          </div>
-          <div class="pricing-row">
-            <div>
-              <div class="pname">Single-cell RNA-seq</div>
-              <div class="pdesc">Cell Ranger + downstream analysis</div>
-            </div>
-            <div class="text-end">Higher</div>
-            <div class="text-end pcredits">7 – 8</div>
-          </div>
-          <div class="pricing-row">
-            <div>
-              <div class="pname">Spatial transcriptomics</div>
-              <div class="pdesc">10x Visium or equivalent platforms</div>
-            </div>
-            <div class="text-end">Highest</div>
-            <div class="text-end pcredits">10 – 12</div>
+            <div>Extracts biological meaning</div>
+            <div class="pcredits">1+ credits</div>
+            <div>Differential expression, pathway enrichment, clustering, visualisation and biological interpretation</div>
           </div>
         </div>
         <div class="reveal sample-callout" style="max-width: 760px; margin: 28px auto 0; display: flex; gap: 16px; align-items: flex-start; background: linear-gradient(135deg, rgba(0,180,160,0.10), rgba(124,75,172,0.08)); border: 1px solid rgba(0,180,160,0.30); border-radius: 12px; padding: 20px 24px;">

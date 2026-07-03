@@ -672,14 +672,14 @@
       var li = document.createElement('li');
       li.className = 'demo-progress-step';
       if (i === state.activeStep) li.classList.add('is-active');
-      if (stepCompleteness(i) && i !== state.activeStep) li.classList.add('is-complete');
+      if (stepCompleteness(i) && i < state.activeStep) li.classList.add('is-complete');
       if (i > max) li.classList.add('is-future');
 
       var summary = '';
       if (i === 0 && state.modality)   summary = modalityById(state.modality).name;
       if (i === 1 && state.kit)        summary = (findIn(KITS[state.modality], state.kit) || {}).name || '';
       if (i === 2 && state.instrument) summary = (findIn(INSTRUMENTS[state.modality], state.instrument) || {}).name || '';
-      if (i === 3 && stepCompleteness(3)) {
+      if (i === 3 && stepCompleteness(3) && i < state.activeStep) {
         var sp = findIn(SPECIES, state.species), sa = findIn(SAMPLES, state.samples);
         var sizes = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
         var sz = findIn(sizes, state.sampleSize);

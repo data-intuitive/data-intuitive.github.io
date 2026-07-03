@@ -667,7 +667,7 @@ cookieconsent.run({
                 <li><span class="tick">✓</span> White-label option: analysis under your brand</li>
                 <li><span class="tick">✓</span> Audit-ready record per project, by construction</li>
                 <li><span class="tick">✓</span> Bioinformatics escalation when you need extra hands</li>
-                <li><span class="tick">✓</span> Credit-based pricing aligned to each engagement or enterprise partnership</li>
+                <li><span class="tick">✓</span> Credit-based pricing aligned to each engagement or private platform agreement</li>
               </ul>
             </div>
           </div>
@@ -889,7 +889,8 @@ cookieconsent.run({
   <div class="container">
     <div class="sec-head-new reveal" style="max-width: 880px;">
       <span class="overline">Commercial models</span>
-      <h2>Two commercial models for the partners</h2>
+      <h2>One platform, three ways to ship it</h2>
+      <p>The engine is the same in all three: validated pipelines, versioned execution, audit-ready by design. What changes is the packaging, the tenancy and how the partner earns.</p>
     </div>
 
     <!-- COMMERCIAL MODELS - responsive card design (single block, handles all breakpoints) -->
@@ -926,7 +927,7 @@ cookieconsent.run({
         margin: 0 0 28px;
       }
       .cmodels-grid {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+        display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
         margin-bottom: 12px;
       }
       .cmodels-panel {
@@ -934,16 +935,22 @@ cookieconsent.run({
         border-radius: 12px;
         padding: 22px 22px 20px;
         background: rgba(20, 35, 71, 0.3);
+        display: flex; flex-direction: column;
+        height: 100%;
       }
       .cmodels-panel.is-credits    { border-color: rgba(181, 168, 232, 0.5); }
-      .cmodels-panel.is-enterprise { border-color: rgba(31, 207, 161, 0.5); }
+      .cmodels-panel.is-oem        { border-color: rgba(31, 207, 161, 0.5); }
+      .cmodels-panel.is-private    { border-color: rgba(122, 156, 232, 0.5); }
       .cmodels-panel-header {
-        display: flex; align-items: center; justify-content: space-between;
-        margin-bottom: 18px;
+        display: flex; align-items: flex-start; justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
+        min-height: 64px;
       }
       .cmodels-panel-title {
         color: #FFFFFF; font-size: 22px; font-weight: 600;
         margin: 0; letter-spacing: -0.01em;
+        line-height: 1.15;
       }
       .cmodels-tag {
         font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -956,37 +963,103 @@ cookieconsent.run({
         background: rgba(181, 168, 232, 0.1);
         border: 1px solid rgba(181, 168, 232, 0.4);
       }
-      .cmodels-tag.is-high {
+      .cmodels-tag.is-mid {
         color: #1FCFA1;
         background: rgba(31, 207, 161, 0.1);
         border: 1px solid rgba(31, 207, 161, 0.4);
       }
+      .cmodels-tag.is-high {
+        color: #A8BCF0;
+        background: rgba(122, 156, 232, 0.10);
+        border: 1px solid rgba(122, 156, 232, 0.4);
+      }
       .cmodels-rows {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+        display: grid; grid-template-columns: 1fr; gap: 8px;
       }
       .cmodels-row {
-        display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
-        padding: 14px 12px;
+        display: grid; grid-template-columns: 72px 1fr; align-items: center; gap: 10px;
+        padding: 10px 12px;
         border: 1px solid;
-        border-radius: 9px;
+        border-radius: 8px;
         background: rgba(20, 35, 71, 0.45);
-        min-height: 96px;
+        min-height: 44px;
       }
-      .cmodels-panel.is-credits    .cmodels-row { border-color: rgba(181, 168, 232, 0.4); }
-      .cmodels-panel.is-enterprise .cmodels-row { border-color: rgba(31, 207, 161, 0.4); }
-      .cmodels-row-icon { width: 24px; height: 24px; display: inline-flex; }
-      .cmodels-row-icon svg { width: 24px; height: 24px; }
-      .cmodels-panel.is-credits    .cmodels-row-icon svg { stroke: #B5A8E8; }
-      .cmodels-panel.is-enterprise .cmodels-row-icon svg { stroke: #1FCFA1; }
-      .cmodels-row-label {
+      .cmodels-panel.is-credits .cmodels-row { border-color: rgba(181, 168, 232, 0.35); }
+      .cmodels-panel.is-oem     .cmodels-row { border-color: rgba(31, 207, 161, 0.35); }
+      .cmodels-panel.is-private .cmodels-row { border-color: rgba(122, 156, 232, 0.35); }
+      .cmodels-row-axis {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .cmodels-panel.is-credits .cmodels-row-axis { color: #B5A8E8; }
+      .cmodels-panel.is-oem     .cmodels-row-axis { color: #1FCFA1; }
+      .cmodels-panel.is-private .cmodels-row-axis { color: #A8BCF0; }
+      .cmodels-row-value {
         color: #FFFFFF; font-size: 14px; font-weight: 500;
         line-height: 1.3; letter-spacing: -0.005em;
       }
-      .cmodels-arrows {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-        margin: 2px 0;
+      .cmodels-panel-lead {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13.5px; line-height: 1.5;
+        margin: 0 0 16px;
+        min-height: calc(1.5em * 3);
       }
-      .cmodels-arr-col { display: flex; justify-content: center; padding: 4px 0; }
+      .cmodels-panel-link {
+        display: inline-flex; align-items: center; gap: 6px;
+        margin-top: auto;
+        padding-top: 16px;
+        font-size: 13.5px; font-weight: 600;
+        text-decoration: none;
+        align-self: flex-start;
+      }
+      .cmodels-panel.is-credits .cmodels-panel-link { color: #B5A8E8; }
+      .cmodels-panel.is-oem     .cmodels-panel-link { color: #1FCFA1; }
+      .cmodels-panel.is-private .cmodels-panel-link { color: #A8BCF0; }
+      .cmodels-panel-link:hover { text-decoration: underline; }
+
+      /* Platform node at the top of the diagram */
+      .cmodels-platform {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 20px;
+        background: linear-gradient(90deg, rgba(45, 38, 84, 0.7) 0%, rgba(75, 50, 140, 0.5) 50%, rgba(45, 38, 84, 0.7) 100%);
+        border: 1px solid rgba(181, 168, 232, 0.6);
+        border-radius: 12px;
+        padding: 18px 24px;
+        text-decoration: none;
+        transition: border-color .15s, background .15s;
+        margin: 0 0 4px;
+      }
+      .cmodels-platform:hover {
+        border-color: rgba(31, 207, 161, 0.85);
+        background: linear-gradient(90deg, rgba(45, 38, 84, 0.85) 0%, rgba(85, 60, 160, 0.65) 50%, rgba(45, 38, 84, 0.85) 100%);
+      }
+      .cmodels-platform-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+      .cmodels-platform-title {
+        color: #FFFFFF; font-size: 18px; font-weight: 600;
+        margin: 0; letter-spacing: -0.01em;
+      }
+      .cmodels-platform-sub {
+        color: rgba(255, 255, 255, 0.72); font-size: 13px;
+        font-family: var(--font-body, inherit); font-weight: 400;
+        letter-spacing: 0;
+      }
+      .cmodels-platform-cta {
+        color: #1FCFA1; font-size: 13px; font-weight: 600;
+        letter-spacing: 0.3px;
+        display: inline-flex; align-items: center; gap: 6px;
+        white-space: nowrap;
+        transition: gap .2s ease;
+      }
+      .cmodels-platform:hover .cmodels-platform-cta { gap: 10px; }
+
+      /* Three arrows fanning out from the platform to each column */
+      .cmodels-arrows {
+        display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+        margin: 0 0 6px;
+      }
+      .cmodels-arr-col { display: flex; justify-content: center; padding: 2px 0; }
       .cmodels-engine {
         display: flex; align-items: center; justify-content: space-between;
         gap: 20px;
@@ -1114,150 +1187,155 @@ cookieconsent.run({
         .cmodels-tip { width: 240px; font-size: 12.5px; }
       }
 
-      @media (max-width: 900px) and (min-width: 641px) {
+      @media (max-width: 960px) and (min-width: 641px) {
         .cmodels-wrap { padding: 28px 22px; }
         .cmodels-grid, .cmodels-arrows { grid-template-columns: 1fr; gap: 14px; }
         .cmodels-panel { padding: 20px 18px; }
         .cmodels-panel-title { font-size: 20px; }
-        .cmodels-rows { gap: 8px; }
-        .cmodels-row { padding: 13px 11px; min-height: 88px; }
-        .cmodels-row-label { font-size: 13px; }
-        .cmodels-panel-header { margin-bottom: 16px; }
+        .cmodels-panel-header { margin-bottom: 14px; }
         .cmodels-arr-col { padding: 2px 0; }
       }
       @media (max-width: 640px) {
         .cmodels-wrap { padding: 28px 16px; }
         .cmodels-grid, .cmodels-arrows { grid-template-columns: 1fr; gap: 16px; }
-        .cmodels-rows { grid-template-columns: 1fr; }
-        .cmodels-row { min-height: 0; flex-direction: row; align-items: center; }
-        .cmodels-panel-title { font-size: 22px; }
+        .cmodels-panel-title { font-size: 20px; }
         .cmodels-panel-header { flex-direction: column; align-items: flex-start; gap: 8px; }
-        .cmodels-engine { flex-direction: column; align-items: flex-start; }
-        .cmodels-engine-title { font-size: 18px; }
+        .cmodels-platform { flex-direction: column; align-items: flex-start; }
+        .cmodels-platform-title { font-size: 18px; }
+        .cmodels-engine, .cmodels-services { flex-direction: column; align-items: flex-start; }
+        .cmodels-engine-title, .cmodels-services-title { font-size: 18px; }
       }
     </style>
 
     <div class="reveal cmodels-wrap">
-      <p class="cmodels-eyebrow">Two models you sell</p>
+      <p class="cmodels-eyebrow">One engine, three packagings</p>
 
+      <!-- PLATFORM (top node) -->
+      <a href="../products/platform.html" class="cmodels-platform">
+        <div class="cmodels-platform-text">
+          <h3 class="cmodels-platform-title">Data Intuitive Platform</h3>
+          <span class="cmodels-platform-sub">validated omics pipelines · versioned · audit-ready</span>
+        </div>
+        <span class="cmodels-platform-cta">Platform details →</span>
+      </a>
+
+      <!-- ARROWS FAN-OUT -->
+      <div class="cmodels-arrows" aria-hidden="true">
+        <div class="cmodels-arr-col">
+          <svg width="28" height="30" viewbox="0 0 28 30" fill="none" stroke="#B5A8E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="14" y1="2" x2="14" y2="22"></line>
+            <path d="M7 20 L14 28 L21 20"></path>
+          </svg>
+        </div>
+        <div class="cmodels-arr-col">
+          <svg width="28" height="30" viewbox="0 0 28 30" fill="none" stroke="#1FCFA1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="14" y1="2" x2="14" y2="22"></line>
+            <path d="M7 20 L14 28 L21 20"></path>
+          </svg>
+        </div>
+        <div class="cmodels-arr-col">
+          <svg width="28" height="30" viewbox="0 0 28 30" fill="none" stroke="#A8BCF0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="14" y1="2" x2="14" y2="22"></line>
+            <path d="M7 20 L14 28 L21 20"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- THREE MODELS -->
       <div class="cmodels-grid">
 
-        <!-- CREDITS -->
+        <!-- CREDIT-BASED -->
         <div class="cmodels-panel is-credits">
           <div class="cmodels-panel-header">
-            <h3 class="cmodels-panel-title" style="display: inline-flex; align-items: center;">Credits<span class="cmodels-info" tabindex="0" aria-label="About credits">i<span class="cmodels-tip"><b>Credits.</b> Pay-as-you-go, fast to start, runs under our brand on shared tenant infrastructure. Sold through partners as a low-commitment entry point.</span></span></h3>
+            <h3 class="cmodels-panel-title" style="display: inline-flex; align-items: center;">Credit-based<span class="cmodels-info" tabindex="0" aria-label="About credit-based">i<span class="cmodels-tip"><b>Credit-based.</b> Pay-as-you-go, sold per run on shared infrastructure under our brand. Low commitment, fast to start. Partners earn recurring margin on every credit consumed.</span></span></h3>
             <span class="cmodels-tag is-low">Low commitment</span>
           </div>
+          <p class="cmodels-panel-lead">Pay-as-you-go, sold per run on shared infrastructure under our brand.</p>
           <div class="cmodels-rows">
             <div class="cmodels-row">
-              <div class="cmodels-row-icon">
-                <svg viewbox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 16a10 10 0 0 1 20 0"></path>
-                  <path d="M14 16l5-6"></path>
-                  <circle cx="14" cy="16" r="1.2" fill="currentColor"></circle>
-                </svg>
-              </div>
-              <span class="cmodels-row-label">Consumption</span>
+              <span class="cmodels-row-axis">Tenancy</span>
+              <span class="cmodels-row-value">Shared</span>
             </div>
             <div class="cmodels-row">
-              <div class="cmodels-row-icon">
-                <svg viewbox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M15 3l-9 14h7l-2 8 9-14h-7z"></path>
-                </svg>
-              </div>
-              <span class="cmodels-row-label">Speed to start</span>
+              <span class="cmodels-row-axis">Brand</span>
+              <span class="cmodels-row-value">Ours</span>
             </div>
             <div class="cmodels-row">
-              <div class="cmodels-row-icon">
-                <svg viewbox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="6" y="5" width="16" height="18" rx="2"></rect>
-                  <path d="M10 12l4 4 4-4"></path>
-                </svg>
-              </div>
-              <span class="cmodels-row-label">Our brand</span>
+              <span class="cmodels-row-axis">Earn</span>
+              <span class="cmodels-row-value">Margin on credits</span>
             </div>
           </div>
-          <a href="../products/pricing.html" class="cmodels-panel-link" style="display:inline-flex; align-items:center; gap:6px; margin-top:18px; font-size:13.5px; font-weight:600; color:var(--p-color); text-decoration:none;">See credit pricing
+          <a href="../products/pricing.html" class="cmodels-panel-link">See credit pricing
             <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
           </a>
         </div>
 
-        <!-- ENTERPRISE -->
-        <div class="cmodels-panel is-enterprise">
+        <!-- OEM -->
+        <div class="cmodels-panel is-oem">
           <div class="cmodels-panel-header">
-            <h3 class="cmodels-panel-title" style="display: inline-flex; align-items: center;">Enterprise<span class="cmodels-info" tabindex="0" aria-label="About enterprise">i<span class="cmodels-tip"><b>Enterprise.</b> Committed and embedded, deployed to the client's own cloud or on-prem, white-labelled under the partner's brand. Sold through partners as a long-term deal.</span></span></h3>
-            <span class="cmodels-tag is-high">High commitment</span>
+            <h3 class="cmodels-panel-title" style="display: inline-flex; align-items: center;">OEM<span class="cmodels-info" tabindex="0" aria-label="About OEM">i<span class="cmodels-tip"><b>OEM.</b> Your brand on a section of the shared platform for a monthly platform fee. Customers can still run other vendors' pipelines on the same platform. Predictable recurring fee instead of a per-credit split.</span></span></h3>
+            <span class="cmodels-tag is-mid">Predictable fee</span>
           </div>
+          <p class="cmodels-panel-lead">Your brand on a section of the shared platform, for a monthly platform fee.</p>
           <div class="cmodels-rows">
             <div class="cmodels-row">
-              <div class="cmodels-row-icon">
-                <svg viewbox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="6" y="4" width="16" height="20" rx="2"></rect>
-                  <path d="M10 9h8M10 13h8M10 17h5"></path>
-                </svg>
-              </div>
-              <span class="cmodels-row-label">Commitment</span>
+              <span class="cmodels-row-axis">Tenancy</span>
+              <span class="cmodels-row-value">Shared</span>
             </div>
             <div class="cmodels-row">
-              <div class="cmodels-row-icon">
-                <svg viewbox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 14a4 4 0 0 1 8-1 4 4 0 0 1 7 3 3 3 0 0 1-3 3H10a3 3 0 0 1-3-5z"></path>
-                  <rect x="6" y="20" width="16" height="3" rx="0.5"></rect>
-                  <path d="M9 22v-2M14 22v-2M19 22v-2"></path>
-                </svg>
-              </div>
-              <span class="cmodels-row-label">Deployment</span>
+              <span class="cmodels-row-axis">Brand</span>
+              <span class="cmodels-row-value">Yours</span>
             </div>
             <div class="cmodels-row">
-              <div class="cmodels-row-icon">
-                <svg viewbox="0 0 28 28" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 2">
-                  <rect x="5" y="5" width="18" height="18" rx="2"></rect>
-                </svg>
-              </div>
-              <span class="cmodels-row-label">Your brand</span>
+              <span class="cmodels-row-axis">Pay</span>
+              <span class="cmodels-row-value">Monthly platform fee</span>
             </div>
           </div>
-          <a href="../enterprise.html" class="cmodels-panel-link" style="display:inline-flex; align-items:center; gap:6px; margin-top:18px; font-size:13.5px; font-weight:600; color:var(--s-color); text-decoration:none;">See Enterprise platform
+          <a href="../contact/contact.html" class="cmodels-panel-link">Discuss OEM
+            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <!-- PRIVATE PLATFORM -->
+        <div class="cmodels-panel is-private">
+          <div class="cmodels-panel-header">
+            <h3 class="cmodels-panel-title" style="display: inline-flex; align-items: center;">Private platform<span class="cmodels-info" tabindex="0" aria-label="About private platform">i<span class="cmodels-tip"><b>Private platform.</b> Single-tenant deployment on the customer's own network, alongside their LIMS and enterprise stack. White-labelled, fully isolated. Priced as a platform, not per credit.</span></span></h3>
+            <span class="cmodels-tag is-high">Single-tenant</span>
+          </div>
+          <p class="cmodels-panel-lead">A single-tenant deployment on the customer's own network, alongside their LIMS and enterprise stack.</p>
+          <div class="cmodels-rows">
+            <div class="cmodels-row">
+              <span class="cmodels-row-axis">Tenancy</span>
+              <span class="cmodels-row-value">Single-tenant</span>
+            </div>
+            <div class="cmodels-row">
+              <span class="cmodels-row-axis">Brand</span>
+              <span class="cmodels-row-value">Yours</span>
+            </div>
+            <div class="cmodels-row">
+              <span class="cmodels-row-axis">Pay</span>
+              <span class="cmodels-row-value">Monthly platform fee</span>
+            </div>
+          </div>
+          <a href="../enterprise.html" class="cmodels-panel-link">See the private platform
             <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
           </a>
         </div>
 
       </div>
 
-      <!-- ARROWS DOWN -->
-      <div class="cmodels-arrows" aria-hidden="true">
-        <div class="cmodels-arr-col">
-          <svg width="28" height="32" viewbox="0 0 28 32" fill="none" stroke="#B5A8E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="14" y1="2" x2="14" y2="24"></line>
-            <path d="M7 22 L14 30 L21 22"></path>
-          </svg>
-        </div>
-        <div class="cmodels-arr-col">
-          <svg width="28" height="32" viewbox="0 0 28 32" fill="none" stroke="#1FCFA1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="14" y1="2" x2="14" y2="24"></line>
-            <path d="M7 22 L14 30 L21 22"></path>
-          </svg>
-        </div>
+      <!-- ARROW DOWN TO SERVICES -->
+      <div class="cmodels-arrow-single" aria-hidden="true" style="margin-top: 10px;">
+        <svg width="28" height="30" viewbox="0 0 28 30" fill="none" stroke="#5DDFB8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="14" y1="2" x2="14" y2="22"></line>
+          <path d="M7 20 L14 28 L21 20"></path>
+        </svg>
       </div>
 
       <!-- SERVICES BAR -->
       <a href="../services/services.html" class="cmodels-services">
-        <h3 class="cmodels-services-title" style="display: inline-flex; align-items: center;">Services<span class="cmodels-info" tabindex="0" aria-label="About services" onclick="event.preventDefault();">i<span class="cmodels-tip"><b>Services on top of both.</b> Infrastructure setup, custom workflows, interpretation, integration, compliance and training are also sold through the partner channel. Partners earn an upsell share on services delivered alongside their credits or Enterprise deals.</span></span></h3>
+        <h3 class="cmodels-services-title" style="display: inline-flex; align-items: center;">Services on top of all three<span class="cmodels-info" tabindex="0" aria-label="About services" onclick="event.preventDefault();">i<span class="cmodels-tip"><b>Services on top of all three.</b> Infrastructure setup, custom workflows, interpretation and training are sold through the partner channel. Partners earn an upsell share on services delivered alongside any model.</span></span></h3>
         <span class="cmodels-services-cta">See services →</span>
-      </a>
-
-      <!-- ARROW DOWN -->
-      <div class="cmodels-arrow-single" aria-hidden="true">
-        <svg width="28" height="32" viewbox="0 0 28 32" fill="none" stroke="#B5A8E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="14" y1="2" x2="14" y2="24"></line>
-          <path d="M7 22 L14 30 L21 22"></path>
-        </svg>
-      </div>
-
-      <!-- ENGINE -->
-      <a href="../products/platform.html" class="cmodels-engine">
-        <h3 class="cmodels-engine-title">Data Intuitive engine</h3>
-        <span class="cmodels-engine-cta">Platform details →</span>
       </a>
     </div>
 

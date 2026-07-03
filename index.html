@@ -535,7 +535,7 @@ cookieconsent.run({
   </div>
 </section>
 
-<section class="oal-callout-section">
+<section class="oal-callout-section" style="display:none;">
   <div class="container">
     <a href="#omics-alpha-lab" class="oal-callout">
       <div class="oal-callout-meta">
@@ -803,7 +803,10 @@ cookieconsent.run({
 
 <!-- ======== PLATFORM DEMO ======== -->
 <style>
-  .demo-section { padding: 72px 0 64px; background: #ffffff; }
+  .demo-section { padding: 72px 32px 64px; background: #ffffff; }
+  @media (max-width: 720px) {
+    .demo-section { padding: 48px 16px 48px; }
+  }
   [data-bs-theme="dark"] .demo-section { background: var(--surface); }
   .demo-card {
     max-width: 1080px; margin: 0 auto;
@@ -988,6 +991,24 @@ cookieconsent.run({
     cursor: pointer;
   }
   .demo-cta-block .demo-get-started:hover { background: #6A3F94; color: #FFFFFF; transform: translateY(-1px); }
+
+  /* Dark theme: darken the wizard card so it doesn't glare on the dark surface */
+  [data-bs-theme="dark"] .demo-cta-block,
+  body.quarto-dark .demo-cta-block {
+    background: var(--surface, #14213D);
+    border-color: var(--border, rgba(255, 255, 255, 0.10));
+    color: var(--text, rgba(255, 255, 255, 0.80));
+  }
+  [data-bs-theme="dark"] .demo-cta-block .demo-steps li,
+  body.quarto-dark .demo-cta-block .demo-steps li {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-strong, #FFFFFF);
+  }
+  [data-bs-theme="dark"] .demo-cta-block .demo-steps li .demo-step-num,
+  body.quarto-dark .demo-cta-block .demo-steps li .demo-step-num {
+    color: var(--accent-2, #C7B3EA);
+  }
   .demo-contact-link {
     display: block;
     margin-top: 14px;
@@ -1218,7 +1239,7 @@ cookieconsent.run({
         </div>
         <div class="trade-card teal">
           <h3 class="trade-card-title">Single-digit euros per sample</h3>
-          <p class="trade-card-body">Pay-as-you-go: you buy credits and spend them per run, not per sample. List price is 25 euros per credit, and because each run processes many samples, routine assays work out to a few euros per sample. A single researcher can start small.</p>
+          <p class="trade-card-body">Pay-as-you-go: you buy credits and spend them per run, not per sample. List price is around 26 euros per credit, and because each run processes many samples, routine assays work out to a few euros per sample. A single researcher can start small.</p>
         </div>
       </div>
     </div>
@@ -1380,7 +1401,7 @@ cookieconsent.run({
           </button>
           <button class="hww-tab" data-tab="enterprise" role="tab" aria-selected="false" aria-controls="hww-enterprise" id="hwwbtn-enterprise">
             <span class="hww-tab-num">04</span>
-            <span class="hww-tab-label">For large enterprises</span>
+            <span class="hww-tab-label">For multi-site R&amp;D</span>
           </button>
           <button class="hww-tab tab-teal" data-tab="cro" role="tab" aria-selected="false" aria-controls="hww-cro" id="hwwbtn-cro">
             <span class="hww-tab-num">05</span>
@@ -1430,7 +1451,7 @@ cookieconsent.run({
         </div>
         <p class="body-text">A dedicated, single-tenant deployment of the platform inside your environment, alongside your LIMS and enterprise stack. Multi-team governance, audit-ready validation, your data on your infrastructure. Engineering practices come with it, not around it.</p>
         <a href="./enterprise.html" class="btn btn-primary panel-cta d-inline-flex align-items-center gap-2">
-          See Enterprise
+          See the private platform
           <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
         </a>
       </div>
@@ -1693,7 +1714,7 @@ cookieconsent.run({
   }
 </style>
 
-<section class="sec-white oal-section" id="omics-alpha-lab">
+<section class="sec-white oal-section" id="omics-alpha-lab" style="display:none;">
   <div class="container">
     <div class="oal-card reveal">
       <span class="overline">Omics Alpha Lab · July–September · a small cohort, selected this summer</span>

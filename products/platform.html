@@ -1631,8 +1631,9 @@ cookieconsent.run({
 
 <!-- ======== PLATFORM DEMO ======== -->
 <style>
-  .demo-section { padding: 64px 0 72px; background: #F7F8FB; }
-  [data-bs-theme="dark"] .demo-section { background: var(--surface-alt); }
+  .demo-section { border: 30px solid #F7F8FB; padding: 64px 0 72px; background: #F7F8FB; }
+  [data-bs-theme="dark"] .demo-section,
+  body.quarto-dark .demo-section { border-color: var(--surface-alt); background: var(--surface-alt); }
   .demo-card {
     max-width: 1080px; margin: 0 auto;
     background: linear-gradient(135deg, rgba(124, 75, 172, 0.08), rgba(0, 180, 160, 0.06));
@@ -1714,6 +1715,23 @@ cookieconsent.run({
     cursor: pointer;
   }
   .demo-get-started:hover { background: #6A3F94; color: #FFFFFF; transform: translateY(-1px); }
+
+  /* Dark theme: adapt the white wizard card so it sits naturally on the dark surface */
+  [data-bs-theme="dark"] .demo-cta-block,
+  body.quarto-dark .demo-cta-block {
+    background: var(--surface, #14213D);
+    border-color: var(--border, rgba(255, 255, 255, 0.10));
+  }
+  [data-bs-theme="dark"] .demo-steps li,
+  body.quarto-dark .demo-steps li {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text, rgba(255, 255, 255, 0.75));
+  }
+  [data-bs-theme="dark"] .demo-steps li .demo-step-num,
+  body.quarto-dark .demo-steps li .demo-step-num {
+    color: var(--accent-2, #C7B3EA);
+  }
+
   @media (max-width: 880px) {
     .demo-card { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px 28px; }
     .demo-card h2 { font-size: 24px; }
@@ -2076,7 +2094,7 @@ cookieconsent.run({
           </button>
           <button class="plan-tab" data-tab="enterprise" role="tab" aria-selected="false" aria-controls="ptab-enterprise" id="planbtn-enterprise">
             <span class="plan-tab-num">03</span>
-            <span class="plan-tab-label">For Enterprise/CRO</span>
+            <span class="plan-tab-label">For multi-site R&amp;D or CRO</span>
           </button>
         </div>
       </div>
@@ -2156,7 +2174,7 @@ cookieconsent.run({
             <p class="label-pill" style="color:var(--p-color);">Who it's for</p>
             <p class="body-text">Multi-site R&amp;D organisations and CROs that need the platform embedded in their stack.</p>
             <a href="../enterprise.html" class="btn btn-primary panel-cta d-inline-flex align-items-center gap-2">
-              Enterprise detail
+              See the private platform
               <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
             </a>
           </div>
