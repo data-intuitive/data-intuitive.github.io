@@ -97,13 +97,105 @@ cookieconsent.run({
 });
 </script> 
   
+<!--
+  Pre-paint theme bootstrap.
+  Runs at the very top of <head>, BEFORE Quarto's own body init script.
+
+  Two jobs:
+    1. Set <html data-bs-theme> from the saved choice so the page paints
+       in the right theme from the very first frame.
+    2. Fix Quarto's data-mode attributes on the three Bootstrap <link>
+       tags. Quarto labels ALL THREE with data-mode="dark" (a quirk in
+       how it tags the compiled bundles). Its init function then reads
+       data-mode off the active stylesheet to set body.quarto-light or
+       body.quarto-dark. With all three labelled "dark" it always picks
+       "dark" — which fires every dark-mode CSS override even when the
+       user explicitly chose light.
+
+  Patching data-mode correctly here means Quarto's own init runs to
+  completion and lands on the right body class, with no flash and no
+  drift on navigation.
+-->
+<script>
+  (function () {
+    try {
+      // 1. Restore the user's saved theme on the html element so the
+      //    page paints correctly from the first frame.
+      var v = localStorage.getItem('quarto-color-scheme');
+      var dark = v === 'alternate';
+      var html = document.documentElement;
+      html.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+
+      // 2. Fix Quarto's data-mode on the Bootstrap (and syntax-highlight)
+      //    link tags so its own toggleBodyColorMode logic agrees, AND
+      //    swap which bundle is active right now — before any pixel
+      //    paints. Without this swap, both bundles load and the dark
+      //    one's :root rules override the light one's via source order,
+      //    so the page paints dark even with data-bs-theme=light until
+      //    Quarto's body init runs much later.
+      //
+      //    Convention used by Quarto:
+      //      data-mode = which mode THIS stylesheet IS
+      //      → primary  (no .quarto-color-alternate) is the LIGHT bundle
+      //      → alternate (.quarto-color-alternate)   is the DARK bundle
+      //      → extra    (.quarto-color-scheme-extra) duplicates the primary
+      function syncSheets(dark){
+        // Primary (light) bundles
+        document
+          .querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)')
+          .forEach(function (l) {
+            l.setAttribute('data-mode', 'light');
+            l.rel = dark ? 'disabled-stylesheet' : 'stylesheet';
+          });
+        // Alternate (dark) bundles
+        document
+          .querySelectorAll('link.quarto-color-scheme.quarto-color-alternate')
+          .forEach(function (l) {
+            l.setAttribute('data-mode', 'dark');
+            l.rel = dark ? 'stylesheet' : 'disabled-stylesheet';
+          });
+        // Extra duplicates: always disabled (Quarto's own init does this
+        // too at body parse time; we do it earlier).
+        document
+          .querySelectorAll('link.quarto-color-scheme-extra')
+          .forEach(function (l) {
+            l.setAttribute('data-mode', 'light');
+            l.rel = 'disabled-stylesheet';
+          });
+      }
+      syncSheets(dark);
+
+      // 3. Also pre-set the body class so any CSS rule keyed on
+      //    body.quarto-dark / body.quarto-light fires from the first
+      //    frame — set as soon as <body> appears, and re-apply on
+      //    DOMContentLoaded in case anything else flipped it.
+      function applyBody(){
+        var b = document.body;
+        if (!b) return false;
+        b.classList.toggle('quarto-dark', dark);
+        b.classList.toggle('quarto-light', !dark);
+        return true;
+      }
+      if (!applyBody()) {
+        var obs = new MutationObserver(function () {
+          if (applyBody()) { obs.disconnect(); }
+        });
+        obs.observe(html, { childList: true });
+        document.addEventListener('DOMContentLoaded', applyBody, { once: true });
+      }
+    } catch (e) { /* localStorage blocked — fall through to light */ }
+  })();
+</script>
 <!--  menu starts here (in quarto menu.html) -->
 
 
   
     <meta charset="utf-8">
 
-    <meta name="robots" content="index, follow">
+    <!-- No site-wide robots meta: "index, follow" is the crawler default, so
+         stating it only creates a second, conflicting tag on pages that opt
+         out. Pages excluded from search get their noindex from
+         scripts/seo_postprocess.py. -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -127,7 +219,7 @@ cookieconsent.run({
           {
             "@type": "Person",
             "name": "Andy Boschmans"
-          },
+          }
         ],
         "sameAs": [
           "https://www.linkedin.com/company/data-intuitive",
@@ -176,7 +268,8 @@ cookieconsent.run({
               "url": "https://www.data-intuitive.com/services/benchmarking.html"
             },
                         {
-              "@type": "Platform",
+              "@type": "SoftwareApplication",
+              "applicationCategory": "Bioinformatics workflow management platform",
               "name": "Omics analysis Platform",
               "description": "Viash Hub is a one-stop workflow management platform designed for enterprise use in single cell analysis",
               "url": "https://www.data-intuitive.com/products/platform.html"
@@ -201,6 +294,8 @@ cookieconsent.run({
 <meta property="og:description" content="Data Intuitive develops intuitive biotech data analysis and custom data workflows to help clients gain valuable insights and make data-driven decisions.">
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
+<!-- seo-postprocess -->
+<link rel="canonical" href="https://www.data-intuitive.com/static/privacy_policy.html">
 </head>
   
   <!-- HubSpot -->

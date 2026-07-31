@@ -1,9 +1,22 @@
 [
   {
-    "listing": "/company/index.html",
+    "listing": "/insights/news.html",
     "items": [
-      "/company/careers/bioinformatics-workflow-engineer/index.html",
-      "/company/careers/internships/index.html"
+      "/insights/news/2026-05-24-knowledgeforgrowth/index.html",
+      "/insights/news/2026-01-30-luxprovide/index.html",
+      "/insights/news/2025-09-16-NGOUK25/index.html",
+      "/insights/news/2025-07-02-15AGW/index.html",
+      "/insights/news/2025-04-29-iso27001cert/index.html",
+      "/insights/news/2025-05-15-webinar/index.html",
+      "/insights/news/2025-05-08-knowledgeforgrowth/index.html",
+      "/insights/news/2024-11-12-scienceforhealth/index.html",
+      "/insights/news/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
+      "/insights/news/2024-08-30-bioeurope/index.html",
+      "/insights/news/2024-03-19-framework-laptops/index.html",
+      "/insights/news/2023-12-15-fit_to_go_global/index.html",
+      "/insights/news/2023-05-22-scverse-hackathon/index.html",
+      "/insights/news/2023-02-05-sustain/index.html",
+      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
     ]
   },
   {
@@ -44,23 +57,9 @@
     ]
   },
   {
-    "listing": "/insights/news.html",
+    "listing": "/company/index.html",
     "items": [
-      "/insights/news/2026-05-24-knowledgeforgrowth/index.html",
-      "/insights/news/2026-01-30-luxprovide/index.html",
-      "/insights/news/2025-09-16-NGOUK25/index.html",
-      "/insights/news/2025-07-02-15AGW/index.html",
-      "/insights/news/2025-04-29-iso27001cert/index.html",
-      "/insights/news/2025-05-15-webinar/index.html",
-      "/insights/news/2025-05-08-knowledgeforgrowth/index.html",
-      "/insights/news/2024-11-12-scienceforhealth/index.html",
-      "/insights/news/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
-      "/insights/news/2024-08-30-bioeurope/index.html",
-      "/insights/news/2024-03-19-framework-laptops/index.html",
-      "/insights/news/2023-12-15-fit_to_go_global/index.html",
-      "/insights/news/2023-05-22-scverse-hackathon/index.html",
-      "/insights/news/2023-02-05-sustain/index.html",
-      "/insights/news/2022-12-25-fueled_by_vlaio/index.html"
+      "/company/careers/internships/index.html"
     ]
   }
 ]

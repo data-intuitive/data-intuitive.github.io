@@ -1,0 +1,41 @@
+# Data Intuitive
+
+> Data Intuitive is a Belgian bioinformatics company that builds and operates reproducible, production-grade data workflows for biotech, pharma, medtech and diagnostics. We turn exploratory R&D code into validated, containerised, versioned pipelines that run identically on a laptop, an HPC cluster or the cloud. Founded 2015. ISO/IEC 27001:2022 certified.
+
+Core technologies we build and maintain: **Viash** (turns scripts into containerised, tested, versioned workflow components), **Viash Hub** (catalogue and platform for publishing and reusing those components), **OpenPipeline** (modular single-cell and multi-omics pipelines), and **anndataR** (AnnData for R). We work primarily with Nextflow, containers, Kubernetes and cloud or on-premise infrastructure.
+
+Typical engagements: custom pipeline development, single-cell and spatial omics analysis, multi-omics integration, high-throughput sequence processing, benchmarking, and infrastructure setup and support.
+
+## Products
+
+- [Platform](https://www.data-intuitive.com/products/platform.html): the omics analysis platform — validated pipelines on customer-owned compute.
+- [Pipelines](https://www.data-intuitive.com/products/pipelines.html): the pipeline catalogue and what each one does.
+- [Foundation](https://www.data-intuitive.com/products/foundation.html): the underlying data foundation layer.
+- [Partnerships](https://www.data-intuitive.com/products/partnerships.html): working with us as a partner or distributor.
+- [Technical prerequisites](https://www.data-intuitive.com/products/technical-prerequisites.html): what is needed to deploy.
+
+## Services
+
+- [Services overview](https://www.data-intuitive.com/services/services.html): expert bioinformatics services, end to end.
+- [Benchmarking](https://www.data-intuitive.com/services/benchmarking.html): method comparison for single-cell and omics analyses.
+- [Infrastructure setup](https://www.data-intuitive.com/services/infrastructure-setup.html): scalable cloud and on-premise environments.
+- [Compliance](https://www.data-intuitive.com/services/compliance.html): working in regulated and audit-sensitive settings.
+- [Enterprise](https://www.data-intuitive.com/enterprise.html): how larger organisations engage with us.
+
+## Company
+
+- [Company](https://www.data-intuitive.com/company/index.html): who we are, our team and our history.
+- [Careers](https://www.data-intuitive.com/company/careers.html): open roles.
+- [Trust center](https://www.data-intuitive.com/static/trust_center.html): security posture, certifications and data handling.
+- [Contact](https://www.data-intuitive.com/contact/contact.html): how to reach us.
+
+## Insights
+
+- [Blog](https://www.data-intuitive.com/insights/blog.html): technical articles on workflows, reproducibility, Viash, Nextflow and omics data engineering.
+- [News](https://www.data-intuitive.com/insights/news.html): conferences, partnerships and company announcements.
+
+## Optional
+
+- [Sitemap](https://www.data-intuitive.com/sitemap.xml): every indexable page.
+- [Privacy policy](https://www.data-intuitive.com/static/privacy_policy.html)
+- [General conditions](https://www.data-intuitive.com/static/generalconditions.html)

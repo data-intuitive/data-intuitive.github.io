@@ -99,13 +99,105 @@ cookieconsent.run({
 });
 </script> 
   
+<!--
+  Pre-paint theme bootstrap.
+  Runs at the very top of <head>, BEFORE Quarto's own body init script.
+
+  Two jobs:
+    1. Set <html data-bs-theme> from the saved choice so the page paints
+       in the right theme from the very first frame.
+    2. Fix Quarto's data-mode attributes on the three Bootstrap <link>
+       tags. Quarto labels ALL THREE with data-mode="dark" (a quirk in
+       how it tags the compiled bundles). Its init function then reads
+       data-mode off the active stylesheet to set body.quarto-light or
+       body.quarto-dark. With all three labelled "dark" it always picks
+       "dark" — which fires every dark-mode CSS override even when the
+       user explicitly chose light.
+
+  Patching data-mode correctly here means Quarto's own init runs to
+  completion and lands on the right body class, with no flash and no
+  drift on navigation.
+-->
+<script>
+  (function () {
+    try {
+      // 1. Restore the user's saved theme on the html element so the
+      //    page paints correctly from the first frame.
+      var v = localStorage.getItem('quarto-color-scheme');
+      var dark = v === 'alternate';
+      var html = document.documentElement;
+      html.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+
+      // 2. Fix Quarto's data-mode on the Bootstrap (and syntax-highlight)
+      //    link tags so its own toggleBodyColorMode logic agrees, AND
+      //    swap which bundle is active right now — before any pixel
+      //    paints. Without this swap, both bundles load and the dark
+      //    one's :root rules override the light one's via source order,
+      //    so the page paints dark even with data-bs-theme=light until
+      //    Quarto's body init runs much later.
+      //
+      //    Convention used by Quarto:
+      //      data-mode = which mode THIS stylesheet IS
+      //      → primary  (no .quarto-color-alternate) is the LIGHT bundle
+      //      → alternate (.quarto-color-alternate)   is the DARK bundle
+      //      → extra    (.quarto-color-scheme-extra) duplicates the primary
+      function syncSheets(dark){
+        // Primary (light) bundles
+        document
+          .querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)')
+          .forEach(function (l) {
+            l.setAttribute('data-mode', 'light');
+            l.rel = dark ? 'disabled-stylesheet' : 'stylesheet';
+          });
+        // Alternate (dark) bundles
+        document
+          .querySelectorAll('link.quarto-color-scheme.quarto-color-alternate')
+          .forEach(function (l) {
+            l.setAttribute('data-mode', 'dark');
+            l.rel = dark ? 'stylesheet' : 'disabled-stylesheet';
+          });
+        // Extra duplicates: always disabled (Quarto's own init does this
+        // too at body parse time; we do it earlier).
+        document
+          .querySelectorAll('link.quarto-color-scheme-extra')
+          .forEach(function (l) {
+            l.setAttribute('data-mode', 'light');
+            l.rel = 'disabled-stylesheet';
+          });
+      }
+      syncSheets(dark);
+
+      // 3. Also pre-set the body class so any CSS rule keyed on
+      //    body.quarto-dark / body.quarto-light fires from the first
+      //    frame — set as soon as <body> appears, and re-apply on
+      //    DOMContentLoaded in case anything else flipped it.
+      function applyBody(){
+        var b = document.body;
+        if (!b) return false;
+        b.classList.toggle('quarto-dark', dark);
+        b.classList.toggle('quarto-light', !dark);
+        return true;
+      }
+      if (!applyBody()) {
+        var obs = new MutationObserver(function () {
+          if (applyBody()) { obs.disconnect(); }
+        });
+        obs.observe(html, { childList: true });
+        document.addEventListener('DOMContentLoaded', applyBody, { once: true });
+      }
+    } catch (e) { /* localStorage blocked — fall through to light */ }
+  })();
+</script>
 <!--  menu starts here (in quarto menu.html) -->
 
 
   
     <meta charset="utf-8">
 
-    <meta name="robots" content="index, follow">
+    <!-- No site-wide robots meta: "index, follow" is the crawler default, so
+         stating it only creates a second, conflicting tag on pages that opt
+         out. Pages excluded from search get their noindex from
+         scripts/seo_postprocess.py. -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -129,7 +221,7 @@ cookieconsent.run({
           {
             "@type": "Person",
             "name": "Andy Boschmans"
-          },
+          }
         ],
         "sameAs": [
           "https://www.linkedin.com/company/data-intuitive",
@@ -178,7 +270,8 @@ cookieconsent.run({
               "url": "https://www.data-intuitive.com/services/benchmarking.html"
             },
                         {
-              "@type": "Platform",
+              "@type": "SoftwareApplication",
+              "applicationCategory": "Bioinformatics workflow management platform",
               "name": "Omics analysis Platform",
               "description": "Viash Hub is a one-stop workflow management platform designed for enterprise use in single cell analysis",
               "url": "https://www.data-intuitive.com/products/platform.html"
@@ -206,6 +299,39 @@ cookieconsent.run({
 <meta property="og:locale" content="en_GB">
 <meta property="og:image:height" content="202">
 <meta property="og:image:width" content="729">
+<!-- seo-postprocess -->
+<link rel="canonical" href="https://www.data-intuitive.com/insights/blog/2025-12-10-presentation-london/index.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Turning R&D Into Scalable, Reproducible Solutions",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.data-intuitive.com/insights/blog/2025-12-10-presentation-london/index.html"
+  },
+  "url": "https://www.data-intuitive.com/insights/blog/2025-12-10-presentation-london/index.html",
+  "datePublished": "2025-12-11",
+  "dateModified": "2025-12-11",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data Intuitive",
+    "url": "https://www.data-intuitive.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.data-intuitive.com/images/main-logo.svg"
+    }
+  },
+  "description": "At this year’s NextGen omics conference in London, we explored one of the most persistent challenges in bioinformatics: how to transform fast-moving R&D work into…",
+  "image": [
+    "https://www.data-intuitive.com/insights/blog/2025-12-10-presentation-london/london.png"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Toni Verbeiren"
+  }
+}
+</script>
 </head>
   
   <!-- HubSpot -->
@@ -398,7 +524,7 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#watch-the-full-re-recorded-talk-on-youtube" id="toc-watch-the-full-re-recorded-talk-on-youtube" class="nav-link active" data-scroll-target="#watch-the-full-re-recorded-talk-on-youtube">Watch the full re-recorded talk on YouTube</a></li>
+  <li><a href="#watch-the-full-re-recorded-talk" id="toc-watch-the-full-re-recorded-talk" class="nav-link active" data-scroll-target="#watch-the-full-re-recorded-talk">Watch the full re-recorded talk</a></li>
   <li><a href="#the-reality-of-modern-omics-data" id="toc-the-reality-of-modern-omics-data" class="nav-link" data-scroll-target="#the-reality-of-modern-omics-data">1. The Reality of Modern Omics Data</a></li>
   <li><a href="#rd-vs.-operations-bridging-the-gap" id="toc-rd-vs.-operations-bridging-the-gap" class="nav-link" data-scroll-target="#rd-vs.-operations-bridging-the-gap">2. R&amp;D vs.&nbsp;Operations: Bridging the Gap</a></li>
   <li><a href="#reuse-turning-rd-into-an-asset-instead-of-technical-debt" id="toc-reuse-turning-rd-into-an-asset-instead-of-technical-debt" class="nav-link" data-scroll-target="#reuse-turning-rd-into-an-asset-instead-of-technical-debt">3. Reuse: Turning R&amp;D Into an Asset Instead of Technical Debt</a></li>
@@ -406,7 +532,7 @@ cookieconsent.run({
   <li><a href="#usability-through-adaptability" id="toc-usability-through-adaptability" class="nav-link" data-scroll-target="#usability-through-adaptability">5. Usability Through Adaptability</a></li>
   <li><a href="#seminar-recording" id="toc-seminar-recording" class="nav-link" data-scroll-target="#seminar-recording">Seminar Recording</a>
   <ul class="collapse">
-  <li><a href="#watch-the-full-re-recorded-talk-on-youtube-1" id="toc-watch-the-full-re-recorded-talk-on-youtube-1" class="nav-link" data-scroll-target="#watch-the-full-re-recorded-talk-on-youtube-1">Watch the full re-recorded talk on YouTube</a></li>
+  <li><a href="#watch-the-full-re-recorded-talk-1" id="toc-watch-the-full-re-recorded-talk-1" class="nav-link" data-scroll-target="#watch-the-full-re-recorded-talk-1">Watch the full re-recorded talk</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -448,9 +574,9 @@ The talk focused on practical lessons drawn from years of building modular workf
 <p><img src="room.png" class="img-fluid" style="width:100.0%"></p>
 <p>We were thrilled to see a full house during our presentation - even on the final afternoon of the conference.</p>
 <p><br></p>
-<section id="watch-the-full-re-recorded-talk-on-youtube" class="level3">
-<h3 data-anchor-id="watch-the-full-re-recorded-talk-on-youtube">Watch the full re-recorded talk on YouTube</h3>
-<p><a href="https://www.youtube.com/watch?v=k7ePJkNRtDU" target="_blank">Recording</a></p>
+<section id="watch-the-full-re-recorded-talk" class="level3">
+<h3 data-anchor-id="watch-the-full-re-recorded-talk">Watch the full re-recorded talk</h3>
+<p><a href="#seminar-recording" target="_blank">Jump to the recording</a></p>
 <hr>
 </section>
 <section id="the-reality-of-modern-omics-data" class="level2">
@@ -559,10 +685,36 @@ Without modular tooling, this leads to:</p>
 <p>Our presentation was originally delivered at <strong>NextGen Omics &amp; Spatial Data 2025</strong>.<br>
 Due to a technical issue, the conference organisation unfortunately lost the original live recording.<br>
 We therefore <strong>re-recorded the full presentation</strong> so the content remains available to the community.</p>
-<section id="watch-the-full-re-recorded-talk-on-youtube-1" class="level3">
-<h3 data-anchor-id="watch-the-full-re-recorded-talk-on-youtube-1">Watch the full re-recorded talk on YouTube</h3>
-<p><br></p>
-<p><a href="https://www.youtube.com/watch?v=k7ePJkNRtDU" target="_blank"><img src="link.png" class="img-fluid" style="width:100.0%"></a></p>
+<section id="watch-the-full-re-recorded-talk-1" class="level3">
+<h3 data-anchor-id="watch-the-full-re-recorded-talk-1">Watch the full re-recorded talk</h3>
+<div class="ratio ratio-16x9 my-4">
+  <iframe src="https://www.youtube.com/embed/k7ePJkNRtDU" title="Accelerating multi-omics innovation: turning R&amp;D into scalable, reproducible solutions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Accelerating multi-omics innovation: turning R&D into scalable, reproducible solutions",
+  "description": "Re-recording of the Data Intuitive presentation at NextGen Omics & Spatial Data 2025 in London: how to turn fast-moving R&D work into reproducible, maintainable omics workflows through reusable modules, versioning and adaptable interface layers.",
+  "thumbnailUrl": [
+    "https://i.ytimg.com/vi/k7ePJkNRtDU/maxresdefault.jpg",
+    "https://i.ytimg.com/vi/k7ePJkNRtDU/hqdefault.jpg"
+  ],
+  "uploadDate": "2025-12-10T09:24:21-08:00",
+  "duration": "PT15M13S",
+  "embedUrl": "https://www.youtube.com/embed/k7ePJkNRtDU",
+  "contentUrl": "https://www.youtube.com/watch?v=k7ePJkNRtDU",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data Intuitive",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.data-intuitive.com/images/main-logo.svg"
+    }
+  }
+}
+</script>
+<p>Also available directly on <a href="https://www.youtube.com/watch?v=k7ePJkNRtDU" target="_blank">YouTube</a>.</p>
 <p><br></p>
             <div class="text-center text-md-start v-dev-advantage">
               <div class="d-flex flex-column flex-md-row align-items-center gap-3">
