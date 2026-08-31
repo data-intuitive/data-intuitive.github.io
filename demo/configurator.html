@@ -36,6 +36,21 @@
     --border: rgba(255, 255, 255, 0.10);
     --border-soft: rgba(255, 255, 255, 0.06);
   }
+  /* No theme switch: follow the operating system, unless a host page pins
+     a theme with data-theme="light". */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --text: #C7D2E5;
+      --text-strong: #FFFFFF;
+      --text-muted: #94A0BC;
+      --text-soft: #7A88B5;
+      --surface: #14213D;
+      --surface-alt: #1A2A4F;
+      --surface-elev: #0F1B3D;
+      --border: rgba(255, 255, 255, 0.10);
+      --border-soft: rgba(255, 255, 255, 0.06);
+    }
+  }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
@@ -56,25 +71,20 @@
     background: var(--surface);
     border-bottom: 1px solid var(--border);
   }
-  .demo-header-left { display: flex; align-items: center; gap: 14px; }
-  .demo-brand {
-    display: inline-flex; align-items: center; gap: 10px;
-    color: var(--text-strong); font-weight: 700; font-size: 15px;
-    text-decoration: none;
-  }
-  .demo-brand:hover { text-decoration: none; }
-  .demo-brand-logo {
-    width: 28px; height: 28px; border-radius: 6px;
-    background: linear-gradient(135deg, var(--p-color), var(--s-color));
-    display: grid; place-items: center;
-    color: #FFFFFF; font-weight: 800; font-size: 13px;
-  }
+  .demo-header-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
   .demo-crumb {
     font-family: var(--mono);
     font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--text-soft);
+    flex-shrink: 0;
   }
   .demo-crumb b { color: var(--text-strong); font-weight: 600; letter-spacing: 0.08em; text-transform: none; font-family: var(--display-font); font-size: 15px; }
+  .demo-scope {
+    margin: 0;
+    max-width: 78ch;
+    font-size: 13px; line-height: 1.5;
+    color: var(--text-muted);
+  }
   .demo-header-right {
     display: flex; align-items: center; gap: 14px;
   }
@@ -356,7 +366,6 @@
     text-transform: uppercase;
   }
   .review-badge.coverage { background: rgba(0,180,160,0.18); color: #0E8276; border: 1px solid rgba(0,180,160,0.45); }
-  .review-badge.credits  { background: rgba(124,75,172,0.16); color: var(--p-color); border: 1px solid rgba(124,75,172,0.40); }
   .review-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -429,7 +438,9 @@
   .review-cta-btn.is-secondary:hover { background: #009488; color: #FFFFFF; text-decoration: none; transform: translateY(-1px); }
 
   @media (max-width: 720px) {
-    .demo-header { padding: 12px 16px; }
+    .demo-header { padding: 12px 16px; align-items: flex-start; gap: 12px; }
+    .demo-scope { font-size: 12px; }
+    .demo-crumb b { font-size: 14px; }
     .demo-header-right { gap: 8px; }
     .demo-pill-toggle { padding: 5px 10px; font-size: 11.5px; }
     .demo-pill-toggle .switch { display: none; }
@@ -445,6 +456,71 @@
   body.is-embedded .demo-header { display: none; }
   body.is-embedded .demo-main { padding-top: 20px; padding-bottom: 40px; }
   body.is-embedded .demo-progress { top: 12px; }
+
+  /* ---- Step 1: entry point groups + availability status ---- */
+  .ep-group { margin-bottom: 26px; }
+  .ep-group:last-of-type { margin-bottom: 0; }
+  .ep-group > h4 {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 0 0 12px;
+  }
+  .opt-card-chip.status-boarding { background: rgba(0,180,160,0.14); color: #0E8276; }
+
+  /* ---- Step 2/3/4: cards and rows ---- */
+  .opt-grid.rows { grid-template-columns: 1fr; }
+  .opt-card.kit-card { border-top: 2px solid rgba(124,75,172,0.35); }
+  .opt-card-assay { font-size: 13px; font-weight: 600; color: var(--p-color); }
+  .thr-bars { font-family: var(--mono); letter-spacing: 0.06em; }
+  .scenario-card { gap: 6px; }
+  .step-empty {
+    font-size: 14px; font-style: italic;
+    color: var(--text-soft);
+    margin: 0;
+  }
+
+  /* ---- Step 5: experiment form ---- */
+  .field-grid {
+    display: grid; gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .field > label {
+    font-size: 13.5px; font-weight: 600; color: var(--text-strong);
+  }
+  .field select, .field input {
+    width: 100%;
+    font: inherit; font-size: 14px;
+    color: var(--text-strong);
+    background: var(--surface-elev);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 9px 11px;
+    transition: border-color .15s;
+  }
+  .field select:focus, .field input:focus { outline: none; border-color: var(--p-color); }
+  .field-help { font-size: 12.5px; color: var(--text-soft); line-height: 1.4; }
+  .field-note {
+    grid-column: 1 / -1;
+    display: flex; gap: 10px; align-items: flex-start;
+    background: rgba(0,180,160,0.07);
+    border: 1px solid rgba(0,180,160,0.24);
+    border-left: 3px solid var(--s-color);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13.5px; line-height: 1.5; color: var(--text);
+  }
+  .field-note b { color: var(--text-strong); }
+  .field-section-title {
+    grid-column: 1 / -1;
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 6px 0 -4px;
+  }
+  .review-chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
 </style>
 <link rel="canonical" href="https://www.data-intuitive.com/demo/configurator.html">
 </head>
@@ -452,20 +528,10 @@
 
 <header class="demo-header">
   <div class="demo-header-left">
-    <a href="/" class="demo-brand">
-      <span class="demo-brand-logo">DI</span>
-      <span class="demo-crumb">Data Intuitive &middot; <b>Platform Demo</b></span>
-    </a>
+    <span class="demo-crumb"><b>Platform Demo</b></span>
+    <p class="demo-scope">This demo only covers transcriptomics examples on Illumina, Element Biosciences and 10x. The full product carries much more. Your kit or instrument on the platform? <a href="https://www.data-intuitive.com/contact/contact.html" target="_blank" rel="noopener">Contact us</a>.</p>
   </div>
   <div class="demo-header-right">
-    <button class="demo-pill-toggle is-on" id="coverageToggle" type="button" aria-pressed="true">
-      <span class="switch"></span>
-      <span class="label">Coverage filter</span>
-    </button>
-    <button class="demo-pill-toggle" id="themeToggle" type="button" aria-pressed="false">
-      <span class="switch"></span>
-      <span class="label">Dark</span>
-    </button>
     <button class="demo-restart" id="restartBtn" type="button">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
       Restart
@@ -485,137 +551,226 @@
 (function(){
   'use strict';
 
+  // ---------------------------------------------------------------------
+  // Steps — order follows the Skaldu wizard: scenario precedes experiment.
+  // ---------------------------------------------------------------------
   var STEPS = [
-    { id: 'modality',   label: 'Modality' },
-    { id: 'kit',        label: 'Kit / Assay' },
+    { id: 'entry',      label: 'Entry point' },
+    { id: 'kit',        label: 'Kit' },
     { id: 'instrument', label: 'Instrument' },
-    { id: 'experiment', label: 'Experiment' },
     { id: 'scenario',   label: 'Scenario' },
+    { id: 'experiment', label: 'Experiment' },
     { id: 'review',     label: 'Review' }
   ];
 
-  var MODALITIES = [
-    { id: 'single-cell', name: 'Single-cell',  desc: 'Single-cell sequencing assays',           kits: 2 },
-    { id: 'bulk',        name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep',          kits: 2 },
-    { id: 'spatial',     name: 'Spatial',      desc: 'Spatial transcriptomics',                 kits: 3 },
-    { id: 'ht-rna',      name: 'HT RNA-seq',   desc: 'Plate-format bulk, per-well experiments', kits: 1 }
+  // ---- Entry points, grouped by domain -------------------------------
+  var ENTRY_POINTS = [
+    { id: 'single_cell', group: 'Transcriptomics', name: 'Single-cell',  desc: 'Single-cell sequencing assays' },
+    { id: 'bulk_rna',    group: 'Transcriptomics', name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep' }
   ];
+  var ENTRY_GROUPS = ['Transcriptomics'];
 
-  var KITS = {
-    'single-cell': [
-      { id: 'chromium-3', name: "Chromium GEM-X Single Cell 3' Gene Expression", assay: 'scRNA-seq', vendor: '10x Genomics' },
-      { id: 'chromium-5', name: "Chromium GEM-X Single Cell 5' Gene Expression", assay: 'scRNA-seq', vendor: '10x Genomics' }
-    ],
-    'bulk': [
-      { id: 'illumina-rna-enrich', name: 'Illumina RNA Prep with Enrichment',                assay: 'Bulk RNA', vendor: 'Illumina' },
-      { id: 'illumina-ribozero',   name: 'Illumina Stranded Total RNA Prep (Ribo-Zero Plus)', assay: 'Bulk RNA', vendor: 'Illumina' }
-    ],
-    'spatial': [
-      { id: 'visium-hd', name: 'Visium HD Spatial Gene Expression Slide', assay: 'Spatial transcriptomics', vendor: '10x Genomics' },
-      { id: 'visium',    name: 'Visium Spatial Gene Expression Slide',    assay: 'Spatial transcriptomics', vendor: '10x Genomics' },
-      { id: 'xenium',    name: 'Xenium Gene Expression Panel',            assay: 'In-situ spatial',         vendor: '10x Genomics' }
-    ],
-    'ht-rna': [
-      { id: 'ht-plate', name: 'HT RNA-seq plate kit (generic)', assay: 'Plate-format RNA-seq', vendor: 'Generic' }
-    ]
-  };
-
+  // ---- Instruments ----------------------------------------------------
   var INSTRUMENTS = {
-    'single-cell': [
-      { id: 'chromium-x', name: 'Chromium X / iX',    throughput: 'medium',    vendor: '10x Genomics',        type: 'single-cell instrument' },
-      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
-      { id: 'nextseq',    name: 'NextSeq 1000/2000',  throughput: 'medium',    vendor: 'Illumina',            type: 'short read' },
-      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
+    illumina_novaseq_x:    { id: 'illumina_novaseq_x',    name: 'NovaSeq X / X Plus', vendor: 'Illumina',            throughput: 'very high', bars: '\u25B0\u25B0\u25B0\u25B0' },
+    illumina_nextseq_2000: { id: 'illumina_nextseq_2000', name: 'NextSeq 1000/2000',  vendor: 'Illumina',            throughput: 'medium',    bars: '\u25B0\u25B0\u25B1\u25B1' },
+    element_aviti:         { id: 'element_aviti',         name: 'AVITI / AVITI24',    vendor: 'Element Biosciences', throughput: 'medium',    bars: '\u25B0\u25B0\u25B1\u25B1' }
+  };
+
+  // ---- Kit catalogue, per entry point --------------------------------
+  var KITS = {
+    'single_cell': [
+      { id: 'tenx_3prime_gex', name: "Chromium Single Cell 3' Gene Expression", vendor: '10x Genomics', family: 'gex',
+        assays: ['Single-cell RNA-seq'], software: 'Cell Ranger',
+        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'],
+        chemistries: ["v3 \u2013 Next GEM 3' v3 / v3.1 chemistry", "v4 \u2013 GEM-X 3' v4 chemistry (the GEM-X chip generation)"] },
+      { id: 'tenx_5prime_gex', name: "Chromium Single Cell 5' Gene Expression", vendor: '10x Genomics', family: 'gex',
+        assays: ['Single-cell RNA-seq'], software: 'Cell Ranger',
+        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'],
+        chemistries: ["v2 \u2013 Next GEM 5' v2 chemistry", "v3 \u2013 GEM-X 5' v3 chemistry; --chemistry stays at `auto`"] }
     ],
-    'bulk': [
-      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
-      { id: 'nextseq',    name: 'NextSeq 1000/2000',  throughput: 'medium',    vendor: 'Illumina',            type: 'short read' },
-      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
-    ],
-    'spatial': [
-      { id: 'cytassist',  name: 'Visium CytAssist',   throughput: 'medium',    vendor: '10x Genomics',        type: 'spatial sequencing' },
-      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
-      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
-    ],
-    'ht-rna': [
-      { id: 'aviti',      name: 'AVITI / AVITI24',    throughput: 'medium',    vendor: 'Element Biosciences', type: 'short read' },
-      { id: 'nextseq',    name: 'NextSeq 1000/2000',  throughput: 'medium',    vendor: 'Illumina',            type: 'short read' },
-      { id: 'novaseq-x',  name: 'NovaSeq X / X Plus', throughput: 'very high', vendor: 'Illumina',            type: 'short read' }
+    'bulk_rna': [
+      { id: 'illumina_rna_prep', name: 'Illumina RNA Prep with Enrichment', vendor: 'Illumina', family: 'bulk_rna',
+        assays: ['Bulk RNA-seq'], software: 'DRAGEN RNA (basic)',
+        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'] },
+      { id: 'illumina_stranded_total_rna', name: 'Illumina Stranded Total RNA Prep (Ribo-Zero Plus)', vendor: 'Illumina', family: 'bulk_rna',
+        assays: ['Bulk RNA-seq', 'Total RNA-seq (incl. non-coding)'], software: 'DRAGEN RNA (basic)',
+        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'] }
     ]
   };
 
-  var SPECIES = [
-    { id: 'human', name: 'Human', tip: 'GRCh38 reference' },
-    { id: 'mouse', name: 'Mouse', tip: 'GRCm39 reference' },
-    { id: 'other', name: 'Other', tip: 'Custom reference' }
+  // ---- Scenarios follow the assay a pipeline declares, which in practice
+  // ---- resolves through the kit family. Families absent here render
+  // ---- "No scenarios available for this assay."
+  var SC_COUNTS = [
+    { id: 'transcriptomics.single_cell.count_only', name: 'Counts',
+      desc: 'Run primary analysis (mapping/counting) and stop. Output is the count matrix.' }
   ];
-  var SAMPLES = [
-    { id: '1',    name: '1' },
-    { id: '2-4',  name: '2–4' },
-    { id: '5-12', name: '5–12' },
-    { id: '13+',  name: '13+' }
+  var BULK_COUNTS = [
+    { id: 'transcriptomics.bulk.count_only', name: 'Counts',
+      desc: 'Run primary analysis (STAR + Salmon) and stop. Output is the count matrix.' }
   ];
-  var SAMPLE_SIZES_CELLS = [
-    { id: 'small',    name: 'Small <5k cells' },
-    { id: 'standard', name: 'Standard 5–20k cells' },
-    { id: 'large',    name: 'Large 20–50k cells' },
-    { id: 'xl',       name: 'XL >50k cells' }
-  ];
-  var SAMPLE_SIZES_READS = [
-    { id: 'small',    name: 'Small <30M reads' },
-    { id: 'standard', name: 'Standard 30–100M reads' },
-    { id: 'large',    name: 'Large 100–300M reads' },
-    { id: 'xl',       name: 'XL >300M reads' }
-  ];
-
-  var SCENARIOS_SC_SPATIAL = [
-    { id: 'counts',            name: 'Counts',                              desc: 'Run primary analysis (mapping/counting) and stop. Output: count matrix.' },
-    { id: 'single-sample',     name: 'Single-sample processing (in batch)', desc: 'Primary analysis plus sample preprocessing.' },
-    { id: 'batch-integration', name: 'Batch integration',                   desc: 'Primary analysis, preprocessing and batch integration.' },
-    { id: 'atlas',             name: 'Atlas generation',                    desc: 'Primary analysis, preprocessing, integration and annotation.' }
-  ];
-  var SCENARIOS = {
-    'single-cell': SCENARIOS_SC_SPATIAL,
-    'spatial':     SCENARIOS_SC_SPATIAL,
-    'bulk': [
-      { id: 'counts', name: 'Counts', desc: 'Primary analysis with STAR + featureCounts. Output: count matrix.' }
-    ],
-    'ht-rna': [
-      { id: 'plate-demux',     name: 'Plate demultiplexing only',                            desc: 'Demultiplex the plate.' },
-      { id: 'well-demux-map',  name: 'Well demultiplexing, mapping and counting (per well)', desc: 'Demultiplex wells based on barcodes, then map and count per well.' },
-      { id: 'well-annotation', name: 'Well demultiplexing, mapping/counting and annotation', desc: 'Generate fully annotated objects with well-based experiment metadata.' }
-    ]
+  var SCENARIOS_BY_FAMILY = {
+    gex:               SC_COUNTS,
+    gex_combinatorial: SC_COUNTS,
+    bulk_rna:          BULK_COUNTS
   };
 
   var WORKFLOWS = {
-    'single-cell': { id: 'vsh/openpipeline',         desc: 'OpenPipeline single-cell RNA-seq workflow.' },
-    'spatial':     { id: 'vsh/openpipeline_spatial', desc: 'OpenPipeline spatial transcriptomics workflow.' },
-    'bulk':        { id: 'vsh/rnaseq',               desc: 'Bulk RNA-seq workflow (STAR + featureCounts).' },
-    'ht-rna':      { id: 'vsh/htrnaseq',             desc: 'HT RNA-seq plate-based workflow.' }
+    'transcriptomics.single_cell.count_only': { id: 'vsh/openpipeline', desc: 'OpenPipeline single-cell RNA-seq workflow.' },
+    'transcriptomics.bulk.count_only':        { id: 'vsh/rnaseq',       desc: 'Bulk RNA-seq workflow (STAR + Salmon).' }
   };
 
-  function modalityById(id) { return MODALITIES.find(function(m){ return m.id === id; }); }
-  function findIn(arr, id)  { return (arr || []).find(function(x){ return x.id === id; }); }
+  // ---- Step 5 field declarations --------------------------------------
+  var SPECIES = [
+    { id: 'human', name: 'Human (GRCh38)' },
+    { id: 'mouse', name: 'Mouse (GRCm39)' },
+    { id: 'other', name: 'Other (provide reference)' }
+  ];
+  var INPUT_SHAPES = [
+    { id: 'run_folder', name: 'A sequencer run folder (not yet demultiplexed)' },
+    { id: 'fastq',      name: 'FASTQ files' }
+  ];
+  var REFERENCE_MODES = [
+    { id: 'provided', name: 'Use the provided reference for my species' },
+    { id: 'own',      name: 'I have my own reference' },
+    { id: 'generate', name: 'Build one from a genome and annotation' }
+  ];
 
-  var DEFAULTS = {
-    modality: null, kit: null, instrument: null,
-    species: 'human', samples: '2-4', sampleSize: 'standard',
-    scenario: null, activeStep: 0
+  var FIELDS = [
+    { id: 'species', label: 'Species', type: 'select', options: SPECIES, def: 'human' },
+    { id: 'input_shape', label: 'What do you have?', type: 'select', options: INPUT_SHAPES, def: 'run_folder',
+      help: 'Decides whether demultiplexing runs, and what the input path means.' },
+    { id: 'reference_mode', label: 'Reference', type: 'select', options: REFERENCE_MODES, def: 'provided' },
+    { id: 'reference_path', label: 'Path to your reference', type: 'file', def: '', placeholder: '/path/to/reference',
+      help: 'Prebuilt Cell Ranger reference.', showWhen: function(s){ return s.reference_mode === 'own'; } },
+    { id: 'genome_fasta', label: 'Genome FASTA', type: 'file', def: '', placeholder: '/path/to/genome.fa',
+      help: 'Genome FASTA, when building a reference.', showWhen: function(s){ return s.reference_mode === 'generate'; } },
+    { id: 'transcriptome_gtf', label: 'Transcript annotation (GTF)', type: 'file', def: '', placeholder: '/path/to/genes.gtf',
+      help: 'Transcript annotation GTF, when building a reference.', showWhen: function(s){ return s.reference_mode === 'generate'; } },
+    { id: 'reference_version', label: 'Reference version label', type: 'string', def: '', placeholder: '2024-A',
+      help: 'Version label recorded in a generated reference.', showWhen: function(s){ return s.reference_mode === 'generate'; } },
+    { id: 'expect_cells', label: 'Cells expected per sample', type: 'integer', def: 3000,
+      help: 'A recovery target for Cell Ranger, not a hard cap.' }
+  ];
+
+  // Extra fields contributed by the selected kit, keyed on kit family.
+  var EXTRA_FIELDS = {
+    vdj: [
+      { id: 'chain_type', label: 'Chain type', type: 'select', def: 'tcr', options: [
+        { id: 'tcr',  name: 'TCR (T cells)' },
+        { id: 'bcr',  name: 'BCR (B cells)' },
+        { id: 'both', name: 'Both TCR + BCR' }
+      ] },
+      { id: 'libraries_csv', label: 'Libraries CSV', type: 'note',
+        note: 'Requires a libraries CSV mapping FASTQs to library types (GEX vs VDJ-T vs VDJ-B).' }
+    ],
+    multiome: [
+      { id: 'libraries_csv', label: 'Libraries CSV', type: 'note',
+        note: 'Requires a libraries CSV mapping FASTQs to library types (GEX vs ATAC).' }
+    ],
+    citeseq: [
+      { id: 'antibody_csv', label: 'Antibody panel', type: 'select', def: 'totalseq_c', options: [
+        { id: 'totalseq_c', name: "TotalSeq-C (10x 5')" },
+        { id: 'custom',     name: 'Custom (upload CSV)' }
+      ] },
+      { id: 'libraries_csv', label: 'Libraries CSV', type: 'note',
+        note: 'Requires a libraries CSV mapping FASTQs to library types (GEX vs ADT).' }
+    ],
+    flex: [
+      { id: 'probe_set', label: 'Probe set', type: 'select', def: 'human_wt', options: [
+        { id: 'human_wt', name: 'Human Whole Transcriptome' },
+        { id: 'mouse_wt', name: 'Mouse Whole Transcriptome' },
+        { id: 'custom',   name: 'Custom (upload CSV)' }
+      ] },
+      { id: 'multiplex_csv', label: 'Multiplexed samples?', type: 'select', def: 'no', options: [
+        { id: 'no',  name: 'No' },
+        { id: 'yes', name: 'Yes' }
+      ] }
+    ]
   };
-  var state = Object.assign({}, DEFAULTS);
+
+  // ---------------------------------------------------------------------
+  // Lookups
+  // ---------------------------------------------------------------------
+  function entryById(id) { return ENTRY_POINTS.find(function(e){ return e.id === id; }); }
+  function findIn(arr, id) { return (arr || []).find(function(x){ return x.id === id; }); }
+  function kitsFor(entryId) { return KITS[entryId] || []; }
+  function kitById(entryId, kitId) { return findIn(kitsFor(entryId), kitId); }
+  function instrumentsFor(kit) {
+    return (kit && kit.instruments ? kit.instruments : []).map(function(i){ return INSTRUMENTS[i]; }).filter(Boolean);
+  }
+  function scenariosFor(kit) {
+    if (!kit) return [];
+    return SCENARIOS_BY_FAMILY[kit.family] || [];
+  }
+  function extraFieldsFor(kit) { return (kit && EXTRA_FIELDS[kit.family]) || []; }
+  function visibleFields(kit) {
+    var all = FIELDS.concat(extraFieldsFor(kit));
+    return all.filter(function(f){ return !f.showWhen || f.showWhen(state.exp); });
+  }
+  function optLabel(list, id) { var o = findIn(list, id); return o ? o.name : '\u2014'; }
+
+  // ---------------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------------
+  function defaultExp() {
+    var exp = {};
+    FIELDS.forEach(function(f){ if (f.type !== 'note') exp[f.id] = f.def; });
+    Object.keys(EXTRA_FIELDS).forEach(function(fam){
+      EXTRA_FIELDS[fam].forEach(function(f){ if (f.type !== 'note' && !(f.id in exp)) exp[f.id] = f.def; });
+    });
+    return exp;
+  }
+  function defaults() {
+    return {
+      entry: null, kit: null, instrument: null, scenario: null,
+      exp: defaultExp(), activeStep: 0
+    };
+  }
+  var state = defaults();
 
   function reset() {
-    state = Object.assign({}, DEFAULTS);
+    state = defaults();
     render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // ---------------------------------------------------------------------
+  // Step completeness
+  // ---------------------------------------------------------------------
+  function currentKit() { return kitById(state.entry, state.kit); }
+  function scenarioStepSatisfied() {
+    var kit = currentKit();
+    if (!kit) return false;
+    var list = scenariosFor(kit);
+    if (!list.length) return true;      // nothing to declare — the step passes through
+    return !!state.scenario;
+  }
+  // In this mockup nothing on step 5 is blocking: paths, version labels and
+  // cell counts may be left empty. The review then falls back to the
+  // placeholder each field shows.
+  function experimentStepSatisfied() {
+    return !!currentKit();
+  }
+  // What a field resolves to on the review screen when it was left empty.
+  function fieldValue(f) {
+    var v = state.exp[f.id];
+    if (v === undefined || v === null || String(v).trim() === '') {
+      return f.placeholder || (f.def !== undefined && f.def !== '' ? String(f.def) : '\u2014');
+    }
+    return String(v);
+  }
+  function fieldById(id) {
+    return FIELDS.concat(EXTRA_FIELDS.vdj, EXTRA_FIELDS.multiome, EXTRA_FIELDS.citeseq, EXTRA_FIELDS.flex)
+      .find(function(f){ return f.id === id; });
+  }
   function stepCompleteness(i) {
-    if (i === 0) return !!state.modality;
+    if (i === 0) return !!state.entry;
     if (i === 1) return !!state.kit;
     if (i === 2) return !!state.instrument;
-    if (i === 3) return !!(state.species && state.samples && state.sampleSize);
-    if (i === 4) return !!state.scenario;
+    if (i === 3) return scenarioStepSatisfied();
+    if (i === 4) return experimentStepSatisfied();
     return false;
   }
   function maxReachableStep() {
@@ -642,6 +797,9 @@
     }, 30);
   }
 
+  // ---------------------------------------------------------------------
+  // DOM helpers
+  // ---------------------------------------------------------------------
   function el(tag, attrs, children) {
     var node = document.createElement(tag);
     if (attrs) for (var k in attrs) {
@@ -665,6 +823,9 @@
     return s;
   }
 
+  // ---------------------------------------------------------------------
+  // Progress rail
+  // ---------------------------------------------------------------------
   function renderProgress() {
     var list = document.getElementById('progressList');
     list.innerHTML = '';
@@ -676,18 +837,8 @@
       if (stepCompleteness(i) && i < state.activeStep) li.classList.add('is-complete');
       if (i > max) li.classList.add('is-future');
 
-      var summary = '';
-      if (i === 0 && state.modality)   summary = modalityById(state.modality).name;
-      if (i === 1 && state.kit)        summary = (findIn(KITS[state.modality], state.kit) || {}).name || '';
-      if (i === 2 && state.instrument) summary = (findIn(INSTRUMENTS[state.modality], state.instrument) || {}).name || '';
-      if (i === 3 && stepCompleteness(3) && i < state.activeStep) {
-        var sp = findIn(SPECIES, state.species), sa = findIn(SAMPLES, state.samples);
-        var sizes = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
-        var sz = findIn(sizes, state.sampleSize);
-        summary = (sp ? sp.name : '') + ' · ' + (sa ? sa.name : '') + ' · ' + (sz ? sz.name : '');
-      }
-      if (i === 4 && state.scenario)   summary = (findIn(SCENARIOS[state.modality], state.scenario) || {}).name || '';
-      if (i === 5 && stepCompleteness(4)) summary = (WORKFLOWS[state.modality] || {}).id || '';
+      var summary = stepSummary(i);
+      if (i >= state.activeStep && i !== 5) summary = (i === state.activeStep ? summary : '');
 
       li.appendChild(el('div', { class: 'demo-step-num' }, [String(i + 1)]));
       li.appendChild(el('div', { class: 'demo-step-text' }, [
@@ -699,6 +850,25 @@
       });
       list.appendChild(li);
     });
+  }
+
+  function stepSummary(i) {
+    var kit = currentKit();
+    if (i === 0 && state.entry) return entryById(state.entry).name;
+    if (i === 1 && kit) return kit.name;
+    if (i === 2 && state.instrument) return (INSTRUMENTS[state.instrument] || {}).name || '';
+    if (i === 3 && kit) {
+      if (!scenariosFor(kit).length) return 'No scenarios for this assay';
+      return state.scenario ? (findIn(scenariosFor(kit), state.scenario) || {}).name || '' : '';
+    }
+    if (i === 4 && kit && experimentStepSatisfied()) {
+      return optLabel(SPECIES, state.exp.species) + ' \u00B7 ' + optLabel(INPUT_SHAPES, state.exp.input_shape);
+    }
+    if (i === 5 && stepCompleteness(4)) {
+      var wf = WORKFLOWS[state.scenario];
+      return wf ? wf.id : (kit ? (kit.software || '') : '');
+    }
+    return '';
   }
 
   function collapsedCard(stepIndex, eyebrow, value) {
@@ -717,45 +887,62 @@
     return card;
   }
 
-  function renderStep1() {
-    var grid = el('div', { class: 'opt-grid wide' });
-    MODALITIES.forEach(function(m){
-      var card = el('button', {
-        class: 'opt-card' + (state.modality === m.id ? ' is-selected' : ''),
-        type: 'button',
-        onclick: function(){
-          if (state.modality !== m.id) {
-            state.modality = m.id;
-            state.kit = null; state.instrument = null;
-            state.sampleSize = 'standard';
-            state.scenario = null;
-          }
-          setActiveStep(1);
+  // ---------------------------------------------------------------------
+  // Step 1 · Entry point
+  // ---------------------------------------------------------------------
+  function entryCard(ep) {
+    var kitCount = kitsFor(ep.id).length;
+    return el('button', {
+      class: 'opt-card' + (state.entry === ep.id ? ' is-selected' : ''),
+      type: 'button',
+      onclick: function(){
+        if (state.entry !== ep.id) {
+          state.entry = ep.id;
+          state.kit = null; state.instrument = null; state.scenario = null;
+          state.exp = defaultExp();
         }
-      }, [
-        el('span', { class: 'opt-card-cat' }, ['Transcriptomics']),
-        el('div', { class: 'opt-card-title' }, [m.name]),
-        el('p', { class: 'opt-card-desc' }, [m.desc]),
-        el('div', { class: 'opt-card-meta' }, [
-          el('span', { class: 'opt-card-chip teal' }, [m.kits + ' kit' + (m.kits === 1 ? '' : 's')])
-        ])
-      ]);
-      grid.appendChild(card);
-    });
-    return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, ['Step 1 · Modality']),
-      el('h2', { class: 'step-card-title' }, ['What kind of experiment are you running?']),
-      el('p', { class: 'step-card-intro' }, ['Pick a modality. The wizard will surface only the kits, instruments and scenarios that have validated pipeline support.']),
-      grid
+        setActiveStep(1);
+      }
+    }, [
+      el('div', { class: 'opt-card-title' }, [ep.name]),
+      el('p', { class: 'opt-card-desc' }, [ep.desc]),
+      el('div', { class: 'opt-card-meta' }, [
+        el('span', { class: 'opt-card-chip status-boarding' }, ['Boarding']),
+        el('span', { class: 'opt-card-chip gray' }, [kitCount + ' kit' + (kitCount === 1 ? '' : 's')])
+      ])
     ]);
   }
 
+  function renderStep1() {
+    var card = el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 1 \u00B7 Entry point']),
+      el('h2', { class: 'step-card-title' }, ['What are you measuring?']),
+      el('p', { class: 'step-card-intro' }, ['Pick an entry point. The wizard then surfaces only the kits, instruments and scenarios that have verified pipeline support.'])
+    ]);
+
+    ENTRY_GROUPS.forEach(function(group){
+      var eps = ENTRY_POINTS.filter(function(e){ return e.group === group; });
+      if (!eps.length) return;
+      var grid = el('div', { class: 'opt-grid wide' });
+      eps.forEach(function(ep){ grid.appendChild(entryCard(ep)); });
+      card.appendChild(el('div', { class: 'ep-group' }, [
+        el('h4', null, [group]),
+        grid
+      ]));
+    });
+    return card;
+  }
+
+  // ---------------------------------------------------------------------
+  // Step 2 · Kit
+  // ---------------------------------------------------------------------
   function renderStep2() {
-    var kits = KITS[state.modality] || [];
+    var kits = kitsFor(state.entry);
     var grid = el('div', { class: 'opt-grid wide' });
+
     kits.forEach(function(k){
-      var card = el('button', {
-        class: 'opt-card' + (state.kit === k.id ? ' is-selected' : ''),
+      grid.appendChild(el('button', {
+        class: 'opt-card kit-card' + (state.kit === k.id ? ' is-selected' : ''),
         type: 'button',
         onclick: function(){
           if (state.kit !== k.id) {
@@ -766,28 +953,34 @@
           setActiveStep(2);
         }
       }, [
-        el('span', { class: 'opt-card-cat' }, [k.vendor]),
         el('div', { class: 'opt-card-title' }, [k.name]),
+        el('p', { class: 'opt-card-assay' }, [k.assays.join(' \u00B7 ')]),
+        el('span', { class: 'opt-card-cat' }, [k.vendor]),
         el('div', { class: 'opt-card-meta' }, [
-          el('span', { class: 'opt-card-chip' }, [k.assay])
+          k.software ? el('span', { class: 'opt-card-chip' }, [k.software]) : null
         ])
-      ]);
-      grid.appendChild(card);
+      ]));
     });
+
     return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, ['Step 2 · Kit / Assay']),
-      el('h2', { class: 'step-card-title' }, ['Which kit / assay?']),
-      el('p', { class: 'step-card-intro' }, ['Scoped to 10x Genomics kits, plus the Illumina prep kits where a 10x equivalent does not exist.']),
+      el('span', { class: 'step-card-eyebrow' }, ['Step 2 \u00B7 Kit']),
+      el('h2', { class: 'step-card-title' }, ['Choose a kit']),
+      el('p', { class: 'step-card-intro' }, ['Library prep chemistry. The kit fixes the assay, and with it the instrument list, the scenarios and the kit-specific fields further on.']),
       grid
     ]);
   }
 
+  // ---------------------------------------------------------------------
+  // Step 3 · Instrument
+  // ---------------------------------------------------------------------
   function renderStep3() {
-    var insts = INSTRUMENTS[state.modality] || [];
+    var kit = currentKit();
+    var insts = instrumentsFor(kit);
     var grid = el('div', { class: 'opt-grid wide' });
+
     insts.forEach(function(inst){
       var thrClass = inst.throughput === 'very high' ? 'opt-card-chip amber' : 'opt-card-chip gray';
-      var card = el('button', {
+      grid.appendChild(el('button', {
         class: 'opt-card' + (state.instrument === inst.id ? ' is-selected' : ''),
         type: 'button',
         onclick: function(){
@@ -795,121 +988,198 @@
           setActiveStep(3);
         }
       }, [
+        el('span', { class: 'opt-card-cat' }, [inst.vendor]),
         el('div', { class: 'opt-card-title' }, [inst.name]),
-        el('p', { class: 'opt-card-desc' }, [inst.vendor + ' · ' + inst.type]),
         el('div', { class: 'opt-card-meta' }, [
-          el('span', { class: thrClass }, [inst.throughput + ' throughput'])
+          el('span', { class: thrClass }, [
+            el('span', { class: 'thr-bars' }, [inst.bars]),
+            ' ' + inst.throughput
+          ])
         ])
-      ]);
-      grid.appendChild(card);
+      ]));
     });
+
     return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, ['Step 3 · Instrument']),
-      el('h2', { class: 'step-card-title' }, ['Which instrument?']),
-      el('p', { class: 'step-card-intro' }, ['Sequencers are limited to Illumina and Element Biosciences (AVITI). 10x sample-prep instruments are shown where they apply.']),
+      el('span', { class: 'step-card-eyebrow' }, ['Step 3 \u00B7 Instrument']),
+      el('h2', { class: 'step-card-title' }, ['Pair an instrument']),
+      el('p', { class: 'step-card-intro' }, ['Which sequencer read your libraries? Only instruments declared for this kit are shown.']),
       grid
     ]);
   }
 
-  function pillRow(opts, selectedId, onPick) {
-    var row = el('div', { class: 'expr-options' });
-    opts.forEach(function(o){
-      var pill = el('button', {
-        class: 'expr-pill' + (selectedId === o.id ? ' is-selected' : ''),
-        type: 'button',
-        onclick: function(){ onPick(o.id); }
-      }, [o.name]);
-      if (o.tip) pill.title = o.tip;
-      row.appendChild(pill);
-    });
-    return row;
-  }
-
+  // ---------------------------------------------------------------------
+  // Step 4 · Scenario
+  // ---------------------------------------------------------------------
   function renderStep4() {
-    var sizeOpts = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
-
-    var nextBtn = el('button', {
-      class: 'btn-primary',
-      type: 'button',
-      onclick: function(){
-        if (!stepCompleteness(3)) return;
-        setActiveStep(4);
-      }
-    }, ['Choose scenario', arrow()]);
-
-    return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, ['Step 4 · Experiment']),
-      el('h2', { class: 'step-card-title' }, ['Tell us about your experiment']),
-      el('p', { class: 'step-card-intro' }, ['Three quick choices. We pre-fill sensible defaults; adjust to your run.']),
-      el('div', { class: 'expr-group' }, [
-        el('h4', null, ['Species', el('span', { class: 'expr-info-tip', title: 'Reference genome assigned per species' }, ['i'])]),
-        pillRow(SPECIES, state.species, function(id){ state.species = id; render(); })
-      ]),
-      el('div', { class: 'expr-group' }, [
-        el('h4', null, ['Number of samples', el('span', { class: 'expr-info-tip', title: 'Affects per-batch processing and integration paths' }, ['i'])]),
-        pillRow(SAMPLES, state.samples, function(id){ state.samples = id; render(); })
-      ]),
-      el('div', { class: 'expr-group' }, [
-        el('h4', null, ['Expected sample size', el('span', { class: 'expr-info-tip', title: state.modality === 'single-cell' ? 'In cells per sample' : 'In reads per sample' }, ['i'])]),
-        pillRow(sizeOpts, state.sampleSize, function(id){ state.sampleSize = id; render(); })
-      ]),
-      el('div', { class: 'step-action' }, [nextBtn])
+    var kit = currentKit();
+    var scenarios = scenariosFor(kit);
+    var card = el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 4 \u00B7 Scenario']),
+      el('h2', { class: 'step-card-title' }, ['Choose a scenario']),
+      el('p', { class: 'step-card-intro' }, ['How deep should the analysis go? Scenarios are declared per assay, so they follow the kit you picked.'])
     ]);
-  }
 
-  function renderStep5() {
-    var scenarios = SCENARIOS[state.modality] || [];
-    var grid = el('div', { class: 'opt-grid wide' });
+    if (!scenarios.length) {
+      card.appendChild(el('p', { class: 'step-empty' }, ['No scenarios available for this assay.']));
+      card.appendChild(el('div', { class: 'step-action' }, [
+        el('button', {
+          class: 'btn-primary', type: 'button',
+          onclick: function(){ state.scenario = null; setActiveStep(4); }
+        }, ['Describe the experiment', arrow()])
+      ]));
+      return card;
+    }
+
+    var grid = el('div', { class: 'opt-grid rows' });
     scenarios.forEach(function(sc){
-      var card = el('button', {
-        class: 'opt-card' + (state.scenario === sc.id ? ' is-selected' : ''),
+      grid.appendChild(el('button', {
+        class: 'opt-card scenario-card' + (state.scenario === sc.id ? ' is-selected' : ''),
         type: 'button',
-        onclick: function(){
-          state.scenario = sc.id;
-          setActiveStep(5);
-        }
+        onclick: function(){ state.scenario = sc.id; setActiveStep(4); }
       }, [
         el('div', { class: 'opt-card-title' }, [sc.name]),
         el('p', { class: 'opt-card-desc' }, [sc.desc]),
         el('div', { class: 'opt-card-meta' }, [
-          el('span', { class: 'opt-card-chip teal' }, ['0 credits'])
+          el('span', { class: 'opt-card-chip teal' }, [sc.id])
         ])
-      ]);
-      grid.appendChild(card);
+      ]));
     });
-    return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, ['Step 5 · Scenario']),
-      el('h2', { class: 'step-card-title' }, ['Choose analysis scenario']),
-      el('p', { class: 'step-card-intro' }, ['Scenarios are progressive. Pick how far through the pipeline you want this run to go.']),
-      grid
+    card.appendChild(grid);
+    return card;
+  }
+
+  // ---------------------------------------------------------------------
+  // Step 5 · Experiment
+  // ---------------------------------------------------------------------
+  function fieldNode(f, onDirty) {
+    if (f.type === 'note') {
+      return el('div', { class: 'field-note' }, [
+        el('span', null, [el('b', null, [f.label + ': ']), f.note])
+      ]);
+    }
+
+    var input;
+    if (f.type === 'select') {
+      input = el('select', { id: 'f-' + f.id });
+      f.options.forEach(function(o){
+        var opt = el('option', { value: o.id }, [o.name]);
+        if (state.exp[f.id] === o.id) opt.selected = true;
+        input.appendChild(opt);
+      });
+      input.addEventListener('change', function(){
+        state.exp[f.id] = input.value;
+        render();                       // reference_mode toggles other fields
+      });
+    } else {
+      input = el('input', {
+        id: 'f-' + f.id,
+        type: f.type === 'integer' ? 'number' : 'text',
+        value: state.exp[f.id] == null ? '' : String(state.exp[f.id])
+      });
+      if (f.type === 'integer') input.setAttribute('min', '1');
+      if (f.placeholder) input.setAttribute('placeholder', f.placeholder);
+      input.addEventListener('input', function(){
+        if (f.type === 'integer') {
+          state.exp[f.id] = input.value === '' ? '' : Number(input.value);
+        } else {
+          state.exp[f.id] = input.value;
+        }
+        onDirty();
+      });
+    }
+
+    return el('div', { class: 'field' }, [
+      el('label', { for: 'f-' + f.id }, [f.label]),
+      input,
+      f.help ? el('span', { class: 'field-help' }, [f.help]) : null
     ]);
   }
 
+  function renderStep5() {
+    var kit = currentKit();
+    var nextBtn = el('button', {
+      class: 'btn-primary', type: 'button',
+      onclick: function(){ setActiveStep(5); }
+    }, ['Review', arrow()]);
+    function refreshValidity() { /* nothing on this step blocks the mockup */ }
+
+    var grid = el('div', { class: 'field-grid' });
+    FIELDS.forEach(function(f){
+      if (f.showWhen && !f.showWhen(state.exp)) return;
+      grid.appendChild(fieldNode(f, refreshValidity));
+    });
+
+    var extras = extraFieldsFor(kit);
+    if (extras.length) {
+      grid.appendChild(el('div', { class: 'field-section-title' }, [kit.vendor + ' \u00B7 kit-specific fields']));
+      extras.forEach(function(f){ grid.appendChild(fieldNode(f, refreshValidity)); });
+    }
+
+    var card = el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 5 \u00B7 Experiment']),
+      el('h2', { class: 'step-card-title' }, ['Describe the experiment']),
+      el('p', { class: 'step-card-intro' }, ['Species, inputs and reference. Defaults are pre-filled; adjust them to your run.']),
+      grid,
+      el('div', { class: 'step-action' }, [nextBtn])
+    ]);
+    refreshValidity();
+    return card;
+  }
+
+  function prefersDark() {
+    var pinned = document.documentElement.getAttribute('data-theme');
+    if (pinned === 'dark') return true;
+    if (pinned === 'light') return false;
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
+  // ---------------------------------------------------------------------
+  // Step 6 · Review
+  // ---------------------------------------------------------------------
+  function experimentSummaryLines() {
+    var kit = currentKit();
+    var lines = [
+      'Species: ' + optLabel(SPECIES, state.exp.species),
+      'Input: ' + optLabel(INPUT_SHAPES, state.exp.input_shape),
+      'Reference: ' + optLabel(REFERENCE_MODES, state.exp.reference_mode)
+    ];
+    if (state.exp.reference_mode === 'own') {
+      lines.push('Reference path: ' + fieldValue(fieldById('reference_path')));
+    }
+    if (state.exp.reference_mode === 'generate') {
+      lines.push('Genome FASTA: ' + fieldValue(fieldById('genome_fasta')));
+      lines.push('GTF: ' + fieldValue(fieldById('transcriptome_gtf')));
+      lines.push('Reference version: ' + fieldValue(fieldById('reference_version')));
+    }
+    lines.push('Cells expected per sample: ' + fieldValue(fieldById('expect_cells')));
+    extraFieldsFor(kit).forEach(function(f){
+      if (f.type === 'note') lines.push(f.label + ': required');
+      else lines.push(f.label + ': ' + optLabel(f.options, state.exp[f.id]));
+    });
+    return lines;
+  }
+
   function renderStep6() {
-    var modality   = modalityById(state.modality);
-    var kit        = findIn(KITS[state.modality], state.kit);
-    var instrument = findIn(INSTRUMENTS[state.modality], state.instrument);
-    var species    = findIn(SPECIES, state.species);
-    var samples    = findIn(SAMPLES, state.samples);
-    var sizes      = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
-    var size       = findIn(sizes, state.sampleSize);
-    var scenario   = findIn(SCENARIOS[state.modality], state.scenario);
-    var workflow   = WORKFLOWS[state.modality];
+    var entry      = entryById(state.entry);
+    var kit        = currentKit();
+    var instrument = INSTRUMENTS[state.instrument];
+    var scenario   = findIn(scenariosFor(kit), state.scenario);
+    var workflow   = WORKFLOWS[state.scenario];
 
     var config = {
-      modality: state.modality, kit: state.kit, instrument: state.instrument,
-      species: state.species, samples: state.samples, sampleSize: state.sampleSize,
-      scenario: state.scenario, workflowId: workflow && workflow.id
+      entry: state.entry, kit: state.kit, instrument: state.instrument,
+      scenario: state.scenario, experiment: state.exp,
+      workflowId: workflow && workflow.id
     };
 
-    function saveAndGo(url) {
+    function saveAndGo() {
       return function(){
         try { sessionStorage.setItem('di-demo-config', JSON.stringify(config)); } catch(_){}
       };
     }
     var embedSuffix = (params.get('embed') === '1' ? '?embed=1' : '?')
       + (params.get('embed') === '1' ? '&' : '')
-      + 'theme=' + encodeURIComponent(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+      + 'theme=' + encodeURIComponent(prefersDark() ? 'dark' : 'light');
 
     var contactBtn = el('a', {
       class: 'review-cta-btn is-primary',
@@ -923,45 +1193,55 @@
       onclick: saveAndGo()
     }, ['Book a meeting', arrow('16')]);
 
+    var expBlock = el('div', null, [
+      el('div', { class: 'review-label' }, ['Experiment']),
+      el('div', { class: 'review-value' }, [optLabel(SPECIES, state.exp.species)])
+    ]);
+    experimentSummaryLines().slice(1).forEach(function(line){
+      expBlock.appendChild(el('p', { class: 'review-desc' }, [line]));
+    });
+
     return el('div', { class: 'review-card' }, [
       el('div', { class: 'review-badges' }, [
-        el('span', { class: 'review-badge coverage' }, ['Full coverage']),
-        el('span', { class: 'review-badge credits' }, ['0 credits'])
+        el('span', { class: 'review-badge coverage' }, [scenario ? 'Full coverage' : 'No scenario declared'])
       ]),
       el('div', { class: 'review-row' }, [
         el('div', null, [
-          el('div', { class: 'review-label' }, ['Modality']),
-          el('div', { class: 'review-value' }, [modality.name]),
-          el('p', { class: 'review-desc' }, [modality.desc])
+          el('div', { class: 'review-label' }, ['Entry point']),
+          el('div', { class: 'review-value' }, [entry.name]),
+          el('p', { class: 'review-desc' }, [entry.desc])
         ]),
         el('div', null, [
-          el('div', { class: 'review-label' }, ['Kit / Assay']),
+          el('div', { class: 'review-label' }, ['Kit']),
           el('div', { class: 'review-value' }, [kit.name]),
-          el('p', { class: 'review-desc' }, [kit.vendor + ' · ' + kit.assay])
+          el('p', { class: 'review-desc' }, [kit.vendor + ' \u00B7 ' + kit.assays.join(' \u00B7 ')]),
+          el('div', { class: 'review-chip-row' }, [
+            el('span', { class: 'opt-card-chip gray' }, ['family: ' + kit.family]),
+            kit.software ? el('span', { class: 'opt-card-chip' }, [kit.software]) : null
+          ])
         ])
       ]),
       el('div', { class: 'review-row' }, [
         el('div', null, [
           el('div', { class: 'review-label' }, ['Instrument']),
           el('div', { class: 'review-value' }, [instrument.name]),
-          el('p', { class: 'review-desc' }, [instrument.vendor + ' · ' + instrument.type + ' · ' + instrument.throughput + ' throughput'])
+          el('p', { class: 'review-desc' }, [instrument.vendor + ' \u00B7 ' + instrument.throughput + ' throughput'])
         ]),
         el('div', null, [
-          el('div', { class: 'review-label' }, ['Experiment']),
-          el('div', { class: 'review-value' }, [species.name + ' · ' + samples.name + ' samples']),
-          el('p', { class: 'review-desc' }, [size.name])
+          el('div', { class: 'review-label' }, ['Scenario']),
+          el('div', { class: 'review-value' }, [scenario ? scenario.name : '\u2014']),
+          el('p', { class: 'review-desc' }, [scenario ? scenario.desc : 'No scenarios available for this assay.']),
+          scenario ? el('div', { class: 'review-chip-row' }, [
+            el('span', { class: 'opt-card-chip teal' }, [scenario.id])
+          ]) : null
         ])
       ]),
       el('div', { class: 'review-row' }, [
-        el('div', null, [
-          el('div', { class: 'review-label' }, ['Scenario']),
-          el('div', { class: 'review-value' }, [scenario.name]),
-          el('p', { class: 'review-desc' }, [scenario.desc])
-        ]),
+        expBlock,
         el('div', null, [
           el('div', { class: 'review-label' }, ['Resolved workflow']),
-          el('div', { class: 'review-workflow-id' }, [workflow.id]),
-          el('p', { class: 'review-desc' }, [workflow.desc])
+          el('div', { class: 'review-workflow-id' }, [workflow ? workflow.id : 'not resolved']),
+          el('p', { class: 'review-desc' }, [workflow ? workflow.desc : 'A pipeline has not been declared for this assay yet.'])
         ])
       ]),
       el('p', { class: 'review-callout' }, [
@@ -973,6 +1253,9 @@
     ]);
   }
 
+  // ---------------------------------------------------------------------
+  // Render
+  // ---------------------------------------------------------------------
   function renderStep(i) {
     if (i === 0) return renderStep1();
     if (i === 1) return renderStep2();
@@ -988,19 +1271,8 @@
 
     for (var i = 0; i < state.activeStep; i++) {
       if (!stepCompleteness(i)) continue;
-      var eyebrow = 'Step ' + (i + 1) + ' · ' + STEPS[i].label;
-      var value = '';
-      if (i === 0) value = modalityById(state.modality).name;
-      if (i === 1) value = findIn(KITS[state.modality], state.kit).name;
-      if (i === 2) value = findIn(INSTRUMENTS[state.modality], state.instrument).name;
-      if (i === 3) {
-        var sp = findIn(SPECIES, state.species);
-        var sa = findIn(SAMPLES, state.samples);
-        var sizes = state.modality === 'single-cell' ? SAMPLE_SIZES_CELLS : SAMPLE_SIZES_READS;
-        var sz = findIn(sizes, state.sampleSize);
-        value = sp.name + ' · ' + sa.name + ' samples · ' + sz.name;
-      }
-      if (i === 4) value = findIn(SCENARIOS[state.modality], state.scenario).name;
+      var eyebrow = 'Step ' + (i + 1) + ' \u00B7 ' + STEPS[i].label;
+      var value = stepSummary(i) || '\u2014';
       root.appendChild(collapsedCard(i, eyebrow, value));
     }
 
@@ -1013,35 +1285,16 @@
   var params = new URLSearchParams(window.location.search);
   if (params.get('embed') === '1') document.body.classList.add('is-embedded');
   function applyTheme(value) {
-    var dark = value === 'dark';
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
-    var btn = document.getElementById('themeToggle');
-    if (btn) {
-      btn.classList.toggle('is-on', dark);
-      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-    }
+    // A host page may pin a theme; otherwise the operating system decides.
+    document.documentElement.setAttribute('data-theme', value === 'dark' ? 'dark' : 'light');
   }
   if (params.get('theme') === 'dark') applyTheme('dark');
+  else if (params.get('theme') === 'light') applyTheme('light');
   window.addEventListener('message', function(e){
     if (e && e.data && e.data.type === 'di-demo-theme') applyTheme(e.data.value);
   });
 
   document.getElementById('restartBtn').addEventListener('click', reset);
-
-  var coverageBtn = document.getElementById('coverageToggle');
-  coverageBtn.addEventListener('click', function(){
-    var on = !coverageBtn.classList.contains('is-on');
-    coverageBtn.classList.toggle('is-on', on);
-    coverageBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-  });
-
-  var themeBtn = document.getElementById('themeToggle');
-  themeBtn.addEventListener('click', function(){
-    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', dark ? '' : 'dark');
-    themeBtn.classList.toggle('is-on', !dark);
-    themeBtn.setAttribute('aria-pressed', !dark ? 'true' : 'false');
-  });
 
   render();
 })();
