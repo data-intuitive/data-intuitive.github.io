@@ -3,7 +3,6 @@
     "listing": "/insights/blog.html",
     "items": [
       "/insights/blog/2026-06-12-interoperable-single-cell-pipelines-anndatar-viash/index.html",
-      "/insights/blog/2026-03-31-unlocking-data-platform-for-r-users-with-laminr/index.html",
       "/insights/blog/2026-02-18-resuming-workflow-nextflow-asset-caching/index.html",
       "/insights/blog/2026-02-10-eu-data-processing/index.html",
       "/insights/blog/2026-01-27-multiomics-power-promise-practical-challenges/index.html",
@@ -37,14 +36,10 @@
     ]
   },
   {
-    "listing": "/company/index.html",
-    "items": [
-      "/company/careers/internships/index.html"
-    ]
-  },
-  {
     "listing": "/insights/news.html",
     "items": [
+      "/insights/news/2026-09-14-basel-nextgen-omics/index.html",
+      "/insights/news/2026-09-04-interface-beta-programme/index.html",
       "/insights/news/2026-05-24-knowledgeforgrowth/index.html",
       "/insights/news/2026-01-30-luxprovide/index.html",
       "/insights/news/2025-09-16-NGOUK25/index.html",
@@ -53,9 +48,7 @@
       "/insights/news/2025-05-15-webinar/index.html",
       "/insights/news/2025-05-08-knowledgeforgrowth/index.html",
       "/insights/news/2024-11-12-scienceforhealth/index.html",
-      "/insights/news/2024-09-17-data-intuitive-at-scverse-conference-2024/index.html",
       "/insights/news/2024-08-30-bioeurope/index.html",
-      "/insights/news/2024-03-19-framework-laptops/index.html",
       "/insights/news/2023-12-15-fit_to_go_global/index.html",
       "/insights/news/2023-05-22-scverse-hackathon/index.html",
       "/insights/news/2023-02-05-sustain/index.html",

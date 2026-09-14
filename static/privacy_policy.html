@@ -272,7 +272,7 @@ cookieconsent.run({
               "applicationCategory": "Bioinformatics workflow management platform",
               "name": "Omics analysis Platform",
               "description": "Viash Hub is a one-stop workflow management platform designed for enterprise use in single cell analysis",
-              "url": "https://www.data-intuitive.com/products/platform.html"
+              "url": "https://www.data-intuitive.com/services/services.html"
             },
             {
               "@type": "Service",
@@ -318,13 +318,7 @@ cookieconsent.run({
               <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
             </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="../products/platform.html">Platform</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="../services/services.html">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../products/partnerships.html">Partnerships</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../company/index.html">Company</a>
@@ -345,11 +339,40 @@ cookieconsent.run({
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             </button>
-            <a href="../contact/contact.html" class="btn btn-secondary">Contact Us</a>
+            <a href="../contact/bookmeeting.html" class="btn btn-secondary">Book a meeting</a>
           </div>
         </div>
       </nav>
     </header>
+
+    <section class="topnote">
+      <div class="container">
+        <a href="../insights/news/2026-09-14-basel-nextgen-omics/">
+          <span class="topnote-wide">
+            <span class="topnote-tag">Basel · 13 and 14 October</span>
+            <span>We are at NextGen Omics, Tech &amp; Data 2026, booth 20. Come and say hello.</span>
+          </span>
+          <span class="topnote-narrow">
+            <span class="topnote-tag">Basel</span>
+            <span>NextGen Omics, 13 and 14 Oct, booth 20</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <script>
+  (function () {
+    var bar = document.querySelector('.topnote');
+    if (!bar) return;
+    function apply() {
+      document.documentElement.style.setProperty('--topnote-h', bar.offsetHeight + 'px');
+    }
+    apply();
+    window.addEventListener('load', apply);
+    window.addEventListener('resize', apply);
+  })();
+    </script>
+
 
     <script>
     /* ============================================================
@@ -642,15 +665,14 @@ Registered: BE 0833.160.219</p>
       </g>
     </svg>
     <div class="container position-relative" style="z-index:2;">
-      <span class="overline" id="footer-cta-overline" style="color:#9B73C2;">Start a conversation</span>
-      <h2 class="text-white" id="footer-cta-title">Start a conversation about your omics data.</h2>
-      <p class="text-white-75 mx-auto" id="footer-cta-body" style="max-width:58ch; font-size:17px; opacity:0.75; margin-bottom:32px;">Whether you're scoping a platform deployment or a one-off engagement, we'll make sure the first call is short and the next step is clear.</p>
+      <span class="overline" id="footer-cta-overline" style="color:#9B73C2;">The first step</span>
+      <h2 class="text-white" id="footer-cta-title">Bring us the question you keep re-answering.</h2>
+      <p class="text-white-75 mx-auto" id="footer-cta-body" style="max-width:58ch; font-size:17px; opacity:0.75; margin-bottom:32px;">In 45 minutes we mark what already runs for your instrument and kit, scope the gap if there is one and give you a project price.</p>
       <div class="d-flex gap-3 justify-content-center flex-wrap">
         <a href="../contact/bookmeeting.html" class="btn btn-secondary" id="footer-cta-primary">
           <span id="footer-cta-primary-text">Book a meeting</span>
           <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
         </a>
-        <a href="../contact/contact.html" class="btn btn-secondary-light">Contact us</a>
       </div>
     </div>
     <script>
@@ -681,49 +703,13 @@ Registered: BE 0833.160.219</p>
       }
 
       // Order matters: most specific paths first.
-      if (p.indexOf("/products/partnerships") === 0) {
-        set(
-          "Become a partner",
-          "Build on, resell or embed the platform.",
-          "Tell us which route fits, reseller, kit, instrument, OEM or method contribution. We'll set up an introductory call and outline the commercial path.",
-          "/contact/contact.html",
-          "Discuss a partnership"
-        );
-      } else if (p.indexOf("/products/pricing") === 0) {
-        set(
-          "Get a quote",
-          "Pricing that matches the way you'll use it.",
-          "Tell us the team size, the assays and how you want to deploy. We'll point you to the right distributor for credit packs, or scope an enterprise agreement directly.",
-          "/contact/bookmeeting.html",
-          "Request a quote"
-        );
-      } else if (p === "/luxprovide.html" || p.indexOf("/luxprovide") === 0) {
+      if (p === "/luxprovide.html" || p.indexOf("/luxprovide") === 0) {
         set(
           "European HPC",
           "Bring your omics workloads to MeluXina.",
-          "A 60 minute call with Data Intuitive. We'll tell you what's possible on sovereign European HPC and what the next step looks like.",
+          "A 45 minute call with Data Intuitive. We'll tell you what's possible on sovereign European HPC and what the next step looks like.",
           "/contact/bookmeeting.html",
-          "Book a scoping call"
-        );
-      } else if (p.indexOf("/products/platform") === 0) {
-        // Platform page closes on the 7-step flow and the demo iframe - invite
-        // to walk through the same flow live, on the user's own assay.
-        set(
-          "See it in action",
-          "Walk through the platform with us.",
-          "A 45-minute live walkthrough with a PhD bioinformatician. We map your assay to the right pipeline and answer questions as they come up.",
-          "/contact/bookmeeting.html",
-          "Book a walkthrough"
-        );
-      } else if (p.indexOf("/products/pipelines") === 0) {
-        // Pages that list validated pipelines - the natural next step is
-        // "what if mine isn't on the list?"
-        set(
-          "Missing a pipeline?",
-          "Don't see your assay?",
-          "Tell us what you're running. We'll tell you whether it's already in the catalogue, in development, or something we can build with you.",
-          "/contact/contact.html",
-          "Ask about a pipeline"
+          "Book a meeting"
         );
       } else if (p.indexOf("/products/comparison") === 0) {
         // Comparison page closes on the feature matrix - invite for a tailored
@@ -733,7 +719,7 @@ Registered: BE 0833.160.219</p>
           "Want a side-by-side on your case?",
           "Send us your current stack or your shortlist. We'll show you exactly where the Data Intuitive platform sits in your situation. 45 minutes, no slide deck.",
           "/contact/bookmeeting.html",
-          "Book a comparison call"
+          "Book a meeting"
         );
       } else if (p.indexOf("/products/approach") === 0) {
         // Foundational approach - engineering-flavoured close, no sales pitch.
@@ -742,7 +728,7 @@ Registered: BE 0833.160.219</p>
           "Want to talk engineering?",
           "If the way we build resonates, let's have an honest engineering conversation. No sales pitch, just a 45-minute chat with someone who builds this stuff.",
           "/contact/bookmeeting.html",
-          "Talk engineering"
+          "Book a meeting"
         );
       } else if (p.indexOf("/products/technical-prerequisites") === 0) {
         // Setup page - readers landed here trying to figure out infrastructure.
@@ -750,7 +736,7 @@ Registered: BE 0833.160.219</p>
         set(
           "Setup help",
           "Want help picking a setup?",
-          "Book a 45-minute call. A PhD bioinformatician will help you choose the right option and walk through what your IT team needs to do.",
+          "Book a 45-minute call. A senior bioinformatician will help you choose the right option and walk through what your IT team needs to do.",
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
@@ -760,7 +746,7 @@ Registered: BE 0833.160.219</p>
           "Talk to an expert",
           "Tell us the assay, the bottleneck and the deadline. We'll tell you whether a service engagement is the right fit and what it would look like.",
           "/contact/bookmeeting.html",
-          "Talk to an expert"
+          "Book a meeting"
         );
       } else if (p.indexOf("/static/trust_center") === 0) {
         set(
@@ -770,21 +756,28 @@ Registered: BE 0833.160.219</p>
           "mailto:DPO@Data-Intuitive.com",
           "Contact DPO@Data-Intuitive.com"
         );
-      } else if (p.indexOf("/company") === 0) {
-        set(
-          "Join us",
-          "Want to work with us?",
-          "We're hiring engineers, computational biologists and bioinformaticians. Send us your CV or tell us where you'd fit.",
-          "/company/careers.html",
-          "Apply now"
-        );
+      // Company pages fall through to the default CTA while there are no open
+      // positions. Restore this branch when hiring resumes:
+      //   } else if (p.indexOf("/company") === 0) {
+      //     set("Join us", "Want to work with us?",
+      //         "We're hiring engineers, computational biologists and bioinformaticians. Send us your CV or tell us where you'd fit.",
+      //         "/company/careers.html", "Apply now");
       } else if (p.indexOf("/insights/") === 0 || p.indexOf("/approach/") === 0 || p.indexOf("/case-studies/") === 0) {
         set(
           "Take the next step",
           "Like what you're reading?",
-          "Bring a real assay or a real problem and we'll show you what the platform does end-to-end. 30 minutes, no slide deck.",
+          "Bring a real assay or a real problem and we'll show you what the platform does end-to-end. 45 minutes, no slide deck.",
           "/contact/bookmeeting.html",
-          "Book a demo"
+          "Book a meeting"
+        );
+      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+        // Applying, not booking: point at the announcement rather than a call.
+        set(
+          "Or read first",
+          "Want context before you apply?",
+          "Read the announcement and see how the platform fits together, then come back here.",
+          "/insights/news/2026-09-04-interface-beta-programme/",
+          "Read the announcement"
         );
       } else if (p.indexOf("/contact") === 0) {
         // Already on contact, keep generic, with a softer pointer back to product info.
@@ -792,8 +785,17 @@ Registered: BE 0833.160.219</p>
           "Or read first",
           "Want context before the call?",
           "Have a look at how the platform fits together, what services we offer and how partnerships work, then come back here when you're ready.",
-          "/products/platform.html",
-          "See the platform"
+          "/services/services.html",
+          "See our services"
+        );
+      } else if (p.indexOf("/static/thank_apply") === 0) {
+        // A candidate has just applied. Sales copy is the wrong audience here.
+        set(
+          "Meanwhile",
+          "Meet the team you would be working with.",
+          "We read every application. While you wait, have a look at who is here and how we work.",
+          "/company/index.html#people",
+          "Meet the team"
         );
       } else if (p === "/" || p === "/index.html") {
         // Home closing CTA - consultative, opens up the full range of what we
@@ -801,7 +803,7 @@ Registered: BE 0833.160.219</p>
         set(
           "45-minute call",
           "Talk to an expert.",
-          "Tell us what you're working on and we'll show you how we can help - the platform, a service engagement or a partnership. Technical or commercial, whoever you need in the room. No slide deck.",
+          "Tell us what you're working on and we'll show you how we can help with your analysis. Technical or commercial, whoever you need in the room. No slide deck.",
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
@@ -820,7 +822,7 @@ Registered: BE 0833.160.219</p>
           <a href="../index.html" class="d-inline-block mb-3">
             <img src="../images/main-logo.svg" alt="Data Intuitive" class="footer-logo">
           </a>
-          <p class="footer-tagline">Belgian bioinformatics company specialising in omics data workflows since 2011.</p>
+          <p class="footer-tagline">IT experts since 2011<br>Omics data analysis since 2018.</p>
           <div class="footer-social">
             <a href="https://github.com/data-intuitive/" target="_blank" aria-label="GitHub">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewbox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
@@ -836,12 +838,9 @@ Registered: BE 0833.160.219</p>
 
         <!-- Platform column -->
         <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
-          <h6 class="footer-col-heading">Platform</h6>
+          <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
-            <li><a href="../products/platform.html">Platform</a></li>
             <li><a href="../services/services.html">Services</a></li>
-            <li style="display:none;"><a href="../products/pricing.html">Pricing</a></li>
-            <li><a href="../products/partnerships.html">Partnerships</a></li>
           </ul>
         </div>
 
@@ -851,7 +850,7 @@ Registered: BE 0833.160.219</p>
           <ul class="footer-links">
             <li><a href="../company/index.html">About</a></li>
             <li><a href="../company/index.html#people">Team</a></li>
-            <li><a href="../company/careers.html">Careers</a></li>
+            <!-- Careers link hidden while there are no open positions -->
           </ul>
         </div>
 

@@ -8,10 +8,7 @@ Typical engagements: custom pipeline development, single-cell and spatial omics 
 
 ## Products
 
-- [Platform](https://www.data-intuitive.com/products/platform.html): the omics analysis platform — validated pipelines on customer-owned compute.
-- [Pipelines](https://www.data-intuitive.com/products/pipelines.html): the pipeline catalogue and what each one does.
 - [Foundation](https://www.data-intuitive.com/products/foundation.html): the underlying data foundation layer.
-- [Partnerships](https://www.data-intuitive.com/products/partnerships.html): working with us as a partner or distributor.
 - [Technical prerequisites](https://www.data-intuitive.com/products/technical-prerequisites.html): what is needed to deploy.
 
 ## Services

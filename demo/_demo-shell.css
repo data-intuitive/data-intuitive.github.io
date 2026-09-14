@@ -1,5 +1,5 @@
 /* Shared styles for the demo modal pages (configurator + contact + bookmeeting).
-   These live inside the modal iframe on /products/platform.html, and as
+   These live inside the modal iframe on the pages that embed the demo, and as
    standalone pages too. */
 :root {
   --p-color: #7C4BAC;

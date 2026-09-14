@@ -194,7 +194,9 @@
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
 
-  .demo-content { display: flex; flex-direction: column; gap: 16px; }
+  .demo-content { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .demo-progress { min-width: 0; }
+  .step-card, .review-card, .sel-card { min-width: 0; }
   .step-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -437,7 +439,30 @@
   .review-cta-btn.is-secondary { background: var(--s-color); color: #FFFFFF; }
   .review-cta-btn.is-secondary:hover { background: #009488; color: #FFFFFF; text-decoration: none; transform: translateY(-1px); }
 
+  @media (max-width: 380px) {
+    .demo-main, .demo-content, .demo-progress, .step-card { min-width: 0; }
+    .step-card { padding: 18px 14px; }
+    .demo-header { padding: 10px 12px; }
+  }
   @media (max-width: 720px) {
+    /* Header scrolls away instead of pinning a quarter of the screen */
+    .demo-header { position: static; }
+    .step-card, .review-card, .app-frame { scroll-margin-top: 12px; }
+    /* Progress rail becomes a compact horizontal strip */
+    .demo-progress { padding: 12px 14px 10px; }
+    .demo-progress h3 { margin-bottom: 8px; }
+    .demo-progress ol { flex-direction: row; overflow-x: auto; gap: 6px; padding-bottom: 4px; scrollbar-width: thin; }
+    .demo-progress-step { flex: 0 0 auto; padding: 6px 8px; gap: 8px; align-items: center; }
+    .demo-progress-divider { flex: 0 0 auto; border-top: 0; border-left: 1px solid var(--border-soft); margin: 0 2px; padding: 6px 8px; writing-mode: horizontal-tb; white-space: nowrap; align-self: center; }
+    .demo-step-summary { display: none; }
+    .demo-step-label { white-space: nowrap; font-size: 12.5px; }
+    .demo-progress-step:not(.is-active) .demo-step-label { display: none; }
+    /* Footer row */
+    .step-action.split { flex-wrap: wrap; gap: 8px; }
+    .step-count { display: none; }
+    .step-action.split .btn-primary { flex: 1; justify-content: center; }
+    .step-action .btn-primary { font-size: 13.5px; padding: 11px 14px; }
+    .app-window .step-card.in-app { height: min(680px, calc(100vh - 90px)); }
     .demo-header { padding: 12px 16px; align-items: flex-start; gap: 12px; }
     .demo-scope { font-size: 12px; }
     .demo-crumb b { font-size: 14px; }
@@ -449,6 +474,53 @@
     .review-row { grid-template-columns: 1fr; gap: 12px; padding: 14px 0; }
     .review-card { padding: 22px 20px; }
     .demo-progress { position: static; }
+  }
+
+  /* ---- Pinned client window (compute step onwards) ----
+     The page fills the viewport and does not scroll. The rail keeps its own
+     scroll, and the client window is centred in what is left. Below 901px the
+     rail stacks above the window and too little height is left, so narrow and
+     short windows keep the normal scrolling layout. */
+  @media (min-width: 901px) and (min-height: 560px) {
+    body.is-pinned { height: 100vh; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+    body.is-pinned .demo-main {
+      flex: 1 1 auto; min-height: 0;
+      padding-top: 20px; padding-bottom: 20px;
+      align-items: stretch;
+    }
+    body.is-pinned .demo-progress { max-height: 100%; overflow-y: auto; }
+    body.is-pinned .demo-content {
+      height: 100%; min-height: 0; overflow: hidden;
+      justify-content: center;
+    }
+    /* The rail already carries every earlier choice, so the summary and the
+       collapsed cards make way for the step itself. */
+    body.is-pinned .demo-content > .sel-card,
+    body.is-pinned .demo-content > .step-card.is-collapsed { display: none; }
+    /* The install step keeps its own card rather than the client window, so it
+       gets the same treatment: fixed height, footer at the bottom, the stage
+       scrolling inside if a short window leaves too little room. */
+    body.is-pinned .demo-content > .step-card:not(.in-app):not(.is-collapsed) {
+      height: 100%; max-height: 686px; min-height: 0;
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    body.is-pinned .demo-content > .step-card:not(.in-app):not(.is-collapsed) .installer-stage {
+      flex: 1 1 auto; min-height: 0; overflow-y: auto;
+    }
+    body.is-pinned .demo-content > .step-card:not(.in-app):not(.is-collapsed) .step-action { margin-top: 12px; }
+    /* The example report keeps its full preview height inside the window, so
+       the three plots are shown whole rather than clipped by flex shrinking. */
+    body.is-pinned .app-window .step-card.in-app .qc-example { flex: 0 0 auto; }
+    /* Fixed size, so the window does not resize or move as the content of a
+       step changes. 686 = the 680px card plus its label row. */
+    body.is-pinned .app-frame { min-height: 0; height: 100%; max-height: 686px; }
+    body.is-pinned .app-window {
+      display: flex; flex-direction: column;
+      min-height: 0; flex: 1 1 auto;
+    }
+    body.is-pinned .app-window .step-card.in-app {
+      height: auto; flex: 1 1 auto; min-height: 0; max-height: none;
+    }
   }
 
   /* Embedded mode (loaded inside a modal iframe on the platform page).
@@ -468,6 +540,54 @@
   }
   .opt-card-chip.status-boarding { background: rgba(0,180,160,0.14); color: #0E8276; }
 
+  /* ---- Entry points as a list ---- */
+  .ep-list {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    background: var(--surface-elev);
+  }
+  .ep-row {
+    display: flex; align-items: center; gap: 18px;
+    width: 100%; text-align: left; cursor: pointer;
+    padding: 14px 18px;
+    background: transparent; border: 0;
+    border-left: 3px solid var(--p-color);
+    border-bottom: 1px solid var(--border);
+    font: inherit; color: inherit;
+    transition: background .15s ease;
+  }
+  .ep-row:last-child { border-bottom: 0; }
+  .ep-row:hover { background: var(--surface-alt); }
+  .ep-row.is-selected { background: rgba(124,75,172,0.08); }
+  .ep-row.is-offline {
+    cursor: not-allowed; opacity: 0.55;
+    border-left-color: var(--border);
+  }
+  .ep-row.is-offline:hover { background: transparent; }
+  .ep-row-main { display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-width: 0; }
+  .ep-row-title { font-family: var(--display-font); font-size: 16px; font-weight: 600; color: var(--text-strong); }
+  .ep-row-desc { font-size: 13.5px; color: var(--text-soft); }
+  .ep-row-status { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex: 0 0 auto; }
+  .ep-row-state {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #0E8276;
+  }
+  .ep-row.is-offline .ep-row-state { color: var(--text-soft); }
+  .ep-row-note { font-family: var(--mono); font-size: 12px; color: var(--text-soft); }
+  .ep-row-warn {
+    display: flex; gap: 8px; margin-top: 8px;
+    font-size: 12.5px; line-height: 1.45; color: #8A6516;
+    background: rgba(201,162,40,0.10); border: 1px solid rgba(201,162,40,0.28);
+    border-radius: 8px; padding: 7px 10px;
+  }
+  .ep-row-warn > span:first-child { flex: 0 0 auto; }
+  @media (max-width: 520px) {
+    .ep-row { gap: 12px; padding: 12px 14px; }
+    .ep-row-title { font-size: 15px; }
+    .ep-row-desc { font-size: 12.5px; }
+    .ep-row-note { font-size: 11px; }
+  }
+
   /* ---- Step 2/3/4: cards and rows ---- */
   .opt-grid.rows { grid-template-columns: 1fr; }
   .opt-card.kit-card { border-top: 2px solid rgba(124,75,172,0.35); }
@@ -486,6 +606,16 @@
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
   .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .field-grid.is-stacked { grid-template-columns: 1fr; gap: 22px; }
+  .field-with-browse { display: flex; gap: 8px; align-items: stretch; }
+  .field-with-browse > input { flex: 1 1 auto; min-width: 0; }
+  .browse-btn {
+    flex: 0 0 auto;
+    background: var(--surface-alt); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0 14px;
+    font: inherit; font-family: var(--body-font); font-size: 13px;
+    color: var(--text-soft); cursor: not-allowed; opacity: 0.6;
+  }
   .field > label {
     font-size: 13.5px; font-weight: 600; color: var(--text-strong);
   }
@@ -521,6 +651,459 @@
   }
   .review-chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 
+  /* ---- Progress rail: path divider ---- */
+  .demo-progress-divider {
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--p-color);
+    padding: 12px 10px 4px;
+    border-top: 1px solid var(--border-soft);
+    margin-top: 6px;
+  }
+
+  /* ---- Your selection strip ---- */
+  .sel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: border-color .15s;
+  }
+  .sel-card:hover { border-color: var(--p-color); }
+  .sel-label {
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+    display: block; margin-bottom: 8px;
+  }
+  .sel-row { display: flex; flex-wrap: wrap; gap: 10px 26px; }
+  .sel-pair { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .sel-k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); }
+  .sel-v { font-size: 13.5px; font-weight: 600; color: var(--text-strong); }
+
+  /* ---- Review: pipeline steps ---- */
+  .review-row.wf-row { grid-template-columns: 1fr; }
+  .wf-steps { margin: 6px 0 0; padding: 0; list-style: none; counter-reset: wf; display: grid; gap: 6px; }
+  .wf-steps li {
+    counter-increment: wf;
+    display: grid; grid-template-columns: 26px 1fr; gap: 2px 10px;
+    align-items: baseline;
+    background: var(--surface); border: 1px solid var(--border-soft); border-radius: 8px;
+    padding: 8px 12px 8px 10px;
+  }
+  .wf-steps li::before {
+    content: counter(wf);
+    grid-row: 1 / span 2;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--p-color); color: #FFFFFF;
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    display: grid; place-items: center; align-self: center;
+  }
+  .wf-step-name { font-weight: 600; font-size: 14px; color: var(--text-strong); display: flex; gap: 8px; align-items: center; }
+  .wf-par { font-size: 9.5px; padding: 1px 7px; }
+  .wf-step-note { font-size: 12.5px; color: var(--text-muted); line-height: 1.4; }
+  .wf-dag { margin-top: 10px; font-style: italic; }
+
+  /* ---- Review: path choice ---- */
+  .path-title {
+    font-family: var(--display-font);
+    font-size: 18px; font-weight: 600; color: var(--text-strong);
+    margin: 28px 0 4px;
+  }
+  .path-intro { font-size: 14px; color: var(--text-muted); margin: 0 0 14px; line-height: 1.5; }
+  .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .path-grid { grid-template-columns: 1fr; } }
+  .path-card { min-height: 150px; }
+  .path-card .opt-card-title { font-size: 17px; }
+  .path-secondary {
+    margin-top: 22px; padding-top: 18px;
+    border-top: 1px solid rgba(11,29,58,0.08);
+    font-size: 13.5px; color: var(--text-muted);
+  }
+  .path-secondary .review-cta-row { margin-top: 10px; }
+
+  /* ---- Option pills (status) ---- */
+  .opt-card-chip.green { background: rgba(0,180,160,0.14); color: #0E8276; }
+  .opt-card-chip.slate { background: rgba(90,104,144,0.14); color: var(--text-muted); }
+  .opt-card.is-disabled { opacity: 0.55; cursor: not-allowed; }
+  .opt-card.is-disabled:hover { transform: none; border-color: var(--border); box-shadow: none; }
+  .opt-helper { font-size: 12.5px; color: var(--text-soft); margin: 10px 0 0; line-height: 1.45; }
+  .opt-card-icon { font-size: 22px; line-height: 1; margin-bottom: 2px; }
+
+  /* ---- Prerequisite card ---- */
+  .prereq-head { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; }
+  .prereq-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--p-color); color: #FFFFFF;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-weight: 700; font-size: 15px;
+    flex-shrink: 0;
+  }
+  .prereq-sub { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--text-soft); margin: 0 0 20px 50px; }
+  .sec-label {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 18px 0 8px;
+  }
+  .sec-label:first-of-type { margin-top: 0; }
+  .code-block {
+    position: relative;
+    background: var(--surface-alt);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 14px 52px 14px 16px;
+    font-family: var(--mono);
+    font-size: 13px; line-height: 1.6;
+    color: var(--text-strong);
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .code-block .cmt { color: var(--text-soft); }
+  /* The install commands show the shape of the work, they are not there to be
+     followed line by line. They keep their colour and are blurred instead, so
+     the block still reads as a terminal without inviting anyone to type it. */
+  .code-block.is-faded {
+    max-height: 132px; overflow: hidden;
+    filter: blur(2.6px);
+    user-select: none;
+  }
+  .code-block.is-faded .copy-btn { display: none; }
+  .code-note {
+    margin: 6px 0 0; font-size: 12px; color: var(--text-soft);
+  }
+  .copy-btn {
+    position: absolute; top: 8px; right: 8px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font: inherit; font-family: var(--body-font); font-size: 11.5px;
+    color: var(--text-muted); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    transition: color .15s, border-color .15s;
+  }
+  .copy-btn:hover { color: var(--p-color); border-color: var(--p-color); }
+  .copy-btn.is-copied { color: #0E8276; border-color: rgba(0,180,160,0.5); }
+  .prose { font-size: 14.5px; line-height: 1.6; color: var(--text); margin: 0; }
+  .prose code {
+    font-family: var(--mono); font-size: 12.5px;
+    background: var(--surface-alt); border: 1px solid var(--border-soft);
+    border-radius: 5px; padding: 1px 6px;
+    color: var(--text-strong);
+  }
+  .check-panel {
+    margin-top: 20px;
+    background: rgba(124,75,172,0.07);
+    border: 1px solid rgba(124,75,172,0.20);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .check-panel .sec-label { color: var(--p-color); margin-top: 0; }
+  .check-panel .code-block { background: var(--surface); }
+  .check-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 12px;
+    font-size: 14px; color: var(--text-strong); font-weight: 600;
+    cursor: pointer;
+  }
+  .check-row input { width: 18px; height: 18px; accent-color: var(--s-color); cursor: pointer; }
+  .demo-step-tick {
+    display: inline-block; margin-left: 6px;
+    color: #0E8276; font-weight: 800; font-size: 12px;
+  }
+  .step-action.split { justify-content: space-between; align-items: center; }
+  .btn-ghost {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-muted); border-radius: 10px;
+    padding: 11px 16px; font: inherit; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: color .15s, border-color .15s;
+  }
+  .btn-ghost:hover { color: var(--text-strong); border-color: var(--p-color); }
+  .step-count {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  /* ---- End user: download ---- */
+  .demo-notice {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: rgba(201,162,40,0.10);
+    border: 1px solid rgba(201,162,40,0.35);
+    border-left: 3px solid #C9A228;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13.5px; line-height: 1.5; color: var(--text);
+    margin: 0 0 18px;
+  }
+  .demo-notice b { color: var(--text-strong); }
+  .dl-card { align-items: center; text-align: center; padding: 24px 18px 20px; }
+  .dl-card .opt-card-icon { font-size: 34px; margin-bottom: 6px; }
+  .dl-card .opt-card-meta { justify-content: center; margin-top: 8px; }
+  .dl-logo-blank { width: 1px; }
+  .dl-logo { height: 48px; width: auto; max-width: 64px; object-fit: contain; margin-bottom: 8px; }
+  .dl-fake-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--p-color); color: #FFFFFF;
+    border-radius: 8px; padding: 8px 14px;
+    font-size: 13px; font-weight: 700;
+    margin-top: 6px;
+  }
+  .opt-card.is-selected .dl-fake-btn { background: var(--s-color); }
+
+  /* ---- End user: installer illustration ---- */
+  .installer-stage { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 4px 0 0; }
+  .monitor {
+    width: min(620px, 100%);
+    background: #1B2238;
+    border: 8px solid #2C3550;
+    border-radius: 16px;
+    padding: clamp(9px, 1.5vh, 14px);
+    box-shadow: 0 18px 40px rgba(11,29,58,0.25);
+    color: #E6ECF5;
+    font-family: var(--body-font);
+  }
+  .monitor-window {
+    background: #F4F6FA; color: #1F2A44;
+    border-radius: 10px; overflow: hidden;
+  }
+  .monitor-titlebar {
+    display: flex; align-items: center; gap: 8px;
+    background: #E3E7EF; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #4A5578;
+  }
+  .monitor-titlebar .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .monitor-titlebar .dot.r { background: #E05C4B; } .monitor-titlebar .dot.y { background: #E8B84A; } .monitor-titlebar .dot.g { background: #3DBE7E; }
+  .monitor-titlebar span.t { margin-left: 6px; }
+  /* Windows: title on the left, square min / max / close controls on the right */
+  .monitor-window.os-windows .monitor-titlebar { background: #FFFFFF; border-bottom: 1px solid #E1E4EA; padding: 6px 0 6px 12px; }
+  .monitor-window.os-windows .monitor-titlebar span.t { margin-left: 0; flex: 1; display: inline-flex; align-items: center; gap: 8px; }
+  .monitor-window.os-windows .win-icon { width: 14px; height: 14px; border-radius: 3px; background: linear-gradient(135deg, #7C4BAC, #00B4A0); display: inline-block; }
+  .win-controls { display: flex; }
+  .win-controls span { width: 44px; height: 30px; display: grid; place-items: center; font-size: 12px; color: #1F2A44; }
+  .win-controls span.close:hover { background: #E81123; color: #FFFFFF; }
+  .monitor-window.os-windows .monitor-body { background: #F3F3F3; }
+  .monitor-window.os-windows .inst-bar { border-radius: 0; height: 8px; }
+  .monitor-window.os-windows .inst-bar > div { border-radius: 0; background: #0067C0; }
+  .monitor-window.os-windows .inst-log { border-radius: 0; background: #0C0C0C; color: #CCCCCC; }
+  /* Linux (GNOME-style): centred title, single round close button */
+  .monitor-window.os-linux .monitor-titlebar { background: #2E3440; color: #E5E9F0; justify-content: center; position: relative; padding: 10px 12px; }
+  .monitor-window.os-linux .monitor-titlebar span.t { margin-left: 0; }
+  .monitor-window.os-linux .gnome-close { position: absolute; right: 10px; top: 7px; width: 20px; height: 20px; border-radius: 50%; background: #4C566A; color: #ECEFF4; display: grid; place-items: center; font-size: 11px; }
+  .monitor-window.os-linux .monitor-body { background: #ECEFF4; }
+  .monitor-window.os-linux .inst-bar > div { background: #5E81AC; }
+  .monitor-body { padding: clamp(9px, 1.5vh, 14px) 18px; }
+  .monitor-body h4 { margin: 0 0 4px; font-family: var(--display-font); font-size: 17px; color: #0F1B3D; }
+  .monitor-body p { margin: 0 0 12px; font-size: 13px; color: #5A6890; }
+  .inst-bar { height: 10px; background: #DDE2EC; border-radius: 999px; overflow: hidden; }
+  .inst-bar > div { height: 100%; width: 0%; background: linear-gradient(90deg, #7C4BAC, #00B4A0); border-radius: 999px; transition: width .35s linear; }
+  .inst-status { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11.5px; color: #5A6890; margin-top: 8px; }
+  .inst-log { margin-top: 8px; height: clamp(40px, 6.6vh, 58px); overflow: hidden; background: #0F1B3D; color: #B9E5DE; font-family: var(--mono); font-size: 11.5px; line-height: 1.55; border-radius: 8px; padding: 10px 12px; height: 112px; overflow: hidden; }
+  .inst-log div { white-space: nowrap; }
+  .inst-done { color: #0E8276; font-weight: 700; }
+  .monitor-stand { width: 90px; height: 18px; background: #2C3550; clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%); }
+  .monitor-base { width: 200px; height: 7px; background: #2C3550; border-radius: 0 0 8px 8px; margin-bottom: 10px; }
+  .keyboard {
+    width: min(520px, 100%);
+    background: #2C3550; border-radius: 10px;
+    padding: 8px; display: flex; flex-direction: column; gap: 4px;
+    box-shadow: 0 10px 24px rgba(11,29,58,0.22);
+  }
+  .key-row { display: flex; gap: 4px; }
+  .key { flex: 1; height: clamp(7px, 1.15vh, 10px); background: #3B4666; border-radius: 3px; }
+  .key.w2 { flex: 2; } .key.w6 { flex: 6; }
+  .key.lit { background: #7C4BAC; box-shadow: 0 0 8px rgba(124,75,172,0.7); }
+
+  /* ---- End user: where to run ---- */
+  .warn-inline {
+    display: flex; gap: 8px; align-items: flex-start;
+    background: rgba(224,92,75,0.08);
+    border: 1px solid rgba(224,92,75,0.28);
+    border-left: 3px solid var(--coral);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12.5px; line-height: 1.45; color: var(--text);
+    margin-top: 6px;
+  }
+  .cloud-logos { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .cloud-logo {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 10px; color: var(--text-strong);
+    cursor: pointer; transition: border-color .15s, background .15s, color .15s;
+  }
+  .cloud-logo:hover { border-color: var(--p-color); }
+  .cloud-logo.is-selected { background: var(--p-color); border-color: var(--p-color); color: #FFFFFF; }
+
+  /* ---- Final page blocks ---- */
+  .next-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 8px; }
+  .next-block { background: var(--surface-elev); border: 1px solid var(--border); border-top: 3px solid var(--p-color); border-radius: 12px; padding: 16px 18px; }
+  .next-block h3 { margin: 0 0 8px; font-family: var(--display-font); font-size: 16px; color: var(--text-strong); line-height: 1.3; }
+  .next-block p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-muted); }
+  .next-block:nth-child(2) { border-top-color: var(--s-color); }
+  .next-block:nth-child(3) { border-top-color: var(--navy); }
+
+  /* ---- Desktop client frame ---- */
+  .app-frame { display: flex; flex-direction: column; gap: 6px; scroll-margin-top: 84px; }
+  .step-card, .review-card { scroll-margin-top: 84px; }
+  .app-frame-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-soft); padding-left: 4px; }
+  .app-window { border: 6px solid #2C3550; border-radius: 14px; box-shadow: 0 14px 34px rgba(11,29,58,0.22); background: var(--surface); }
+  .app-window .monitor-titlebar { border-radius: 8px 8px 0 0; }
+  .app-window .step-card.in-app {
+    border: 0; border-radius: 0 0 8px 8px;
+    height: 680px;
+    overflow-y: auto;
+    display: flex; flex-direction: column;
+  }
+  .app-window .step-card.in-app > .step-action { margin-top: auto; }
+  .app-window .step-card.in-app::-webkit-scrollbar { width: 10px; }
+  .app-window .step-card.in-app::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+  .app-window .step-card.in-app .step-action { position: sticky; bottom: -28px; z-index: 2; background: var(--surface); padding-bottom: 8px; margin-bottom: -8px; }
+
+  /* ---- Run screen ---- */
+  .loc-box {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    background: var(--surface-alt); border: 1px solid var(--border-soft); border-radius: 10px;
+    padding: 10px 14px; margin: 0 0 16px;
+  }
+  .loc-pair { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .loc-pair code { font-family: var(--mono); font-size: 12.5px; color: var(--text-strong); word-break: break-all; }
+  .loc-arrow { color: var(--text-soft); font-size: 16px; }
+  .run-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .run-layout > * { min-width: 0; }
+  .run-status { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .run-spinner {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid rgba(124,75,172,0.25); border-top-color: var(--p-color);
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .run-progress { flex: 1; min-width: 160px; height: 8px; background: var(--surface-alt); border-radius: 999px; overflow: hidden; border: 1px solid var(--border-soft); }
+  .run-progress > div { height: 100%; width: 0; background: var(--p-color); transition: width .4s; }
+  .run-pct { font-family: var(--mono); font-size: 12px; color: var(--text-muted); min-width: 40px; text-align: right; }
+  .terminal {
+    background: #0F1B3D; color: #C7D2E5;
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
+    border-radius: 12px; padding: 16px 18px;
+    height: 250px; overflow: hidden;
+    position: relative;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .terminal::after {
+    content: ''; position: absolute; inset: auto 0 0 0; height: 40px;
+    background: linear-gradient(180deg, rgba(15,27,61,0), #0F1B3D);
+  }
+  .terminal.is-full { height: auto; min-height: 320px; }
+  .terminal.is-full::after { display: none; }
+  .terminal .cmd { color: #FFFFFF; }
+  .terminal .cmd:not(.cmd2)::before { content: '$ '; color: #5EDBC8; }
+  .terminal .ok { color: #5EDBC8; } .terminal .dim { color: #7A88B5; } .terminal .hl { color: #C9A9F0; }
+  .run-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+  .run-step {
+    background: var(--surface-elev); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 12px;
+    font-size: 12.5px; color: var(--text-muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .run-step .st { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+  .run-step.is-running { border-color: var(--p-color); color: var(--text-strong); }
+  .run-step.is-running .st { background: var(--p-color); }
+  .run-step.is-done { color: var(--text-strong); }
+  .run-step.is-done .st { background: var(--s-color); }
+
+  /* ---- QC report one-pager ---- */
+  .qc-report {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 28px 22px;
+    margin-top: 6px;
+  }
+  .qc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid var(--border-soft); padding-bottom: 14px; }
+  .qc-head h3 { margin: 0; font-family: var(--display-font); font-size: 21px; color: var(--text-strong); }
+  .qc-head p { margin: 4px 0 0; font-size: 12.5px; color: var(--text-muted); font-family: var(--mono); }
+  .qc-verdict {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,180,160,0.14); color: #0E8276;
+    border: 1px solid rgba(0,180,160,0.4);
+    border-radius: 999px; padding: 6px 14px;
+    font-family: var(--mono); font-size: 11.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .qc-section { margin-top: 14px; }
+  .qc-section h4 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-soft); margin: 0 0 10px;
+  }
+  .qc-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .qc-table th { text-align: left; white-space: nowrap; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); padding: 6px 8px; border-bottom: 1px solid var(--border); font-weight: 600; }
+  .qc-table td { white-space: nowrap; padding: 8px 8px; border-bottom: 1px solid var(--border-soft); color: var(--text); font-family: var(--mono); font-size: 12.5px; }
+  .qc-table td:first-child { font-family: var(--body-font); font-weight: 600; color: var(--text-strong); }
+  .qc-table-wrap { overflow-x: auto; }
+  /* Two columns of statistics, so the plots below fit in the preview. */
+  .qc-stats-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; align-items: start; }
+  @media (max-width: 720px) { .qc-stats-2col { grid-template-columns: 1fr; } }
+  .qc-flag { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .qc-flag.pass { background: var(--s-color); } .qc-flag.warn { background: #C9A228; }
+  .qc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .qc-panel { background: var(--surface-elev); border: 1px solid var(--border-soft); border-radius: 10px; padding: 12px 14px; }
+  .qc-panel h5 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--text-strong); }
+  .qc-panel svg { width: 100%; height: auto; display: block; }
+  .qc-panel .qc-cap { font-size: 11.5px; color: var(--text-soft); margin: 6px 0 0; line-height: 1.4; }
+  .qc-foot { margin-top: 18px; font-size: 12px; color: var(--text-soft); line-height: 1.5; border-top: 1px solid var(--border-soft); padding-top: 12px; }
+  /* The reading text runs in two columns and the closing note sits beside the
+     output paragraph, so the plots and their captions fit on the page. */
+  .qc-section > .qc-cap { column-count: 2; column-gap: 26px; }
+  .qc-section.qc-out { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; align-items: start; }
+  .qc-section.qc-out > h4 { grid-column: 1 / -1; }
+  .qc-section.qc-out > .qc-foot { margin-top: 0; border-top: 0; padding-top: 0; }
+  @media (max-width: 720px) {
+    .qc-section > .qc-cap { column-count: 1; }
+    .qc-section.qc-out { grid-template-columns: 1fr; }
+    .qc-section.qc-out > .qc-foot { margin-top: 12px; }
+  }
+  .qc-legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11.5px; color: var(--text-muted); margin-top: 6px; }
+  /* Compact, faded example report */
+  .qc-example {
+    position: relative;
+    max-height: 480px; overflow: hidden;
+    border-radius: 14px;
+  }
+  .qc-example .qc-report {
+    padding: 16px 18px 40px;
+    opacity: 0.72;
+    filter: saturate(0.7);
+    font-size: 12px;
+  }
+  .qc-example .qc-head { padding-bottom: 8px; }
+  .qc-example .qc-head h3 { font-size: 16px; }
+  .qc-example .qc-head p { font-size: 10.5px; }
+  .qc-example .qc-verdict { font-size: 9.5px; padding: 4px 10px; }
+  .qc-example .qc-section { margin-top: 10px; }
+  .qc-example .qc-section h4 { font-size: 9.5px; margin-bottom: 6px; }
+  .qc-example .qc-table th { font-size: 9px; padding: 4px 6px; }
+  .qc-example .qc-table td { font-size: 10.5px; padding: 4px 6px; }
+  .qc-example .qc-grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+  .qc-example .qc-panel { padding: 8px 10px; }
+  .qc-example .qc-panel h5 { font-size: 11px; margin-bottom: 4px; }
+  .qc-example .qc-panel .qc-cap, .qc-example .qc-cap { font-size: 9.5px !important; margin-top: 3px !important; }
+  .qc-example .qc-legend { font-size: 9.5px; margin-top: 3px; }
+  .qc-example .prose { font-size: 11.5px !important; }
+  .qc-example .qc-foot { font-size: 10px; margin-top: 8px; padding-top: 6px; }
+  .qc-example::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 140px;
+    background: linear-gradient(180deg, rgba(255,255,255,0), var(--surface));
+    pointer-events: none;
+  }
+  .qc-example-stamp {
+    position: absolute; top: 12px; right: 14px; z-index: 2;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-soft); border: 1.5px dashed var(--border); border-radius: 6px;
+    padding: 4px 10px; background: var(--surface); transform: rotate(-4deg);
+  }
+  .qc-example-note { font-size: 12.5px; color: var(--text-soft); margin: 6px 0 0; font-style: italic; }
+  .qc-legend span::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; background: var(--lg); }
+
 </style>
 <link rel="canonical" href="https://www.data-intuitive.com/demo/configurator.html">
 </head>
@@ -529,7 +1112,7 @@
 <header class="demo-header">
   <div class="demo-header-left">
     <span class="demo-crumb"><b>Platform Demo</b></span>
-    <p class="demo-scope">This demo only covers transcriptomics examples on Illumina, Element Biosciences and 10x. The full product carries much more. Your kit or instrument on the platform? <a href="https://www.data-intuitive.com/contact/contact.html" target="_blank" rel="noopener">Contact us</a>.</p>
+    <p class="demo-scope">This is a web mockup of the application, not the application itself. It covers transcriptomics examples on Illumina, Element Biosciences and 10x, and the full product carries much more. <a href="https://www.data-intuitive.com/contact/bookmeeting.html" target="_blank" rel="noopener">Ask us for a demo of the real application</a>.</p>
   </div>
   <div class="demo-header-right">
     <button class="demo-restart" id="restartBtn" type="button">
@@ -552,23 +1135,135 @@
   'use strict';
 
   // ---------------------------------------------------------------------
-  // Steps — order follows the Skaldu wizard: scenario precedes experiment.
+  // Steps — order follows the platform wizard: scenario precedes experiment.
   // ---------------------------------------------------------------------
-  var STEPS = [
+  var BASE_STEPS = [
     { id: 'entry',      label: 'Entry point' },
     { id: 'kit',        label: 'Kit' },
     { id: 'instrument', label: 'Instrument' },
     { id: 'scenario',   label: 'Scenario' },
     { id: 'experiment', label: 'Experiment' },
-    { id: 'review',     label: 'Review' }
+    { id: 'review',     label: 'Review' },
+    { id: 'simulate',   label: 'Simulate run' }
   ];
+  var REVIEW_IDX = 5;
+  var SIM_IDX = 6;
+
+  // ---- After the review: two paths ------------------------------------
+  var PATHS = [
+    { id: 'bioinf',  name: 'Advanced CLI path', icon: '⚙',
+      desc: 'For bioinformaticians who prefer the command line. Install the prerequisites, pick a compute backend and run the workflow with Nextflow.',
+      chip: 'Setup', who: 'Command line' },
+    { id: 'enduser', name: 'End user path', icon: '▶',
+      desc: 'For wet-lab researchers and bioinformaticians alike. Install the desktop application on your PC or workstation and let it run the same workflow, locally, in the cloud or on your HPC.',
+      chip: 'Download', who: 'Desktop application' }
+  ];
+
+  var BACKENDS = [
+    { id: 'local',  name: 'Local',           desc: 'Laptop or workstation',
+      warn: 'Needs a powerful computer with a lot of memory. CellRanger count wants 8 CPU cores and 64 GB of RAM or more per sample, STAR needs about 32 GB for a human genome index. Use a workstation rather than a laptop for real data sets.' },
+    { id: 'k8s',    name: 'Kubernetes',      desc: 'Any Kubernetes cluster',        disabled: true, pill: 'Coming soon' },
+    { id: 'seqera', name: 'Seqera Platform', desc: 'Nextflow Tower / workflow hub', disabled: true, pill: 'Coming soon' },
+    { id: 'hpc',    name: 'HPC',             desc: 'Slurm, PBS or LSF cluster',      disabled: true, pill: 'Coming soon',
+      warn: 'Run Nextflow from a login or submit node. Each process is submitted as a job; the work directory must be on a file system every compute node can see.' }
+  ];
+
+  // Prerequisite steps per backend. `code` renders a code block, `prose`
+  // a short paragraph; `check` is the one-line verification command.
+  var PREREQS = {
+    local: [
+      { label: 'Install Java 17+', section: 'Install Java',
+        code: '# macOS (Homebrew)\nbrew install openjdk@17\n\n# Debian / Ubuntu\nsudo apt-get update && sudo apt-get install -y openjdk-17-jre-headless',
+        check: 'java -version   # must be 17 or newer' },
+      { label: 'Install Nextflow', section: 'Install Nextflow',
+        code: 'curl -s https://get.nextflow.io | bash\nsudo mv nextflow /usr/local/bin/\nnextflow self-update',
+        check: 'nextflow -version   # must be ≥ 23.10' },
+      { label: 'Install Docker (or Singularity)', section: 'Install a container engine',
+        prose: 'Viash Hub pipelines ship as Docker containers. Install [Docker Desktop or Docker Engine](https://docs.docker.com/get-docker/) and make sure it is running. On HPC or systems where Docker is unavailable, use Singularity / Apptainer instead (verify with `singularity version`, need ≥ 3.8). Nextflow will pull and convert the containers automatically when you pass `-profile singularity`.',
+        check: 'docker info' }
+    ],
+    hpc: [
+      { label: 'Load Java 17+', section: 'Java on the cluster',
+        code: '# Most clusters ship Java as a module\nmodule avail java\nmodule load java/17\n\n# No module? Install a JRE in your home directory\ncurl -s https://get.sdkman.io | bash && sdk install java 17.0.2-tem',
+        check: 'java -version   # must be 17 or newer, on the login node' },
+      { label: 'Install Nextflow', section: 'Install Nextflow in your home directory',
+        code: 'curl -s https://get.nextflow.io | bash\nmkdir -p ~/bin && mv nextflow ~/bin/\nexport PATH=~/bin:$PATH   # add to ~/.bashrc\nnextflow self-update',
+        check: 'nextflow -version   # must be ≥ 23.10' },
+      { label: 'Singularity / Apptainer and the scheduler', section: 'Containers and job submission',
+        prose: 'Docker is normally not available on HPC. Viash Hub pipelines run their containers with [Singularity or Apptainer](https://apptainer.org/docs/user/latest/) (need ≥ 3.8); Nextflow pulls and converts the images when you pass `-profile singularity`. Tell Nextflow which scheduler to use with an executor in `nextflow.config`, for example `process.executor = \'slurm\'` plus your partition and account in `process.clusterOptions`. Set `singularity.cacheDir` to a shared path so images are pulled once.',
+        check: 'singularity version && sinfo   # or qstat / bhosts for PBS / LSF' }
+    ]
+  };
+
+  var OSES = [
+    { id: 'windows', name: 'Windows', desc: 'Desktop and workstation', logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAE4UlEQVR4nO2d327bZBTAf8d2WDeCpgy2SQM6iF2zB+B+4gkAMeAtEBfc8gxIPEamVq00cYU0DYkbxAMgrrjZxQRrk1HY8sfncGEnbVLWdE2+5Ev6/STXdu3aRz8fH392ms9CYDZaFlPrvAeSU2iOSA6WY5YTyVfJsuNbGfb+uUWvlxMNBVKOaTdRamAgAFauLwKKBMHHae1fJYrvIJoDZRYiOdgWg97rRHAkcPTjVC6e4Ie2wdODHIly0ByTHLEcZAt4C/RoXRkKnC7yZayn4JbFRM+aSFHWRLVhbdxiv/0OIlJmopw5E8/L6go2E3aev430cnRYD9lCKOsiJDD0OHsmnpfF7/FV2Xn2JpCjxVEWQjWWK8sO71SMT5efwS2rE3dyjAysx73G7thyK/4Cxq/QR7/wnsUIbnWuUSNDiwyTDCEDy0BSaN8ASl/GLrA7+juziJ32QkJ0xfwE7x3eZKAZVhwJLGWmoI3y4izHEm81MnBWzi54eFHRbkYkGWgpEFKwjEG/DowLvBgOT2VcsFnE/c5tEjJUM6hOZ7OU7YMUkY2jxvbFy8bzkLB98B1mH4Bk7LS3iJlo2kxMu0TGrmIgomwfLGbfjkiArxcmcBo2cSqswUUuWnYA604Q7JgIJurecvGkVs2PkMGOCYIdEwQ7JsK8qsFrR8hgxwTBjgmCHeNbO3jt8CuDJdxoBF6RINgx0YlnsIG5EjLYMUGwY8KtsmNCBjsmCHaMX4InP/RcA8KtsmP8yuA1JAh2TBDsmHCr7JiQwY5JgEvLDmLEtH/+M3sBFAgKUgAFhoKV01AgoqNps2q6Wleo5q0AFGRQjifWHa13pm0UGNW0FQgFRAWYQvybsHNwF8MQU4pEiUzLecrpwpQYozAlqikRysCUGkbflNiUPuW4MCPeUBJTulaOBxiJKa+p8q8qlxpKF+MySh3lI3nh8JAFAoGZCCXCMcL2gT/NNLMW9659OZpvWZ24/WCJEc2G2rcJRh+htuxYABAZbzZe6dTocndJ0cxOLNf9bgf3zZ+z65z4LXgNCIId47fgUCIC0/BbcL0RMjhwOn4JnvzQs7/6z6r9EryG+C24u+IZbJjfgtcAvwVfXfEMxnfBa0AQ7Bi/BfdCiQhMwTfB4zcaz0MGB6bgt+DrIYMDU/Bb8KrX4HCr7B6/BR+ueAbju+A1IAh2jF+CJ/uLaIYSEZhChPA9Zj8Avy87mBN8KP1lhzArCZ81vhnNmUXstjdRyTAyxLKq8/oMaCJyeaHRPbSE/fZCdzlvxnvALr/f8Ec1/Di2zEy4//wWSbfsWtw0Q0YHIgV5Y+7R/YkRz32rC+XsfbiLGPC4Gh6dWD7sJF+KFCPDrDwAkAGNOcW7WkTY/N5C8HH9CfAE+PnEsv97zYNZWh2AGy/d5ucYO3OLcCks5j0aX1zdB36phnFaVifq3AGaRNYdW7bqfbirqf/dBzxoN+hW7+PQIkUkBdLqDLiFz506C5/4G9xZeGgbPD1MkUFaHgBSxNLq/R63l/7ViJUXfBoti6GzSUyV8ZpWrZ4UrIlI3XkMay14GnuHN+lpSlxkZeaTgqWYpAjX57KPCy34NFpWJ2pvIVKVHj1W+3kXOeMjhiD4HPxqNR7/3aRvKaJpWXKq9zmJvM/xL9cHwQ5o7W8i0iSSDIl++g8sXABZUoAfwAAAAABJRU5ErkJggg==' },
+    { id: 'mac',     name: 'macOS',   desc: 'Apple silicon and Intel', logo: 'data:image/png;base64,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' },
+    { id: 'linux',   name: 'Linux',   desc: 'Ubuntu, Debian, RHEL and derivatives', logo: 'data:image/png;base64,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' }
+  ];
+
+  var RUN_TARGETS = [
+    { id: 'local', name: 'Run locally', icon: '💻',
+      desc: 'On this computer. The analysis runs on your own machine and nothing is sent anywhere.',
+      src: '/data/runs/VH02001614', tgt: '/results/VH02001614',
+      warn: 'This needs a powerful computer. A 10x run with a few thousand cells usually wants 8 processor cores and 64 GB of memory or more, so use a workstation rather than a laptop for real data.' },
+    { id: 'cloud', name: 'Run in the cloud', icon: '☁',
+      desc: 'The app starts the machines in your own cloud account and shuts them down again when the analysis is finished.',
+      providers: [
+        { id: 'gcp',   name: 'Google Cloud',       src: 'gs://my-bucket/runs/VH02001614',            tgt: 'gs://my-bucket/results/VH02001614' },
+        { id: 'aws',   name: 'AWS',                src: 's3://my-bucket/runs/VH02001614',            tgt: 's3://my-bucket/results/VH02001614' },
+        { id: 'azure', name: 'Azure',              src: 'az://mycontainer/runs/VH02001614',          tgt: 'az://mycontainer/results/VH02001614' },
+        { id: 'k8s',   name: 'Kubernetes cluster', src: '/mnt/shared-volume/runs/VH02001614',        tgt: '/mnt/shared-volume/results/VH02001614' }
+      ],
+      src: '', tgt: '' },
+    { id: 'hpc', name: 'Run on HPC', icon: '🏛',
+      desc: 'Send the work to your institute’s shared computing cluster. Your IT team recognises the rest.',
+      src: '/scratch/project01/runs/VH02001614', tgt: '/project/project01/results/VH02001614' }
+  ];
+
+  function pathSteps() {
+    if (state.path === 'bioinf') {
+      var s = [
+        { id: 'backend', label: 'Backend' }
+      ];
+      if (state.backend) {
+        PREREQS[state.backend].forEach(function(p, i){
+          s.push({ id: 'prereq_' + i, label: p.label, prereq: p, idx: i });
+        });
+      }
+      s.push({ id: 'run', label: 'Run' });
+      s.push({ id: 'report', label: 'Report' });
+      s.push({ id: 'next', label: 'Your project' });
+      return s;
+    }
+    if (state.path === 'enduser') {
+      return [
+        { id: 'download', label: 'Download the app' },
+        { id: 'install',  label: 'Install' },
+        { id: 'where',    label: 'Where it runs' },
+        { id: 'locations', label: 'Your files' },
+        { id: 'run',      label: 'Run' },
+        { id: 'report',   label: 'Report' },
+        { id: 'next',     label: 'Your project' }
+      ];
+    }
+    return [];
+  }
+  function allSteps() { return BASE_STEPS.concat(pathSteps()); }
+  function stepAt(i) { return allSteps()[i]; }
 
   // ---- Entry points, grouped by domain -------------------------------
   var ENTRY_POINTS = [
     { id: 'single_cell', group: 'Transcriptomics', name: 'Single-cell',  desc: 'Single-cell sequencing assays' },
-    { id: 'bulk_rna',    group: 'Transcriptomics', name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep' }
+    { id: 'bulk_rna',    group: 'Transcriptomics', name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep' },
+    { id: 'spatial',     group: 'Transcriptomics', name: 'Spatial',      desc: 'Spatial transcriptomics', soon: true },
+    { id: 'ht_rna',      group: 'Transcriptomics', name: 'HT RNA-seq',   desc: 'Plate-format bulk, per-well experiments', soon: true },
+    { id: 'methylation', group: 'Epigenomics',     name: 'Methylation',  desc: 'Bisulfite / EM-seq methylation sequencing', soon: true },
+    { id: 'epigenomics', group: 'Epigenomics',     name: 'Epigenomics',  desc: 'ChIP-seq, CUT&RUN, Hi-C', soon: true },
+    { id: 'genomics',    group: 'Genomics',        name: 'Genomics',     desc: 'WGS, WES, targeted panels, cfDNA', soon: true },
+    { id: 'proteomics',  group: 'Proteomics',      name: 'Proteomics',   desc: 'Mass spectrometry based protein quantification', soon: true },
+    { id: 'lipidomics',  group: 'Metabolomics',    name: 'Lipidomics',   desc: 'LC-MS lipid identification and quantification', soon: true }
   ];
-  var ENTRY_GROUPS = ['Transcriptomics'];
+  var ENTRY_GROUPS = ['Transcriptomics', 'Epigenomics', 'Genomics', 'Proteomics', 'Metabolomics'];
 
   // ---- Instruments ----------------------------------------------------
   var INSTRUMENTS = {
@@ -581,21 +1276,31 @@
   var KITS = {
     'single_cell': [
       { id: 'tenx_3prime_gex', name: "Chromium Single Cell 3' Gene Expression", vendor: '10x Genomics', family: 'gex',
-        assays: ['Single-cell RNA-seq'], software: 'Cell Ranger',
+        assays: ['Single-cell RNA-seq'], software: 'CellRanger',
         instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'],
         chemistries: ["v3 \u2013 Next GEM 3' v3 / v3.1 chemistry", "v4 \u2013 GEM-X 3' v4 chemistry (the GEM-X chip generation)"] },
       { id: 'tenx_5prime_gex', name: "Chromium Single Cell 5' Gene Expression", vendor: '10x Genomics', family: 'gex',
-        assays: ['Single-cell RNA-seq'], software: 'Cell Ranger',
-        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'],
-        chemistries: ["v2 \u2013 Next GEM 5' v2 chemistry", "v3 \u2013 GEM-X 5' v3 chemistry; --chemistry stays at `auto`"] }
+        assays: ['Single-cell RNA-seq'], software: 'CellRanger', soon: true,
+        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'] },
+      { id: 'bd_rhapsody_wta', name: 'BD Rhapsody Whole Transcriptome Analysis', vendor: 'BD Biosciences', family: 'gex',
+        assays: ['Single-cell RNA-seq'], soon: true, instruments: [] },
+      { id: 'parse_evercode_wt', name: 'Evercode Whole Transcriptome (Mega/Giga)', vendor: 'Parse Biosciences', family: 'gex_combinatorial',
+        assays: ['Single-cell RNA-seq'], soon: true, instruments: [] },
+      { id: 'scale_scaleplex', name: 'ScalePlex Single-Cell RNA/ATAC', vendor: 'Scale Biosciences', family: 'gex_combinatorial',
+        assays: ['Single-cell RNA-seq'], soon: true, instruments: [] }
     ],
     'bulk_rna': [
       { id: 'illumina_rna_prep', name: 'Illumina RNA Prep with Enrichment', vendor: 'Illumina', family: 'bulk_rna',
         assays: ['Bulk RNA-seq'], software: 'DRAGEN RNA (basic)',
         instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'] },
       { id: 'illumina_stranded_total_rna', name: 'Illumina Stranded Total RNA Prep (Ribo-Zero Plus)', vendor: 'Illumina', family: 'bulk_rna',
-        assays: ['Bulk RNA-seq', 'Total RNA-seq (incl. non-coding)'], software: 'DRAGEN RNA (basic)',
-        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'] }
+        assays: ['Bulk RNA-seq'], soon: true, instruments: [] },
+      { id: 'lexogen_luthor', name: "LUTHOR 3' mRNA-Seq Library Prep Kit", vendor: 'Lexogen', family: 'bulk_rna',
+        assays: ['Bulk RNA-seq'], soon: true, instruments: [] },
+      { id: 'neb_ultra_ii', name: 'NEBNext Ultra II RNA Library Prep', vendor: 'NEB', family: 'bulk_rna',
+        assays: ['Bulk RNA-seq'], soon: true, instruments: [] },
+      { id: 'kapa_hyperprep', name: 'KAPA RNA HyperPrep', vendor: 'Roche (KAPA)', family: 'bulk_rna',
+        assays: ['Bulk RNA-seq'], soon: true, instruments: [] }
     ]
   };
 
@@ -617,9 +1322,44 @@
   };
 
   var WORKFLOWS = {
-    'transcriptomics.single_cell.count_only': { id: 'vsh/openpipeline', desc: 'OpenPipeline single-cell RNA-seq workflow.' },
-    'transcriptomics.bulk.count_only':        { id: 'vsh/rnaseq',       desc: 'Bulk RNA-seq workflow (STAR + Salmon).' }
+    'transcriptomics.single_cell.count_only': {
+      id: 'vsh/openpipeline', version: '',
+      desc: 'OpenPipelines ingestion workflows: demux, make_reference, then cellranger_mapping.',
+      perSample: false,
+      steps: [
+        { name: 'Demultiplexing', proc: 'ingestion/demux', kind: 'demux',
+          note: function(exp){ return exp.input_shape === 'run_folder'
+            ? 'Runs bcl-convert (or bcl2fastq / CellRanger mkfastq) on the run folder, then FastQC and MultiQC on the FASTQ output.'
+            : 'FASTQ files provided; the workflow receives them directly and this step carries no work.'; } },
+        { name: 'Reference generation', proc: 'ingestion/make_reference', kind: 'ref',
+          note: function(exp){
+            if (exp.reference_mode === 'generate') return 'Builds a CellRanger reference (cellranger mkref) from your genome FASTA and GTF.';
+            if (exp.reference_mode === 'own') return 'Uses the CellRanger reference you point to; no build.';
+            return 'Uses the provided reference for your species; no build.';
+          } },
+        { name: 'CellRanger mapping', proc: 'ingestion/cellranger_mapping', kind: 'count',
+          note: function(){ return 'cellranger_count per pool, cellranger_count_split, then from_10xh5_to_h5mu. Output is the count matrix as h5mu with QC metrics.'; } }
+      ],
+      dagNote: ''
+    },
+    'transcriptomics.bulk.count_only': {
+      id: 'vsh/bulk-rnaseq', version: 'v0.1.1',
+      desc: 'Per-sample bulk RNA-seq: FastQC (raw and trimmed) and TrimGalore adapter trimming, then Kallisto pseudo-alignment running in parallel with STAR genome alignment, Salmon quantification in alignment mode, Qualimap coordinate-based QC and MultiQC reporting.',
+      perSample: true,
+      steps: [
+        { name: 'FastQC (raw)',      proc: 'qc:fastqc_raw',        note: function(){ return 'Read-level QC on the raw FASTQ pair.'; } },
+        { name: 'TrimGalore',        proc: 'trim:trimgalore',      note: function(){ return 'Adapter and quality trimming.'; } },
+        { name: 'FastQC (trimmed)',  proc: 'qc:fastqc_trimmed',    note: function(){ return 'Read-level QC after trimming.'; } },
+        { name: 'Kallisto',          proc: 'quant:kallisto',       note: function(){ return 'Pseudo-alignment, preliminary quantification. Runs in parallel with STAR.'; }, parallel: true },
+        { name: 'STAR',              proc: 'align:star',           note: function(){ return 'Genome alignment.'; } },
+        { name: 'Salmon',            proc: 'quant:salmon',         note: function(){ return 'Quantification in alignment mode on the STAR BAM.'; } },
+        { name: 'Qualimap',          proc: 'qc:qualimap',          note: function(){ return 'Coordinate-based alignment QC.'; } },
+        { name: 'MultiQC',           proc: 'report:multiqc',       note: function(){ return 'Aggregates all QC into one report.'; } }
+      ],
+      dagNote: 'Takes one FASTQ pair (or single-end file) per invocation. There is no demultiplexing step and no multi-sample count-matrix aggregation.'
+    }
   };
+  function wfLabel(wf) { return wf ? (wf.version ? wf.id + ' ' + wf.version : wf.id) : '—'; }
 
   // ---- Step 5 field declarations --------------------------------------
   var SPECIES = [
@@ -643,7 +1383,7 @@
       help: 'Decides whether demultiplexing runs, and what the input path means.' },
     { id: 'reference_mode', label: 'Reference', type: 'select', options: REFERENCE_MODES, def: 'provided' },
     { id: 'reference_path', label: 'Path to your reference', type: 'file', def: '', placeholder: '/path/to/reference',
-      help: 'Prebuilt Cell Ranger reference.', showWhen: function(s){ return s.reference_mode === 'own'; } },
+      help: 'Prebuilt CellRanger reference.', showWhen: function(s){ return s.reference_mode === 'own'; } },
     { id: 'genome_fasta', label: 'Genome FASTA', type: 'file', def: '', placeholder: '/path/to/genome.fa',
       help: 'Genome FASTA, when building a reference.', showWhen: function(s){ return s.reference_mode === 'generate'; } },
     { id: 'transcriptome_gtf', label: 'Transcript annotation (GTF)', type: 'file', def: '', placeholder: '/path/to/genes.gtf',
@@ -651,8 +1391,36 @@
     { id: 'reference_version', label: 'Reference version label', type: 'string', def: '', placeholder: '2024-A',
       help: 'Version label recorded in a generated reference.', showWhen: function(s){ return s.reference_mode === 'generate'; } },
     { id: 'expect_cells', label: 'Cells expected per sample', type: 'integer', def: 3000,
-      help: 'A recovery target for Cell Ranger, not a hard cap.' }
+      help: 'A recovery target for CellRanger, not a hard cap.', showWhen: function(){ return state.entry === 'single_cell'; } }
   ];
+  // Asked by the desktop client on the "Where to run" step. On the CLI path
+  // they are already in params.yaml.
+  var LOC_FIELDS = [
+    { id: 'source_path', label: 'Source location', type: 'file', def: '', placeholder: '/data/runs/VH02001614',
+      help: 'Where your sequencing files are now.' },
+    { id: 'target_path', label: 'Target location', type: 'file', def: '', placeholder: '/results/VH02001614',
+      help: 'Where the results and reports should be written.' }
+  ];
+  // Placeholders follow the compute choice, so the example path is one that
+  // can exist there: a local disk, a bucket in the chosen cloud, an HPC
+  // scratch and project directory, or a shared volume on a cluster.
+  function locDefaults() {
+    var t = findIn(RUN_TARGETS, state.runTarget);
+    if (!t) return { src: LOC_FIELDS[0].placeholder, tgt: LOC_FIELDS[1].placeholder, where: '' };
+    if (t.providers) {
+      var pv = findIn(t.providers, state.cloudProvider) || t.providers[0];
+      return { src: pv.src, tgt: pv.tgt, where: pv.name };
+    }
+    return { src: t.src, tgt: t.tgt, where: t.name.replace('Run ', '') };
+  }
+  function locFieldsForTarget() {
+    var d = locDefaults();
+    return LOC_FIELDS.map(function(f){
+      var c = {}; for (var k in f) c[k] = f[k];
+      c.placeholder = f.id === 'source_path' ? d.src : d.tgt;
+      return c;
+    });
+  }
 
   // Extra fields contributed by the selected kit, keyed on kit family.
   var EXTRA_FIELDS = {
@@ -716,7 +1484,7 @@
   // ---------------------------------------------------------------------
   function defaultExp() {
     var exp = {};
-    FIELDS.forEach(function(f){ if (f.type !== 'note') exp[f.id] = f.def; });
+    FIELDS.concat(LOC_FIELDS).forEach(function(f){ if (f.type !== 'note') exp[f.id] = f.def; });
     Object.keys(EXTRA_FIELDS).forEach(function(fam){
       EXTRA_FIELDS[fam].forEach(function(f){ if (f.type !== 'note' && !(f.id in exp)) exp[f.id] = f.def; });
     });
@@ -725,8 +1493,18 @@
   function defaults() {
     return {
       entry: null, kit: null, instrument: null, scenario: null,
-      exp: defaultExp(), activeStep: 0
+      exp: defaultExp(), activeStep: 0,
+      // post-review paths
+      reviewed: false, path: null,
+      backend: null, prereqSeen: {}, prereqChecked: {},
+      os: null, installed: false, runTarget: null, cloudProvider: null, locSeen: false,
+      runDone: false, reportSeen: false
     };
+  }
+  function resetPathState() {
+    state.backend = null; state.prereqSeen = {}; state.prereqChecked = {};
+    state.os = null; state.installed = false; state.runTarget = null; state.cloudProvider = null; state.locSeen = false; state.runDone = false; state.reportSeen = false;
+    state.exp.source_path = ''; state.exp.target_path = '';
   }
   var state = defaults();
 
@@ -762,7 +1540,7 @@
     return String(v);
   }
   function fieldById(id) {
-    return FIELDS.concat(EXTRA_FIELDS.vdj, EXTRA_FIELDS.multiome, EXTRA_FIELDS.citeseq, EXTRA_FIELDS.flex)
+    return FIELDS.concat(LOC_FIELDS, EXTRA_FIELDS.vdj, EXTRA_FIELDS.multiome, EXTRA_FIELDS.citeseq, EXTRA_FIELDS.flex)
       .find(function(f){ return f.id === id; });
   }
   function stepCompleteness(i) {
@@ -771,13 +1549,29 @@
     if (i === 2) return !!state.instrument;
     if (i === 3) return scenarioStepSatisfied();
     if (i === 4) return experimentStepSatisfied();
+    if (i === REVIEW_IDX) return !!state.reviewed;
+    if (i === SIM_IDX)    return !!state.path;
+    var step = stepAt(i);
+    if (!step) return false;
+    if (step.id === 'backend')  return !!state.backend;
+    if (step.prereq)            return !!state.prereqSeen[state.backend + ':' + step.idx];
+    if (step.id === 'download') return !!state.os;
+    if (step.id === 'install')  return !!state.installed;
+    if (step.id === 'where')    return !!state.runTarget && (state.runTarget !== 'cloud' || !!state.cloudProvider);
+    if (step.id === 'locations') return !!state.locSeen;
+    if (step.id === 'run')      return !!state.runDone;
+    if (step.id === 'report')   return !!state.reportSeen;
     return false;
   }
   function maxReachableStep() {
-    for (var i = 0; i < STEPS.length; i++) {
+    var steps = allSteps();
+    for (var i = 0; i < steps.length; i++) {
       if (!stepCompleteness(i)) return i;
     }
-    return STEPS.length - 1;
+    return steps.length - 1;
+  }
+  function stepIndexById(id) {
+    return allSteps().findIndex(function(s){ return s.id === id; });
   }
   function setActiveStep(i) {
     var max = maxReachableStep();
@@ -788,7 +1582,7 @@
     setTimeout(function(){
       var content = document.getElementById('contentRoot');
       if (!content) return;
-      var active = content.querySelector('.step-card:not(.is-collapsed), .review-card');
+      var active = content.querySelector('.app-frame, .step-card:not(.is-collapsed), .review-card');
       if (active && typeof active.scrollIntoView === 'function') {
         active.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
@@ -830,7 +1624,8 @@
     var list = document.getElementById('progressList');
     list.innerHTML = '';
     var max = maxReachableStep();
-    STEPS.forEach(function(step, i){
+    var steps = allSteps();
+    steps.forEach(function(step, i){
       var li = document.createElement('li');
       li.className = 'demo-progress-step';
       if (i === state.activeStep) li.classList.add('is-active');
@@ -838,11 +1633,18 @@
       if (i > max) li.classList.add('is-future');
 
       var summary = stepSummary(i);
-      if (i >= state.activeStep && i !== 5) summary = (i === state.activeStep ? summary : '');
+      if (i >= state.activeStep && i !== REVIEW_IDX && i !== SIM_IDX) summary = (i === state.activeStep ? summary : '');
 
+      // Path header: a small divider label before the first path step
+      if (i === SIM_IDX + 1) {
+        var pathName = (findIn(PATHS, state.path) || {}).name || '';
+        list.appendChild(el('li', { class: 'demo-progress-divider' }, [pathName]));
+      }
+
+      var checked = step.prereq && state.prereqChecked[state.backend + ':' + step.idx];
       li.appendChild(el('div', { class: 'demo-step-num' }, [String(i + 1)]));
       li.appendChild(el('div', { class: 'demo-step-text' }, [
-        el('span', { class: 'demo-step-label' }, [step.label]),
+        el('span', { class: 'demo-step-label' }, [step.label, checked ? el('span', { class: 'demo-step-tick', title: 'Verified' }, ['✓']) : null]),
         summary ? el('span', { class: 'demo-step-summary' }, [summary]) : null
       ]));
       li.addEventListener('click', function(){
@@ -850,6 +1652,11 @@
       });
       list.appendChild(li);
     });
+    // Compact strip on narrow screens: keep the active step visible
+    var activeLi = list.querySelector('.demo-progress-step.is-active');
+    if (activeLi && window.matchMedia && window.matchMedia('(max-width: 720px)').matches && typeof activeLi.scrollIntoView === 'function') {
+      list.scrollLeft = Math.max(0, activeLi.offsetLeft - list.clientWidth / 2 + activeLi.offsetWidth / 2);
+    }
   }
 
   function stepSummary(i) {
@@ -864,10 +1671,27 @@
     if (i === 4 && kit && experimentStepSatisfied()) {
       return optLabel(SPECIES, state.exp.species) + ' \u00B7 ' + optLabel(INPUT_SHAPES, state.exp.input_shape);
     }
-    if (i === 5 && stepCompleteness(4)) {
+    if (i === REVIEW_IDX && stepCompleteness(4)) {
       var wf = WORKFLOWS[state.scenario];
       return wf ? wf.id : (kit ? (kit.software || '') : '');
     }
+    if (i === SIM_IDX) return state.path ? (findIn(PATHS, state.path) || {}).name || '' : '';
+    var step = stepAt(i);
+    if (!step) return '';
+    if (step.id === 'backend' && state.backend)   return (findIn(BACKENDS, state.backend) || {}).name || '';
+    if (step.prereq) {
+      var key = state.backend + ':' + step.idx;
+      if (state.prereqChecked[key]) return 'Verified';
+      if (state.prereqSeen[key]) return 'Reviewed';
+      return '';
+    }
+    if (step.id === 'download' && state.os)       return 'App for ' + ((findIn(OSES, state.os) || {}).name || '');
+    if (step.id === 'install' && state.installed) return 'App installed';
+    if (step.id === 'where' && state.runTarget)   return (findIn(RUN_TARGETS, state.runTarget) || {}).name;
+    if (step.id === 'locations' && state.locSeen) return sourcePath() + ' → ' + targetPath();
+    if (step.id === 'run' && state.runDone)       return 'Finished · ' + ((WORKFLOWS[state.scenario] || {}).perSample ? '38m' : '1h 42m');
+    if (step.id === 'report' && state.runDone)    return (WORKFLOWS[state.scenario] || {}).perSample ? 'MultiQC report' : 'Count QC report';
+    if (step.id === 'next' && state.reportSeen)   return 'Steps, reports, private platform';
     return '';
   }
 
@@ -890,40 +1714,53 @@
   // ---------------------------------------------------------------------
   // Step 1 · Entry point
   // ---------------------------------------------------------------------
+  // One row per entry point: what it is on the left, whether it runs today on
+  // the right. Offline rows are shown rather than hidden, so the reader sees
+  // the whole map.
   function entryCard(ep) {
-    var kitCount = kitsFor(ep.id).length;
-    return el('button', {
-      class: 'opt-card' + (state.entry === ep.id ? ' is-selected' : ''),
-      type: 'button',
-      onclick: function(){
+    var kitCount = kitsFor(ep.id).filter(function(k){ return !k.soon; }).length;
+    var offline = !!ep.soon;
+    var row = el('button', {
+      class: 'ep-row' + (offline ? ' is-offline' : '') + (state.entry === ep.id ? ' is-selected' : ''),
+      type: 'button'
+    }, [
+      el('span', { class: 'ep-row-main' }, [
+        el('span', { class: 'ep-row-title' }, [ep.name]),
+        el('span', { class: 'ep-row-desc' }, [ep.desc])
+      ]),
+      el('span', { class: 'ep-row-status' }, [
+        el('span', { class: 'ep-row-state' }, [offline ? 'Offline' : 'Online']),
+        el('span', { class: 'ep-row-note' }, [
+          offline ? 'No workflow built yet' : kitCount + ' kit' + (kitCount === 1 ? '' : 's')
+        ])
+      ])
+    ]);
+    if (offline) {
+      row.disabled = true;
+    } else {
+      row.addEventListener('click', function(){
         if (state.entry !== ep.id) {
           state.entry = ep.id;
           state.kit = null; state.instrument = null; state.scenario = null;
           state.exp = defaultExp();
         }
         setActiveStep(1);
-      }
-    }, [
-      el('div', { class: 'opt-card-title' }, [ep.name]),
-      el('p', { class: 'opt-card-desc' }, [ep.desc]),
-      el('div', { class: 'opt-card-meta' }, [
-        el('span', { class: 'opt-card-chip status-boarding' }, ['Boarding']),
-        el('span', { class: 'opt-card-chip gray' }, [kitCount + ' kit' + (kitCount === 1 ? '' : 's')])
-      ])
-    ]);
+      });
+    }
+    return row;
   }
 
   function renderStep1() {
     var card = el('div', { class: 'step-card' }, [
       el('span', { class: 'step-card-eyebrow' }, ['Step 1 \u00B7 Entry point']),
       el('h2', { class: 'step-card-title' }, ['What are you measuring?']),
-      el('p', { class: 'step-card-intro' }, ['Pick an entry point. The wizard then surfaces only the kits, instruments and scenarios that have verified pipeline support.'])
+      el('p', { class: 'step-card-intro' }, ['Pick an entry point. The wizard then surfaces only the kits, instruments and scenarios that have verified workflow support.'])
     ]);
 
     ENTRY_GROUPS.forEach(function(group){
       var eps = ENTRY_POINTS.filter(function(e){ return e.group === group; });
       if (!eps.length) return;
-      var grid = el('div', { class: 'opt-grid wide' });
+      var grid = el('div', { class: 'ep-list' });
       eps.forEach(function(ep){ grid.appendChild(entryCard(ep)); });
       card.appendChild(el('div', { class: 'ep-group' }, [
         el('h4', null, [group]),
@@ -941,6 +1778,17 @@
     var grid = el('div', { class: 'opt-grid wide' });
 
     kits.forEach(function(k){
+      if (k.soon) {
+        var soon = el('button', { class: 'opt-card kit-card is-disabled', type: 'button' }, [
+          el('div', { class: 'opt-card-title' }, [k.name]),
+          el('p', { class: 'opt-card-assay' }, [k.assays.join(' \u00B7 ')]),
+          el('span', { class: 'opt-card-cat' }, [k.vendor]),
+          el('div', { class: 'opt-card-meta' }, [el('span', { class: 'opt-card-chip slate' }, ['\u23F1 Coming soon'])])
+        ]);
+        soon.disabled = true;
+        grid.appendChild(soon);
+        return;
+      }
       grid.appendChild(el('button', {
         class: 'opt-card kit-card' + (state.kit === k.id ? ' is-selected' : ''),
         type: 'button',
@@ -979,7 +1827,6 @@
     var grid = el('div', { class: 'opt-grid wide' });
 
     insts.forEach(function(inst){
-      var thrClass = inst.throughput === 'very high' ? 'opt-card-chip amber' : 'opt-card-chip gray';
       grid.appendChild(el('button', {
         class: 'opt-card' + (state.instrument === inst.id ? ' is-selected' : ''),
         type: 'button',
@@ -989,13 +1836,7 @@
         }
       }, [
         el('span', { class: 'opt-card-cat' }, [inst.vendor]),
-        el('div', { class: 'opt-card-title' }, [inst.name]),
-        el('div', { class: 'opt-card-meta' }, [
-          el('span', { class: thrClass }, [
-            el('span', { class: 'thr-bars' }, [inst.bars]),
-            ' ' + inst.throughput
-          ])
-        ])
+        el('div', { class: 'opt-card-title' }, [inst.name])
       ]));
     });
 
@@ -1088,9 +1929,17 @@
       });
     }
 
+    var control = input;
+    if (f.type === 'file') {
+      // A browse button, greyed: this is a mockup, there is no file system here.
+      var browse = el('button', { class: 'browse-btn', type: 'button', title: 'Not available in the demo' }, ['Browse\u2026']);
+      browse.disabled = true;
+      control = el('div', { class: 'field-with-browse' }, [input, browse]);
+    }
+
     return el('div', { class: 'field' }, [
       el('label', { for: 'f-' + f.id }, [f.label]),
-      input,
+      control,
       f.help ? el('span', { class: 'field-help' }, [f.help]) : null
     ]);
   }
@@ -1136,6 +1985,10 @@
   // ---------------------------------------------------------------------
   // Step 6 · Review
   // ---------------------------------------------------------------------
+  function firstOf(v) { return String(v).split('  or  ')[0]; }
+  function sourcePath() { var v = state.exp.source_path; return v && String(v).trim() ? String(v) : locDefaults().src; }
+  function targetPath() { var v = state.exp.target_path; return v && String(v).trim() ? String(v) : locDefaults().tgt; }
+
   function experimentSummaryLines() {
     var kit = currentKit();
     var lines = [
@@ -1151,7 +2004,8 @@
       lines.push('GTF: ' + fieldValue(fieldById('transcriptome_gtf')));
       lines.push('Reference version: ' + fieldValue(fieldById('reference_version')));
     }
-    lines.push('Cells expected per sample: ' + fieldValue(fieldById('expect_cells')));
+    if (state.entry === 'single_cell') lines.push('Cells expected per sample: ' + fieldValue(fieldById('expect_cells')));
+
     extraFieldsFor(kit).forEach(function(f){
       if (f.type === 'note') lines.push(f.label + ': required');
       else lines.push(f.label + ': ' + optLabel(f.options, state.exp[f.id]));
@@ -1181,17 +2035,10 @@
       + (params.get('embed') === '1' ? '&' : '')
       + 'theme=' + encodeURIComponent(prefersDark() ? 'dark' : 'light');
 
-    var contactBtn = el('a', {
-      class: 'review-cta-btn is-primary',
-      href: '/demo/contact.html' + embedSuffix,
-      onclick: saveAndGo()
-    }, ['Contact us', arrow('16')]);
-
-    var bookingBtn = el('a', {
-      class: 'review-cta-btn is-secondary',
-      href: '/demo/bookmeeting.html' + embedSuffix,
-      onclick: saveAndGo()
-    }, ['Book a meeting', arrow('16')]);
+    var continueBtn = el('button', {
+      class: 'btn-primary', type: 'button',
+      onclick: function(){ state.reviewed = true; saveAndGo()(); setActiveStep(SIM_IDX); }
+    }, ['Simulate the run', arrow()]);
 
     var expBlock = el('div', null, [
       el('div', { class: 'review-label' }, ['Experiment']),
@@ -1225,7 +2072,7 @@
         el('div', null, [
           el('div', { class: 'review-label' }, ['Instrument']),
           el('div', { class: 'review-value' }, [instrument.name]),
-          el('p', { class: 'review-desc' }, [instrument.vendor + ' \u00B7 ' + instrument.throughput + ' throughput'])
+          el('p', { class: 'review-desc' }, [instrument.vendor])
         ]),
         el('div', null, [
           el('div', { class: 'review-label' }, ['Scenario']),
@@ -1240,16 +2087,935 @@
         expBlock,
         el('div', null, [
           el('div', { class: 'review-label' }, ['Resolved workflow']),
-          el('div', { class: 'review-workflow-id' }, [workflow ? workflow.id : 'not resolved']),
+          el('div', { class: 'review-workflow-id' }, [workflow ? wfLabel(workflow) : 'not resolved']),
           el('p', { class: 'review-desc' }, [workflow ? workflow.desc : 'A pipeline has not been declared for this assay yet.'])
         ])
+      ]),
+      workflow ? el('div', { class: 'review-row wf-row' }, [
+        el('div', null, [
+          el('div', { class: 'review-label' }, ['Pipeline steps']),
+          el('ol', { class: 'wf-steps' }, workflow.steps.map(function(st){
+            return el('li', null, [
+              el('span', { class: 'wf-step-name' }, [st.name, st.parallel ? el('span', { class: 'opt-card-chip gray wf-par' }, ['parallel']) : null]),
+              el('span', { class: 'wf-step-note' }, [st.note(state.exp)])
+            ]);
+          })),
+          workflow.dagNote ? el('p', { class: 'review-desc wf-dag' }, [workflow.dagNote]) : null
+        ])
+      ]) : null,
+      el('p', { class: 'review-callout' }, [
+        'With this information we deliver you the omics workflow you need, ',
+        el('em', null, ['based on your choices']),
+        '. Continue to see how the run plays out.'
+      ]),
+      el('div', { class: 'step-action' }, [continueBtn])
+    ]);
+  }
+
+  // Beta programme / booking buttons, shown on the last page of each path.
+  // The beta page is a normal site page, so it opens at the top level rather
+  // than inside the demo modal.
+  function ctaRow() {
+    var embedSuffix = (params.get('embed') === '1' ? '?embed=1&' : '?')
+      + 'theme=' + encodeURIComponent(prefersDark() ? 'dark' : 'light');
+    return el('div', { class: 'review-cta-row' }, [
+      el('a', { class: 'review-cta-btn is-primary', href: '/contact/omics-beta-lab.html', target: '_top' }, ['Subscribe to the beta programme', arrow('16')]),
+      el('a', { class: 'review-cta-btn is-secondary', href: '/demo/bookmeeting.html' + embedSuffix }, ['Book a meeting', arrow('16')])
+    ]);
+  }
+
+  // ---------------------------------------------------------------------
+  // Step 7 · Simulate run: choose a path
+  // ---------------------------------------------------------------------
+  function renderSimulate() {
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 7 \u00B7 Simulate run']),
+      el('h2', { class: 'step-card-title' }, ['How do you want to run it?']),
+      el('p', { class: 'step-card-intro' }, ['Two ways to the same result, with the same workflow and the same tuning options. The difference is the interface: a desktop application or the command line.']),
+      renderPathChoice()
+    ]);
+  }
+
+  // Compact "Your selection" strip shown above the path steps.
+  function selectionCard() {
+    var kit = currentKit() || {};
+    var inst = INSTRUMENTS[state.instrument] || {};
+    var sc = findIn(scenariosFor(kit), state.scenario);
+    var wf = WORKFLOWS[state.scenario];
+    var pairs = [
+      ['Entry point', (entryById(state.entry) || {}).name],
+      ['Kit', kit.name],
+      ['Instrument', inst.name],
+      ['Scenario', sc ? sc.name : '—'],
+      ['Workflow', wfLabel(wf)]
+    ];
+    var card = el('div', { class: 'sel-card' }, [
+      el('span', { class: 'sel-label' }, ['Your selection']),
+      el('div', { class: 'sel-row' }, pairs.map(function(p){
+        return el('div', { class: 'sel-pair' }, [
+          el('span', { class: 'sel-k' }, [p[0]]),
+          el('span', { class: 'sel-v' }, [p[1] || '—'])
+        ]);
+      }))
+    ]);
+    card.addEventListener('click', function(){ setActiveStep(REVIEW_IDX); });
+    card.title = 'Back to the review';
+    return card;
+  }
+
+  function renderPathChoice() {
+    var grid = el('div', { class: 'path-grid' });
+    PATHS.forEach(function(p){
+      grid.appendChild(el('button', {
+        class: 'opt-card path-card' + (state.path === p.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){
+          if (state.path !== p.id) { state.path = p.id; resetPathState(); }
+          setActiveStep(SIM_IDX + 1);
+        }
+      }, [
+        el('div', { class: 'opt-card-icon' }, [p.icon]),
+        el('div', { class: 'opt-card-title' }, [p.name]),
+        el('p', { class: 'opt-card-desc' }, [p.desc]),
+        el('div', { class: 'opt-card-meta' }, [
+          el('span', { class: 'opt-card-chip' }, [p.chip]),
+          el('span', { class: 'opt-card-chip gray' }, [p.who])
+        ])
+      ]));
+    });
+    return grid;
+  }
+
+  // ---------------------------------------------------------------------
+  // Shared footer for path steps: Back · N of M · Continue
+  // ---------------------------------------------------------------------
+  function stepFooter(opts) {
+    var steps = pathSteps();
+    var idx = state.activeStep - SIM_IDX;   // 1-based within the path
+    var back = el('button', { class: 'btn-ghost', type: 'button',
+      onclick: function(){ setActiveStep(state.activeStep - 1); } }, ['← Back']);
+    var next = el('button', { class: 'btn-primary', type: 'button',
+      onclick: function(){
+        if (opts && opts.onContinue) opts.onContinue();
+        setActiveStep(state.activeStep + 1);
+      } }, [(opts && opts.label) || 'Continue', arrow()]);
+    if (opts && opts.disabled) { next.disabled = true; next.style.opacity = '0.5'; next.style.cursor = 'not-allowed'; }
+    return el('div', { class: 'step-action split' }, [
+      back,
+      el('span', { class: 'step-count' }, [idx + ' of ' + steps.length]),
+      opts && opts.hideNext ? el('span') : next
+    ]);
+  }
+  function pathEyebrow() {
+    return 'Step ' + (state.activeStep + 1) + ' · ' + (findIn(PATHS, state.path) || {}).name;
+  }
+
+  // ---------------------------------------------------------------------
+  // Bioinformatics path
+  // ---------------------------------------------------------------------
+  function renderBackend() {
+    var grid = el('div', { class: 'ep-list' });
+    BACKENDS.forEach(function(b){
+      var row = el('button', {
+        class: 'ep-row' + (b.disabled ? ' is-offline' : '') + (state.backend === b.id ? ' is-selected' : ''),
+        type: 'button'
+      }, [
+        el('span', { class: 'ep-row-main' }, [
+          el('span', { class: 'ep-row-title' }, [b.name]),
+          el('span', { class: 'ep-row-desc' }, [b.desc]),
+          (b.warn && !b.disabled)
+            ? el('span', { class: 'ep-row-warn' }, [el('span', null, ['\u26A0']), el('span', null, [b.warn])])
+            : null
+        ]),
+        el('span', { class: 'ep-row-status' }, [
+          el('span', { class: 'ep-row-state' }, [b.disabled ? 'Offline' : 'Online']),
+          el('span', { class: 'ep-row-note' }, [
+            b.disabled ? 'Not available yet' : PREREQS[b.id].length + ' prerequisites'
+          ])
+        ])
+      ]);
+      if (b.disabled) {
+        row.disabled = true;
+      } else {
+        row.addEventListener('click', function(){
+          if (state.backend !== b.id) { state.backend = b.id; state.prereqSeen = {}; state.prereqChecked = {}; }
+          setActiveStep(state.activeStep + 1);
+        });
+      }
+      grid.appendChild(row);
+    });
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('h2', { class: 'step-card-title' }, ['Choose a compute backend']),
+      el('p', { class: 'step-card-intro' }, ['Where will this analysis run? The prerequisites that follow depend on it.']),
+      grid,
+      stepFooter({ hideNext: !state.backend })
+    ]);
+  }
+
+  function copyButton(text) {
+    var btn = el('button', { class: 'copy-btn', type: 'button', title: 'Copy to clipboard' }, ['⧉ Copy']);
+    btn.addEventListener('click', function(){
+      function done() { btn.textContent = '✓ Copied'; btn.classList.add('is-copied');
+        setTimeout(function(){ btn.textContent = '⧉ Copy'; btn.classList.remove('is-copied'); }, 1400); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, done);
+      } else {
+        var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
+        ta.select(); try { document.execCommand('copy'); } catch(_){} document.body.removeChild(ta); done();
+      }
+    });
+    return btn;
+  }
+  function codeBlock(code, faded) {
+    var block = el('div', { class: 'code-block' + (faded ? ' is-faded' : '') });
+    code.split('\n').forEach(function(line, i){
+      if (i) block.appendChild(document.createTextNode('\n'));
+      var hash = line.indexOf('#');
+      if (hash >= 0) {
+        block.appendChild(document.createTextNode(line.slice(0, hash)));
+        block.appendChild(el('span', { class: 'cmt' }, [line.slice(hash)]));
+      } else {
+        block.appendChild(document.createTextNode(line));
+      }
+    });
+    block.appendChild(copyButton(code));
+    return block;
+  }
+  // Minimal markdown: `code` and [text](url).
+  function prose(md) {
+    var p = el('p', { class: 'prose' });
+    var re = /`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)/g, last = 0, m;
+    while ((m = re.exec(md))) {
+      if (m.index > last) p.appendChild(document.createTextNode(md.slice(last, m.index)));
+      if (m[1]) p.appendChild(el('code', null, [m[1]]));
+      else p.appendChild(el('a', { href: m[3], target: '_blank', rel: 'noopener' }, [m[2]]));
+      last = re.lastIndex;
+    }
+    if (last < md.length) p.appendChild(document.createTextNode(md.slice(last)));
+    return p;
+  }
+
+  function renderPrereq(step) {
+    var p = step.prereq;
+    var list = PREREQS[state.backend];
+    var key = state.backend + ':' + step.idx;
+    var isLast = step.idx === list.length - 1;
+    var backendName = (findIn(BACKENDS, state.backend) || {}).name || state.backend;
+
+    var checkbox = el('input', { type: 'checkbox', id: 'chk-' + key });
+    checkbox.checked = !!state.prereqChecked[key];
+    checkbox.addEventListener('change', function(){
+      state.prereqChecked[key] = checkbox.checked;
+      renderProgress();
+    });
+
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('div', { class: 'prereq-head' }, [
+        el('div', { class: 'prereq-num' }, [String(step.idx + 1)]),
+        el('h2', { class: 'step-card-title' }, [p.label])
+      ]),
+      el('p', { class: 'prereq-sub' }, ['Prerequisite ' + (step.idx + 1) + ' of ' + list.length + ' · ' + backendName.toLowerCase()]),
+      el('div', { class: 'sec-label' }, [p.section]),
+      p.code ? codeBlock(p.code, true) : prose(p.prose),
+      p.code ? el('p', { class: 'code-note' }, ['Blurred on purpose: the exact commands come with your setup.']) : null,
+      el('div', { class: 'check-panel' }, [
+        el('div', { class: 'sec-label' }, ['Check it works']),
+        codeBlock(p.check),
+        el('label', { class: 'check-row', for: 'chk-' + key }, [checkbox, 'I ran this and it worked'])
+      ]),
+      stepFooter({
+        label: isLast ? 'Continue to run' : 'Continue',
+        onContinue: function(){ state.prereqSeen[key] = true; }
+      })
+    ]);
+  }
+
+  // ---------------------------------------------------------------------
+  // End user path
+  // ---------------------------------------------------------------------
+  function renderDownload() {
+    var grid = el('div', { class: 'opt-grid' });
+    OSES.forEach(function(o){
+      grid.appendChild(el('button', {
+        class: 'opt-card dl-card' + (state.os === o.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){ state.os = o.id; state.installed = false; setActiveStep(state.activeStep + 1); }
+      }, [
+        o.logo ? el('img', { class: 'dl-logo', src: o.logo, alt: o.name + ' logo' }) : el('div', { class: 'dl-logo dl-logo-blank' }),
+        el('div', { class: 'opt-card-title' }, [o.name]),
+        el('p', { class: 'opt-card-desc' }, [o.desc]),
+        el('span', { class: 'dl-fake-btn' }, ['⤓ Download for ' + o.name])
+      ]));
+    });
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('h2', { class: 'step-card-title' }, ['Download the app']),
+      el('p', { class: 'step-card-intro' }, ['The app runs on Windows, Mac and Linux. It carries the choices you just made and runs the matching analysis for you.']),
+      el('div', { class: 'demo-notice' }, [
+        el('span', null, ['⚠']),
+        el('span', null, [el('b', null, ['This is a demo. ']), 'Nothing will be downloaded. Pick a platform to see what happens next.'])
+      ]),
+      grid,
+      stepFooter({ hideNext: !state.os })
+    ]);
+  }
+
+  var installTimer = null;
+  function renderInstall() {
+    var os = findIn(OSES, state.os) || OSES[0];
+    var bar = el('div');
+    var pct = el('span', null, ['0%']);
+    var phase = el('span', null, ['Preparing']);
+    var log = el('div', { class: 'inst-log' });
+    var title = el('h4', null, ['Installing the app']);
+    var sub = el('p', null, ['This takes about a minute. Nothing is sent anywhere.']);
+    var lines = [
+      'Checking the download ... ok',
+      'Unpacking the application',
+      'Setting up the run environment',
+      'Registering ' + wfLabel(WORKFLOWS[state.scenario]),
+      'Fetching the list of reference data',
+      'Adding a shortcut',
+      'Installation complete'
+    ];
+    var keys = [];
+    var keyboard = el('div', { class: 'keyboard' }, [13, 14, 13, 12, 8].map(function(n, r){
+      var row = el('div', { class: 'key-row' });
+      for (var i = 0; i < n; i++) {
+        var k = el('div', { class: 'key' + (r === 4 && i === 3 ? ' w6' : (r === 4 || (r === 3 && (i === 0 || i === n - 1)) ? ' w2' : '')) });
+        keys.push(k); row.appendChild(k);
+      }
+      return row;
+    }));
+
+    var footer = stepFooter({ label: 'Open the app', onContinue: function(){ state.installed = true; } });
+    var nextBtn = footer.querySelector('.btn-primary');
+    if (!state.installed) { nextBtn.textContent = ''; nextBtn.appendChild(document.createTextNode('Skip')); nextBtn.appendChild(arrow()); }
+
+    if (installTimer) clearInterval(installTimer);
+    var progress = state.installed ? 100 : 0, li = 0, tick = 0;
+    function paint() {
+      bar.style.width = progress + '%';
+      pct.textContent = progress + '%';
+    }
+    function finish() {
+      clearInterval(installTimer); installTimer = null;
+      progress = 100; paint();
+      phase.textContent = 'Done';
+      title.textContent = 'The app is installed';
+      sub.textContent = 'Open the app to choose where the analysis should run.';
+      log.appendChild(el('div', { class: 'inst-done' }, ['✓ Installation complete']));
+      state.installed = true;
+      nextBtn.textContent = ''; nextBtn.appendChild(document.createTextNode('Open the app')); nextBtn.appendChild(arrow());
+      renderProgress();
+    }
+    if (state.installed) {
+      lines.forEach(function(l){ log.appendChild(el('div', null, [l])); });
+      finish();
+    } else {
+      installTimer = setInterval(function(){
+        tick++;
+        progress = Math.min(99, progress + 2 + Math.floor(Math.random() * 3));
+        paint();
+        if (tick % 6 === 1 && li < lines.length - 1) {
+          log.appendChild(el('div', null, ['> ' + lines[li]]));
+          phase.textContent = lines[li].split(' ...')[0];
+          li++;
+          while (log.children.length > 2) log.removeChild(log.firstChild);
+        }
+        if (progress >= 99) finish();
+      }, 120);
+    }
+    paint();
+
+    var titlebar;
+    if (os.id === 'windows') {
+      titlebar = el('div', { class: 'monitor-titlebar' }, [
+        el('span', { class: 't' }, [el('span', { class: 'win-icon' }), 'App Setup']),
+        el('div', { class: 'win-controls' }, [
+          el('span', null, ['\u2014']), el('span', null, ['\u2610']), el('span', { class: 'close' }, ['\u2715'])
+        ])
+      ]);
+    } else if (os.id === 'linux') {
+      titlebar = el('div', { class: 'monitor-titlebar' }, [
+        el('span', { class: 't' }, ['App Setup']),
+        el('span', { class: 'gnome-close' }, ['\u2715'])
+      ]);
+    } else {
+      titlebar = el('div', { class: 'monitor-titlebar' }, [
+        el('span', { class: 'dot r' }), el('span', { class: 'dot y' }), el('span', { class: 'dot g' }),
+        el('span', { class: 't' }, ['App Setup'])
+      ]);
+    }
+
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('h2', { class: 'step-card-title' }, ['Run the installer']),
+      el('p', { class: 'step-card-intro' }, ['Open the downloaded installer for ' + os.name + ' and follow the steps. It takes about a minute. Here it plays out on its own.']),
+      el('div', { class: 'installer-stage' }, [
+        el('div', { class: 'monitor' }, [
+          el('div', { class: 'monitor-window os-' + os.id }, [
+            titlebar,
+            el('div', { class: 'monitor-body' }, [
+              title, sub,
+              el('div', { class: 'inst-bar' }, [bar]),
+              el('div', { class: 'inst-status' }, [phase, pct]),
+              log
+            ])
+          ])
+        ]),
+        el('div', { class: 'monitor-stand' }),
+        el('div', { class: 'monitor-base' }),
+        keyboard
+      ]),
+      footer
+    ]);
+  }
+
+  function renderWhere() {
+    var grid = el('div', { class: 'opt-grid rows' });
+    RUN_TARGETS.forEach(function(t){
+      grid.appendChild(el('button', {
+        class: 'opt-card' + (state.runTarget === t.id ? ' is-selected' : ''),
+        type: 'button',
+        onclick: function(){
+          if (state.runTarget !== t.id) { state.exp.source_path = ''; state.exp.target_path = ''; state.locSeen = false; }
+          state.runTarget = t.id; state.runDone = false;
+          state.cloudProvider = (t.id === 'cloud') ? 'aws' : null;
+          render();
+        }
+      }, [
+        el('div', { class: 'opt-card-title' }, [t.icon + '  ' + t.name]),
+        el('p', { class: 'opt-card-desc' }, [t.desc]),
+        t.warn ? el('div', { class: 'warn-inline' }, [el('span', null, ['\u26A0']), el('span', null, [t.warn])]) : null
+      ]));
+    });
+
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('h2', { class: 'step-card-title' }, ['Where should the analysis run?']),
+      el('p', { class: 'step-card-intro' }, ['The app already knows your kit, instrument and experiment. Choose where the analysis should run. Everything else is taken care of.']),
+      grid,
+      stepFooter({ label: 'Continue', disabled: !stepCompleteness(state.activeStep) })
+    ]);
+  }
+
+  // Wraps a step in the desktop client's window: everything from here on
+  // happens in the application on this computer.
+  function appFrame(content) {
+    var os = findIn(OSES, state.os) || OSES[0];
+    var bar;
+    if (os.id === 'windows') {
+      bar = el('div', { class: 'monitor-titlebar' }, [
+        el('span', { class: 't' }, [el('span', { class: 'win-icon' }), 'Omics app']),
+        el('div', { class: 'win-controls' }, [el('span', null, ['\u2014']), el('span', null, ['\u2610']), el('span', { class: 'close' }, ['\u2715'])])
+      ]);
+    } else if (os.id === 'linux') {
+      bar = el('div', { class: 'monitor-titlebar' }, [el('span', { class: 't' }, ['Omics app']), el('span', { class: 'gnome-close' }, ['\u2715'])]);
+    } else {
+      bar = el('div', { class: 'monitor-titlebar' }, [
+        el('span', { class: 'dot r' }), el('span', { class: 'dot y' }), el('span', { class: 'dot g' }),
+        el('span', { class: 't' }, ['Omics app'])
+      ]);
+    }
+    content.classList.add('in-app');
+    return el('div', { class: 'app-frame' }, [
+      el('div', { class: 'app-frame-label' }, ['On this computer · ' + os.name]),
+      el('div', { class: 'monitor-window os-' + os.id + ' app-window' }, [bar, content])
+    ]);
+  }
+
+  function renderLocations() {
+    var d = locDefaults();
+    var locGrid = el('div', { class: 'field-grid is-stacked' });
+    locFieldsForTarget().forEach(function(f){ locGrid.appendChild(fieldNode(f, function(){})); });
+    var hint = {
+      local: 'Two folders on this computer or on a shared drive: where your sequencing files are now, and where the results should be written.',
+      cloud: 'Two storage locations in your own ' + d.where + ' account, in the same region as the machines that run the analysis. Nothing passes through this computer.',
+      hpc: 'Two folders on the cluster storage, one holding your sequencing files and one for the results. Your IT team can tell you which to use.'
+    }[state.runTarget] || '';
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('h2', { class: 'step-card-title' }, ['Where are your files?']),
+      el('p', { class: 'step-card-intro' }, [hint]),
+      locGrid,
+      stepFooter({ label: 'Start the analysis', onContinue: function(){ state.locSeen = true; } })
+    ]);
+  }
+
+  // ---------------------------------------------------------------------
+  // Shared: run screen with QC report
+  // ---------------------------------------------------------------------
+  var runTimer = null;
+  var HASHES = ['a1/4f2c9e', 'c7/91be03', 'e2/0a77d1', '9b/33fe10', 'f4/2c8d55', '3d/b80c17', '7e/5a91f0', 'b2/c4d6e8', '5f/07aa31'];
+  function pad(str, n) { while (str.length < n) str += ' '; return str; }
+  function runPlan(wf) {
+    var n = wf.perSample ? 1 : QC_SAMPLES.length;
+    var log = [];
+    if (state.path === 'bioinf') {
+      log.push(['dim', '# params.yaml was generated from your wizard answers. Source and target are in it, just run.']);
+      log.push(['cmd', 'cat params.yaml']);
+      log.push(['', 'input: ' + sourcePath()]);
+      log.push(['', 'publish_dir: ' + targetPath()]);
+      log.push(['', 'reference: ' + (state.exp.reference_mode === 'own' ? firstOf(fieldValue(fieldById('reference_path'))) : (state.exp.reference_mode === 'generate' ? 'build from ' + firstOf(fieldValue(fieldById('genome_fasta'))) : optLabel(SPECIES, state.exp.species)))]);
+      if (state.entry === 'single_cell') log.push(['', 'expect_cells: ' + fieldValue(fieldById('expect_cells'))]);
+      log.push(['dim', '']);
+      log.push(['cmd', 'nextflow run ' + wf.id + (wf.version ? ' -r ' + wf.version : '') + ' -profile ' + (state.backend === 'hpc' ? 'singularity' : 'docker') + ' -params-file params.yaml']);
+      log.push(['dim', '']);
+    }
+    log.push(
+      ['dim', 'N E X T F L O W  ~  version 24.10.4'],
+      ['hl',  'Launching `' + wf.id + '`' + (wf.version ? ' [' + wf.version + ']' : '') + ' ...'],
+      ['',    'executor >  {EXEC} (' + n + ')']
+    );
+    var width = 30;
+    wf.steps.forEach(function(st, i){
+      var h = '[' + HASHES[i % HASHES.length] + '] ';
+      var isRef = st.kind === 'ref';
+      var count = isRef || st.proc.indexOf('report') === 0 ? 1 : n;
+      var skip = (st.kind === 'demux' && state.exp.input_shape === 'fastq')
+              || (isRef && state.exp.reference_mode !== 'generate');
+      if (skip) {
+        log.push(['dim', h + pad(st.proc, width) + '[100%] ' + count + ' of ' + count + ' ✔  (no work: ' + (isRef ? 'reference provided' : 'FASTQ provided') + ')']);
+        return;
+      }
+      if (count > 1) {
+        // Same key as the finished line below: Nextflow rewrites the line in
+        // place rather than printing a second one.
+        log.push(['', h + pad(st.proc, width) + '[  0%] 0 of ' + count, 'proc' + i]);
+        if (st.kind === 'count') {
+          QC_SAMPLES.forEach(function(sm){ log.push(['dim', '  ' + pad(sm.id, 24) + 'reads ' + sm.reads.toFixed(1) + 'M  expect-cells ' + fieldValue(fieldById('expect_cells'))]); });
+        }
+      }
+      log.push(['', h + pad(st.proc, width) + '[100%] ' + count + ' of ' + count + ' ✔', 'proc' + i]);
+    });
+    var total = 0;
+    wf.steps.forEach(function(st){ total += (st.kind === 'ref' || st.proc.indexOf('report') === 0) ? 1 : n; });
+    log.push(['ok', 'Completed at: {DATE}   Duration: ' + (wf.perSample ? '0h 38m 05s' : '1h 42m 11s') + '   Succeeded: ' + total]);
+    log.push(['ok', wf.perSample ? 'Report written to ' + targetPath() + '/multiqc_report.html' : 'Written ' + targetPath() + '/<sample>.h5mu and <sample>/outs/web_summary.html']);
+    return { stages: wf.steps.map(function(st){ return st.name; }), log: log };
+  }
+
+  function renderRun() {
+    var isBioinf = state.path === 'bioinf';
+    var execName = isBioinf
+      ? ({ local: 'local', k8s: 'k8s', seqera: 'seqera', hpc: 'slurm' }[state.backend] || 'local')
+      : ({ local: 'local', cloud: 'google-batch', hpc: 'slurm' }[state.runTarget] || 'local');
+    var whereText = isBioinf
+      ? (findIn(BACKENDS, state.backend) || {}).name
+      : (findIn(RUN_TARGETS, state.runTarget) || {}).name;
+
+    var term = el('div', { class: 'terminal' + (isBioinf ? ' is-full' : '') });
+    var bar = el('div');
+    var pct = el('span', { class: 'run-pct' }, ['0%']);
+    var spinner = el('div', { class: 'run-spinner' });
+    var statusText = el('span', null, ['Running ' + wfLabel(WORKFLOWS[state.scenario]) + ' on ' + whereText]);
+    var wf = WORKFLOWS[state.scenario] || WORKFLOWS['transcriptomics.single_cell.count_only'];
+    var plan = runPlan(wf);
+    var RUN_STAGES = plan.stages, RUN_LOG = plan.log;
+    var stages = RUN_STAGES.map(function(s){ return el('div', { class: 'run-step' }, [el('span', { class: 'st' }), s]); });
+    var skipBtn = el('button', { class: 'btn-ghost', type: 'button' }, ['Skip to the end']);
+
+    var footer = stepFooter({ label: 'View the report', disabled: !state.runDone });
+    var nextBtn = footer.querySelector('.btn-primary');
+
+    if (runTimer) clearInterval(runTimer);
+    var li = 0, progress = 0;
+    function paint() { bar.style.width = progress + '%'; pct.textContent = progress + '%'; }
+    function finish() {
+      clearInterval(runTimer); runTimer = null;
+      progress = 100; paint();
+      spinner.style.display = 'none';
+      statusText.textContent = 'Run finished. ' + (wf.perSample ? 'MultiQC report ready.' : 'Count QC report ready.');
+      stages.forEach(function(s){ s.className = 'run-step is-done'; });
+      skipBtn.style.display = 'none';
+      state.runDone = true;
+      nextBtn.disabled = false; nextBtn.style.opacity = ''; nextBtn.style.cursor = '';
+      renderProgress();
+    }
+    skipBtn.addEventListener('click', function(){
+      while (li < RUN_LOG.length) { appendLine(RUN_LOG[li]); li++; }
+      finish();
+    });
+    var lineByKey = {};
+    function appendLine(entry) {
+      var text = entry[1].replace('{EXEC}', execName).replace('{DATE}', new Date().toISOString().slice(0, 16).replace('T', ' '));
+      var cls = entry[0] === 'cmd2' ? 'cmd cmd2' : entry[0];
+      var key = entry[2];
+      if (key && lineByKey[key] && lineByKey[key].parentNode === term) {
+        lineByKey[key].textContent = text;      // the process line updates in place
+        lineByKey[key].className = cls;
+        return;
+      }
+      var node = el('div', { class: cls }, [text]);
+      term.appendChild(node);
+      if (key) lineByKey[key] = node;
+      if (!isBioinf) while (term.children.length > 12) term.removeChild(term.firstChild);
+    }
+    if (state.runDone) {
+      RUN_LOG.forEach(appendLine);
+      stages.forEach(function(s){ s.className = 'run-step is-done'; });
+      finish();
+    } else {
+      runTimer = setInterval(function(){
+        if (li < RUN_LOG.length) { appendLine(RUN_LOG[li]); li++; }
+        progress = Math.min(100, Math.round(li / RUN_LOG.length * 100));
+        paint();
+        var stageIdx = Math.min(RUN_STAGES.length - 1, Math.floor(li / RUN_LOG.length * RUN_STAGES.length));
+        stages.forEach(function(s, i){
+          s.className = 'run-step' + (i < stageIdx ? ' is-done' : (i === stageIdx ? ' is-running' : ''));
+        });
+        if (li >= RUN_LOG.length) finish();
+      }, 650);
+    }
+    paint();
+
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('h2', { class: 'step-card-title' }, ['Running the analysis']),
+      el('div', { class: 'demo-notice' }, [
+        el('span', null, ['⚠']),
+        el('span', null, [el('b', null, ['Nothing in this demo is real. ']), 'The run, the log and the timings are simulated, and the workflow shown is a simplification that does not match the original step for step. It only shows how the platform works.'])
+      ]),
+
+      el('p', { class: 'step-card-intro' }, [isBioinf
+        ? 'Nextflow pulls the containers and runs the workflow. The log below is what you would see in your terminal. This is simulated.'
+        : 'The app runs the analysis for you and reports back. The technical log below is simulated, and you do not need to read it.']),
+      el('div', { class: 'run-layout' }, isBioinf ? [
+        term,
+        el('div', { style: 'display:flex;justify-content:flex-end' }, [skipBtn])
+      ] : [
+        el('div', { class: 'run-status' }, [spinner, statusText, el('div', { class: 'run-progress' }, [bar]), pct, skipBtn]),
+        el('div', { class: 'run-steps' }, stages),
+        term
+      ]),
+      footer
+    ]);
+  }
+
+  function renderReport() {
+    var isBioinf = state.path === 'bioinf';
+    var footer = stepFooter({ label: 'What this means for your project', onContinue: function(){ state.reportSeen = true; } });
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow', style: 'margin-bottom:14px' }, [pathEyebrow()]),
+      el('div', { class: 'qc-example' }, [
+        el('span', { class: 'qc-example-stamp' }, ['Example']),
+        (WORKFLOWS[state.scenario] || {}).perSample ? renderBulkReport() : renderQcReport()
+      ]),
+      el('p', { class: 'qc-example-note' }, ['Faded on purpose: example material, not a real report.']),
+      footer
+    ]);
+  }
+
+  // ---------------------------------------------------------------------
+  // Final page: what a real project looks like, plus the two calls to action
+  // ---------------------------------------------------------------------
+  function renderNext() {
+    var footer = el('div', { class: 'step-action split' }, [
+      el('button', { class: 'btn-ghost', type: 'button', onclick: function(){ setActiveStep(state.activeStep - 1); } }, ['← Back']),
+      el('span', { class: 'step-count' }, [pathSteps().length + ' of ' + pathSteps().length]),
+      el('button', { class: 'btn-ghost', type: 'button', onclick: reset }, ['Restart the demo'])
+    ]);
+    function block(title, body) {
+      return el('div', { class: 'next-block' }, [
+        el('h3', null, [title]),
+        el('p', null, [body])
+      ]);
+    }
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
+      el('h2', { class: 'step-card-title' }, ['This demo is the generic version. Your project gets its own.']),
+      el('p', { class: 'step-card-intro' }, ['Every step you just walked through is configuration, not fixed code. We set it up for the way your lab or facility works.']),
+      el('div', { class: 'next-grid' }, [
+        block('Steps tailored to your project',
+          'The wizard steps, the kits, instruments and scenarios on offer, the questions asked about an experiment and the defaults behind them are defined per client. A core facility gets its instrument park and kit list, a research group gets the two assays it runs and nothing else.'),
+        block('Reports tailored to your questions',
+          'The report at the end is built for the decision you have to make: which metrics, which thresholds, which plots, in your layout and your language. Batch summaries, per-sample pages, sign-off sheets or a plain table for the LIMS, whatever the project needs.'),
+        block('On a private or a shared platform',
+          'All of this can run on a private platform for your organisation: on your own infrastructure, in your cloud account or as a dedicated tenant we host for you. Your data, references and results stay under your control and only your users see your configuration. It can also run on our shared platform, which keeps the cost down for a smaller team.')
       ]),
       el('p', { class: 'review-callout' }, [
         'With this information we deliver you the omics workflow you need, ',
         el('em', null, ['based on your choices']),
         '. Contact us for more information or to get going.'
       ]),
-      el('div', { class: 'review-cta-row' }, [contactBtn, bookingBtn])
+      ctaRow(),
+      footer
+    ]);
+  }
+
+  // ---- Fake exploratory data report (one pager) -----------------------
+  var QC_SAMPLES = [
+    { id: 'lorem/ipsum/VH02001614', reads: 148.2, cells: 3120, medGenes: 2140, medUMI: 6480, validBc: 97.8, q30: 94.1,
+      genome: 93.6, transcriptome: 71.4, intronic: 14.2, intergenic: 4.1, antisense: 1.6, inCells: 91.2, sat: 0.62, mt: 4.8,  totalGenes: 24312, flag: 'pass' },
+    { id: 'foo/bar/VH02001614',     reads: 139.7, cells: 2980, medGenes: 2060, medUMI: 6110, validBc: 97.5, q30: 93.7,
+      genome: 93.1, transcriptome: 70.6, intronic: 14.8, intergenic: 4.3, antisense: 1.7, inCells: 90.4, sat: 0.60, mt: 5.3,  totalGenes: 23980, flag: 'pass' },
+    { id: 'foo/bar/VH02001612',     reads: 126.1, cells: 2410, medGenes: 1620, medUMI: 4390, validBc: 96.9, q30: 93.2,
+      genome: 91.8, transcriptome: 66.2, intronic: 15.9, intergenic: 5.2, antisense: 1.9, inCells: 78.6, sat: 0.54, mt: 11.9, totalGenes: 22105, flag: 'warn' }
+  ];
+  var QC_COLORS = ['#7C4BAC', '#00B4A0', '#C9A228'];
+
+  function svgEl(tag, attrs, children) {
+    var n = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    (children || []).forEach(function(c){ n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function fmtM(v) { return v.toFixed(1) + 'M'; }
+  function fmtInt(v) { return String(v).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+  // Stacked horizontal bar per sample: where the reads map (CellRanger metrics).
+  function qcMappingChart() {
+    var W = 320, rowH = 26, padL = 4, H = QC_SAMPLES.length * rowH + 4;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Read mapping breakdown per sample' });
+    QC_SAMPLES.forEach(function(s, i){
+      var x = padL, y = i * rowH + 4;
+      var unmapped = 100 - s.genome;
+      var other = s.genome - s.transcriptome - s.intronic - s.intergenic;
+      [[s.transcriptome, '#7C4BAC'], [s.intronic, '#00B4A0'], [s.intergenic, '#C9A228'], [Math.max(0, other), 'rgba(120,130,160,0.55)'], [unmapped, 'rgba(120,130,160,0.25)']].forEach(function(seg){
+        var w = (W - 8) * seg[0] / 100;
+        svg.appendChild(svgEl('rect', { x: x, y: y, width: Math.max(0, w - 1), height: rowH - 10, rx: 2, fill: seg[1] }));
+        x += w;
+      });
+      svg.appendChild(svgEl('text', { x: padL + 4, y: y + 12, 'font-size': '9', fill: '#FFFFFF', 'font-weight': '700' }, [s.id.split('/').pop() + '  ' + s.transcriptome.toFixed(1) + '%']));
+    });
+    return svg;
+  }
+  // Barcode rank plot (log-log): UMI counts per barcode, the CellRanger knee plot.
+  function qcBarcodeRankChart() {
+    var W = 320, H = 150, padL = 34, padB = 24, padT = 8;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Barcode rank plot per sample' });
+    var plotH = H - padB - padT, plotW = W - padL - 8;
+    var xMax = 6, yMax = 5;   // log10 barcodes, log10 UMIs
+    for (var e = 0; e <= xMax; e += 2) {
+      var gx = padL + plotW * e / xMax;
+      svg.appendChild(svgEl('line', { x1: gx, x2: gx, y1: padT, y2: padT + plotH, stroke: 'currentColor', 'stroke-opacity': '0.12' }));
+      svg.appendChild(svgEl('text', { x: gx, y: H - 10, 'text-anchor': 'middle', 'font-size': '9', fill: 'currentColor', 'fill-opacity': '0.6' }, ['1e' + e]));
+    }
+    for (var f = 0; f <= yMax; f += 1) {
+      var gy = padT + plotH - plotH * f / yMax;
+      svg.appendChild(svgEl('line', { x1: padL, x2: W - 8, y1: gy, y2: gy, stroke: 'currentColor', 'stroke-opacity': '0.12' }));
+      if (f % 2 === 1) svg.appendChild(svgEl('text', { x: padL - 5, y: gy + 3, 'text-anchor': 'end', 'font-size': '9', fill: 'currentColor', 'fill-opacity': '0.6' }, ['1e' + f]));
+    }
+    QC_SAMPLES.forEach(function(s, si){
+      var pts = [];
+      var kneeX = Math.log10(s.cells), top = Math.log10(s.medUMI * 2.2), floor = 0.2;
+      for (var i = 0; i <= 60; i++) {
+        var lx = xMax * i / 60;
+        var ly;
+        if (lx < kneeX) ly = top - 0.25 * lx / kneeX;
+        else if (lx < kneeX + 0.5) ly = (top - 0.25) - (top - 0.25 - 1.4) * (lx - kneeX) / 0.5;
+        else ly = Math.max(floor, 1.4 - (lx - kneeX - 0.5) * 0.5);
+        pts.push((padL + plotW * lx / xMax).toFixed(1) + ',' + (padT + plotH - plotH * ly / yMax).toFixed(1));
+      }
+      svg.appendChild(svgEl('polyline', { points: pts.join(' '), fill: 'none', stroke: QC_COLORS[si], 'stroke-width': '2' }));
+    });
+    svg.appendChild(svgEl('text', { x: padL + plotW / 2, y: H - 1, 'text-anchor': 'middle', 'font-size': '9', fill: 'currentColor', 'fill-opacity': '0.75' }, ['Barcodes (rank)']));
+    return svg;
+  }
+  // Saturation curves: reads (x) vs saturation (y).
+  function qcSaturationChart() {
+    var W = 320, H = 150, padL = 30, padB = 26, padT = 8;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Sequencing saturation per sample' });
+    var plotH = H - padB - padT, plotW = W - padL - 8;
+    [0, 0.25, 0.5, 0.75, 1].forEach(function(v){
+      var y = padT + plotH - plotH * v;
+      svg.appendChild(svgEl('line', { x1: padL, x2: W - 8, y1: y, y2: y, stroke: 'currentColor', 'stroke-opacity': '0.12' }));
+      svg.appendChild(svgEl('text', { x: padL - 6, y: y + 3, 'text-anchor': 'end', 'font-size': '9', fill: 'currentColor', 'fill-opacity': '0.6' }, [Math.round(v * 100) + '%']));
+    });
+    QC_SAMPLES.forEach(function(s, si){
+      var pts = [];
+      for (var i = 0; i <= 20; i++) {
+        var frac = i / 20;                           // fraction of reads subsampled
+        var sat = s.sat * (1 - Math.exp(-3.2 * frac)) / (1 - Math.exp(-3.2));
+        pts.push((padL + plotW * frac).toFixed(1) + ',' + (padT + plotH - plotH * sat).toFixed(1));
+      }
+      svg.appendChild(svgEl('polyline', { points: pts.join(' '), fill: 'none', stroke: QC_COLORS[si], 'stroke-width': '2' }));
+    });
+    svg.appendChild(svgEl('line', { x1: padL, x2: W - 8, y1: padT + plotH * 0.5, y2: padT + plotH * 0.5, stroke: '#E05C4B', 'stroke-dasharray': '3 3', 'stroke-opacity': '0.7' }));
+    svg.appendChild(svgEl('text', { x: W / 2 + 10, y: H - 8, 'text-anchor': 'middle', 'font-size': '10', fill: 'currentColor', 'fill-opacity': '0.75' }, ['Input reads (subsampled)']));
+    return svg;
+  }
+  // MultiQC-style one pager for the per-sample bulk workflow.
+  function bulkStackedBar(segs, label) {
+    var W = 320, H = 34;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': label });
+    var x = 0;
+    segs.forEach(function(sg){
+      var w = W * sg[0] / 100;
+      svg.appendChild(svgEl('rect', { x: x, y: 4, width: Math.max(0, w - 1), height: 22, rx: 2, fill: sg[1] }));
+      if (w > 34) svg.appendChild(svgEl('text', { x: x + 5, y: 19, 'font-size': '9', fill: '#FFFFFF', 'font-weight': '700' }, [sg[0].toFixed(1) + '%']));
+      x += w;
+    });
+    return svg;
+  }
+  function fastqcQualityChart() {
+    var W = 320, H = 130, padL = 26, padB = 20, padT = 6;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Mean per-base quality, raw versus trimmed' });
+    var plotH = H - padB - padT, plotW = W - padL - 6;
+    [[0, 20, 'rgba(224,92,75,0.10)'], [20, 28, 'rgba(201,162,40,0.12)'], [28, 40, 'rgba(0,180,160,0.10)']].forEach(function(b){
+      svg.appendChild(svgEl('rect', { x: padL, y: padT + plotH - plotH * b[1] / 40, width: plotW, height: plotH * (b[1] - b[0]) / 40, fill: b[2] }));
+    });
+    [0, 20, 40].forEach(function(v){
+      svg.appendChild(svgEl('text', { x: padL - 5, y: padT + plotH - plotH * v / 40 + 3, 'text-anchor': 'end', 'font-size': '9', fill: 'currentColor', 'fill-opacity': '0.6' }, [String(v)]));
+    });
+    [['#7A88B5', function(i){ return 36 - Math.max(0, (i - 60)) * 0.14 - (i < 4 ? 3 : 0); }],
+     ['#7C4BAC', function(i){ return 36.5 - Math.max(0, (i - 60)) * 0.06 - (i < 4 ? 2 : 0); }]].forEach(function(series){
+      var pts = [];
+      for (var i = 0; i <= 150; i += 5) {
+        pts.push((padL + plotW * i / 150).toFixed(1) + ',' + (padT + plotH - plotH * series[1](i) / 40).toFixed(1));
+      }
+      svg.appendChild(svgEl('polyline', { points: pts.join(' '), fill: 'none', stroke: series[0], 'stroke-width': '2' }));
+    });
+    svg.appendChild(svgEl('text', { x: padL + plotW / 2, y: H - 6, 'text-anchor': 'middle', 'font-size': '10', fill: 'currentColor', 'fill-opacity': '0.75' }, ['Position in read (bp)']));
+    return svg;
+  }
+  function renderBulkReport() {
+    var wf = WORKFLOWS[state.scenario] || {};
+    var inst = INSTRUMENTS[state.instrument] || {};
+    var kit = currentKit() || {};
+    var dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+    var rows = [
+      ['Sample', 'sample_01 (R1 + R2)'],
+      ['Raw reads', '42.6M pairs'],
+      ['After TrimGalore', '41.9M pairs (98.4% kept) · adapters found in 12.1% of reads'],
+      ['FastQC', 'raw: 1 warning (adapter content) · trimmed: all pass'],
+      ['Kallisto pseudo-aligned', '86.3%'],
+      ['STAR uniquely mapped', '89.7% · multi-mapped 6.1% · unmapped 4.2%'],
+      ['Salmon mapping rate', '91.4% (alignment mode)'],
+      ['Qualimap', 'exonic 78.2% · intronic 16.9% · intergenic 4.9% · 5\u2032 to 3\u2032 bias 1.04'],
+      ['Genes detected', '18 940 (TPM > 1)']
+    ];
+    function statTable(list) {
+      var body = el('tbody');
+      list.forEach(function(r){
+        body.appendChild(el('tr', null, [
+          el('td', null, [r[0]]),
+          el('td', { style: 'white-space:normal' }, [r[1]])
+        ]));
+      });
+      return el('table', { class: 'qc-table' }, [body]);
+    }
+    var half = Math.ceil(rows.length / 2);
+    return el('div', { class: 'qc-report' }, [
+      el('div', { class: 'qc-head' }, [
+        el('div', null, [
+          el('h3', null, ['MultiQC Report']),
+          el('p', null, [dateStr + ' · ' + wfLabel(wf) + ' · ' + (kit.name || '') + ' · ' + (inst.name || '')])
+        ]),
+        el('span', { class: 'qc-verdict' }, ['✓ 1 sample · all checks pass'])
+      ]),
+      el('div', { class: 'qc-section' }, [
+        el('h4', null, ['1 · General statistics']),
+        el('div', { class: 'qc-stats-2col' }, [
+          el('div', { class: 'qc-table-wrap' }, [statTable(rows.slice(0, half))]),
+          el('div', { class: 'qc-table-wrap' }, [statTable(rows.slice(half))])
+        ])
+      ]),
+      el('div', { class: 'qc-section' }, [
+        el('h4', null, ['2 · Alignment and QC']),
+        el('div', { class: 'qc-grid' }, [
+          el('div', { class: 'qc-panel' }, [
+            el('h5', null, ['STAR alignment scores']),
+            bulkStackedBar([[89.7, '#7C4BAC'], [6.1, '#00B4A0'], [4.2, 'rgba(120,130,160,0.35)']], 'STAR alignment'),
+            el('p', { class: 'qc-cap' }, ['Uniquely mapped (purple), multi-mapped (teal), unmapped (grey).'])
+          ]),
+          el('div', { class: 'qc-panel' }, [
+            el('h5', null, ['Qualimap genomic origin']),
+            bulkStackedBar([[78.2, '#7C4BAC'], [16.9, '#C9A228'], [4.9, 'rgba(120,130,160,0.35)']], 'Genomic origin'),
+            el('p', { class: 'qc-cap' }, ['Exonic (purple), intronic (amber), intergenic (grey). Coordinate-based, from the STAR BAM.'])
+          ]),
+          el('div', { class: 'qc-panel' }, [
+            el('h5', null, ['FastQC mean quality, raw vs trimmed']),
+            fastqcQualityChart(),
+            el('p', { class: 'qc-cap' }, ['Phred score per position. Grey: raw. Purple: after TrimGalore. The 3\u2032 drop is removed by trimming.'])
+          ]),
+          el('div', { class: 'qc-panel' }, [
+            el('h5', null, ['Kallisto vs Salmon']),
+            bulkStackedBar([[86.3, '#00B4A0'], [13.7, 'rgba(120,130,160,0.2)']], 'Kallisto pseudo-alignment rate'),
+            bulkStackedBar([[91.4, '#7C4BAC'], [8.6, 'rgba(120,130,160,0.2)']], 'Salmon mapping rate'),
+            el('p', { class: 'qc-cap' }, ['Top: Kallisto pseudo-alignment rate, the preliminary quantification. Bottom: Salmon mapping rate in alignment mode. Both quantifications agree (Spearman 0.98 on TPM).'])
+          ])
+        ])
+      ]),
+      el('p', { class: 'qc-foot' }, ['One-page summary of the MultiQC report. The workflow handles one FASTQ pair per invocation; aggregating several samples into one count matrix is a separate step. Demo data, not a real run.'])
+    ]);
+  }
+
+  function renderQcReport() {
+    var wf = WORKFLOWS[state.scenario] || {};
+    var kit = currentKit() || {};
+    var inst = INSTRUMENTS[state.instrument] || {};
+    var dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+    var expectCells = fieldValue(fieldById('expect_cells'));
+
+    var cols = ['Sample', 'Estimated cells', 'Reads', 'Mean reads / cell', 'Median genes / cell', 'Median UMI / cell', 'Valid barcodes', 'Q30 bases (RNA read)', 'Conf. mapped to transcriptome', 'Reads in cells', 'Saturation', 'pctMT'];
+    var thead = el('tr', null, cols.map(function(h){ return el('th', null, [h]); }));
+    var tbody = el('tbody');
+    QC_SAMPLES.forEach(function(s){
+      tbody.appendChild(el('tr', null, [
+        el('td', null, [el('span', { class: 'qc-flag ' + s.flag }), s.id]),
+        el('td', null, [fmtInt(s.cells)]),
+        el('td', null, [fmtM(s.reads)]),
+        el('td', null, [fmtInt(Math.round(s.reads * 1e6 / s.cells))]),
+        el('td', null, [fmtInt(s.medGenes)]),
+        el('td', null, [fmtInt(s.medUMI)]),
+        el('td', null, [s.validBc.toFixed(1) + '%']),
+        el('td', null, [s.q30.toFixed(1) + '%']),
+        el('td', null, [s.transcriptome.toFixed(1) + '%']),
+        el('td', null, [s.inCells.toFixed(1) + '%']),
+        el('td', null, [Math.round(s.sat * 100) + '%']),
+        el('td', null, [s.mt.toFixed(1) + '%'])
+      ]));
+    });
+
+    var legend = el('div', { class: 'qc-legend' }, QC_SAMPLES.map(function(s, i){
+      var sp = el('span', null, [s.id]); sp.style.setProperty('--lg', QC_COLORS[i]); return sp;
+    }));
+
+    return el('div', { class: 'qc-report' }, [
+      el('div', { class: 'qc-head' }, [
+        el('div', null, [
+          el('h3', null, ['Count QC report']),
+          el('p', null, [dateStr + ' · ' + wfLabel(wf) + ' · cellranger_mapping · ' + (kit.name || '') + ' · ' + (inst.name || '')])
+        ]),
+        el('span', { class: 'qc-verdict' }, ['✓ 3 samples · 2 pass · 1 warning'])
+      ]),
+      el('div', { class: 'qc-section' }, [
+        el('h4', null, ['1 · CellRanger metrics summary']),
+        el('div', { class: 'qc-table-wrap' }, [el('table', { class: 'qc-table' }, [el('thead', null, [thead]), tbody])]),
+        el('p', { class: 'qc-cap', style: 'font-size:12px;color:var(--text-soft);margin:8px 0 0' }, [
+          'Expected cells per sample was set to ' + expectCells + '. Amber flag: foo/bar/VH02001612 recovers fewer cells, has only 78.6% of reads in cells (CellRanger warns below 70%) and a median pctMT of 11.9%, which points to ambient RNA and stressed or dying cells. Apply a stricter mitochondrial filter downstream and check the loading for that sample.'])
+      ]),
+      el('div', { class: 'qc-section' }, [
+        el('h4', null, ['2 · Mapping and cell calling']),
+        el('div', { class: 'qc-grid' }, [
+          el('div', { class: 'qc-panel' }, [
+            el('h5', null, ['Where the reads map']),
+            qcMappingChart(),
+            el('p', { class: 'qc-cap' }, ['Confidently mapped to transcriptome (purple), intronic (teal), intergenic (amber), other genome (dark grey), unmapped (light grey). Label: transcriptome share.'])
+          ]),
+          el('div', { class: 'qc-panel' }, [
+            el('h5', null, ['Barcode rank plot']),
+            qcBarcodeRankChart(),
+            el('p', { class: 'qc-cap' }, ['UMI counts per barcode, ranked (log-log). The knee marks the cell calling cut-off. A soft knee, as in the third sample, means more ambient background.'])
+          ]),
+          el('div', { class: 'qc-panel' }, [
+            el('h5', null, ['Sequencing saturation']),
+            qcSaturationChart(),
+            el('p', { class: 'qc-cap' }, ['Saturation against subsampled reads. Dashed line: 50%. At ' + fmtInt(Math.round(QC_SAMPLES[0].reads * 1e6 / QC_SAMPLES[0].cells)) + ' mean reads per cell the first sample is at 62%; more depth would still add new UMIs.'])
+          ])
+        ]),
+        legend
+      ]),
+      el('div', { class: 'qc-section qc-out' }, [
+        el('h4', null, ['3 · Output']),
+        el('p', { class: 'prose', style: 'font-size:13.5px' }, ['One filtered feature-barcode matrix per sample, delivered as h5mu with these metrics in the .uns slot, plus the raw CellRanger output folders. The Counts scenario stops here: no clustering, no t-SNE or UMAP, no cell type annotation. Those are OpenPipelines processing and downstream steps.'])
+        ,
+        el('p', { class: 'qc-foot' }, ['One-page summary. The full output adds the CellRanger web summary per sample and the per-cell QC metrics (total counts, genes detected, pctMT) computed on the h5mu. Demo data, not a real run.'])
+      ])
     ]);
   }
 
@@ -1262,21 +3028,52 @@
     if (i === 2) return renderStep3();
     if (i === 3) return renderStep4();
     if (i === 4) return renderStep5();
-    if (i === 5) return renderStep6();
+    if (i === REVIEW_IDX) return renderStep6();
+    if (i === SIM_IDX)    return renderSimulate();
+    var step = stepAt(i);
+    if (!step) return null;
+    if (step.id === 'backend')  return renderBackend();
+    if (step.prereq)            return renderPrereq(step);
+    if (step.id === 'download') return renderDownload();
+    if (step.id === 'install')  return renderInstall();
+    if (step.id === 'where')    return renderWhere();
+    if (step.id === 'locations') return renderLocations();
+    if (step.id === 'run')      return renderRun();
+    if (step.id === 'report')   return renderReport();
+    if (step.id === 'next')     return renderNext();
+    return null;
   }
 
   function render() {
     var root = document.getElementById('contentRoot');
     root.innerHTML = '';
+    // Stop any animation from a step that is no longer shown
+    var current = stepAt(state.activeStep) || {};
+    if (current.id !== 'install' && installTimer) { clearInterval(installTimer); installTimer = null; }
+    if (current.id !== 'run' && runTimer) { clearInterval(runTimer); runTimer = null; }
 
+    var steps = allSteps();
+    if (state.activeStep > REVIEW_IDX) root.appendChild(selectionCard());
     for (var i = 0; i < state.activeStep; i++) {
       if (!stepCompleteness(i)) continue;
-      var eyebrow = 'Step ' + (i + 1) + ' \u00B7 ' + STEPS[i].label;
+      // Past the review, only collapse the path's own steps; the six base
+      // steps are summarised in the rail.
+      if (state.activeStep > REVIEW_IDX && i <= REVIEW_IDX) continue;
+      var eyebrow = 'Step ' + (i + 1) + ' \u00B7 ' + steps[i].label;
       var value = stepSummary(i) || '\u2014';
       root.appendChild(collapsedCard(i, eyebrow, value));
     }
 
     var stepNode = renderStep(state.activeStep);
+    var cur = stepAt(state.activeStep) || {};
+    var framed = state.path === 'enduser' && ['where', 'locations', 'run', 'report'].indexOf(cur.id) >= 0;
+    if (stepNode && framed) {
+      stepNode = appFrame(stepNode);
+    }
+    // From the install step on, the step is pinned to the viewport instead of
+    // the page growing and scrolling.
+    var pinned = framed || (state.path === 'enduser' && cur.id === 'install');
+    document.body.classList.toggle('is-pinned', !!pinned);
     if (stepNode) root.appendChild(stepNode);
     renderProgress();
   }

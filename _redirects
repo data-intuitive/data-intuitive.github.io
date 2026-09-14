@@ -1,15 +1,51 @@
 # Clean-URL rewrites — short, shareable routes that serve the canonical pages.
 # Netlify status 200 = rewrite (URL stays clean in the browser).
 
-/platform        /products/platform.html        200
 /services        /services/services.html        200
-/pricing         /products/pricing.html         200
-/partnerships    /products/partnerships.html    200
-/pipelines       /products/pipelines.html       200
 /approach        /products/approach.html        200
 /company         /company/index.html            200
-/careers         /company/careers.html          200
 /trust-center    /static/trust_center.html      200
 /contact         /contact/contact.html          200
 /book            /contact/bookmeeting.html      200
-/alpha-lab       /contact/omics-alpha-lab.html  200
+
+# Pages removed with the project-based positioning. Work is scoped on a call
+# and quoted per project, which the services page explains.
+/products/pricing.html                    /services/services.html          301
+/pricing                                  /services/services.html          301
+# The Alpha Lab became the Interface beta programme.
+/contact/omics-alpha-lab.html             /contact/omics-beta-lab.html     301
+/alpha-lab                                /contact/omics-beta-lab.html     301
+/beta-lab                                 /contact/omics-beta-lab.html     200
+
+# The private platform page was folded into the platform page.
+
+# Removed with the partnerships simplification.
+/partners.html                            /products/partnerships.html      301
+/products/partnerships/distributors.html  /products/partnerships.html      301
+
+# Temporarily unpublished. 302 because both pages are coming back.
+/products/platform.html         /services/services.html   302
+/products/platform              /services/services.html   302
+/products/platform.html/*       /services/services.html   302
+/products/partnerships.html     /services/services.html   302
+/products/partnerships          /services/services.html   302
+/products/partnerships/*        /services/services.html   302
+/platform                       /services/services.html   302
+/partnerships                   /services/services.html   302
+/products/viashhub.html         /services/services.html   302
+/products/viashcatalogue.html   /services/services.html   302
+/enterprise.html                /services/services.html#private-platform   302
+/enterprise                     /services/services.html#private-platform   302
+/products/pipelines.html        /services/services.html   302
+/products/pipelines             /services/services.html   302
+/pipelines                      /services/services.html   302
+
+# No internships on offer at the moment.
+/company/careers/internships/index.html   /company/index.html     302
+/company/careers/internships/            /company/index.html     302
+
+# Lamin post withdrawn.
+/insights/blog/2026-03-31-unlocking-data-platform-for-r-users-with-laminr/index.html   /insights/blog.html   302
+/insights/blog/2026-03-31-unlocking-data-platform-for-r-users-with-laminr/            /insights/blog.html   302
+/company/careers.html   /company/index.html   302
+/careers                /company/index.html   302

@@ -6764,7 +6764,7 @@ span.ap-marker-container:hover span.ap-marker-tooltip {
 /* ---- Hero ---- */
 .hero-main {
   background: var(--navy-color);
-  padding: 80px 0 120px;
+  padding: 80px 0 64px;
   color: white;
   position: relative;
   overflow: hidden;
@@ -6775,7 +6775,9 @@ span.ap-marker-container:hover span.ap-marker-tooltip {
   .hero-main {
     margin-top: -175px !important;
     padding-top: calc(175px + 80px) !important;
-    padding-bottom: 140px;
+    /* The chip strip sits directly below on the same navy, so the hero does
+       not need a deep floor under the proof line. */
+    padding-bottom: 64px;
   }
 }
 
@@ -6930,7 +6932,7 @@ span.ap-marker-container:hover span.ap-marker-tooltip {
   width: max-content;
 }
 .logos-track-new img {
-  height: 32px;
+  height: 36px;
   width: auto;
   filter: grayscale(100%) brightness(0) invert(1);
   opacity: 0.6;
@@ -7348,6 +7350,13 @@ span.ap-marker-container:hover span.ap-marker-tooltip {
   transition: color 0.2s ease;
 }
 .footer-legal a:hover { color: rgba(255,255,255,0.75); }
+/* Touch targets: the legal row and the back links are 18px tall at 12-13px
+   text, which is too small to hit reliably on a phone. */
+@media (max-width: 767.98px) {
+  .footer-legal { gap: 2px 18px; }
+  .footer-legal a { display: inline-block; padding: 11px 0; }
+  .course-back-link { padding: 10px 0; }
+}
 .footer-copy {
   font-size: 12px;
   color: rgba(255,255,255,0.3);
@@ -8037,7 +8046,7 @@ span.ap-marker-container:hover span.ap-marker-tooltip {
 /* Logos strip: tighten gap on mobile */
 @media (max-width: 767.98px) {
   .logos-track-new { gap: 40px; }
-  .logos-track-new img { height: 24px; }
+  .logos-track-new img { height: 30px; }
   .logos-label-new { margin-bottom: 14px; font-size: 10px; }
 }
 
@@ -11238,7 +11247,7 @@ body.quarto-dark .catalogue-block,
   border-color: var(--border) !important;
 }
 
-/* --- products/platform.qmd --------------------------------- */
+/* --- platform page --------------------------------- */
 body.quarto-dark .handover-graphic,
 [data-bs-theme="dark"] .handover-graphic {
   background: var(--surface-elev) !important;
@@ -11255,7 +11264,7 @@ body.quarto-dark .demo-chrome,
   border-color: var(--border) !important;
 }
 
-/* --- products/pipelines.qmd -------------------------------- */
+/* --- catalogue page -------------------------------- */
 body.quarto-dark .catalogue-table,
 [data-bs-theme="dark"] .catalogue-table {
   background: var(--surface-elev) !important;
@@ -11541,4 +11550,146 @@ body.quarto-dark .di-legal-page a,
 [data-bs-theme="dark"] .di-legal-page a { color: #C7B3EA; }
 @media (max-width: 720px) {
   .di-legal-page { padding: 32px 22px; margin: 24px auto 40px; border-radius: 12px; }
+}
+
+/* ============================================================
+   Responsive fixes found in a full-site sweep at 375 / 768 /
+   1024 / 1280 / 1440px.
+   ============================================================ */
+
+/* 1. Every page scrolled 5px sideways on a phone. Bootstrap rows carry a
+   2.5rem gutter, so their negative margins (-21px) were wider than the
+   container's 16px padding. Pin the gutter to the padding in px so the two
+   cancel exactly, whatever the root font size is. */
+@media (max-width: 575.98px) {
+  .row { --bs-gutter-x: 32px; }
+}
+
+/* 2. Article pages put Quarto's table of contents in a right margin column
+   that did not fit between 768px and 1199px, pushing the page sideways.
+   Hide it there, as Quarto's own layout does at smaller widths. */
+@media (max-width: 1199.98px) {
+  .sidebar.margin-sidebar,
+  #quarto-margin-sidebar { display: none !important; }
+}
+
+/* 3. Wide tables, long unbroken URLs and formulas in blog posts overflowed
+   on a phone. Let tables scroll on their own and break long links. */
+@media (max-width: 767.98px) {
+  #quarto-document-content table,
+  .quarto-title-block + * table,
+  main table { display: block; width: 100%; max-width: 100%; overflow-x: auto; }
+}
+main a[href^="http"],
+#quarto-document-content a[href^="http"] { overflow-wrap: anywhere; }
+mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+
+/* 4. The news listing thumbnail is a fixed 260px box, which did not fit a
+   320px screen. Let it shrink there. */
+@media (max-width: 400px) {
+  .thumbnail,
+  .news-listing-section #listing-news .thumbnail,
+  .blog-listing-section #listing-blog .thumbnail {
+    flex: 0 0 auto;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .thumbnail img { max-width: 100%; height: auto; }
+  .quarto-post.image-left { flex-wrap: wrap; }
+}
+
+/* ---- Announcement bar (site wide) ----
+   Fixed strip above the nav. The nav offset and the body padding take
+   the bar height from --topnote-h, set by the script in menu.html. */
+/* Slim strip above the nav, in brand purple. Brand colours are fixed across
+   both themes, so the bar reads the same in light and dark and stays distinct
+   from the navy nav below it. White on #7C4BAC is 6.07:1. */
+.topnote {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1040;
+  background: var(--p-color, #7C4BAC);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+body.quarto-dark .topnote,
+[data-bs-theme="dark"] .topnote { background: #7C4BAC; }
+/* The nav is fixed at the top, so it moves down by the height of the bar,
+   and the page content moves with it. The script below keeps both in step
+   when the bar wraps at narrow widths. */
+/* The nav is fixed (top 20px, and 0 above 1200px, both !important), and the
+   body padding that clears it is !important too, so both take the bar
+   height from a variable rather than from inline styles a later script
+   would overwrite. */
+header.main-header { top: calc(20px + var(--topnote-h, 46px)) !important; }
+body { padding-top: calc(90px + var(--topnote-h, 46px)) !important; }
+@media (min-width: 1200px) {
+  header.main-header { top: var(--topnote-h, 46px) !important; }
+  body { padding-top: calc(155px + var(--topnote-h, 46px)) !important; }
+}
+.topnote a {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+  gap: 6px 14px; padding: 11px 0; text-decoration: none;
+  font-size: 14.5px; line-height: 1.45; color: rgba(255, 255, 255, 0.92);
+}
+.topnote a:hover { color: #FFFFFF; }
+.topnote-tag {
+  font-family: var(--font-display, inherit); font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #0B1D3A; background: #4FE0BD;
+  padding: 3px 9px; border-radius: 100px; white-space: nowrap;
+}
+.topnote a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, 0.4); }
+.topnote-wide, .topnote-narrow { display: inline-flex; align-items: center; gap: 12px; }
+.topnote-narrow { display: none; }
+/* Short line on small screens, so the bar stays one row. */
+@media (max-width: 900px) {
+  .topnote a { padding: 9px 0; font-size: 13px; }
+  .topnote-wide { display: none; }
+  .topnote-narrow { display: inline-flex; gap: 9px; }
+  .topnote-tag { font-size: 10.5px; padding: 2px 8px; }
+}
+@media (max-width: 380px) {
+  .topnote a { font-size: 12px; }
+  .topnote-narrow { gap: 7px; }
+  .topnote-tag { font-size: 10px; padding: 2px 7px; }
+}
+
+/* Anchor targets stop below the fixed nav and the announcement bar, so a
+   linked section lands at the top of the screen rather than under them. */
+:target { scroll-margin-top: calc(96px + var(--topnote-h, 46px)); }
+@media (min-width: 1200px) {
+  :target { scroll-margin-top: calc(146px + var(--topnote-h, 46px)); }
+}
+
+/* Buttons inside article content (blog and news posts). The content link
+   colour was winning over the button colour, which left purple text on navy
+   in light and lavender on mint in dark. These now match the site CTA: teal
+   in light, mint in dark, navy text either way. */
+#quarto-document-content a.btn,
+#quarto-document-content a.btn-primary {
+  background: var(--s-color, #00B4A0) !important;
+  border-color: var(--s-color, #00B4A0) !important;
+  color: #0B1D3A !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 13px 26px;
+}
+#quarto-document-content a.btn:hover,
+#quarto-document-content a.btn-primary:hover {
+  background: #009989 !important;
+  border-color: #009989 !important;
+  color: #0B1D3A !important;
+}
+body.quarto-dark #quarto-content #quarto-document-content.content a.btn,
+body.quarto-dark #quarto-content #quarto-document-content.content a.btn-primary,
+[data-bs-theme="dark"] #quarto-content #quarto-document-content.content a.btn,
+[data-bs-theme="dark"] #quarto-content #quarto-document-content.content a.btn-primary {
+  background: var(--accent-2, #4FE0BD) !important;
+  border-color: var(--accent-2, #4FE0BD) !important;
+  color: #0B1D3A !important;
+}
+body.quarto-dark #quarto-content #quarto-document-content.content a.btn:hover,
+[data-bs-theme="dark"] #quarto-content #quarto-document-content.content a.btn:hover {
+  background: #6FECCC !important;
+  border-color: #6FECCC !important;
 }
