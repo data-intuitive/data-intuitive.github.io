@@ -596,44 +596,44 @@ cookieconsent.run({
   </div>
 </header> <main class="content" id="quarto-document-content">
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level2">
+<h2 data-anchor-id="introduction">Introduction</h2>
 <p>Our collaboration with a top 10 pharmaceutical company has reached a significant milestone with the successful release of a comprehensive suite of end-to-end workflows for spatial omics data processing. Building upon our proven single-cell genomics pipelines, we combine deep domain knowledge with cutting-edge computational expertise to address the rapidly evolving landscape of spatial biology.</p>
 </section>
-<section id="building-on-proven-foundations" class="level1">
-<h1>Building on Proven Foundations</h1>
+<section id="building-on-proven-foundations" class="level2">
+<h2 data-anchor-id="building-on-proven-foundations">Building on Proven Foundations</h2>
 <p>The modularity of OpenPipeline workflows has been instrumental in accelerating spatial processing development. Rather than building from scratch, our Viash-based architecture enables seamless modification and recycling of existing single-cell components. This approach rapidly adapts proven methodologies for spatial data requirements while maintaining established quality standards.</p>
 </section>
-<section id="technology-agnostic-spatial-data-processing" class="level1">
-<h1>Technology-Agnostic Spatial Data Processing</h1>
+<section id="technology-agnostic-spatial-data-processing" class="level2">
+<h2 data-anchor-id="technology-agnostic-spatial-data-processing">Technology-Agnostic Spatial Data Processing</h2>
 <p>OpenPipeline Spatial delivers truly technology-agnostic workflows that seamlessly handle data from multiple spatial platforms including 10X Genomics Xenium, NanoString CosMx or Element Biosciences Aviti. This universal compatibility ensures researchers can apply consistent analysis standards regardless of the chosen experimental setup, facilitating cross-platform comparisons and robust scientific conclusions.</p>
 </section>
-<section id="comprehensive-end-to-end-workflows-for-spatial-biology" class="level1">
-<h1>Comprehensive End-to-End Workflows for Spatial Biology</h1>
+<section id="comprehensive-end-to-end-workflows-for-spatial-biology" class="level2">
+<h2 data-anchor-id="comprehensive-end-to-end-workflows-for-spatial-biology">Comprehensive End-to-End Workflows for Spatial Biology</h2>
 <p>OpenPipeline Spatial provides complete end-to-end workflows that cover the entire spatial omics analysis pipeline.</p>
-<section id="mapping-and-counting" class="level2">
-<h2 data-anchor-id="mapping-and-counting">Mapping and Counting</h2>
+<section id="mapping-and-counting" class="level3">
+<h3 data-anchor-id="mapping-and-counting">Mapping and Counting</h3>
 <p>For technologies that don’t perform mapping and counting on-instrument, we provide robust workflows to process raw spatial data into count matrices with preserved spatial coordinates.</p>
 </section>
-<section id="conversion-components" class="level2">
-<h2 data-anchor-id="conversion-components">Conversion Components</h2>
+<section id="conversion-components" class="level3">
+<h3 data-anchor-id="conversion-components">Conversion Components</h3>
 <p>Our conversion components ensure data are unified in a common framework regardless of chosen technology. These tools enable seamless switching between popular spatial data formats, supporting both R and Python experts through formats including H5MU, SpatialExperiment, and SpatialData.</p>
 </section>
-<section id="qc-metric-calculation-and-reporting" class="level2">
-<h2 data-anchor-id="qc-metric-calculation-and-reporting">QC Metric Calculation and Reporting</h2>
+<section id="qc-metric-calculation-and-reporting" class="level3">
+<h3 data-anchor-id="qc-metric-calculation-and-reporting">QC Metric Calculation and Reporting</h3>
 <p>We generate comprehensive stand-alone QC reports, providing thorough quality assessment tailored to spatial datasets. In addition to single-cell count-based QC metrics, this workflow captures critical spatial characteristics including segmentation quality, morphological features, and spatial coordinate validation.</p>
 </section>
-<section id="sample-processing-workflow" class="level2">
-<h2 data-anchor-id="sample-processing-workflow">Sample Processing Workflow</h2>
+<section id="sample-processing-workflow" class="level3">
+<h3 data-anchor-id="sample-processing-workflow">Sample Processing Workflow</h3>
 <p>Our processing pipeline includes count-based filtering, normalization, log transformation, and dimensionality reduction steps that maintain spatial coordinate information throughout the analysis.</p>
 </section>
-<section id="downstream-applications" class="level2">
-<h2 data-anchor-id="downstream-applications">Downstream Applications</h2>
+<section id="downstream-applications" class="level3">
+<h3 data-anchor-id="downstream-applications">Downstream Applications</h3>
 <p>Advanced analysis capabilities include batch integration and cell type annotation workflows, enabling researchers to extract biological insights from complex spatial datasets.</p>
 </section>
 </section>
-<section id="partnership-driven-innovation" class="level1">
-<h1>Partnership-Driven Innovation</h1>
+<section id="partnership-driven-innovation" class="level2">
+<h2 data-anchor-id="partnership-driven-innovation">Partnership-Driven Innovation</h2>
 <p>This release represents the culmination of intensive collaboration with our top 10 pharmaceutical partner, whose real-world requirements and extensive testing have shaped every aspect of these workflows. This partnership ensures that OpenPipeline Spatial addresses genuine industry needs while maintaining the academic rigor and open-source accessibility that define our platform.</p>
             <div class="text-center text-md-start v-dev-advantage">
               <div class="d-flex flex-column flex-md-row align-items-center gap-3">
@@ -803,7 +803,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -870,7 +870,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -878,7 +878,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -888,7 +888,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -897,7 +897,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>

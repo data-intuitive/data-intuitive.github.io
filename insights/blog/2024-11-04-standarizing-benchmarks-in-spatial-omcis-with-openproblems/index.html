@@ -598,8 +598,8 @@ cookieconsent.run({
 <section id="looking-ahead" class="level2">
 <h2 data-anchor-id="looking-ahead">Looking Ahead</h2>
 <p>OpenProblems aims to provide a platform for developing comprehensive and continuously updated benchmarks for various spatial omics analysis tasks. By developing a unified and extensible framework, benchmarking results are ensured to not only be reproducible but also reusable, serving as foundational resources for developing other tasks.</p>
-<p>A key example of this is the development of the <a href="https://www.biorxiv.org/content/10.1101/2024.05.29.596418v1" target="_blank"><strong>spatial simulators</strong></a> task. The current lack of comprehensive gold standard datasets with well-defined ground truth information has led to each spatial omics task relying on its own distinct datasets for evaluation, causing inconsistencies in testing across tasks. But once the spatial simulator benchmark is fully developed, the best simulator could generate a set of standardised high-quality synthetic datasets, providing a common resource that could be used across multiple tasks in the absence of real-world gold standards.</p>
-<p>Similarly, the best approach from the <strong>image-based spatial transcriptomics preprocessing</strong> could set the stage for developing more standardised workflows in spatial omics, allowing researchers to follow more rigorous, reproducible workflows, ultimately accelerating discovery in this field.</p>
+<p>A key example of this is the development of the <a href="https://www.biorxiv.org/content/10.1101/2024.05.29.596418v1" target="_blank">spatial simulators</a> task. The current lack of comprehensive gold standard datasets with well-defined ground truth information has led to each spatial omics task relying on its own distinct datasets for evaluation, causing inconsistencies in testing across tasks. But once the spatial simulator benchmark is fully developed, the best simulator could generate a set of standardised high-quality synthetic datasets, providing a common resource that could be used across multiple tasks in the absence of real-world gold standards.</p>
+<p>Similarly, the best approach from the image-based spatial transcriptomics preprocessing could set the stage for developing more standardised workflows in spatial omics, allowing researchers to follow more rigorous, reproducible workflows, ultimately accelerating discovery in this field.</p>
 <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
 <i class="bi bi-arrow-left"> </i>Back
 </button>
@@ -763,7 +763,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -830,7 +830,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -838,7 +838,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -848,7 +848,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -857,7 +857,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>

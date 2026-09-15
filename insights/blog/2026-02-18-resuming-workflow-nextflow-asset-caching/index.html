@@ -547,14 +547,14 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#how-nextflow-caching-works" id="toc-how-nextflow-caching-works" class="nav-link active" data-scroll-target="#how-nextflow-caching-works"><strong>How Nextflow Caching Works</strong></a></li>
-  <li><a href="#phase-1-eliminating-basic-variance" id="toc-phase-1-eliminating-basic-variance" class="nav-link" data-scroll-target="#phase-1-eliminating-basic-variance"><strong>Phase 1: Eliminating Basic Variance</strong></a></li>
-  <li><a href="#phase-2-digging-into-the-hashes" id="toc-phase-2-digging-into-the-hashes" class="nav-link" data-scroll-target="#phase-2-digging-into-the-hashes"><strong>Phase 2: Digging into the Hashes</strong></a></li>
-  <li><a href="#phase-3-root-cause-analysis" id="toc-phase-3-root-cause-analysis" class="nav-link" data-scroll-target="#phase-3-root-cause-analysis"><strong>Phase 3: Root Cause Analysis</strong></a>
+  <li><a href="#how-nextflow-caching-works" id="toc-how-nextflow-caching-works" class="nav-link active" data-scroll-target="#how-nextflow-caching-works">How Nextflow Caching Works</a></li>
+  <li><a href="#phase-1-eliminating-basic-variance" id="toc-phase-1-eliminating-basic-variance" class="nav-link" data-scroll-target="#phase-1-eliminating-basic-variance">Phase 1: Eliminating Basic Variance</a></li>
+  <li><a href="#phase-2-digging-into-the-hashes" id="toc-phase-2-digging-into-the-hashes" class="nav-link" data-scroll-target="#phase-2-digging-into-the-hashes">Phase 2: Digging into the Hashes</a></li>
+  <li><a href="#phase-3-root-cause-analysis" id="toc-phase-3-root-cause-analysis" class="nav-link" data-scroll-target="#phase-3-root-cause-analysis">Phase 3: Root Cause Analysis</a>
   <ul class="collapse">
-  <li><a href="#the-failure-logic" id="toc-the-failure-logic" class="nav-link" data-scroll-target="#the-failure-logic"><strong>The Failure Logic</strong></a></li>
+  <li><a href="#the-failure-logic" id="toc-the-failure-logic" class="nav-link" data-scroll-target="#the-failure-logic">The Failure Logic</a></li>
   </ul></li>
-  <li><a href="#phase-4-reproduction-and-solution" id="toc-phase-4-reproduction-and-solution" class="nav-link" data-scroll-target="#phase-4-reproduction-and-solution"><strong>Phase 4: Reproduction and Solution</strong></a></li>
+  <li><a href="#phase-4-reproduction-and-solution" id="toc-phase-4-reproduction-and-solution" class="nav-link" data-scroll-target="#phase-4-reproduction-and-solution">Phase 4: Reproduction and Solution</a></li>
   </ul>
 </nav>
     </div>
@@ -590,12 +590,12 @@ cookieconsent.run({
   </div>
 </header> <main class="content" id="quarto-document-content">
 
-<p>At Data Intuitive, we deploy data workflows at scale using <strong>Viash</strong>, a framework that allows us to build reusable Nextflow modules and an accompanying Docker container from scripts and a standardized metadata file.</p>
+<p>At Data Intuitive, we deploy data workflows at scale using Viash, a framework that allows us to build reusable Nextflow modules and an accompanying Docker container from scripts and a standardized metadata file.</p>
 <p>At the beginning of May, we began receiving reports that some of the OpenPipeline workflows deployed at our customers were unable to be resumed. The ability to resume a workflow is critical when handling large amounts of data because it saves cost and time, for example, when recovering from an infrastructure outage or re-analyzing data with slightly different parameters.</p>
 <p>We investigated and uncovered two bugs in Nextflow’s caching mechanism (#6112 and #6604) specifically related to source code assets. Here is the full breakdown of how we debugged it.</p>
 <section id="how-nextflow-caching-works" class="level2">
-<h2 data-anchor-id="how-nextflow-caching-works"><strong>How Nextflow Caching Works</strong></h2>
-<p>Nextflow’s caching mechanism works by creating a checksum (also called a <strong>task hash</strong>) for each executed task based on different pieces of (meta-)data available for the process.</p>
+<h2 data-anchor-id="how-nextflow-caching-works">How Nextflow Caching Works</h2>
+<p>Nextflow’s caching mechanism works by creating a checksum (also called a task hash) for each executed task based on different pieces of (meta-)data available for the process.</p>
 <p>When a workflow is resumed, the hashes from the current run are compared to the hashes of previously executed tasks. If there is a match, the task can be skipped <em>if</em> the previous results are available in the work directory.</p>
 <p>Therefore, there are two strict requirements for a resume:</p>
 <ol type="1">
@@ -605,7 +605,7 @@ cookieconsent.run({
 <p>When a workflow fails to cache, it usually means there is a source of unintended variance between runs.</p>
 </section>
 <section id="phase-1-eliminating-basic-variance" class="level2">
-<h2 data-anchor-id="phase-1-eliminating-basic-variance"><strong>Phase 1: Eliminating Basic Variance</strong></h2>
+<h2 data-anchor-id="phase-1-eliminating-basic-variance">Phase 1: Eliminating Basic Variance</h2>
 <p>Debugging involves stripping away variation until the underlying issue is exposed. Before diving deep, we checked the basics:</p>
 <ul>
 <li><strong>Input Data:</strong> We verified that input data had not changed. We created a smaller test dataset to replicate the failure and perform faster test runs.</li>
@@ -614,7 +614,7 @@ cookieconsent.run({
 </ul>
 </section>
 <section id="phase-2-digging-into-the-hashes" class="level2">
-<h2 data-anchor-id="phase-2-digging-into-the-hashes"><strong>Phase 2: Digging into the Hashes</strong></h2>
+<h2 data-anchor-id="phase-2-digging-into-the-hashes">Phase 2: Digging into the Hashes</h2>
 <p>In this specific case, all the above checked out, yet the resume failed. We needed to see exactly what Nextflow was hashing.</p>
 <p>We enabled debug output. On the CLI, this is done via -dump-hashes; on Seqera Platform, we added dumpHashes = true to the Nextflow configuration. This outputs the task hash and the entries used to build it.</p>
 <p><strong>The output revealed the mismatch:</strong></p>
@@ -626,7 +626,7 @@ cookieconsent.run({
  c5fde678... [nextflow.util.ArrayBag] [FileHolder(sourceObj:.../.viash_meta_resources, ...)]
  ...
  16fe7483... [java.lang.Boolean] true</code></pre>
-<p>When comparing the hashes of two processes, the entry for .viash_meta_resources was different. This directory is a feature of Viash that allows introspection of properties (process name, arguments, static source files, etc.). However, this meta information is <strong>static</strong> and part of the source code-it should not change between runs.</p>
+<p>When comparing the hashes of two processes, the entry for .viash_meta_resources was different. This directory is a feature of Viash that allows introspection of properties (process name, arguments, static source files, etc.). However, this meta information is static and part of the source code-it should not change between runs.</p>
 <p>We listed the contents of the directory to be sure:</p>
 <pre><code>total 360
 -rw-r--r--. 1   6890  .config.vsh.yaml
@@ -639,32 +639,32 @@ cookieconsent.run({
 <p>By manually calculating a checksum of the two .viash_meta_resources directories directly from storage, we confirmed that the directories were identical. This raised the suspicion that we needed to look at the internals of Nextflow itself.</p>
 </section>
 <section id="phase-3-root-cause-analysis" class="level2">
-<h2 data-anchor-id="phase-3-root-cause-analysis"><strong>Phase 3: Root Cause Analysis</strong></h2>
+<h2 data-anchor-id="phase-3-root-cause-analysis">Phase 3: Root Cause Analysis</h2>
 <p>Nextflow’s caching operates in three modes, determined by the process.cache configuration:</p>
 <ol type="1">
-<li><strong>Standard (Default):</strong> Uses Filename + Size + <strong>Last Updated Timestamp</strong>.</li>
+<li><strong>Standard (Default):</strong> Uses Filename + Size + Last Updated Timestamp.</li>
 <li><strong>Lenient:</strong> Uses Filename + Size (ignores timestamp).</li>
-<li><strong>Deep:</strong> Uses the actual <strong>File Content</strong>.</li>
+<li><strong>Deep:</strong> Uses the actual File Content.</li>
 </ol>
-<p>Crucially, <strong>Source Code Assets</strong> are treated differently. Nextflow ignores the configured caching mode and always uses the file’s contents (Deep caching) for the hash. This is because source code files are small, and hashing their content allows resuming across different versions or machines.</p>
+<p>Crucially, Source Code Assets are treated differently. Nextflow ignores the configured caching mode and always uses the file’s contents (Deep caching) for the hash. This is because source code files are small, and hashing their content allows resuming across different versions or machines.</p>
 <p>In Nextflow’s HashBuilder code, there is an isAssetFile switch used to identify files that are part of the git repository. Our .viash_meta_resources folder <em>was</em> in the source code, so it should have been deeply hashed.</p>
 <p>To confirm why it wasn’t, we enabled trace debugging by exporting NXF_TRACE=nextflow.util. The logs revealed the smoking gun:</p>
 <pre><code>TRACE nextflow.util.HashBuilder - Hashing file meta: path=/scratch/.../metadata/add_id; size=2560, mode=STANDARD</code></pre>
-<p>The log showed mode=STANDARD. This method (hashFileMetadata) uses the file size and <strong>timestamp</strong>, not the content.</p>
+<p>The log showed mode=STANDARD. This method (hashFileMetadata) uses the file size and timestamp, not the content.</p>
 <p><img src="explain.png" class="img-fluid"></p>
 <section id="the-failure-logic" class="level3">
-<h3 data-anchor-id="the-failure-logic"><strong>The Failure Logic</strong></h3>
+<h3 data-anchor-id="the-failure-logic">The Failure Logic</h3>
 <p>This final clue explained the behavior:</p>
 <ol type="1">
 <li><strong>Initial Run:</strong> The repo is fetched, and the workflow runs. The asset has a specific timestamp.</li>
-<li><strong>Resume Run:</strong> On remote executors (like AWS Batch), a <strong>new clone</strong> of the repository is fetched.</li>
+<li><strong>Resume Run:</strong> On remote executors (like AWS Batch), a new clone of the repository is fetched.</li>
 <li><strong>The Bug:</strong> Nextflow failed to recognize the item as a repository asset because it was in a subdirectory (not a sibling of main.nf).</li>
 <li><strong>The Result:</strong> Because it didn’t see it as an asset, it defaulted to STANDARD hashing. Since it was a fresh clone, the timestamp changed, the hash changed, and the resume failed.</li>
 </ol>
 </section>
 </section>
 <section id="phase-4-reproduction-and-solution" class="level2">
-<h2 data-anchor-id="phase-4-reproduction-and-solution"><strong>Phase 4: Reproduction and Solution</strong></h2>
+<h2 data-anchor-id="phase-4-reproduction-and-solution">Phase 4: Reproduction and Solution</h2>
 <p>The need for a fresh clone explains why this was hard to reproduce locally (where repos persist in the user’s home directory). We replicated the issue locally using nextflow drop to clear the cache:</p>
 <pre><code># Cleaning the environment
 $ nextflow drop DriesSchaumont/nextflow-subfolder-basedir-asset-caching &gt; /dev/null; rm -rf .nextflow &amp;&amp; rm -f .nextflow.log* &amp;&amp; rm -rf work
@@ -841,7 +841,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -908,7 +908,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -916,7 +916,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -926,7 +926,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -935,7 +935,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>

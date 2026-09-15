@@ -543,25 +543,7 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#mastering-bioinformatics-data-workflows" id="toc-mastering-bioinformatics-data-workflows" class="nav-link active" data-scroll-target="#mastering-bioinformatics-data-workflows"><strong>Mastering Bioinformatics Data Workflows</strong></a>
-  <ul class="collapse">
-  <li><a href="#a-recap-of-our-live-seminar---with-full-recording-available-on-youtube" id="toc-a-recap-of-our-live-seminar---with-full-recording-available-on-youtube" class="nav-link" data-scroll-target="#a-recap-of-our-live-seminar---with-full-recording-available-on-youtube">A recap of our live seminar - with full recording available on YouTube</a></li>
-  </ul></li>
-  <li><a href="#dries-de-mayer-johnson-johnson" id="toc-dries-de-mayer-johnson-johnson" class="nav-link" data-scroll-target="#dries-de-mayer-johnson-johnson"><strong>1. Dries De Mayer – Johnson &amp; Johnson</strong></a>
-  <ul class="collapse">
-  <li><a href="#single-cell-analysis-simplified-insights-from-building-a-better-bioinformatics-workflow" id="toc-single-cell-analysis-simplified-insights-from-building-a-better-bioinformatics-workflow" class="nav-link" data-scroll-target="#single-cell-analysis-simplified-insights-from-building-a-better-bioinformatics-workflow"><em>Single Cell Analysis Simplified: Insights from Building a Better Bioinformatics Workflow</em></a></li>
-  </ul></li>
-  <li><a href="#toni-verbeiren-data-intuitive" id="toc-toni-verbeiren-data-intuitive" class="nav-link" data-scroll-target="#toni-verbeiren-data-intuitive"><strong>2. Toni Verbeiren – Data Intuitive</strong></a>
-  <ul class="collapse">
-  <li><a href="#building-sustainable-bioinformatics-pipelines-and-infrastructure" id="toc-building-sustainable-bioinformatics-pipelines-and-infrastructure" class="nav-link" data-scroll-target="#building-sustainable-bioinformatics-pipelines-and-infrastructure"><em>Building Sustainable Bioinformatics Pipelines and Infrastructure</em></a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <div class="quarto-about-marquee">
   <div class="about-image-container">
@@ -595,16 +577,85 @@ cookieconsent.run({
   </div>
   </div>
 </header> <main class="content" id="quarto-document-content">
-
-<section id="mastering-bioinformatics-data-workflows" class="level1">
-<h1><strong>Mastering Bioinformatics Data Workflows</strong></h1>
-<section id="a-recap-of-our-live-seminar---with-full-recording-available-on-youtube" class="level3">
-<h3 data-anchor-id="a-recap-of-our-live-seminar---with-full-recording-available-on-youtube">A recap of our live seminar - with full recording available on YouTube</h3>
-<p>On <strong>May 15</strong>, we hosted a free webinar that brought together deep technical insights and real world experience on how to build <strong>robust</strong>, <strong>sustainable</strong> and <strong>efficient</strong> bioinformatics workflows. The aim was clear: help teams scale their analyses, keep results reproducible and stay ahead of the accelerating pace of scientific discovery.</p>
-<p><strong>▶️ Watch the full recording:</strong></p>
-<div class="ratio ratio-16x9 my-4" id="recording">
+<style>
+  /* Webinar recap. Colours come from the site tokens, so both themes follow. */
+  .web-lead { font-size: 19px; line-height: 1.6; margin: 0 0 4px; }
+  .web-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+    margin: 22px 0 28px; padding: 12px 0;
+    border-top: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+    border-bottom: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--text-muted, #5A6890);
+  }
+  .web-video {
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+    box-shadow: 0 18px 40px var(--shadow, rgba(11, 29, 58, 0.08));
+  }
+  .web-video-note { margin: 12px 0 0; font-size: 14.5px; color: var(--text-muted, #5A6890); }
+  /* One block per talk, purple for the first and teal for the second. */
+  .web-talk {
+    margin: 48px 0 0; padding: 0 0 0 22px;
+    border-left: 3px solid var(--p-color, #7C4BAC);
+  }
+  .web-talk.is-teal { border-left-color: var(--s-color, #00B4A0); }
+  .web-talk-kicker {
+    display: block; margin-bottom: 8px;
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--p-color, #7C4BAC);
+  }
+  .web-talk.is-teal .web-talk-kicker { color: var(--s-text, #007E6E); }
+  body.quarto-dark .web-talk.is-teal .web-talk-kicker { color: var(--s-color, #4FE0BD); }
+  .web-talk h2 { margin: 0 0 6px; font-size: 25px; line-height: 1.25; }
+  .web-talk-sub {
+    margin: 0 0 18px; font-size: 16.5px; font-style: italic;
+    color: var(--text-muted, #5A6890);
+  }
+  .web-talk p { margin: 0 0 14px; }
+  /* The maturity path, as one line of steps. */
+  .web-steps {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    list-style: none; padding: 0; margin: 18px 0 22px;
+  }
+  .web-steps li {
+    border: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+    background: var(--surface, #FFFFFF);
+    border-radius: 999px; padding: 5px 14px; font-size: 14.5px;
+  }
+  .web-steps li:not(:last-child)::after {
+    content: '\2192'; margin-left: 12px;
+    color: var(--text-muted, #5A6890);
+  }
+  /* Plain list with a dash marker, as elsewhere on the site. */
+  .web-points { list-style: none; padding: 0; margin: 16px 0 22px; display: grid; gap: 9px; }
+  .web-points li {
+    position: relative; padding-left: 20px;
+    font-size: 15.5px; line-height: 1.55; color: var(--text-muted, #4A5570);
+  }
+  .web-points li::before {
+    content: ''; position: absolute; left: 0; top: 0.62em;
+    width: 10px; height: 1px; background: var(--s-color, #00B4A0);
+  }
+  .web-close {
+    margin-top: 44px; padding-top: 22px;
+    border-top: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+  }
+</style>
+<p class="web-lead">A recap of our live seminar, with the full recording.</p>
+<div class="web-meta">
+  <span>15 May 2025</span>
+  <span>50 minutes</span>
+  <span>Dries De Maeyer · Johnson &amp; Johnson</span>
+  <span>Toni Verbeiren · Data Intuitive</span>
+</div>
+<p>On 15 May we hosted a free webinar that brought together deep technical insights and real world experience on how to build robust, sustainable and efficient bioinformatics workflows. The aim was clear: help teams scale their analyses, keep results reproducible and stay ahead of the accelerating pace of scientific discovery.</p>
+<div class="ratio ratio-16x9 web-video" id="recording">
   <iframe src="https://www.youtube.com/embed/UjnN0k1qTss" title="Webinar – May 15, 2025: Mastering Bioinformatics Data Workflows: From Challenges to Solutions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
 </div>
+<p class="web-video-note">Also available directly on <a href="https://www.youtube.com/watch?v=UjnN0k1qTss" target="_blank" rel="noopener">YouTube</a>.</p>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -629,67 +680,49 @@ cookieconsent.run({
   }
 }
 </script>
-<p>Also available directly on <a href="https://www.youtube.com/watch?v=UjnN0k1qTss" target="_blank">YouTube</a>.</p>
-<hr>
+<section class="web-talk">
+  <span class="web-talk-kicker">Talk 1 · Johnson &amp; Johnson</span>
+  <h2>Dries De Maeyer</h2>
+  <p class="web-talk-sub">Single cell analysis simplified: insights from building a better bioinformatics workflow</p>
+  <p>Dries De Maeyer shared how the single cell analysis group at Johnson &amp; Johnson matured its workflow strategy. The team began with highly flexible notebooks that supported rapid experimentation, but as data volumes increased and multimodal studies became standard, notebooks alone could not support scalability, consistency or long term reproducibility.</p>
+  <p>To address this, the group evolved step by step:</p>
+  <ul class="web-steps">
+    <li>notebooks</li>
+    <li>scripts</li>
+    <li>containerised components</li>
+    <li>automated Nextflow workflows</li>
+  </ul>
+  <p>Each step added more structure and stability. Containers ensured tool reproducibility over time, while Nextflow enabled parallel execution, consistent environments and large scale processing across thousands of samples.</p>
+  <p>Dries highlighted that success did not come from selecting a single best method, but from combining solid science with well designed, repeatable workflows. Today the J&amp;J team delivers results within a day, maintains complete traceability and can reliably rerun analyses even years later. The outcome is a workflow ecosystem that is fast, predictable and built for regulated environments.</p>
 </section>
+<section class="web-talk is-teal">
+  <span class="web-talk-kicker">Talk 2 · Data Intuitive</span>
+  <h2>Toni Verbeiren</h2>
+  <p class="web-talk-sub">Building sustainable bioinformatics workflows and infrastructure</p>
+  <p>Toni Verbeiren followed with a deep dive into the tools and principles behind sustainable workflow engineering. Early collaborations with J&amp;J revealed a key insight: workflow engines alone are not enough, teams also need a way to package, test, version and share components for workflows to remain maintainable.</p>
+  <p>This is exactly what Viash and the OpenPipeline ecosystem are designed for. Viash turns scripts and prototype code into production-ready building blocks that include:</p>
+  <ul class="web-points">
+    <li>Clear inputs and outputs</li>
+    <li>A containerised runtime</li>
+    <li>Metadata and versioning</li>
+    <li>Automated unit and integration tests</li>
+  </ul>
+  <p>These components integrate into Nextflow workflows, forming modular analyses that run identically on a laptop, an HPC cluster, Kubernetes or a cloud environment. Viash Hub provides a structured catalogue where components can be published, discovered and reused, with support for both public and private instances.</p>
+  <p>This approach removes common pain points such as dependency problems, unstructured scripts, environment drift, unclear parameters and difficulty extending existing work. With versioned releases and containerised components, workflows evolve from prototypes into production-ready, tested tools.</p>
+  <p>Toni concluded with a clear message: sustainable bioinformatics requires platform thinking. With Viash and OpenPipeline, teams can build workflows that remain reproducible, maintainable and ready for real world scientific and clinical demands.</p>
 </section>
-<section id="dries-de-mayer-johnson-johnson" class="level1">
-<h1><strong>1. Dries De Mayer – Johnson &amp; Johnson</strong></h1>
-<section id="single-cell-analysis-simplified-insights-from-building-a-better-bioinformatics-workflow" class="level2">
-<h2 data-anchor-id="single-cell-analysis-simplified-insights-from-building-a-better-bioinformatics-workflow"><em>Single Cell Analysis Simplified: Insights from Building a Better Bioinformatics Workflow</em></h2>
-<p>Dries De Mayer shared how the single cell analysis group at <strong>Johnson &amp; Johnson</strong> matured its workflow strategy. The team began with highly flexible notebooks that supported rapid experimentation, but as data volumes increased and multimodal studies became standard, notebooks alone could not support <strong>scalability</strong>, <strong>consistency</strong> or <strong>long term reproducibility</strong>.</p>
-<p>To address this, the group evolved step by step:</p>
-<ul>
-<li>from <strong>notebooks</strong><br>
-</li>
-<li>to <strong>scripts</strong><br>
-</li>
-<li>to <strong>containerised components</strong><br>
-</li>
-<li>to <strong>automated Nextflow pipelines</strong></li>
-</ul>
-<p>Each step added more structure and stability. Containers ensured tools <strong>reproducibility</strong> over time, while Nextflow enabled <strong>parallel execution</strong>, <strong>consistent environments</strong> and <strong>large scale processing</strong> across thousands of samples.</p>
-<p>Dries highlighted that success didn’t come from selecting a single “best method” but from combining solid science with <strong>well designed, repeatable workflows</strong>. Today, the J&amp;J team delivers results within a day, maintains complete traceability and can reliably rerun analyses even years later. The outcome: a workflow ecosystem that is <strong>fast</strong>, <strong>predictable</strong> and built for <strong>regulated environments</strong>.</p>
-<hr>
-</section>
-</section>
-<section id="toni-verbeiren-data-intuitive" class="level1">
-<h1><strong>2. Toni Verbeiren – Data Intuitive</strong></h1>
-<section id="building-sustainable-bioinformatics-pipelines-and-infrastructure" class="level2">
-<h2 data-anchor-id="building-sustainable-bioinformatics-pipelines-and-infrastructure"><em>Building Sustainable Bioinformatics Pipelines and Infrastructure</em></h2>
-<p>Toni Verbeiren followed with a deep dive into the tools and principles behind sustainable workflow engineering. Early collaborations with J&amp;J revealed a key insight: workflow engines alone are not enough, teams also need a way to <strong>package</strong>, <strong>test</strong>, <strong>version</strong> and <strong>share</strong> components for pipelines to remain maintainable.</p>
-<p>This is exactly what <strong>Viash</strong> and the <strong>OpenPipeline</strong> ecosystem are designed for.</p>
-<p>Viash turns scripts and prototype code into production-ready building blocks that include:</p>
-<ul>
-<li>clear <strong>inputs</strong> and <strong>outputs</strong><br>
-</li>
-<li>a <strong>containerised runtime</strong><br>
-</li>
-<li>metadata and versioning<br>
-</li>
-<li>automated <strong>unit and integration tests</strong></li>
-</ul>
-<p>These components integrate seamlessly into Nextflow workflows, forming modular pipelines that run identically on a laptop, HPC cluster, Kubernetes or cloud environment.<br>
-Furthermore, <strong>Viash Hub</strong> provides a structured catalogue where components can be published, discovered and reused, with support for both public and private instances.</p>
-<p>This approach eliminates common workflow pain points such as dependency problems, unstructured scripts, environment drift, unclear parameters and difficulty extending existing pipelines. With versioned releases and containerised components, workflows evolve from prototypes to <strong>production-ready</strong>, <strong>validated</strong> tools.</p>
-<p>Toni concluded with a clear message: sustainable bioinformatics requires <strong>platform thinking</strong>. With Viash and OpenPipeline, teams can build workflows that remain reproducible, maintainable and ready for real world scientific and clinical demands.</p>
-            <div class="text-center text-md-start v-dev-advantage">
-              <div class="d-flex flex-column flex-md-row align-items-center gap-3">
-              <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" target="_blank" rel="noopener" onclick="goBack()"> <i class="bi bi-arrow-left"> </i>Back</button>
-               <a target="_blank" rel="noopener" href="https://www.data-intuitive.com/products/foundation.html"><img src="../../../images/icons/cloud.svg" alt="cloud">Website</a>
-              <a target="_blank" rel="noopener" href="https://github.com/viash-io/viash"><img src="../../../images/icons/github-icon.svg" alt="github-icon"> GitHub</a>
-               <a target="_blank" rel="noopener" href="https://joss.theoj.org/papers/10.21105/joss.06089"><img src="../../../images/icons/note-2.svg" alt="note-2"> Publication </a> 
-              </div>
-            </div>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+<div class="web-close">
+  <div class="text-center text-md-start v-dev-advantage">
+    <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+      <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" type="button" onclick="window.history.back()"><i class="bi bi-arrow-left"></i>Back</button>
+      <a target="_blank" rel="noopener" href="https://www.data-intuitive.com/products/foundation.html"><img src="../../../images/icons/cloud.svg" alt="cloud">Website</a>
+      <a target="_blank" rel="noopener" href="https://github.com/viash-io/viash"><img src="../../../images/icons/github-icon.svg" alt="github-icon"> GitHub</a>
+      <a target="_blank" rel="noopener" href="https://joss.theoj.org/papers/10.21105/joss.06089"><img src="../../../images/icons/note-2.svg" alt="note-2"> Publication</a>
+    </div>
+  </div>
+</div>
 
 
-</section>
-</section>
 </main> 
   </div>
 </div>
@@ -842,7 +875,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -909,7 +942,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -917,7 +950,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -927,7 +960,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -936,7 +969,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>

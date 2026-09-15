@@ -64,6 +64,7 @@
   a { color: var(--p-color); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  .demo-scope-short { display: none; }
   .demo-header {
     position: sticky; top: 0; z-index: 10;
     display: flex; align-items: center; justify-content: space-between;
@@ -474,6 +475,7 @@
     .review-row { grid-template-columns: 1fr; gap: 12px; padding: 14px 0; }
     .review-card { padding: 22px 20px; }
     .demo-progress { position: static; }
+
   }
 
   /* ---- Pinned client window (compute step onwards) ----
@@ -581,6 +583,38 @@
     border-radius: 8px; padding: 7px 10px;
   }
   .ep-row-warn > span:first-child { flex: 0 0 auto; }
+
+  @media (max-width: 720px) {
+    /* ---- Phone: lighter chrome, and nothing legible hidden behind opacity ---- */
+    .demo-header { padding: 10px 14px; gap: 10px; align-items: center; }
+    .demo-scope { font-size: 11.5px; line-height: 1.45; }
+    .demo-scope-long { display: none; }
+    .demo-scope-short { display: block; }
+    .demo-crumb b { font-size: 13px; }
+    .step-card { padding: 18px 16px; }
+    .step-card-title { font-size: 21px; }
+    .step-card-intro { font-size: 14px; }
+    .sec-label, .ep-group > h4 { font-size: 10.5px; }
+
+    /* The status moves under the name, so neither column is squeezed. */
+    .ep-row { flex-direction: column; align-items: flex-start; gap: 7px; padding: 12px 14px; }
+    .ep-row-main { width: 100%; }
+    .ep-row-title { font-size: 15px; }
+    .ep-row-desc { font-size: 12.5px; }
+    .ep-row-status { flex-direction: row; align-items: baseline; gap: 10px; align-self: flex-start; }
+    .ep-row-note { font-size: 11.5px; }
+
+    /* Offline rows are greyed by colour, not by fading the whole row out,
+       which on a phone made them unreadable. */
+    .ep-row.is-offline { opacity: 1; }
+    .ep-row.is-offline .ep-row-title { color: var(--text-soft); font-weight: 500; }
+    .ep-row.is-offline .ep-row-desc,
+    .ep-row.is-offline .ep-row-state,
+    .ep-row.is-offline .ep-row-note { color: var(--text-soft); }
+    .opt-card.is-disabled { opacity: 1; }
+    .opt-card.is-disabled .opt-card-title,
+    .opt-card.is-disabled .opt-card-desc { color: var(--text-soft); }
+  }
   @media (max-width: 520px) {
     .ep-row { gap: 12px; padding: 12px 14px; }
     .ep-row-title { font-size: 15px; }
@@ -1112,7 +1146,8 @@
 <header class="demo-header">
   <div class="demo-header-left">
     <span class="demo-crumb"><b>Platform Demo</b></span>
-    <p class="demo-scope">This is a web mockup of the application, not the application itself. It covers transcriptomics examples on Illumina, Element Biosciences and 10x, and the full product carries much more. <a href="https://www.data-intuitive.com/contact/bookmeeting.html" target="_blank" rel="noopener">Ask us for a demo of the real application</a>.</p>
+    <p class="demo-scope demo-scope-long">This is a web mockup of the application, not the application itself. It covers transcriptomics examples on Illumina, Element Biosciences and 10x, and the full product carries much more. <a href="https://www.data-intuitive.com/contact/bookmeeting.html" target="_blank" rel="noopener">Ask us for a demo of the real application</a>.</p>
+    <p class="demo-scope demo-scope-short">A web mockup, not the application. <a href="https://www.data-intuitive.com/contact/bookmeeting.html" target="_blank" rel="noopener">Ask us for a real demo</a>.</p>
   </div>
   <div class="demo-header-right">
     <button class="demo-restart" id="restartBtn" type="button">
@@ -2119,7 +2154,7 @@
     var embedSuffix = (params.get('embed') === '1' ? '?embed=1&' : '?')
       + 'theme=' + encodeURIComponent(prefersDark() ? 'dark' : 'light');
     return el('div', { class: 'review-cta-row' }, [
-      el('a', { class: 'review-cta-btn is-primary', href: '/contact/omics-beta-lab.html', target: '_top' }, ['Subscribe to the beta programme', arrow('16')]),
+      el('a', { class: 'review-cta-btn is-primary', href: '/contact/interface-beta.html', target: '_top' }, ['Apply for a seat', arrow('16')]),
       el('a', { class: 'review-cta-btn is-secondary', href: '/demo/bookmeeting.html' + embedSuffix }, ['Book a meeting', arrow('16')])
     ]);
   }

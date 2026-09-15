@@ -589,27 +589,27 @@ cookieconsent.run({
 
 <section id="introduction" class="level2">
 <h2 data-anchor-id="introduction">Introduction</h2>
-<p>Data Intuitive recently delivered an end-to-end, fully automated high-throughput RNA-seq workflow for a top-10 pharma R&amp;D client. Built with <strong>Viash‑generated, Nextflow‑compatible modules</strong>, the system streamlines large‑scale processing and analysis while remaining reproducible and portable across environments.</p>
-<p>On top of the workflow, we implemented an <strong>automation layer</strong>, enabling the entire process to be triggered from a single sample sheet (CSV)-eliminating manual path entry and reducing the need for error-prone parameter forms.</p>
-<p>This version of the end-to-end workflow is built on an earlier version that was <strong>already using Viash</strong> for module generation. This time, besides a much improved interface and automation capabilities, we increased modularity even more by splitting the full end-to-end flow in <strong>3 subworkflows</strong> that each can be <strong>continually improved</strong>.</p>
-<p>As a result, the client’s previous implementation was replaced with a more <strong>modular and automated solution</strong>.</p>
+<p>Data Intuitive recently delivered an end-to-end, fully automated high-throughput RNA-seq workflow for a top-10 pharma R&amp;D client. Built with Viash‑generated, Nextflow‑compatible modules, the system streamlines large‑scale processing and analysis while remaining reproducible and portable across environments.</p>
+<p>On top of the workflow, we implemented an automation layer, enabling the entire process to be triggered from a single sample sheet (CSV)-eliminating manual path entry and reducing the need for error-prone parameter forms.</p>
+<p>This version of the end-to-end workflow is built on an earlier version that was already using Viash for module generation. This time, besides a much improved interface and automation capabilities, we increased modularity even more by splitting the full end-to-end flow in 3 subworkflows that each can be continually improved.</p>
+<p>As a result, the client’s previous implementation was replaced with a more modular and automated solution.</p>
 </section>
 <section id="implementation-and-automation" class="level2">
 <h2 data-anchor-id="implementation-and-automation">Implementation and Automation</h2>
-<p>Our team leveraged Viash’s modular approach to build a pipeline tailored to the client’s requirements. Because Viash produces Nextflow-compatible modules and pipelines, we were able to take full advantage of Nextflow’s <strong>scalability and cluster execution capabilities</strong>.</p>
-<p>Moreover, rather than creating a new workflow from scratch or modifying an existing one, with the power of Viash we simply created a wrapper workflow dealing with the changes required for it to function in an automation context. This wrapper workflow is built up from a number of different Viash/workflow <em>packages</em>, some publicly available on <strong>Viash Hub</strong> (<a href="https://www.viash-hub.com/packages/demultiplex/latest" target="_blank">demultiplex</a>, <a href="https://www.viash-hub.com/packages/htrnaseq/latest" target="_blank">HT-RNAseq</a>) while others are proprietary and available in a <strong>private Viash Hub</strong> at the client’s side.</p>
+<p>Our team leveraged Viash’s modular approach to build a pipeline tailored to the client’s requirements. Because Viash produces Nextflow-compatible modules and pipelines, we were able to take full advantage of Nextflow’s scalability and cluster execution capabilities.</p>
+<p>Moreover, rather than creating a new workflow from scratch or modifying an existing one, with the power of Viash we simply created a wrapper workflow dealing with the changes required for it to function in an automation context. This wrapper workflow is built up from a number of different Viash/workflow <em>packages</em>, some publicly available on Viash Hub (<a href="https://www.viash-hub.com/packages/demultiplex/latest" target="_blank">demultiplex</a>, <a href="https://www.viash-hub.com/packages/htrnaseq/latest" target="_blank">HT-RNAseq</a>) while others are proprietary and available in a private Viash Hub at the client’s side.</p>
 <p>To make the workflow truly automated and <em>intuitive</em>, we implemented:</p>
 <ul>
 <li><p><strong>Structured CSV sample sheet</strong> as the primary interface: all samples and run-specific parameters are captured in one file, with reference resources (genome reference files, lab setup parameters) addressed via labels rather than raw paths and cryptic parameters.</p></li>
 <li><p><strong>Run‑ID based ingestion</strong>: users provide a (sequencing) run identifier, and the workflow automatically resolves input files (e.g., on S3 or shared storage).</p></li>
 <li><p><strong>Deterministic data organization</strong>: outputs are structured using project and experiment identifiers, standardizing both inputs and outputs and improving traceability. At the same time, data is stored according to the data governance policy in turn ensuring strict adherence to it.</p></li>
 </ul>
-<p>This approach made the system more user-friendly and accessible for both <strong>lab scientists and bioinformaticians</strong>, while preserving the hallmark strengths of Viash workflows: <strong>scalability, robustness, reliability and reproducibility</strong>.</p>
+<p>This approach made the system more user-friendly and accessible for both lab scientists and bioinformaticians, while preserving the hallmark strengths of Viash workflows: scalability, robustness, reliability and reproducibility.</p>
 <p>For further insights into how we approach user-friendly workflow design, see our related blog post <a href="../../../insights/blog/2025-09-24-user-friendly-workflows/" target="_blank"><em>“Re-thinking user-friendly computational workflows”</em></a>.</p>
 </section>
 <section id="impact" class="level2">
 <h2 data-anchor-id="impact">Impact</h2>
-<p>While specific project details remain confidential, the result is a <strong>reliable, automated, and user‑friendly workflow</strong> that minimizes manual steps, reduces potential failure modes, and accelerates research. The combination of modular engineering and intelligent automation demonstrates how Data Intuitive designs systems that fit seamlessly into real-world scientific operations-<strong>powerful technology made practical</strong>.</p>
+<p>While specific project details remain confidential, the result is a reliable, automated, and user‑friendly workflow that minimizes manual steps, reduces potential failure modes, and accelerates research. The combination of modular engineering and intelligent automation demonstrates how Data Intuitive designs systems that fit seamlessly into real-world scientific operations-powerful technology made practical.</p>
 <p>&nbsp;</p>
 <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
 <i class="bi bi-arrow-left"> </i>Back
@@ -774,7 +774,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -841,7 +841,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -849,7 +849,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -859,7 +859,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -868,7 +868,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>

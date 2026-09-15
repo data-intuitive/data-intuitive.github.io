@@ -13,9 +13,13 @@
 /products/pricing.html                    /services/services.html          301
 /pricing                                  /services/services.html          301
 # The Alpha Lab became the Interface beta programme.
-/contact/omics-alpha-lab.html             /contact/omics-beta-lab.html     301
-/alpha-lab                                /contact/omics-beta-lab.html     301
-/beta-lab                                 /contact/omics-beta-lab.html     200
+/contact/omics-alpha-lab.html             /contact/interface-beta.html     301
+/alpha-lab                                /contact/interface-beta.html     301
+/beta-lab                                 /contact/interface-beta.html     200
+# The application form moved to /contact/interface-beta.html. The old URL now
+# opens the announcement, which carries the apply button.
+/contact/omics-beta-lab.html              /insights/news/2026-09-04-interface-beta-programme/   301
+/contact/omics-beta-lab                   /insights/news/2026-09-04-interface-beta-programme/   301
 
 # The private platform page was folded into the platform page.
 

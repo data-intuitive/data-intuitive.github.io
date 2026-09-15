@@ -587,8 +587,8 @@ cookieconsent.run({
   </div>
 </header> <main class="content" id="quarto-document-content">
 
-<p>Modern-day <strong>computational workflows</strong> often combine tens to <strong>a hundred different computational steps</strong>. These include off-the-shelf bioinformatics tools, trusted open source libraries but also hacked-together scripts. In the end, those ingredients are combined into a single, reproducible pipeline that can be run on different datasets and in different environments.</p>
-<p>We expect our operational data workflows to be <strong>usable</strong> by lab scientists as well as bioinformaticians. We expect devops engineers to integrate them in automation efforts, data engineers to assess data governance policy alignment, etc. As a consequence we often hear from clients and collaborators that the workflows should be <strong>user-friendly or easy to use</strong>.</p>
+<p>Modern-day computational workflows often combine tens to a hundred different computational steps. These include off-the-shelf bioinformatics tools, trusted open source libraries but also hacked-together scripts. In the end, those ingredients are combined into a single, reproducible pipeline that can be run on different datasets and in different environments.</p>
+<p>We expect our operational data workflows to be usable by lab scientists as well as bioinformaticians. We expect devops engineers to integrate them in automation efforts, data engineers to assess data governance policy alignment, etc. As a consequence we often hear from clients and collaborators that the workflows should be user-friendly or easy to use.</p>
 <section id="the-graphical-interface-instinct" class="level2">
 <h2 data-anchor-id="the-graphical-interface-instinct">The Graphical Interface Instinct</h2>
 <div class="img-float">
@@ -602,20 +602,20 @@ cookieconsent.run({
 <h2 data-anchor-id="the-problem-with-one-size-fits-all-interfaces">The Problem With One-Size-Fits-All Interfaces</h2>
 <p>Do we actually provide value by:</p>
 <ul>
-<li>Offering users a <strong>form with 40 parameters</strong> that can be filled in, of which half are not really required and could even break the workflow if not filled in correctly?</li>
-<li>Asking users to <strong>fill in paths</strong> to files and directories on S3 or some other shared file system?</li>
-<li>Letting users fill in <strong>the same reference paths</strong> each time again for every workflow run?</li>
-<li>Expecting users to <strong>adhere to data organization practices</strong> and correctly assign output paths for each processed dataset, risking data proliferation or worse?</li>
+<li>Offering users a form with 40 parameters that can be filled in, of which half are not really required and could even break the workflow if not filled in correctly?</li>
+<li>Asking users to fill in paths to files and directories on S3 or some other shared file system?</li>
+<li>Letting users fill in the same reference paths each time again for every workflow run?</li>
+<li>Expecting users to adhere to data organization practices and correctly assign output paths for each processed dataset, risking data proliferation or worse?</li>
 </ul>
 </section>
 <section id="user-friendliness-depends-on-the-user" class="level2">
 <h2 data-anchor-id="user-friendliness-depends-on-the-user">User-Friendliness Depends on the User</h2>
-<p>In a recent conversation with a lab team lead at a client, I learned that the lab scientists did not necessarily dislike the form-based approach and did not particularly mind copy/pasting reference paths between workflow runs. But <strong>they liked a structured input file more</strong>; a CSV file containing all samples with their relevant parameters. Paths to reference files are captured using labels.</p>
+<p>In a recent conversation with a lab team lead at a client, I learned that the lab scientists did not necessarily dislike the form-based approach and did not particularly mind copy/pasting reference paths between workflow runs. But they liked a structured input file more; a CSV file containing all samples with their relevant parameters. Paths to reference files are captured using labels.</p>
 <p>When we showcased a proof of concept of such an approach, it clicked. This was the most efficient and user-friendly way for <em>this</em> team.</p>
 </section>
 <section id="engineering-choices-enable-flexible-user-interfaces" class="level2">
 <h2 data-anchor-id="engineering-choices-enable-flexible-user-interfaces">Engineering Choices Enable Flexible User Interfaces</h2>
-<p>The fact that we could provide such a <strong>CSV input approach</strong> for this team was only because of <strong>the way we develop Viash-enabled Nextflow workflows</strong> where a workflow can be used as a subworkflow to a larger workflow which allows us to <strong>create super-workflows that provide different interfaces</strong> to the same underlying core functionality.</p>
+<p>The fact that we could provide such a CSV input approach for this team was only because of the way we develop Viash-enabled Nextflow workflows where a workflow can be used as a subworkflow to a larger workflow which allows us to create super-workflows that provide different interfaces to the same underlying core functionality.</p>
 <div class="callout callout-style-simple callout-tip no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -626,11 +626,11 @@ cookieconsent.run({
 </div>
 </div>
 </div>
-<p>While creating the super-workflow(s), we made sure to <strong>include data organization practices</strong> that aligned with the client’s practices. Instead of pointing to input files on S3, users can provide a run identifier. The workflow will match this up with the input files automatically. Output, likewise, is based on a combination of a project and experiment identifier, effectively standardizing not only the computational workflows themselves but also the input and output of those workflows.</p>
+<p>While creating the super-workflow(s), we made sure to include data organization practices that aligned with the client’s practices. Instead of pointing to input files on S3, users can provide a run identifier. The workflow will match this up with the input files automatically. Output, likewise, is based on a combination of a project and experiment identifier, effectively standardizing not only the computational workflows themselves but also the input and output of those workflows.</p>
 </section>
 <section id="conclusion" class="level2">
 <h2 data-anchor-id="conclusion">Conclusion</h2>
-<p>True <strong>user-friendliness</strong> isn’t about creating the most visually appealing interface-it’s about understanding your users’ actual needs and workflows, then designing interfaces that <strong>seamlessly integrate with how they already work</strong>.</p>
+<p>True user-friendliness isn’t about creating the most visually appealing interface-it’s about understanding your users’ actual needs and workflows, then designing interfaces that <strong>seamlessly integrate with how they already work</strong>.</p>
 <p>In designing the super-workflows capturing that understanding, we include <strong>data governance policies</strong> as well as <strong>common standards</strong> for reference data and other shared parameters. This in turn leads to <strong>less errors and time lost</strong>.</p>
 <p>&nbsp;</p>
             <div class="text-center text-md-start v-dev-advantage">
@@ -798,7 +798,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -865,7 +865,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -873,7 +873,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -883,7 +883,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -892,7 +892,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>

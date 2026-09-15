@@ -600,34 +600,34 @@ cookieconsent.run({
 
 <p>It’s been a while since I <a href="../../../insights/blog/2016-05-12-a-practical-approach-to-model-error/" target="_blank">first wrote about tackling model error using a simple model</a>. It’s about time to come back to it.</p>
 <p>What triggered the current post is the opportunity I was given to give a masterclass in the <a href="https://www.eumonitor.eu/9353000/1/j9vvik7m1c3gyxp/vknn5811a9uz?ctx=vh1anh57c4kn&amp;tab=1" target="_blank">Evidence and policy summer school</a>. Since my masterclass is about uncertainty in decision making, it seemed like a nice opportunity to look back at the simple model.</p>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>I’m not going to introduce the model again, but I do want to reiterate that it’s a very simplistic model when it comes to actually modelling the spreading of a real virus. On the other hand though, if <a href="https://www.nobelprize.org/prizes/economics/1997/press-release/" target="_blank">Nobel prizes</a> are awarded for applying this kind of model there must be some value in it.</p>
 </section>
-<section id="running-the-different-scenarios" class="level1 page-columns page-full">
-<h1>Running the Different Scenarios</h1>
+<section id="running-the-different-scenarios" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="running-the-different-scenarios">Running the Different Scenarios</h2>
 <p>For the summerschool, I developed a little web application called Incertae and which allows you to run the scenarios from a browser. Just try it for yourself!</p>
 <div class="column-screen-inset">
 <p align="center"><iframe src="incertae.html" title="description" width="90%" height="1000el"></iframe></p>
 </div>
 <p>In order to make sense of the scenarios, let’s walk through this step by step…</p>
-<section id="step-1-no-randomness" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-no-randomness">Step 1: No Randomness</h2>
+<section id="step-1-no-randomness" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-no-randomness">Step 1: No Randomness</h3>
 <p>By clicking on the parameters of the simulation, or below in the footer on the words <em>can be changed</em>, the simulation settings can be adjusted.</p>
 <p>Set the variables such that there is no randomness applied to the scenario. Only one scenario is sufficient in this case:</p>
 <p><img src="incertae-step1-settings-small.png" class="img-fluid"></p>
 <p>And see what the result looks like:</p>
 <p><img src="incertae-step1-result-small.png" class="img-fluid"></p>
 </section>
-<section id="step-2-a-bit-of-randomness" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-a-bit-of-randomness">Step 2: A bit of Randomness</h2>
+<section id="step-2-a-bit-of-randomness" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-a-bit-of-randomness">Step 2: A bit of Randomness</h3>
 <p>In step 2, we add a bit of randomness. For this we use the default settings, although you could increase the number of scenarios if you wanted to:</p>
 <p><img src="incertae-step2-settings-small.png" class="img-fluid"></p>
 <p>The result should look similar to the following. Please note that randomness has been added, so your result should not look exactly like the one presented here!</p>
 <p><img src="incertae-step2-result-small.png" class="img-fluid"></p>
 </section>
-<section id="step-3-a-bit-more-randomness" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-a-bit-more-randomness">Step 3: A bit more Randomness</h2>
+<section id="step-3-a-bit-more-randomness" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-a-bit-more-randomness">Step 3: A bit more Randomness</h3>
 <p>In step 3, we increase the amount of randomness added to the scenarios. For instance:</p>
 <p><img src="incertae-step3-settings-small.png" class="img-fluid"></p>
 <p>Now, given more randomness in the scenarios, yours might be completely different from the one below:</p>
@@ -794,7 +794,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -861,7 +861,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -869,7 +869,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -879,7 +879,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -888,7 +888,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>

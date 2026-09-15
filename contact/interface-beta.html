@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="Data Intuitive Interface beta programme, Founding partner, Bioinformatics beta lab, Multi-omics platform beta, Apply">
+<meta name="keywords" content="Data Intuitive Interface beta programme, Founding partner, Interface beta seat, Multi-omics platform beta, Apply">
 <meta name="description" content="Apply to the Data Intuitive Interface beta programme. A limited number of founding partners, October 2026 to February 2027. No cost for the duration of the programme.">
 
 <title>Apply to the Interface beta programme – Data Intuitive</title>
@@ -297,7 +297,7 @@ cookieconsent.run({
 <meta property="og:site_name" content="Data Intuitive">
 <meta property="og:locale" content="en_GB">
 <!-- seo-postprocess -->
-<link rel="canonical" href="https://www.data-intuitive.com/contact/omics-beta-lab.html">
+<link rel="canonical" href="https://www.data-intuitive.com/contact/interface-beta.html">
 </head>
   
   <!-- HubSpot -->
@@ -534,7 +534,7 @@ cookieconsent.run({
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>Data Intuitive Interface beta programme, Founding partner, Bioinformatics beta lab, Multi-omics platform beta, Apply</p>
+    <p>Data Intuitive Interface beta programme, Founding partner, Interface beta seat, Multi-omics platform beta, Apply</p>
   </div>
 </div>
 
@@ -631,17 +631,28 @@ cookieconsent.run({
 <style>
   .oal-form-section { padding-top: 40px; }
   .oal-form-wrap {
-    max-width: 760px;
+    max-width: 820px;
     margin: 0 auto;
-    /* The embedded form ships its own dark text, so the card stays light in
-       both themes and the copy is readable before the form finishes loading. */
-    background: #FFFFFF;
+    /* No panel: the form sits straight on the section. */
+    background: transparent;
     color: #0B1D3A;
-    border-radius: 14px;
-    padding: 28px 30px;
-    border: 1px solid rgba(11, 29, 58, 0.10);
+    padding: 0;
+    border: 0;
   }
-  @media (max-width: 767.98px) { .oal-form-wrap { padding: 18px 14px; border-radius: 12px; } }
+  /* The embedded form paints its own dark text, so in dark mode it needs a
+     light ground under it. The section carries that, not a card. */
+  body.quarto-dark .oal-form-section,
+  [data-bs-theme="dark"] .oal-form-section { background: #F4F6FA !important; }
+  /* The shared wrapper adds a second card of its own: a 680px cap and 40px of
+     padding inside the one above. The embedded form gets that width back. */
+  .oal-form-wrap .contact-form-wrapper {
+    max-width: 100%;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  @media (max-width: 767.98px) { .oal-form-wrap { padding: 0; } }
 
   /* Mobile: maximise screen real estate for the form. Trim hero padding,
      drop section side gutters and container side padding, let the form
@@ -660,7 +671,7 @@ cookieconsent.run({
        the full row width and only keeps a small inner gutter. */
     .oal-form-wrap .contact-form-wrapper {
       max-width: 100% !important;
-      padding: 16px !important;
+      padding: 0 !important;
       border-radius: 10px !important;
     }
 
@@ -688,7 +699,7 @@ cookieconsent.run({
       padding-right: 4px !important;
     }
     .oal-form-wrap .contact-form-wrapper {
-      padding: 12px !important;
+      padding: 0 !important;
     }
     .v-hero.page-hero .v-hero-title { font-size: 24px !important; }
   }
@@ -846,7 +857,7 @@ cookieconsent.run({
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -913,7 +924,7 @@ cookieconsent.run({
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../services/services.html">Services</a></li>
@@ -921,7 +932,7 @@ cookieconsent.run({
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../company/index.html">About</a></li>
@@ -931,7 +942,7 @@ cookieconsent.run({
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../insights/news.html">News</a></li>
@@ -940,7 +951,7 @@ cookieconsent.run({
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../contact/contact.html">Get in touch</a></li>

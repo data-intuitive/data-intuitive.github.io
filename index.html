@@ -641,6 +641,13 @@ cookieconsent.run({
     border: 1px solid rgba(0, 180, 160, 0.55); border-radius: 100px;
     padding: 5px 14px; font-size: 14px; color: rgba(255,255,255,0.9);
   }
+  /* On a phone the label and the chips fight for the same line, so the label
+     sits above its own row of chips. */
+  @media (max-width: 720px) {
+    .di-pill-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .di-pill-label { min-width: 0; }
+    .band-facts .di-pillset { display: grid; gap: 18px; }
+  }
 </style>
 
 <!-- ======== HERO ======== -->
@@ -949,67 +956,6 @@ cookieconsent.run({
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ======== BETA LAB ======== -->
-<style>
-  .beta-card {
-    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: 40px; align-items: center;
-    background: linear-gradient(135deg, #1B2D52, #243B6B);
-    border: 1px solid rgba(0, 180, 160, 0.45);
-    border-radius: 18px;
-    padding: 34px 38px;
-    color: rgba(255, 255, 255, 0.92);
-  }
-  @media (max-width: 900px) { .beta-card { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px; } }
-  .beta-card .overline { color: var(--accent-2, #4FE0BD); display: block; margin-bottom: 10px; }
-  .beta-card h2 { color: #FFFFFF; margin: 0 0 12px; }
-  .beta-card p { margin: 0; font-size: 16.5px; line-height: 1.65; color: rgba(255, 255, 255, 0.82); }
-  .beta-facts {
-    margin: 0 0 20px; padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-    font-size: 14px; letter-spacing: 0.01em; color: rgba(255, 255, 255, 0.7);
-  }
-  .beta-cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
-  .beta-cta .di-textlink { color: rgba(255,255,255,0.88) !important; }
-  .beta-cta .di-textlink:hover { color: #FFFFFF !important; }
-</style>
-
-<section class="sec-white" id="beta-lab">
-  <div class="container">
-    <div class="beta-card reveal">
-      <div>
-        <span class="overline">Interface beta programme</span>
-        <h2>Help shape the interface against your own workflows</h2>
-        <p>The next version of our delivery platform interface is being built now. The interface is where a scientist picks an analysis, sets the parameters, starts the run and reads the report, without writing code. A small group runs their own analyses on it and tells us what works and what gets in the way. What we ask for is your time and honest feedback on how the work really runs in your lab.</p>
-      </div>
-      <div>
-        <p class="beta-facts">Limited seats · October 2026 to February 2027 · No cost for the programme</p>
-        <div class="beta-cta">
-          <a href="./contact/omics-beta-lab.html" class="btn btn-secondary d-inline-flex align-items-center gap-2">
-            Apply for a seat
-            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
-          </a>
-          <a href="./insights/news/2026-09-04-interface-beta-programme/" class="di-textlink">Read the announcement
-            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======== CUSTOMER QUOTE ======== -->
-<section class="sec-white quote-band">
-  <div class="container">
-    <figure class="quote-band-inner reveal figure">
-      <span class="overline quote-band-kicker">Who runs this</span>
-      <blockquote class="quote-band-quote blockquote"><p>We can run thousands of samples without asking whether we trust the pipeline.</p></blockquote>
-      <figcaption class="quote-band-attr">Single Cell Analysis Group Leader, global pharmaceutical company <a class="quote-band-source" href="./insights/blog/2025-06-11-Webinar/#recording" target="_blank" rel="noopener">Source →</a></figcaption>
-      <p class="quote-band-note">The same analysis runs for a small team and for pharma R&amp;D.</p>
-    </figure>
   </div>
 </section>
 
@@ -1428,6 +1374,67 @@ cookieconsent.run({
 </script>
 
 
+<!-- ======== CUSTOMER QUOTE ======== -->
+<section class="sec-white quote-band">
+  <div class="container">
+    <figure class="quote-band-inner reveal figure">
+      <span class="overline quote-band-kicker">Who runs this</span>
+      <blockquote class="quote-band-quote blockquote"><p>We can run thousands of samples without asking whether we trust the pipeline.</p></blockquote>
+      <figcaption class="quote-band-attr">Single Cell Analysis Group Leader, global pharmaceutical company <a class="quote-band-source" href="./insights/blog/2025-06-11-Webinar/#recording" target="_blank" rel="noopener">Source →</a></figcaption>
+      <p class="quote-band-note">The same analysis runs for a small team and for pharma R&amp;D.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ======== BETA LAB ======== -->
+<style>
+  .beta-card {
+    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 40px; align-items: center;
+    background: linear-gradient(135deg, #1B2D52, #243B6B);
+    border: 1px solid rgba(0, 180, 160, 0.45);
+    border-radius: 18px;
+    padding: 34px 38px;
+    color: rgba(255, 255, 255, 0.92);
+  }
+  @media (max-width: 900px) { .beta-card { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px; } }
+  .beta-card .overline { color: var(--accent-2, #4FE0BD); display: block; margin-bottom: 10px; }
+  .beta-card h2 { color: #FFFFFF; margin: 0 0 12px; }
+  .beta-card p { margin: 0; font-size: 16.5px; line-height: 1.65; color: rgba(255, 255, 255, 0.82); }
+  .beta-facts {
+    margin: 0 0 20px; padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 14px; letter-spacing: 0.01em; color: rgba(255, 255, 255, 0.7);
+  }
+  .beta-cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+  .beta-cta .di-textlink { color: rgba(255,255,255,0.88) !important; }
+  .beta-cta .di-textlink:hover { color: #FFFFFF !important; }
+</style>
+
+<section class="sec-white" id="beta-lab">
+  <div class="container">
+    <div class="beta-card reveal">
+      <div>
+        <span class="overline">Interface beta programme</span>
+        <h2>Help shape the interface against your own workflows</h2>
+        <p>The next version of our delivery platform interface is being built now. The interface is where a scientist picks an analysis, sets the parameters, starts the run and reads the report, without writing code. A small group runs their own analyses on it and tells us what works and what gets in the way. What we ask for is your time and honest feedback on how the work really runs in your lab.</p>
+      </div>
+      <div>
+        <p class="beta-facts">Limited seats · October 2026 to February 2027 · No cost for the programme</p>
+        <div class="beta-cta">
+          <a href="./contact/interface-beta.html" class="btn btn-secondary d-inline-flex align-items-center gap-2">
+            Apply for a seat
+            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+          </a>
+          <a href="./insights/news/2026-09-04-interface-beta-programme/" class="di-textlink">Read the announcement
+            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======== WITHOUT THE TRADE-OFF (moved down here) ======== -->
 <section class="sec-off trade-section">
   <div class="container">
@@ -1807,7 +1814,7 @@ cookieconsent.run({
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -1874,7 +1881,7 @@ cookieconsent.run({
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="./services/services.html">Services</a></li>
@@ -1882,7 +1889,7 @@ cookieconsent.run({
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="./company/index.html">About</a></li>
@@ -1892,7 +1899,7 @@ cookieconsent.run({
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="./insights/news.html">News</a></li>
@@ -1901,7 +1908,7 @@ cookieconsent.run({
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="./contact/contact.html">Get in touch</a></li>

@@ -579,9 +579,10 @@ cookieconsent.run({
 
   .sitemap-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
-    max-width: 1320px;
+    max-width: 900px;
+    align-items: start;
     margin: 0 auto;
   }
   @media (max-width: 991.98px) {
@@ -754,29 +755,13 @@ cookieconsent.run({
           <li><a href="../services/services.html">All services</a></li>
           <li><a href="../services/infrastructure-setup.html">Infrastructure setup</a></li>
           <li><a href="../services/compliance.html">Compliance</a></li>
+          <li><a href="../services/services.html#private-platform">Private platform</a></li>
           <li><a href="../services/services.html#svc-training">Courses · Workflow Academy</a> · contact us for details</li>
         </ul>
       </div>
 
-      <!-- Private platform -->
-      <div class="sitemap-branch">
-        <div class="sitemap-branch-head">
-          <span class="sitemap-branch-icon">
-            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg>
-          </span>
-          <h3 class="sitemap-branch-title"><a href="../services/services.html#private-platform">Private platform</a></h3>
-        </div>
-        <p class="sitemap-branch-path">/services/services.html#private-platform</p>
-        <ul class="sitemap-leaves">
-          <li>Who it's for · Multi-site pharma R&amp;D · CROs</li>
-          <li>Five things you get with a private platform</li>
-          <li>Compliance services (GAMP 5, 21 CFR Part 11, ISO 13485)</li>
-          <li>Rollout · Discover · Deploy · Expand · Integrate</li>
-        </ul>
-      </div>
-
       <!-- Insights -->
-      <div class="sitemap-branch is-teal">
+      <div class="sitemap-branch">
         <div class="sitemap-branch-head">
           <span class="sitemap-branch-icon">
             <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
@@ -791,7 +776,7 @@ cookieconsent.run({
       </div>
 
       <!-- Company -->
-      <div class="sitemap-branch">
+      <div class="sitemap-branch is-teal">
         <div class="sitemap-branch-head">
           <span class="sitemap-branch-icon">
             <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -807,7 +792,7 @@ cookieconsent.run({
       </div>
 
       <!-- Contact -->
-      <div class="sitemap-branch is-teal">
+      <div class="sitemap-branch">
         <div class="sitemap-branch-head">
           <span class="sitemap-branch-icon">
             <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -818,6 +803,7 @@ cookieconsent.run({
         <ul class="sitemap-leaves">
           <li><a href="../contact/contact.html">Contact us</a> · HubSpot form, direct email</li>
           <li><a href="../contact/bookmeeting.html">Book a meeting</a> · 45-min call</li>
+          <li><a href="../contact/interface-beta.html">Interface beta programme</a> · application form</li>
         </ul>
       </div>
 
@@ -1000,7 +986,7 @@ cookieconsent.run({
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -1067,7 +1053,7 @@ cookieconsent.run({
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../services/services.html">Services</a></li>
@@ -1075,7 +1061,7 @@ cookieconsent.run({
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../company/index.html">About</a></li>
@@ -1085,7 +1071,7 @@ cookieconsent.run({
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../insights/news.html">News</a></li>
@@ -1094,7 +1080,7 @@ cookieconsent.run({
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../contact/contact.html">Get in touch</a></li>

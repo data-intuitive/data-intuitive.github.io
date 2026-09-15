@@ -11693,3 +11693,182 @@ body.quarto-dark #quarto-content #quarto-document-content.content a.btn:hover,
   background: #6FECCC !important;
   border-color: #6FECCC !important;
 }
+
+/* The footer link columns are hidden on a phone: the same links sit in the
+   burger menu, and four stacked columns made the footer very long. */
+@media (max-width: 767.98px) {
+  .footer-nav-col { display: none; }
+}
+
+/* =========================================================================
+   ARTICLE CONTENT — one look for every blog and news post.
+
+   Posts are authored in plain markdown, so the shape has to come from here
+   rather than from each post. Scoped to #quarto-document-content inside an
+   article-layout page: the blog and news listings use page-layout-custom and
+   are not touched. Colours come from the design tokens, so dark mode follows,
+   except the headings, which the dark article block repaints and which
+   therefore need matching selectors further down.
+   ========================================================================= */
+/* A global rule hides .title, which only .about-contents unhides. Posts
+   without an about block therefore rendered with no title at all. Show it on
+   every article page instead. */
+body:has(#quarto-content.page-layout-article) #title-block-header .title {
+  visibility: visible;
+  max-height: none;
+}
+
+body:has(#quarto-content.page-layout-article) #quarto-document-content h2 {
+  color: var(--p-color, #7C4BAC);
+  font-size: 27px; line-height: 1.25;
+  margin: 52px 0 14px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content h3 {
+  color: var(--s-text, #007E6E);
+  font-size: 20px; line-height: 1.3;
+  margin: 34px 0 10px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content h4 {
+  font-size: 17px; margin: 26px 0 8px;
+}
+
+/* The opening paragraph carries the piece, so it reads a size up. */
+body:has(#quarto-content.page-layout-article) #quarto-document-content > p:first-of-type {
+  font-size: 19px; line-height: 1.6;
+  color: var(--text-muted, #5A6890);
+  margin-bottom: 22px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content p {
+  font-size: 16.5px; line-height: 1.7; margin: 0 0 16px;
+}
+
+/* Unclassed lists take the dash marker used across the site. */
+body:has(#quarto-content.page-layout-article) #quarto-document-content ul:not([class]) {
+  list-style: none; padding-left: 0; margin: 0 0 20px;
+  display: grid; gap: 9px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content ul:not([class]) > li {
+  position: relative; padding-left: 20px;
+  font-size: 16.5px; line-height: 1.6;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content ul:not([class]) > li::before {
+  content: ''; position: absolute; left: 0; top: 0.72em;
+  width: 10px; height: 1px; background: var(--s-color, #00B4A0);
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content ul:not([class]) ul {
+  margin: 9px 0 0;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content ol:not([class]) {
+  padding-left: 22px; margin: 0 0 20px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content ol:not([class]) > li {
+  padding-left: 6px; margin-bottom: 9px;
+  font-size: 16.5px; line-height: 1.6;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content ol:not([class]) > li::marker {
+  color: var(--p-color, #7C4BAC); font-weight: 600;
+}
+
+/* Figures: a soft frame, and a caption that reads as a caption. */
+body:has(#quarto-content.page-layout-article) #quarto-document-content img {
+  border-radius: 12px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content figure {
+  margin: 28px 0;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content figcaption {
+  font-size: 14.5px; line-height: 1.55;
+  color: var(--text-muted, #5A6890);
+  margin-top: 10px; text-align: left;
+}
+
+body:has(#quarto-content.page-layout-article) #quarto-document-content blockquote {
+  border-left: 3px solid var(--p-color, #7C4BAC);
+  background: var(--surface-alt, #F7F8FB);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 22px; margin: 26px 0;
+  font-size: 17px; line-height: 1.6;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+body:has(#quarto-content.page-layout-article) #quarto-document-content pre {
+  border: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+  border-radius: 12px; padding: 16px 18px;
+  background: var(--surface-alt, #F7F8FB);
+  font-size: 14px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content p > code,
+body:has(#quarto-content.page-layout-article) #quarto-document-content li > code {
+  background: var(--p-color-06, rgba(124, 75, 172, 0.06));
+  color: var(--p-color, #7C4BAC);
+  padding: 2px 6px; border-radius: 6px; font-size: 0.92em;
+}
+
+body:has(#quarto-content.page-layout-article) #quarto-document-content table {
+  width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15.5px;
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content th {
+  text-align: left; font-weight: 600;
+  border-bottom: 2px solid var(--border, rgba(11, 29, 58, 0.10));
+}
+body:has(#quarto-content.page-layout-article) #quarto-document-content th,
+body:has(#quarto-content.page-layout-article) #quarto-document-content td {
+  padding: 10px 14px 10px 0;
+  border-bottom: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+}
+
+body:has(#quarto-content.page-layout-article) #quarto-document-content hr {
+  border: 0; border-top: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+  margin: 44px 0;
+}
+
+/* The link row some posts close with. */
+body:has(#quarto-content.page-layout-article) #quarto-document-content .v-dev-advantage {
+  margin-top: 44px; padding-top: 24px;
+  border-top: 1px solid var(--border, rgba(11, 29, 58, 0.10));
+}
+
+@media (max-width: 767.98px) {
+  body:has(#quarto-content.page-layout-article) #quarto-document-content h2 { font-size: 23px; margin-top: 40px; }
+  body:has(#quarto-content.page-layout-article) #quarto-document-content h3 { font-size: 18.5px; }
+  body:has(#quarto-content.page-layout-article) #quarto-document-content > p:first-of-type { font-size: 17.5px; }
+  /* Wide content scrolls in its own box rather than pushing the page. */
+  body:has(#quarto-content.page-layout-article) #quarto-document-content table { display: block; overflow-x: auto; }
+}
+
+/* Dark mode. The dark article block repaints every heading near-white, so
+   these have to match its weight to keep the brand colours. */
+body.quarto-dark:has(#quarto-content.page-layout-article) #quarto-document-content h2,
+[data-bs-theme="dark"] body:has(#quarto-content.page-layout-article) #quarto-document-content h2 {
+  color: var(--accent, #C7B3EA) !important;
+}
+body.quarto-dark:has(#quarto-content.page-layout-article) #quarto-document-content h3,
+[data-bs-theme="dark"] body:has(#quarto-content.page-layout-article) #quarto-document-content h3 {
+  color: var(--accent-2, #4FE0BD) !important;
+}
+body.quarto-dark:has(#quarto-content.page-layout-article) #quarto-document-content > p:first-of-type,
+[data-bs-theme="dark"] body:has(#quarto-content.page-layout-article) #quarto-document-content > p:first-of-type {
+  color: var(--text-muted, #A2AAC0) !important;
+}
+
+/* Older posts carry inline table styling with a hardcoded white background
+   and black text, which reads as a bright slab in dark mode. Inline styles
+   need !important to be overridden. */
+body.quarto-dark:has(#quarto-content.page-layout-article) #quarto-document-content table th[style],
+body.quarto-dark:has(#quarto-content.page-layout-article) #quarto-document-content table td[style],
+[data-bs-theme="dark"] body:has(#quarto-content.page-layout-article) #quarto-document-content table th[style],
+[data-bs-theme="dark"] body:has(#quarto-content.page-layout-article) #quarto-document-content table td[style] {
+  background-color: var(--surface-elev, #182849) !important;
+  color: var(--text, #D8DCE7) !important;
+  border-color: var(--border, rgba(255, 255, 255, 0.12)) !important;
+}
+
+/* The author and date block is hidden site-wide but still reserved its
+   height, which left a large empty band under every post title. */
+body:has(#quarto-content.page-layout-article) #title-block-header .quarto-title-meta,
+body:has(#quarto-content.page-layout-article) #title-block-header .description,
+body:has(#quarto-content.page-layout-article) #title-block-header .keywords {
+  display: none;
+}

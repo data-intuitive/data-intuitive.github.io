@@ -593,27 +593,27 @@ cookieconsent.run({
 <h2 data-anchor-id="key-advantages-of-nextflow">Key advantages of Nextflow</h2>
 <p>In computational biology, Nextflow is one of the most popular workflow managers, and with good reason:</p>
 <ul>
-<li><p><em><strong>Portability</strong></em>: Once a Nextflow workflow has been implemented, it is extremely easy to set up a new system to run that workflow. This system can be of one of many different platforms (i.e.&nbsp;what Nextflow calls <a href="https://www.nextflow.io/docs/latest/executor.html" target="_blank">executors</a>), including laptops, desktops, High-Performance Compute (HPC) clusters and dynamic cloud infrastructure.</p></li>
-<li><p><em><strong>Scalability</strong></em>: When the workflow needs to be run on large dataset cohorts, the computations can be scaled out to multiple compute nodes automatically (depending on the chosen executor). Theoretically this allows reducing the execution time from 1 month of execution time on a single system, to 43 minutes on a compute cluster with 1000 nodes.</p></li>
-<li><p><em><strong>Reproducibility</strong></em>: Being able to run a computational workflow multiple times with the same inputs and obtain the same or similar results remains a major challenge in computational biology. This is even more the case when the reruns are months or years apart. Nextflow allows easily integrating with containerisation technologies such as Docker, Podman and Singularity, which ensures that full reproducibility at all times.</p></li>
+<li><p><em>Portability</em>: Once a Nextflow workflow has been implemented, it is extremely easy to set up a new system to run that workflow. This system can be of one of many different platforms (i.e.&nbsp;what Nextflow calls <a href="https://www.nextflow.io/docs/latest/executor.html" target="_blank">executors</a>), including laptops, desktops, High-Performance Compute (HPC) clusters and dynamic cloud infrastructure.</p></li>
+<li><p><em>Scalability</em>: When the workflow needs to be run on large dataset cohorts, the computations can be scaled out to multiple compute nodes automatically (depending on the chosen executor). Theoretically this allows reducing the execution time from 1 month of execution time on a single system, to 43 minutes on a compute cluster with 1000 nodes.</p></li>
+<li><p><em>Reproducibility</em>: Being able to run a computational workflow multiple times with the same inputs and obtain the same or similar results remains a major challenge in computational biology. This is even more the case when the reruns are months or years apart. Nextflow allows easily integrating with containerisation technologies such as Docker, Podman and Singularity, which ensures that full reproducibility at all times.</p></li>
 </ul>
 </section>
 <section id="drawbacks-of-nextflow" class="level2">
 <h2 data-anchor-id="drawbacks-of-nextflow">Drawbacks of Nextflow</h2>
 <p>Unfortunately, <em>developing</em> a Nextflow pipeline is not as easy as <em>using</em> one:</p>
 <ul>
-<li><p><em><strong>High barrier to entry</strong></em>: Not all of the desired properties listed above are not actually ‘turned on’ by default. Creating a Nextflow workflow that is on par with the current state of the art actually requires a significant amount of domain knowledge, thereby limiting collaborations between developers with varying backgrounds and pipeline development skill levels.</p></li>
-<li><p><em><strong>Labour intensive</strong></em>: Developing a new workflow can be quite labour intensive, as the necessary code is very verbose and contains a lot of boilerplate code.</p></li>
+<li><p><em>High barrier to entry</em>: Not all of the desired properties listed above are not actually ‘turned on’ by default. Creating a Nextflow workflow that is on par with the current state of the art actually requires a significant amount of domain knowledge, thereby limiting collaborations between developers with varying backgrounds and pipeline development skill levels.</p></li>
+<li><p><em>Labour intensive</em>: Developing a new workflow can be quite labour intensive, as the necessary code is very verbose and contains a lot of boilerplate code.</p></li>
 </ul>
 </section>
 <section id="advantages-of-viashnextflow-vdsl3" class="level2">
 <h2 data-anchor-id="advantages-of-viashnextflow-vdsl3">Advantages of Viash+Nextflow = VDSL3</h2>
 <p>Luckily, Viash can help you wrap your code into a state-of-the-art Nextflow script called a VDSL3 module, thereby solving the aforementioned drawbacks. Viash provides many other benefits not related to Nextflow pipeline development, such as:</p>
 <ul>
-<li><p><em><strong>Reusability</strong></em>: Viash components can not only be used as a step in a Nextflow pipeline, but also as a standalone command-line utility.</p></li>
-<li><p><em><strong>Test-driven development</strong></em>: Viash encourages test-driven development where unit tests are written <em>before</em> new functionality is developed.</p></li>
-<li><p><em><strong>Separation of concerns</strong></em>: Developers do not need any knowledge of Nextflow to start creating Viash components. Somebody else can then write a Nextflow workflow consisting of the VDSL3 modules generated from the Viash components.</p></li>
-<li><p><em><strong>Continuous testing</strong></em>: Viash offers helper scripts to automatically run component tests whenever commits are pushed by one of the developers. This allows catching bugs earlier, thereby preventing costly long-term bugs.</p></li>
+<li><p><em>Reusability</em>: Viash components can not only be used as a step in a Nextflow pipeline, but also as a standalone command-line utility.</p></li>
+<li><p><em>Test-driven development</em>: Viash encourages test-driven development where unit tests are written <em>before</em> new functionality is developed.</p></li>
+<li><p><em>Separation of concerns</em>: Developers do not need any knowledge of Nextflow to start creating Viash components. Somebody else can then write a Nextflow workflow consisting of the VDSL3 modules generated from the Viash components.</p></li>
+<li><p><em>Continuous testing</em>: Viash offers helper scripts to automatically run component tests whenever commits are pushed by one of the developers. This allows catching bugs earlier, thereby preventing costly long-term bugs.</p></li>
 </ul>
 <button class="btn btn-primary rounded-pill d-inline-flex align-items-center gap-2" role="button" onclick="goBack()">
 <i class="bi bi-arrow-left"> </i>Back
@@ -778,7 +778,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
+      } else if (p.indexOf("/contact/interface-beta") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",
@@ -845,7 +845,7 @@ function goBack() {
         </div>
 
         <!-- Platform column -->
-        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1">
+        <div class="col-6 col-sm-4 col-lg-2 offset-lg-1 footer-nav-col">
           <h6 class="footer-col-heading">Services</h6>
           <ul class="footer-links">
             <li><a href="../../../services/services.html">Services</a></li>
@@ -853,7 +853,7 @@ function goBack() {
         </div>
 
         <!-- Company column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Company</h6>
           <ul class="footer-links">
             <li><a href="../../../company/index.html">About</a></li>
@@ -863,7 +863,7 @@ function goBack() {
         </div>
 
         <!-- News & Blog column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">News &amp; Blog</h6>
           <ul class="footer-links">
             <li><a href="../../../insights/news.html">News</a></li>
@@ -872,7 +872,7 @@ function goBack() {
         </div>
 
         <!-- Contact column -->
-        <div class="col-6 col-sm-4 col-lg-2">
+        <div class="col-6 col-sm-4 col-lg-2 footer-nav-col">
           <h6 class="footer-col-heading">Contact</h6>
           <ul class="footer-links">
             <li><a href="../../../contact/contact.html">Get in touch</a></li>
