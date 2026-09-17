@@ -8,8 +8,6 @@ Typical engagements: custom pipeline development, single-cell and spatial omics 
 
 ## Products
 
-- [Foundation](https://www.data-intuitive.com/products/foundation.html): the underlying data foundation layer.
-- [Technical prerequisites](https://www.data-intuitive.com/products/technical-prerequisites.html): what is needed to deploy.
 
 ## Services
 

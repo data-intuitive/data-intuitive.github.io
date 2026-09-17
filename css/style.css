@@ -11872,3 +11872,11 @@ body:has(#quarto-content.page-layout-article) #title-block-header .description,
 body:has(#quarto-content.page-layout-article) #title-block-header .keywords {
   display: none;
 }
+
+/* In dark mode the deep navy band at the top of the homepage and the section
+   below it are both --surface-alt, so the logo strip would run straight into
+   it. A hairline keeps the band readable as a band. */
+body.quarto-dark .logos-strip-new,
+[data-bs-theme="dark"] .logos-strip-new {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}

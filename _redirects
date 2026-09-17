@@ -44,6 +44,22 @@
 /products/pipelines             /services/services.html   302
 /pipelines                      /services/services.html   302
 
+/static/site-structure.html              /index.html                      301
+/static/site-structure                   /index.html                      301
+# Pages nothing linked to any more, taken out of the render. The sources stay
+# in the repo with an underscore prefix, which is how Quarto skips a file.
+/contact/index.html                       /contact/contact.html            301
+/contact/                                 /contact/contact.html            301
+/products/foundation.html                 /services/services.html          301
+/products/foundation                      /services/services.html          301
+/products/technical-prerequisites.html    /services/infrastructure-setup.html   301
+/products/technical-prerequisites         /services/infrastructure-setup.html   301
+/services/training.html                   /services/services.html#svc-training  301
+/services/training                        /services/services.html#svc-training  301
+/services/course/intro.html               /services/services.html#svc-training  301
+/services/course/fundamentals.html        /services/services.html#svc-training  301
+/services/course/advanced.html            /services/services.html#svc-training  301
+/services/course/partners.html            /services/services.html#svc-training  301
 # No internships on offer at the moment.
 /company/careers/internships/index.html   /company/index.html     302
 /company/careers/internships/            /company/index.html     302

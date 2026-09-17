@@ -2148,13 +2148,14 @@
   }
 
   // Beta programme / booking buttons, shown on the last page of each path.
-  // The beta page is a normal site page, so it opens at the top level rather
-  // than inside the demo modal.
+  // The announcement is a normal site page, so it opens at the top level
+  // rather than inside the demo modal. It carries the apply button itself,
+  // so a reader gets the context before the form.
   function ctaRow() {
     var embedSuffix = (params.get('embed') === '1' ? '?embed=1&' : '?')
       + 'theme=' + encodeURIComponent(prefersDark() ? 'dark' : 'light');
     return el('div', { class: 'review-cta-row' }, [
-      el('a', { class: 'review-cta-btn is-primary', href: '/contact/interface-beta.html', target: '_top' }, ['Apply for a seat', arrow('16')]),
+      el('a', { class: 'review-cta-btn is-primary', href: '/insights/news/2026-09-04-interface-beta-programme/', target: '_top' }, ['Apply for a seat', arrow('16')]),
       el('a', { class: 'review-cta-btn is-secondary', href: '/demo/bookmeeting.html' + embedSuffix }, ['Book a meeting', arrow('16')])
     ]);
   }
