@@ -291,7 +291,7 @@ cookieconsent.run({
         ]
       }
       </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Visit us at Knowledge for Growth 2026 – Data Intuitive">
+  <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Visit us at Knowledge for Growth 2026 – Data Intuitive">
 <meta property="og:description" content="Data Intuitive at Knowledge for Growth 2026 on 4 June, booth 32. Talk to us about validated multi-omics pipelines and customer-owned compute.">
 <meta property="og:image" content="https://www.data-intuitive.com/insights/news/2026-05-24-knowledgeforgrowth/kfg2026.png">
 <meta property="og:site_name" content="Data Intuitive">
@@ -301,7 +301,6 @@ cookieconsent.run({
 <!-- seo-postprocess -->
 <meta name="robots" content="noindex, follow">
 </head>
-  
   <!-- HubSpot -->
   
   <body class="fullcontent">
@@ -614,6 +613,7 @@ function goBack() {
       // (contact, book-meeting, careers apply, careers detail pages).
       if (p.indexOf("/contact/contact") === 0
           || p.indexOf("/contact/bookmeeting") === 0
+          || p.indexOf("/assessment") === 0
           || p.indexOf("/company/careers") === 0) {
         var section = document.querySelector(".elevate-cta-section");
         if (section) section.style.display = "none";
@@ -702,7 +702,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/interface-beta") === 0) {
+      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",

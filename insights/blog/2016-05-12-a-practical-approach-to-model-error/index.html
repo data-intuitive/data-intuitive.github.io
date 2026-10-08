@@ -293,7 +293,7 @@ cookieconsent.run({
         ]
       }
       </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="A Practical Approach to Model Error – Data Intuitive">
+  <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="A Practical Approach to Model Error – Data Intuitive">
 <meta property="og:description" content="In this post, I want to get a better sense of the effects of model error by simulating a very simple model for the spreading of a virus.">
 <meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2016-05-12-a-practical-approach-to-model-error/ExponentialGrowthCurveWithNoise.png">
 <meta property="og:site_name" content="Data Intuitive">
@@ -334,7 +334,6 @@ cookieconsent.run({
 }
 </script>
 </head>
-  
   <!-- HubSpot -->
   
   <body class="fullcontent">
@@ -747,6 +746,7 @@ function goBack() {
       // (contact, book-meeting, careers apply, careers detail pages).
       if (p.indexOf("/contact/contact") === 0
           || p.indexOf("/contact/bookmeeting") === 0
+          || p.indexOf("/assessment") === 0
           || p.indexOf("/company/careers") === 0) {
         var section = document.querySelector(".elevate-cta-section");
         if (section) section.style.display = "none";
@@ -835,7 +835,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/interface-beta") === 0) {
+      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",

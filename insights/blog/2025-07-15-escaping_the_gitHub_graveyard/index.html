@@ -292,7 +292,7 @@ cookieconsent.run({
         ]
       }
       </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="How to Avoid the GitHub Graveyard? – Data Intuitive">
+  <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="How to Avoid the GitHub Graveyard? – Data Intuitive">
 <meta property="og:description" content="Each summer a familiar scene repeats itself across research groups and R&amp;D units: students graduate, postdocs move on, contractors wrap up.">
 <meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2025-07-15-escaping_the_gitHub_graveyard/puzzleghosts.png">
 <meta property="og:site_name" content="Data Intuitive">
@@ -333,7 +333,6 @@ cookieconsent.run({
 }
 </script>
 </head>
-  
   <!-- HubSpot -->
   
   <body class="fullcontent">
@@ -739,6 +738,7 @@ function goBack() {
       // (contact, book-meeting, careers apply, careers detail pages).
       if (p.indexOf("/contact/contact") === 0
           || p.indexOf("/contact/bookmeeting") === 0
+          || p.indexOf("/assessment") === 0
           || p.indexOf("/company/careers") === 0) {
         var section = document.querySelector(".elevate-cta-section");
         if (section) section.style.display = "none";
@@ -827,7 +827,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/interface-beta") === 0) {
+      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",

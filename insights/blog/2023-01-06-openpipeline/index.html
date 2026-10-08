@@ -292,7 +292,7 @@ cookieconsent.run({
         ]
       }
       </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Processing Single-Cell Data at Scale – Data Intuitive">
+  <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js-na1.hs-scripts.com/48498752.js"></script><meta property="og:title" content="Processing Single-Cell Data at Scale – Data Intuitive">
 <meta property="og:description" content="OpenPipelines delivers best-practice, modular Viash and Nextflow workflows for single-cell single- and multi-omics data analysis, developed in collaboration with a leading pharma R&amp;D partner.">
 <meta property="og:image" content="https://www.data-intuitive.com/insights/blog/2023-01-06-openpipeline/image.svg">
 <meta property="og:site_name" content="Data Intuitive">
@@ -331,7 +331,6 @@ cookieconsent.run({
 }
 </script>
 </head>
-  
   <!-- HubSpot -->
   
   <body class="fullcontent">
@@ -680,6 +679,7 @@ function goBack() {
       // (contact, book-meeting, careers apply, careers detail pages).
       if (p.indexOf("/contact/contact") === 0
           || p.indexOf("/contact/bookmeeting") === 0
+          || p.indexOf("/assessment") === 0
           || p.indexOf("/company/careers") === 0) {
         var section = document.querySelector(".elevate-cta-section");
         if (section) section.style.display = "none";
@@ -768,7 +768,7 @@ function goBack() {
           "/contact/bookmeeting.html",
           "Book a meeting"
         );
-      } else if (p.indexOf("/contact/interface-beta") === 0) {
+      } else if (p.indexOf("/contact/omics-beta-lab") === 0) {
         // Applying, not booking: point at the announcement rather than a call.
         set(
           "Or read first",

@@ -876,6 +876,19 @@
   .dl-card .opt-card-meta { justify-content: center; margin-top: 8px; }
   .dl-logo-blank { width: 1px; }
   .dl-logo { height: 48px; width: auto; max-width: 64px; object-fit: contain; margin-bottom: 8px; }
+  /* The vendor logos are drawn for a white ground: the Apple mark is solid
+     black and Tux is mostly black, so on the dark surface they disappear.
+     Give them their white ground back rather than inverting the colours. */
+  [data-theme="dark"] .dl-logo:not(.dl-logo-blank) {
+    background: #FFFFFF; border-radius: 10px;
+    padding: 7px 10px; box-sizing: content-box;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .dl-logo:not(.dl-logo-blank) {
+      background: #FFFFFF; border-radius: 10px;
+      padding: 7px 10px; box-sizing: content-box;
+    }
+  }
   .dl-fake-btn {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--p-color); color: #FFFFFF;
@@ -1173,10 +1186,10 @@
   // Steps — order follows the platform wizard: scenario precedes experiment.
   // ---------------------------------------------------------------------
   var BASE_STEPS = [
-    { id: 'entry',      label: 'Entry point' },
+    { id: 'entry',      label: 'Experiment type' },
     { id: 'kit',        label: 'Kit' },
     { id: 'instrument', label: 'Instrument' },
-    { id: 'scenario',   label: 'Scenario' },
+    { id: 'scenario',   label: 'Analysis' },
     { id: 'experiment', label: 'Experiment' },
     { id: 'review',     label: 'Review' },
     { id: 'simulate',   label: 'Simulate run' }
@@ -1196,7 +1209,7 @@
 
   var BACKENDS = [
     { id: 'local',  name: 'Local',           desc: 'Laptop or workstation',
-      warn: 'Needs a powerful computer with a lot of memory. CellRanger count wants 8 CPU cores and 64 GB of RAM or more per sample, STAR needs about 32 GB for a human genome index. Use a workstation rather than a laptop for real data sets.' },
+      warn: 'Needs a powerful computer with a lot of memory. Cell Ranger count wants 8 CPU cores and 64 GB of RAM or more per sample, STAR needs about 32 GB for a human genome index. Use a workstation rather than a laptop for real data sets.' },
     { id: 'k8s',    name: 'Kubernetes',      desc: 'Any Kubernetes cluster',        disabled: true, pill: 'Coming soon' },
     { id: 'seqera', name: 'Seqera Platform', desc: 'Nextflow Tower / workflow hub', disabled: true, pill: 'Coming soon' },
     { id: 'hpc',    name: 'HPC',             desc: 'Slurm, PBS or LSF cluster',      disabled: true, pill: 'Coming soon',
@@ -1288,17 +1301,15 @@
 
   // ---- Entry points, grouped by domain -------------------------------
   var ENTRY_POINTS = [
-    { id: 'single_cell', group: 'Transcriptomics', name: 'Single-cell',  desc: 'Single-cell sequencing assays' },
-    { id: 'bulk_rna',    group: 'Transcriptomics', name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep' },
+    { id: 'single_cell', group: 'Transcriptomics', name: 'Single-cell',  desc: 'Single-cell sequencing assays', kitTotal: 13 },
+    { id: 'bulk_rna',    group: 'Transcriptomics', name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep', kitTotal: 8 },
     { id: 'spatial',     group: 'Transcriptomics', name: 'Spatial',      desc: 'Spatial transcriptomics', soon: true },
     { id: 'ht_rna',      group: 'Transcriptomics', name: 'HT RNA-seq',   desc: 'Plate-format bulk, per-well experiments', soon: true },
     { id: 'methylation', group: 'Epigenomics',     name: 'Methylation',  desc: 'Bisulfite / EM-seq methylation sequencing', soon: true },
-    { id: 'epigenomics', group: 'Epigenomics',     name: 'Epigenomics',  desc: 'ChIP-seq, CUT&RUN, Hi-C', soon: true },
     { id: 'genomics',    group: 'Genomics',        name: 'Genomics',     desc: 'WGS, WES, targeted panels, cfDNA', soon: true },
-    { id: 'proteomics',  group: 'Proteomics',      name: 'Proteomics',   desc: 'Mass spectrometry based protein quantification', soon: true },
-    { id: 'lipidomics',  group: 'Metabolomics',    name: 'Lipidomics',   desc: 'LC-MS lipid identification and quantification', soon: true }
+    { id: 'epigenomics', group: 'Epigenomics',     name: 'Epigenomics',  desc: 'ChIP-seq, CUT&RUN, Hi-C', soon: true }
   ];
-  var ENTRY_GROUPS = ['Transcriptomics', 'Epigenomics', 'Genomics', 'Proteomics', 'Metabolomics'];
+  var ENTRY_GROUPS = ['Transcriptomics', 'Epigenomics', 'Genomics'];
 
   // ---- Instruments ----------------------------------------------------
   var INSTRUMENTS = {
@@ -1311,12 +1322,12 @@
   var KITS = {
     'single_cell': [
       { id: 'tenx_3prime_gex', name: "Chromium Single Cell 3' Gene Expression", vendor: '10x Genomics', family: 'gex',
-        assays: ['Single-cell RNA-seq'], software: 'CellRanger',
-        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'],
+        assays: ['Single-cell RNA-seq'], software: 'Cell Ranger',
+        instruments: ['element_aviti', 'illumina_nextseq_2000', 'illumina_novaseq_x'],
         chemistries: ["v3 \u2013 Next GEM 3' v3 / v3.1 chemistry", "v4 \u2013 GEM-X 3' v4 chemistry (the GEM-X chip generation)"] },
       { id: 'tenx_5prime_gex', name: "Chromium Single Cell 5' Gene Expression", vendor: '10x Genomics', family: 'gex',
-        assays: ['Single-cell RNA-seq'], software: 'CellRanger', soon: true,
-        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'] },
+        assays: ['Single-cell RNA-seq'], software: 'Cell Ranger', soon: true,
+        instruments: ['element_aviti', 'illumina_nextseq_2000', 'illumina_novaseq_x'] },
       { id: 'bd_rhapsody_wta', name: 'BD Rhapsody Whole Transcriptome Analysis', vendor: 'BD Biosciences', family: 'gex',
         assays: ['Single-cell RNA-seq'], soon: true, instruments: [] },
       { id: 'parse_evercode_wt', name: 'Evercode Whole Transcriptome (Mega/Giga)', vendor: 'Parse Biosciences', family: 'gex_combinatorial',
@@ -1327,7 +1338,7 @@
     'bulk_rna': [
       { id: 'illumina_rna_prep', name: 'Illumina RNA Prep with Enrichment', vendor: 'Illumina', family: 'bulk_rna',
         assays: ['Bulk RNA-seq'], software: 'DRAGEN RNA (basic)',
-        instruments: ['illumina_novaseq_x', 'illumina_nextseq_2000', 'element_aviti'] },
+        instruments: ['element_aviti', 'illumina_nextseq_2000', 'illumina_novaseq_x'] },
       { id: 'illumina_stranded_total_rna', name: 'Illumina Stranded Total RNA Prep (Ribo-Zero Plus)', vendor: 'Illumina', family: 'bulk_rna',
         assays: ['Bulk RNA-seq'], soon: true, instruments: [] },
       { id: 'lexogen_luthor', name: "LUTHOR 3' mRNA-Seq Library Prep Kit", vendor: 'Lexogen', family: 'bulk_rna',
@@ -1358,28 +1369,28 @@
 
   var WORKFLOWS = {
     'transcriptomics.single_cell.count_only': {
-      id: 'vsh/openpipeline', version: '',
-      desc: 'OpenPipelines ingestion workflows: demux, make_reference, then cellranger_mapping.',
+      id: 'vsh/openpipeline', version: 'dev',
+      desc: 'Demultiplexing, reference generation, then Cell Ranger count. Demultiplexing carries work only when you start from a sequencer run folder, and reference generation only when you asked for a reference to be built from a genome and annotation. Your answers settle that before the run starts; the workflow itself takes no branching decisions once it is under way.',
       perSample: false,
       steps: [
         { name: 'Demultiplexing', proc: 'ingestion/demux', kind: 'demux',
           note: function(exp){ return exp.input_shape === 'run_folder'
-            ? 'Runs bcl-convert (or bcl2fastq / CellRanger mkfastq) on the run folder, then FastQC and MultiQC on the FASTQ output.'
+            ? 'Runs bcl-convert (or bcl2fastq / Cell Ranger mkfastq) on the run folder, then FastQC and MultiQC on the FASTQ output.'
             : 'FASTQ files provided; the workflow receives them directly and this step carries no work.'; } },
         { name: 'Reference generation', proc: 'ingestion/make_reference', kind: 'ref',
           note: function(exp){
-            if (exp.reference_mode === 'generate') return 'Builds a CellRanger reference (cellranger mkref) from your genome FASTA and GTF.';
-            if (exp.reference_mode === 'own') return 'Uses the CellRanger reference you point to; no build.';
+            if (exp.reference_mode === 'generate') return 'Builds a Cell Ranger reference (cellranger mkref) from your genome FASTA and GTF.';
+            if (exp.reference_mode === 'own') return 'Uses the Cell Ranger reference you point to; no build.';
             return 'Uses the provided reference for your species; no build.';
           } },
-        { name: 'CellRanger mapping', proc: 'ingestion/cellranger_mapping', kind: 'count',
+        { name: 'Cell Ranger mapping', proc: 'ingestion/cellranger_mapping', kind: 'count',
           note: function(){ return 'cellranger_count per pool, cellranger_count_split, then from_10xh5_to_h5mu. Output is the count matrix as h5mu with QC metrics.'; } }
       ],
       dagNote: ''
     },
     'transcriptomics.bulk.count_only': {
-      id: 'vsh/bulk-rnaseq', version: 'v0.1.1',
-      desc: 'Per-sample bulk RNA-seq: FastQC (raw and trimmed) and TrimGalore adapter trimming, then Kallisto pseudo-alignment running in parallel with STAR genome alignment, Salmon quantification in alignment mode, Qualimap coordinate-based QC and MultiQC reporting.',
+      id: 'vsh/bulk-rnaseq', version: 'v0.2.0',
+      desc: 'Per-sample bulk RNA-seq: FastQC (raw + trimmed) and TrimGalore adapter trimming, then Kallisto pseudo-alignment (preliminary quantification) running in parallel with STAR genome alignment, Salmon quantification in alignment mode, Qualimap coordinate-based QC and MultiQC reporting.',
       perSample: true,
       steps: [
         { name: 'FastQC (raw)',      proc: 'qc:fastqc_raw',        note: function(){ return 'Read-level QC on the raw FASTQ pair.'; } },
@@ -1391,7 +1402,7 @@
         { name: 'Qualimap',          proc: 'qc:qualimap',          note: function(){ return 'Coordinate-based alignment QC.'; } },
         { name: 'MultiQC',           proc: 'report:multiqc',       note: function(){ return 'Aggregates all QC into one report.'; } }
       ],
-      dagNote: 'Takes one FASTQ pair (or single-end file) per invocation. There is no demultiplexing step and no multi-sample count-matrix aggregation.'
+      dagNote: 'Takes paired-end or single-end FASTQs, with lane-split files concatenated per sample; several samples run in one invocation through Viash\'s --param_list. There is no demultiplexing step and no multi-sample count-matrix aggregation.'
     }
   };
   function wfLabel(wf) { return wf ? (wf.version ? wf.id + ' ' + wf.version : wf.id) : '—'; }
@@ -1400,6 +1411,17 @@
   var SPECIES = [
     { id: 'human', name: 'Human (GRCh38)' },
     { id: 'mouse', name: 'Mouse (GRCm39)' },
+    { id: 'rat', name: 'Rat (GRCr8)' },
+    { id: 'zebrafish', name: 'Zebrafish (GRCz11)' },
+    { id: 'fruit_fly', name: 'Fruit fly (BDGP6.54)' },
+    { id: 'c_elegans', name: 'C. elegans (WBcel235)' },
+    { id: 'yeast', name: 'Yeast, S. cerevisiae (R64-1-1)' },
+    { id: 'chicken', name: 'Chicken (GRCg7b)' },
+    { id: 'pig', name: 'Pig (Sscrofa11.1)' },
+    { id: 'cow', name: 'Cow (ARS-UCD2.0)' },
+    { id: 'rhesus_macaque', name: 'Rhesus macaque (Mmul_10)' },
+    { id: 'dog', name: 'Dog (ROS_Cfam_1.0)' },
+    { id: 'arabidopsis', name: 'Arabidopsis (TAIR10)' },
     { id: 'other', name: 'Other (provide reference)' }
   ];
   var INPUT_SHAPES = [
@@ -1418,7 +1440,7 @@
       help: 'Decides whether demultiplexing runs, and what the input path means.' },
     { id: 'reference_mode', label: 'Reference', type: 'select', options: REFERENCE_MODES, def: 'provided' },
     { id: 'reference_path', label: 'Path to your reference', type: 'file', def: '', placeholder: '/path/to/reference',
-      help: 'Prebuilt CellRanger reference.', showWhen: function(s){ return s.reference_mode === 'own'; } },
+      help: 'Prebuilt Cell Ranger reference.', showWhen: function(s){ return s.reference_mode === 'own'; } },
     { id: 'genome_fasta', label: 'Genome FASTA', type: 'file', def: '', placeholder: '/path/to/genome.fa',
       help: 'Genome FASTA, when building a reference.', showWhen: function(s){ return s.reference_mode === 'generate'; } },
     { id: 'transcriptome_gtf', label: 'Transcript annotation (GTF)', type: 'file', def: '', placeholder: '/path/to/genes.gtf',
@@ -1426,7 +1448,7 @@
     { id: 'reference_version', label: 'Reference version label', type: 'string', def: '', placeholder: '2024-A',
       help: 'Version label recorded in a generated reference.', showWhen: function(s){ return s.reference_mode === 'generate'; } },
     { id: 'expect_cells', label: 'Cells expected per sample', type: 'integer', def: 3000,
-      help: 'A recovery target for CellRanger, not a hard cap.', showWhen: function(){ return state.entry === 'single_cell'; } }
+      help: 'A recovery target for Cell Ranger, not a hard cap.' }
   ];
   // Asked by the desktop client on the "Where to run" step. On the CLI path
   // they are already in params.yaml.
@@ -1700,7 +1722,7 @@
     if (i === 1 && kit) return kit.name;
     if (i === 2 && state.instrument) return (INSTRUMENTS[state.instrument] || {}).name || '';
     if (i === 3 && kit) {
-      if (!scenariosFor(kit).length) return 'No scenarios for this assay';
+      if (!scenariosFor(kit).length) return 'No analyses for this assay';
       return state.scenario ? (findIn(scenariosFor(kit), state.scenario) || {}).name || '' : '';
     }
     if (i === 4 && kit && experimentStepSatisfied()) {
@@ -1753,7 +1775,7 @@
   // the right. Offline rows are shown rather than hidden, so the reader sees
   // the whole map.
   function entryCard(ep) {
-    var kitCount = kitsFor(ep.id).filter(function(k){ return !k.soon; }).length;
+    var kitCount = ep.kitTotal || kitsFor(ep.id).length;
     var offline = !!ep.soon;
     var row = el('button', {
       class: 'ep-row' + (offline ? ' is-offline' : '') + (state.entry === ep.id ? ' is-selected' : ''),
@@ -1764,10 +1786,8 @@
         el('span', { class: 'ep-row-desc' }, [ep.desc])
       ]),
       el('span', { class: 'ep-row-status' }, [
-        el('span', { class: 'ep-row-state' }, [offline ? 'Offline' : 'Online']),
-        el('span', { class: 'ep-row-note' }, [
-          offline ? 'No workflow built yet' : kitCount + ' kit' + (kitCount === 1 ? '' : 's')
-        ])
+        el('span', { class: 'ep-row-state' }, [offline ? 'Coming soon' : 'Available']),
+        offline ? null : el('span', { class: 'ep-row-note' }, [kitCount + ' kit' + (kitCount === 1 ? '' : 's')])
       ])
     ]);
     if (offline) {
@@ -1787,9 +1807,9 @@
 
   function renderStep1() {
     var card = el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, ['Step 1 \u00B7 Entry point']),
-      el('h2', { class: 'step-card-title' }, ['What are you measuring?']),
-      el('p', { class: 'step-card-intro' }, ['Pick an entry point. The wizard then surfaces only the kits, instruments and scenarios that have verified workflow support.'])
+      el('span', { class: 'step-card-eyebrow' }, ['Step 1 \u00B7 Experiment type']),
+      el('h2', { class: 'step-card-title' }, ['Choose your experiment type']),
+      el('p', { class: 'step-card-intro' }, ['What are you measuring? Only combinations with confirmed pipeline support are shown.'])
     ]);
 
     ENTRY_GROUPS.forEach(function(group){
@@ -1818,7 +1838,7 @@
           el('div', { class: 'opt-card-title' }, [k.name]),
           el('p', { class: 'opt-card-assay' }, [k.assays.join(' \u00B7 ')]),
           el('span', { class: 'opt-card-cat' }, [k.vendor]),
-          el('div', { class: 'opt-card-meta' }, [el('span', { class: 'opt-card-chip slate' }, ['\u23F1 Coming soon'])])
+          el('div', { class: 'opt-card-meta' }, [el('span', { class: 'opt-card-chip slate' }, ['Not available in this demo'])])
         ]);
         soon.disabled = true;
         grid.appendChild(soon);
@@ -1848,7 +1868,7 @@
     return el('div', { class: 'step-card' }, [
       el('span', { class: 'step-card-eyebrow' }, ['Step 2 \u00B7 Kit']),
       el('h2', { class: 'step-card-title' }, ['Choose a kit']),
-      el('p', { class: 'step-card-intro' }, ['Library prep chemistry. The kit fixes the assay, and with it the instrument list, the scenarios and the kit-specific fields further on.']),
+      el('p', { class: 'step-card-intro' }, ['Library prep chemistry. The kit fixes the assay, and with it the instrument list, the analyses and the kit-specific fields further on.']),
       grid
     ]);
   }
@@ -1878,7 +1898,7 @@
     return el('div', { class: 'step-card' }, [
       el('span', { class: 'step-card-eyebrow' }, ['Step 3 \u00B7 Instrument']),
       el('h2', { class: 'step-card-title' }, ['Pair an instrument']),
-      el('p', { class: 'step-card-intro' }, ['Which sequencer read your libraries? Only instruments declared for this kit are shown.']),
+      el('p', { class: 'step-card-intro' }, ['Which instrument produced your data? Only instruments declared for this kit are shown.']),
       grid
     ]);
   }
@@ -1890,13 +1910,13 @@
     var kit = currentKit();
     var scenarios = scenariosFor(kit);
     var card = el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, ['Step 4 \u00B7 Scenario']),
-      el('h2', { class: 'step-card-title' }, ['Choose a scenario']),
-      el('p', { class: 'step-card-intro' }, ['How deep should the analysis go? Scenarios are declared per assay, so they follow the kit you picked.'])
+      el('span', { class: 'step-card-eyebrow' }, ['Step 4 \u00B7 Analysis']),
+      el('h2', { class: 'step-card-title' }, ['Choose the analysis']),
+      el('p', { class: 'step-card-intro' }, ['How deep should the analysis go? Analyses are declared per assay, so they follow the kit you picked.'])
     ]);
 
     if (!scenarios.length) {
-      card.appendChild(el('p', { class: 'step-empty' }, ['No scenarios available for this assay.']));
+      card.appendChild(el('p', { class: 'step-empty' }, ['No analyses available for this assay.']));
       card.appendChild(el('div', { class: 'step-action' }, [
         el('button', {
           class: 'btn-primary', type: 'button',
@@ -1916,7 +1936,7 @@
         el('div', { class: 'opt-card-title' }, [sc.name]),
         el('p', { class: 'opt-card-desc' }, [sc.desc]),
         el('div', { class: 'opt-card-meta' }, [
-          el('span', { class: 'opt-card-chip teal' }, [sc.id])
+          el('span', { class: 'opt-card-chip gray' }, [(sc.credits || 0) + ' credits'])
         ])
       ]));
     });
@@ -2039,7 +2059,7 @@
       lines.push('GTF: ' + fieldValue(fieldById('transcriptome_gtf')));
       lines.push('Reference version: ' + fieldValue(fieldById('reference_version')));
     }
-    if (state.entry === 'single_cell') lines.push('Cells expected per sample: ' + fieldValue(fieldById('expect_cells')));
+    lines.push('Cells expected per sample: ' + fieldValue(fieldById('expect_cells')));
 
     extraFieldsFor(kit).forEach(function(f){
       if (f.type === 'note') lines.push(f.label + ': required');
@@ -2085,11 +2105,11 @@
 
     return el('div', { class: 'review-card' }, [
       el('div', { class: 'review-badges' }, [
-        el('span', { class: 'review-badge coverage' }, [scenario ? 'Full coverage' : 'No scenario declared'])
+        el('span', { class: 'review-badge coverage' }, [scenario ? '\u2713 Ready to run' : 'No analysis declared'])
       ]),
       el('div', { class: 'review-row' }, [
         el('div', null, [
-          el('div', { class: 'review-label' }, ['Entry point']),
+          el('div', { class: 'review-label' }, ['Experiment type']),
           el('div', { class: 'review-value' }, [entry.name]),
           el('p', { class: 'review-desc' }, [entry.desc])
         ]),
@@ -2110,18 +2130,15 @@
           el('p', { class: 'review-desc' }, [instrument.vendor])
         ]),
         el('div', null, [
-          el('div', { class: 'review-label' }, ['Scenario']),
+          el('div', { class: 'review-label' }, ['Analysis']),
           el('div', { class: 'review-value' }, [scenario ? scenario.name : '\u2014']),
-          el('p', { class: 'review-desc' }, [scenario ? scenario.desc : 'No scenarios available for this assay.']),
-          scenario ? el('div', { class: 'review-chip-row' }, [
-            el('span', { class: 'opt-card-chip teal' }, [scenario.id])
-          ]) : null
+          el('p', { class: 'review-desc' }, [scenario ? scenario.desc : 'No analyses available for this assay.'])
         ])
       ]),
       el('div', { class: 'review-row' }, [
         expBlock,
         el('div', null, [
-          el('div', { class: 'review-label' }, ['Resolved workflow']),
+          el('div', { class: 'review-label' }, ['Workflow']),
           el('div', { class: 'review-workflow-id' }, [workflow ? wfLabel(workflow) : 'not resolved']),
           el('p', { class: 'review-desc' }, [workflow ? workflow.desc : 'A pipeline has not been declared for this assay yet.'])
         ])
@@ -2138,6 +2155,10 @@
           workflow.dagNote ? el('p', { class: 'review-desc wf-dag' }, [workflow.dagNote]) : null
         ])
       ]) : null,
+      el('p', { class: 'review-desc' }, [
+        el('b', null, [(scenario && scenario.credits || 0) + ' credits']),
+        ' \u2014 fixed price for this setup, charged once when the run starts, not an estimate of compute cost. Nothing is charged while the platform is in preview.'
+      ]),
       el('p', { class: 'review-callout' }, [
         'With this information we deliver you the omics workflow you need, ',
         el('em', null, ['based on your choices']),
@@ -2179,10 +2200,10 @@
     var sc = findIn(scenariosFor(kit), state.scenario);
     var wf = WORKFLOWS[state.scenario];
     var pairs = [
-      ['Entry point', (entryById(state.entry) || {}).name],
+      ['Experiment type', (entryById(state.entry) || {}).name],
       ['Kit', kit.name],
       ['Instrument', inst.name],
-      ['Scenario', sc ? sc.name : '—'],
+      ['Analysis', sc ? sc.name : '—'],
       ['Workflow', wfLabel(wf)]
     ];
     var card = el('div', { class: 'sel-card' }, [
@@ -2766,7 +2787,7 @@
       el('p', { class: 'step-card-intro' }, ['Every step you just walked through is configuration, not fixed code. We set it up for the way your lab or facility works.']),
       el('div', { class: 'next-grid' }, [
         block('Steps tailored to your project',
-          'The wizard steps, the kits, instruments and scenarios on offer, the questions asked about an experiment and the defaults behind them are defined per client. A core facility gets its instrument park and kit list, a research group gets the two assays it runs and nothing else.'),
+          'The wizard steps, the kits, instruments and analyses on offer, the questions asked about an experiment and the defaults behind them are defined per client. A core facility gets its instrument park and kit list, a research group gets the two assays it runs and nothing else.'),
         block('Reports tailored to your questions',
           'The report at the end is built for the decision you have to make: which metrics, which thresholds, which plots, in your layout and your language. Batch summaries, per-sample pages, sign-off sheets or a plain table for the LIMS, whatever the project needs.'),
         block('On a private or a shared platform',
@@ -2802,7 +2823,7 @@
   function fmtM(v) { return v.toFixed(1) + 'M'; }
   function fmtInt(v) { return String(v).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
 
-  // Stacked horizontal bar per sample: where the reads map (CellRanger metrics).
+  // Stacked horizontal bar per sample: where the reads map (Cell Ranger metrics).
   function qcMappingChart() {
     var W = 320, rowH = 26, padL = 4, H = QC_SAMPLES.length * rowH + 4;
     var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Read mapping breakdown per sample' });
@@ -2819,7 +2840,7 @@
     });
     return svg;
   }
-  // Barcode rank plot (log-log): UMI counts per barcode, the CellRanger knee plot.
+  // Barcode rank plot (log-log): UMI counts per barcode, the Cell Ranger knee plot.
   function qcBarcodeRankChart() {
     var W = 320, H = 150, padL = 34, padB = 24, padT = 8;
     var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Barcode rank plot per sample' });
@@ -3020,10 +3041,10 @@
         el('span', { class: 'qc-verdict' }, ['✓ 3 samples · 2 pass · 1 warning'])
       ]),
       el('div', { class: 'qc-section' }, [
-        el('h4', null, ['1 · CellRanger metrics summary']),
+        el('h4', null, ['1 · Cell Ranger metrics summary']),
         el('div', { class: 'qc-table-wrap' }, [el('table', { class: 'qc-table' }, [el('thead', null, [thead]), tbody])]),
         el('p', { class: 'qc-cap', style: 'font-size:12px;color:var(--text-soft);margin:8px 0 0' }, [
-          'Expected cells per sample was set to ' + expectCells + '. Amber flag: foo/bar/VH02001612 recovers fewer cells, has only 78.6% of reads in cells (CellRanger warns below 70%) and a median pctMT of 11.9%, which points to ambient RNA and stressed or dying cells. Apply a stricter mitochondrial filter downstream and check the loading for that sample.'])
+          'Expected cells per sample was set to ' + expectCells + '. Amber flag: foo/bar/VH02001612 recovers fewer cells, has only 78.6% of reads in cells (Cell Ranger warns below 70%) and a median pctMT of 11.9%, which points to ambient RNA and stressed or dying cells. Apply a stricter mitochondrial filter downstream and check the loading for that sample.'])
       ]),
       el('div', { class: 'qc-section' }, [
         el('h4', null, ['2 · Mapping and cell calling']),
@@ -3048,9 +3069,9 @@
       ]),
       el('div', { class: 'qc-section qc-out' }, [
         el('h4', null, ['3 · Output']),
-        el('p', { class: 'prose', style: 'font-size:13.5px' }, ['One filtered feature-barcode matrix per sample, delivered as h5mu with these metrics in the .uns slot, plus the raw CellRanger output folders. The Counts scenario stops here: no clustering, no t-SNE or UMAP, no cell type annotation. Those are OpenPipelines processing and downstream steps.'])
+        el('p', { class: 'prose', style: 'font-size:13.5px' }, ['One filtered feature-barcode matrix per sample, delivered as h5mu with these metrics in the .uns slot, plus the raw Cell Ranger output folders. The Counts analysis stops here: no clustering, no t-SNE or UMAP, no cell type annotation. Those are OpenPipelines processing and downstream steps.'])
         ,
-        el('p', { class: 'qc-foot' }, ['One-page summary. The full output adds the CellRanger web summary per sample and the per-cell QC metrics (total counts, genes detected, pctMT) computed on the h5mu. Demo data, not a real run.'])
+        el('p', { class: 'qc-foot' }, ['One-page summary. The full output adds the Cell Ranger web summary per sample and the per-cell QC metrics (total counts, genes detected, pctMT) computed on the h5mu. Demo data, not a real run.'])
       ])
     ]);
   }

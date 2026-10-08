@@ -1,0 +1,9 @@
+# Netlify response headers.
+#
+# /apps/ is internal tooling. robots.txt asks crawlers to stay out; these
+# headers tell anything that does fetch a page there not to index it, not
+# to keep a copy, and not to use it for AI training or answers. A header
+# holds even when a crawler ignores robots.txt or reaches a file directly.
+/apps/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai
+  Referrer-Policy: no-referrer

@@ -4,9 +4,16 @@
 # summarisation and grounded answer generation.
 # =====================================================================
 
-# Catch-all baseline: everything is allowed for every bot.
+# ---------------------------------------------------------------------
+# /apps/ is internal tooling, not content. It is closed to every crawler
+# and every AI agent, which is why the rule is repeated in each group:
+# robots.txt groups do not inherit from the catch-all.
+# ---------------------------------------------------------------------
+
+# Catch-all baseline: everything else is allowed for every bot.
 User-agent: *
 Allow: /
+Disallow: /apps/
 
 Sitemap: https://www.data-intuitive.com/sitemap.xml
 
@@ -19,167 +26,222 @@ Sitemap: https://www.data-intuitive.com/sitemap.xml
 # ----- Search engines -----
 User-agent: Googlebot
 Allow: /
+Disallow: /apps/
 
 User-agent: Googlebot-Image
 Allow: /
+Disallow: /apps/
 
 User-agent: Googlebot-News
 Allow: /
+Disallow: /apps/
 
 User-agent: Googlebot-Video
 Allow: /
+Disallow: /apps/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /apps/
 
 User-agent: Slurp
 Allow: /
+Disallow: /apps/
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /apps/
 
 User-agent: Baiduspider
 Allow: /
+Disallow: /apps/
 
 User-agent: YandexBot
 Allow: /
+Disallow: /apps/
 
 User-agent: Sogou
 Allow: /
+Disallow: /apps/
 
 User-agent: ia_archiver
 Allow: /
+Disallow: /apps/
 
 User-agent: archive.org_bot
 Allow: /
+Disallow: /apps/
 
 # ----- AI / LLM training, retrieval and grounded answers -----
 User-agent: GPTBot
 Allow: /
+Disallow: /apps/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /apps/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /apps/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /apps/
 
 User-agent: GoogleOther
 Allow: /
+Disallow: /apps/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /apps/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /apps/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /apps/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /apps/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /apps/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /apps/
 
 User-agent: CCBot
 Allow: /
+Disallow: /apps/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /apps/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /apps/
 
 User-agent: Applebot
 Allow: /
+Disallow: /apps/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /apps/
 
 User-agent: Meta-ExternalAgent
 Allow: /
+Disallow: /apps/
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /apps/
 
 User-agent: FacebookBot
 Allow: /
+Disallow: /apps/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /apps/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /apps/
 
 User-agent: cohere-training-data-crawler
 Allow: /
+Disallow: /apps/
 
 User-agent: MistralAI-User
 Allow: /
+Disallow: /apps/
 
 User-agent: Diffbot
 Allow: /
+Disallow: /apps/
 
 User-agent: ImagesiftBot
 Allow: /
+Disallow: /apps/
 
 User-agent: img2dataset
 Allow: /
+Disallow: /apps/
 
 User-agent: YouBot
 Allow: /
+Disallow: /apps/
 
 User-agent: DuckAssistBot
 Allow: /
+Disallow: /apps/
 
 User-agent: TimpiBot
 Allow: /
+Disallow: /apps/
 
 User-agent: FriendlyCrawler
 Allow: /
+Disallow: /apps/
 
 User-agent: Omgili
 Allow: /
+Disallow: /apps/
 
 User-agent: Omgilibot
 Allow: /
+Disallow: /apps/
 
 User-agent: AwarioRssBot
 Allow: /
+Disallow: /apps/
 
 User-agent: AwarioSmartBot
 Allow: /
+Disallow: /apps/
 
 User-agent: DataForSeoBot
 Allow: /
+Disallow: /apps/
 
 User-agent: Kagibot
 Allow: /
+Disallow: /apps/
 
 User-agent: PetalBot
 Allow: /
+Disallow: /apps/
 
 # ----- SEO / commercial scrapers -----
 User-agent: AhrefsBot
 Allow: /
+Disallow: /apps/
 
 User-agent: SemrushBot
 Allow: /
+Disallow: /apps/
 
 User-agent: MJ12bot
 Allow: /
+Disallow: /apps/
 
 User-agent: DotBot
 Allow: /
+Disallow: /apps/
 
 User-agent: BLEXBot
 Allow: /
+Disallow: /apps/
 
 User-agent: SeekportBot
 Allow: /
+Disallow: /apps/

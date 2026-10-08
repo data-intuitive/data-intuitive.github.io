@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="color-scheme" content="light dark">
+<title>Skaldu Interviews v7</title>
+<style>
+:root{
+  --surface:#FFFFFF; --surface-alt:#F7F8FB; --surface-elev:#FFFFFF; --surface-navy:#0B1D3A;
+  --text:#0B1D3A; --text-strong:#0F1B3D; --text-muted:#5A6890; --text-on-accent:#FFFFFF; --text-on-mint:#052B26;
+  --border:rgba(11,29,58,0.10); --border-soft:rgba(124,75,172,0.18); --shadow:rgba(11,29,58,0.08);
+  --accent:#7C4BAC; --accent-soft:rgba(124,75,172,0.10); --accent-2:#00B4A0; --accent-2-soft:rgba(0,180,160,0.10);
+  --coral:#E05C4B; --gold:#C9A228;
+  --font-display:-apple-system,BlinkMacSystemFont,"Helvetica Neue",system-ui,sans-serif; --font-body:-apple-system,BlinkMacSystemFont,"Helvetica Neue",system-ui,sans-serif; --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --radius:8px; --tap:48px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --surface:#14213D; --surface-alt:#0B1226; --surface-elev:#182849; --surface-navy:#0B1226;
+  --text:#D8DCE7; --text-strong:#F4F6FB; --text-muted:#A2AAC0; --text-on-accent:#0B1226; --text-on-mint:#052B26;
+  --border:rgba(255,255,255,0.12); --border-soft:rgba(182,160,224,0.22); --shadow:rgba(0,0,0,0.45);
+  --accent:#C7B3EA; --accent-soft:rgba(199,179,234,0.16); --accent-2:#4FE0BD; --accent-2-soft:rgba(79,224,189,0.16);
+  --coral:#FF8C7E; --gold:#E8C656; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --surface:#14213D; --surface-alt:#0B1226; --surface-elev:#182849; --surface-navy:#0B1226;
+  --text:#D8DCE7; --text-strong:#F4F6FB; --text-muted:#A2AAC0; --text-on-accent:#0B1226; --text-on-mint:#052B26;
+  --border:rgba(255,255,255,0.12); --border-soft:rgba(182,160,224,0.22); --shadow:rgba(0,0,0,0.45);
+  --accent:#C7B3EA; --accent-soft:rgba(199,179,234,0.16); --accent-2:#4FE0BD; --accent-2-soft:rgba(79,224,189,0.16);
+  --coral:#FF8C7E; --gold:#E8C656; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--surface-alt);color:var(--text);font-family:var(--font-body);font-size:17px;line-height:1.5;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+h1,h2,h3{font-family:var(--font-display);color:var(--text-strong);margin:0;text-wrap:balance;letter-spacing:0.02em}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+.eyebrow{font-family:var(--font-display);font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent)}
+.mono{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.top .btn{height:34px;padding:0 10px;font-size:13px;flex:none}
+.brandblock{margin-bottom:14px}
+.brandblock h1{font-size:19px;font-weight:600;line-height:1.15}
+.brandblock .eyebrow{display:block;margin:2px 0 10px}
+.brandblock .who{width:100%}
+.chip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-family:var(--font-display);font-weight:500;font-size:14px;white-space:nowrap}
+.chip.code{font-family:var(--font-mono);font-weight:700;letter-spacing:0.06em}
+.who{position:relative;display:flex;flex-direction:column;gap:2px;padding:6px 12px 4px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}
+.who span{font-family:var(--font-display);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted)}
+.who select{appearance:none;-webkit-appearance:none;width:100%;border:0;background:transparent;font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--text);padding:0 28px 0 0;min-height:44px;line-height:44px}
+.whodd{position:relative}.who .whofield span.whoval{font-size:16px;letter-spacing:0;text-transform:none;color:var(--text)}.who.unset .whofield span.whoval{color:var(--text-muted);font-weight:500}
+.whofield{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:0 2px;border:0;background:transparent;font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text);text-align:left}
+.whofield .chev{width:8px;height:8px;border-right:2px solid var(--text-muted);border-bottom:2px solid var(--text-muted);transform:rotate(45deg);margin:0 6px 4px 0}.whofield .chev.up{transform:rotate(-135deg);margin-bottom:-2px}
+.wholist{position:absolute;left:-12px;right:-12px;top:100%;z-index:50;margin-top:4px;padding:4px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-elev, var(--surface));box-shadow:var(--shadow)}
+.whoopt{display:block;width:100%;min-height:44px;padding:0 12px;border:0;border-radius:8px;background:transparent;text-align:left;font-family:var(--font-display);font-weight:500;font-size:15px;color:var(--text)}
+.whoopt.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.who.unset{border-color:var(--coral)}.who.unset span{color:var(--coral)}
+.progress{display:flex;align-items:center;gap:8px;color:var(--text-muted);font-size:14px;font-variant-numeric:tabular-nums}
+.bar{width:90px;height:6px;border-radius:3px;background:var(--border);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent-2);width:0;transition:width .2s}
+.btn{height:40px;padding:0 16px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:var(--font-display);font-weight:500;font-size:15px;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--border-soft)}
+.btn.primary{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:var(--text-on-mint)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:var(--text-on-mint)}}
+.btn.quiet{border-color:transparent;background:transparent;color:var(--text-muted)}
+
+/* layout */
+.wrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:0;min-height:calc(100% - 61px)}
+.wrap:has(#rail[hidden]){grid-template-columns:minmax(0,1fr)}
+.rail{position:sticky;top:calc(61px + env(safe-area-inset-top,0px));align-self:start;height:calc(100vh - 61px - env(safe-area-inset-top,0px));overflow-y:auto;padding:20px 12px 40px 16px;border-right:1px solid var(--border);background:var(--surface-alt)}
+.rail .group{margin-bottom:18px}
+.rail .group .eyebrow{display:block;padding:0 8px 6px}
+.rail a{display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 10px;border-radius:var(--radius);color:var(--text);text-decoration:none;font-size:15px;line-height:1.3}
+.rail a:hover{background:var(--accent-soft)}
+.rail a.active{background:var(--surface);box-shadow:0 1px 3px var(--shadow)}
+.rail a .sid{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--accent);min-width:34px;letter-spacing:0.04em}
+.rail a .cnt{margin-left:auto;font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.rail a.done .cnt{color:var(--accent-2)}
+.rail.locked a,.rail.locked .demoswitch{pointer-events:none}
+.rail.locked a{color:var(--text-muted)}
+.rail.locked{position:relative}
+.rail.locked::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 9px,var(--accent-soft) 9px,var(--accent-soft) 10px);opacity:.45;pointer-events:none}
+.rail .hint{padding:8px 10px;color:var(--text-muted);font-size:14px}
+.prog{position:relative;z-index:1;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent-2);border-radius:var(--radius);padding:12px 14px;margin:0 4px 18px 0;font-size:14px;line-height:1.45;color:var(--text-muted)}
+.prog .code{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--accent);word-break:break-all}
+.prog .who2{font-family:var(--font-display);font-size:15px;color:var(--text);margin-top:2px}
+.prog .pers{display:inline-block;margin:4px 0 8px;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-family:var(--font-display);font-size:13px}
+.prog .big{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--text-strong);font-variant-numeric:tabular-nums;line-height:1.1}
+.prog .row{display:flex;justify-content:space-between;gap:10px;font-variant-numeric:tabular-nums}
+.prog .row b{color:var(--text);font-weight:500}
+.prog .bar{width:100%;margin:8px 0 10px}
+.demoswitch{display:block;width:100%;text-align:left;padding:10px 12px;border-radius:var(--radius);border:1px dashed var(--border-soft);background:transparent;color:var(--text)}
+.demoswitch b{display:block;font-family:var(--font-display);font-weight:500;font-size:15px}
+.demoswitch small{display:block;color:var(--text-muted);font-size:12px;line-height:1.35;margin-top:2px;white-space:normal}
+.demoswitch.on{border-style:solid;border-color:var(--accent-2);background:var(--accent-2-soft)}
+@media (max-width:900px){.demoswitch{min-width:230px}}
+@media (max-width:900px){.prog{flex:none;min-width:280px;white-space:normal;margin:0 6px 0 0;padding:8px 12px}.prog .big{font-size:20px}.prog .bar{display:none}}
+main{padding:24px 16px 120px;max-width:920px;width:100%;margin:0 auto}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);display:flex;gap:6px;overflow-x:auto;padding:10px 16px;white-space:nowrap}
+  .rail .group{display:contents}.rail .group .eyebrow{display:none}.rail .hint{display:none}
+  .rail a{min-height:40px;border:1px solid var(--border);background:var(--surface)}
+  .rail a .cnt{margin-left:6px}
+}
+
+/* sections */
+section.sec{margin-bottom:36px}
+section.sec header{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;padding-top:8px}
+section.sec h2{font-size:22px;font-weight:600}
+section.sec header .sid{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--accent)}
+section.sec header .persona{margin-left:auto;color:var(--text-muted);font-size:14px;white-space:nowrap}
+.intro{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:24px;color:var(--text-muted);font-size:15px}
+.intro ol{margin:8px 0 0;padding-left:20px}.intro li{margin:4px 0}
+.intro summary{cursor:pointer;color:var(--text);font-family:var(--font-display);font-weight:500}
+
+/* question card */
+.q{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px 16px;margin-bottom:12px;position:relative}
+.q.answered{border-left:3px solid var(--accent-2)}
+.q.skipped{opacity:.6}
+.q .head{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}.q.folded .head{margin-bottom:0}
+.q .qid{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--accent);padding-top:5px;min-width:52px}
+.q .qtext{font-size:18px;line-height:1.4;color:var(--text-strong);flex:1;min-width:0}
+.q .qtext .kind{display:block;font-size:13px;color:var(--text-muted);margin-top:2px;font-family:var(--font-display)}
+.q .qtext .flag{display:inline-block;margin-top:4px;font-size:12px;color:var(--coral);font-family:var(--font-display)}
+.q .skip{flex:none;height:32px;padding:0 10px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:13px;font-family:var(--font-display)}
+.q.skipped .skip{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:var(--tap);padding:10px 16px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface-alt);text-align:left;font-size:16px;line-height:1.3;max-width:100%;display:inline-flex;align-items:center;gap:10px}
+.opt::before{content:"";width:18px;height:18px;border-radius:50%;border:2px solid var(--text-muted);flex:none;opacity:.6}
+.opt.multi::before{border-radius:4px}
+.opt.on{background:var(--accent-soft);border-color:var(--accent);color:var(--text-strong)}
+.opt.on::before{background:var(--accent);border-color:var(--accent);opacity:1;box-shadow:inset 0 0 0 3px var(--surface)}
+.opt.disabled{opacity:.45}
+.text{width:100%;min-height:var(--tap);padding:10px 14px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface-alt);font-size:17px}
+.text.num{max-width:220px;font-variant-numeric:tabular-nums}
+textarea.text{min-height:88px;resize:vertical;line-height:1.45}
+.numrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pad{display:grid;grid-template-columns:repeat(3,72px);gap:8px;margin-top:10px;padding:12px;background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius);width:max-content;max-width:100%}
+.pad button{height:56px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);font-size:22px;font-weight:500;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center}
+.pad button:active{background:var(--accent-soft);border-color:var(--accent)}
+.pad button.act{font-size:15px;font-family:var(--font-display);color:var(--text-muted)}
+.pad button.done{grid-column:1/-1;background:var(--accent-2);border-color:var(--accent-2);color:#fff;font-size:16px;font-family:var(--font-display)}
+:root[data-theme="dark"] .pad button.done{color:var(--text-on-mint)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pad button.done{color:var(--text-on-mint)}}
+.notes{margin-top:12px;display:grid;gap:4px}
+.noteshead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mic{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:13px;font-family:var(--font-display);display:inline-flex;align-items:center;gap:6px}
+.mic:disabled{opacity:.4}
+.mic .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.mic.on{border-color:var(--coral);color:var(--coral)}
+.mic.on .dot{background:var(--coral);animation:pulse 1.1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.mic.on .dot{animation:none}}
+.notes label{font-family:var(--font-display);font-size:13px;color:var(--text-muted);letter-spacing:0.02em}
+.notes textarea{min-height:64px;background:transparent;border-style:dashed}
+.notes textarea:focus{background:var(--surface-alt);border-style:solid}
+.gridwrap{overflow-x:auto}
+table.grid{border-collapse:collapse;width:100%;min-width:560px;table-layout:fixed}
+table.grid th,table.grid td{overflow-wrap:anywhere}
+table.grid th,table.grid td{border-bottom:1px solid var(--border);padding:6px 8px;text-align:center;font-size:14px}
+table.grid th{font-family:var(--font-display);font-weight:500;color:var(--text-muted)}
+table.grid th:first-child,table.grid td:first-child{text-align:left;font-size:15px;color:var(--text)}
+table.grid td button{width:100%;min-height:44px;border-radius:6px;border:1px solid var(--border);background:var(--surface-alt);font-size:0}
+table.grid td button.on{background:var(--accent);border-color:var(--accent)}
+.branchpick{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);color:var(--text-muted);font-size:14px}
+.branchpick .opt{min-height:36px;padding:6px 12px;font-size:14px}
+.branchpick .opt::before{display:none}
+.branchpick .opt.locked{border-color:var(--accent-2);color:var(--accent-2)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.form label{display:grid;gap:4px;font-size:13px;color:var(--text-muted);font-family:var(--font-display)}
+.form label.wide,.form .wide{grid-column:1/-1}
+.form .text{min-height:44px;font-size:16px}
+.form .opts .opt{min-height:40px;padding:6px 12px;font-size:14px}
+.form .opts .opt::before{display:none}
+.status{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-family:var(--font-display);background:var(--border);color:var(--text-muted)}
+.status.running{background:var(--accent-2-soft);color:var(--accent-2)}
+.status.done{background:var(--accent-soft);color:var(--accent)}
+@media (max-width:600px){.form{grid-template-columns:1fr}}
+.warn{background:var(--coral);color:#fff;padding:12px 16px;font-size:15px;line-height:1.4;display:flex;gap:12px;align-items:flex-start}
+.warn b{font-family:var(--font-display)}
+.warn button{flex:none;height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-size:14px;font-family:var(--font-display)}
+.pcard{display:flex;flex-wrap:wrap;align-items:flex-start;gap:16px 28px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:16px 20px;margin-bottom:16px}
+.pcard .pmain{flex:1 1 220px;min-width:0}.pcard h2{font-size:22px;margin:2px 0}
+.pcard .pline{color:var(--text-muted);font-size:15px}
+.pcard .pmeta{display:flex;flex-wrap:wrap;gap:10px 24px}
+.pcard .pmeta div{display:grid;gap:2px}.pcard .pmeta small{font-size:12px;color:var(--text-muted);font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em}
+.pcard .pmeta b{font-weight:500;font-size:15px;color:var(--text)}.pcard .pmeta b.mono{font-family:var(--font-mono);letter-spacing:.06em;color:var(--accent)}
+select.text{appearance:none;-webkit-appearance:none;height:46px;line-height:1.2;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,var(--text-muted) 50%),linear-gradient(135deg,var(--text-muted) 50%,transparent 50%);background-position:calc(100% - 18px) 21px,calc(100% - 13px) 21px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.endnote{text-align:center;color:var(--text-muted);padding:20px;font-size:15px}
+
+/* drawer */
+.overlay{position:fixed;inset:0;background:rgba(11,29,58,.45);z-index:40;display:flex;justify-content:flex-end}
+.drawer{width:min(520px,100%);height:100%;background:var(--surface);padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));overflow-y:auto;display:flex;flex-direction:column;gap:14px;box-shadow:-8px 0 30px var(--shadow)}
+.drawer h2{font-size:20px}
+.drawer .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.drawer .row .meta{flex:1;min-width:0}
+.drawer .row .meta b{font-family:var(--font-mono);letter-spacing:.06em}
+.drawer .row .meta small{display:block;color:var(--text-muted);font-size:13px}
+.drawer .row.current{background:var(--accent-soft);margin:0 -8px;padding:10px 8px;border-radius:var(--radius)}
+.drawer pre{background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-size:12px;overflow:auto;max-height:40vh;white-space:pre-wrap;word-break:break-all}
+.tscript{margin-top:12px;display:grid;gap:8px;font-size:15px;line-height:1.5}
+.tscript p{margin:0;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.tscript .ts{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-right:8px}
+.tscript .tag{font-family:var(--font-mono);font-size:11px;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:1px 5px;margin-right:8px}
+.tscript p.into{color:var(--text)}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--surface-navy);color:#fff;padding:10px 18px;border-radius:999px;font-family:var(--font-display);font-size:15px;z-index:60;box-shadow:0 6px 24px var(--shadow)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.opt.rank.on::before{display:none}.opt.rank .rk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--text-on-accent);font-size:13px;font-weight:700;font-family:var(--font-display);flex:none}.hint{color:var(--text-muted);font-size:14px;margin-top:6px}
+table.grid td.na{background:repeating-linear-gradient(135deg,transparent 0 6px,var(--border-soft) 6px 7px)}table.grid button.na{color:var(--text-muted);opacity:.6;border-style:dashed;cursor:default}
+.lsrc{display:inline-block;margin-left:8px;font-size:12px;color:var(--text-muted);font-family:var(--font-display)}
+.q .say{font-size:18px;line-height:1.35;color:var(--text-strong)}.q .codeas{display:block;margin-top:2px;font-size:14px;color:var(--text-muted)}.q.fill{background:var(--surface-alt)}.q.fill .qid{color:var(--text-muted)}
+.opener{font-style:italic;color:var(--accent);font-size:18px;line-height:1.4;margin:0 0 10px}
+.litem{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--border-soft)}
+.litem .cover{min-height:48px;min-width:96px;padding:0 14px;border-radius:10px;border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-family:var(--font-display);font-weight:600;font-size:15px}
+.litem .cover.off{border-color:var(--border);color:var(--text-muted)}
+.litem .ltext{font-size:16px;line-height:1.35;cursor:pointer}.litem .qid{margin-right:8px}.litem .llead{display:block;font-style:italic;color:var(--text-muted);font-size:14px}
+.kws{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.kw{font-size:13px;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--text-strong)}
+.kw.pick{min-height:36px;padding:4px 12px;font-size:14px;border:1px solid transparent;background:var(--surface-alt);border-color:var(--border);color:var(--text)}.kw.pick.on{background:var(--accent);border-color:var(--accent);color:var(--text-on-accent)}
+.litem.picked{background:var(--accent-2-soft, rgba(0,180,160,0.08));border-radius:10px;padding-left:8px;padding-right:8px}.litem .cover.done{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+.hasnote{display:inline-block;margin-left:8px;font-size:12px;color:var(--accent-2);font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em}
+.lnote{grid-column:1/-1}.litem.done .ltext{color:var(--text-muted)}
+.q.covered{border-left:3px solid var(--gold)}.covbadge{display:block;margin-top:4px;font-size:13px;color:var(--text-muted)}.lnk{background:none;border:0;color:var(--accent);font-size:13px;text-decoration:underline;padding:0}
+
+.tstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}.tchip{display:grid;gap:4px;text-align:left;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface-alt);min-height:56px}.tchip b{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text-strong)}.tchip small{color:var(--text-muted);font-size:12px}.tchip .bar{height:4px;border-radius:2px;background:var(--border);overflow:hidden;display:block}.tchip .bar span{display:block;height:100%;background:var(--accent-2)}.tchip.on{border-color:var(--accent);background:var(--accent-soft)}.tchip.full b{color:var(--text-muted)}
+.tsec{border-left:4px solid var(--accent);padding-left:18px}.tsec.c-teal{border-left-color:var(--accent-2)}.tsec.c-gold{border-left-color:var(--gold)}.tsec.c-navy{border-left-color:var(--surface-navy, #0B1D3A)}.tsec.c-coral{border-left-color:var(--coral)}
+.tcols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}@media (max-width:900px){.tcols{grid-template-columns:1fr}}.tcol{display:grid;gap:8px;align-content:start}
+.probe{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start;text-align:left;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);font-size:16px;line-height:1.35}.probe .pmark{width:24px;height:24px;border-radius:6px;border:1.5px solid var(--text-muted);color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center}.probe.asked .pmark{background:var(--accent);border-color:var(--accent)}.probe.asked{background:var(--accent-soft);border-color:var(--accent)}.probe.covered .ptext{color:var(--text-muted)}.probe small{display:block;color:var(--text-muted);font-size:12px;font-family:var(--font-display);margin-top:2px}
+.cue{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface)}.cuetick{width:34px;height:34px;border-radius:8px;border:1.5px solid var(--text-muted);background:var(--surface);color:#fff;font-size:18px}.cuetick.on{background:var(--accent-2);border-color:var(--accent-2)}.cue.heard,.cue.full{background:var(--accent-2-soft, rgba(0,180,160,0.10));border-color:var(--accent-2)}.cuetext{font-size:15px;line-height:1.35}.cue.full .cuetext{color:var(--text-muted)}.cuetext small{display:block;color:var(--text-muted);font-size:12px;font-family:var(--font-display)}
+.bridges{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}.bridge{display:grid;text-align:left;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface-alt);min-height:48px}.bridge b{font-family:var(--font-display);font-size:14px}.bridge small{color:var(--text-muted);font-size:12px}
+
+.rolecard.unset{border-left-color:var(--coral)}.rolecard.unset .eyebrow{color:var(--coral)}
+.ttrack{grid-column:1/-1;font-family:var(--font-display);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-top:6px}.script p{margin:4px 0;font-size:15px}#rail a.cur{background:var(--accent-soft)}
+.qbtns{display:flex;gap:6px;flex:none}.q .skip.fold{color:var(--accent);border-color:var(--accent-soft);background:var(--accent-soft)}.q.folded{padding-bottom:10px}.qsum{display:block;margin-top:4px;font-size:14px;color:var(--accent-2);font-weight:500}
+.filterbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 0}.filterbar .hint{margin:0}
+.qbtns .skip{width:88px;min-height:40px;padding:0;justify-content:center;text-align:center}.q .skip.done{font-size:18px;color:var(--text-muted)}.q .skip.done.on{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+.btn.done{border-color:var(--accent-2);color:var(--accent-2)}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} [hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="top">
+  <button class="btn" id="bMode" title="Switch between handwriting and the on-screen keyboard"></button>
+  <button class="btn" id="bTalk" title="One track at a time: the Say line, then the probes">Conversation</button>
+  <button class="btn" id="bShow" title="Show every question, or only the ones still open"></button>
+
+  <button class="btn primary" id="bNew">New interview</button>
+  <button class="btn" id="bPeople">Register participant</button>
+  <button class="btn" id="bList">Interviews</button>
+  <button class="btn" id="bEnd">End interview</button>
+  <button class="btn" id="bLock" title="Lock the panel on the left so it cannot be tapped by accident">Lock panel</button>
+</div>
+
+<div id="warnHost"></div>
+<div class="wrap">
+  <nav class="rail" id="rail"></nav>
+  <main id="main"></main>
+</div>
+<div id="drawerHost"></div>
+<div id="toastHost"></div>
+
+<script>
+const Q = {"title":"Skaldu interviews","interviewers":["Toni","Dorien","Jakub","Steven","Andy"],"personas":["Biologist","Bioinformatician","Manager","Director or C-level"],"howTo":"Each track is a short set of open questions. Ask the open question, let the participant talk, then tick the probes underneath from what you heard. Ask a probe directly only if the answer did not cover it.","opening":["Thanks for making time. We are building a tool for processing omics data, and we want to understand how that works for you today.","This interview is for research purposes only; it is not a sales pitch. Your answers will not be shared, quoted or used in any other way than for our internal analysis to improve the tool. You are not committing to anything. Afterwards you will receive one email from us, and you can unsubscribe from it. We transcribe the conversation so we can take notes faster. Is that okay with you?","Everything we ask is about omics data: how it is handled and used in your organisation, and what that means for you. There are no right or wrong answers. \"I don't know\" or \"not relevant\" is useful information for us too. It takes about 35 minutes."],"conventions":["Say lines are spoken as written. Probe tables are for the interviewer only, they can be used to structure the answer to the open question, steer the conversation to cover the information we’d like to get input on.","Drift rule: Keep every question on omics processing and analysis capacity. If the answer drifts (e.g. company-wide data or IT strategy, unrelated to omics data), redirect."],"scope":"We’re interested in knowing how your organisation handles the processing of omics data (from sequencer output to interpretation), and your role in it. All questions in this interview will relate to that part only.","fillIn":"Interviewer fills in (do not ask): participant code, organisation, country of the organisation, date and location","sections":[{"id":"A0","persona":"All","track":"A - Everyone: context","title":"Interviewer fills in","fill":true,"questions":[{"id":"A0-1","q":"Participant code","type":"short","admin":true},{"id":"A0-2","q":"Country of the organisation","type":"select","frequent":["Belgium","Netherlands","Germany","France","United Kingdom","Switzerland","United States","Denmark","Sweden","Spain","Italy","Austria","Ireland","Luxembourg","Norway"],"options":["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo - Brazzaville","Congo - Kinshasa","Costa Rica","Côte d’Ivoire","Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hong Kong SAR China","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macao SAR China","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar (Burma)","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestinian Territories","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Samoa","San Marino","São Tomé & Príncipe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St. Kitts & Nevis","St. Lucia","St. Vincent & Grenadines","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad & Tobago","Tunisia","Türkiye","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"],"fill":"interviewer"},{"id":"A0-3","q":"Location of the interview","type":"short","fill":"interviewer"}]},{"id":"A1","persona":"All","track":"A - Everyone: context","title":"Your role and omics data","say":"What is your role, and where does omics data come into your work?","sayDirector":"What is your role, and where does omics data come into your organisation?","questions":[{"id":"A1-1","q":"Persona","type":"roles","options":["Biologist","Bioinformatician","Manager","Director or C-level"],"role":"persona"},{"id":"A1-2","q":"Organisation type","type":"mc","options":["Academic group","Hospital or clinical lab","Biotech","Pharma","CRO or service provider","Core facility","Other","I don’t know"]},{"id":"A1-3","q":"Where are you in the omics chain? For each stage, tick everyone who touches it.","type":"grid_cb","rows":["Wet lab experiment preparation","Sequencing","Raw data analysis: demultiplexing, alignment, counting","Analysis in a tool or a notebook","Interpretation"],"cols":["Me","A colleague from my own team","A colleague from another team","The core facility","A CRO","The vendor","Not done"]},{"id":"A1-4","q":"Years of experience","type":"mc","options":["Under 2","2 to 5","5 to 10","More than 10","Other","I don’t know"]}]},{"id":"A2","persona":"All","track":"A - Everyone: context","title":"Bottlenecks","say":"From raw data to interpretable result, which step takes the longest or causes the most friction?","questions":[{"id":"A2-1","q":"Which step takes the longest, including wait?","type":"cb","options":["Wet lab","Sequencing","Processing","Analysis","Interpretation"]},{"id":"A2-3","q":"Which handover causes the most friction?","type":"paragraph"}]},{"id":"A3","persona":"All","track":"A - Everyone: context","title":"Your omics work","say":"What kinds of omics experiments do you, your team, or organisation run?","questions":[{"id":"A3-1","q":"What kind of omics experiments do you run?","type":"grid_cb","rows":["Genomics","Transcriptomics","Proteomics","Epigenomics","Metabolomics","Lipidomics","Other"],"cols":["Single cell","Bulk","Spatial"]},{"id":"A3-2","q":"Which omics experiments dominate?","type":"grid_cb","rows":["Genomics","Transcriptomics","Proteomics","Epigenomics","Metabolomics","Lipidomics","Other","I don’t know"],"cols":["Single cell","Bulk","Spatial"]},{"id":"A3-3","q":"Do you integrate any of those omics experiments?","type":"grid_cb","rows":["Genomics","Transcriptomics","Proteomics","Epigenomics","Metabolomics","Lipidomics","Other","I don’t know"],"cols":["Single cell","Bulk","Spatial"]},{"id":"A3-4","q":"Which instrument vendors do you have in use?","type":"cb","options":["Illumina","10x Genomics","Oxford Nanopore","PacBio","Element","Ultima","MGI or BGI","Agilent","Bruker","Thermo Fisher","Miltenyi","I don’t know","Other"]}]},{"id":"S1","persona":"Biologist","track":"Biologist track (S)","title":"Volume","say":"Roughly how much omics data do you generate? Think of how many experiments you run in a year, how many samples are in one, and how big the data gets.","followUp":"Potential follow-up: how many people in your team generate similar data","questions":[{"id":"S1-1","q":"Omics experiments per year (theirs, not the lab's)","type":"number","integer":true},{"id":"S1-2","q":"Samples in a typical experiment","type":"number","integer":true},{"id":"S1-3","q":"Raw data size of one experiment","type":"mc","options":["Under 10 GB","10 to 100 GB","100 to 500 GB","500 GB to 2 TB","More than 2 TB","I do not know"]},{"id":"S1-4","q":"People in the lab who process this kind of data","type":"mc","options":["Only me","Two or three","Four to eight","Nine to twenty","More than twenty","I don’t know"]}]},{"id":"S2","persona":"Biologist","track":"Biologist track (S)","title":"From raw files to results","sayNote":"Only ask if it has not been sufficiently covered in the intro, otherwise fill in:","say":"How do you usually get from the raw sequencer or instrument files to results you can look at? Who does what?","questions":[{"id":"S2-1","q":"Who mainly runs the analysis on the data today? (pick the main path; note a second path in the next box)","type":"cb","options":["I do it myself","Another department in-house, a core facility or bioinformatics group","An external CRO or service provider","The kit or instrument vendor","Nobody, we do not get to the analysis","I don’t know"],"role":"branch","branches":["S2a","S2b","S2c",null,"S2d",null]}]},{"id":"S2a","persona":"Biologist","track":"Biologist track (S)","branch":true,"title":"Part 2a - You do it yourself","say":"How do you run the processing? What do you use, who set it up, and what happens when it breaks?","questions":[{"id":"S2a-1","q":"What do you run it with?","type":"cb","options":["(commercial) Vendor software with a GUI","A vendor cloud portal","A pipeline somebody set up for me","Commands I was given","A script I copied from a colleague","Scripts I wrote or combined myself","Other","I don’t know"]},{"id":"S2a-2","q":"Who set the environment up the first time?","type":"mc","options":["I did","A colleague","IT","The vendor","It was already there","Other","I don’t know"]},{"id":"S2a-3","q":"What do you do when a run fails?","type":"cb","options":["Try again","Ask a colleague","Ask the vendor","Give up and hand it over","It rarely fails","Other","I don’t know"]},{"id":"S2a-4","q":"How much of your data do you analyse yourself?","type":"mc","options":["All of it","Most of it","About half","A few datasets","Only test data","Other","I don’t know"]},{"id":"S2a-5","q":"Why do you do it yourself?","type":"mc","options":["Nobody else is available","It is faster","It is cheaper","I want control over it","It is expected of me","Other","I don’t know"]}]},{"id":"S2b","persona":"Biologist","track":"Biologist track (S)","branch":true,"title":"Part 2b - Another department in-house","say":"Tell me how the handover of your omics data to the group that processes them goes, from sending them the data to getting the results back.","questions":[{"id":"S2b-1","q":"How long is their queue, from handover to results?","type":"mc","options":["Days","One to two weeks","Three to four weeks","Months","There is no fixed queue","I don’t know"]},{"id":"S2b-2","q":"What do you hand over?","type":"mc","options":["The raw data","A link to storage","A physical disk","They collect it themselves","They already have it","Other","I don’t know"]},{"id":"S2b-3","q":"How is it charged?","type":"mc","options":["Free, it is internal","Per sample","Per project","(Yearly) license","Other","I don’t know"]},{"id":"S2b-4","q":"How much do you specify?","type":"cb","options":["Nothing, they decide","What I want measured","The parameters","A written protocol","We agree it in a meeting","Other","I don’t know"]},{"id":"S2b-5","q":"What would you rather do yourself, if you could?","type":"cb","options":["Nothing","QC only","Reruns with different settings","The whole standard analysis","Everything","Other","I don’t know"]}]},{"id":"S2c","persona":"Biologist","track":"Biologist track (S)","branch":true,"title":"Part 2c - An external CRO or service provider","say":"Tell me how working with that provider goes for the processing part, from sending the data to what you get back","questions":[{"id":"S2c-1","q":"What turnaround do they promise?","type":"mc","options":["Under a week","One to two weeks","Three to four weeks","One to three months","No promise","Other","I don’t know"]},{"id":"S2c-3","q":"How does the data reach them?","type":"mc","options":["An upload portal","A cloud bucket we share","A physical disk","They already have it","Other","I don’t know"]},{"id":"S2c-4","q":"How do you get the data back?","type":"mc","options":["An upload portal","A cloud bucket we share","A physical disk","They already have it","Other","I don’t know"]},{"id":"S2c-5","q":"What do you get back?","type":"mc","options":["Raw data and counts","A report as a PDF","Figures for a paper","A full interpretation","Files only, no explanation","Other","I don’t know"]},{"id":"S2c-6","q":"Why do you use an external partner for the analysis? (ask open, then code)","type":"mc","options":["No capacity in-house","Regulatory or GxP requirements","To absorb peaks","They did the data generation anyway","It is cheaper than doing it myself","Other","I don’t know"]},{"id":"S2c-7","q":"What would you rather do yourself, if you could?","type":"cb","options":["Nothing","QC only","Reruns with different settings","The whole standard analysis","Everything","Other","I don’t know"],"note":"printed as S2b-5 in the source"}]},{"id":"S2d","persona":"Biologist","track":"Biologist track (S)","branch":true,"title":"Part 2d - Nobody, it does not happen","say":"What is stopping that data from being processed?","questions":[{"id":"S2d-1","q":"Why does the analysis not happen?","type":"cb","options":["No budget","No person available","No suitable machine","No permission to move the data","It is not a priority yet","Other","I don’t know"]},{"id":"S2d-2","q":"How much data is waiting unanalysed?","type":"mc","options":["None","One experiment","A few experiments","About a year of work","More than that","I don’t know"]},{"id":"S2d-3","q":"What would you need to get started?","type":"cb","options":["A person to help once","A machine that can run it","Permission for the data","A budget","Proof it works on data like mine","Other","I don’t know"]},{"id":"S2d-4","q":"Who would you ask first if you decided to start?","type":"cb","options":["A colleague","The core facility","The technology vendor","IT","Nobody, I would try alone","Other","I don’t know"]},{"id":"S2d-5","q":"What is the cost of not analysing it?","type":"cb","options":["A delayed paper","A delayed decision in the project","Repeating the experiment later","Nothing measurable","Other","I don’t know"]}]},{"id":"S3","persona":"Biologist","track":"Biologist track (S)","title":"Time to a result you can interpret","say":"From the moment the raw files exist to the moment you can interpret results, how long does it usually take, and where does the time go?","questions":[{"id":"S3-1","q":"How long to go from raw files to interpretable results?","type":"mc","options":["Same day","Two to five days","One to two weeks","A month or more","Unpredictable, it depends who is free","I don’t know"]},{"id":"S3-2","q":"What is the main cause of delay?","type":"mc","options":["Waiting for a person","Getting software installed or approved","Moving or finding the data","Not knowing which analysis is the right one","Budget or permission","Other","I don’t know"]}]},{"id":"S4","persona":"Biologist","track":"Biologist track (S)","title":"What finished looks like, and what you trust","say":"When the processing is done, what do you need in hand to call it ‘finished’, and what makes you trust the tools and/or software that were being used to process the data?","questions":[{"id":"S4-1","q":"What does a “finished” analysis mean for you?","type":"cb","options":["A counts/abundances/intensities table or equivalent","QC plus the counts (or equivalent)","Figures I can put in a slide","A file that opens in the tool I already use","An interpretation I can put in a paper","Other","I don’t know"]},{"id":"S4-2","q":"Why did you trust the last processing tool they adopted?","type":"rank","options":["A colleague already used it","The core facility or a bioinformatician endorses it","It came with the kit or instrument","A published benchmark on my assay","I tested it on my own data","The vendor's reputation","It’s open source","Other","I don’t know"],"note":"ranking or checkboxes"},{"id":"S4-3","q":"What would make you trust a tool they have never used?","type":"rank","options":["A colleague already used it","The core facility or a bioinformatician endorses it","It came with the kit or instrument","A published benchmark on my assay","I can test it on my own data","The vendor's reputation","It’s open source","Other","I don’t know"],"note":"ranking or checkboxes"},{"id":"S4-4","q":"What would make you distrust a result?","type":"cb","options":["No QC information with it","Numbers that differ from a colleague","I cannot see which version ran","It failed halfway once before","Nothing, I would trust it","Other","I don’t know"]},{"id":"S4-5","q":"If a self-serve tool and a bioinformatician disagreed, whose result would you believe?","type":"mc","options":["The tool's","The bioinformatician's","I would rerun both","I would ask a third person","Whichever has the better QC","Other","I don’t know"]}]},{"id":"S5","persona":"Biologist","track":"Biologist track (S)","title":"Where you could run it yourself","say":"Where does your data sit, and if you wanted to re-run the processing yourself tomorrow, where could you do it?","questions":[{"id":"S5-1","q":"Where sits raw data now?","type":"cb","options":["My laptop","The PC next to the instrument","A lab server or NAS","Institutional storage or HPC","A cloud bucket or a vendor portal","Other","I don’t know"]},{"id":"S5-2","q":"What compute could you use?","type":"cb","options":["Work laptop, what i can install on it is controlled by the IT department","Work laptop, I can install what I want","A shared lab workstation","An institutional HPC or cluster I have an account on","An institutional cloud or research computing server","A cloud account the lab pays for","Nothing I have is suitable","Other","I don’t know"]},{"id":"S5-3","q":"Can you install free software yourself?","type":"mc","options":["Yes","Yes, but it is frowned upon","I need a ticket, it is usually granted","I need a ticket, it is usually refused","Other","I don’t know"]},{"id":"S5-4","q":"Can you install a desktop app that needs admin rights?","type":"mc","options":["Yes, I have admin rights and would do it","I would need an IT ticket, usually granted","I would need an IT ticket, usually refused","Not on my machine; I would use a shared or lab computer","I would not install anything for this","Other","I don’t know"]}]},{"id":"S6","persona":"Biologist","track":"Biologist track (S)","title":"Rules and money","say":"And if you wanted to send that data to an external service to process it, what would have to happen first?","questions":[{"id":"S6-1","q":"May the data leave the organisation?","type":"mc","options":["Yes, we already do it","Yes, under a contract or material transfer agreement","Only anonymised or non-human data","No","Other","I don’t know"]},{"id":"S6-2","q":"Who has to agree about data leaving the organisation?","type":"mc","options":["I could decide that myself","My group leader","IT","Legal or the data protection officer","Other","I don’t know"]},{"id":"S6-3","q":"Who pays for an analysis run?","type":"mc","options":["Me, from a project budget","My group leader approves it","The core facility budget","It is included in the kit","Other","I don’t know"]}]},{"id":"S7","persona":"Biologist","track":"Biologist track (S)","title":"Comfort with technical tools","say":"Tell me about the last time a data tool turned out more complicated than you expected. What did you do?","questions":[{"id":"S7-1","q":"What kind of coding have you done in the last year?","type":"cb","options":["Typed a command in a terminal","Installed a tool with pip, conda or similar","Edited a config, YAML or parameter file","Run something in Docker or a container","Written or edited a script (R, Python, shell)","Vibe coded a set of scripts together to run my analysis","Excel","Other"]},{"id":"S7-2","q":"When a tool turns out more complex than you expected, what do you usually do? (ask open, then code)","type":"cb","options":["Close it and go back to the old way","Look for a simpler tool","Read the documentation","Ask someone to sit with me and explain","Push through on my own","Other","I don’t know"]},{"id":"S7-3","q":"If getting started meant pasting one command into a terminal, would you do it? (ask open, then code)","type":"mc","options":["Yes, without thinking about it","Yes, if I could copy it exactly","Yes, if someone showed me once","I would ask someone else to do it","No, that is where I stop","Other","I don’t know"]}]},{"id":"S8","persona":"Biologist","track":"Biologist track (S)","title":"A self-serve processing tool","say":"Imagine a tool for the processing step only: you enter the experiment metadata, the species, and the kit and instrument used, and it runs the standard processing to an interpretable data object. What would you think of that? What do you need to see before you trust it?","questions":[{"id":"S8-1","q":"First reaction to five fields and a run button","type":"mc","options":["Good, that is all I want","I would want to see the other settings before trusting it","I would worry it is hiding choices that matter","I would want a bioinformatician to check the defaults once","I would not trust something that simple","Other","I don’t know"]},{"id":"S8-2","q":"What if the form had all 300 parameters visible, with the defaults filled in by you?","type":"mc","options":["I would close it","I would only touch the ones I understand","I would ask a bioinformatician to set it once","Fine, I would read the documentation","I would feel more in control","Other","I don’t know"]},{"id":"S8-3","q":"Which percentage of settings would you expect to change yourself?","type":"mc","options":["None, it should know","<5%","<10%","<50%","All of them","I don’t know"]},{"id":"S8-4","q":"What’s an acceptable setup time before you see it work","type":"mc","options":["Under fifteen minutes","Up to an hour","A morning","A day, spread over a week","As long as it takes, if it works afterwards","Other","I don’t know"]},{"id":"S8-5","q":"What’s an acceptable time for one analysis run?","type":"mc","options":["Minutes","A few hours","Overnight","A few days","It does not matter if I do not have to watch it","I don’t know"]}]},{"id":"B0","persona":"Bioinformatician","track":"Bioinformatician","title":"Who the processing is for","say":"Who is the omics processing and analysis you do for? Tell me about the people who use your results, including yourself.","questions":[{"id":"B0-1","q":"Who uses the results?","type":"mc","options":["Mainly others (service / support role)","Mainly me, for my own research","Both, roughly equally","Other","I don’t know"]},{"id":"B0-2","q":"What share of your week do you spend on your own research questions?","type":"mc","options":["Under 10%","10-25%","25-50%","50-75%","More than 75%","Other","I don’t know"]},{"id":"B0-3","q":"How many labs or people do you process data for, besides themselves?","type":"number","integer":true},{"id":"B0-4","q":"How many processing or support requests reach you per week","type":"mc","options":["0 to 1","2 to 5","6 to 10","11 to 20","More than 20","Other","I don’t know","Not relevant"]},{"id":"B0-5","q":"Which share of your week do you spend on processing that you would call routine?","type":"mc","options":["Under 10%","10-25%","25-50%","50-75%","More than 75%","Other","I don’t know"]}]},{"id":"B1","persona":"Bioinformatician","track":"Bioinformatician","title":"How the processing runs today","say":"Walk me through how you usually process your data: the tools, where it runs, and what holds the steps together.","questions":[{"id":"B1-1","q":"What holds the steps of your analysis together? (tick all)","type":"cb","options":["Scripts or notebooks I write and run myself (no pipeline framework)","I run pipelines built by others (nf-core, core facility, vendor, collaborator)","I build and maintain pipelines myself (Nextflow, Snakemake, WDL, …)","A mix of the above","Other","I don’t know"],"role":"framework"},{"id":"B1-2","q":"What are the main tools for your analysis?","type":"short"},{"id":"B1-3","q":"How many times do you rerun the same dataset with alternative settings before you are satisfied?","type":"mc","options":["Once, and that is it","Twice","Three to five times","More than five","Until somebody tells me to stop","Other","I don’t know"]},{"id":"B1-4","q":"IF pipelines: Where do the pipelines you run come from?","type":"cb","options":["nf-core or another public catalogue, used as is","A public pipeline, modified in-house","Written in-house from scratch","Supplied by the kit vendor","Whatever the paper used","Integrated with the instrument","Other","I don’t know"],"cond":{"scriptsOnly":false}},{"id":"B1-5","q":"IF scripts: What has kept you from adopting a pipeline framework?","type":"cb","options":["Never needed one","Too much setup for the benefit","Does not fit the kind of analysis I do","Tried one and abandoned it","No time to learn it","Other","I don’t know"],"cond":{"scriptsOnly":true}},{"id":"B1-6","q":"Volume: How many pipeline / analysis runs do you do per month, and how many distinct pipelines are maintained?","type":"short"},{"id":"B1-7","q":"Parameters: How many are exposed by your main pipeline/analysis, and how many do you change per run?","type":"short"}]},{"id":"B2","persona":"Bioinformatician","track":"Bioinformatician","title":"Data in","say":"When data reaches you, what state is it usually in, and what do you have to fix before you can start processing?","questions":[{"id":"B2-1","q":"In what state does the data reach you?","type":"cb","options":["Raw instrument output","Converted or demultiplexed raw data","Output from the vendor’s processing software","A processed data table i can use for downstream analysis","It varies every time","Other","I don’t know"]},{"id":"B2-2","q":"How complete is the metadata that comes with it?","type":"cb","options":["A correct sample sheet","A sample sheet with errors in it","A spreadsheet I have to reformat","An email with sample names","I have to ask for it every time","Other","I don’t know"]},{"id":"B2-3","q":"How much time goes into fixing the input before you can start?","type":"mc","options":["None","Under an hour","A few hours","A day or more","More than the analysis itself","I don’t know"]},{"id":"B2-4","q":"What is most often wrong with it?","type":"cb","options":["Sample names","Missing samples or missing files","Wrong or missing indexes","No reference or species information","No experimental design","Other","I don’t know"]},{"id":"B2-5","q":"Who fixes it?","type":"mc","options":["I do","The lab does, after I ask","Me and the lab together","The sequencing provider","Nobody, I work around it","It depends on the project","Other","I don’t know"]}]},{"id":"B3","persona":"Bioinformatician","track":"Bioinformatician","title":"Failure and reproducibility","say":"What happens when a processing run that fails, or a result can’t be reproduced?","questions":[{"id":"B3-1","q":"What breaks most often?","type":"mc","options":["Environments and containers","Data format incompatibility","The tool itself","Sample sheets and metadata","Storage or quota","The scheduler or the queue","Other","I don’t know"]},{"id":"B3-2","q":"What share of runs fail on the first attempt?","type":"mc","options":["Under 5 percent","5 to 15 percent","15 to 30 percent","30 to 50 percent","More than half","I don’t know"]},{"id":"B3-3","q":"What happens when a tool version changes?","type":"mc","options":["I pin versions, so nothing changes","I rerun and compare","Results shift and I document it","The pipeline breaks","I do not track versions","Other","I don’t know"]},{"id":"B3-4","q":"How do you make an analysis reproducible three years out?","type":"cb","options":["Container digests","Lockfiles and environment files","A git tag per project","A written protocol","It is not solved","Other","I don’t know"]}]},{"id":"B4","persona":"Bioinformatician","track":"Bioinformatician","title":"Trusting a pipeline you did not write","say":"What would it take for you to run a processing pipeline you did not write on your own data, or to let others use it?","questions":[{"id":"B4-1","q":"What would make you use a catalogue pipeline over their own?","type":"cb","options":["It matches my own results on my data","Good documentation and guides","I can read and modify the code","It is maintained by someone I recognise","It saves me the maintenance","Nothing, I run my own","Other","I don’t know"]},{"id":"B4-2","q":"What would you need to see before to trust this pipeline","type":"cb","options":["The source code","Good documentation and guides","Container digests and tool versions","A benchmark against my own run on the same data","The full parameter set","Nothing, if the outputs match mine","I would not allow it","Other","I don’t know"]},{"id":"B4-3","q":"How much does each of these trust signals mean to you?","type":"grid_mc","rows":["ISO 27001","Named pharma customers","Open-source engine","Community review, nf-core style","Published validation on my assay"],"cols":["A lot","Some","Nothing","Negative"]},{"id":"B4-4","q":"The word 'validated' on a pipeline: what would it have to mean for you to accept it?","type":"paragraph"}]},{"id":"B5","persona":"Bioinformatician","track":"Bioinformatician","title":"Handing off routine processing","say":"Which parts of the processing would you happily hand over, to a tool or to the biologists, and which must stay in your hands? And if someone else ran it, what would you need to see?","questions":[{"id":"B5-1","q":"What would you hand over tomorrow if you could (to a tool, or to the biologists)? (tick all)","type":"cb","options":["Environment setup","Launching routine runs","Filling in parameters","Raw data processing prior (up to count table or equivalent)","Downstream data processing (after count matrix or equivqlent)","Nothing","Other","I don’t know"]},{"id":"B5-2","q":"What must stay under your control, whatever happens?","type":"rank","options":["The exact pipeline version","The parameters","Where the compute runs","The reference genome and annotation","The output structure","Other","I don’t know"],"note":"printed as B5-1 in the source"},{"id":"B5-8","q":"What would you want to see about runs you did not launch?","type":"cb","options":["Nothing","A log I can read","A QC report","Versions and parameters","A full audit trail","Other","I don’t know"]}]},{"id":"B6","persona":"Bioinformatician","track":"Bioinformatician","title":"Infrastructure","say":"Where does your processing run, and how do the data and the tools get there?","questions":[{"id":"B6-1","q":"Where does the compute run? (tick all)","type":"cb","options":["My own laptop or desktop","A lab workstation or server","Institutional HPC or cluster","Cloud we manage ourselves","A vendor or platform cloud","Other","I don’t know"]},{"id":"B6-2","q":"Which container runtime is available where you would run it? (tick all)","type":"cb","options":["Docker, with root or docker group","Rootless Docker or Podman","Singularity or Apptainer","None","Other","I don’t know"]},{"id":"B6-3","q":"How do those tools get onto the machine?","type":"cb","options":["Containers (e.g. Docker or Singularity)","conda or mamba","Modules on the HPC","Manual installation","IT installs them","They come with the platform","Other","I don’t know"]},{"id":"B6-4","q":"How large is a dataset when it arrives?","type":"mc","options":["Under 10 GB","10 to 100 GB","100 to 500 GB","500 GB to 2 TB","More than 2 TB","I don’t know"]},{"id":"B6-5","q":"How does the data reach the compute?","type":"mc","options":["It is already on the same filesystem","Copied over the network","On a physical disk","A cloud transfer","Downloaded from a portal","Other","I don’t know"]},{"id":"B6-6","q":"How much compute does a typical run need?","type":"mc","options":["A laptop can do it","A workstation","One node for a few hours","One node for a day or more","A cluster","Other","I don’t know"]}]},{"id":"B7","persona":"Bioinformatician","track":"Bioinformatician","title":"A self-serve processing tool","say":"Imagine a tool for the processing of your omics data: you enter the experiment metadata, the kit and instrument used, and it runs the standard processing resulting in an interpretable data object. What would you think of that? What do you need to see before you use it or let others use it?","questions":[{"id":"B7-1","q":"First reaction to five fields and a run button","type":"mc","options":["Yes, if I set the defaults per assay","Yes, if the rest is visible and editable on request","Yes, if it emits a config I can commit to git","Only for a fixed set of standard analyses","No, they need to see what runs","No, they should not run it at all","Other","I don’t know"]},{"id":"B7-2","q":"First thought if a scientist ran standard processing with it, without you being involved?","type":"mc","options":["Good, that is the point","Good, if I review the output","Acceptable for raw data processing (up to count matrix or equivalent)","Acceptable for downstream processing (after count matrix or equivalent)","Worrying, they will misread it","It will land on my desk anyway","Other","I don’t know"]},{"id":"B7-3","q":"If you would not have to run standard processing yourself anymore, what would change for you?","type":"cb","options":["Less routine work on my desk","More debugging of other people's failed runs","Results in papers I cannot reproduce","Versions in use that I did not choose","Not much would change","Other","I don’t know"]}]},{"id":"B8","persona":"Bioinformatician","track":"Bioinformatician","title":"Your organisation and adoption","say":"Beyond you, who processes omics data in your organisation, who decides on the tools, and how would a new processing platform get installed?","questions":[{"id":"B8-1","q":"Who else in the institute does omics data processing?","type":"mc","options":["Nobody, only me","A core facility","Individual labs, on their own","An IT-managed platform","Several groups, independently","Other","I don’t know"]},{"id":"B8-2","q":"Who decides which tools your labs use?","type":"cb","options":["I do","IT does","The PI does","Procurement does","Nobody, it is ad hoc","Other","I don’t know"]},{"id":"B8-3","q":"Does processing ever get sent to an external CRO or provider?","type":"mc","options":["Never","Occasionally","For specific assays","Routinely","I don’t know","Other"]},{"id":"B8-4","q":"If a self-hosted platform were adopted, who would install and operate it on your infrastructure?","type":"mc","options":["I would","IT would","The vendor, together with our IT","Nobody, it would not get installed","We would only use a hosted version","Other","I don’t know"]},{"id":"B8-5","q":"Who holds the cloud credentials?","type":"mc","options":["I do","IT does","The group or the PI","A vendor","We have none","Other","I don’t know"]}]},{"id":"M1","persona":"Manager","track":"Manager","title":"Your group and its omics work","say":"Tell me about your group, and how much of its work depends on getting omics data from the instrument to a result","questions":[{"id":"M1-1","q":"How many people’s work depends on the omics data your group processes?","type":"mc","options":["One to three","Four to ten","Eleven to twenty-five","Twenty-six to fifty","More than fifty","None (e.g. CRO does it)","I don’t know"]},{"id":"M1-2","q":"How many datasets need processing per month?","type":"number","integer":true},{"id":"M1-3","q":"Who does the analysis for your group today?","type":"cb","options":["An in-house bioinformatician","A core facility","A CRO","The scientists themselves","Nobody consistently","Other","I don’t know"]},{"id":"M1-4","q":"If that capacity were gone tomorrow, what would happen?","type":"cb","options":["Somebody covers","We slow down","We stop","We outsource","It would be a crisis","Other","I don’t know"]},{"id":"M1-5","q":"How much bioinformatics capacity do you have, in FTE?","type":"number"},{"id":"M1-6","q":"What are you measured on?","type":"rank","options":["Throughput of samples","Publications","Project milestones","Scientific milestones","Cost per sample","Service level to internal customers","Other","I don’t know"]}]},{"id":"M2","persona":"Manager","track":"Manager","title":"Where it slows down","say":"Between the instrument and a decision, where does omics work in your group slow down, and what is the impact of that?","questions":[{"id":"M2-1","q":"Where is the real bottleneck?","type":"cb","options":["The instrument","Sample preparation","The analysis","Interpreting the result","Acting on the result","Other","I don’t know"]},{"id":"M2-2","q":"How large is the analysis backlog right now?","type":"mc","options":["None","Days","Weeks","Months","We stopped counting","I don’t know"]},{"id":"M2-3","q":"What is the impact of a two-week delay in analysis on a project?","type":"cb","options":["Nothing","A missed internal deadline","A missed external deadline","A repeated experiment","A delayed decision with real money behind it","Other","I don’t know"]},{"id":"M2-4","q":"How comparable are the results between people in your group?","type":"mc","options":["Identical pipelines, fully comparable","Mostly comparable","It varies by person","Not comparable","Other","I don’t know"]},{"id":"M2-5","q":"What share of your scientists could run a command-line tool unaided?","type":"mc","options":["None","A few","About half","Most","All","I don’t know"]},{"id":"M2-6","q":"When has the reproducibility of an analysis actually mattered in the last two years?","type":"cb","options":["It has not","A paper revision or a reviewer question","An audit or an inspection","Due diligence or a partnership","A dispute about results","Go no decision on a drug development project","Other","I don’t know"]},{"id":"M2-7","q":"What is the one thing that would shorten the time from data to interpreted results in your group?","type":"paragraph"}]},{"id":"M3","persona":"Manager","track":"Manager","title":"Adopting new tools.","say":"Tell me about the last time a new analysis platform or software was introduced in your group. How did that go, and what convinced you?","questions":[{"id":"M3-1","q":"When a new platform/software is introduced in your unit, what usually happens?","type":"cb","options":["It is adopted quickly","One or two people adopt it and become the go-to","It is used once and dropped","It needs formal training first","It depends on who introduces it","Other","I don’t know"]},{"id":"M3-2","q":"When you last approved a new analysis route (platform/software), what convinced you?","type":"cb","options":["A trusted person's recommendation","A trial on our own data","A reference organisation like us","A certification or audit","Price","Other","I don’t know"]},{"id":"M3-3","q":"What evidence would you need before approving a new analysis route?","type":"rank","options":["A trial on our own data","A reference customer like us","A security review","A business case with numbers","A recommendation from someone I trust","Other","I don’t know"]},{"id":"M3-4","q":"Whose opinion would push the decision internally?","type":"cb","options":["Our bioinformatician","IT","The scientists who would use it","Procurement","A peer at another organisation","Other","I don’t know"]}]},{"id":"M4","persona":"Manager","track":"Manager","title":"Rules and risk","say":"What rules or concerns decide where your group’s omics data may be processed outside of the organisation?","questions":[{"id":"M4-1","q":"Which rules constrain where the data may go outside of the walls of your institute?","type":"cb","options":["None that I know of","Internal policy","GDPR or patient data","Customer contracts or GxP","I would have to check with legal or the DPO","Other","I don’t know"]},{"id":"M4-2","q":"For each of these, is it required, nice to have, or irrelevant to you when choosing a supplier?","type":"grid_mc","rows":["ISO 27001","ISO 13485","A GDPR data processing agreement","Named pharma customers","A reference customer in our sector","A passed security questionnaire","Open-source engine"],"cols":["Required","Nice to have","Irrelevant"]}]},{"id":"M5","persona":"Manager","track":"Manager","title":"Buying","say":"If you wanted to buy a processing software/platform for your group next quarter, how would that go?","questions":[{"id":"M5-1","q":"Which budget would buying a new software come from?","type":"mc","options":["My own operational budget","A project or grant line","Central IT","Capital expenditure","No budget exists for it","Other","I don’t know"]},{"id":"M6-2","q":"Which budget line pays for consumables, and which pays for software?","type":"mc","options":["The same line, the same owner","Different lines, the same owner","Different lines, different owners","There is no software budget","Other","I don’t know"]},{"id":"M6-3","q":"Which is easier for you to get approved: consumables spend or software spend?","type":"mc","options":["Consumables is easier","Software is easier","No difference","Both are equally hard","It depends on the amount","Other","I don’t know"]},{"id":"M6-4","q":"Which way of paying for analysis would fit your budget best?","type":"cb","options":["Per sample","Per run","A bundle of credits and pay-as-you-go","An annual subscription per user","A site licence","I would not pay, it belongs in the kit price","Other","I don’t know"]},{"id":"M6-5","q":"When you last defended a software purchase, what helped most?","type":"cb","options":["A fixed annual amount","Paying only for what was used","A free tier we had already used","A trial before signing","I have not had to defend one","Other","I don’t know"]}]},{"id":"C1","persona":"Director or C-level","track":"Director or C-level","title":"Where omics analysis sits for you","say":"When processing omics data takes longer than planned, what does that mean at portfolio level?","questions":[{"id":"C1-1","q":"Which of these best describes your analysis capacity today?","type":"mc","options":["A strategic asset","A service we buy","A bottleneck","An unmanaged risk","Not something I track","Other","I don’t know"]},{"id":"C1-2","q":"How many people in the organisation depend on bioinformatics analysis for their work?","type":"mc","options":["Fewer than ten","Ten to fifty","Fifty to two hundred","More than two hundred","I do not know"]},{"id":"C1-3","q":"What does a delayed analysis result cost at portfolio level?","type":"cb","options":["Nothing measurable","A schedule slip","Burn without progress","A missed milestone with a partner","A regulatory or funding consequence","Other","I don’t know"]}]},{"id":"C2","persona":"Director or C-level","track":"Director or C-level","title":"The next two years","say":"Do you plan to make any changes to how you cover omics processing and analysis over the next two years? What milestones would you like to achieve by then?","questions":[{"id":"C2-1","q":"How will you cover bioinformatics in the next two years?","type":"cb","options":["Hire","Outsource (e.g. to a CRO)","Tooling, so scientists self-serve","Partner with an institute","No plan yet","Other","I don’t know"]},{"id":"C2-2","q":"What is your default on buy versus build for software that touches your research data?","type":"mc","options":["Always buy","Buy unless it is core to us","Build if it touches our data","Build in-house","Case by case","Other","I don’t know"]},{"id":"C2-3","q":"What would you want to be true about analysis in your organisation in two years that is not true today?","type":"paragraph"},{"id":"C2-4","q":"If analysis capacity improved over the next year, what would tell you?","type":"cb","options":["More analyses completed","More project deliverables achieved","Faster time to a decision","Fewer people needed for it","Fewer escalations to me","The scientists stopped complaining","Other","I don’t know"]},{"id":"C2-5","q":"What omics analysis issues reach your desk most often?","type":"paragraph"}]},{"id":"C3","persona":"Director or C-level","track":"Director or C-level","title":"Data and supplier risk","say":"Imagine a small software company offers a platform that lets your scientists run standard omics processing themselves. It runs either as a hosted service or on your own infrastructure. Leaving price aside for now, what would it have to pass on data, security and supplier risk before anyone could use it?","questions":[{"id":"C3-1","q":"Does the organisation have a policy on research data leaving its environment?","type":"mc","options":["Yes, written","Yes, informal","No, decided case by case","No policy yet","Other","I don’t know"]},{"id":"C3-2","q":"Could the data be analysed on an external cloud service?","type":"mc","options":["No, it must stay on our own systems","Only with approval for each project (e.g. PI, legal or data protection officer)","Yes, under a standard agreement (e.g. DPA, EU hosting)","Yes, without restrictions","Other","I don’t know"]},{"id":"C3-3","q":"When you last blocked or vetoed a software or service purchase, what was the reason?","type":"cb","options":["Data leaving our environment","No exit path if we stop","Missing certification","One more system to maintain","Cost","Supplier too small or too new","I have not blocked one","Other","I don’t know"]},{"id":"C3-4","q":"What does a software supplier have to provide or pass before you can start using it?","type":"cb","options":["Nothing formal","A security questionnaire","ISO 27001 or SOC 2","A GDPR data processing agreement","A full audit","Other","I don’t know"]},{"id":"C3-5","q":"What de-risks a small supplier for you?","type":"cb","options":["Certification","A reference customer of our size","An exit and data export clause","An open-source core or escrow","A larger partner behind them","Nothing, size is the risk","Other","I don’t know"]}]},{"id":"C4","persona":"Director or C-level","track":"Director or C-level","title":"How a purchase happens","say":"Now say it has passed those checks and you want it. How would the purchase itself go: who has to sign, how long does it take, and how would you want to pay for it?","questions":[{"id":"C4-1","q":"How long did your last software or analysis-service purchase take, from decision to signature?","type":"mc","options":["Under a month","One to three months","Three to six months","Six to twelve months","Longer than a year","I don’t know"]},{"id":"C4-2","q":"Who has to say yes to a software purchase? (tick all)","type":"cb","options":["Me alone","IT","Procurement","Legal","The board","Other","I don’t know"]},{"id":"C4-3","q":"Above what annual amount does a purchase need approval beyond you?","type":"mc","options":["Under 5000 euro","5000 to 25000","25000 to 100000","100000 to 500000","More than that","I don’t know"]},{"id":"C4-4","q":"Which commercial model fits how you buy software?","type":"cb","options":["Consumption based, credits","An Annual subscription","A perpetual licence","Bundled with consumables","No preference","Other","I don’t know"]},{"id":"C4-5","q":"Which terms do you insist on in a software contract? (tick all)","type":"cb","options":["An exit and data export clause","A data processing agreement","A service level agreement","A cap on annual spend","Nothing unusual","Other","I don’t know"]},{"id":"C4-6","q":"Do your software purchases need to follow a tender procedure?","type":"mc","options":["No","Yes, above a threshold value","Depends","Other","I don’t know"],"note":"with comment box, need to know threshold"}]},{"id":"Z","persona":"All","track":"Z - Everyone: Closing track","title":"Closing track","closing":true,"say":"To close: imagine a vendor is starting a free three-month early access programme where you can try the tool on your own data. Would that interest you, and under what conditions?","questions":[{"id":"Z-2","q":"Would you take part in a free of charge three-month early access programme?","type":"mc","options":["Yes, with my own data","Yes, but with test data only","Only if a colleague joins too","Only with permission from my group leader","No","Other","I don’t know"]},{"id":"Z-3","q":"If not no: what would you expect in return?","type":"mc","options":["Free use during the programme","Help with my first analysis","Priority support afterwards","Acknowledgement or co-authorship","Nothing, the access is enough","Other","I don’t know"]}]}]};
+const STORE_KEY = "skaldu.interviews.v1";
+const CUR_KEY = "skaldu.current.v1";
+const PEOPLE_KEY = "skaldu.participants.v1";
+const sectionById = Object.fromEntries(Q.sections.map(s => [s.id, s]));
+const allQuestions = [];
+Q.sections.forEach(s => s.questions.forEach(q => { q.key = q.key || q.id; q.section = s.id; allQuestions.push(q); }));
+const personaQ = allQuestions.find(q => q.role === "persona");
+const branchQ = allQuestions.find(q => q.role === "branch");
+const PACE_KEY = "A1-4";   // pace is measured from the end of A1
+const frameworkQ = allQuestions.find(q => q.role === "framework");
+const SCRIPTS_ONLY_OPTION = frameworkQ ? frameworkQ.options[0] : null;
+function scriptsOnly(){ const v = cur && cur.answers[frameworkQ.key]; if (!Array.isArray(v) || !v.length) return null; return v.length === 1 && v[0] === SCRIPTS_ONLY_OPTION; }
+function condOk(q){ if (!q.cond) return true; const so = scriptsOnly(); return so === null ? false : q.cond.scriptsOnly === so; }
+function visibleQuestions(s){ return s.questions.filter(condOk); }
+
+// ---- storage (per-viewer convenience; always guarded) ----
+function penMode(){ return lsGet("skaldu.inputmode.v1") !== "keyboard"; }
+function lsGet(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } }
+function lsSet(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+let interviews = lsGet(STORE_KEY) || {};
+function toRoles(v){ if (!v) return null; if (typeof v === "string") return { now: [v === "Bench scientist" ? "Biologist" : v], before: [] }; if (typeof v === "object"){ return { now: Array.isArray(v.now) ? v.now : [], before: Array.isArray(v.before) ? v.before : [] }; } return null; }
+(function migrateV7b(){
+  let changed = false;
+  const MAP = { "A3-2": "A2-1", "A3-3": "A2-3", "A2-1": "A3-1", "A2-2": "A3-2", "A2-3": "A3-3", "A2-4": "A3-4", "A3-1": "A3-1-old" };
+  for (const iv of Object.values(interviews)){
+    if (!iv || (iv.qversion || 0) >= 2) continue;
+    for (const bag of ["answers", "notes", "skipped", "covered"]){
+      const b = iv[bag]; if (!b) continue; const n = {};
+      for (const [k, v] of Object.entries(b)) n[MAP[k] || k] = v;
+      iv[bag] = n;
+    }
+    if (iv.log_state) for (const bag of Object.keys(iv.log_state)){ const b = iv.log_state[bag], n = {}; for (const [k, v] of Object.entries(b)) n[MAP[k] || k] = v; iv.log_state[bag] = n; }
+    iv.qversion = 2; changed = true;
+  }
+  for (const iv of Object.values(interviews)){
+    if (!iv || !iv.answers) continue;
+    for (const q of allQuestions){ if (q.type === "cb" && typeof iv.answers[q.key] === "string"){ iv.answers[q.key] = [iv.answers[q.key]]; changed = true; } }
+  }
+  if (changed) lsSet(STORE_KEY, interviews);
+})();
+(function migrate(){ let changed = false; for (const iv of Object.values(interviews)){ if (iv && iv.answers && typeof iv.answers[personaQ.key] === "string"){ iv.answers[personaQ.key] = toRoles(iv.answers[personaQ.key]); changed = true; } } if (changed) lsSet(STORE_KEY, interviews); })();
+let people = lsGet(PEOPLE_KEY) || {};
+(function migratePeople(){ let changed = false; for (const p of Object.values(people)){ if (p && typeof p.persona === "string" && p.persona){ p.persona = toRoles(p.persona); changed = true; } } if (changed) lsSet(PEOPLE_KEY, people); })();
+let cur = null;
+const fmtTime = (iso) => iso ? new Date(iso).toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}) : "";
+const fmtDate = (iso) => iso ? new Date(iso).toLocaleDateString() : "";
+const minutes = (a, b) => (a && b) ? Math.round((new Date(b) - new Date(a)) / 60000) : null;
+function stamp(d){ const z = n => String(n).padStart(2, "0"); return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}-${z(d.getHours())}${z(d.getMinutes())}`; }
+
+function newInterview(person){
+  const id = "iv_" + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+  cur = { id, participant_id: person ? person.id : null, started_at: new Date().toISOString(), ended_at: null, updated_at: null, answers: {}, notes: {}, skipped: {}, openedBranches: [], qversion: 2, covered: {}, light: false, view: "talk", light_log: [], log: [{ at: new Date().toISOString(), type: "interview_started" }] };
+  if (person){ const r = toRoles(person.persona); if (r && (r.now.length || r.before.length)) cur.answers[personaQ.key] = r; }
+  if (person && person.country) cur.answers["A0-2"] = person.country;
+  const lastInterviewer = lsGet("skaldu.interviewer.v1");
+  if (lastInterviewer && Q.interviewers.includes(lastInterviewer)) cur.interviewer = lastInterviewer;
+  interviews[id] = cur; refreshCode(); persist(); render(); window.scrollTo(0,0);
+}
+function codeFor(interviewer, when, ignoreId){
+  const who = (interviewer || "XX").slice(0, 3).toUpperCase().replace(/[^A-Z]/g, "") || "XX";
+  const z = n => String(n).padStart(2, "0");
+  const d = `${when.getFullYear()}${z(when.getMonth() + 1)}${z(when.getDate())}`;
+  const prefix = `${who}-${d}-`;
+  let n = 0;
+  Object.values(interviews).forEach(iv => {
+    if (iv.id === ignoreId) return;
+    const c = (iv.answers["A0-1"] || "").trim();
+    if (c.startsWith(prefix)){ const k = parseInt(c.slice(prefix.length), 10); if (k > n) n = k; }
+  });
+  return prefix + String(n + 1).padStart(2, "0");
+}
+function refreshCode(){
+  if (!cur || cur.code_manual) return;
+  const next = codeFor(cur.interviewer, new Date(cur.started_at), cur.id);
+  if (cur.answers["A0-1"] !== next){ cur.answers["A0-1"] = next; persist(); const f = document.getElementById("in-A0-1"); if (f) f.value = next; }
+}
+function interviewFor(pid){ return Object.values(interviews).filter(iv => iv.participant_id === pid).sort((a,b) => b.started_at.localeCompare(a.started_at))[0] || null; }
+function endInterview(){
+  if (!cur){ toast("No interview open"); return; }
+  if (cur.ended_at){ finishDrawer(); return; }
+  const st = stats(route());
+  openDrawer(el("div", {},
+    el("h2", {}, "End this interview?"),
+    el("p", {style:"color:var(--text-muted);font-size:14px"}, `${st.a} of ${st.n} questions answered or skipped, running ${Math.floor((Date.now() - new Date(cur.started_at)) / 60000)} min. Ending logs the end time now. You can still edit answers afterwards, but the end time stays.`),
+    el("div", {style:"display:grid;gap:10px;margin-top:10px"},
+      el("button", {class:"btn primary", style:"height:48px", onclick:confirmEnd}, "Yes, end the interview"),
+      el("button", {class:"btn", style:"height:48px", onclick:closeDrawer}, "No, keep going"))));
+}
+function confirmEnd(){
+  cur.ended_at = new Date().toISOString(); logPush({ type: "interview_ended" }); persist(); render();
+  finishDrawer();
+}
+function persist(){ if (!cur) return; logDiff(); cur.updated_at = new Date().toISOString(); interviews[cur.id] = cur; lsSet(STORE_KEY, interviews); lsSet(CUR_KEY, cur.id); }
+// ---- full log: speech, answers, notes, skips, coverage and mode switches in one timeline ----
+const TEXT_TYPES = ["short", "number", "paragraph"];
+const logTimers = {};
+function qByKey(k){ return allQuestions.find(q => q.key === k); }
+function fmtValue(v){
+  if (v == null || v === "") return "";
+  if (Array.isArray(v)) return v.join("; ");
+  if (typeof v === "object") return Object.entries(v).map(([r, c]) => r + ": " + (Array.isArray(c) ? c.join(", ") : c)).join("; ");
+  return String(v);
+}
+function logPush(ev){ if (!cur) return; (cur.log = cur.log || []).push(Object.assign({ at: new Date().toISOString() }, ev)); }
+function logDiff(){
+  if (!cur) return;
+  const st = cur.log_state = cur.log_state || { answers:{}, notes:{}, skipped:{}, covered:{} };
+  const scan = (bag, kind, fire) => {
+    const src = cur[bag] || {}; const keys = new Set([...Object.keys(src), ...Object.keys(st[bag])]);
+    keys.forEach(k => {
+      const now = JSON.stringify(src[k] == null || src[k] === false ? null : src[k]); const was = JSON.stringify(st[bag][k] == null ? null : st[bag][k]);
+      if (now === was) return;
+      const q = qByKey(k); const delay = (kind === "note" || (q && TEXT_TYPES.includes(q.type) && kind === "answer")) ? 2000 : 0;
+      const go = () => { const n2 = JSON.stringify((cur[bag] || {})[k] == null || (cur[bag] || {})[k] === false ? null : cur[bag][k]); if (n2 === JSON.stringify(st[bag][k] == null ? null : st[bag][k])) return; st[bag][k] = JSON.parse(n2); fire(k, q, JSON.parse(n2)); interviews[cur.id] = cur; lsSet(STORE_KEY, interviews); };
+      clearTimeout(logTimers[bag + k]);
+      if (delay) logTimers[bag + k] = setTimeout(go, delay); else go();
+    });
+  };
+  const base = (k, q) => ({ id: q ? q.id : k, key: k, question: q ? (q.say || q.q) : "" });
+  scan("answers", "answer", (k, q, v) => logPush(Object.assign({ type: v == null ? "answer_cleared" : "answer" }, base(k, q), { value: v, value_text: fmtValue(v) })));
+  scan("notes", "note", (k, q, v) => logPush(Object.assign({ type: "note" }, base(k, q), { text: v || "" })));
+  scan("skipped", "skip", (k, q, v) => logPush(Object.assign({ type: v ? "skipped" : "unskipped" }, base(k, q))));
+  scan("covered", "cover", (k, q, v) => logPush(Object.assign({ type: v ? "covered" : "uncovered" }, base(k, q))));
+}
+function logLines(iv){ return Array.isArray(iv && iv.log) ? iv.log : []; }
+function logText(iv){
+  const ts = (iso) => iso ? new Date(iso).toLocaleTimeString([], {hour:"2-digit", minute:"2-digit", second:"2-digit"}) : "";
+  return logLines(iv).map(e => {
+    const h = "[" + ts(e.at) + "] ";
+    const ref = e.id ? e.id + " \u201C" + e.question + "\u201D" : "";
+    switch (e.type){
+      case "answer": return h + "ANSWER " + ref + " = " + e.value_text;
+      case "answer_cleared": return h + "ANSWER CLEARED " + ref;
+      case "note": return h + "NOTE " + ref + ": " + e.text;
+      case "skipped": return h + "NOT ASKED " + ref;
+      case "unskipped": return h + "ASKED AGAIN " + ref;
+      case "covered": return h + "COVERED " + ref;
+      case "uncovered": return h + "COVERED UNDONE " + ref;
+      case "heard": return h + "HEARD [" + e.thread + "] " + e.text + " (" + (e.ids || []).join(", ") + ")";
+      case "heard_undone": return h + "HEARD UNDONE [" + e.thread + "] " + e.text;
+      case "probe_asked": return h + "ASKED [" + e.thread + "] “" + e.text + "”";
+      case "track": return h + "TRACK " + e.track;
+      default: return h + String(e.type).toUpperCase().replace(/_/g, " ") + (e.text ? ": " + e.text : "");
+    }
+  }).join("\n");
+}
+function loadInterview(id){ cur = interviews[id]; lsSet(CUR_KEY, id); render(); }
+
+// ---- routing ----
+function roles(){ return (cur && toRoles(cur.answers[personaQ.key])) || { now: [], before: [] }; }
+function roleSet(){ const r = roles(); return [...new Set([...r.now, ...r.before])]; }
+function roleLabel(r){ r = toRoles(r); if (!r) return ""; return [...new Set([...r.now, ...r.before])].join(", "); }
+function persona(){ const s = roleSet(); return s.length ? roleLabel(roles()) : null; }
+function fitsRoles(s){ if (s.persona === "All") return true; const set = roleSet(); return Array.isArray(s.persona) ? s.persona.some(p => set.includes(p)) : set.includes(s.persona); }
+function branchesFor(v){ const vals = Array.isArray(v) ? v : (v ? [v] : []); return vals.map(x => branchQ.branches[branchQ.options.indexOf(x)]).filter(Boolean); }
+function activeBranches(){ return cur ? branchesFor(cur.answers[branchQ.key]) : []; }
+function activeBranch(){ return activeBranches()[0] || null; }
+function route(){
+  const abs = activeBranches(); const out = [];
+  for (const s of Q.sections){
+    if (s.demo && !cur.demoOpen) continue;
+    if (!fitsRoles(s)) continue;
+    if (s.branch && !(abs.includes(s.id) || cur.openedBranches.includes(s.id))) continue;
+    out.push(s);
+  }
+  return out;
+}
+function isAnswered(q){
+  const v = cur.answers[q.key];
+  if (q.type === "roles"){ const r = toRoles(v); return !!(r && (r.now.length || r.before.length)); }
+  if (v == null) return false;
+  if (Array.isArray(v)) return v.length > 0;
+  if (typeof v === "object") return Object.keys(v).length > 0;
+  return String(v).trim() !== "";
+}
+function isCovered(q){ return !!(cur && cur.covered && cur.covered[q.key]); }
+function isDone(q){ return isAnswered(q) || !!cur.skipped[q.key] || isCovered(q); }
+function stats(sections){
+  let n = 0, a = 0;
+  sections.forEach(s => visibleQuestions(s).forEach(q => { n++; if (isDone(q)) a++; }));
+  return { n, a };
+}
+
+// ---- render ----
+const $ = (sel, el=document) => el.querySelector(sel);
+function el(tag, attrs={}, ...kids){ const e = document.createElement(tag); for (const [k,v] of Object.entries(attrs)){ if (k === "class") e.className = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else if (v !== null && v !== undefined) e.setAttribute(k, v); } kids.flat().forEach(k => { if (k == null) return; e.append(k.nodeType ? k : document.createTextNode(k)); }); return e; }
+
+function render(){
+  const main = $("#main"), rail = $("#rail");
+  main.replaceChildren(); rail.replaceChildren();
+  if (!cur){
+    rail.append(el("div", {class:"prog", id:"prog"}));
+    main.append(el("div", {class:"intro", style:"text-align:center;padding:40px 20px"},
+      el("h2", {style:"margin-bottom:8px"}, "No interview open"),
+      el("p", {}, "Register the participant, then press Start next to their name. The start time is logged at that moment. The interviewer is set at the top and can be changed at any time."),
+      (function(){ const open = Object.values(interviews).filter(iv => !iv.ended_at); const n = Object.keys(interviews).length;
+        return n ? el("p", {style:"color:var(--text-muted)"}, `${n} interview${n === 1 ? "" : "s"} on this device${open.length ? `, ${open.length} not ended` : ""}. Open one from Interviews.`) : null; })(),
+      el("div", {style:"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px"},
+        el("button", {class:"btn primary", onclick:() => peopleDrawer()}, "Register participant"),
+        el("button", {class:"btn", onclick:() => { newInterview(); toast("Unregistered interview started at " + fmtTime(cur.started_at)); }}, "Start unregistered interview"),
+        el("button", {class:"btn", onclick:listDrawer}, "Interviews"))));
+    $("#rail").hidden = false; $("#prog").replaceChildren(brandBlock());
+    rail.replaceChildren($("#prog"));
+    renderWho();
+    return;
+  }
+  $("#rail").hidden = false;
+  const secs = route();
+
+  // intro with conventions (not in mindmap mode, where the map needs the room)
+  const person = cur.participant_id && people[cur.participant_id];
+  if (person && viewMode() !== "talk"){
+    main.append(el("div", {class:"pcard"},
+      el("div", {class:"pmain"}, el("span", {class:"eyebrow"}, "Participant"), el("h2", {}, person.name || "unnamed"), el("div", {class:"pline"}, [person.role, person.company, person.country].filter(Boolean).join(" · "))),
+      el("div", {class:"pmeta"},
+        el("div", {}, el("small", {}, "Code"), el("b", {class:"mono"}, person.code || "")),
+        el("div", {}, el("small", {}, "Roles"), el("b", {}, roleLabel(person.persona))),
+        el("div", {}, el("small", {}, "Email"), el("b", {}, person.email || "")),
+        el("div", {}, el("small", {}, "Started"), el("b", {}, `${fmtDate(cur.started_at)} ${fmtTime(cur.started_at)}`)),
+        el("div", {}, el("small", {}, "Ended"), el("b", {id:"pEnded"}, cur.ended_at ? fmtTime(cur.ended_at) + " · " + minutes(cur.started_at, cur.ended_at) + " min" : "running")),
+        el("div", {}, el("small", {}, "Interviewer"), el("b", {id:"pWho"}, cur.interviewer || "")),
+        el("div", {}, el("small", {}, "Emailed"), el("b", {}, cur.sent_at ? fmtDate(cur.sent_at) + " " + fmtTime(cur.sent_at) : "")),
+        el("div", {}, el("small", {}, "Transcript"), el("button", {class:"btn quiet", style:"height:auto;padding:0;font-size:15px;font-weight:500;color:var(--accent)", onclick:() => transcriptDrawer(cur)}, trWords(cur) ? trWords(cur).toLocaleString() + " words" : "Add")),
+        el("div", {}, el("small", {}, "Log"), el("button", {class:"btn quiet", style:"height:auto;padding:0;font-size:15px;font-weight:500;color:var(--accent)", onclick:() => logDrawer(cur)}, (logLines(cur).length || 0) + " entries"))),
+      el("button", {class:"btn quiet", onclick:() => peopleDrawer(person.id)}, "Edit")));
+  } else if (viewMode() !== "talk"){
+    main.append(el("div", {class:"pcard"}, el("div", {class:"pmain"}, el("span", {class:"eyebrow"}, "Unregistered participant"), el("div", {class:"pline"}, `Started ${fmtDate(cur.started_at)} ${fmtTime(cur.started_at)}. No participant registered for this one.`)), el("button", {class:"btn" + (trWords(cur) ? " done" : ""), onclick:() => transcriptDrawer(cur)}, trWords(cur) ? "\u2713 Transcript " + trWords(cur).toLocaleString() + " words" : "Add transcript")));
+  }
+  const intro = el("details", {class:"intro", open: viewMode() === "talk" && !roleSet().length ? "" : null}, el("summary", {}, "Opening script and conventions"),
+    el("p", {class:"eyebrow", style:"margin:10px 0 4px"}, "Opening script (read verbatim)"), el("div", {class:"script"}, Q.opening.map(p => el("p", {}, p))),
+    el("p", {class:"eyebrow", style:"margin:10px 0 4px"}, "How to use this guide"), el("p", {}, Q.howTo),
+    el("p", {class:"eyebrow", style:"margin:10px 0 4px"}, "Conventions"), el("ul", {}, Q.conventions.map(c => el("li", {}, c))),
+    el("p", {class:"eyebrow", style:"margin:10px 0 4px"}, "Scope, say before the questions"), el("p", {class:"opener", style:"font-size:16px"}, "“" + Q.scope + "”"),
+    el("p", {class:"hint"}, Q.fillIn));
+  if (intro) main.append(intro);
+
+  // progress panel
+  rail.append(el("div", {class:"prog", id:"prog"}));
+  // rail
+  let lastP = null, group = null;
+  for (const s of secs){
+    const pKey = Array.isArray(s.persona) ? s.persona.join("/") + (s.demo ? " demo" : "") : s.persona + (s.demo ? " demo" : "");
+    if (pKey !== lastP){ group = el("div", {class:"group"}, el("span", {class:"eyebrow"}, Array.isArray(s.persona) ? s.persona.join(" / ") : (s.persona === "All" ? (s.demo ? "Demo" : "Open") : s.persona))); rail.append(group); lastP = pKey; }
+    const st = stats([s]);
+    group.append(el("a", {href:"#sec-"+s.id, class: (st.a === st.n ? "done" : "") + (viewMode() === "talk" && cur.thread === s.id ? " cur" : ""), "data-sec": s.id, onclick:(e) => { if (viewMode() === "talk"){ e.preventDefault(); goTrack(s.id); } }}, el("span", {class:"sid"}, s.id), el("span", {}, s.title.replace(/^Part \d+[a-e]?\. /, "")), el("span", {class:"cnt"}, `${st.a}/${st.n}`)));
+    if (s.id === "A0" && !persona()) rail.append(el("div", {class:"hint"}, "Tick the roles at question P to load the guide."));
+  }
+
+  // open interview (light mode): openers and a checklist instead of the full guide
+  if (viewMode() === "talk"){
+    main.append(renderTalk());
+    renderLock(); updateHeader();
+    return;
+  }
+  main.append(filterBar(secs.flatMap(x => visibleQuestions(x))));
+  // sections
+  let demoShown = false;
+  for (const s of secs){
+    const sec = el("section", {class:"sec", id:"sec-"+s.id});
+    sec.append(el("header", {}, el("span", {class:"sid"}, s.id), el("h2", {}, s.title), el("span", {class:"persona"}, Array.isArray(s.persona) ? s.persona.join(" / ") : s.persona)));
+    if (s.sayNote) sec.append(el("p", {class:"hint"}, s.sayNote));
+    if (s.say) sec.append(el("p", {class:"opener"}, el("span", {class:"eyebrow", style:"display:block;font-style:normal"}, "Say"), "“" + sayFor(s) + "”"));
+    if (s.followUp) sec.append(el("p", {class:"hint"}, s.followUp));
+    const qs = visibleQuestions(s);
+    qs.forEach(q => sec.append(renderQ(q)));
+    if (s.id === "B2" && scriptsOnly() === null) sec.append(el("div", {class:"endnote", style:"text-align:left;padding:8px 2px"}, "Answer B2-4 to open the follow-up questions: pipeline counts and catalogues if they use a framework, or why not if they only write scripts."));
+    main.append(sec);
+  }
+  renderLock();
+  main.append(el("div", {class:"endnote"}, persona() ? el("div", {},
+    el("p", {}, "End of the questionnaire."),
+    el("div", {style:"display:flex;gap:10px;justify-content:center;flex-wrap:wrap"},
+      el("button", {class:"btn primary", onclick:cur.ended_at ? finishDrawer : endInterview}, cur.ended_at ? "Ended at " + fmtTime(cur.ended_at) + ". Email or export" : "End interview"))) : "Tick the roles at P to continue."));
+  updateHeader();
+}
+
+function viewMode(){ if (!cur) return "guide"; const v = cur.view || "talk"; return v === "topics" ? "talk" : v; }
+function setView(to){
+  cur.view = to; cur.light = to === "topics";
+  (cur.light_log = cur.light_log || []).push({ at: new Date().toISOString(), mode: to });
+  logPush({ type: "switched_to_" + (to === "guide" ? "full_guide" : to) });
+  persist(); render();
+  toast(to === "talk" ? "Conversation: one track at a time." : "Full guide");
+  window.scrollTo({top:0});
+}
+// ---- conversation view: one track at a time, Say line first, probes underneath ----
+function talkSections(){ return route().filter(s => !s.fill); }
+function goTrack(id){ cur.thread = id; logPush({ type:"track", track: id }); persist(); render(); window.scrollTo({top:0}); }
+function sayFor(s){
+  const set = roleSet();
+  if (s.sayDirector && set.includes("Director or C-level") && set.length === 1) return s.sayDirector;
+  return s.say || "";
+}
+function renderTalk(){
+  const box = el("div", {class:"talk"});
+  const secs = talkSections();
+  // roles first
+  const rp = rolesPicker(() => cur.answers[personaQ.key], (v) => { cur.answers[personaQ.key] = v; persist(); render(); });
+  const noRoles = !roleSet().length;
+  box.append(el("div", {class:"pcard rolecard" + (noRoles ? " unset" : "")},
+    el("div", {class:"pmain"}, el("span", {class:"eyebrow"}, noRoles ? "Start here" : "Persona"),
+      el("div", {class:"pline", style:"color:var(--text);margin-bottom:8px"}, noRoles ? "“" + (Q.sections.find(s => s.id === "A1") || {}).say + "” Tick every persona that applies. The tracks fill in as soon as one is ticked." : "Tick or untick a persona at any time; the tracks follow."),
+      rp.el)));
+  if (!secs.length) return box;
+  if (!cur.thread || !secs.find(s => s.id === cur.thread)) cur.thread = secs[0].id;
+  const s = secs.find(x => x.id === cur.thread);
+  // track strip, grouped by track heading
+  const strip = el("div", {class:"tstrip"});
+  let lastTrack = null;
+  secs.forEach(x => {
+    if (x.track !== lastTrack){ strip.append(el("div", {class:"ttrack"}, x.track)); lastTrack = x.track; }
+    const st = stats([x]); const pct = st.n ? Math.round(100 * st.a / st.n) : 0;
+    strip.append(el("button", {type:"button", class:"tchip" + (x.id === cur.thread ? " on" : "") + (st.n && st.a === st.n ? " full" : ""), onclick:() => goTrack(x.id)},
+      el("b", {}, x.id + " · " + x.title.replace(/^Part 2[a-d] - /, "")), el("span", {class:"bar"}, el("span", {style:`width:${pct}%`})), el("small", {}, `${st.a}/${st.n}`)));
+  });
+  box.append(strip);
+  // current track
+  const st = stats([s]);
+  const sec = el("section", {class:"sec tsec", id:"sec-"+s.id});
+  sec.append(el("header", {}, el("span", {class:"sid"}, s.id), el("h2", {}, s.title), el("span", {class:"persona"}, `${Array.isArray(s.persona) ? s.persona.join(" / ") : s.persona} · ${st.a} of ${st.n}`)));
+  if (s.sayNote) sec.append(el("p", {class:"hint"}, s.sayNote));
+  if (s.say) sec.append(el("p", {class:"opener"}, el("span", {class:"eyebrow", style:"display:block;font-style:normal"}, "Say"), "“" + sayFor(s) + "”"));
+  if (s.sayDirector && sayFor(s) !== s.sayDirector) sec.append(el("p", {class:"hint"}, "For directors only: “" + s.sayDirector + "”"));
+  if (s.followUp) sec.append(el("p", {class:"hint"}, s.followUp));
+  if (s.id === "S2" && !activeBranch() && cur.answers[branchQ.key]) sec.append(el("p", {class:"hint"}, "No path follows this answer. Open one below if the conversation goes there."));
+  sec.append(el("div", {style:"display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:12px 0 4px"}, el("p", {class:"eyebrow", style:"margin:0"}, "Probes"), filterBar(visibleQuestions(s))));
+  visibleQuestions(s).forEach(q => sec.append(renderQ(q)));
+  if (visibleQuestions(s).every(qHidden)) sec.append(el("p", {class:"hint"}, "All probes in this track are checked off."));
+  if (s.id === "B1" && scriptsOnly() === null) sec.append(el("div", {class:"endnote", style:"text-align:left;padding:8px 2px"}, "Code B1-1 to open B1-4 (pipelines) or B1-5 (scripts)."));
+  box.append(sec);
+  // next / previous
+  const i = secs.indexOf(s);
+  box.append(el("div", {class:"endnote"}, el("div", {style:"display:flex;gap:10px;justify-content:center;flex-wrap:wrap"},
+    i > 0 ? el("button", {class:"btn", onclick:() => goTrack(secs[i - 1].id)}, "← " + secs[i - 1].id) : null,
+    i < secs.length - 1 ? el("button", {class:"btn primary", onclick:() => goTrack(secs[i + 1].id)}, "Next: " + secs[i + 1].id + " " + secs[i + 1].title.replace(/^Part 2[a-d] - /, "") + " →") : el("button", {class:"btn primary", onclick:cur.ended_at ? finishDrawer : endInterview}, cur.ended_at ? "Ended at " + fmtTime(cur.ended_at) + ". Email or export" : "End interview"),
+    el("button", {class:"btn quiet", onclick:() => setView("guide")}, "Full guide"))));
+  return box;
+}
+function toggleTalk(){ if (!cur) { toast("No interview open"); return; } setView(viewMode() === "talk" ? "guide" : "talk"); }
+
+function coverQ(q, on){
+  cur.covered = cur.covered || {};
+  if (on) cur.covered[q.key] = new Date().toISOString(); else delete cur.covered[q.key];
+  persist(); render();
+}
+function spoken(q){ return q.say || q.q; }
+function kindLabel(q){
+  if (q.admin) return "Generated. Nothing to ask.";
+  if (q.observe) return q.say ? "Say this, then observe. From here on, do not ask." : "Observe. Do not ask.";
+  const extra = (q.max ? `, code ${q.max} at most` : "") + (q.note ? ", " + q.note.toLowerCase() : "");
+  if (q.fill === "interviewer") return "Interviewer fills in. Do not ask." + extra;
+  if (q.closed) return "Read aloud, one answer per row. One of the two deliberately closed questions." + extra;
+  if (q.type === "paragraph" || q.type === "short") return "Open. Write down what they say." + extra;
+  if (q.type === "number") return "Open. Ask for the number and write it down." + extra;
+  if (q.type === "select") return "Fill in yourself." + extra;
+  if (q.type === "roles") return "Tick every persona that applies. Each opens its track." + extra;
+  const base = "Probe. Tick from what you heard; ask only if it was not covered.";
+  if (q.type === "cb") return base + " Several codes possible." + extra;
+  if (q.type === "rank") return base + " Tap the codes in the order they give." + extra;
+  if (q.type === "grid_cb" || q.type === "grid_mc") return base + " Code each row from the conversation." + extra;
+  return base + " One code." + extra;
+}
+const openQ = new Set();   // questions whose answers are unfolded in this session
+function showAll(){ return lsGet("skaldu.showall.v1") === true; }
+function qHidden(q){ return !showAll() && isCovered(q) && q.type !== "roles" && !q.admin; }   // only the check button hides a question
+function filterBar(qs){
+  const hidden = qs.filter(qHidden).length;
+  return el("div", {class:"filterbar"},
+    el("span", {class:"hint"}, showAll() ? "Showing all questions." : (hidden ? `${hidden} checked off, hidden. Show all is in the header.` : "Only open questions.")));
+}
+function qOpen(q){ return openQ.has(q.key) || q.type === "roles" || q.admin || q.fill === "interviewer"; }
+function renderQ(q){
+  const card = el("div", {class:"q" + (isAnswered(q) ? " answered" : "") + (cur.skipped[q.key] ? " skipped" : "") + (qOpen(q) ? "" : " folded"), id:"q-"+q.key});
+  if (qHidden(q)) card.hidden = true;
+  const kind = (q.admin || q.fill === "interviewer") ? kindLabel(q) : "";
+  const isOpen = qOpen(q);
+  const doneBtn = (q.admin || q.type === "roles") ? null : el("button", {class:"skip done" + (isCovered(q) ? " on" : ""), type:"button", title: isCovered(q) ? "Checked off. Tap to bring it back." : "Check off: done, hide this question", "aria-pressed": isCovered(q) ? "true" : "false", onclick:() => {
+    cur.covered = cur.covered || {};
+    if (isCovered(q)) delete cur.covered[q.key]; else { cur.covered[q.key] = new Date().toISOString(); openQ.delete(q.key); }
+    persist(); rerenderQ(q); }}, isCovered(q) ? "\u2713 Done" : "\u2713");
+  const foldBtn = (q.admin || q.type === "roles") ? null : el("button", {class:"skip fold", type:"button", title: isOpen ? "Hide the answers" : "Show the answers", "aria-expanded": isOpen ? "true" : "false", onclick:() => { if (openQ.has(q.key)) openQ.delete(q.key); else openQ.add(q.key); rerenderQ(q); }}, isOpen ? "Hide" : "Answers");
+  const summary = (!isOpen && (isAnswered(q) || (cur.notes[q.key] || "").trim())) ? el("span", {class:"qsum"}, [isAnswered(q) ? fmtValue(cur.answers[q.key]) : "", (cur.notes[q.key] || "").trim() ? "Note: " + cur.notes[q.key].trim() : ""].filter(Boolean).join(" \u00b7 ")) : null;
+  const skipBtn = el("button", {class:"skip", type:"button", title:"Mark as not asked", onclick:() => { cur.skipped[q.key] = !cur.skipped[q.key]; persist(); rerenderQ(q); }}, cur.skipped[q.key] ? "Not asked" : "Skip");
+  if (q.fill === "interviewer") card.classList.add("fill");
+  if (isCovered(q)) card.classList.add("covered");
+  card.append(el("div", {class:"head"}, el("span", {class:"qid"}, q.id), el("div", {class:"qtext"}, q.say ? el("div", {class:"say"}, "“" + q.say + "”") : el("div", {class:"say"}, q.q), (q.say && !q.admin) ? el("span", {class:"codeas"}, q.q) : null, summary, kind ? el("span", {class:"kind"}, kind) : null, q.flag ? el("span", {class:"flag"}, q.flag) : null,
+    isCovered(q) ? el("span", {class:"covbadge"}, "Covered at " + fmtTime(cur.covered[q.key]) + " ", el("button", {type:"button", class:"lnk", onclick:() => { delete cur.covered[q.key]; persist(); rerenderQ(q); }}, "undo")) : null), el("div", {class:"qbtns"}, foldBtn, doneBtn, skipBtn)));
+  const body = el("div", {class:"qbody"}); if (!isOpen) body.hidden = true;
+  const cardAppend = card.append.bind(card); card.append = (...k) => body.append(...k);   // controls below go into the folding body
+
+  const set = (v) => { cur.answers[q.key] = v;  if (q.key === PACE_KEY && v && Object.keys(v).length && !cur.pace_from) cur.pace_from = new Date().toISOString(); persist(); rerenderQ(q); if (q.role) render(); };
+  const v = cur.answers[q.key];
+
+  if (q.type === "roles"){
+    const rp = rolesPicker(() => cur.answers[q.key], (v) => set(v));
+    card.append(rp.el);
+  } else if (q.type === "mc"){
+    card.append(el("div", {class:"opts"}, q.options.map(o => el("button", {type:"button", class:"opt" + (v === o ? " on" : ""), onclick:() => set(v === o ? null : o)}, o))));
+    if (q.role === "branch") card.append(renderBranchPick());
+  } else if (q.type === "cb"){
+    const arr = Array.isArray(v) ? v : [];
+    const full = q.max && arr.length >= q.max;
+    const cbRow = el("div", {class:"opts"}, q.options.map(o => { const on = arr.includes(o); return el("button", {type:"button", class:"opt multi" + (on ? " on" : "") + (!on && full ? " disabled" : ""), onclick:() => { if (on) set(arr.filter(x => x !== o)); else if (!full) set([...arr, o]); else toast(`Pick ${q.max} at most`); }}, o); }));
+    card.append(cbRow); if (q.role === "branch") card.append(renderBranchPick());
+  } else if (q.type === "rank"){
+    const arr = Array.isArray(v) ? v : [];
+    card.append(el("div", {class:"opts"}, q.options.map(o => { const pos = arr.indexOf(o); const on = pos >= 0; return el("button", {type:"button", class:"opt multi rank" + (on ? " on" : ""), onclick:() => { if (on) set(arr.filter(x => x !== o)); else set([...arr, o]); }}, on ? el("span", {class:"rk"}, String(pos + 1)) : null, o); })));
+    card.append(el("div", {class:"hint"}, arr.length ? "Ranked: " + arr.map((o, i) => (i + 1) + ". " + o).join("  ") : "Tap the options in order, most important first. Tap again to remove one."));
+  } else if (q.type === "select"){
+    const sel = el("select", {class:"text", id:"in-"+q.key});
+    sel.append(el("option", {value:""}, ""));
+    if (q.frequent){ const g = el("optgroup", {label:"Frequent"}); q.frequent.forEach(o => g.append(el("option", {value:o}, o))); sel.append(g); }
+    const all = el("optgroup", {label:"All countries"}); q.options.forEach(o => all.append(el("option", {value:o}, o))); sel.append(all);
+    sel.value = v || "";
+    sel.addEventListener("change", () => {
+      cur.answers[q.key] = sel.value || null; persist(); card.classList.toggle("answered", isAnswered(q)); updateHeader();
+    });
+    card.append(sel);
+  } else if (q.type === "short"){
+    const inp = el("input", {class:"text", id:"in-"+q.key, type:"text", inputmode: penMode() ? "none" : "text", autocomplete:"off", autocapitalize:"sentences", value: v || ""});
+    inp.addEventListener("input", () => {
+      cur.answers[q.key] = inp.value;
+      const flipped = q.key === "A0-1" && !cur.code_manual;
+      if (flipped) cur.code_manual = true;
+      persist(); card.classList.toggle("answered", isAnswered(q)); updateHeader();
+      if (flipped){ const pos = inp.selectionStart; rerenderQ(q); const n = document.getElementById("in-A0-1"); if (n){ n.focus(); try { n.setSelectionRange(pos, pos); } catch(e){} } }
+    });
+    if (q.key === "A0-1"){
+      card.append(el("div", {class:"numrow"}, inp,
+        el("span", {style:"color:var(--text-muted);font-size:14px"}, cur.code_manual ? "set by hand" : "generated from the interviewer and the date"),
+        cur.code_manual ? el("button", {class:"btn quiet", type:"button", style:"height:36px", onclick:() => { cur.code_manual = false; refreshCode(); render(); toast("Code generated again"); }}, "Use generated code") : null));
+    } else card.append(inp);
+  } else if (q.type === "number"){
+    // iPadOS ignores inputmode numeric/decimal and shows the full keyboard, so by default
+    // the system keyboard is suppressed and an in-page keypad is used. Switchable per device.
+    const useSystem = !penMode();
+    const inp = el("input", {class:"text num", id:"in-"+q.key, type:"text", inputmode: useSystem ? (q.integer ? "numeric" : "decimal") : "none", autocomplete:"off", autocorrect:"off", autocapitalize:"off", spellcheck:"false", value: v || "", placeholder: useSystem ? "type a number" : "tap to enter a number"});
+    const write = (val) => { inp.value = val; cur.answers[q.key] = val; persist(); card.classList.toggle("answered", isAnswered(q)); updateHeader(); };
+    const clean = (val) => { if (q.integer) return String(val).replace(/[^0-9]/g, ""); let x = String(val).replace(/[^0-9.,]/g, "").replace(/,/g, "."); const i = x.indexOf("."); if (i >= 0) x = x.slice(0, i + 1) + x.slice(i + 1).replace(/\./g, ""); return x; };
+    inp.addEventListener("input", () => write(clean(inp.value)));
+    const pad = el("div", {class:"pad", hidden:""});
+    const key = (label, fn, cls) => el("button", {type:"button", class: cls || "", onmousedown:(e) => e.preventDefault(), onclick:fn}, label);
+    ["1","2","3","4","5","6","7","8","9"].forEach(d => pad.append(key(d, () => write(clean(inp.value + d)))));
+    pad.append(q.integer ? el("span") : key(".", () => write(clean(inp.value + ".")), "act"));
+    pad.append(key("0", () => write(clean(inp.value + "0"))));
+    pad.append(key("Back", () => write(inp.value.slice(0, -1)), "act"));
+    pad.append(key("Clear", () => write(""), "act"));
+    pad.append(key("Done", () => { pad.hidden = true; inp.blur(); }, "done"));
+    inp.addEventListener("focus", () => { if (!useSystem) pad.hidden = false; });
+    inp.addEventListener("blur", () => { const tidy = inp.value.replace(/\.$/, ""); if (tidy !== inp.value) write(tidy); });
+    const switchTo = (mode) => { lsSet("skaldu.inputmode.v1", mode); renderMode(); render(); setTimeout(() => { const n = $("#in-" + CSS.escape(q.key)); if (n){ n.focus(); n.setSelectionRange(n.value.length, n.value.length); } }, 30); };
+    card.append(el("div", {class:"numrow"}, inp,
+      el("span", {style:"color:var(--text-muted);font-size:14px"}, q.integer ? "whole number" : "digits only"),
+      el("button", {class:"btn quiet", type:"button", style:"height:36px", onclick:() => switchTo(useSystem ? "pen" : "keyboard")}, useSystem ? "Use keypad" : "Use iPad keyboard")), pad);
+    if (useSystem) pad.hidden = true;
+  } else if (q.type === "paragraph"){
+    const ta = el("textarea", {class:"text", id:"in-"+q.key, rows:"3", inputmode: penMode() ? "none" : "text"}); ta.value = v || "";
+    ta.addEventListener("input", () => { cur.answers[q.key] = ta.value; persist(); card.classList.toggle("answered", isAnswered(q)); updateHeader(); });
+    card.append(ta);
+  } else if (q.type === "grid_cb" || q.type === "grid_mc"){
+    const g = (v && typeof v === "object" && !Array.isArray(v)) ? v : {};
+    const tbl = el("table", {class:"grid"});
+    const first = q.cols.length > 4 ? 22 : 30;
+    tbl.append(el("colgroup", {}, el("col", {style:`width:${first}%`}), q.cols.map(() => el("col", {style:`width:${((100 - first) / q.cols.length).toFixed(2)}%`}))));
+    tbl.append(el("thead", {}, el("tr", {}, el("th", {}, ""), q.cols.map((c, i) => el("th", {title:c}, q.cols_short ? q.cols_short[i] : c)))));
+    const tb = el("tbody");
+    q.rows.forEach(r => {
+      const cur_r = g[r];
+      tb.append(el("tr", {}, el("td", {}, r), q.cols.map(c => {
+        const on = q.type === "grid_mc" ? cur_r === c : Array.isArray(cur_r) && cur_r.includes(c);
+        if (q.blocked && q.blocked.some(([br, bc]) => br === r && bc === c) && !on) return el("td", {class:"na"}, el("button", {type:"button", class:"na", disabled:"", "aria-label": r + ": " + c + ", not available", title: q.cols_short ? "Ticked once per pair, or no established integration" : "No established assay for this combination"}, "–"));
+        return el("td", {}, el("button", {type:"button", class: on ? "on" : "", "aria-label": r + ": " + c, "aria-pressed": on ? "true" : "false", onclick:() => {
+          const ng = {...g};
+          if (q.type === "grid_mc") { if (on) delete ng[r]; else ng[r] = c; }
+          else { const a = Array.isArray(cur_r) ? cur_r : []; ng[r] = on ? a.filter(x => x !== c) : [...a, c]; if (!ng[r].length) delete ng[r]; }
+          set(ng);
+        }}, c));
+      })));
+    });
+    tbl.append(tb);
+    card.append(el("div", {class:"gridwrap"}, tbl));
+  }
+
+  const ta = el("textarea", {class:"text", id:"note-"+q.key, rows:"2", inputmode: penMode() ? "none" : "text", placeholder:"What they said, in their words. Beliefs, who decides, anything the options miss."});
+  ta.value = cur.notes[q.key] || "";
+  ta.addEventListener("input", () => { cur.notes[q.key] = ta.value; persist(); });
+  card.append(el("div", {class:"notes"},
+    el("label", {for:"note-"+q.key}, "Notes"),
+    ta));
+  card.append = cardAppend; card.append(body);
+  return card;
+}
+function logDrawer(iv){
+  iv = iv || cur; const saved = cur; cur = iv; if (iv === saved) logDiff(); cur = saved;
+  const lines = logText(iv).split("\n").filter(Boolean);
+  const box = el("div", {class:"tscript"});
+  if (!lines.length) box.append(el("p", {style:"color:var(--text-muted)"}, "Nothing logged yet."));
+  lines.forEach(l => box.append(el("p", {}, l)));
+  openDrawer(el("div", {},
+    el("h2", {}, "Full log"),
+    el("p", {style:"color:var(--text-muted);font-size:14px"}, "Every answer, note, skip and coverage, with the question it belongs to, in order of time. Stored with the interview and in its JSON export as log and log_text. Match the times against the Granola transcript."),
+    el("div", {style:"display:flex;gap:8px;flex-wrap:wrap"},
+      el("button", {class:"btn primary", onclick: async () => { const txt = logText(iv); try { await navigator.clipboard.writeText(txt); toast("Log copied"); } catch(e){ showJSON("log.txt", txt); } }}, "Copy full log")),
+    box));
+}
+function rerenderQ(q){ const old = $("#q-"+CSS.escape(q.key)); if (old) old.replaceWith(renderQ(q)); updateHeader(); refreshFilterBars(); }
+function refreshFilterBars(){ document.querySelectorAll(".filterbar").forEach(fb => { const sec = fb.closest("section.sec"); const s = sec && sectionById[sec.id.replace(/^sec-/, "")]; const qs = s ? visibleQuestions(s) : route().flatMap(x => visibleQuestions(x)); fb.replaceWith(filterBar(qs)); }); }
+
+function renderBranchPick(){
+  const abs = activeBranches(); const ab = abs[0] || null;
+  const wrap = el("div", {class:"branchpick"}, el("span", {}, "Paths asked:"));
+  branchQ.branches.forEach((bid, i) => {
+    if (!bid) return;
+    const s = sectionById[bid]; const locked = abs.includes(bid); const on = locked || cur.openedBranches.includes(bid);
+    wrap.append(el("button", {type:"button", class:"opt" + (on ? " on" : "") + (locked ? " locked" : ""), onclick:() => { if (locked) return; cur.openedBranches = on ? cur.openedBranches.filter(x => x !== bid) : [...cur.openedBranches, bid]; persist(); render(); }}, s.id + " " + s.title.replace(/^Part 2[a-e]\. /, "")));
+  });
+  wrap.append(el("span", {}, ab ? "The paths follow the answers ticked at S2-1. Tap another to open it too." : ((Array.isArray(cur.answers[branchQ.key]) ? cur.answers[branchQ.key].length : cur.answers[branchQ.key]) ? "No path follows this answer. Open one above if the conversation goes there." : "Pick the main path above.")));
+  return wrap;
+}
+
+let whoOpen = false;
+document.addEventListener("click", () => { if (whoOpen){ whoOpen = false; renderWho(); } });
+function renderWho(){
+  const host = $("#hWho"); if (!host) return;
+  const wrap = host.closest(".who");
+  const fallback = lsGet("skaldu.interviewer.v1");
+  const val = (cur ? cur.interviewer : fallback) || "";
+  const pick = (n) => { whoOpen = false; onWhoChange({target:{value:n}}); };
+  host.replaceChildren(...[
+    el("button", {type:"button", class:"whofield", "aria-haspopup":"listbox", "aria-expanded": whoOpen ? "true" : "false", onclick:(e) => { e.stopPropagation(); whoOpen = !whoOpen; renderWho(); }}, el("span", {class:"whoval"}, val || "Choose"), el("span", {class:"chev" + (whoOpen ? " up" : "")})),
+    whoOpen ? el("div", {class:"wholist", role:"listbox"}, ...Q.interviewers.map(n => el("button", {type:"button", role:"option", class:"whoopt" + (val === n ? " on" : ""), "aria-selected": val === n ? "true" : "false", onclick:(e) => { e.stopPropagation(); pick(n); }}, n))) : null].filter(Boolean));
+  wrap.classList.toggle("unset", !val);
+  const card = $("#pWho"); if (card) card.textContent = (cur && cur.interviewer) || "";
+}
+function updateHeader(){
+  if (!cur) { renderWho(); const m = $("#bTalk"); if (m){ m.textContent = "Conversation"; m.classList.remove("primary"); } return; }
+  tick();
+  renderWho();
+  const secs = route().filter(s => !s.demo); const st = stats(secs);
+  renderProg(st);
+  document.querySelectorAll("#rail a[data-sec]").forEach(a => { const s = sectionById[a.dataset.sec]; const x = stats([s]); a.querySelector(".cnt").textContent = `${x.a}/${x.n}`; a.classList.toggle("done", x.a === x.n); });
+}
+function brandBlock(){
+  const sel = el("div", {id:"hWho", class:"whodd", "aria-label":"Interviewer"});
+  const wrap = el("div", {class:"who"}, el("span", {}, "Interviewer"), sel);
+  return el("div", {class:"brandblock"},
+    el("h1", {}, "Skaldu interviews"), el("span", {class:"eyebrow"}, "Data Intuitive"), wrap);
+}
+function renderProg(st){
+  const box = $("#prog"); if (!box || !cur) return;
+  const now = cur.ended_at ? new Date(cur.ended_at) : new Date();
+  const elapsedMin = (now - new Date(cur.started_at)) / 60000;
+  const pct = st.n ? Math.round(100 * st.a / st.n) : 0;
+  // pace: measured from the moment A-4 was answered, over the questions after A1-4 (notes are never counted)
+  const secs = route().filter(s => !s.demo); const flat = secs.flatMap(sec => visibleQuestions(sec));
+  const a4 = flat.findIndex(q => q.key === PACE_KEY);
+  const after = a4 >= 0 ? flat.slice(a4 + 1) : flat;
+  const doneAfter = after.filter(q => isDone(q)).length;
+  const paceMin = cur.pace_from ? (now - new Date(cur.pace_from)) / 60000 : null;
+  const perQ = (paceMin !== null && doneAfter >= 3) ? paceMin / doneAfter : null;
+  const remaining = perQ !== null ? perQ * (after.length - doneAfter) : null;
+  const projected = remaining !== null ? elapsedMin + remaining : null;
+  const paceReady = perQ !== null;
+  const fmtMin = (m) => m === null ? "–" : (m < 1 ? "under 1 min" : Math.round(m) + " min");
+  const row = (k, v) => el("div", {class:"row"}, el("span", {}, k), el("b", {}, v));
+  const pp = cur.participant_id && people[cur.participant_id];
+  box.replaceChildren(...[
+    brandBlock(),
+    el("div", {class:"code"}, (cur.answers["A0-1"] || "").trim() || ""),
+    pp && pp.name ? el("div", {class:"who2"}, pp.name) : null,
+    persona() ? el("div", {class:"pers"}, persona()) : null,
+    el("div", {class:"big"}, `${pct} %`),
+    el("div", {}, `${st.a} of ${st.n} questions${persona() ? "" : " so far"}`),
+    el("div", {class:"bar"}, el("i", {style:"width:" + pct + "%"})),
+    row("Started", fmtTime(cur.started_at)),
+    row(cur.ended_at ? "Ended" : "Running", cur.ended_at ? fmtTime(cur.ended_at) : fmtMin(elapsedMin)),
+    row(cur.ended_at ? "Duration" : "Projected total", cur.ended_at ? fmtMin(elapsedMin) : (paceReady ? fmtMin(projected) : (cur.pace_from ? "after 3 answers" : "after A1-4"))),
+    cur.ended_at ? null : row("Time left", paceReady ? fmtMin(remaining) : "–"),
+    cur.ended_at ? null : el("div", {class:"hint", style:"padding:6px 0 0;font-size:12px"}, cur.pace_from ? `Pace measured from A-4 at ${fmtTime(cur.pace_from)}. Notes are not counted.` : "Pace starts when A1-4 is answered."),
+    persona() ? null : el("div", {class:"hint", style:"padding:6px 0 0"}, "Total grows once the roles at P are set."),
+    (function(){ const d = stats(route().filter(x => x.demo)); return d.n ? row("Demo, not counted", `${d.a} of ${d.n}`) : null; })()
+  ].filter(Boolean));
+  renderWho();
+}
+function tick(){ if (!cur) return; $("#bEnd").textContent = cur.ended_at ? "Ended" : "End interview"; const m = $("#bTalk"); m.textContent = viewMode() === "talk" ? "Full guide" : "Conversation"; m.classList.toggle("primary", viewMode() === "talk"); }
+setInterval(() => { if (cur) renderProg(stats(route().filter(s => !s.demo))); }, 15000);
+
+// ---- export ----
+function buildExport(iv){
+  const saved = cur; cur = iv; // reuse routing helpers
+  const secs = route();
+  const answers = [];
+  secs.forEach(s => visibleQuestions(s).forEach(q => {
+    const v = iv.answers[q.key];
+    answers.push({ section: s.id, section_title: s.title, id: q.id, key: q.key, question: q.q, spoken_question: q.say || q.q, type: q.type,
+      asked: !iv.skipped[q.key], answered: isAnswered(q), covered_in_topics: (iv.covered && iv.covered[q.key]) || null, value: v === undefined ? null : v, notes: iv.notes[q.key] || "" });
+  }));
+  const st = stats(secs);
+  cur = saved;
+  return {
+    schema: "skaldu-interview/1",
+    tool_version: "v7-tracks-3", questionnaire_version: "2026-10-01 C-level and closing",
+    exported_at: new Date().toISOString(),
+    participant: (function(){ const p = iv.participant_id && people[iv.participant_id]; return p ? { id: p.id, code: p.code, name: p.name, function: p.role, company: p.company, country: p.country || null, email: p.email, roles: toRoles(p.persona), persona: roleLabel(p.persona) || null } : null; })(),
+    interview: { id: iv.id, participant_code: (iv.answers["A0-1"] || "").trim() || null, persona: (function(){ const s = cur; cur = iv; const l = persona(); cur = s; return l; })(), roles: toRoles(iv.answers[personaQ.key]),
+      interviewer: iv.interviewer || null,
+      started_at: iv.started_at, questions_from: iv.pace_from || null, ended_at: iv.ended_at || null, duration_minutes: minutes(iv.started_at, iv.ended_at),
+      main_path: branchesFor(iv.answers[branchQ.key])[0] || null, paths: branchesFor(iv.answers[branchQ.key]),
+      second_paths_opened: iv.openedBranches, view_log: iv.light_log || [], track_log: (iv.log || []).filter(e => e.type === "track"), demo_questions: !!iv.demoOpen, route: secs.map(s => s.id), updated_at: iv.updated_at,
+      questions_in_route: st.n, questions_answered_or_skipped: st.a },
+    log: logLines(iv),
+    log_text: logText(iv),
+    transcript: trWords(iv) ? { source: iv.transcript_source || "pasted", added_at: iv.transcript_added_at || null, words: trWords(iv), file: trFileName(iv), text: iv.transcript_text } : null,
+    answers
+  };
+}
+function fileName(iv){ const code = ((iv.answers["A0-1"] || "").trim() || "no-code").replace(/[^A-Za-z0-9_-]+/g, "-"); return `skaldu-${code}-${stamp(new Date(iv.started_at))}.json`; }
+async function saveJSON(name, text){
+  // 1. claude.ai artifact runtime (viewer confirms the save)
+  try { if (window.claude && window.claude.use){ const d = await window.claude.use("downloads"); if (d){ await d.save({filename: name, data: text}); toast("Saved " + name); return; } } } catch(e){ if (e && e.code === "declined") { toast("Save cancelled"); return; } }
+  // 2. iPad share sheet (Files, AirDrop, Mail)
+  try { const file = new File([text], name, {type:"application/json"}); if (navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], title:name}); toast("Shared " + name); return; } } catch(e){ if (e && e.name === "AbortError") { toast("Share cancelled"); return; } }
+  // 3. plain download
+  try { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], {type:"application/json"})); a.download = name; document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000); toast("Downloading " + name); return; } catch(e){}
+  showJSON(name, text);
+}
+function showJSON(name, text){
+  const ta = el("textarea", {class:"text", readonly:"", spellcheck:"false", style:"min-height:44vh;font-family:var(--font-mono);font-size:11px;line-height:1.35"});
+  ta.value = text;
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(text); toast("Copied. Paste it into Mail or Notes."); return; } catch(e){}
+    try { ta.focus(); ta.setSelectionRange(0, ta.value.length); const ok = document.execCommand("copy"); toast(ok ? "Copied. Paste it into Mail or Notes." : "Tap and hold in the box, then Select All and Copy."); }
+    catch(e){ toast("Tap and hold in the box, then Select All and Copy."); }
+  };
+  openDrawer(el("div", {}, el("h2", {}, name),
+    el("p", {style:"color:var(--text-muted);font-size:14px"}, "Copy this and paste it into Mail, Notes or a message. It is the complete interview."),
+    el("div", {style:"display:flex;gap:8px;flex-wrap:wrap"}, el("button", {class:"btn primary", onclick:copy}, "Copy all"), el("button", {class:"btn", onclick:() => { ta.focus(); ta.setSelectionRange(0, ta.value.length); toast("Selected. Use Copy."); }}, "Select all")),
+    ta));
+}
+const MAIL_TO = "basel26@data-intuitive.com";
+function compactExport(iv){
+  const full = buildExport(iv);
+  return { schema: "skaldu-interview-compact/1", exported_at: full.exported_at, participant: full.participant, interview: full.interview,
+    log_note: "Full log and transcript left out of this message to keep it short. Both are in the attachments.",
+    answers: full.answers.filter(a => a.answered || !a.asked || a.notes).map(a => { const o = { id: a.id, question: a.spoken_question, value: a.value }; if (a.key !== a.id) o.key = a.key; if (!a.asked) o.asked = false; if (a.notes) o.notes = a.notes; return o; }) };
+}
+function mailSubject(iv){ const p = iv.participant_id && people[iv.participant_id]; const code = (iv.answers["A0-1"] || "").trim() || "no code"; return `Skaldu interview ${code}${p && p.name ? " " + p.name : ""} ${stamp(new Date(iv.started_at)).replace(/-(\d{4})$/, " $1")}`; }
+function openMail(subject, body){
+  const href = `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const a = document.createElement("a"); a.href = href; a.target = "_blank"; a.rel = "noopener"; document.body.append(a); a.click(); setTimeout(() => a.remove(), 1000);
+  return href.length;
+}
+function emailInterview(iv){
+  if (!iv){ toast("No interview open"); return; }
+  const data = compactExport(iv);
+  const p = data.participant;
+  const head = [`Skaldu interview ${data.interview.participant_code || "no code"}`, p ? `${p.name || ""}${p.function ? ", " + p.function : ""}${p.company ? ", " + p.company : ""}${p.email ? " <" + p.email + ">" : ""}` : "Unregistered participant",
+    `Roles: ${data.interview.persona || "not set"}`, `Interviewer: ${data.interview.interviewer || "not filled in"}`, `Started: ${fmtDate(iv.started_at)} ${fmtTime(iv.started_at)}`, `Ended: ${iv.ended_at ? fmtTime(iv.ended_at) + " (" + data.interview.duration_minutes + " min)" : "not ended"}`,
+    `Answered or skipped: ${data.interview.questions_answered_or_skipped} of ${data.interview.questions_in_route}`, "", "JSON follows. Keep it intact when replying.", "", ""].join("\n");
+  const body = head + JSON.stringify(data, null, 1);
+  const len = openMail(mailSubject(iv), body);
+  iv.sent_at = new Date().toISOString(); iv.sent_count = (iv.sent_count || 0) + 1; interviews[iv.id] = iv; lsSet(STORE_KEY, interviews);
+  if (len > 90000) toast("Long message. If Mail opens empty, use Export and attach the file."); else toast("Opening Mail to " + MAIL_TO);
+  if (cur && iv.id === cur.id) updateHeader();
+}
+function ivLine(iv){
+  const p = iv.participant_id && people[iv.participant_id];
+  const code = (iv.answers["A0-1"] || "").trim() || "no code";
+  return `${code} · ${p && p.name ? p.name : "unregistered"}${p && p.company ? " · " + p.company : ""} · ${roleLabel(iv.answers[personaQ.key]) || "roles not set"} · interviewer ${iv.interviewer || "not set"} · ${fmtDate(iv.started_at)} ${fmtTime(iv.started_at)}${iv.ended_at ? " to " + fmtTime(iv.ended_at) + " (" + minutes(iv.started_at, iv.ended_at) + " min)" : ", not ended"}` + (trWords(iv) ? ` · transcript ${trWords(iv)} words` : " · no transcript");
+}
+function markSent(list){ const t = new Date().toISOString(); list.forEach(iv => { iv.sent_at = t; iv.sent_count = (iv.sent_count || 0) + 1; interviews[iv.id] = iv; }); lsSet(STORE_KEY, interviews); if (cur) render(); }
+async function sendAll(){
+  const list = Object.values(interviews).sort((a,b) => a.started_at.localeCompare(b.started_at));
+  if (!list.length){ toast("No interviews on this device"); return; }
+  const when = stamp(new Date());
+  const summary = list.map(ivLine).join("\n");
+  const nTr = list.filter(iv => trWords(iv)).length;
+  const text = `Skaldu interviews, ${list.length} attached as JSON${nTr ? `, ${nTr} transcript${nTr === 1 ? "" : "s"} as .txt` : ""}.\nTo: ${MAIL_TO}\n\n${summary}`;
+  copyAddress();   // iPadOS cannot prefill To from the share sheet; the address is on the clipboard to paste
+  try {
+    const files = [];
+    list.forEach(iv => { files.push(new File([JSON.stringify(buildExport(iv), null, 2)], fileName(iv), {type:"application/json"})); if (trWords(iv)) files.push(new File([iv.transcript_text], trFileName(iv), {type:"text/plain"})); });
+    if (navigator.canShare && navigator.canShare({files})){
+      await navigator.share({files, title:`Skaldu interviews ${when}`, text});
+      markSent(list); toast(`${list.length} interview${list.length === 1 ? "" : "s"} handed to the share sheet. Paste ${MAIL_TO} in To.`); return;
+    }
+  } catch(e){ if (e && e.name === "AbortError"){ toast("Sending cancelled"); return; } }
+  const body = text + "\n\nJSON follows. Keep it intact when replying.\n\n" + JSON.stringify({schema:"skaldu-interviews-compact/1", exported_at:new Date().toISOString(), count:list.length, interviews:list.map(compactExport)}, null, 1);
+  const len = openMail(`Skaldu interviews ${when}`, body);
+  markSent(list);
+  toast(len > 90000 ? "Long message. If Mail opens empty, use Download all." : "Opening Mail to " + MAIL_TO);
+}
+function emailParticipants(){
+  const rows = Object.values(people);
+  openMail(`Skaldu participants ${stamp(new Date())}`, "Skaldu participant list\n\n" + JSON.stringify(rows.map(x => ({...x, function: x.role, interviews: Object.values(interviews).filter(iv => iv.participant_id === x.id).map(iv => ({id: iv.id, started_at: iv.started_at, ended_at: iv.ended_at, sent_at: iv.sent_at || null}))})), null, 1));
+  toast("Opening Mail to " + MAIL_TO);
+}
+function exportCurrent(){ if (!cur){ toast("No interview open"); return; } const data = buildExport(cur); saveJSON(fileName(cur), JSON.stringify(data, null, 2)); }
+function exportAll(){ const all = Object.values(interviews).sort((a,b) => a.started_at.localeCompare(b.started_at)).map(buildExport); saveJSON(`skaldu-all-interviews-${stamp(new Date())}.json`, JSON.stringify({schema:"skaldu-interviews/1", exported_at:new Date().toISOString(), count: all.length, interviews: all}, null, 2)); }
+
+// ---- drawer ----
+function openDrawer(content){ closeDrawer(); const ov = el("div", {class:"overlay", onclick:(e) => { if (e.target === ov) closeDrawer(); }}, el("div", {class:"drawer"}, el("div", {style:"display:flex;justify-content:flex-end"}, el("button", {class:"btn quiet", onclick:closeDrawer}, "Close")), content)); $("#drawerHost").replaceChildren(ov); }
+function closeDrawer(){ $("#drawerHost").replaceChildren(); }
+function trWords(iv){ const s = (iv && iv.transcript_text) || ""; return s.trim() ? s.trim().split(/\s+/).length : 0; }
+function trFileName(iv){ return fileName(iv).replace(/\.json$/, "-transcript.txt"); }
+function transcriptDrawer(iv){
+  iv = iv || cur; if (!iv){ toast("No interview open"); return; }
+  const code = (iv.answers["A0-1"] || "").trim() || "no code";
+  const ta = el("textarea", {class:"text", rows:"12", inputmode:"text", placeholder:"Paste the transcript here (from Granola: open the note, copy the transcript, paste)."}); ta.value = iv.transcript_text || "";
+  const count = el("span", {class:"hint"}, trWords(iv) ? trWords(iv).toLocaleString() + " words stored" : "No transcript yet");
+  ta.addEventListener("input", () => { count.textContent = (ta.value.trim() ? ta.value.trim().split(/\s+/).length.toLocaleString() : "0") + " words, not saved yet"; });
+  const file = el("input", {type:"file", accept:".txt,.md,.vtt,.srt,text/plain", style:"display:none"});
+  file.addEventListener("change", async () => { const f = file.files && file.files[0]; if (!f) return; ta.value = await f.text(); iv._trSource = "file: " + f.name; count.textContent = ta.value.trim().split(/\s+/).length.toLocaleString() + " words from " + f.name + ", not saved yet"; });
+  const save = () => {
+    const txt = ta.value.replace(/\r\n/g, "\n");
+    iv.transcript_text = txt; iv.transcript_added_at = new Date().toISOString(); iv.transcript_source = iv._trSource || "pasted"; delete iv._trSource;
+    (iv.log = iv.log || []).push({ at: iv.transcript_added_at, type: "transcript_added", words: trWords(iv), source: iv.transcript_source });
+    interviews[iv.id] = iv; lsSet(STORE_KEY, interviews); if (cur && cur.id === iv.id) cur = iv;
+    toast(trWords(iv) ? trWords(iv).toLocaleString() + " words saved with " + code : "Transcript cleared"); closeDrawer(); if (cur) render();
+  };
+  openDrawer(el("div", {},
+    el("h2", {}, "Transcript for " + code),
+    el("p", {style:"color:var(--text-muted);font-size:14px"}, "The transcript is stored with this interview, inside its JSON and as a separate .txt file when you send. No extra attachment to add by hand."),
+    ta,
+    el("div", {style:"display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px"},
+      el("button", {class:"btn primary", style:"height:44px", onclick:save}, "Save transcript"),
+      el("button", {class:"btn", style:"height:44px", onclick:async () => { try { ta.value = await navigator.clipboard.readText(); ta.dispatchEvent(new Event("input")); } catch(e){ toast("Tap in the box and use Paste"); ta.focus(); } }}, "Paste from clipboard"),
+      el("button", {class:"btn", style:"height:44px", onclick:() => file.click()}, "Load .txt file"),
+      file, count)));
+}
+function copyAddress(){ try { navigator.clipboard.writeText(MAIL_TO); } catch(e){} }
+function listDrawer(){
+  const rows = Object.values(interviews).sort((a,b) => b.started_at.localeCompare(a.started_at));
+  const list = el("div", {}, el("h2", {}, `${rows.length} interview${rows.length === 1 ? "" : "s"} on this device`),
+    el("p", {style:"color:var(--text-muted);font-size:14px"}, `Sending attaches every interview as a JSON file, plus a .txt for each interview that has a transcript, and opens the share sheet. Choose Mail. iPadOS does not let a page fill in the To field from the share sheet, so the address ${MAIL_TO} is copied first: tap To and paste. Nothing is removed from this device.`),
+    el("div", {style:"display:grid;gap:8px"},
+      el("button", {class:"btn primary", style:"height:48px", onclick:() => { sendAll().then(() => listDrawer()); }}, `Send all interviews to ${MAIL_TO}`),
+      el("div", {style:"display:flex;gap:8px;flex-wrap:wrap"},
+        el("button", {class:"btn", onclick:() => { copyAddress(); toast("Address copied: " + MAIL_TO); }}, "Copy address"),
+        el("button", {class:"btn", onclick:exportAll}, "Download all as one JSON"),
+        cur ? el("button", {class:"btn", onclick:() => showJSON(fileName(cur), JSON.stringify(buildExport(cur), null, 2))}, "Show open interview to copy") : null)));
+  rows.forEach(iv => {
+    const p = iv.participant_id && people[iv.participant_id];
+    const saved = cur; cur = iv; const st = stats(route()); cur = saved;
+    const code = (iv.answers["A0-1"] || "").trim() || "no code";
+    list.append(el("div", {class:"row" + (cur && iv.id === cur.id ? " current" : "")},
+      el("div", {class:"meta"},
+        el("b", {}, code), " ", p && p.name ? p.name : "unregistered", p && p.company ? " · " + p.company : "",
+        el("small", {}, [roleLabel(iv.answers[personaQ.key]), iv.interviewer].filter(Boolean).join(" · ")),
+        el("small", {}, `Started ${fmtDate(iv.started_at)} ${fmtTime(iv.started_at)}`),
+        el("small", {}, iv.ended_at ? `Ended ${fmtDate(iv.ended_at)} ${fmtTime(iv.ended_at)} · ${minutes(iv.started_at, iv.ended_at)} min` : "Not ended"),
+        el("small", {}, `${st.a} of ${st.n} questions · last saved ${iv.updated_at ? fmtDate(iv.updated_at) + " " + fmtTime(iv.updated_at) : "–"}`),
+        el("small", {}, iv.sent_at ? el("span", {class:"status done"}, `sent ${fmtDate(iv.sent_at)} ${fmtTime(iv.sent_at)}${iv.sent_count > 1 ? " (" + iv.sent_count + " times)" : ""}`) : el("span", {class:"status"}, "not sent yet"))),
+      el("button", {class:"btn" + (trWords(iv) ? " done" : ""), onclick:() => transcriptDrawer(iv)}, trWords(iv) ? "\u2713 Transcript" : "Add transcript"),
+      el("button", {class:"btn", onclick:() => logDrawer(iv)}, "Log"),
+      !(cur && iv.id === cur.id) ? el("button", {class:"btn", onclick:() => { closeDrawer(); loadInterview(iv.id); }}, "Open") : el("span", {class:"status running"}, "open"),
+      el("button", {class:"btn quiet", onclick:() => { if (confirmDelete(iv)) { delete interviews[iv.id]; lsSet(STORE_KEY, interviews); if (cur && iv.id === cur.id) { cur = null; try { localStorage.removeItem(CUR_KEY); } catch(e){} render(); } listDrawer(); } }}, "Delete")));
+  });
+  openDrawer(list);
+}
+function rolesPicker(get, set){
+  // one row of role buttons; several may be on
+  const draw = () => {
+    const r = toRoles(get()) || { now: [], before: [] }; const on = [...r.now, ...r.before];
+    return el("div", {class:"opts"}, Q.personas.map(o => { const is = on.includes(o); return el("button", {type:"button", class:"opt multi" + (is ? " on" : ""), "aria-pressed": is ? "true" : "false", onclick:() => {
+      const n = { now: is ? on.filter(x => x !== o) : [...on, o], before: [] }; set(n); const w = draw(); host.replaceWith(w); host = w; }}, o); }));
+  };
+  let host = draw(); return { get el(){ return host; } };
+}
+function peopleDrawer(editId){
+  const p = editId ? {...people[editId]} : { id: null, name: "", role: "", company: "", email: "", country: "", persona: "" };
+  const inp = (k, label, extra={}) => { const i = el("input", {class:"text", type: extra.type || "text", id:"pf-"+k, autocomplete:"off", autocapitalize: k === "email" ? "off" : "words", value: p[k] || ""}); i.addEventListener("input", () => p[k] = i.value); return el("label", {for:"pf-"+k, class: extra.wide ? "wide" : ""}, label, i); };
+  const rp = rolesPicker(() => p.persona, (v) => { p.persona = v; });
+  const personaRow = rp.el;
+  const form = el("div", {class:"form"},
+    inp("name", "Name"), inp("role", "Function"), inp("company", "Company or institute"),
+    inp("email", "Email address", {type:"email", wide:true}),
+    el("label", {for:"pf-country"}, "Country", (function(){
+      const a2 = allQuestions.find(x => x.id === "A0-2");
+      const sel = el("select", {class:"text", id:"pf-country"});
+      sel.append(el("option", {value:""}, ""));
+      if (a2.frequent){ const g = el("optgroup", {label:"Frequent"}); a2.frequent.forEach(o => g.append(el("option", {value:o}, o))); sel.append(g); }
+      const all = el("optgroup", {label:"All countries"}); a2.options.forEach(o => all.append(el("option", {value:o}, o))); sel.append(all);
+      sel.value = p.country || "";
+      sel.addEventListener("change", () => p.country = sel.value);
+      return sel;
+    })()),
+    el("div", {class:"wide", style:"display:grid;gap:4px;font-size:13px;color:var(--text-muted);font-family:var(--font-display)"}, "Roles (several allowed; each opens its guide)", personaRow));
+  const save = () => {
+    if (!p.name.trim()){ toast("Give at least a name"); return; }
+    if (!p.id) { p.id = "pp_" + Date.now().toString(36) + Math.random().toString(36).slice(2,6); p.created_at = new Date().toISOString(); }
+    people[p.id] = p; lsSet(PEOPLE_KEY, people); toast(editId ? "Saved" : "Registered " + (p.name || p.code)); peopleDrawer();
+  };
+  const rows = Object.values(people).sort((a,b) => (a.name || "").localeCompare(b.name || ""));
+  const list = el("div", {},
+    el("h2", {}, editId ? "Edit participant" : "Register participant"),
+    el("p", {style:"color:var(--text-muted);font-size:14px;margin:4px 0 10px"}, "Contact details stay on this device and go into the export of that person's interview. The participant code is generated from the interviewer and the date when the interview starts."),
+    form,
+    el("div", {style:"display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"}, el("button", {class:"btn primary", onclick:save}, editId ? "Save changes" : "Register"), editId ? el("button", {class:"btn", onclick:() => peopleDrawer()}, "Cancel") : null,
+      rows.length ? el("button", {class:"btn", style:"margin-left:auto", onclick:() => saveJSON(`skaldu-participants-${stamp(new Date())}.json`, JSON.stringify({schema:"skaldu-participants/1", exported_at:new Date().toISOString(), participants: rows.map(x => ({...x, function: x.role, interviews: Object.values(interviews).filter(iv => iv.participant_id === x.id).map(iv => ({id: iv.id, started_at: iv.started_at, ended_at: iv.ended_at, duration_minutes: minutes(iv.started_at, iv.ended_at)}))}))}, null, 2))}, "Export participant list") : null, rows.length ? el("button", {class:"btn", onclick:emailParticipants}, "Email participant list") : null),
+    el("h2", {style:"margin-top:20px"}, `${rows.length} registered`));
+  rows.forEach(x => {
+    const iv = interviewFor(x.id);
+    const status = !iv ? el("span", {class:"status"}, "not started") : iv.ended_at ? el("span", {class:"status done"}, `done ${fmtDate(iv.started_at)} ${fmtTime(iv.started_at)} to ${fmtTime(iv.ended_at)}`) : el("span", {class:"status running"}, `running since ${fmtTime(iv.started_at)}`);
+    list.append(el("div", {class:"row" + (iv && cur && iv.id === cur.id ? " current" : "")},
+      el("div", {class:"meta"}, el("b", {}, x.name), el("small", {}, [x.role, x.company, x.country, roleLabel(x.persona)].filter(Boolean).join(" · ")), el("small", {}, status)),
+      !iv ? el("button", {class:"btn primary", onclick:() => { closeDrawer(); newInterview(x); toast(`Interview started at ${fmtTime(cur.started_at)}`); }}, "Start interview")
+          : (cur && iv.id === cur.id) ? null : el("button", {class:"btn", onclick:() => { closeDrawer(); loadInterview(iv.id); }}, "Open"),
+      el("button", {class:"btn quiet", onclick:() => peopleDrawer(x.id)}, "Edit"),
+      el("button", {class:"btn quiet", onclick:() => { if (confirmDelete(x)) { delete people[x.id]; lsSet(PEOPLE_KEY, people); peopleDrawer(); } }}, "Delete")));
+  });
+  openDrawer(list);
+}
+function finishDrawer(){
+  const iv = cur; const st = stats(route());
+  openDrawer(el("div", {},
+    el("h2", {}, "Interview ended"),
+    el("p", {style:"color:var(--text-muted);font-size:14px"}, `${fmtTime(iv.started_at)} to ${fmtTime(iv.ended_at)}, ${minutes(iv.started_at, iv.ended_at)} min. ${st.a} of ${st.n} questions answered or skipped. The interview stays on this iPad whatever you do next.`),
+    el("div", {style:"display:grid;gap:10px;margin-top:10px"},
+      el("button", {class:"btn" + (trWords(iv) ? " done" : ""), style:"height:48px", onclick:() => transcriptDrawer(iv)}, trWords(iv) ? `\u2713 Transcript added (${trWords(iv).toLocaleString()} words). Replace` : "1. Add the Granola transcript"),
+      el("button", {class:"btn primary", style:"height:48px", onclick:() => sendAll()}, (trWords(iv) ? "" : "2. ") + `Send all interviews to ${MAIL_TO}`),
+      el("button", {class:"btn", style:"height:48px", onclick:() => saveJSON(fileName(iv), JSON.stringify(buildExport(iv), null, 2))}, "Download this interview"),
+      el("button", {class:"btn", style:"height:48px", onclick:() => showJSON(fileName(iv), JSON.stringify(buildExport(iv), null, 2))}, "Show JSON to copy"),
+      el("button", {class:"btn quiet", onclick:() => { closeDrawer(); window.scrollTo(0,0); }}, "Back to the interview")),
+    el("p", {style:"color:var(--text-muted);font-size:13px;margin-top:14px"}, "Sending attaches every interview on this device as JSON, plus the transcripts as .txt. In the share sheet choose Mail, tap To and paste: the address " + MAIL_TO + " is already on the clipboard. The draft can be written offline and sent later from the Outbox.")));
+}
+let pendingDelete = null;
+function confirmDelete(iv){ if (pendingDelete === iv.id) { pendingDelete = null; return true; } pendingDelete = iv.id; toast("Tap Delete again to confirm"); setTimeout(() => { if (pendingDelete === iv.id) pendingDelete = null; }, 4000); return false; }
+let toastTimer;
+function toast(msg){ $("#toastHost").replaceChildren(el("div", {class:"toast"}, msg)); clearTimeout(toastTimer); toastTimer = setTimeout(() => $("#toastHost").replaceChildren(), 2600); }
+
+// ---- boot ----
+$("#bList").addEventListener("click", listDrawer);
+function railLocked(){ return lsGet("skaldu.raillock.v1") === true; }
+function renderLock(){
+  const b = $("#bLock"), r = $("#rail");
+  const on = railLocked();
+  b.textContent = on ? "Panel locked" : "Lock panel";
+  b.classList.toggle("primary", on);
+  if (r) r.classList.toggle("locked", on);
+}
+function renderMode(){ $("#bMode").textContent = penMode() ? "Pen mode" : "Keyboard mode"; $("#bMode").title = penMode() ? "No keyboard pops up; write with the Apple Pencil or switch to the keyboard" : "Tapping a field opens the on-screen keyboard"; }
+$("#bLock").addEventListener("click", () => { lsSet("skaldu.raillock.v1", !railLocked()); renderLock(); toast(railLocked() ? "Panel locked" : "Panel unlocked"); });
+$("#bTalk").addEventListener("click", toggleTalk);
+$("#bShow").addEventListener("click", () => { lsSet("skaldu.showall.v1", !showAll()); renderShow(); render(); toast(showAll() ? "Showing all questions" : "Only open questions"); });
+function renderShow(){ const b = $("#bShow"); if (!b) return; b.textContent = showAll() ? "Showing all" : "Open only"; b.classList.toggle("primary", showAll()); }
+$("#bMode").addEventListener("click", () => { lsSet("skaldu.inputmode.v1", penMode() ? "keyboard" : "pen"); renderMode(); render(); toast(penMode() ? "Pen mode: no keyboard, write with the pencil" : "Keyboard mode: tapping a field opens the keyboard"); });
+function onWhoChange(e){
+  const who = e.target.value || null;
+  if (who) lsSet("skaldu.interviewer.v1", who);
+  if (cur){ cur.interviewer = who; refreshCode(); persist(); render(); } else if (who) toast(who + " will be set on the next interview");
+  renderWho();
+}
+$("#bNew").addEventListener("click", () => {
+  closeDrawer(); if (cur){ const st = stats(route()); toast(st.a ? "Interview kept. Reopen it from Interviews." : "Empty interview left open in the list."); }
+  cur = null;
+  try { localStorage.removeItem(CUR_KEY); } catch(e){}
+  render(); window.scrollTo(0, 0);
+});
+$("#bPeople").addEventListener("click", () => peopleDrawer());
+$("#bEnd").addEventListener("click", endInterview);
+document.addEventListener("click", (e) => { const a = e.target.closest("#rail a"); if (!a) return; e.preventDefault(); const t = document.querySelector(a.getAttribute("href")); if (t) t.scrollIntoView({behavior:"smooth", block:"start"}); });
+(function storageCheck(){
+  let ok = false;
+  try { localStorage.setItem("skaldu.probe", "1"); ok = localStorage.getItem("skaldu.probe") === "1"; localStorage.removeItem("skaldu.probe"); } catch(e){ ok = false; }
+  if (ok) return;
+  const w = el("div", {class:"warn"}, el("div", {}, el("b", {}, "This viewer does not keep data. "),
+    "Answers stay only until the page is closed, and email and download are likely blocked too. Open the file in a real browser app, or use the published page in Safari. Copy the JSON out before you close this."),
+    el("button", {onclick:() => $("#warnHost").replaceChildren()}, "Understood"));
+  $("#warnHost").replaceChildren(w);
+})();
+(function start(){
+  // Always open on the empty start screen. Stored interviews stay on the device
+  // and are reopened from the Interviews list.
+  cur = null;
+  try { localStorage.removeItem(CUR_KEY); } catch(e){}
+  renderMode(); renderShow(); render(); renderLock(); tick();
+})();
+</script>
+
+</body>
+</html>
