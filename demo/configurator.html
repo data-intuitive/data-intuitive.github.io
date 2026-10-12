@@ -512,7 +512,6 @@
     body.is-pinned .demo-content > .step-card:not(.in-app):not(.is-collapsed) .step-action { margin-top: 12px; }
     /* The example report keeps its full preview height inside the window, so
        the three plots are shown whole rather than clipped by flex shrinking. */
-    body.is-pinned .app-window .step-card.in-app .qc-example { flex: 0 0 auto; }
     /* Fixed size, so the window does not resize or move as the content of a
        step changes. 686 = the 680px card plus its label row. */
     body.is-pinned .app-frame { min-height: 0; height: 100%; max-height: 686px; }
@@ -594,7 +593,7 @@
     .step-card { padding: 18px 16px; }
     .step-card-title { font-size: 21px; }
     .step-card-intro { font-size: 14px; }
-    .sec-label, .ep-group > h4 { font-size: 10.5px; }
+    .ep-group > h4 { font-size: 10.5px; }
 
     /* The status moves under the name, so neither column is squeezed. */
     .ep-row { flex-direction: column; align-items: flex-start; gap: 7px; padding: 12px 14px; }
@@ -684,6 +683,36 @@
     margin: 6px 0 -4px;
   }
   .review-chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  /* ---- Step 5: experimental design (differential expression) ---- */
+  .design-box {
+    grid-column: 1 / -1;
+    border: 1px solid var(--border-soft); border-radius: 12px;
+    padding: 16px 18px 18px; display: grid; gap: 16px;
+  }
+  .design-box > h4 { margin: 0; font-size: 14px; font-weight: 700; color: var(--text-strong); }
+  .design-box .design-intro { margin: -8px 0 0; font-size: 13px; color: var(--text-muted); }
+  .design-sec { border-top: 1px solid var(--border-soft); padding-top: 14px; display: grid; gap: 12px; }
+  .design-sec-title {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text-soft);
+  }
+  .design-narrow { max-width: 260px; }
+  .level-row, .cmp-head, .cmp-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .cmp-head { align-items: flex-end; }
+  .level-item { display: flex; gap: 4px; align-items: center; }
+  .level-item.field, .cmp-row.field { flex-direction: row; }
+  .level-item input { width: 150px; }
+  .cmp-row select { width: auto; min-width: 200px; }
+  .cmp-row .vs { font-size: 13px; color: var(--text-muted); }
+  .cmp-label { font-size: 13.5px; font-weight: 600; color: var(--text-strong); margin-bottom: -4px; }
+  .icon-btn, .add-btn {
+    background: rgba(124,75,172,0.10); border: 0; border-radius: 8px;
+    color: var(--p-color); font: inherit; font-size: 13px; font-weight: 600;
+    cursor: pointer; padding: 7px 10px; line-height: 1;
+  }
+  .icon-btn { padding: 7px 9px; }
+  .icon-btn:hover, .add-btn:hover { background: rgba(124,75,172,0.18); }
+  .add-btn { justify-self: start; }
 
   /* ---- Progress rail: path divider ---- */
   .demo-progress-divider {
@@ -765,86 +794,12 @@
   .opt-helper { font-size: 12.5px; color: var(--text-soft); margin: 10px 0 0; line-height: 1.45; }
   .opt-card-icon { font-size: 22px; line-height: 1; margin-bottom: 2px; }
 
-  /* ---- Prerequisite card ---- */
-  .prereq-head { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; }
-  .prereq-num {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: var(--p-color); color: #FFFFFF;
-    display: grid; place-items: center;
-    font-family: var(--mono); font-weight: 700; font-size: 15px;
-    flex-shrink: 0;
-  }
-  .prereq-sub { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--text-soft); margin: 0 0 20px 50px; }
-  .sec-label {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--text-soft);
-    margin: 18px 0 8px;
-  }
-  .sec-label:first-of-type { margin-top: 0; }
-  .code-block {
-    position: relative;
-    background: var(--surface-alt);
-    border: 1px solid var(--border-soft);
-    border-radius: 10px;
-    padding: 14px 52px 14px 16px;
-    font-family: var(--mono);
-    font-size: 13px; line-height: 1.6;
-    color: var(--text-strong);
-    white-space: pre;
-    overflow-x: auto;
-  }
-  .code-block .cmt { color: var(--text-soft); }
-  /* The install commands show the shape of the work, they are not there to be
-     followed line by line. They keep their colour and are blurred instead, so
-     the block still reads as a terminal without inviting anyone to type it. */
-  .code-block.is-faded {
-    max-height: 132px; overflow: hidden;
-    filter: blur(2.6px);
-    user-select: none;
-  }
-  .code-block.is-faded .copy-btn { display: none; }
-  .code-note {
-    margin: 6px 0 0; font-size: 12px; color: var(--text-soft);
-  }
-  .copy-btn {
-    position: absolute; top: 8px; right: 8px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 4px 8px;
-    font: inherit; font-family: var(--body-font); font-size: 11.5px;
-    color: var(--text-muted); cursor: pointer;
-    display: inline-flex; align-items: center; gap: 5px;
-    transition: color .15s, border-color .15s;
-  }
-  .copy-btn:hover { color: var(--p-color); border-color: var(--p-color); }
-  .copy-btn.is-copied { color: #0E8276; border-color: rgba(0,180,160,0.5); }
   .prose { font-size: 14.5px; line-height: 1.6; color: var(--text); margin: 0; }
   .prose code {
     font-family: var(--mono); font-size: 12.5px;
     background: var(--surface-alt); border: 1px solid var(--border-soft);
     border-radius: 5px; padding: 1px 6px;
     color: var(--text-strong);
-  }
-  .check-panel {
-    margin-top: 20px;
-    background: rgba(124,75,172,0.07);
-    border: 1px solid rgba(124,75,172,0.20);
-    border-radius: 12px;
-    padding: 16px 18px;
-  }
-  .check-panel .sec-label { color: var(--p-color); margin-top: 0; }
-  .check-panel .code-block { background: var(--surface); }
-  .check-row {
-    display: flex; align-items: center; gap: 10px;
-    margin-top: 12px;
-    font-size: 14px; color: var(--text-strong); font-weight: 600;
-    cursor: pointer;
-  }
-  .check-row input { width: 18px; height: 18px; accent-color: var(--s-color); cursor: pointer; }
-  .demo-step-tick {
-    display: inline-block; margin-left: 6px;
-    color: #0E8276; font-weight: 800; font-size: 12px;
   }
   .step-action.split { justify-content: space-between; align-items: center; }
   .btn-ghost {
@@ -1016,48 +971,150 @@
   .loc-pair { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
   .loc-pair code { font-family: var(--mono); font-size: 12.5px; color: var(--text-strong); word-break: break-all; }
   .loc-arrow { color: var(--text-soft); font-size: 16px; }
-  .run-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .run-layout > * { min-width: 0; }
-  .run-status { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .run-spinner {
-    width: 14px; height: 14px; border-radius: 50%;
-    border: 2px solid rgba(124,75,172,0.25); border-top-color: var(--p-color);
-    animation: spin .8s linear infinite;
+
+  /* ---- Run output (as in the desktop app) ---- */
+  .ro .step-card-title { margin-bottom: 4px; }
+  .ro-sub { margin: 0 0 4px; font-size: 13px; color: var(--text-muted); line-height: 1.45; }
+  .ro-sub code { font-family: var(--mono); font-size: 12px; color: var(--text-strong); word-break: break-all; }
+  .ro-actions { margin: 8px 0 12px; }
+  .ro-cancel { font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 8px;
+    background: rgba(214,69,69,0.06); border: 1px solid rgba(214,69,69,0.45); color: var(--text-strong); cursor: not-allowed; }
+  .ro-cancel.is-open { background: rgba(124,75,172,0.08); border-color: rgba(124,75,172,0.4); }
+  .ro-card { background: var(--surface-elev); border: 1px solid var(--border-soft); border-radius: 12px; padding: 10px 12px; margin-bottom: 10px; }
+  .ro-res { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .ro-meter { border: 1px solid var(--border-soft); border-radius: 10px; padding: 8px 10px 6px; background: var(--surface); min-width: 0; }
+  .ro-mhead { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); }
+  .ro-peak { letter-spacing: 0; text-transform: none; }
+  .ro-mval { font-size: 13px; color: var(--text-muted); margin: 2px 0 4px; }
+  .ro-mval b { font-size: 17px; color: var(--text-strong); }
+  .ro-spark { width: 100%; height: 30px; display: block; border-top: 1px dashed var(--border); }
+  .ro-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); }
+  .ro-pill { background: rgba(67,123,177,0.12); color: #3A6EA5; border-radius: 6px; padding: 2px 6px; letter-spacing: 0; text-transform: none; font-family: var(--body-font); font-size: 11px; }
+  .ro-elapsed { letter-spacing: 0; color: var(--text-muted); }
+  .ro-skip { font: inherit; font-size: 11px; letter-spacing: 0; text-transform: none; background: none; border: 0; color: var(--p-color); cursor: pointer; text-decoration: underline; padding: 0 4px; }
+  .ro-rows { display: grid; gap: 3px; }
+  .ro-row { display: grid; grid-template-columns: 14px minmax(110px, 160px) 1fr 92px; gap: 8px; align-items: center; font-family: var(--mono); font-size: 11.5px; color: var(--text-soft); }
+  .ro-row.is-done, .ro-row.is-running { color: var(--text-strong); }
+  .ro-tick { color: #2E7D32; font-size: 11px; }
+  .ro-row.is-running .ro-tick { color: var(--p-color); }
+  .ro-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ro-track { position: relative; height: 10px; background: var(--surface-alt); border-radius: 3px; overflow: hidden; }
+  .ro-fill { position: absolute; top: 0; bottom: 0; background: #2E7D32; border-radius: 3px; }
+  .ro-row.is-running .ro-fill { background: var(--p-color); }
+  .ro-time { font-family: var(--body-font); font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+  .ro-logwrap { margin-bottom: 10px; }
+  .ro-logwrap summary { cursor: pointer; font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px; }
+  .ro-log { font-family: var(--mono); font-size: 10.5px; line-height: 1.55; color: var(--text); background: var(--surface-elev); border: 1px solid var(--border-soft); border-radius: 10px; padding: 8px 10px; height: 140px; overflow: auto; white-space: pre; }
+  /* Result tabs */
+  .rt { border: 1px solid var(--border-soft); border-radius: 12px; background: var(--surface-elev); overflow: hidden; margin-bottom: 6px; }
+  .rt-bar { display: flex; gap: 4px; align-items: center; padding: 6px 8px; border-bottom: 1px solid var(--border-soft); flex-wrap: wrap; }
+  .rt-tab { font: inherit; font-size: 12px; font-weight: 600; color: var(--text-muted); background: none; border: 0; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+  .rt-tab.is-active { background: rgba(124,75,172,0.12); color: var(--text-strong); }
+  .rt-pane { height: 380px; overflow: auto; background: #FFFFFF; color: #222; }
+  .rt-pad { padding: 4px 10px 10px; }
+  .rt-pad .qc-report { border: 0; padding: 12px 6px; }
+  .rt-note { margin: 0; padding: 6px 10px; font-size: 11.5px; font-style: italic; color: var(--text-soft); border-top: 1px solid var(--border-soft); }
+
+  /* Differential expression tab */
+  .de { padding: 12px 16px 16px; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 12px; color: #222; }
+  .de-head { display: flex; align-items: center; gap: 10px; }
+  .de h3 { font-size: 17px; margin: 0; font-weight: 600; }
+  .de-stamp { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C7218; background: rgba(201,162,40,0.16); border-radius: 6px; padding: 2px 7px; }
+  .de-meta { margin: 4px 0 10px; color: #555; font-size: 11.5px; }
+  .de-pick { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .de-chip { font: inherit; font-size: 11.5px; padding: 5px 10px; border-radius: 999px; border: 1px solid #D6D9E0; background: #FFF; color: #444; cursor: pointer; }
+  .de-chip.is-active { background: rgba(124,75,172,0.12); border-color: rgba(124,75,172,0.5); color: #2C2340; font-weight: 600; }
+  .de-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 8px; }
+  .de-tile { border: 1px solid #E3E5EA; border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+  .de-tile b { font-size: 20px; }
+  .de-tile span { font-size: 11px; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .de h4 { font-size: 12.5px; margin: 12px 0 6px; }
+  .de-volcano { width: 100%; max-width: 520px; height: auto; display: block; }
+  .de-legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 10.5px; color: #555; }
+  .de-legend span::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-right: 4px; }
+  .de-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .de-table th { text-align: left; border-bottom: 2px solid #DDD; padding: 4px 6px; white-space: nowrap; }
+  .de-table td { border-bottom: 1px solid #EEE; padding: 3px 6px; font-family: var(--mono); font-size: 10.5px; }
+  .de-table tr.is-cur td { background: rgba(124,75,172,0.07); }
+  .de-foot { margin: 10px 0 0; font-size: 11px; color: #666; font-style: italic; }
+  /* Report layout: scrolling body with a sticky table of contents, as the
+     platform's own differential expression report is laid out. */
+  .de-layout { display: grid; grid-template-columns: minmax(0,1fr) 150px; gap: 18px; align-items: start; }
+  .de-toc { position: sticky; top: 0; font-size: 11px; padding-top: 2px; }
+  .de-toc b { display: block; font-size: 11px; font-weight: 600; color: #333; margin-bottom: 6px; }
+  .de-toc a { display: block; padding: 3px 0 3px 8px; color: #6B7280; text-decoration: none; border-left: 2px solid transparent; }
+  .de-toc a:hover { color: #333; }
+  .de-toc a.is-cur { color: #7C4BAC; border-left-color: #7C4BAC; }
+  .de-sec { font-size: 15px; font-weight: 600; margin: 18px 0 2px; padding-bottom: 6px; border-bottom: 1px solid #E8EAEE; }
+  .de-lead { margin: 6px 0 10px; font-size: 11.5px; color: #555; }
+  .de-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .de-card { border: 1px solid #E3E5EA; border-radius: 8px; padding: 10px 12px 12px; background: #FFF; min-width: 0; }
+  .de-card-t { font-size: 12px; font-weight: 600; margin: 0 0 2px; }
+  .de-card-c { font-size: 10.5px; color: #6B7280; margin: 0 0 6px; }
+  .de-card svg { width: 100%; height: auto; display: block; }
+  .de-open { margin-left: auto; font: inherit; font-size: 11.5px; font-weight: 600; color: var(--text-muted); background: none; border: 1px solid var(--border-soft); border-radius: 8px; padding: 5px 10px; cursor: pointer; }
+  .de-open:hover { color: var(--text-strong); }
+  .de-up { color: #D1453B; } .de-down { color: #3D6FB4; }
+  @media (max-width: 720px) { .de-tiles { grid-template-columns: 1fr; } .de-layout { grid-template-columns: 1fr; } .de-toc { display: none; } }
+  /* MultiQC look-alike */
+  .mq { display: grid; grid-template-columns: 150px 1fr; min-height: 100%; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; }
+  .mq-nav { background: #F2F2F2; border-right: 1px solid #DDD; font-size: 11px; }
+  .mq-logo { padding: 10px; text-align: center; border-bottom: 1px solid #DDD; }
+  .mq-logo b { display: block; font-size: 16px; color: #333; } .mq-logo b::before { content: '\25D0 '; color: #E8673C; }
+  .mq-logo span { font-size: 10px; color: #777; }
+  .mq-nav-i { padding: 6px 10px; color: #337AB7; border-bottom: 1px solid #E2E2E2; }
+  .mq-nav-s { padding: 4px 10px 4px 16px; color: #337AB7; font-size: 10px; }
+  .mq-main { padding: 12px 16px; min-width: 0; }
+  .mq-title { font-size: 26px; font-weight: 600; color: #333; } .mq-title::before { content: '\25D0 '; color: #E8673C; }
+  .mq-intro { font-size: 12.5px; color: #444; margin: 4px 0; }
+  .mq-small { font-size: 11px; color: #666; margin: 0 0 8px; }
+  .mq h3 { font-size: 16px; margin: 12px 0 6px; color: #222; }
+  .mq-tablewrap { overflow-x: auto; }
+  .mq-table { border-collapse: collapse; font-size: 10.5px; width: 100%; }
+  .mq-table th { text-align: left; border-bottom: 2px solid #DDD; padding: 4px 6px; white-space: nowrap; }
+  .mq-table td { border-bottom: 1px solid #EEE; padding: 3px 6px; white-space: nowrap; }
+  .mq-g { background: #E8F5E9; } .mq-b { box-shadow: inset 3px 0 #9FA8DA; } .mq-o { background: #FCE4CC; } .mq-p { background: #EBDDF0; } .mq-s { background: #B8C2D6; }
+  .mq-chart { width: 100%; height: auto; display: block; }
+  .mq-legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 10.5px; color: #555; margin-top: 4px; }
+  .mq-legend span::before { content: ''; display: inline-block; width: 9px; height: 9px; background: var(--c); margin-right: 4px; vertical-align: -1px; }
+  /* Nextflow report look-alike */
+  .nx { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; }
+  .nx-bar { background: #2F3539; color: #9AA4AA; display: flex; gap: 12px; align-items: center; padding: 8px 12px; font-size: 12px; }
+  .nx-brand { color: #FFF; font-weight: 600; } .nx-brand::first-letter { color: #22AE63; }
+  .nx-run { margin-left: auto; }
+  .nx-body { padding: 14px 18px; background: #F5F6F7; font-size: 12px; color: #222; }
+  .nx-body h3 { font-size: 24px; font-weight: 400; margin: 0; }
+  .nx-name { font-family: var(--mono); color: #888; font-size: 14px; margin-bottom: 10px; }
+  .nx-ok { background: #D4EDDA; color: #155724; border: 1px solid #C3E6CB; border-radius: 4px; padding: 8px 10px; margin-bottom: 10px; }
+  .nx-body h4 { font-size: 12.5px; margin: 10px 0 4px; }
+  .nx-body p { margin: 0; }
+  .nx-bar-ok { background: #28A745; color: #FFF; text-align: center; font-size: 10.5px; border-radius: 3px; padding: 2px; margin-top: 8px; }
+  .nx-cmd { white-space: pre-wrap; word-break: break-all; font-family: var(--mono); font-size: 10.5px; background: #FFF; border: 1px solid #DDD; border-radius: 4px; padding: 8px; margin: 0; }
+  .nx-kv { margin-top: 10px; font-size: 11px; border-collapse: collapse; }
+  .nx-kv th { text-align: left; padding: 3px 18px 3px 0; white-space: nowrap; vertical-align: top; }
+  .nx-kv td { font-family: var(--mono); font-size: 10.5px; word-break: break-all; }
+  /* Timeline look-alike */
+  .tl { padding: 12px 14px; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 11.5px; color: #222; }
+  .tl h3 { font-size: 15px; font-weight: 400; margin: 0 0 6px; }
+  .tl p { margin: 0; }
+  .tl-rows { margin-top: 10px; display: grid; gap: 1px; }
+  .tl-row { display: grid; grid-template-columns: minmax(0, 58%) 1fr; gap: 8px; align-items: center; font-size: 9.5px; }
+  .tl-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tl-track { position: relative; height: 12px; background-image: repeating-linear-gradient(90deg, transparent 0 24px, #DDD 24px 25px); }
+  .tl-bar { position: absolute; top: 2px; height: 8px; background: #BBB; }
+  .tl-lab { position: absolute; top: -1px; padding-left: 3px; font-size: 8.5px; color: #333; white-space: nowrap; }
+  /* Workflow diagram */
+  .dag { padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--mono); font-size: 11px; }
+  .dag-level { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .dag-node { background: #F3EEF8; border: 1px solid rgba(124,75,172,0.45); color: #2C2340; border-radius: 8px; padding: 6px 10px; }
+  .dag-node span { color: #7C4BAC; margin-left: 6px; font-size: 10px; }
+  .dag-io { border: 1px dashed #AAA; border-radius: 999px; padding: 4px 12px; color: #555; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dag-arrow { color: #999; line-height: 1; }
+  @media (max-width: 720px) {
+    .ro-res { grid-template-columns: 1fr; }
+    .ro-row { grid-template-columns: 14px 96px 1fr 70px; }
+    .mq { grid-template-columns: 1fr; } .mq-nav { display: none; }
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .run-progress { flex: 1; min-width: 160px; height: 8px; background: var(--surface-alt); border-radius: 999px; overflow: hidden; border: 1px solid var(--border-soft); }
-  .run-progress > div { height: 100%; width: 0; background: var(--p-color); transition: width .4s; }
-  .run-pct { font-family: var(--mono); font-size: 12px; color: var(--text-muted); min-width: 40px; text-align: right; }
-  .terminal {
-    background: #0F1B3D; color: #C7D2E5;
-    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
-    border-radius: 12px; padding: 16px 18px;
-    height: 250px; overflow: hidden;
-    position: relative;
-    white-space: pre;
-    overflow-x: auto;
-  }
-  .terminal::after {
-    content: ''; position: absolute; inset: auto 0 0 0; height: 40px;
-    background: linear-gradient(180deg, rgba(15,27,61,0), #0F1B3D);
-  }
-  .terminal.is-full { height: auto; min-height: 320px; }
-  .terminal.is-full::after { display: none; }
-  .terminal .cmd { color: #FFFFFF; }
-  .terminal .cmd:not(.cmd2)::before { content: '$ '; color: #5EDBC8; }
-  .terminal .ok { color: #5EDBC8; } .terminal .dim { color: #7A88B5; } .terminal .hl { color: #C9A9F0; }
-  .run-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
-  .run-step {
-    background: var(--surface-elev); border: 1px solid var(--border);
-    border-radius: 10px; padding: 10px 12px;
-    font-size: 12.5px; color: var(--text-muted);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .run-step .st { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
-  .run-step.is-running { border-color: var(--p-color); color: var(--text-strong); }
-  .run-step.is-running .st { background: var(--p-color); }
-  .run-step.is-done { color: var(--text-strong); }
-  .run-step.is-done .st { background: var(--s-color); }
 
   /* ---- QC report one-pager ---- */
   .qc-report {
@@ -1110,46 +1167,17 @@
     .qc-section.qc-out > .qc-foot { margin-top: 12px; }
   }
   .qc-legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11.5px; color: var(--text-muted); margin-top: 6px; }
-  /* Compact, faded example report */
-  .qc-example {
-    position: relative;
-    max-height: 480px; overflow: hidden;
-    border-radius: 14px;
-  }
-  .qc-example .qc-report {
-    padding: 16px 18px 40px;
-    opacity: 0.72;
-    filter: saturate(0.7);
-    font-size: 12px;
-  }
-  .qc-example .qc-head { padding-bottom: 8px; }
-  .qc-example .qc-head h3 { font-size: 16px; }
-  .qc-example .qc-head p { font-size: 10.5px; }
-  .qc-example .qc-verdict { font-size: 9.5px; padding: 4px 10px; }
-  .qc-example .qc-section { margin-top: 10px; }
-  .qc-example .qc-section h4 { font-size: 9.5px; margin-bottom: 6px; }
-  .qc-example .qc-table th { font-size: 9px; padding: 4px 6px; }
-  .qc-example .qc-table td { font-size: 10.5px; padding: 4px 6px; }
-  .qc-example .qc-grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
-  .qc-example .qc-panel { padding: 8px 10px; }
-  .qc-example .qc-panel h5 { font-size: 11px; margin-bottom: 4px; }
-  .qc-example .qc-panel .qc-cap, .qc-example .qc-cap { font-size: 9.5px !important; margin-top: 3px !important; }
-  .qc-example .qc-legend { font-size: 9.5px; margin-top: 3px; }
-  .qc-example .prose { font-size: 11.5px !important; }
-  .qc-example .qc-foot { font-size: 10px; margin-top: 8px; padding-top: 6px; }
-  .qc-example::after {
-    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 140px;
-    background: linear-gradient(180deg, rgba(255,255,255,0), var(--surface));
-    pointer-events: none;
-  }
-  .qc-example-stamp {
-    position: absolute; top: 12px; right: 14px; z-index: 2;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--text-soft); border: 1.5px dashed var(--border); border-radius: 6px;
-    padding: 4px 10px; background: var(--surface); transform: rotate(-4deg);
-  }
-  .qc-example-note { font-size: 12.5px; color: var(--text-soft); margin: 6px 0 0; font-style: italic; }
   .qc-legend span::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; background: var(--lg); }
+
+  /* Run targets that are not in the demo stay greyed out at every screen size. */
+  .opt-card.is-disabled.is-off,
+  .opt-card.is-disabled.is-off:hover {
+    opacity: 0.55; filter: grayscale(1);
+    background: var(--surface-alt); border-color: var(--border);
+    box-shadow: none; transform: none; cursor: not-allowed;
+  }
+  .opt-card.is-disabled.is-off .opt-card-title,
+  .opt-card.is-disabled.is-off .opt-card-desc { color: var(--text-soft); }
 
 </style>
 <link rel="canonical" href="https://www.data-intuitive.com/demo/configurator.html">
@@ -1199,49 +1227,13 @@
 
   // ---- After the review: two paths ------------------------------------
   var PATHS = [
-    { id: 'bioinf',  name: 'Advanced CLI path', icon: '⚙',
+    { id: 'bioinf',  name: 'Advanced CLI path', icon: '⚙', disabled: true,
       desc: 'For bioinformaticians who prefer the command line. Install the prerequisites, pick a compute backend and run the workflow with Nextflow.',
       chip: 'Setup', who: 'Command line' },
     { id: 'enduser', name: 'End user path', icon: '▶',
       desc: 'For wet-lab researchers and bioinformaticians alike. Install the desktop application on your PC or workstation and let it run the same workflow, locally, in the cloud or on your HPC.',
       chip: 'Download', who: 'Desktop application' }
   ];
-
-  var BACKENDS = [
-    { id: 'local',  name: 'Local',           desc: 'Laptop or workstation',
-      warn: 'Needs a powerful computer with a lot of memory. Cell Ranger count wants 8 CPU cores and 64 GB of RAM or more per sample, STAR needs about 32 GB for a human genome index. Use a workstation rather than a laptop for real data sets.' },
-    { id: 'k8s',    name: 'Kubernetes',      desc: 'Any Kubernetes cluster',        disabled: true, pill: 'Coming soon' },
-    { id: 'seqera', name: 'Seqera Platform', desc: 'Nextflow Tower / workflow hub', disabled: true, pill: 'Coming soon' },
-    { id: 'hpc',    name: 'HPC',             desc: 'Slurm, PBS or LSF cluster',      disabled: true, pill: 'Coming soon',
-      warn: 'Run Nextflow from a login or submit node. Each process is submitted as a job; the work directory must be on a file system every compute node can see.' }
-  ];
-
-  // Prerequisite steps per backend. `code` renders a code block, `prose`
-  // a short paragraph; `check` is the one-line verification command.
-  var PREREQS = {
-    local: [
-      { label: 'Install Java 17+', section: 'Install Java',
-        code: '# macOS (Homebrew)\nbrew install openjdk@17\n\n# Debian / Ubuntu\nsudo apt-get update && sudo apt-get install -y openjdk-17-jre-headless',
-        check: 'java -version   # must be 17 or newer' },
-      { label: 'Install Nextflow', section: 'Install Nextflow',
-        code: 'curl -s https://get.nextflow.io | bash\nsudo mv nextflow /usr/local/bin/\nnextflow self-update',
-        check: 'nextflow -version   # must be ≥ 23.10' },
-      { label: 'Install Docker (or Singularity)', section: 'Install a container engine',
-        prose: 'Viash Hub pipelines ship as Docker containers. Install [Docker Desktop or Docker Engine](https://docs.docker.com/get-docker/) and make sure it is running. On HPC or systems where Docker is unavailable, use Singularity / Apptainer instead (verify with `singularity version`, need ≥ 3.8). Nextflow will pull and convert the containers automatically when you pass `-profile singularity`.',
-        check: 'docker info' }
-    ],
-    hpc: [
-      { label: 'Load Java 17+', section: 'Java on the cluster',
-        code: '# Most clusters ship Java as a module\nmodule avail java\nmodule load java/17\n\n# No module? Install a JRE in your home directory\ncurl -s https://get.sdkman.io | bash && sdk install java 17.0.2-tem',
-        check: 'java -version   # must be 17 or newer, on the login node' },
-      { label: 'Install Nextflow', section: 'Install Nextflow in your home directory',
-        code: 'curl -s https://get.nextflow.io | bash\nmkdir -p ~/bin && mv nextflow ~/bin/\nexport PATH=~/bin:$PATH   # add to ~/.bashrc\nnextflow self-update',
-        check: 'nextflow -version   # must be ≥ 23.10' },
-      { label: 'Singularity / Apptainer and the scheduler', section: 'Containers and job submission',
-        prose: 'Docker is normally not available on HPC. Viash Hub pipelines run their containers with [Singularity or Apptainer](https://apptainer.org/docs/user/latest/) (need ≥ 3.8); Nextflow pulls and converts the images when you pass `-profile singularity`. Tell Nextflow which scheduler to use with an executor in `nextflow.config`, for example `process.executor = \'slurm\'` plus your partition and account in `process.clusterOptions`. Set `singularity.cacheDir` to a shared path so images are pulled once.',
-        check: 'singularity version && sinfo   # or qstat / bhosts for PBS / LSF' }
-    ]
-  };
 
   var OSES = [
     { id: 'windows', name: 'Windows', desc: 'Desktop and workstation', logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAE4UlEQVR4nO2d327bZBTAf8d2WDeCpgy2SQM6iF2zB+B+4gkAMeAtEBfc8gxIPEamVq00cYU0DYkbxAMgrrjZxQRrk1HY8sfncGEnbVLWdE2+5Ev6/STXdu3aRz8fH392ms9CYDZaFlPrvAeSU2iOSA6WY5YTyVfJsuNbGfb+uUWvlxMNBVKOaTdRamAgAFauLwKKBMHHae1fJYrvIJoDZRYiOdgWg97rRHAkcPTjVC6e4Ie2wdODHIly0ByTHLEcZAt4C/RoXRkKnC7yZayn4JbFRM+aSFHWRLVhbdxiv/0OIlJmopw5E8/L6go2E3aev430cnRYD9lCKOsiJDD0OHsmnpfF7/FV2Xn2JpCjxVEWQjWWK8sO71SMT5efwS2rE3dyjAysx73G7thyK/4Cxq/QR7/wnsUIbnWuUSNDiwyTDCEDy0BSaN8ASl/GLrA7+juziJ32QkJ0xfwE7x3eZKAZVhwJLGWmoI3y4izHEm81MnBWzi54eFHRbkYkGWgpEFKwjEG/DowLvBgOT2VcsFnE/c5tEjJUM6hOZ7OU7YMUkY2jxvbFy8bzkLB98B1mH4Bk7LS3iJlo2kxMu0TGrmIgomwfLGbfjkiArxcmcBo2cSqswUUuWnYA604Q7JgIJurecvGkVs2PkMGOCYIdEwQ7JsK8qsFrR8hgxwTBjgmCHeNbO3jt8CuDJdxoBF6RINgx0YlnsIG5EjLYMUGwY8KtsmNCBjsmCHaMX4InP/RcA8KtsmP8yuA1JAh2TBDsmHCr7JiQwY5JgEvLDmLEtH/+M3sBFAgKUgAFhoKV01AgoqNps2q6Wleo5q0AFGRQjifWHa13pm0UGNW0FQgFRAWYQvybsHNwF8MQU4pEiUzLecrpwpQYozAlqikRysCUGkbflNiUPuW4MCPeUBJTulaOBxiJKa+p8q8qlxpKF+MySh3lI3nh8JAFAoGZCCXCMcL2gT/NNLMW9659OZpvWZ24/WCJEc2G2rcJRh+htuxYABAZbzZe6dTocndJ0cxOLNf9bgf3zZ+z65z4LXgNCIId47fgUCIC0/BbcL0RMjhwOn4JnvzQs7/6z6r9EryG+C24u+IZbJjfgtcAvwVfXfEMxnfBa0AQ7Bi/BfdCiQhMwTfB4zcaz0MGB6bgt+DrIYMDU/Bb8KrX4HCr7B6/BR+ueAbju+A1IAh2jF+CJ/uLaIYSEZhChPA9Zj8Avy87mBN8KP1lhzArCZ81vhnNmUXstjdRyTAyxLKq8/oMaCJyeaHRPbSE/fZCdzlvxnvALr/f8Ec1/Di2zEy4//wWSbfsWtw0Q0YHIgV5Y+7R/YkRz32rC+XsfbiLGPC4Gh6dWD7sJF+KFCPDrDwAkAGNOcW7WkTY/N5C8HH9CfAE+PnEsv97zYNZWh2AGy/d5ucYO3OLcCks5j0aX1zdB36phnFaVifq3AGaRNYdW7bqfbirqf/dBzxoN+hW7+PQIkUkBdLqDLiFz506C5/4G9xZeGgbPD1MkUFaHgBSxNLq/R63l/7ViJUXfBoti6GzSUyV8ZpWrZ4UrIlI3XkMay14GnuHN+lpSlxkZeaTgqWYpAjX57KPCy34NFpWJ2pvIVKVHj1W+3kXOeMjhiD4HPxqNR7/3aRvKaJpWXKq9zmJvM/xL9cHwQ5o7W8i0iSSDIl++g8sXABZUoAfwAAAAABJRU5ErkJggg==' },
@@ -1254,7 +1246,7 @@
       desc: 'On this computer. The analysis runs on your own machine and nothing is sent anywhere.',
       src: '/data/runs/VH02001614', tgt: '/results/VH02001614',
       warn: 'This needs a powerful computer. A 10x run with a few thousand cells usually wants 8 processor cores and 64 GB of memory or more, so use a workstation rather than a laptop for real data.' },
-    { id: 'cloud', name: 'Run in the cloud', icon: '☁',
+    { id: 'cloud', name: 'Run in the cloud', icon: '☁', disabled: true,
       desc: 'The app starts the machines in your own cloud account and shuts them down again when the analysis is finished.',
       providers: [
         { id: 'gcp',   name: 'Google Cloud',       src: 'gs://my-bucket/runs/VH02001614',            tgt: 'gs://my-bucket/results/VH02001614' },
@@ -1263,26 +1255,12 @@
         { id: 'k8s',   name: 'Kubernetes cluster', src: '/mnt/shared-volume/runs/VH02001614',        tgt: '/mnt/shared-volume/results/VH02001614' }
       ],
       src: '', tgt: '' },
-    { id: 'hpc', name: 'Run on HPC', icon: '🏛',
+    { id: 'hpc', name: 'Run on HPC', icon: '🏛', disabled: true,
       desc: 'Send the work to your institute’s shared computing cluster. Your IT team recognises the rest.',
       src: '/scratch/project01/runs/VH02001614', tgt: '/project/project01/results/VH02001614' }
   ];
 
   function pathSteps() {
-    if (state.path === 'bioinf') {
-      var s = [
-        { id: 'backend', label: 'Backend' }
-      ];
-      if (state.backend) {
-        PREREQS[state.backend].forEach(function(p, i){
-          s.push({ id: 'prereq_' + i, label: p.label, prereq: p, idx: i });
-        });
-      }
-      s.push({ id: 'run', label: 'Run' });
-      s.push({ id: 'report', label: 'Report' });
-      s.push({ id: 'next', label: 'Your project' });
-      return s;
-    }
     if (state.path === 'enduser') {
       return [
         { id: 'download', label: 'Download the app' },
@@ -1290,7 +1268,6 @@
         { id: 'where',    label: 'Where it runs' },
         { id: 'locations', label: 'Your files' },
         { id: 'run',      label: 'Run' },
-        { id: 'report',   label: 'Report' },
         { id: 'next',     label: 'Your project' }
       ];
     }
@@ -1301,7 +1278,7 @@
 
   // ---- Entry points, grouped by domain -------------------------------
   var ENTRY_POINTS = [
-    { id: 'single_cell', group: 'Transcriptomics', name: 'Single-cell',  desc: 'Single-cell sequencing assays', kitTotal: 13 },
+    { id: 'single_cell', group: 'Transcriptomics', name: 'Single-cell',  desc: 'Single-cell sequencing assays', kitTotal: 13, demoOff: true },
     { id: 'bulk_rna',    group: 'Transcriptomics', name: 'Bulk RNA-seq', desc: 'Standard bulk RNA library prep', kitTotal: 8 },
     { id: 'spatial',     group: 'Transcriptomics', name: 'Spatial',      desc: 'Spatial transcriptomics', soon: true },
     { id: 'ht_rna',      group: 'Transcriptomics', name: 'HT RNA-seq',   desc: 'Plate-format bulk, per-well experiments', soon: true },
@@ -1358,7 +1335,9 @@
       desc: 'Run primary analysis (mapping/counting) and stop. Output is the count matrix.' }
   ];
   var BULK_COUNTS = [
-    { id: 'transcriptomics.bulk.count_only', name: 'Counts',
+    { id: 'transcriptomics.bulk.dge', name: 'Mapping + differential expression', form: 'dge',
+      desc: 'Run primary analysis (STAR + Salmon), then test the comparisons you define for differential expression.' },
+    { id: 'transcriptomics.bulk.count_only', name: 'Counts', demoOff: true,
       desc: 'Run primary analysis (STAR + Salmon) and stop. Output is the count matrix.' }
   ];
   var SCENARIOS_BY_FAMILY = {
@@ -1405,6 +1384,21 @@
       dagNote: 'Takes paired-end or single-end FASTQs, with lane-split files concatenated per sample; several samples run in one invocation through Viash\'s --param_list. There is no demultiplexing step and no multi-sample count-matrix aggregation.'
     }
   };
+  // Differential expression: the bulk workflow plus one testing step.
+  WORKFLOWS['transcriptomics.bulk.dge'] = (function(){
+    var base = WORKFLOWS['transcriptomics.bulk.count_only'];
+    var wf = {}; for (var k in base) wf[k] = base[k];
+    wf.desc = base.desc.replace(' and MultiQC reporting.', ', differential expression testing of the comparisons you defined and MultiQC reporting.');
+    wf.dagNote = 'Takes paired-end or single-end FASTQs, with lane-split files concatenated per sample; several samples run in one invocation through Viash\'s --param_list. There is no demultiplexing step.';
+    wf.steps = base.steps.slice(0, -1).concat([
+      { name: 'Differential expression', proc: 'de:differential_expression', note: function(exp){
+          var d = exp.design, n = d ? d.comparisons.length : 0;
+          return 'Tests ' + n + ' comparison' + (n === 1 ? '' : 's') + ' against ' + (d ? d.reference : '\u2014')
+            + '. A gene counts as changed below adjusted p ' + (d ? d.padj : '0.05') + ' and above |log2 FC| ' + (d ? d.lfc : '0') + '.'; } },
+      base.steps[base.steps.length - 1]
+    ]);
+    return wf;
+  })();
   function wfLabel(wf) { return wf ? (wf.version ? wf.id + ' ' + wf.version : wf.id) : '—'; }
 
   // ---- Step 5 field declarations --------------------------------------
@@ -1539,8 +1533,27 @@
   // ---------------------------------------------------------------------
   // State
   // ---------------------------------------------------------------------
+  function defaultDesign() {
+    return {
+      factors: [{ name: 'condition', levels: ['WT', 'RAP1_UNINDUCED', 'RAP1_INDUCED_30M', 'RAP1_INDUCED_2H'] }],
+      compare: 0,
+      reference: 'RAP1_UNINDUCED',
+      comparisons: ['RAP1_INDUCED_30M', 'RAP1_INDUCED_2H', 'WT'],
+      padj: 0.05,
+      lfc: 0
+    };
+  }
+  // Differential expression is the default analysis wherever the kit offers it.
+  function preselectAnalysis() {
+    if (state.scenario) return;
+    var dge = scenariosFor(currentKit()).filter(function(sc){ return sc.form === 'dge'; })[0];
+    if (!dge) return;
+    state.scenario = dge.id;
+    if (state.exp.species === 'human') state.exp.species = 'yeast';
+  }
+  function isDge() { var sc = findIn(scenariosFor(currentKit()), state.scenario); return !!(sc && sc.form === 'dge'); }
   function defaultExp() {
-    var exp = {};
+    var exp = { design: defaultDesign() };
     FIELDS.concat(LOC_FIELDS).forEach(function(f){ if (f.type !== 'note') exp[f.id] = f.def; });
     Object.keys(EXTRA_FIELDS).forEach(function(fam){
       EXTRA_FIELDS[fam].forEach(function(f){ if (f.type !== 'note' && !(f.id in exp)) exp[f.id] = f.def; });
@@ -1553,14 +1566,12 @@
       exp: defaultExp(), activeStep: 0,
       // post-review paths
       reviewed: false, path: null,
-      backend: null, prereqSeen: {}, prereqChecked: {},
       os: null, installed: false, runTarget: null, cloudProvider: null, locSeen: false,
-      runDone: false, reportSeen: false
+      runDone: false, reportSeen: false, runStartedAt: null, resultTab: 0, deCmp: 0
     };
   }
   function resetPathState() {
-    state.backend = null; state.prereqSeen = {}; state.prereqChecked = {};
-    state.os = null; state.installed = false; state.runTarget = null; state.cloudProvider = null; state.locSeen = false; state.runDone = false; state.reportSeen = false;
+    state.os = null; state.installed = false; state.runTarget = null; state.cloudProvider = null; state.locSeen = false; state.runDone = false; state.reportSeen = false; state.runStartedAt = null; state.resultTab = 0; state.deCmp = 0;
     state.exp.source_path = ''; state.exp.target_path = '';
   }
   var state = defaults();
@@ -1610,14 +1621,11 @@
     if (i === SIM_IDX)    return !!state.path;
     var step = stepAt(i);
     if (!step) return false;
-    if (step.id === 'backend')  return !!state.backend;
-    if (step.prereq)            return !!state.prereqSeen[state.backend + ':' + step.idx];
     if (step.id === 'download') return !!state.os;
     if (step.id === 'install')  return !!state.installed;
     if (step.id === 'where')    return !!state.runTarget && (state.runTarget !== 'cloud' || !!state.cloudProvider);
     if (step.id === 'locations') return !!state.locSeen;
     if (step.id === 'run')      return !!state.runDone;
-    if (step.id === 'report')   return !!state.reportSeen;
     return false;
   }
   function maxReachableStep() {
@@ -1698,10 +1706,9 @@
         list.appendChild(el('li', { class: 'demo-progress-divider' }, [pathName]));
       }
 
-      var checked = step.prereq && state.prereqChecked[state.backend + ':' + step.idx];
       li.appendChild(el('div', { class: 'demo-step-num' }, [String(i + 1)]));
       li.appendChild(el('div', { class: 'demo-step-text' }, [
-        el('span', { class: 'demo-step-label' }, [step.label, checked ? el('span', { class: 'demo-step-tick', title: 'Verified' }, ['✓']) : null]),
+        el('span', { class: 'demo-step-label' }, [step.label]),
         summary ? el('span', { class: 'demo-step-summary' }, [summary]) : null
       ]));
       li.addEventListener('click', function(){
@@ -1725,6 +1732,10 @@
       if (!scenariosFor(kit).length) return 'No analyses for this assay';
       return state.scenario ? (findIn(scenariosFor(kit), state.scenario) || {}).name || '' : '';
     }
+    if (i === 4 && kit && experimentStepSatisfied() && isDge()) {
+      var nc = state.exp.design.comparisons.length;
+      return optLabel(SPECIES, state.exp.species) + ' \u00B7 ' + nc + ' comparison' + (nc === 1 ? '' : 's');
+    }
     if (i === 4 && kit && experimentStepSatisfied()) {
       return optLabel(SPECIES, state.exp.species) + ' \u00B7 ' + optLabel(INPUT_SHAPES, state.exp.input_shape);
     }
@@ -1735,19 +1746,11 @@
     if (i === SIM_IDX) return state.path ? (findIn(PATHS, state.path) || {}).name || '' : '';
     var step = stepAt(i);
     if (!step) return '';
-    if (step.id === 'backend' && state.backend)   return (findIn(BACKENDS, state.backend) || {}).name || '';
-    if (step.prereq) {
-      var key = state.backend + ':' + step.idx;
-      if (state.prereqChecked[key]) return 'Verified';
-      if (state.prereqSeen[key]) return 'Reviewed';
-      return '';
-    }
     if (step.id === 'download' && state.os)       return 'App for ' + ((findIn(OSES, state.os) || {}).name || '');
     if (step.id === 'install' && state.installed) return 'App installed';
     if (step.id === 'where' && state.runTarget)   return (findIn(RUN_TARGETS, state.runTarget) || {}).name;
     if (step.id === 'locations' && state.locSeen) return sourcePath() + ' → ' + targetPath();
-    if (step.id === 'run' && state.runDone)       return 'Finished · ' + ((WORKFLOWS[state.scenario] || {}).perSample ? '38m' : '1h 42m');
-    if (step.id === 'report' && state.runDone)    return (WORKFLOWS[state.scenario] || {}).perSample ? 'MultiQC report' : 'Count QC report';
+    if (step.id === 'run' && state.runDone)       return 'Finished · ' + fmtDur(runTotal(runModel()));
     if (step.id === 'next' && state.reportSeen)   return 'Steps, reports, private platform';
     return '';
   }
@@ -1776,7 +1779,7 @@
   // the whole map.
   function entryCard(ep) {
     var kitCount = ep.kitTotal || kitsFor(ep.id).length;
-    var offline = !!ep.soon;
+    var offline = !!ep.soon || !!ep.demoOff;
     var row = el('button', {
       class: 'ep-row' + (offline ? ' is-offline' : '') + (state.entry === ep.id ? ' is-selected' : ''),
       type: 'button'
@@ -1786,7 +1789,7 @@
         el('span', { class: 'ep-row-desc' }, [ep.desc])
       ]),
       el('span', { class: 'ep-row-status' }, [
-        el('span', { class: 'ep-row-state' }, [offline ? 'Coming soon' : 'Available']),
+        el('span', { class: 'ep-row-state' }, [ep.demoOff ? 'Not available in this demo' : (offline ? 'Coming soon' : 'Available')]),
         offline ? null : el('span', { class: 'ep-row-note' }, [kitCount + ' kit' + (kitCount === 1 ? '' : 's')])
       ])
     ]);
@@ -1887,6 +1890,7 @@
         type: 'button',
         onclick: function(){
           state.instrument = inst.id;
+          preselectAnalysis();
           setActiveStep(3);
         }
       }, [
@@ -1928,10 +1932,23 @@
 
     var grid = el('div', { class: 'opt-grid rows' });
     scenarios.forEach(function(sc){
+      if (sc.demoOff) {
+        var off = el('button', { class: 'opt-card scenario-card is-disabled is-off', type: 'button', title: 'Not available in this demo', 'aria-disabled': 'true' }, [
+          el('div', { class: 'opt-card-title' }, [sc.name]),
+          el('p', { class: 'opt-card-desc' }, [sc.desc]),
+          el('div', { class: 'opt-card-meta' }, [el('span', { class: 'opt-card-chip slate' }, ['Not available in this demo'])])
+        ]);
+        off.disabled = true;
+        grid.appendChild(off);
+        return;
+      }
       grid.appendChild(el('button', {
         class: 'opt-card scenario-card' + (state.scenario === sc.id ? ' is-selected' : ''),
         type: 'button',
-        onclick: function(){ state.scenario = sc.id; setActiveStep(4); }
+        onclick: function(){
+          if (sc.form === 'dge' && state.scenario !== sc.id && state.exp.species === 'human') state.exp.species = 'yeast';
+          state.scenario = sc.id; setActiveStep(4);
+        }
       }, [
         el('div', { class: 'opt-card-title' }, [sc.name]),
         el('p', { class: 'opt-card-desc' }, [sc.desc]),
@@ -1999,7 +2016,134 @@
     ]);
   }
 
+  // Experimental design block, as on the platform for differential expression.
+  function selectNode(options, value, onChange, cls) {
+    var sel = el('select', cls ? { class: cls } : null);
+    options.forEach(function(o){
+      var opt = el('option', { value: o }, [o]);
+      if (o === value) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', function(){ onChange(sel.value); render(); });
+    return sel;
+  }
+  function trashIcon() {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('width', '14'); s.setAttribute('height', '14'); s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('fill', 'none'); s.setAttribute('stroke', 'currentColor'); s.setAttribute('stroke-width', '2');
+    s.innerHTML = '<path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/>';
+    return s;
+  }
+  function designBlock() {
+    var d = state.exp.design;
+    if (d.compare >= d.factors.length) d.compare = 0;
+    var cf = d.factors[d.compare];
+    var levels = cf.levels.filter(Boolean);
+    if (levels.indexOf(d.reference) < 0) d.reference = levels[0] || '';
+    var others = levels.filter(function(l){ return l !== d.reference; });
+    d.comparisons = d.comparisons.filter(function(c){ return others.indexOf(c) >= 0; });
+
+    var box = el('div', { class: 'design-box' }, [
+      el('h4', null, ['Experimental design']),
+      el('p', { class: 'design-intro' }, ['What your samples vary by, and which groups to compare.']),
+      el('div', { class: 'field design-narrow' }, [
+        el('label', null, ['Number of factors']),
+        selectNode(['1', '2', '3'], String(d.factors.length), function(v){
+          var n = Number(v);
+          while (d.factors.length < n) d.factors.push({ name: d.factors.length === 1 ? 'batch' : 'factor' + (d.factors.length + 1), levels: ['', ''] });
+          d.factors.length = n;
+        }),
+        el('span', { class: 'field-help' }, ['Each is one thing your samples vary by, such as condition or batch. A factor you do not compare is accounted for, not tested.'])
+      ])
+    ]);
+
+    d.factors.forEach(function(f, fi){
+      var name = el('input', { type: 'text', value: f.name, placeholder: 'condition' });
+      name.addEventListener('input', function(){ f.name = name.value; });
+      name.addEventListener('change', render);
+      var row = el('div', { class: 'level-row' });
+      f.levels.forEach(function(lv, li){
+        var inp = el('input', { type: 'text', value: lv, placeholder: 'level ' + (li + 1) });
+        inp.addEventListener('input', function(){
+          var old = f.levels[li]; f.levels[li] = inp.value;
+          if (fi === d.compare) {
+            if (d.reference === old) d.reference = inp.value;
+            d.comparisons = d.comparisons.map(function(c){ return c === old ? inp.value : c; });
+          }
+        });
+        inp.addEventListener('change', render);
+        row.appendChild(el('div', { class: 'level-item field' }, [inp,
+          el('button', { class: 'icon-btn', type: 'button', title: 'Remove level',
+            onclick: function(){ f.levels.splice(li, 1); render(); } }, ['\u2715'])
+        ]));
+      });
+      row.appendChild(el('button', { class: 'add-btn', type: 'button',
+        onclick: function(){ f.levels.push(''); render(); } }, ['+ Add level']));
+      box.appendChild(el('div', { class: 'design-sec' }, [
+        el('div', { class: 'design-sec-title' }, ['Factor ' + (fi + 1)]),
+        el('div', { class: 'field design-narrow' }, [el('label', null, ['Name']), name]),
+        el('div', { class: 'field' }, [el('label', null, ['Levels']), row])
+      ]));
+    });
+
+    var factorNames = d.factors.map(function(f, i){ return f.name || 'factor' + (i + 1); });
+    var cmp = el('div', { class: 'design-sec' }, [
+      el('div', { class: 'design-sec-title' }, ['Comparisons']),
+      el('div', { class: 'cmp-head' }, [
+        el('div', { class: 'field' }, [el('label', null, ['Factor to compare']),
+          selectNode(factorNames, factorNames[d.compare], function(v){
+            d.compare = factorNames.indexOf(v);
+            var lv = d.factors[d.compare].levels.filter(Boolean);
+            d.reference = lv[0] || ''; d.comparisons = lv.slice(1, 2);
+          })]),
+        el('div', { class: 'field' }, [el('label', null, ['Reference group']),
+          selectNode(levels, d.reference, function(v){ d.reference = v; })])
+      ]),
+      el('span', { class: 'field-help' }, ['Each comparison tests one level of ' + factorNames[d.compare] + ' against ' + (d.reference || '\u2014') + '. A positive fold change means higher than in ' + (d.reference || '\u2014') + '.'])
+    ]);
+    d.comparisons.forEach(function(c, ci){
+      cmp.appendChild(el('div', { class: 'cmp-label' }, ['Comparison ' + (ci + 1)]));
+      cmp.appendChild(el('div', { class: 'cmp-row field' }, [
+        selectNode(others, c, function(v){ d.comparisons[ci] = v; }),
+        el('span', { class: 'vs' }, ['vs ' + d.reference]),
+        el('button', { class: 'icon-btn', type: 'button', title: 'Remove comparison',
+          onclick: function(){ d.comparisons.splice(ci, 1); render(); } }, [trashIcon()])
+      ]));
+    });
+    var free = others.filter(function(l){ return d.comparisons.indexOf(l) < 0; });
+    if (free.length) {
+      cmp.appendChild(el('button', { class: 'add-btn', type: 'button',
+        onclick: function(){ d.comparisons.push(free[0]); render(); } }, ['+ Add comparison']));
+    }
+    box.appendChild(cmp);
+    return box;
+  }
+  function numberField(label, key, step, help) {
+    var d = state.exp.design;
+    var inp = el('input', { type: 'number', step: step, min: '0', value: String(d[key]) });
+    inp.addEventListener('input', function(){ d[key] = inp.value === '' ? '' : Number(inp.value); });
+    return el('div', { class: 'field' }, [el('label', null, [label]), inp, el('span', { class: 'field-help' }, [help])]);
+  }
+  function renderDgeStep5() {
+    var grid = el('div', { class: 'field-grid' }, [
+      fieldNode(fieldById('species'), function(){}),
+      designBlock(),
+      numberField('Adjusted p-value cut-off', 'padj', '0.01', 'A gene counts as changed when its adjusted p-value is below this.'),
+      numberField('Minimum fold change (log2)', 'lfc', '0.5', 'A gene also has to change by more than this; 1 means at least twofold, 0 means any change.')
+    ]);
+    return el('div', { class: 'step-card' }, [
+      el('span', { class: 'step-card-eyebrow' }, ['Step 5 \u00B7 Experiment']),
+      el('h2', { class: 'step-card-title' }, ['Describe the experiment']),
+      el('p', { class: 'step-card-intro' }, ['Species, inputs and reference. Defaults are pre-filled; adjust them to your run.']),
+      grid,
+      el('div', { class: 'step-action' }, [el('button', {
+        class: 'btn-primary', type: 'button', onclick: function(){ setActiveStep(5); }
+      }, ['Review', arrow()])])
+    ]);
+  }
+
   function renderStep5() {
+    if (isDge()) return renderDgeStep5();
     var kit = currentKit();
     var nextBtn = el('button', {
       class: 'btn-primary', type: 'button',
@@ -2046,6 +2190,17 @@
 
   function experimentSummaryLines() {
     var kit = currentKit();
+    if (isDge()) {
+      var d = state.exp.design, cf = d.factors[d.compare] || d.factors[0];
+      var out = ['Species: ' + optLabel(SPECIES, state.exp.species)];
+      d.factors.forEach(function(f, i){
+        out.push('Factor ' + (i + 1) + ': ' + (f.name || '\u2014') + ' (' + f.levels.filter(Boolean).join(', ') + ')');
+      });
+      d.comparisons.forEach(function(c){ out.push('Compare: ' + (c || '\u2014') + ' vs ' + d.reference + ' (' + (cf.name || 'factor') + ')'); });
+      out.push('Adjusted p-value cut-off: ' + d.padj);
+      out.push('Minimum fold change (log2): ' + d.lfc);
+      return out;
+    }
     var lines = [
       'Species: ' + optLabel(SPECIES, state.exp.species),
       'Input: ' + optLabel(INPUT_SHAPES, state.exp.input_shape),
@@ -2223,6 +2378,19 @@
   function renderPathChoice() {
     var grid = el('div', { class: 'path-grid' });
     PATHS.forEach(function(p){
+      if (p.disabled) {
+        var off = el('button', { class: 'opt-card path-card is-disabled', type: 'button', title: 'Not available in this demo' }, [
+          el('div', { class: 'opt-card-icon' }, [p.icon]),
+          el('div', { class: 'opt-card-title' }, [p.name]),
+          el('p', { class: 'opt-card-desc' }, [p.desc]),
+          el('div', { class: 'opt-card-meta' }, [
+            el('span', { class: 'opt-card-chip slate' }, ['Not available in this demo'])
+          ])
+        ]);
+        off.disabled = true;
+        grid.appendChild(off);
+        return;
+      }
       grid.appendChild(el('button', {
         class: 'opt-card path-card' + (state.path === p.id ? ' is-selected' : ''),
         type: 'button',
@@ -2265,128 +2433,6 @@
   }
   function pathEyebrow() {
     return 'Step ' + (state.activeStep + 1) + ' · ' + (findIn(PATHS, state.path) || {}).name;
-  }
-
-  // ---------------------------------------------------------------------
-  // Bioinformatics path
-  // ---------------------------------------------------------------------
-  function renderBackend() {
-    var grid = el('div', { class: 'ep-list' });
-    BACKENDS.forEach(function(b){
-      var row = el('button', {
-        class: 'ep-row' + (b.disabled ? ' is-offline' : '') + (state.backend === b.id ? ' is-selected' : ''),
-        type: 'button'
-      }, [
-        el('span', { class: 'ep-row-main' }, [
-          el('span', { class: 'ep-row-title' }, [b.name]),
-          el('span', { class: 'ep-row-desc' }, [b.desc]),
-          (b.warn && !b.disabled)
-            ? el('span', { class: 'ep-row-warn' }, [el('span', null, ['\u26A0']), el('span', null, [b.warn])])
-            : null
-        ]),
-        el('span', { class: 'ep-row-status' }, [
-          el('span', { class: 'ep-row-state' }, [b.disabled ? 'Offline' : 'Online']),
-          el('span', { class: 'ep-row-note' }, [
-            b.disabled ? 'Not available yet' : PREREQS[b.id].length + ' prerequisites'
-          ])
-        ])
-      ]);
-      if (b.disabled) {
-        row.disabled = true;
-      } else {
-        row.addEventListener('click', function(){
-          if (state.backend !== b.id) { state.backend = b.id; state.prereqSeen = {}; state.prereqChecked = {}; }
-          setActiveStep(state.activeStep + 1);
-        });
-      }
-      grid.appendChild(row);
-    });
-    return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
-      el('h2', { class: 'step-card-title' }, ['Choose a compute backend']),
-      el('p', { class: 'step-card-intro' }, ['Where will this analysis run? The prerequisites that follow depend on it.']),
-      grid,
-      stepFooter({ hideNext: !state.backend })
-    ]);
-  }
-
-  function copyButton(text) {
-    var btn = el('button', { class: 'copy-btn', type: 'button', title: 'Copy to clipboard' }, ['⧉ Copy']);
-    btn.addEventListener('click', function(){
-      function done() { btn.textContent = '✓ Copied'; btn.classList.add('is-copied');
-        setTimeout(function(){ btn.textContent = '⧉ Copy'; btn.classList.remove('is-copied'); }, 1400); }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, done);
-      } else {
-        var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
-        ta.select(); try { document.execCommand('copy'); } catch(_){} document.body.removeChild(ta); done();
-      }
-    });
-    return btn;
-  }
-  function codeBlock(code, faded) {
-    var block = el('div', { class: 'code-block' + (faded ? ' is-faded' : '') });
-    code.split('\n').forEach(function(line, i){
-      if (i) block.appendChild(document.createTextNode('\n'));
-      var hash = line.indexOf('#');
-      if (hash >= 0) {
-        block.appendChild(document.createTextNode(line.slice(0, hash)));
-        block.appendChild(el('span', { class: 'cmt' }, [line.slice(hash)]));
-      } else {
-        block.appendChild(document.createTextNode(line));
-      }
-    });
-    block.appendChild(copyButton(code));
-    return block;
-  }
-  // Minimal markdown: `code` and [text](url).
-  function prose(md) {
-    var p = el('p', { class: 'prose' });
-    var re = /`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)/g, last = 0, m;
-    while ((m = re.exec(md))) {
-      if (m.index > last) p.appendChild(document.createTextNode(md.slice(last, m.index)));
-      if (m[1]) p.appendChild(el('code', null, [m[1]]));
-      else p.appendChild(el('a', { href: m[3], target: '_blank', rel: 'noopener' }, [m[2]]));
-      last = re.lastIndex;
-    }
-    if (last < md.length) p.appendChild(document.createTextNode(md.slice(last)));
-    return p;
-  }
-
-  function renderPrereq(step) {
-    var p = step.prereq;
-    var list = PREREQS[state.backend];
-    var key = state.backend + ':' + step.idx;
-    var isLast = step.idx === list.length - 1;
-    var backendName = (findIn(BACKENDS, state.backend) || {}).name || state.backend;
-
-    var checkbox = el('input', { type: 'checkbox', id: 'chk-' + key });
-    checkbox.checked = !!state.prereqChecked[key];
-    checkbox.addEventListener('change', function(){
-      state.prereqChecked[key] = checkbox.checked;
-      renderProgress();
-    });
-
-    return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
-      el('div', { class: 'prereq-head' }, [
-        el('div', { class: 'prereq-num' }, [String(step.idx + 1)]),
-        el('h2', { class: 'step-card-title' }, [p.label])
-      ]),
-      el('p', { class: 'prereq-sub' }, ['Prerequisite ' + (step.idx + 1) + ' of ' + list.length + ' · ' + backendName.toLowerCase()]),
-      el('div', { class: 'sec-label' }, [p.section]),
-      p.code ? codeBlock(p.code, true) : prose(p.prose),
-      p.code ? el('p', { class: 'code-note' }, ['Blurred on purpose: the exact commands come with your setup.']) : null,
-      el('div', { class: 'check-panel' }, [
-        el('div', { class: 'sec-label' }, ['Check it works']),
-        codeBlock(p.check),
-        el('label', { class: 'check-row', for: 'chk-' + key }, [checkbox, 'I ran this and it worked'])
-      ]),
-      stepFooter({
-        label: isLast ? 'Continue to run' : 'Continue',
-        onContinue: function(){ state.prereqSeen[key] = true; }
-      })
-    ]);
   }
 
   // ---------------------------------------------------------------------
@@ -2534,12 +2580,22 @@
   function renderWhere() {
     var grid = el('div', { class: 'opt-grid rows' });
     RUN_TARGETS.forEach(function(t){
+      if (t.disabled) {
+        var off = el('button', { class: 'opt-card is-disabled is-off', type: 'button', title: 'Not available in this demo', 'aria-disabled': 'true' }, [
+          el('div', { class: 'opt-card-title' }, [t.icon + '  ' + t.name]),
+          el('p', { class: 'opt-card-desc' }, [t.desc]),
+          el('div', { class: 'opt-card-meta' }, [el('span', { class: 'opt-card-chip slate' }, ['Not available in this demo'])])
+        ]);
+        off.disabled = true;
+        grid.appendChild(off);
+        return;
+      }
       grid.appendChild(el('button', {
         class: 'opt-card' + (state.runTarget === t.id ? ' is-selected' : ''),
         type: 'button',
         onclick: function(){
           if (state.runTarget !== t.id) { state.exp.source_path = ''; state.exp.target_path = ''; state.locSeen = false; }
-          state.runTarget = t.id; state.runDone = false;
+          state.runTarget = t.id; state.runDone = false; state.runStartedAt = null; state.resultTab = 0;
           state.cloudProvider = (t.id === 'cloud') ? 'aws' : null;
           render();
         }
@@ -2606,162 +2662,672 @@
   // Shared: run screen with QC report
   // ---------------------------------------------------------------------
   var runTimer = null;
-  var HASHES = ['a1/4f2c9e', 'c7/91be03', 'e2/0a77d1', '9b/33fe10', 'f4/2c8d55', '3d/b80c17', '7e/5a91f0', 'b2/c4d6e8', '5f/07aa31'];
-  function pad(str, n) { while (str.length < n) str += ' '; return str; }
-  function runPlan(wf) {
-    var n = wf.perSample ? 1 : QC_SAMPLES.length;
-    var log = [];
-    if (state.path === 'bioinf') {
-      log.push(['dim', '# params.yaml was generated from your wizard answers. Source and target are in it, just run.']);
-      log.push(['cmd', 'cat params.yaml']);
-      log.push(['', 'input: ' + sourcePath()]);
-      log.push(['', 'publish_dir: ' + targetPath()]);
-      log.push(['', 'reference: ' + (state.exp.reference_mode === 'own' ? firstOf(fieldValue(fieldById('reference_path'))) : (state.exp.reference_mode === 'generate' ? 'build from ' + firstOf(fieldValue(fieldById('genome_fasta'))) : optLabel(SPECIES, state.exp.species)))]);
-      if (state.entry === 'single_cell') log.push(['', 'expect_cells: ' + fieldValue(fieldById('expect_cells'))]);
-      log.push(['dim', '']);
-      log.push(['cmd', 'nextflow run ' + wf.id + (wf.version ? ' -r ' + wf.version : '') + ' -profile ' + (state.backend === 'hpc' ? 'singularity' : 'docker') + ' -params-file params.yaml']);
-      log.push(['dim', '']);
+
+  // ---- Run model --------------------------------------------------------
+  // One row per process, as on the platform's run output page. Times are in
+  // minutes of the recorded run; the demo replays them much faster.
+  var BULK_SAMPLES = ['SRR6357070', 'SRR6357071', 'SRR6357072', 'SRR6357073', 'SRR6357074', 'SRR6357075',
+                      'SRR6357076', 'SRR6357077', 'SRR6357078', 'SRR6357079', 'SRR6357080', 'SRR6357081'];
+  var RUN_NAME = 'fervent_meucci';
+  var NF_VERSION = '25.10.2';
+
+  function runSamples() {
+    return (WORKFLOWS[state.scenario] || {}).perSample ? BULK_SAMPLES : QC_SAMPLES.map(function(s){ return s.id; });
+  }
+  function runModel() {
+    var wf = WORKFLOWS[state.scenario] || WORKFLOWS['transcriptomics.single_cell.count_only'];
+    var n = runSamples().length;
+    var procs;
+    if (wf.perSample) {
+      procs = [
+        ['save_params',      0,    0.6,  n],
+        ['fastqc_raw',       0.6,  3.4,  n],
+        ['trimgalore',       0.6,  6.2,  n],
+        ['fastqc_trimmed',   6.2,  9.0,  n],
+        ['kallisto_quant',   6.2, 14.5,  n],
+        ['star_align',       6.2, 24.0,  n],
+        ['salmon_quant',    24.0, 30.5,  n],
+        ['qualimap_rnaseq', 24.0, 32.0,  n]
+      ];
+      if (state.scenario === 'transcriptomics.bulk.dge') procs.push(['differential_expression', 32.0, 34.0, 1]);
+      var t = procs[procs.length - 1][2];
+      procs.push(['multiqc', t, t + 2.2, 1]);
+      procs.push(['Publishing results', t + 2.2, t + 3.5, n]);
+      return { wf: wf, prefix: 'bulk_rnaseq:run_wf:', procs: procs, cpus: 16, mem: 64 };
     }
-    log.push(
-      ['dim', 'N E X T F L O W  ~  version 24.10.4'],
-      ['hl',  'Launching `' + wf.id + '`' + (wf.version ? ' [' + wf.version + ']' : '') + ' ...'],
-      ['',    'executor >  {EXEC} (' + n + ')']
-    );
-    var width = 30;
-    wf.steps.forEach(function(st, i){
-      var h = '[' + HASHES[i % HASHES.length] + '] ';
-      var isRef = st.kind === 'ref';
-      var count = isRef || st.proc.indexOf('report') === 0 ? 1 : n;
-      var skip = (st.kind === 'demux' && state.exp.input_shape === 'fastq')
-              || (isRef && state.exp.reference_mode !== 'generate');
-      if (skip) {
-        log.push(['dim', h + pad(st.proc, width) + '[100%] ' + count + ' of ' + count + ' ✔  (no work: ' + (isRef ? 'reference provided' : 'FASTQ provided') + ')']);
-        return;
-      }
-      if (count > 1) {
-        // Same key as the finished line below: Nextflow rewrites the line in
-        // place rather than printing a second one.
-        log.push(['', h + pad(st.proc, width) + '[  0%] 0 of ' + count, 'proc' + i]);
-        if (st.kind === 'count') {
-          QC_SAMPLES.forEach(function(sm){ log.push(['dim', '  ' + pad(sm.id, 24) + 'reads ' + sm.reads.toFixed(1) + 'M  expect-cells ' + fieldValue(fieldById('expect_cells'))]); });
-        }
-      }
-      log.push(['', h + pad(st.proc, width) + '[100%] ' + count + ' of ' + count + ' ✔', 'proc' + i]);
-    });
-    var total = 0;
-    wf.steps.forEach(function(st){ total += (st.kind === 'ref' || st.proc.indexOf('report') === 0) ? 1 : n; });
-    log.push(['ok', 'Completed at: {DATE}   Duration: ' + (wf.perSample ? '0h 38m 05s' : '1h 42m 11s') + '   Succeeded: ' + total]);
-    log.push(['ok', wf.perSample ? 'Report written to ' + targetPath() + '/multiqc_report.html' : 'Written ' + targetPath() + '/<sample>.h5mu and <sample>/outs/web_summary.html']);
-    return { stages: wf.steps.map(function(st){ return st.name; }), log: log };
+    procs = [];
+    if (state.exp.input_shape !== 'fastq') procs.push(['bcl_convert', 0, 14, 1], ['fastqc', 14, 19, n], ['multiqc', 19, 21, 1]);
+    var s0 = procs.length ? 21 : 0;
+    if (state.exp.reference_mode === 'generate') { procs.push(['cellranger_mkref', s0, s0 + 32, 1]); s0 += 32; }
+    procs.push(['cellranger_count', s0, s0 + 74, n], ['cellranger_count_split', s0 + 74, s0 + 77, n],
+               ['from_10xh5_to_h5mu', s0 + 77, s0 + 80, n], ['Publishing results', s0 + 80, s0 + 81, n]);
+    return { wf: wf, prefix: 'openpipeline:', procs: procs, cpus: 16, mem: 64 };
+  }
+  function fmtDur(min) {
+    var s = Math.round(min * 60), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), r = s % 60;
+    return (h ? h + 'h ' : '') + (h || m ? m + 'm ' : '') + r + 's';
+  }
+  function runTotal(model) { return model.procs.reduce(function(a, p){ return Math.max(a, p[2]); }, 0); }
+  function taskName(model, p, sample) {
+    if (p[0] === 'Publishing results') return 'publish (' + sample + ')';
+    return model.prefix + p[0] + ':processWf:' + p[0] + '_process' + (p[3] > 1 ? ' (' + sample + ')' : '');
+  }
+  function hash(i) {
+    var h = ((i + 7) * 2654435761 >>> 0).toString(16);
+    return h.slice(0, 2) + '/' + h.slice(2, 8);
   }
 
+  // ---- Small sparkline -----------------------------------------------------
+  function spark(values, max) {
+    var w = 220, h = 34;
+    var pts = values.map(function(v, i){
+      return (i / Math.max(1, values.length - 1) * w).toFixed(1) + ',' + (h - v / max * (h - 2)).toFixed(1);
+    });
+    var svg = svgEl('svg', { viewBox: '0 0 ' + w + ' ' + h, preserveAspectRatio: 'none', class: 'ro-spark' });
+    if (values.length > 1) {
+      svg.appendChild(svgEl('polygon', { points: '0,' + h + ' ' + pts.join(' ') + ' ' + w + ',' + h, fill: 'rgba(124,75,172,0.14)' }));
+      svg.appendChild(svgEl('polyline', { points: pts.join(' '), fill: 'none', stroke: '#7C4BAC', 'stroke-width': '1.5' }));
+    }
+    return svg;
+  }
+
+  // ---- Result tabs ------------------------------------------------------------
+  function seeded(i, lo, hi) { var x = Math.sin(i * 12.9898 + 78.233) * 43758.5453; x -= Math.floor(x); return lo + x * (hi - lo); }
+  function renderMultiqcTab() {
+    if (!(WORKFLOWS[state.scenario] || {}).perSample) {
+      return el('div', { class: 'rt-pad' }, [renderQcReport()]);
+    }
+    var body = el('tbody');
+    BULK_SAMPLES.forEach(function(s, i){
+      var al = seeded(i, 28, 34), dup = seeded(i + 40, 62, 70);
+      body.appendChild(el('tr', null, [el('td', null, [s + '.star']), el('td', { class: 'mq-g' }, [al.toFixed(1) + ' %']), el('td', null, ['']), el('td', null, ['']), el('td', null, ['']), el('td', null, [''])]));
+      body.appendChild(el('tr', null, [el('td', null, [s + '_1']), el('td', null, ['']), el('td', { class: 'mq-b' }, [seeded(i + 9, 1.5, 2.6).toFixed(1) + ' %']), el('td', { class: 'mq-o' }, [dup.toFixed(1) + ' %']), el('td', { class: 'mq-p' }, ['40 %']), el('td', { class: 'mq-s' }, [seeded(i + 3, 0.8, 1.3).toFixed(1) + ' M'])]));
+    });
+    var bars = svgEl('svg', { viewBox: '0 0 420 ' + (BULK_SAMPLES.length * 14 + 6), class: 'mq-chart' });
+    BULK_SAMPLES.forEach(function(s, i){
+      var u = seeded(i, 28, 34), m = seeded(i + 5, 18, 24), x = 0, y = i * 14 + 3;
+      bars.appendChild(svgEl('text', { x: 0, y: y + 9, 'font-size': '8', fill: '#6B7590' }, [s]));
+      [[u, '#437BB1'], [m, '#7CB5EC'], [100 - u - m, '#F7A35C']].forEach(function(seg){
+        bars.appendChild(svgEl('rect', { x: 72 + x * 3.4, y: y, width: seg[0] * 3.4, height: 10, fill: seg[1] }));
+        x += seg[0];
+      });
+    });
+    var nav = ['General Stats', 'Salmon', 'STAR', 'Cutadapt', 'FastQC'];
+    var sub = ['Sequence Counts', 'Per Base Sequence Quality', 'Per Sequence GC Content', 'Sequence Duplication Levels', 'Adapter Content'];
+    return el('div', { class: 'mq' }, [
+      el('div', { class: 'mq-nav' }, [el('div', { class: 'mq-logo' }, [el('b', null, ['multiqc']), el('span', null, ['v1.21'])])]
+        .concat(nav.map(function(n){ return el('div', { class: 'mq-nav-i' }, [n]); }))
+        .concat(sub.map(function(n){ return el('div', { class: 'mq-nav-s' }, [n]); }))),
+      el('div', { class: 'mq-main' }, [
+        el('div', { class: 'mq-title' }, ['multiqc']),
+        el('p', { class: 'mq-intro' }, ['A modular tool to aggregate results from bioinformatics analyses across many samples into a single report.']),
+        el('p', { class: 'mq-small' }, ['Report generated on ' + new Date().toISOString().slice(0, 10) + ' based on data in the run work directory.']),
+        el('h3', null, ['General Statistics']),
+        el('div', { class: 'mq-tablewrap' }, [el('table', { class: 'mq-table' }, [
+          el('thead', null, [el('tr', null, ['Sample Name', '% Aligned', '% BP Trimmed', '% Dups', '% GC', 'M Seqs'].map(function(h){ return el('th', null, [h]); }))]),
+          body
+        ])]),
+        el('h3', null, ['STAR: Alignment Scores']),
+        bars,
+        el('div', { class: 'mq-legend' }, [el('span', { style: '--c:#437BB1' }, ['Uniquely mapped']), el('span', { style: '--c:#7CB5EC' }, ['Mapped to multiple loci']), el('span', { style: '--c:#F7A35C' }, ['Unmapped: too short'])])
+      ])
+    ]);
+  }
+  function renderExecTab(model, startedAt) {
+    var wf = model.wf, total = runTotal(model);
+    var tasks = model.procs.reduce(function(a, p){ return a + p[3]; }, 0);
+    var end = new Date(startedAt.getTime() + total * 60000);
+    function ts(d) { return d.toISOString().slice(0, 19).replace('T', ' '); }
+    var script = wf.perSample ? 'target/nextflow/workflows/bulk_rnaseq/main.nf' : 'target/nextflow/workflows/ingestion/cellranger_multi/main.nf';
+    var cmd = 'nextflow run ' + wf.id + ' -hub vsh -r ' + (wf.version || 'main') + ' -main-script ' + script +
+      ' -params-file params.yaml -profile docker -with-report reports/execution-report.html -with-timeline reports/timeline.html -with-dag reports/dag.html';
+    var rows = [
+      ['CPU-Hours', (total / 60 * 2.6).toFixed(1)],
+      ['Workflow repository', 'https://packages.viash-hub.com/' + wf.id + ', revision ' + (wf.version || 'main')],
+      ['Workflow profile', 'docker'],
+      ['Container engine', 'docker'],
+      ['Nextflow version', 'version ' + NF_VERSION]
+    ];
+    return el('div', { class: 'nx' }, [
+      el('div', { class: 'nx-bar' }, [el('span', { class: 'nx-brand' }, ['✕ Nextflow Report']), el('span', null, ['Summary']), el('span', null, ['Resources']), el('span', null, ['Tasks']), el('span', { class: 'nx-run' }, ['[' + RUN_NAME + ']'])]),
+      el('div', { class: 'nx-body' }, [
+        el('h3', null, ['Nextflow workflow report']),
+        el('div', { class: 'nx-name' }, ['[' + RUN_NAME + ']']),
+        el('div', { class: 'nx-ok' }, ['Workflow execution completed successfully!']),
+        el('h4', null, ['Run times']),
+        el('p', null, [ts(startedAt) + ' – ' + ts(end) + ' (duration: ', el('b', null, [fmtDur(total)]), ')']),
+        el('div', { class: 'nx-bar-ok' }, [tasks + ' succeeded']),
+        el('h4', null, ['Nextflow command']),
+        el('pre', { class: 'nx-cmd' }, [cmd]),
+        el('table', { class: 'nx-kv' }, rows.map(function(r){ return el('tr', null, [el('th', null, [r[0]]), el('td', null, [r[1]])]); }))
+      ])
+    ]);
+  }
+  function renderTimelineTab(model, startedAt) {
+    var total = runTotal(model), samples = runSamples(), list = el('div', { class: 'tl-rows' });
+    model.procs.forEach(function(p, pi){
+      for (var k = 0; k < p[3]; k++) {
+        var span = (p[2] - p[1]) / Math.max(1, p[3]);
+        var s = p[1] + span * k * 0.6, e = Math.min(p[2], s + Math.max(span * 1.4, (p[2] - p[1]) * 0.25));
+        list.appendChild(el('div', { class: 'tl-row' }, [
+          el('span', { class: 'tl-name' }, [taskName(model, p, samples[k % samples.length])]),
+          el('span', { class: 'tl-track' }, [el('span', { class: 'tl-bar', style: 'left:' + (s / total * 100).toFixed(2) + '%;width:' + Math.max(0.6, (e - s) / total * 100).toFixed(2) + '%' }),
+            el('span', { class: 'tl-lab', style: 'left:' + Math.min(80, (e / total * 100)).toFixed(2) + '%' }, [fmtDur(e - s)])])
+        ]));
+      }
+    });
+    return el('div', { class: 'tl' }, [
+      el('h3', null, ['Processes execution timeline']),
+      el('p', null, ['Launch time: ' + startedAt.toISOString().slice(0, 16).replace('T', ' ')]),
+      el('p', null, ['Elapsed time: ' + fmtDur(total)]),
+      el('p', null, ['Legend: job wall time']),
+      list
+    ]);
+  }
+  function renderDagTab(model) {
+    // Group processes that start together into one level of the diagram.
+    var levels = [], byStart = {};
+    model.procs.forEach(function(p){
+      var key = p[1].toFixed(1);
+      if (!(key in byStart)) { byStart[key] = levels.length; levels.push([]); }
+      levels[byStart[key]].push(p);
+    });
+    var wrap = el('div', { class: 'dag' }, [el('div', { class: 'dag-io' }, ['input: ' + (model.wf.perSample || state.exp.input_shape === 'fastq' ? 'FASTQ files' : 'sequencer run folder')])]);
+    levels.forEach(function(lv){
+      wrap.appendChild(el('div', { class: 'dag-arrow' }, ['↓']));
+      wrap.appendChild(el('div', { class: 'dag-level' }, lv.map(function(p){
+        return el('div', { class: 'dag-node' }, [p[0], p[3] > 1 ? el('span', null, ['× ' + p[3]]) : null]);
+      })));
+    });
+    wrap.appendChild(el('div', { class: 'dag-arrow' }, ['↓']));
+    wrap.appendChild(el('div', { class: 'dag-io' }, ['output: ' + targetPath()]));
+    return wrap;
+  }
+
+  // ---- Differential expression tab (example results) ------------------------
+  var YEAST_GENES = ['RPL3', 'RPS22B', 'RPL11A', 'RPS5', 'RPL28', 'RPS3', 'RPL5', 'RPS16A', 'RPL19A', 'RPS9B',
+    'PGK1', 'TDH3', 'ENO2', 'CDC19', 'ADH1', 'PDC1', 'FBA1', 'TPI1', 'GPM1', 'TEF1',
+    'HSP12', 'HSP26', 'CTT1', 'GRE2', 'SSA4', 'HXT2', 'GAL1', 'SUC2', 'PHO84', 'FIT2',
+    'NOP56', 'NSR1', 'RRP5', 'UTP20', 'DBP2', 'RAP1', 'GCR1', 'FHL1', 'IFH1', 'SFP1'];
+  function deComparisons() {
+    var d = state.exp.design, cf = d.factors[d.compare] || d.factors[0];
+    return d.comparisons.map(function(c){ return { name: c, ref: d.reference, factor: cf.name || 'factor' }; });
+  }
+  // Seeded example genes for one comparison: log2 fold change and adjusted p.
+  function deGenes(ci, cmp) {
+    var effect = /2H/i.test(cmp.name) ? 1.6 : /30M/i.test(cmp.name) ? 1.0 : 0.5;
+    var yeast = state.exp.species === 'yeast';
+    var out = [];
+    for (var i = 0; i < 420; i++) {
+      var named = i < YEAST_GENES.length, lfc, lp;
+      if (i < 20) {                                   // the clearest responders: 10 up, 10 down
+        lfc = (i < 10 ? 1 : -1) * effect * seeded(i + ci * 31, 1.3, 2.4);
+        lp = Math.abs(lfc) * seeded(i * 5 + ci * 13, 3.2, 5.0) + 1.5;
+      } else if (i < 120) {                           // a moderate tail
+        lfc = (seeded(i * 7 + ci, 0, 1) < 0.5 ? -1 : 1) * effect * seeded(i + ci * 31, 0.2, 1.3);
+        lp = Math.abs(lfc) * seeded(i * 5 + ci * 13, 0.9, 3.4) + seeded(i * 3 + ci, 0, 0.6);
+      } else {                                        // most genes do not move
+        lfc = seeded(i * 11 + ci, -0.45, 0.45) * (0.5 + effect / 3);
+        lp = Math.abs(lfc) * seeded(i * 5 + ci * 13, 0.5, 1.8) + seeded(i + ci, 0, 0.5);
+      }
+      out.push({ gene: named && yeast ? YEAST_GENES[i] : (yeast ? 'Y' + 'ABCDEFGHIJKLMNOP'.charAt(i % 16) + 'L' + String(100 + i).slice(-3) + 'W' : 'gene_' + String(i + 1).padStart(4, '0')),
+                 lfc: lfc, padj: Math.pow(10, -lp), lp: lp });
+    }
+    return out;
+  }
+  function deStats(genes) {
+    var d = state.exp.design, pa = Number(d.padj) || 0.05, lf = Number(d.lfc) || 0;
+    var up = 0, down = 0;
+    genes.forEach(function(g){
+      g.sig = g.padj < pa && Math.abs(g.lfc) > lf;
+      if (g.sig && g.lfc > 0) up++; else if (g.sig) down++;
+    });
+    return { up: up, down: down, pa: pa, lf: lf };
+  }
+  // Laid out as the platform's own report: a scrolling body of captioned plot
+  // cards with a sticky table of contents beside it. Every number is generated
+  // from the design the visitor set, and is an illustration, not a real result.
+  var DE_UP = '#D1453B', DE_DOWN = '#3D6FB4', DE_NS = '#C9CDD6';
+
+  // Example samples: the levels of the compared factor, with replicates each,
+  // because a PCA and a correlation matrix need more than the demo's two runs.
+  function deSamples() {
+    var d = state.exp.design, cf = d.factors[d.compare] || d.factors[0];
+    var levels = (cf.levels || []).filter(Boolean);
+    if (!levels.length) levels = ['control', 'treated'];
+    var per = 6, out = [];
+    levels.forEach(function(lv, li){
+      for (var r = 0; r < per; r++) {
+        out.push({ id: 'ERR' + (10042682 + li * per + r), group: lv, li: li });
+      }
+    });
+    return { samples: out, levels: levels, factor: cf.name || 'factor' };
+  }
+  function deAxis(svg, L, R, T, B, W, H, xlab, ylab) {
+    svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: H - B, y2: H - B, stroke: '#BBB' }));
+    svg.appendChild(svgEl('line', { x1: L, x2: L, y1: T, y2: H - B, stroke: '#BBB' }));
+    if (xlab) svg.appendChild(svgEl('text', { x: (L + W - R) / 2, y: H - 2, 'font-size': '9', 'text-anchor': 'middle', fill: '#555' }, [xlab]));
+    if (ylab) svg.appendChild(svgEl('text', { x: 9, y: (T + H - B) / 2, 'font-size': '9', 'text-anchor': 'middle', fill: '#555',
+      transform: 'rotate(-90 9 ' + ((T + H - B) / 2) + ')' }, [ylab]));
+  }
+  // PCA of the example samples: the compared factor separates along PC1.
+  function dePca(ss) {
+    var W = 300, H = 210, L = 38, R = 10, T = 26, B = 30;
+    var pts = ss.samples.map(function(s, i){
+      var side = s.li === 0 ? -1 : 1;
+      return { x: side * seeded(i * 3 + 1, 5, 17) + seeded(i * 7, -4, 4), y: seeded(i * 11, -9, 9), s: s };
+    });
+    var xm = 22, ym = 12;
+    function X(v){ return L + (v + xm) / (2 * xm) * (W - L - R); }
+    function Y(v){ return T + (1 - (v + ym) / (2 * ym)) * (H - T - B); }
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'PCA of samples' });
+    [-20, -10, 0, 10, 20].forEach(function(v){
+      svg.appendChild(svgEl('text', { x: X(v), y: H - B + 12, 'font-size': '8', 'text-anchor': 'middle', fill: '#888' }, [String(v)]));
+    });
+    [-10, -5, 0, 5, 10].forEach(function(v){
+      svg.appendChild(svgEl('text', { x: L - 5, y: Y(v) + 3, 'font-size': '8', 'text-anchor': 'end', fill: '#888' }, [String(v)]));
+    });
+    deAxis(svg, L, R, T, B, W, H, 'PC1 (23.8%)', 'PC2 (11.3%)');
+    ss.levels.forEach(function(lv, i){
+      var cx = L + 6 + i * 86;
+      svg.appendChild(svgEl('circle', { cx: cx, cy: 12, r: 3.2, fill: i === 0 ? DE_DOWN : DE_UP }));
+      svg.appendChild(svgEl('text', { x: cx + 7, y: 15, 'font-size': '9', fill: '#555' }, [lv]));
+    });
+    pts.forEach(function(p){
+      svg.appendChild(svgEl('circle', { cx: X(p.x).toFixed(1), cy: Y(p.y).toFixed(1), r: 3.4,
+        fill: p.s.li === 0 ? DE_DOWN : DE_UP, 'fill-opacity': 0.85 }, [svgEl('title', null, [p.s.id + ' · ' + p.s.group])]));
+    });
+    return svg;
+  }
+  // Sample-by-sample correlation, highest within a group.
+  function deHeat(ss) {
+    var n = ss.samples.length, cell = 11, L = 58, T = 6, CB = 26;
+    var W = L + n * cell + CB + 16, H = T + n * cell + 52;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Sample correlation' });
+    function shade(v){                                   // 0.85 (pale) .. 1 (deep)
+      var t = Math.max(0, Math.min(1, (v - 0.85) / 0.15));
+      return 'rgb(' + Math.round(222 - 150 * t) + ',' + Math.round(235 - 120 * t) + ',' + Math.round(247 - 60 * t) + ')';
+    }
+    ss.samples.forEach(function(a, i){
+      ss.samples.forEach(function(b, j){
+        var v = i === j ? 1 : (a.li === b.li ? seeded(i * 31 + j, 0.95, 0.995) : seeded(i * 17 + j * 5, 0.855, 0.925));
+        svg.appendChild(svgEl('rect', { x: L + j * cell, y: T + i * cell, width: cell - 0.5, height: cell - 0.5, fill: shade(v) },
+          [svgEl('title', null, [a.id + ' / ' + b.id + ': ' + v.toFixed(3)])]));
+      });
+      svg.appendChild(svgEl('text', { x: L - 4, y: T + i * cell + 8, 'font-size': '6.5', 'text-anchor': 'end', fill: '#777' }, [a.id]));
+      svg.appendChild(svgEl('text', { x: L + i * cell + 7, y: T + n * cell + 5, 'font-size': '6.5', fill: '#777',
+        transform: 'rotate(55 ' + (L + i * cell + 7) + ' ' + (T + n * cell + 5) + ')' }, [a.id]));
+    });
+    var bx = L + n * cell + 10;                           // colour bar
+    for (var k = 0; k < 40; k++) {
+      svg.appendChild(svgEl('rect', { x: bx, y: T + k * (n * cell / 40), width: 8, height: n * cell / 40 + 0.5, fill: shade(1 - k / 40 * 0.15) }));
+    }
+    ['1', '0.95', '0.9', '0.85'].forEach(function(lab, k){
+      svg.appendChild(svgEl('text', { x: bx + 11, y: T + k * (n * cell / 3) + 3, 'font-size': '7', fill: '#777' }, [lab]));
+    });
+    return svg;
+  }
+  function deVolcano(genes, st) {
+    var W = 300, H = 215, L = 36, R = 10, T = 8, B = 28, xmax = 5, ymax = 0;
+    genes.forEach(function(g){ ymax = Math.max(ymax, g.lp); });
+    ymax = Math.ceil(ymax + 0.5);
+    function X(v){ return L + (Math.max(-xmax, Math.min(xmax, v)) + xmax) / (2 * xmax) * (W - L - R); }
+    function Y(v){ return T + (1 - v / ymax) * (H - T - B); }
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Volcano plot' });
+    for (var x = -4; x <= 4; x += 2) {
+      svg.appendChild(svgEl('line', { x1: X(x), x2: X(x), y1: T, y2: H - B, stroke: '#F1F2F4' }));
+      svg.appendChild(svgEl('text', { x: X(x), y: H - B + 12, 'font-size': '8', 'text-anchor': 'middle', fill: '#888' }, [String(x)]));
+    }
+    for (var y = 0; y <= ymax; y += Math.max(1, Math.round(ymax / 5))) {
+      svg.appendChild(svgEl('text', { x: L - 5, y: Y(y) + 3, 'font-size': '8', 'text-anchor': 'end', fill: '#888' }, [String(y)]));
+    }
+    deAxis(svg, L, R, T, B, W, H, 'log2 fold change', '-log10 p-value');
+    var py = Y(-Math.log10(st.pa));
+    svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: py, y2: py, stroke: '#AAA', 'stroke-dasharray': '3 3' }));
+    genes.forEach(function(g){
+      svg.appendChild(svgEl('circle', { cx: X(g.lfc).toFixed(1), cy: Y(g.lp).toFixed(1), r: g.sig ? 2.2 : 1.7,
+        fill: !g.sig ? DE_NS : (g.lfc > 0 ? DE_UP : DE_DOWN), 'fill-opacity': g.sig ? 0.8 : 0.55 },
+        [svgEl('title', null, [g.gene + ' · log2 FC ' + g.lfc.toFixed(2) + ' · padj ' + g.padj.toExponential(1)])]));
+    });
+    return svg;
+  }
+  // Fold change against mean expression; the noisy left-hand edge is the point.
+  function deMa(genes) {
+    var W = 300, H = 215, L = 36, R = 10, T = 8, B = 28;
+    function X(v){ return L + (Math.log10(Math.max(10, v)) - 1) / 3.2 * (W - L - R); }
+    function Y(v){ return T + (1 - (Math.max(-4.5, Math.min(4.5, v)) + 4.5) / 9) * (H - T - B); }
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'MA plot' });
+    [[100, '100'], [1000, '1k'], [10000, '10k']].forEach(function(t){
+      svg.appendChild(svgEl('line', { x1: X(t[0]), x2: X(t[0]), y1: T, y2: H - B, stroke: '#F1F2F4' }));
+      svg.appendChild(svgEl('text', { x: X(t[0]), y: H - B + 12, 'font-size': '8', 'text-anchor': 'middle', fill: '#888' }, [t[1]]));
+    });
+    [-4, -2, 0, 2, 4].forEach(function(v){
+      svg.appendChild(svgEl('text', { x: L - 5, y: Y(v) + 3, 'font-size': '8', 'text-anchor': 'end', fill: '#888' }, [String(v)]));
+    });
+    deAxis(svg, L, R, T, B, W, H, 'expression', 'log2 fold change');
+    svg.appendChild(svgEl('line', { x1: L, x2: W - R, y1: Y(0), y2: Y(0), stroke: '#555' }));
+    genes.forEach(function(g, i){
+      // low expression carries the big, unreliable fold changes
+      var base = Math.pow(10, seeded(i * 13 + 3, 1.1, 4.2));
+      var spread = g.sig ? 1 : Math.max(0.25, 2.2 - Math.log10(base) * 0.45);
+      svg.appendChild(svgEl('circle', { cx: X(base).toFixed(1), cy: Y(g.lfc * spread).toFixed(1), r: g.sig ? 2.2 : 1.7,
+        fill: !g.sig ? DE_NS : (g.lfc > 0 ? DE_UP : DE_DOWN), 'fill-opacity': g.sig ? 0.8 : 0.5 },
+        [svgEl('title', null, [g.gene])]));
+    });
+    return svg;
+  }
+  // Uniform under the null, with a spike at zero where the real changes are.
+  function dePhist(genes) {
+    var W = 300, H = 180, L = 36, R = 10, T = 8, B = 28, bins = 20, counts = [];
+    for (var b = 0; b < bins; b++) counts.push(0);
+    genes.forEach(function(g){ counts[Math.min(bins - 1, Math.floor(Math.pow(10, -g.lp) * bins))]++; });
+    var max = Math.max.apply(null, counts) || 1;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'P-value distribution' });
+    var bw = (W - L - R) / bins;
+    counts.forEach(function(c, i){
+      var h = c / max * (H - T - B);
+      svg.appendChild(svgEl('rect', { x: L + i * bw + 0.6, y: H - B - h, width: bw - 1.2, height: h,
+        fill: i === 0 ? DE_UP : '#9AA6BC', 'fill-opacity': 0.85 }, [svgEl('title', null, [c + ' genes'])]));
+    });
+    ['0', '0.5', '1'].forEach(function(lab, i){
+      svg.appendChild(svgEl('text', { x: L + i * (W - L - R) / 2, y: H - B + 12, 'font-size': '8', 'text-anchor': 'middle', fill: '#888' }, [lab]));
+    });
+    deAxis(svg, L, R, T, B, W, H, 'p-value', 'genes');
+    return svg;
+  }
+  function deCard(title, caption, plot) {
+    return el('div', { class: 'de-card' }, [
+      el('p', { class: 'de-card-t' }, [title]),
+      caption ? el('p', { class: 'de-card-c' }, [caption]) : null,
+      plot
+    ].filter(Boolean));
+  }
+  function renderDeTab() {
+    var cmps = deComparisons();
+    var wrap = el('div', { class: 'de' });
+    if (!cmps.length) {
+      wrap.appendChild(el('p', null, ['No comparisons were defined, so there is nothing to test.']));
+      return wrap;
+    }
+    var sel = Math.min(state.deCmp || 0, cmps.length - 1);
+    var all = cmps.map(function(c, i){ var g = deGenes(i, c); return { c: c, g: g, st: deStats(g) }; });
+    var cur = all[sel];
+    var ss = deSamples();
+
+    var pick = el('div', { class: 'de-pick' }, cmps.map(function(c, i){
+      return el('button', { class: 'de-chip' + (i === sel ? ' is-active' : ''), type: 'button',
+        onclick: function(){ state.deCmp = i; var pane = wrap.parentNode; pane.innerHTML = ''; pane.appendChild(renderDeTab()); } },
+        [c.name + ' vs ' + c.ref]);
+    }));
+    var top = cur.g.filter(function(g){ return g.sig; }).sort(function(a, b){ return a.padj - b.padj; }).slice(0, 10);
+
+    var SECTIONS = [
+      ['de-s-samples', 'Samples'],
+      ['de-s-de', 'Differential expression'],
+      ['de-s-top', 'Top genes'],
+      ['de-s-p', 'P-value distribution'],
+      ['de-s-res', 'Results'],
+      ['de-s-met', 'Methods']
+    ];
+    var body = el('div', null, [
+      el('div', { class: 'de-head' }, [el('h3', null, ['Differential expression report']), el('span', { class: 'de-stamp' }, ['Example'])]),
+      el('p', { class: 'de-meta' }, ['Factor ' + cur.c.factor + ' · ' + ss.samples.length + ' samples · ' + cmps.length +
+        ' comparison' + (cmps.length === 1 ? '' : 's') + ' against ' + cur.c.ref + ' · changed when adjusted p < ' + cur.st.pa +
+        (cur.st.lf > 0 ? ' and |log2 FC| > ' + cur.st.lf : '') + ' · ' + cur.g.length + ' genes tested']),
+      pick,
+
+      el('h4', { class: 'de-sec', id: 'de-s-samples' }, ['Samples']),
+      el('div', { class: 'de-grid2' }, [
+        deCard('Principal components', 'Each point is a sample. PC1 separates ' + (ss.levels[1] || 'treated') +
+          ' from ' + (ss.levels[0] || 'control') + ' (R² 0.71).', dePca(ss)),
+        deCard('Sample correlation', 'Spearman correlation of the variance-stabilized expression between samples.', deHeat(ss))
+      ]),
+
+      el('h4', { class: 'de-sec', id: 'de-s-de' }, ['Differential expression']),
+      el('p', { class: 'de-lead' }, ['Each point is a gene; red is up and blue is down at padj < ' + cur.st.pa + '. Hover a point for the gene.']),
+      el('div', { class: 'de-grid2' }, [
+        deCard('Volcano plot', null, deVolcano(cur.g, cur.st)),
+        deCard('Fold change vs expression (MA plot)', 'Large fold changes at low expression are the least reliable.', deMa(cur.g))
+      ]),
+      el('div', { class: 'de-tiles' }, [
+        el('div', { class: 'de-tile' }, [el('b', { class: 'de-up' }, [String(cur.st.up)]), el('span', null, ['higher in ' + cur.c.name])]),
+        el('div', { class: 'de-tile' }, [el('b', { class: 'de-down' }, [String(cur.st.down)]), el('span', null, ['lower in ' + cur.c.name])]),
+        el('div', { class: 'de-tile' }, [el('b', null, [String(cur.g.length - cur.st.up - cur.st.down)]), el('span', null, ['not changed'])])
+      ]),
+
+      el('h4', { class: 'de-sec', id: 'de-s-top' }, ['Top genes']),
+      el('p', { class: 'de-lead' }, ['The ten smallest adjusted p-values for ' + cur.c.name + ' vs ' + cur.c.ref + '.']),
+      el('table', { class: 'de-table' }, [
+        el('thead', null, [el('tr', null, ['Gene', 'log2 FC', 'Adjusted p', 'In ' + cur.c.name].map(function(h){ return el('th', null, [h]); }))]),
+        el('tbody', null, top.map(function(g){
+          return el('tr', null, [el('td', null, [g.gene]),
+            el('td', { class: g.lfc > 0 ? 'de-up' : 'de-down' }, [(g.lfc > 0 ? '+' : '') + g.lfc.toFixed(2)]),
+            el('td', null, [g.padj.toExponential(1)]),
+            el('td', null, [g.lfc > 0 ? 'higher' : 'lower'])]);
+        }))
+      ]),
+
+      el('h4', { class: 'de-sec', id: 'de-s-p' }, ['P-value distribution']),
+      el('div', { class: 'de-grid2' }, [
+        deCard('Raw p-values', 'Flat under the null with a peak at zero: what a working test looks like.', dePhist(cur.g))
+      ]),
+
+      el('h4', { class: 'de-sec', id: 'de-s-res' }, ['Results']),
+      el('table', { class: 'de-table' }, [
+        el('thead', null, [el('tr', null, ['Comparison', 'Higher', 'Lower'].map(function(h){ return el('th', null, [h]); }))]),
+        el('tbody', null, all.map(function(a, i){
+          return el('tr', { class: i === sel ? 'is-cur' : '' }, [el('td', null, [a.c.name + ' vs ' + a.c.ref]),
+            el('td', { class: 'de-up' }, [String(a.st.up)]), el('td', { class: 'de-down' }, [String(a.st.down)])]);
+        }))
+      ]),
+      el('p', { class: 'de-foot' }, ['The full output has one results table per comparison (all genes, with base mean, log2 fold change, standard error, p and adjusted p) plus normalised counts.']),
+
+      el('h4', { class: 'de-sec', id: 'de-s-met' }, ['Methods']),
+      el('p', { class: 'de-lead' }, ['Counts from Salmon were imported per transcript and summarised to genes, then tested with a negative binomial model on the factor ' +
+        cur.c.factor + ', taking ' + cur.c.ref + ' as the reference level. P-values were adjusted across genes with Benjamini-Hochberg. ' +
+        'The correlation and the principal components use variance-stabilized counts.']),
+      el('p', { class: 'de-foot' }, ['The numbers, samples and genes shown here are made up to show the layout.'])
+    ]);
+
+    var links = SECTIONS.map(function(s){
+      var a = el('a', { href: '#' + s[0], onclick: function(ev){
+        ev.preventDefault();
+        var t = document.getElementById(s[0]), pane = wrap.closest ? wrap.closest('.rt-pane') : null;
+        if (t && pane) pane.scrollTop += t.getBoundingClientRect().top - pane.getBoundingClientRect().top - 6;
+      } }, [s[1]]);
+      return a;
+    });
+    var toc = el('nav', { class: 'de-toc' }, [el('b', null, ['Table of contents'])].concat(links));
+    // Mark the section the reader is in, as the report does when scrolled.
+    function markCurrent() {
+      var pane = wrap.closest ? wrap.closest('.rt-pane') : null;
+      if (!pane) return;
+      var top0 = pane.getBoundingClientRect().top, cur = 0;
+      SECTIONS.forEach(function(s, i){
+        var t = document.getElementById(s[0]);
+        if (t && t.getBoundingClientRect().top - top0 <= 24) cur = i;
+      });
+      links.forEach(function(a, i){ a.classList.toggle('is-cur', i === cur); });
+    }
+    setTimeout(function(){
+      var pane = wrap.closest ? wrap.closest('.rt-pane') : null;
+      if (pane) { pane.addEventListener('scroll', markCurrent); markCurrent(); }
+    }, 0);
+
+    wrap.appendChild(el('div', { class: 'de-layout' }, [body, toc]));
+    return wrap;
+  }
+
+  function resultTabs(model, startedAt) {
+    var tabs = [
+      ['MultiQC report', function(){ return renderMultiqcTab(); }],
+      ['Execution report', function(){ return renderExecTab(model, startedAt); }],
+      ['Timeline', function(){ return renderTimelineTab(model, startedAt); }],
+      ['Workflow diagram', function(){ return renderDagTab(model); }]
+    ];
+    if (!model.wf.perSample) tabs[0][0] = 'QC report';
+    if (state.scenario === 'transcriptomics.bulk.dge') tabs.unshift(['Differential expression report', function(){ return renderDeTab(); }]);
+    var pane = el('div', { class: 'rt-pane' });
+    var bar = el('div', { class: 'rt-bar', role: 'tablist' });
+    var open = el('button', { class: 'de-open', type: 'button', onclick: function(){
+      var w = window.open('', '_blank');
+      if (!w) return;
+      var css = Array.prototype.map.call(document.styleSheets, function(s){
+        try { return Array.prototype.map.call(s.cssRules, function(r){ return r.cssText; }).join('\n'); }
+        catch (e) { return ''; }
+      }).join('\n');
+      w.document.write('<!doctype html><meta charset="utf-8"><title>Report</title>' +
+        '<style>' + css + 'body{margin:0;background:#fff}.rt-pane{height:auto;overflow:visible}</style>' +
+        '<div class="rt-pane">' + pane.innerHTML + '</div>');
+      w.document.close();
+    } }, ['Open in browser']);
+    var btns = tabs.map(function(t, i){
+      return el('button', { class: 'rt-tab', type: 'button', role: 'tab', onclick: function(){ show(i); } }, [t[0]]);
+    });
+    function show(i) {
+      state.resultTab = i;
+      btns.forEach(function(b, j){ b.classList.toggle('is-active', j === i); b.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+      pane.innerHTML = ''; pane.scrollTop = 0;
+      pane.appendChild(tabs[i][1]());
+    }
+    btns.forEach(function(b){ bar.appendChild(b); });
+    bar.appendChild(open);
+    show(state.resultTab || 0);
+    return el('div', { class: 'rt' }, [bar, pane, el('p', { class: 'rt-note' }, ['Example material, not a real report.'])]);
+  }
+
+  // ---- Run output screen -------------------------------------------------
   function renderRun() {
-    var isBioinf = state.path === 'bioinf';
-    var execName = isBioinf
-      ? ({ local: 'local', k8s: 'k8s', seqera: 'seqera', hpc: 'slurm' }[state.backend] || 'local')
-      : ({ local: 'local', cloud: 'google-batch', hpc: 'slurm' }[state.runTarget] || 'local');
-    var whereText = isBioinf
-      ? (findIn(BACKENDS, state.backend) || {}).name
-      : (findIn(RUN_TARGETS, state.runTarget) || {}).name;
+    var model = runModel(), wf = model.wf, total = runTotal(model), samples = runSamples();
+    var SPEED = total * 60 / 24;                       // the whole run replays in about 24 s
+    var startedAt = state.runStartedAt || (state.runStartedAt = new Date(Date.now() - 60000));
+    var whereText = ((findIn(RUN_TARGETS, state.runTarget) || {}).name || '').replace('Run ', '');
 
-    var term = el('div', { class: 'terminal' + (isBioinf ? ' is-full' : '') });
-    var bar = el('div');
-    var pct = el('span', { class: 'run-pct' }, ['0%']);
-    var spinner = el('div', { class: 'run-spinner' });
-    var statusText = el('span', null, ['Running ' + wfLabel(WORKFLOWS[state.scenario]) + ' on ' + whereText]);
-    var wf = WORKFLOWS[state.scenario] || WORKFLOWS['transcriptomics.single_cell.count_only'];
-    var plan = runPlan(wf);
-    var RUN_STAGES = plan.stages, RUN_LOG = plan.log;
-    var stages = RUN_STAGES.map(function(s){ return el('div', { class: 'run-step' }, [el('span', { class: 'st' }), s]); });
-    var skipBtn = el('button', { class: 'btn-ghost', type: 'button' }, ['Skip to the end']);
-
-    var footer = stepFooter({ label: 'View the report', disabled: !state.runDone });
+    var footer = stepFooter({ label: 'What this means for your project', disabled: !state.runDone,
+      onContinue: function(){ state.reportSeen = true; } });
     var nextBtn = footer.querySelector('.btn-primary');
 
-    if (runTimer) clearInterval(runTimer);
-    var li = 0, progress = 0;
-    function paint() { bar.style.width = progress + '%'; pct.textContent = progress + '%'; }
-    function finish() {
-      clearInterval(runTimer); runTimer = null;
-      progress = 100; paint();
-      spinner.style.display = 'none';
-      statusText.textContent = 'Run finished. ' + (wf.perSample ? 'MultiQC report ready.' : 'Count QC report ready.');
-      stages.forEach(function(s){ s.className = 'run-step is-done'; });
-      skipBtn.style.display = 'none';
+    // Resources
+    var cpuVal = el('b'), memVal = el('b'), cpuPeak = el('span', { class: 'ro-peak' }), memPeak = el('span', { class: 'ro-peak' });
+    var cpuSpark = el('div'), memSpark = el('div');
+    var cpuHist = [], memHist = [], cpuMax = 0, memMax = 0;
+
+    // Steps
+    var doneLabel = el('span', { class: 'ro-done' });
+    var elapsed = el('span', { class: 'ro-elapsed' });
+    var rows = model.procs.map(function(p){
+      var tick = el('span', { class: 'ro-tick' });
+      var fill = el('span', { class: 'ro-fill', style: 'left:' + (p[1] / total * 100).toFixed(2) + '%;width:0' });
+      var time = el('span', { class: 'ro-time' });
+      var row = el('div', { class: 'ro-row' }, [tick, el('span', { class: 'ro-name' }, [p[0]]), el('span', { class: 'ro-track' }, [fill]), time]);
+      return { p: p, row: row, tick: tick, fill: fill, time: time };
+    });
+    var skipBtn = el('button', { class: 'ro-skip', type: 'button' }, ['Skip to the end']);
+
+    // Log
+    var log = el('div', { class: 'ro-log' });
+    function logLine(text) { log.appendChild(el('div', null, [text])); log.scrollTop = log.scrollHeight; }
+    [
+      '=> Starting ' + wf.id + ' on ' + (whereText || 'this computer'),
+      'Downloading nextflow dependencies. It may require a few seconds, please wait ..',
+      'N E X T F L O W  ~  version ' + NF_VERSION,
+      'Pulling ' + wf.id + ' ...',
+      ' downloaded from https://packages.viash-hub.com/' + wf.id + '.git',
+      'Launching `https://packages.viash-hub.com/' + wf.id + '` [' + RUN_NAME + '] DSL2 - revision: ' + (wf.version || 'main')
+    ].forEach(logLine);
+
+    var resultsHost = el('div');
+    var submitted = {}, taskNo = 0;
+    var now = 0;
+    function paint() {
+      var done = 0, running = 0, cpu = 0, mem = 0;
+      rows.forEach(function(r){
+        var p = r.p, s = p[1], e = p[2];
+        var frac = now <= s ? 0 : Math.min(1, (now - s) / (e - s));
+        r.fill.style.width = ((Math.min(now, e) - s) / total * 100 > 0 ? (Math.min(now, e) - s) / total * 100 : 0).toFixed(2) + '%';
+        var subs = Math.min(p[3], Math.ceil(frac * p[3] + (frac > 0 ? 0.0001 : 0)));
+        for (var k = submitted[p[0]] || 0; k < subs; k++) {
+          logLine('[' + hash(taskNo++) + '] Submitted process > ' + taskName(model, p, samples[k % samples.length]));
+        }
+        submitted[p[0]] = Math.max(submitted[p[0]] || 0, subs);
+        if (frac >= 1) {
+          done++; r.row.className = 'ro-row is-done'; r.tick.textContent = '✓';
+          r.time.textContent = fmtDur(e - s) + (p[3] > 1 ? ' · ' + p[3] + '×' : '');
+        } else if (frac > 0) {
+          running++; r.row.className = 'ro-row is-running'; r.tick.textContent = '…';
+          r.time.textContent = 'running ' + Math.floor(frac * p[3]) + '/' + p[3];
+          cpu += p[3] > 1 ? Math.min(model.cpus / 2, 2 + p[3] / 3) : 2;
+          mem += /star|cellranger/.test(p[0]) ? 28 : 3;
+        } else {
+          r.row.className = 'ro-row'; r.tick.textContent = ''; r.time.textContent = '';
+        }
+      });
+      cpu = Math.min(model.cpus, Math.round(cpu)); mem = Math.min(model.mem, +(mem).toFixed(1));
+      if (state.runDone) { cpu = 0; mem = 0; }
+      cpuMax = Math.max(cpuMax, cpu); memMax = Math.max(memMax, mem);
+      cpuHist.push(cpu); memHist.push(mem);
+      if (cpuHist.length > 60) { cpuHist.shift(); memHist.shift(); }
+      cpuVal.textContent = String(cpu); memVal.textContent = String(mem);
+      cpuPeak.textContent = 'peak ' + cpuMax; memPeak.textContent = 'peak ' + memMax + ' GiB';
+      cpuSpark.innerHTML = ''; cpuSpark.appendChild(spark(cpuHist, model.cpus));
+      memSpark.innerHTML = ''; memSpark.appendChild(spark(memHist, model.mem));
+      doneLabel.textContent = done + ' of ' + rows.length + ' steps done';
+      elapsed.textContent = fmtDur(Math.min(now, total));
+    }
+    function finish(live) {
+      if (runTimer) { clearInterval(runTimer); runTimer = null; }
+      now = total;
       state.runDone = true;
+      paint();
+      logLine('Completed at: ' + new Date(startedAt.getTime() + total * 60000).toISOString().slice(0, 16).replace('T', ' ') + '   Duration: ' + fmtDur(total) + '   Succeeded: ' + taskNo);
+      skipBtn.style.display = 'none';
+      status.textContent = 'Run finished in ' + fmtDur(total) + '. The results are in ' + targetPath() + '.';
+      cancel.style.display = 'none'; openFolder.style.display = '';
+      resultsHost.innerHTML = ''; resultsHost.appendChild(resultTabs(model, startedAt));
       nextBtn.disabled = false; nextBtn.style.opacity = ''; nextBtn.style.cursor = '';
       renderProgress();
+      if (live) setTimeout(function(){ resultsHost.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
     }
-    skipBtn.addEventListener('click', function(){
-      while (li < RUN_LOG.length) { appendLine(RUN_LOG[li]); li++; }
-      finish();
-    });
-    var lineByKey = {};
-    function appendLine(entry) {
-      var text = entry[1].replace('{EXEC}', execName).replace('{DATE}', new Date().toISOString().slice(0, 16).replace('T', ' '));
-      var cls = entry[0] === 'cmd2' ? 'cmd cmd2' : entry[0];
-      var key = entry[2];
-      if (key && lineByKey[key] && lineByKey[key].parentNode === term) {
-        lineByKey[key].textContent = text;      // the process line updates in place
-        lineByKey[key].className = cls;
-        return;
-      }
-      var node = el('div', { class: cls }, [text]);
-      term.appendChild(node);
-      if (key) lineByKey[key] = node;
-      if (!isBioinf) while (term.children.length > 12) term.removeChild(term.firstChild);
-    }
+    skipBtn.addEventListener('click', function(){ finish(true); });
+
+    var status = el('p', { class: 'ro-sub' }, ['Running ' + wfLabel(wf) + (whereText ? ' ' + whereText.toLowerCase() : '') + '. Simulated: the demo replays a recorded run about ' + Math.round(SPEED) + ' times faster.']);
+    var cancel = el('button', { class: 'ro-cancel', type: 'button', title: 'Not available in the demo' }, ['Cancel workflow']);
+    cancel.disabled = true;
+    var openFolder = el('button', { class: 'ro-cancel is-open', type: 'button', title: 'Not available in the demo', style: 'display:none' }, ['Open results folder']);
+    openFolder.disabled = true;
+
+    if (runTimer) clearInterval(runTimer);
     if (state.runDone) {
-      RUN_LOG.forEach(appendLine);
-      stages.forEach(function(s){ s.className = 'run-step is-done'; });
-      finish();
+      now = total;
+      setTimeout(finish, 0);
     } else {
+      var t0 = Date.now();
       runTimer = setInterval(function(){
-        if (li < RUN_LOG.length) { appendLine(RUN_LOG[li]); li++; }
-        progress = Math.min(100, Math.round(li / RUN_LOG.length * 100));
+        now = Math.min(total, (Date.now() - t0) / 1000 * SPEED / 60);
         paint();
-        var stageIdx = Math.min(RUN_STAGES.length - 1, Math.floor(li / RUN_LOG.length * RUN_STAGES.length));
-        stages.forEach(function(s, i){
-          s.className = 'run-step' + (i < stageIdx ? ' is-done' : (i === stageIdx ? ' is-running' : ''));
-        });
-        if (li >= RUN_LOG.length) finish();
-      }, 650);
+        if (now >= total) finish(true);
+      }, 400);
     }
     paint();
 
-    return el('div', { class: 'step-card' }, [
+    return el('div', { class: 'step-card ro' }, [
       el('span', { class: 'step-card-eyebrow' }, [pathEyebrow()]),
-      el('h2', { class: 'step-card-title' }, ['Running the analysis']),
-      el('div', { class: 'demo-notice' }, [
-        el('span', null, ['⚠']),
-        el('span', null, [el('b', null, ['Nothing in this demo is real. ']), 'The run, the log and the timings are simulated, and the workflow shown is a simplification that does not match the original step for step. It only shows how the platform works.'])
+      el('h2', { class: 'step-card-title' }, ['Run output']),
+      status,
+      el('p', { class: 'ro-sub' }, ['Results go to ', el('code', null, [targetPath()]), '; you can open the folder once the run has finished.']),
+      el('div', { class: 'ro-actions' }, [cancel, openFolder]),
+      el('div', { class: 'ro-card ro-res' }, [
+        el('div', { class: 'ro-meter' }, [el('div', { class: 'ro-mhead' }, [el('span', null, ['CPUs']), cpuPeak]),
+          el('div', { class: 'ro-mval' }, [cpuVal, ' of ' + model.cpus]), cpuSpark]),
+        el('div', { class: 'ro-meter' }, [el('div', { class: 'ro-mhead' }, [el('span', null, ['Memory']), memPeak]),
+          el('div', { class: 'ro-mval' }, [memVal, ' of ' + model.mem + ' GiB']), memSpark])
       ]),
-
-      el('p', { class: 'step-card-intro' }, [isBioinf
-        ? 'Nextflow pulls the containers and runs the workflow. The log below is what you would see in your terminal. This is simulated.'
-        : 'The app runs the analysis for you and reports back. The technical log below is simulated, and you do not need to read it.']),
-      el('div', { class: 'run-layout' }, isBioinf ? [
-        term,
-        el('div', { style: 'display:flex;justify-content:flex-end' }, [skipBtn])
-      ] : [
-        el('div', { class: 'run-status' }, [spinner, statusText, el('div', { class: 'run-progress' }, [bar]), pct, skipBtn]),
-        el('div', { class: 'run-steps' }, stages),
-        term
+      el('div', { class: 'ro-card' }, [
+        el('div', { class: 'ro-head' }, [doneLabel, el('span', { class: 'ro-pill' }, ['Simulated']), el('span', { style: 'flex:1' }), skipBtn, elapsed]),
+        el('div', { class: 'ro-rows' }, rows.map(function(r){ return r.row; }))
       ]),
-      footer
-    ]);
-  }
-
-  function renderReport() {
-    var isBioinf = state.path === 'bioinf';
-    var footer = stepFooter({ label: 'What this means for your project', onContinue: function(){ state.reportSeen = true; } });
-    return el('div', { class: 'step-card' }, [
-      el('span', { class: 'step-card-eyebrow', style: 'margin-bottom:14px' }, [pathEyebrow()]),
-      el('div', { class: 'qc-example' }, [
-        el('span', { class: 'qc-example-stamp' }, ['Example']),
-        (WORKFLOWS[state.scenario] || {}).perSample ? renderBulkReport() : renderQcReport()
-      ]),
-      el('p', { class: 'qc-example-note' }, ['Faded on purpose: example material, not a real report.']),
+      el('details', { class: 'ro-logwrap' }, [el('summary', null, ['Log']), log]),
+      resultsHost,
       footer
     ]);
   }
@@ -2896,111 +3462,6 @@
     return svg;
   }
   // MultiQC-style one pager for the per-sample bulk workflow.
-  function bulkStackedBar(segs, label) {
-    var W = 320, H = 34;
-    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': label });
-    var x = 0;
-    segs.forEach(function(sg){
-      var w = W * sg[0] / 100;
-      svg.appendChild(svgEl('rect', { x: x, y: 4, width: Math.max(0, w - 1), height: 22, rx: 2, fill: sg[1] }));
-      if (w > 34) svg.appendChild(svgEl('text', { x: x + 5, y: 19, 'font-size': '9', fill: '#FFFFFF', 'font-weight': '700' }, [sg[0].toFixed(1) + '%']));
-      x += w;
-    });
-    return svg;
-  }
-  function fastqcQualityChart() {
-    var W = 320, H = 130, padL = 26, padB = 20, padT = 6;
-    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Mean per-base quality, raw versus trimmed' });
-    var plotH = H - padB - padT, plotW = W - padL - 6;
-    [[0, 20, 'rgba(224,92,75,0.10)'], [20, 28, 'rgba(201,162,40,0.12)'], [28, 40, 'rgba(0,180,160,0.10)']].forEach(function(b){
-      svg.appendChild(svgEl('rect', { x: padL, y: padT + plotH - plotH * b[1] / 40, width: plotW, height: plotH * (b[1] - b[0]) / 40, fill: b[2] }));
-    });
-    [0, 20, 40].forEach(function(v){
-      svg.appendChild(svgEl('text', { x: padL - 5, y: padT + plotH - plotH * v / 40 + 3, 'text-anchor': 'end', 'font-size': '9', fill: 'currentColor', 'fill-opacity': '0.6' }, [String(v)]));
-    });
-    [['#7A88B5', function(i){ return 36 - Math.max(0, (i - 60)) * 0.14 - (i < 4 ? 3 : 0); }],
-     ['#7C4BAC', function(i){ return 36.5 - Math.max(0, (i - 60)) * 0.06 - (i < 4 ? 2 : 0); }]].forEach(function(series){
-      var pts = [];
-      for (var i = 0; i <= 150; i += 5) {
-        pts.push((padL + plotW * i / 150).toFixed(1) + ',' + (padT + plotH - plotH * series[1](i) / 40).toFixed(1));
-      }
-      svg.appendChild(svgEl('polyline', { points: pts.join(' '), fill: 'none', stroke: series[0], 'stroke-width': '2' }));
-    });
-    svg.appendChild(svgEl('text', { x: padL + plotW / 2, y: H - 6, 'text-anchor': 'middle', 'font-size': '10', fill: 'currentColor', 'fill-opacity': '0.75' }, ['Position in read (bp)']));
-    return svg;
-  }
-  function renderBulkReport() {
-    var wf = WORKFLOWS[state.scenario] || {};
-    var inst = INSTRUMENTS[state.instrument] || {};
-    var kit = currentKit() || {};
-    var dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
-    var rows = [
-      ['Sample', 'sample_01 (R1 + R2)'],
-      ['Raw reads', '42.6M pairs'],
-      ['After TrimGalore', '41.9M pairs (98.4% kept) · adapters found in 12.1% of reads'],
-      ['FastQC', 'raw: 1 warning (adapter content) · trimmed: all pass'],
-      ['Kallisto pseudo-aligned', '86.3%'],
-      ['STAR uniquely mapped', '89.7% · multi-mapped 6.1% · unmapped 4.2%'],
-      ['Salmon mapping rate', '91.4% (alignment mode)'],
-      ['Qualimap', 'exonic 78.2% · intronic 16.9% · intergenic 4.9% · 5\u2032 to 3\u2032 bias 1.04'],
-      ['Genes detected', '18 940 (TPM > 1)']
-    ];
-    function statTable(list) {
-      var body = el('tbody');
-      list.forEach(function(r){
-        body.appendChild(el('tr', null, [
-          el('td', null, [r[0]]),
-          el('td', { style: 'white-space:normal' }, [r[1]])
-        ]));
-      });
-      return el('table', { class: 'qc-table' }, [body]);
-    }
-    var half = Math.ceil(rows.length / 2);
-    return el('div', { class: 'qc-report' }, [
-      el('div', { class: 'qc-head' }, [
-        el('div', null, [
-          el('h3', null, ['MultiQC Report']),
-          el('p', null, [dateStr + ' · ' + wfLabel(wf) + ' · ' + (kit.name || '') + ' · ' + (inst.name || '')])
-        ]),
-        el('span', { class: 'qc-verdict' }, ['✓ 1 sample · all checks pass'])
-      ]),
-      el('div', { class: 'qc-section' }, [
-        el('h4', null, ['1 · General statistics']),
-        el('div', { class: 'qc-stats-2col' }, [
-          el('div', { class: 'qc-table-wrap' }, [statTable(rows.slice(0, half))]),
-          el('div', { class: 'qc-table-wrap' }, [statTable(rows.slice(half))])
-        ])
-      ]),
-      el('div', { class: 'qc-section' }, [
-        el('h4', null, ['2 · Alignment and QC']),
-        el('div', { class: 'qc-grid' }, [
-          el('div', { class: 'qc-panel' }, [
-            el('h5', null, ['STAR alignment scores']),
-            bulkStackedBar([[89.7, '#7C4BAC'], [6.1, '#00B4A0'], [4.2, 'rgba(120,130,160,0.35)']], 'STAR alignment'),
-            el('p', { class: 'qc-cap' }, ['Uniquely mapped (purple), multi-mapped (teal), unmapped (grey).'])
-          ]),
-          el('div', { class: 'qc-panel' }, [
-            el('h5', null, ['Qualimap genomic origin']),
-            bulkStackedBar([[78.2, '#7C4BAC'], [16.9, '#C9A228'], [4.9, 'rgba(120,130,160,0.35)']], 'Genomic origin'),
-            el('p', { class: 'qc-cap' }, ['Exonic (purple), intronic (amber), intergenic (grey). Coordinate-based, from the STAR BAM.'])
-          ]),
-          el('div', { class: 'qc-panel' }, [
-            el('h5', null, ['FastQC mean quality, raw vs trimmed']),
-            fastqcQualityChart(),
-            el('p', { class: 'qc-cap' }, ['Phred score per position. Grey: raw. Purple: after TrimGalore. The 3\u2032 drop is removed by trimming.'])
-          ]),
-          el('div', { class: 'qc-panel' }, [
-            el('h5', null, ['Kallisto vs Salmon']),
-            bulkStackedBar([[86.3, '#00B4A0'], [13.7, 'rgba(120,130,160,0.2)']], 'Kallisto pseudo-alignment rate'),
-            bulkStackedBar([[91.4, '#7C4BAC'], [8.6, 'rgba(120,130,160,0.2)']], 'Salmon mapping rate'),
-            el('p', { class: 'qc-cap' }, ['Top: Kallisto pseudo-alignment rate, the preliminary quantification. Bottom: Salmon mapping rate in alignment mode. Both quantifications agree (Spearman 0.98 on TPM).'])
-          ])
-        ])
-      ]),
-      el('p', { class: 'qc-foot' }, ['One-page summary of the MultiQC report. The workflow handles one FASTQ pair per invocation; aggregating several samples into one count matrix is a separate step. Demo data, not a real run.'])
-    ]);
-  }
-
   function renderQcReport() {
     var wf = WORKFLOWS[state.scenario] || {};
     var kit = currentKit() || {};
@@ -3089,14 +3550,11 @@
     if (i === SIM_IDX)    return renderSimulate();
     var step = stepAt(i);
     if (!step) return null;
-    if (step.id === 'backend')  return renderBackend();
-    if (step.prereq)            return renderPrereq(step);
     if (step.id === 'download') return renderDownload();
     if (step.id === 'install')  return renderInstall();
     if (step.id === 'where')    return renderWhere();
     if (step.id === 'locations') return renderLocations();
     if (step.id === 'run')      return renderRun();
-    if (step.id === 'report')   return renderReport();
     if (step.id === 'next')     return renderNext();
     return null;
   }
@@ -3123,7 +3581,7 @@
 
     var stepNode = renderStep(state.activeStep);
     var cur = stepAt(state.activeStep) || {};
-    var framed = state.path === 'enduser' && ['where', 'locations', 'run', 'report'].indexOf(cur.id) >= 0;
+    var framed = state.path === 'enduser' && ['where', 'locations', 'run'].indexOf(cur.id) >= 0;
     if (stepNode && framed) {
       stepNode = appFrame(stepNode);
     }

@@ -7409,6 +7409,10 @@ span.ap-marker-container:hover span.ap-marker-tooltip {
   margin-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  /* Someone with two roles carries them on two lines in one block, so set a
+     tighter leading than the 1.5 body default: the pair has to read as one
+     label, not as two stacked ones. */
+  line-height: 1.4;
 }
 .team-card-bio {
   font-size: 13px;
