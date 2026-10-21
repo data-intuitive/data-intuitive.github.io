@@ -347,11 +347,17 @@ cookieconsent.run({
       </nav>
     </header>
 
+    <!-- Event banner, hidden. The NextGen Omics dates (13-14 October 2026)
+         have passed. Kept here rather than deleted: uncomment the section to
+         run the next one, and update the link, tag and text. The script below
+         sets --topnote-h to 0 while it is commented out, so the header and the
+         body padding close the gap. -->
+    <!--
     <section class="topnote">
       <div class="container">
-        <a href="../../../insights/news/2026-09-14-basel-nextgen-omics/">
+        <a href="/insights/news/2026-09-14-basel-nextgen-omics/">
           <span class="topnote-wide">
-            <span class="topnote-tag">Basel · 13 and 14 October</span>
+            <span class="topnote-tag">Basel &middot; 13 and 14 October</span>
             <span>We are at NextGen Omics, Tech &amp; Data 2026, booth 30. Come and say hello.</span>
           </span>
           <span class="topnote-narrow">
@@ -361,13 +367,14 @@ cookieconsent.run({
         </a>
       </div>
     </section>
+    -->
 
     <script>
   (function () {
     var bar = document.querySelector('.topnote');
-    if (!bar) return;
     function apply() {
-      document.documentElement.style.setProperty('--topnote-h', bar.offsetHeight + 'px');
+      // No bar means no reserved strip: the CSS fallback is 46px, so set 0.
+      document.documentElement.style.setProperty('--topnote-h', bar ? bar.offsetHeight + 'px' : '0px');
     }
     apply();
     window.addEventListener('load', apply);

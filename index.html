@@ -346,11 +346,17 @@ cookieconsent.run({
       </nav>
     </header>
 
+    <!-- Event banner, hidden. The NextGen Omics dates (13-14 October 2026)
+         have passed. Kept here rather than deleted: uncomment the section to
+         run the next one, and update the link, tag and text. The script below
+         sets --topnote-h to 0 while it is commented out, so the header and the
+         body padding close the gap. -->
+    <!--
     <section class="topnote">
       <div class="container">
-        <a href="./insights/news/2026-09-14-basel-nextgen-omics/">
+        <a href="/insights/news/2026-09-14-basel-nextgen-omics/">
           <span class="topnote-wide">
-            <span class="topnote-tag">Basel · 13 and 14 October</span>
+            <span class="topnote-tag">Basel &middot; 13 and 14 October</span>
             <span>We are at NextGen Omics, Tech &amp; Data 2026, booth 30. Come and say hello.</span>
           </span>
           <span class="topnote-narrow">
@@ -360,13 +366,14 @@ cookieconsent.run({
         </a>
       </div>
     </section>
+    -->
 
     <script>
   (function () {
     var bar = document.querySelector('.topnote');
-    if (!bar) return;
     function apply() {
-      document.documentElement.style.setProperty('--topnote-h', bar.offsetHeight + 'px');
+      // No bar means no reserved strip: the CSS fallback is 46px, so set 0.
+      document.documentElement.style.setProperty('--topnote-h', bar ? bar.offsetHeight + 'px' : '0px');
     }
     apply();
     window.addEventListener('load', apply);
@@ -1384,55 +1391,6 @@ cookieconsent.run({
       <figcaption class="quote-band-attr">Single Cell Analysis Group Leader, global pharmaceutical company <a class="quote-band-source" href="./insights/blog/2025-06-11-Webinar/#recording" target="_blank" rel="noopener">Source →</a></figcaption>
       <p class="quote-band-note">The same analysis runs for a small team and for pharma R&amp;D.</p>
     </figure>
-  </div>
-</section>
-
-<!-- ======== BETA LAB ======== -->
-<style>
-  .beta-card {
-    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: 40px; align-items: center;
-    background: linear-gradient(135deg, #1B2D52, #243B6B);
-    border: 1px solid rgba(0, 180, 160, 0.45);
-    border-radius: 18px;
-    padding: 34px 38px;
-    color: rgba(255, 255, 255, 0.92);
-  }
-  @media (max-width: 900px) { .beta-card { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px; } }
-  .beta-card .overline { color: var(--accent-2, #4FE0BD); display: block; margin-bottom: 10px; }
-  .beta-card h2 { color: #FFFFFF; margin: 0 0 12px; }
-  .beta-card p { margin: 0; font-size: 16.5px; line-height: 1.65; color: rgba(255, 255, 255, 0.82); }
-  .beta-facts {
-    margin: 0 0 20px; padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-    font-size: 14px; letter-spacing: 0.01em; color: rgba(255, 255, 255, 0.7);
-  }
-  .beta-cta { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
-  .beta-cta .di-textlink { color: rgba(255,255,255,0.88) !important; }
-  .beta-cta .di-textlink:hover { color: #FFFFFF !important; }
-</style>
-
-<section class="sec-white" id="beta-lab">
-  <div class="container">
-    <div class="beta-card reveal">
-      <div>
-        <span class="overline">Interface beta programme</span>
-        <h2>Help shape the interface against your own workflows</h2>
-        <p>The next version of our delivery platform interface is being built now. The interface is where a scientist picks an analysis, sets the parameters, starts the run and reads the report, without writing code. A small group runs their own analyses on it and tells us what works and what gets in the way. What we ask for is your time and honest feedback on how the work really runs in your lab.</p>
-      </div>
-      <div>
-        <p class="beta-facts">Limited seats · October 2026 to February 2027 · No cost for the programme</p>
-        <div class="beta-cta">
-          <a href="./contact/omics-beta-lab.html" class="btn btn-secondary d-inline-flex align-items-center gap-2">
-            Apply for a seat
-            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
-          </a>
-          <a href="./insights/news/2026-09-04-interface-beta-programme/" class="di-textlink">Read the announcement
-            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 

@@ -1052,8 +1052,6 @@
   .de-card-t { font-size: 12px; font-weight: 600; margin: 0 0 2px; }
   .de-card-c { font-size: 10.5px; color: #6B7280; margin: 0 0 6px; }
   .de-card svg { width: 100%; height: auto; display: block; }
-  .de-open { margin-left: auto; font: inherit; font-size: 11.5px; font-weight: 600; color: var(--text-muted); background: none; border: 1px solid var(--border-soft); border-radius: 8px; padding: 5px 10px; cursor: pointer; }
-  .de-open:hover { color: var(--text-strong); }
   .de-up { color: #D1453B; } .de-down { color: #3D6FB4; }
   @media (max-width: 720px) { .de-tiles { grid-template-columns: 1fr; } .de-layout { grid-template-columns: 1fr; } .de-toc { display: none; } }
   /* MultiQC look-alike */
@@ -3169,18 +3167,6 @@
     if (state.scenario === 'transcriptomics.bulk.dge') tabs.unshift(['Differential expression report', function(){ return renderDeTab(); }]);
     var pane = el('div', { class: 'rt-pane' });
     var bar = el('div', { class: 'rt-bar', role: 'tablist' });
-    var open = el('button', { class: 'de-open', type: 'button', onclick: function(){
-      var w = window.open('', '_blank');
-      if (!w) return;
-      var css = Array.prototype.map.call(document.styleSheets, function(s){
-        try { return Array.prototype.map.call(s.cssRules, function(r){ return r.cssText; }).join('\n'); }
-        catch (e) { return ''; }
-      }).join('\n');
-      w.document.write('<!doctype html><meta charset="utf-8"><title>Report</title>' +
-        '<style>' + css + 'body{margin:0;background:#fff}.rt-pane{height:auto;overflow:visible}</style>' +
-        '<div class="rt-pane">' + pane.innerHTML + '</div>');
-      w.document.close();
-    } }, ['Open in browser']);
     var btns = tabs.map(function(t, i){
       return el('button', { class: 'rt-tab', type: 'button', role: 'tab', onclick: function(){ show(i); } }, [t[0]]);
     });
@@ -3191,7 +3177,6 @@
       pane.appendChild(tabs[i][1]());
     }
     btns.forEach(function(b){ bar.appendChild(b); });
-    bar.appendChild(open);
     show(state.resultTab || 0);
     return el('div', { class: 'rt' }, [bar, pane, el('p', { class: 'rt-note' }, ['Example material, not a real report.'])]);
   }
